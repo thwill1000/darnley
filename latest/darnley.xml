@@ -1,0 +1,1417 @@
+<?xml version="1.0" encoding="us-ascii" standalone="yes"?><darnley><location id="1" name="The Bathroom" code1="" code2="">
+<text>The bathroom contains an enamelled cast iron bath with claw feet
+and a toilet bearing a brass tablet calling it 'The Imperial Avenger'.
+A washstand with a marble top and a pedestal washbowl complete
+the ensemble. Various toileteries are scattered around in the normal
+way.</text>
+</location>
+<location id="2" name="The Orchard" code1="" code2="">
+<text>The park wall lies north and has several pear-trees trained in
+espalier against it. There are a large number of apple trees, but no
+fruit. There are various marks on the ground, too unclear to be sure
+that they are footprints.</text>
+</location>
+<location id="3" name="The Kitchen Garden" code1="" code2="">
+<text>The kitchen garden is full of frozen vegetables lying under snow.
+Various footprints are visible in the snow.</text>
+</location>
+<location id="4" name="Outhouses" code1="" code2="">
+<text>This section of the garden contains various outhouses; a laundry, a
+coal store and a pigeon-coop.</text>
+</location>
+<location id="5" name="The Ornamental Pond" code1="" code2="C9">
+<text>An ornamental pond stands at the western end of the terrace.
+The pond is covered in ice. In the four corners of the pond are
+stone pedestals. These hold statues.</text>
+</location>
+<location id="6" name="The Terrace" code1="" code2="">
+<text>From the house a french window leads onto this paved terrace, which
+shows traces of many footprints in the snow. The french window is
+open and has a broken pane.</text>
+</location>
+<location id="7" name="Colonel Darnley's Study" code1="" code2="">
+<text>Colonel Darnley's body lies on a turkish carpet in the middle of the
+study. A port glass is by his body and a tantalus of port stands on a
+table. The room is panelled and contains several club-chairs, some
+glass cases holding stuffed birds and a writing table with a letter on
+it as well as various sporting magazines and a rack of sporting guns
+and pistols. As you walk on the floor by the french window in the
+west wall, you feel broken glass underfoot.</text>
+</location>
+<location id="8" name="The Hall" code1="" code2="">
+<text>The walls of the hall are decorated with swords and Civil War
+armour. The floor is marble. The only furniture is a glass case
+containing various flints and shards of pottery. At the far end of the
+hall, two sets of fine armour stand either side of the stairs which
+have barley-sugar bannisters and carved pineapple finials.</text>
+</location>
+<location id="9" name="The Kitchen" code1="" code2="">
+<text>The kitchen has game birds hanging from the ceiling and the usual
+kitchen furniture. On the sink draining-board is a knife. By the
+outside door is a line of boots and some cleaning brushes and polish.</text>
+</location>
+<location id="10" name="Butlers' Pantry" code1="" code2="">
+<text>The butlers' pantry is laid out as a sitting room with a bed behind a
+curtain. Two temporary beds have been made up. There is a small
+bookshelf.</text>
+</location>
+<location id="11" name="The Maze" code1="" code2="">
+<text>Situated on the east side of the house, the maze consists of low
+box hedges. The marks in the snow cannot be deciphered into
+footprints.</text>
+</location>
+<location id="12" name="West Side of the House" code1="" code2="">
+<text>The gravel path around the house passes between the smooth snow
+covered tennis court and a bed of withered flowers covered in snow.
+Various footprints are visible in the snow.</text>
+</location>
+<location id="13" name="The Lounge" code1="" code2="">
+<text>The centrepiece of the lounge is a three piece suite on a Chinese
+carpet. There are several tables holding magazines and novels
+marked with bookmarks. Recent family portraits are on the walls.
+The fireplace is carved and holds the remains of a fire. On the
+mantlepiece is an Indian rosewood box with an ivory inlay.</text>
+</location>
+<location id="14" name="The Dining Room" code1="" code2="">
+<text>The dining room holds a fine oak table with chairs in William and
+Mary style. A glass case contains various pieces of Delft pottery. A
+sideboard holding a silver wine cooler and a pair of Sevres porcellain
+urns stand against one wall. The fireplace is of carved marble and
+the walls hold various Italian landscapes.</text>
+</location>
+<location id="15" name="The Music Room" code1="" code2="">
+<text>In the centre of the music room is a piano and, on top, a brass ashtray
+with the stub of a cigar in it. There are several chairs, a music stand
+and in one corner a large harp with broken strings.</text>
+</location>
+<location id="16" name="The Billiard Room" code1="" code2="">
+<text>A full size table occupies the centre and of the wall a board indicates
+the result of a game. There is a small bookcase holding magazines
+and several novels by Conan Doyle and Buchan. On top of the book-
+case are three wine glasses and an ashtray.</text>
+</location>
+<location id="17" name="The Drive" code1="" code2="">
+<text>From a pair of splendid wrought iron gates the drive runs north
+ending in a flight of steps leading up to the principal entrance of the
+house, flanked by a pair of stone lions. The snow reveals a mass of
+footprints.</text>
+</location>
+<location id="18" name="Avenue of Statues" code1="" code2="">
+<text>This gravel path runs east-west across the front of the house flanked
+by an avenue of statues. The snow covered gravel is too rough to
+distinguish footprints.</text>
+</location>
+<location id="19" name="The Summer House" code1="" code2="">
+<text>A wooden summer house stands on a patch of lawn. Inside can be
+seen some croquet mallets and hoops, several cigarette ends and a
+handkerchief.</text>
+</location>
+<location id="20" name="West Lawn" code1="" code2="">
+<text>Between the summer house and the drive is a lawn. It is planted with
+a few saplings and the covering of snow shows footprints.</text>
+</location>
+<location id="21" name="The Stables" code1="" code2="">
+<text>The stables are falling into disrepair. One part contains Colonel
+Darnley's bay hunter. The other garages a large Daimler. The yard
+is full of straw and oil spills, and is crossed by footprints. The tack
+room holds the saddle and gear for the horse.</text>
+</location>
+<location id="22" name="East Lawn" code1="" code2="">
+<text>An area of lawn between the stables and the cottage. The smooth
+covering of snow is broken by footprints.</text>
+</location>
+<location id="23" name="Gamekeeper's Cottage" code1="" code2="">
+<text>In the damp shade of some chestnut trees is a gamekeeper's cottage
+tucked against the south-east corner of the park. The door of the
+cottage is open and footprints are visible across the threshold. Inside
+are various items of game, two shotguns on the wall, a table covered
+by oil cloth, an unmade bed, a slop-stone sink and an open fire with a
+pot hanging over it. The place is very dirty; the hearth is littered
+with foodscraps, the ends of cigarettes and newspapers.</text>
+</location>
+<location id="24" name="Milicent Darnley's Bedroom" code1="" code2="">
+<text>Milicent Darnley's bedroom is decorated to a young lady's taste
+with a bed, wardrobe, dressing table and a small writing table.
+The surfaces are covered with small ornaments, mainly of dogs
+and the walls have pictures of favourite pets.</text>
+</location>
+<location id="25" name="The Landing" code1="" code2="">
+<text>The landing walls hold some fine antlers and animal heads and some
+bad portraits of the Darnley ancestors.</text>
+</location>
+<location id="26" name="The Servants' Quarters" code1="" code2="">
+<text>The servants' quarters consist of a single room with two single beds,
+a rail for hanging clothes on behind a curtain, a wash stand and a
+chest of drawers. On the chest is a bundle of correspondence and
+various framed photographs. A gentleman's country-suit with a
+newspaper in the pocket is hanging on the rail amongst the dresses
+and a pipe is on the washstand.</text>
+</location>
+<location id="27" name="The Master Bedroom" code1="" code2="">
+<text>Colonel and Mrs. Darnley's bedroom is heavily panelled and reflects
+the Colonel's tastes, with sporting prints and a humidor of cigars.
+There is a double bed, a dressing table, wardrobe and trouser press. A
+small bathroom is attached.</text>
+</location>
+<location id="28" name="The Morning Room" code1="" code2="">
+<text>The morning room holds a chintz sofa and an occasional table with
+magazines and books. Against one wall is a piano. On a table stands
+a gramophone. There are various pictures, mainly watercolours of
+birds.</text>
+</location>
+<location id="29" name="Guest Room" code1="" code2="">
+<text>A guest-room decorated in blue with wardrobe, bed, washstand and
+writing-table. By the bed is a pair of men's slippers. On the writing
+table is a pack of cigarettes and some stationary and pens.</text>
+</location>
+<location id="30" name="Gravel Walk" code1="" code2="">
+<text>The gravel walk is covered by snow too broken to show the traces of
+footprints.</text>
+</location>
+<location id="31" name="South-East Corner of the House" code1="" code2="">
+<text>At the south-east corner of the house is a square of empty lawn. The
+smooth cover of snow is broken by footprints.</text>
+</location>
+<person id="101" name="Colonel Darnley" code1="" code2="">
+<text>Aged 60. The Colonel served in the South African War and
+contracted enteric fever which left him feeling debiliated and short-
+tempered. He had only a small inheritance but made a fortune on the
+stock exchange. He was free with his tips on the market, but didn't
+always follow his own recommendations.</text>
+</person>
+<person id="102" name="Sarah Darnley" code1="" code2="">
+<text>Colonel Darnley's wife. Aged 27. Fair-haired, beautiful and
+sophisticated. She wears a morning dress and shows signs of tired-
+ness and stress.</text>
+</person>
+<person id="103" name="Millicent Darnley" code1="" code2="">
+<text>Colonel Darnley's daughter. Aged 23. Well-dressed but rather plain.
+Cool and determined looking. She wears a blouse and skirt.</text>
+</person>
+<person id="104" name="Arthur Coniston" code1="" code2="">
+<text>Millicent Darnley's fiance. Aged 25. Average height and very good
+looking. His manner is honest and friendly. He dresses fashionably
+and wears black patent shoes.</text>
+</person>
+<person id="105" name="Sir Redvers Slingsby" code1="" code2="">
+<text>Friend of the deceased. Aged 52. Very tall and boney with side
+whiskers and a red face. Wears country-tweeds and boots. His
+manner is ill-tempered.</text>
+</person>
+<person id="106" name="Arnold Billingsgate" code1="" code2="">
+<text>The Butler. Aged about 60; gentlemanly manners; bald and thin;
+average height. Wears a tail coat and ordinary men's shoes.</text>
+</person>
+<person id="107" name="Mildred Goodbody" code1="" code2="">
+<text>The Cook. Aged 55. Pleasant-faced. Cheerful. Overweight.</text>
+</person>
+<person id="108" name="Norah Bagsby" code1="" code2="">
+<text>The Housemaid. Aged 19. Small pale girl who sniffs a lot. Wears a
+maid's uniform.</text>
+</person>
+<person id="109" name="Ronald Mellors" code1="" code2="">
+<text>The Gamekeeper. Stocky, black curly hair, good looking, surly-
+looking. Wears working clothes and hob-nailed boots. Age 35.</text>
+</person>
+<item id="201" name="Pond" code1="5" code2="F2">
+<text>Near the centre of the pond the ice is thinner as if it has frozen again
+after having been broken. Beneath the ice you can see the missing
+statue from the fourth pedestal.</text>
+</item>
+<item id="202" name="Sunken Statue" code1="5" code2="C30">
+<text>The statue that is beneath the ice is the same as those on the
+pedestals. Stuck in a crevice of the statue is the soaked butt of a
+cheroot.</text>
+</item>
+<item id="203" name="Revolver" code1="8" code2="C8">
+<text>The revolver found in the hall is a Webley-Fosbery .455 service
+revolver. One bullet has been discharged from it.</text>
+</item>
+<item id="204" name="Statues" code1="5" code2="">
+<text>The statues form a set of four, representing the Four Seasons. They
+are of Italian marble and rest on their own weight rather than being
+cemented to their plinths. Some strength would be required to move
+one.</text>
+</item>
+<item id="205" name="Footprints" code1="5" code2="C25">
+<text>Only one set of footprints can be made out in the snow. They are of
+flat footed bootprints coming to and from the terrace.</text>
+</item>
+<item id="206" name="Slippers" code1="29" code2="C4">
+<text>The slippers are slightly damp and stained with mud.</text>
+</item>
+<item id="207" name="Cigarettes" code1="29" code2="C7">
+<text>These cigarettes are an expensive brand by Tribourg &amp; Freyer.</text>
+</item>
+<item id="208" name="Knife" code1="9" code2="C6">
+<text>This kitchen knife is stained with blood.</text>
+</item>
+<item id="209" name="Boots" code1="9" code2="C5">
+<text>All these boots are polished clean except for a mud stained pair that
+apparently belong to Sir Redvers Slingsby.</text>
+</item>
+<item id="212" name="Footprints" code1="3" code2="C25,C27">
+<text>Both flat footed boot prints and slipper prints can be seen going
+between the kitchen and the maze.</text>
+</item>
+<item id="213" name="Bed" code1="27" code2="">
+<text>This double bed has not been slept in.</text>
+</item>
+<item id="214" name="Wardrobe" code1="27" code2="F17">
+<text>As well as clothes the wardrobe contains a selection of
+men's and women's shoes.</text>
+</item>
+<item id="215" name="Cigars" code1="27" code2="">
+<text>The cigars are Burmah cheroots.</text>
+</item>
+<item id="216" name="Dressing Table" code1="27" code2="">
+<text>There is nothing of note on the dressing table.</text>
+</item>
+<item id="217" name="Shoes" code1="27" code2="C12">
+<text>This selection of mens and womens shoes is unremarkable. One set of
+lady's shoes is mud-stained.</text>
+</item>
+<item id="219" name="Correspondence" code1="26" code2="">
+<text>These letters are all from Mrs. Goodbody's nephew.</text>
+</item>
+<item id="220" name="Photographs" code1="26" code2="">
+<text>These photographs depict Mrs. Goodbody's various ugly relatives.</text>
+</item>
+<item id="221" name="Suit" code1="26" code2="">
+<text>This gentleman's country-suit is apparently Sir Redvers'.</text>
+</item>
+<item id="222" name="Newspaper" code1="26" code2="C13">
+<text>One headline on the front page catches your eye -
+'Collapse of Rio Plata Mining Co. - Our co-respondent in Lima, Peru
+reports the collapse of several silver mining companies through the
+fraud of their directors. These frauds are expected to cause heavy
+loss to British investors.'</text>
+</item>
+<item id="223" name="Pipe" code1="26" code2="">
+<text>The pipe is in the style called 'calabash' with a meerschaum bowl and
+amber mouthpiece.</text>
+</item>
+<item id="224" name="Bookshelf" code1="10" code2="">
+<text>The bookshelf contains books on self-improvement and domestic
+accounts.</text>
+</item>
+<item id="225" name="French Window" code1="6" code2="">
+<text>One of the panes is smashed, but there is no glass on the terrace. The
+window lock shows that it cannot be locked or unlocked from outside.</text>
+</item>
+<item id="226" name="Footprints" code1="6" code2="C25,C27,C28">
+<text>A mess of footprints including boots, slippers and some
+shoe prints.</text>
+</item>
+<item id="227" name="Colonel Darnley's Body" code1="7" code2="">
+<text>The body is dressed in a smoking jacket open at the chest. There is a
+bloody bullet wound in the front of his dress-shirt. The bullet has not
+passed through the body. Evidently the Colonel had got out of his
+chair on hearing or seeing his murderer. The impact of the bullet had
+caused him to spin and fall and the furniture had got in the way,
+further deflecting the body. It is no longer possible to tell the
+direction of the shot.</text>
+</item>
+<item id="228" name="Port Glass" code1="7" code2="">
+<text>The port glass is one of a set engraved with the words 'Floreat
+Darnley'. A crust of dried liquid is at the bottom and lip marks on the
+rim though no trace of lipstick.</text>
+</item>
+<item id="229" name="Tantalus of Port" code1="7" code2="">
+<text>The tantalus is made of cherrywood. It holds an empty decanter
+with a silver label marked 'Brandy' and a half full decanter marked
+'Port'. The decanters are normally inaccessible since they are held in
+place by a sort of 'lid' of wood which is fastened by a small lock. The
+key is in the lock.</text>
+</item>
+<item id="230" name="Letter" code1="7" code2="C14">
+<text>The letter is an incomplete draft : 'Dear Sir, I have considered your
+monstrous suggestion and find I cannot....''</text>
+</item>
+<item id="231" name="Rack of Guns" code1="7" code2="">
+<text>One of the pistols is missing from this rack.</text>
+</item>
+<item id="232" name="French Window" code1="7" code2="">
+<text>One pane is smashed. The glass on the floor is apparently from this.</text>
+</item>
+<item id="233" name="Glass" code1="7" code2="">
+<text>This glass is apparently from the smashed French Window.</text>
+</item>
+<item id="234" name="Gramophone" code1="28" code2="C10">
+<text>It has a device for playing several records in sequence. All the
+records are Chopin.</text>
+</item>
+<item id="235" name="Piano" code1="28" code2="C11">
+<text>There are several sheets of Schubert Lied music on the piano's music
+stand.</text>
+</item>
+<item id="236" name="Display Case" code1="8" code2="">
+<text>According to a label at the front of the case these flints and shards of
+pottery were found in the grounds of the house.</text>
+</item>
+<item id="237" name="Footprints" code1="12" code2="C25,C27,C28">
+<text>There are slipper prints, flat-footed boot prints and some shoe prints
+heading to and from the terrace and the the front of the house.</text>
+</item>
+<item id="238" name="Cigar Stub" code1="15" code2="">
+<text>This cigar stub is a straight dark cylinder rather than the
+conventional shape. That and the tarry appearance suggests a
+cheroot.</text>
+</item>
+<item id="239" name="Piano" code1="15" code2="C11">
+<text>The sheets of music on the piano are for duets.</text>
+</item>
+<item id="240" name="Wine Glasses" code1="16" code2="">
+<text>The three wine glasses are all dirty.</text>
+</item>
+<item id="241" name="Ashtray" code1="16" code2="">
+<text>The ashtray contains the remains of three cigars, one Havana and
+two cheroots.</text>
+</item>
+<item id="243" name="Footprints" code1="17" code2="C25,C27,C28,C29">
+<text>The prints from flat footed boots go east and west along the gravel
+path in front of the house. Slipper prints come from the house and
+head east and west along the path. Prints from men's shoes come
+from the house and go west. Prints from lady's shoes head to and
+from the frontdoor and the west lawn. At the gate end of the drive
+the prints from men's hobnailed boots go between the west lawn and
+the stables.</text>
+</item>
+<item id="244" name="Footprints" code1="31" code2="C25,C27">
+<text>The prints from flat footed boots and men's slippers are visible in the
+snow heading around the corner of the house, to and from the maze
+and avenue of statues.</text>
+</item>
+<item id="245" name="Cigarette Ends" code1="19" code2="C7">
+<text>These cigarette ends come from a cheap, mass produced brand.</text>
+</item>
+<item id="246" name="Handkerchief" code1="19" code2="C15">
+<text>This is a lady's hanky, plain lace edged and perfumed.</text>
+</item>
+<item id="247" name="Footprints" code1="20" code2="C26,C29">
+<text>Prints from lady's shoes and men's hob-nailed boots can be seen in the
+snow going between the drive and the summer house.</text>
+</item>
+<item id="248" name="Footprints" code1="21" code2="C26">
+<text>The prints from hob-nailed boots can be seen in the snow going
+between the drive and the east lawn.</text>
+</item>
+<item id="249" name="Footprints" code1="22" code2="C26">
+<text>The prints from hob-nailed boots can be seen in the snow going east
+to west between the stables and the cottage.</text>
+</item>
+<item id="250" name="Cigarette Ends" code1="23" code2="C7">
+<text>These cigarette ends come from a cheap, mass produced brand.</text>
+</item>
+<item id="251" name="Armour" code1="8" code2="F3">
+<text>A suit of Civil War three-quarter armour with a closed helmet.
+Examination discovers a revolver concealed in the helmet.</text>
+</item>
+<item id="252" name="Door Mat" code1="8" code2="">
+<text>Some blurb about a damp doormat.</text>
+</item>
+<record id="300" name="What really happened at Darnley Park" code1="" code2="">
+<text><p>On the morning of the murder Arthur Coniston, the boy-friend of
+Milicent Darnley, arrived by arrangement to ask Colonel Darnley for
+permission to marry his daughter. This conversation took place
+during the afternoon and Colonel Darnley refused the request.
+Although he found Coniston amusing, he felt that his visitor was
+after Milicent's inheritance. Coniston, now resolved upon murder,
+quietly informing the other members of the household that the
+Colonel had agreed to tbe marriage. He was unaware that the Colonel
+had decided to write him a letter confirming his rejection. During the
+afternoon an unexpected visitor arrived, Sir Redvers Slingsby who
+had invested in Peruvian mining shares on the advice of his friend
+Colonel Darnley. In the morning's papers was news of the collapse of
+these shares. Angry with his friend, Slingsby had rushed down to
+Darnley Park to ask the Colonel to lend him money to avoid ruin.</p>
+<p>Dinner that evening finished at 9.00. Milicent and Sarah retired
+to the lounge for coffee while the men drank port and played
+billiards. At nine 9.30 the gentlemen joined the ladies while the
+servants ate in the kitchen. The atmosphere was tense since
+Slingsby had not had opportunity to raise his problems. At 10.00 that
+night impatience got the better of him and he drew Darnley to the
+study whilst Coniston and Milicent went to the music room to sing
+duets. For half an hour Slingsby and the Colonel quarelled (at this
+time Billingsgate was cleaning boots in the kitchen) and at 10.30
+Slingsby stormed out of the study by the hall door, slamming it
+furiously. This noise was interpreted by some as a shot. The
+slamming of the door underlined the generally tense atmosphere.
+The ladies went upstairs but Arthur Coniston stayed in the music
+room smoking a cheroot and considering his plan. He was unaware
+that Sarah had plans of her own.</p>
+<p>Sarah Darnley was unhappy with her husband and having an
+affair with Mellors, the gamekeeper. She had arranged to meet
+Mellors at the summer house at 10.45. Mellors was there, waiting and
+smoking cigarettes. Sarah took steps to keep the affair secret and to
+maintain to Milicent the pretence that she was in the house, she told
+her of her intention to play on the morning room piano. In truth she
+played a series of gramophone records which Milicent heard from her
+room. It was not necessary for her to take account of Colonel Darnley
+since experience had taught her that the Colonel would lock himself
+in his study and get drunk on such an occasion as this. Sarah next
+left the house and went down to the summer house where she met
+Mellors.</p>
+<p>Leaving the music room, Coniston tried the study door and finding
+it locked, guessed what was happening and devised his plan. He had
+stolen a gun from the study earlier in the day. He now changed into
+dressing gown and slippers and went outside the house and around to
+the kitchen door which was open. Reaching through the door he
+picked up Sir Redvers Slingsby's boots. Changing into them he walked
+around the house to the terrace. The boots being too large, they left
+flat-footed bootprints. From the terrace Coniston looked into the
+study where the Colonel was drinking. He tapped on the window, the
+Colonel stood up and saw him, Coniston fired the gun and the Colonel
+fell dead. He now had to act fast to dispose of the gun, disguise of the
+fact of the bullet-hole in the window glass and return the boots. He
+broke the ice on the pond with a statue taken from one of the
+pedestals and threw the gun into the water. He then returned to the
+kitchen, changed the boots for the slippers and then entered the
+house by the front door. He did not notice Sarah who had heard the
+shot and rushed back before everyone was roused by the noise and
+she was discovered. In her haste Sarah dropped a handkerchief in
+the summer house.</p>
+<p>Coniston now came to the boldest part of his plot. He woke
+Billingsgate and persuaded him to break in by the french window
+instead of searching for his keys. Coniston took care to reach the
+patio before his companion and threw a stone through the same pane
+of glass that bore the bullet-hole from the fatal shot, thus
+obliterating the evidence of from where the shooting took place. He
+then invited Billingsgate to open the window and confirm that it had
+been locked. He also told the Butler that he intended to follow the
+murderer's bootprints which were clear in the snow. The object of
+this move was to provide an explanation of the trail already left by
+his slippers when he first stole and returned the boots.</p>
+<p>Various minor clues led towards Coniston as the murderer, but one
+was fatal to him. It was evident that the murderer had worn the
+boots and returned them to the kitchen. How then had the murderer
+left the kitchen in his/her own footwear? There were only two
+possibilities : the murderer had left via the butlers' pantry or the
+outside door. The former was impossible since three people were
+occupying the pantry of whom at least one (Mrs. Goodbody) had been
+wakened by the shot and would have heard any stranger entering the
+room. The second was possible but the murderer would leave the foot-
+prints of his ordinary footwear. Other than the boots, there were
+prints only from Arthur Coniston's slippers. Coniston's explanation
+that he had left these prints in following the murderers boot-trail
+would not hold water. The murderer had to leave footprints in two
+sets of footwear. Coniston's slippers were the only other set.</p></text>
+</record>
+<record id="401" name="The Sealed Room Murder" code1="" code2="">
+<text><p>You have been summoned to Darnley Park one winter's day to
+investigate the murder of Colonel Sebastian Darnley at some time
+the previous evening.
+The suspects are;
+</p>
+<ul> 
+<li>Sarah Darnley - the deceased's wife</li>
+<li>Milicent Darnley - the deceased's daughter</li>
+<li>Arthur Coniston - fiance of Milicent</li>
+<li>Sir Redvers Slingsby - friend of the deceased</li>
+<li>Arnold Billingsgate - butler</li>
+<li>Mildred Goodbody - cook</li>
+<li>Norah Bagsby - housemaid</li>
+<li>Ronald Mellors - gamekeeper</li>
+</ul> 
+<p>You are free to search the house and grounds and to question the
+suspects. Examination of the scene and skillful interrogation will
+yield sufficient information to solve the mystery. And mystery it is!</p>
+<p>The body of Colonel Darnley was found in his study, the doors and
+window of which were all locked from the inside. The only keys were
+in the possession of the Colonel and his faithful butler. How could
+the sealed-room murder be comitted?</p></text>
+</record>
+<interrogation id="1001" name="The events of yesterday" code1="" code2="">
+<text><p>I married Sebastian two years ago. I am more than twenty years
+younger than he - really not much older than Milicent. We have been
+very happy together. Last night we all had dinner together. After-
+wards the men played billiards while Milicent and I had coffee in the
+lounge. At about 9.30 the men joined us for half an hour then Arthur
+and Milicent said that they were going to the music room. Sebastian
+and Sir Redvers had business to talk about so they went into the
+study. I heard them quarelling but couldn't tell what about.
+Next there was a loud noise which I took to be Sir Redvers leaving
+the study by the door to the hall and banging the door. I stayed in
+the lounge for ten minutes and then went upstairs where I ran into
+Milicent on the landing. She said that she had left Arthur in the
+billiard room and was going to bed. I went into the morning room and
+played some Chopin nocturnes on the piano there until about 11.30
+when I heard a noise like a shot which I thought was poachers.
+Looking at my watch I decided it was time to go to bed. I was getting
+changed when I heard Billingsgate rush upstairs to wake Sir Redvers.
+Milicent heard the racket and came into my room from hers. And the
+rest you know.</p></text>
+</interrogation>
+<interrogation id="1003" name="Alibi" code1="" code2="">
+<text>At 10.30 I was reading and drinking coffee in the lounge - on my
+own, I'm afraid. At 11.30 I was playing the piano in the morning room
+- also alone, alas! I don't suppose it looks to good?</text>
+</interrogation>
+<interrogation id="1004" name="These Slippers" code1="" code2="">
+<text>I don't know whose slippers these are.</text>
+</interrogation>
+<interrogation id="1005" name="These Boots" code1="" code2="">
+<text>I don't know anything about them.</text>
+</interrogation>
+<interrogation id="1006" name="The Knife" code1="" code2="">
+<text>I don't know anything about the knife.</text>
+</interrogation>
+<interrogation id="1007" name="The Cigarettes" code1="" code2="">
+<text>I can't imagine why you are asking me this question. Arthur
+Coniston smokes cigarettes.</text>
+</interrogation>
+<interrogation id="1008" name="The Service Revolver" code1="" code2="">
+<text>I don't recognise it.</text>
+</interrogation>
+<interrogation id="1009" name="The Missing Statue" code1="" code2="">
+<text>I believe a rather nasty tramp, who called two days ago threw it
+into the pond.</text>
+</interrogation>
+<interrogation id="1010" name="The Gramophone" code1="" code2="">
+<text>The gramophone? I was in the morning room from about 10.40 until
+11.30 playing the piano. It's possible I played a record, but I don't
+remember doing so.</text>
+</interrogation>
+<interrogation id="1011" name="The Piano" code1="" code2="">
+<text>If you mean the morning room piano, I was playing it from about
+10.40 until I heard the bang at 11.30. I was on my own throughout
+and no-one else came into the room.</text>
+</interrogation>
+<interrogation id="1012" name="These Lady's Shoes" code1="" code2="">
+<text>Yes, these are my shoes, but I don't recall when I last wore them. I
+have no idea why they should be damp - possibly I had them on
+earlier yesterday.</text>
+</interrogation>
+<interrogation id="1013" name="This Newspaper" code1="" code2="">
+<text>I believe that Sebastian advised one or two people to invest in
+Peruvian shares.</text>
+</interrogation>
+<interrogation id="1014" name="This Letter" code1="" code2="">
+<text>My husband said something to me about having to write a letter. I
+understood it was for Arthur - or was it Sir Redvers? Afterwards
+Arthur told me that Sebastian had agreed to the marriage, and
+Redvers said that he and Sebastian had sorted out their business; so
+I'm at a loss about the letter.</text>
+</interrogation>
+<interrogation id="1015" name="This Handkerchief" code1="" code2="">
+<text>You found it in the summer house? I'm absolutely sure it isn't mine.</text>
+</interrogation>
+<interrogation id="1016" name="Colonel Darnley" code1="" code2="">
+<text>He was somewhat strict and suspicous by nature, but we were happy
+enough.</text>
+</interrogation>
+<interrogation id="1018" name="Milicent Darnley" code1="" code2="">
+<text>Her father spoiled her so she got used to having her own way.
+Sebastian probably agreed to Arthur Coniston's proposal for fear
+of what Milicent would do if he refused. I can't see him crossing
+Milicent on a matter like that.</text>
+</interrogation>
+<interrogation id="1019" name="Arthur Coniston" code1="" code2="">
+<text>A charmer. I was suspicous of his motives for marrying Milicent, but
+Arthur said that when he asked Sebastian my husband agreed, so I
+am probably mistaken.</text>
+</interrogation>
+<interrogation id="1020" name="Sir Redvers Slingsby" code1="" code2="">
+<text>I felt he had some sort of grudge against Sebastian.</text>
+</interrogation>
+<interrogation id="1021" name="Arnold Billingsgate" code1="" code2="">
+<text>Very honest and loyal.</text>
+</interrogation>
+<interrogation id="1022" name="Mildred Goodbody" code1="" code2="">
+<text>A gossip.</text>
+</interrogation>
+<interrogation id="1023" name="Norah Bagsby" code1="" code2="">
+<text>Lazy.</text>
+</interrogation>
+<interrogation id="1024" name="Ronald Mellors" code1="" code2="">
+<text>A very loyal gamekeeper.</text>
+</interrogation>
+<interrogation id="1025" name="Flat-footed Bootprints" code1="" code2="">
+<text>I'm too distressed to talk about this.</text>
+</interrogation>
+<interrogation id="1026" name="Hob-nailed Bootprints" code1="" code2="">
+<text>I'm too distressed to talk about this.</text>
+</interrogation>
+<interrogation id="1027" name="Slipper Prints" code1="" code2="">
+<text>I'm too distressed to talk about this.</text>
+</interrogation>
+<interrogation id="1028" name="Men's Shoe Prints" code1="" code2="">
+<text>I'm too distressed to talk about this.</text>
+</interrogation>
+<interrogation id="1029" name="Women's Shoe Prints" code1="" code2="">
+<text>I'm too distressed to talk about this.</text>
+</interrogation>
+<interrogation id="1030" name="The Cheroot in the Pond" code1="" code2="">
+<text>I don't know anything about it.</text>
+</interrogation>
+<interrogation id="1101" name="The events of yesterday" code1="" code2="">
+<text><p>Father was a difficult man to live with but I never expected - this!
+Last night we all ate together until coffee which Sarah and I took
+together in the lounge. The men joined us later for half an hour,
+then Arthur and I went into the music room where we talked for a
+while and played duets on the piano. At about 10.30 I decided to go to
+bed. I know the time because I looked at my watch when there was a
+loud noise - probably a poacher somewhere. Arthur stayed in the
+billiard room and I went upstairs.
+I think I saw Sir Redvers disappearing into his bedroom, but I was
+distracted by Sarah who was on the landing. She said she was
+intending to play the piano in the morning room and hoped it would't
+disturb me. I went to my room and stayed there. I heard Sarah
+playing the piano then drifted off to sleep. I woke up at about 11.20
+by the bedside clock and heard Sarah still playing a Chopin nocturne.
+She seemed to be having trouble since the same part was being
+repeated over and over again. I went to sleep for a few more minutes
+when there was a bang - a door slamming, I thought. Then at about
+midnight there was a racket of people everywhere. I went into
+Sarah's room and found her undressing there. We went into the
+morning room and found Billingsgate waking Sir Redvers.</p></text>
+</interrogation>
+<interrogation id="1103" name="Alibi" code1="" code2="">
+<text>I was with Arthur in the music room at 10.30 and, naturally, I was
+alone in bed at 11.30.</text>
+</interrogation>
+<interrogation id="1104" name="These Slippers" code1="" code2="">
+<text>I don't know whose slippers these are.</text>
+</interrogation>
+<interrogation id="1105" name="These Boots" code1="" code2="">
+<text>I don't know anything about these boots.</text>
+</interrogation>
+<interrogation id="1106" name="The Knife" code1="" code2="">
+<text>I don't know anything about the knife.</text>
+</interrogation>
+<interrogation id="1107" name="The Cigarettes" code1="" code2="">
+<text>I don't smoke. My father smoked cigars.</text>
+</interrogation>
+<interrogation id="1108" name="This Service Revolver" code1="" code2="">
+<text>I don't recognise it.</text>
+</interrogation>
+<interrogation id="1109" name="The Missing Statue" code1="" code2="">
+<text>Someone - I forget who - told me that a beggar had pushed it into the
+pond. Out of spite I suppose.</text>
+</interrogation>
+<interrogation id="1110" name="The Gramophone" code1="" code2="">
+<text>We have a gramophone in the morning room.</text>
+</interrogation>
+<interrogation id="1111" name="The Piano" code1="" code2="">
+<text>Which piano? Arthur and I played duets on the music room piano for
+a while after dinner. I remember that later, Sarah said she intended
+to play the morning room piano. I woke up at about 11.20 and heard
+Sarah still playing a Chopin nocturne. She was having difficulty
+and repeated the same piece again and again.</text>
+</interrogation>
+<interrogation id="1112" name="These Lady's Shoes" code1="" code2="">
+<text>They aren't my shoes.</text>
+</interrogation>
+<interrogation id="1113" name="This Newspaper" code1="" code2="">
+<text>I don't read the newspaper frequently.</text>
+</interrogation>
+<interrogation id="1114" name="This Letter" code1="" code2="">
+<text>I don't know anything about this letter.</text>
+</interrogation>
+<interrogation id="1115" name="This Handkerchief" code1="" code2="">
+<text>I'm always losing handkerchiefs so I suppose it could be mine. I don't
+remember when I lose them. I certainly wasn't in the summer house
+yesterday. Is it important?</text>
+</interrogation>
+<interrogation id="1116" name="Colonel Darnley" code1="" code2="">
+<text>Daddy was a tyrant but always kind to me. He was always fearful
+that Sarah would leaver him for a younger man.</text>
+</interrogation>
+<interrogation id="1117" name="Sarah Darnley" code1="" code2="">
+<text>We got on well enough though it is difficult to have a step-mother
+who is almost the same age. I thought she would leave daddy some
+day as soon as she found a lover. But, of course, she would need
+Daddy's money.</text>
+</interrogation>
+<interrogation id="1119" name="Arthur Coniston" code1="" code2="">
+<text>He's a darling! I don't know how he persuaded daddy to agree, so I
+am probably mistaken.</text>
+</interrogation>
+<interrogation id="1120" name="Sir Redvers Slingsby" code1="" code2="">
+<text>I didn't know him before last night.</text>
+</interrogation>
+<interrogation id="1121" name="Arnold Billingsgate" code1="" code2="">
+<text>A decent old fellow.</text>
+</interrogation>
+<interrogation id="1122" name="Mildred Goodbody" code1="" code2="">
+<text>An old dear.</text>
+</interrogation>
+<interrogation id="1123" name="Norah Bagsby" code1="" code2="">
+<text>A clumsy girl.</text>
+</interrogation>
+<interrogation id="1124" name="Ronald Mellors" code1="" code2="">
+<text>Furtive. I don't like the way he looks at my step-mother. I advised
+Daddy to get rid of him.</text>
+</interrogation>
+<interrogation id="1125" name="Flat-footed Bootprints" code1="" code2="">
+<text>Oh really, it's too silly to ask me to recognise footprints.</text>
+</interrogation>
+<interrogation id="1126" name="Hob-nailed Bootprints" code1="" code2="">
+<text>Oh really, it's too silly to ask me to recognise footprints.</text>
+</interrogation>
+<interrogation id="1127" name="Slipper Prints" code1="" code2="">
+<text>Oh really, it's too silly to ask me to recognise footprints.</text>
+</interrogation>
+<interrogation id="1128" name="Men's Shoe Prints" code1="" code2="">
+<text>Oh really, it's too silly to ask me to recognise footprints.</text>
+</interrogation>
+<interrogation id="1129" name="Women's Shoe Prints" code1="" code2="">
+<text>Oh really, it's too silly to ask me to recognise footprints.</text>
+</interrogation>
+<interrogation id="1130" name="The Cheroot in the Pond" code1="" code2="">
+<text>I don't know anything about it.</text>
+</interrogation>
+<interrogation id="1201" name="The events of yesterday" code1="" code2="">
+<text><p>I was down for the weekend. It was no secret that I was going to
+ask Colonel Darnley for permission to marry Milicent. I popped the
+question to the old boy in the afternoon and he agreed. Last night we
+all had dinner together and afterwards we fellows played a little
+billiards before joining the ladies for coffee. At about 10.00 Sir
+Redvers broke up the party by asking Darnley to go into the study
+with him. I asked Milicent to come with me to the music room where
+we played duets for half an hour. There was a noise. Milicent
+thought it was a poacher and hoped that Mellor's would catch him.
+She decided to go to bed. I stayed on to smoke a cigar and didn't go up
+until 11.00. I noticed nothing odd except that to get to my bedroom I
+had to go through the morning room where the gramophone was
+playing a Chopin nocturne but there was no-one there. I undressed
+and went to bed but couldn't sleep. At about 11.30 I heard a noise -
+a door banging, so I thought at the time. I decided to go downstairs
+and smoke another cigar in the lounge. I noticed a light under the
+study door and knocked on it to see who was there. I got worried
+when it was locked and no-one answered so I got Billingsgate and
+together we went outside and round to the french window. It was
+locked too, so I picked a stone up and broke the glass. Billingsgate
+stuck his hand through the hole and tried the lock. He told me it was
+locked on the inside, and - damn me! - he was right. We both went
+inside and found Darnley on the floor, shot and dead. When we
+checked the doors to the hall and lounge we found the Colonel's keys
+in the locks, so it would have been impossible to open them from the
+outside. I had noticed some bootprints outside, so I went out and
+followed them. They led around the house to the kitchen door. I
+followed in my slippers.</p></text>
+</interrogation>
+<interrogation id="1203" name="Alibi" code1="" code2="">
+<text>Milicent and I were together in the music room at 10.30. I don't
+know how anyone can be expected to have an alibi for 11.30.
+Certainly a single gentleman could never admit to one, if you follow
+my meaning.</text>
+</interrogation>
+<interrogation id="1204" name="These Slippers" code1="" code2="">
+<text>These are my slippers. I was wearing them when Billingsgate and I
+broke into the study.</text>
+</interrogation>
+<interrogation id="1205" name="These Boots" code1="" code2="">
+<text>I don't know anything about the boots.</text>
+</interrogation>
+<interrogation id="1206" name="The Knife" code1="" code2="">
+<text>I don't know anything about the knife.</text>
+</interrogation>
+<interrogation id="1207" name="The Cigarettes" code1="" code2="">
+<text>I smoke and expensive cigarette made by Fribourg &amp; Treyer in
+London - those and cigars after dinner, Cheroots same as old Darnley.
+I would never smoke cheap cigarettes.</text>
+</interrogation>
+<interrogation id="1208" name="This Service Revolver" code1="" code2="">
+<text>I don't recognise it.</text>
+</interrogation>
+<interrogation id="1209" name="The Missing Statue" code1="" code2="">
+<text>I don't know what you're talking about.</text>
+</interrogation>
+<interrogation id="1210" name="The Gramophone" code1="" code2="">
+<text>When I went to bed at 11.00, the gramophone was playing a Chopin
+nocturne. Otherwise the morning room was empty. Later the record
+appeared to be stuck. It was still playing when I went downstairs
+shortly after 11.30.</text>
+</interrogation>
+<interrogation id="1211" name="The Piano" code1="" code2="">
+<text>After dinner Milicent and I played duets on the piano in the music
+room. Ah - now that I remember, there is also a piano in the morning
+room, but on the couple of occasions I went into the room there was
+no-one there, just a gramophone playing.</text>
+</interrogation>
+<interrogation id="1212" name="These Lady's Shoes" code1="" code2="">
+<text>I don't know whose shoes these are.</text>
+</interrogation>
+<interrogation id="1213" name="This Newspaper" code1="" code2="">
+<text>I heard that old Slingsby had plunged into mining shares and needed
+money urgently. Colonel Darnley mentioned it to me during our
+conversation.</text>
+</interrogation>
+<interrogation id="1214" name="This Letter" code1="" code2="">
+<text>I have no idea who old Darnley was writing to. I suppose it could
+have been to old Slingsby. I fancy he had lost a lot of money and
+needed a loan. We had spoken in the afternoon and Darnley had
+agreed that I could marry Milicent.</text>
+</interrogation>
+<interrogation id="1215" name="This Handkerchief" code1="" code2="">
+<text>I don't know whose handkerchief it is.</text>
+</interrogation>
+<interrogation id="1216" name="Colonel Darnley" code1="" code2="">
+<text>A decent old buffer. When I asked his permission to marry Milicent
+he agreed straight away. I was suprised, I admit it!</text>
+</interrogation>
+<interrogation id="1217" name="Sarah Darnley" code1="" code2="">
+<text>Very lively. I couldn't see old Darnley hanging on to her.</text>
+</interrogation>
+<interrogation id="1218" name="Milicent Darnley" code1="" code2="">
+<text>Be a gentleman, old fellow! Don't ask me to criticise my future wife.</text>
+</interrogation>
+<interrogation id="1220" name="Sir Redvers Slingsby" code1="" code2="">
+<text>I scarcely know him but he seemed very angry with Darnley about
+something. I got the feeling he had money troubles. A dangerous
+fellow I should think.</text>
+</interrogation>
+<interrogation id="1221" name="Arnold Billingsgate" code1="" code2="">
+<text>I barely know the chap.</text>
+</interrogation>
+<interrogation id="1222" name="Mildred Goodbody" code1="" code2="">
+<text>I don't know the woman.</text>
+</interrogation>
+<interrogation id="1223" name="Norah Bagsby" code1="" code2="">
+<text>I don't know the girl.</text>
+</interrogation>
+<interrogation id="1224" name="Ronald Mellors" code1="" code2="">
+<text>I don't know the chap.</text>
+</interrogation>
+<interrogation id="1225" name="Flat-footed Bootprints" code1="" code2="">
+<text>I followed the Bootprints from the terrace around to the kitchen.</text>
+</interrogation>
+<interrogation id="1226" name="Hob-nailed Bootprints" code1="" code2="">
+<text>I don't know whose they are.</text>
+</interrogation>
+<interrogation id="1227" name="Slipper Prints" code1="" code2="">
+<text>The prints from the slippers are mine.</text>
+</interrogation>
+<interrogation id="1228" name="Men's Shoe Prints" code1="" code2="">
+<text>I think they are probably Billingsgate's.</text>
+</interrogation>
+<interrogation id="1229" name="Women's Shoe Prints" code1="" code2="">
+<text>I don't know whose these are.</text>
+</interrogation>
+<interrogation id="1230" name="The Cheroot in the Pond" code1="" code2="">
+<text>I suppose it could be mine. I fancy I was smoking when Billingsgate
+and I went outside. Maybe I did throw it in the pond. Does it matter?</text>
+</interrogation>
+<interrogation id="1301" name="The events of yesterday" code1="" code2="">
+<text><p>I have known Darnley for about 20 years. It was some confidential
+business dealings that brought me here urgently yesterday. Last
+night I had dinner with the family and young Coniston.</p>
+<p>Afterwards about 9.00 - we gentlemen had a game and some port
+in the billiard room, then we joined the ladies in the lounge for half an
+hour. Darnley and I left the others at 10.00 and chatted about our
+business for a while. The discussion was very friendly and I left
+Darnley alive at 10.30. I was sleeping in the servants quarters and
+went to bed straight away. Having had a bit to drink I slept very
+soundly and heard nothing until Billingsgate woke me at midnight to
+tell me about this terrible business.</p></text>
+</interrogation>
+<interrogation id="1303" name="Alibi" code1="" code2="">
+<text>I left Darnley alive at 10.30 and it's damn nonsense to suggest I
+shot him with all the house awake and then waited to see what would
+happen. At 11.30 I was asleep like a good Christian, and the Devil
+take you if a fellow needs an alibi!</text>
+</interrogation>
+<interrogation id="1304" name="These Slippers" code1="" code2="">
+<text>I don't know whose slippers these are.</text>
+</interrogation>
+<interrogation id="1305" name="These Boots" code1="" code2="">
+<text>These are certainly my boots. I last wore them yesterday afternoon
+and put them out for Billingsgate to clean. I certainly didn't wear
+them after dinner and can't explain who may have. I suppose that,
+if the staff were asleep, someone could have sneaked into the
+kitchen and taken them.</text>
+</interrogation>
+<interrogation id="1306" name="The Knife" code1="" code2="">
+<text>I don't know anything about the knife.</text>
+</interrogation>
+<interrogation id="1307" name="The Cigarettes" code1="" code2="">
+<text>I smoke a pipe and the occasional Havana cigar. My pipe is in my
+room.</text>
+</interrogation>
+<interrogation id="1308" name="This Service Revolver" code1="" code2="">
+<text>I don't recognise it.</text>
+</interrogation>
+<interrogation id="1309" name="The Missing Statue" code1="" code2="">
+<text>I don't know what you're talking about.</text>
+</interrogation>
+<interrogation id="1310" name="The Gramophone" code1="" code2="">
+<text>The Darnley's have a gramophone in the morning room.</text>
+</interrogation>
+<interrogation id="1311" name="The Piano" code1="" code2="">
+<text>The Darnley's have two pianos, one in the music room and one in the
+morning room.</text>
+</interrogation>
+<interrogation id="1312" name="These Lady's Shoes" code1="" code2="">
+<text>I don't know whose shoes these are. </text>
+</interrogation>
+<interrogation id="1313" name="This Newspaper" code1="" code2="">
+<text>I was reading it on the train coming here. Some of my friends lost
+money in the collapse.</text>
+</interrogation>
+<interrogation id="1314" name="This Letter" code1="" code2="">
+<text>The letter certainly wasn't addressed to me. Darnley would have
+called me by name, not 'Dear Sir' - afterall we were friends.</text>
+</interrogation>
+<interrogation id="1315" name="This Handkerchief" code1="" code2="">
+<text>I don't know whose handkerchief it is.</text>
+</interrogation>
+<interrogation id="1316" name="Colonel Darnley" code1="" code2="">
+<text>A hard man but very fair. Once I had explained my business problem
+he agreed to help me out.</text>
+</interrogation>
+<interrogation id="1317" name="Sarah Darnley" code1="" code2="">
+<text>Darnley should never have married her.</text>
+</interrogation>
+<interrogation id="1318" name="Milicent Darnley" code1="" code2="">
+<text>A charming young lady. Spoiled by her father. Personally I shouldn't
+like to get on her wrong side.</text>
+</interrogation>
+<interrogation id="1319" name="Arthur Coniston" code1="" code2="">
+<text>Last night was the first time I met him but he seemed a decent
+fellow.</text>
+</interrogation>
+<interrogation id="1321" name="Arnold Billingsgate" code1="" code2="">
+<text>I barely know the man.</text>
+</interrogation>
+<interrogation id="1322" name="Mildred Goodbody" code1="" code2="">
+<text>I don't know the woman.</text>
+</interrogation>
+<interrogation id="1323" name="Norah Bagsby" code1="" code2="">
+<text>I don't know the girl.</text>
+</interrogation>
+<interrogation id="1324" name="Ronald Mellors" code1="" code2="">
+<text>I don't know the man.</text>
+</interrogation>
+<interrogation id="1325" name="Flat-footed Bootprints" code1="" code2="">
+<text>The bootprints around the house look like mine, but I didn't make
+them. I'm not flat-footed.</text>
+</interrogation>
+<interrogation id="1326" name="Hob-nailed Bootprints" code1="" code2="">
+<text>I don't know anything about them.</text>
+</interrogation>
+<interrogation id="1327" name="Slipper Prints" code1="" code2="">
+<text>I don't know anything about them.</text>
+</interrogation>
+<interrogation id="1328" name="Men's Shoe Prints" code1="" code2="">
+<text>I don't know anything about them.</text>
+</interrogation>
+<interrogation id="1329" name="Women's Shoe Prints" code1="" code2="">
+<text>I don't know anything about them.</text>
+</interrogation>
+<interrogation id="1330" name="The Cheroot in the Pond" code1="" code2="">
+<text>A cheroot? Not me, old man! I'm one for Havanas if I'm not smoking
+the old pipe.</text>
+</interrogation>
+<interrogation id="1401" name="The events of yesterday" code1="" code2="">
+<text><p>I have worked for the Darnley family since I was a boy. Colonel
+Darnley was a very honest, decent gentleman. Last night I waited on
+the guests at dinner. There was the family, Sir Redvers and Mr.
+Coniston. Afterwards I served port to the gentlemen in the billiard
+room. I had my own dinner at 9.30 with the other servants, then
+cleaned boots. I was disturbed by a loud bang at 10.30. I thought it
+was a door so did nothing about it. Shortly afterwards I went to bed
+in the butlers' pantry and was woken by Mr. Coniston at 11.30.</p>
+<p>He said that he had not been able to sleep and had gone to the
+lounge to smoke. He saw a light under the study doors and was
+concerned because the doors were locked and Colonel Darnley would
+not answer. I offered to get my own keys but Mr. Coniston said it was
+too urgent. As far as the study is concerned the Colonel kept the
+keys on his person and I keep mine hidden - I won't say where - but
+you can be sure no-one can get their on hand either. We left through
+the kitchen door and I walked round to the french windows, Mr.
+Coniston ran and was there a couple of seconds before me. He threw
+a stone through the window and one of us, me I think put his hand
+through the hole to open the lock. I can confirm that the window
+was locked. We both went into the room and saw the Colonel's body
+with a bullet through the chest. The body was on the floor and you
+couldn't tell where the shot had come from. The Colonel's keys were
+in the locks of the two doors.</p></text>
+</interrogation>
+<interrogation id="1403" name="Alibi" code1="" code2="">
+<text>I was with Mrs. Goodbody and young Norah in my pantry at both
+10.30 and 11.30.</text>
+</interrogation>
+<interrogation id="1404" name="These Slippers" code1="" code2="">
+<text>I believe these are Mr. Coniston's slippers. He was wearing them
+when he woke me up to help the Colonel.</text>
+</interrogation>
+<interrogation id="1405" name="These Boots" code1="" code2="">
+<text>The boots belong to Sir Redvers. They are - shall we say - on the
+large side? He gave them to me yesterday afternoon and I cleaned
+them after dinner. They were in the kitchen until I cleaned them. I
+suppose they might have been taken afterwards. I don't think
+anyone could have slipped past us servants to get to the kitchen
+through my pantry. What puzzles me is : if a boot thief came in from
+the outside door, what on earth was he wearing on his feet?</text>
+</interrogation>
+<interrogation id="1406" name="The Knife" code1="" code2="">
+<text>I don't know anything about the knife.</text>
+</interrogation>
+<interrogation id="1407" name="The Cigarettes" code1="" code2="">
+<text>I don't smoke. Colonel Darnley smoked cigars.</text>
+</interrogation>
+<interrogation id="1408" name="This Service Revolver" code1="" code2="">
+<text>It belongs to the master and was kept in the study. The study is
+normally unlocked and it could have been removed at any time.</text>
+</interrogation>
+<interrogation id="1409" name="The Missing Statue" code1="" code2="">
+<text>Mr. Mellors told me that a tramp pitched it into the pond two days
+ago.</text>
+</interrogation>
+<interrogation id="1410" name="The Gramophone" code1="" code2="">
+<text>There is a gramophone in the morning room.</text>
+</interrogation>
+<interrogation id="1411" name="The Piano" code1="" code2="">
+<text>There are two pianos, one in the music room and the other in the
+morning room.</text>
+</interrogation>
+<interrogation id="1412" name="These Lady's Shoes" code1="" code2="">
+<text>I'm not sure. They may be Mrs. Sarah's or Miss Milicent's.</text>
+</interrogation>
+<interrogation id="1413" name="This Newspaper" code1="" code2="">
+<text>I'm afraid I don't recognise it.</text>
+</interrogation>
+<interrogation id="1414" name="This Letter" code1="" code2="">
+<text>I don't know anything about it.</text>
+</interrogation>
+<interrogation id="1415" name="This Handkerchief" code1="" code2="">
+<text>I don't know anything about it.</text>
+</interrogation>
+<interrogation id="1416" name="Colonel Darnley" code1="" code2="">
+<text>The master was extremely good to his family.</text>
+</interrogation>
+<interrogation id="1417" name="Sarah Darnley" code1="" code2="">
+<text>I don't believe it is proper to speak of the family.</text>
+</interrogation>
+<interrogation id="1418" name="Milicent Darnley" code1="" code2="">
+<text>I don't believe it is proper to speak of the family.</text>
+</interrogation>
+<interrogation id="1419" name="Arthur Coniston" code1="" code2="">
+<text>I scarcely know the gentleman.</text>
+</interrogation>
+<interrogation id="1420" name="Sir Redvers Slingsby" code1="" code2="">
+<text>I've met the gentleman once or twice. A very hot-tempered man.</text>
+</interrogation>
+<interrogation id="1422" name="Mildred Goodbody" code1="" code2="">
+<text>A fine woman. Honest as the day is long.</text>
+</interrogation>
+<interrogation id="1423" name="Norah Bagsby" code1="" code2="">
+<text>A decent-enough girl. A little lazy.</text>
+</interrogation>
+<interrogation id="1424" name="Ronald Mellors" code1="" code2="">
+<text>He's the gamekeeper. He seems honest enough.</text>
+</interrogation>
+<interrogation id="1425" name="Flat-footed Bootprints" code1="" code2="">
+<text>I've studied all the people here and none of them are flat-footed. It's
+a mystery ro me why the bootprints should be flat-footed.</text>
+</interrogation>
+<interrogation id="1426" name="Hob-nailed Bootprints" code1="" code2="">
+<text>I don't know whose these are.</text>
+</interrogation>
+<interrogation id="1427" name="Flat-footed Bootprints" code1="" code2="">
+<text>I believe the slipper prints are Mr. Coniston's.</text>
+</interrogation>
+<interrogation id="1428" name="Men's Shoe Prints" code1="" code2="">
+<text>The shoe prints are mine.</text>
+</interrogation>
+<interrogation id="1429" name="Women's Shoe Prints" code1="" code2="">
+<text>I don't know whose these are.</text>
+</interrogation>
+<interrogation id="1430" name="The Cheroot in the Pond" code1="" code2="">
+<text>As far as I'm aware only the Colonel smoked cheroots. But he was a
+most particular man and would never throw a butt into the pond.</text>
+</interrogation>
+<interrogation id="1501" name="The events of yesterday" code1="" code2="">
+<text><p>I have worked here for five years. Last night I cooked and
+washed up with Norah. At about 10.30 I heard a loud bang, it gave
+me quite a shock. Not long after we went to bed; me and Norah behind
+the curtain and Mr. B. on the other side. We had to muck in with Mr.
+B. because Sir Redvers had turned up unexpectedly and taken our
+room. I was woke up by a shot at 11.20 (according to my clock); the
+others was still asleep. I didn't bother 'cos I thought it was poachers.
+A few minutes later Mr. Coniston turned up in his dressing gown and
+slippers and woke up Mr. B. but I couldn't hear what it was about.</p></text>
+</interrogation>
+<interrogation id="1503" name="Alibi" code1="" code2="">
+<text>We was all three together, me, Norah and Mr. B. in Mr. B.'s pantry at
+10.30 and 11.30. Of course we was asleep at 11.30 so I suppose any of
+us could have slipped out without the others noticing.</text>
+</interrogation>
+<interrogation id="1504" name="These Slippers" code1="" code2="">
+<text>I don't know whose slippers these are.</text>
+</interrogation>
+<interrogation id="1505" name="These Boots" code1="" code2="">
+<text>I remember Billingsgate cleaning boots after dinner but I can't swear
+that Sir Redvers' boots were among them. Anyone could have taken
+the foots from the kitchen if they came in from the outside door. All
+the outside doors are left open since we live in the country.</text>
+</interrogation>
+<interrogation id="1506" name="The Knife" code1="" code2="">
+<text>I used that knife to skin a hare, which explains the blood.</text>
+</interrogation>
+<interrogation id="1507" name="The Cigarettes" code1="" code2="">
+<text>I don't smoke. Colonel Darnley smoked cigars.</text>
+</interrogation>
+<interrogation id="1508" name="This Service Revolver" code1="" code2="">
+<text>I don't know anything about it.</text>
+</interrogation>
+<interrogation id="1509" name="The Missing Statue" code1="" code2="">
+<text>Mr. B. told me a tramp threw it into the pond. There was a smelly old
+villain came by a couple of days ago.</text>
+</interrogation>
+<interrogation id="1510" name="The Gramophone" code1="" code2="">
+<text>There is a gramophone in the morning room.</text>
+</interrogation>
+<interrogation id="1511" name="The Piano" code1="" code2="">
+<text>There are two pianos, one in the music room and the other in the
+morning room.</text>
+</interrogation>
+<interrogation id="1512" name="These Lady's Shoes" code1="" code2="">
+<text>I'm not sure. They may be Mrs. Sarah's or Miss Milicent's.</text>
+</interrogation>
+<interrogation id="1513" name="This Newspaper" code1="" code2="">
+<text>I don't have time to read the paper.</text>
+</interrogation>
+<interrogation id="1514" name="This Letter" code1="" code2="">
+<text>I don't know anything about it.</text>
+</interrogation>
+<interrogation id="1515" name="This Handkerchief" code1="" code2="">
+<text>Mrs. Sarah and Miss Milicent both have handkerchief's like this one.
+I can't say whose it is.</text>
+</interrogation>
+<interrogation id="1516" name="Colonel Darnley" code1="" code2="">
+<text>A hard man both in his business dealings and with his family.</text>
+</interrogation>
+<interrogation id="1517" name="Sarah Darnley" code1="" code2="">
+<text>Far too young to have married the Colonel and not very happy.</text>
+</interrogation>
+<interrogation id="1518" name="Milicent Darnley" code1="" code2="">
+<text>Not a young woman I should want to cross.</text>
+</interrogation>
+<interrogation id="1519" name="Arthur Coniston" code1="" code2="">
+<text>What a charmer! I always thought he was after Miss Milicent's
+money, but the Colonel obviously didn't.</text>
+</interrogation>
+<interrogation id="1520" name="Sir Redvers Slingsby" code1="" code2="">
+<text>I believe he was very cross with the Colonel about some business
+dealings.</text>
+</interrogation>
+<interrogation id="1521" name="Arnold Billingsgate" code1="" code2="">
+<text>A gentleman. Very loyal to Colonel Darnley.</text>
+</interrogation>
+<interrogation id="1523" name="Norah Bagsby" code1="" code2="">
+<text>A good girl but lazy.</text>
+</interrogation>
+<interrogation id="1524" name="Ronald Mellors" code1="" code2="">
+<text>Not a nice man. Not to be trusted. Colonel Darnley talked of giving
+him his notice; he'd already given him a warning letter.</text>
+</interrogation>
+<interrogation id="1525" name="Flat-footed Bootprints" code1="" code2="">
+<text>I remember the gardener's child playing around wearing grown-up's
+boots. They made flat-footed prints because they were too big for
+her.</text>
+</interrogation>
+<interrogation id="1526" name="Hob-nailed Bootprints" code1="" code2="">
+<text>I don't know whose these are.</text>
+</interrogation>
+<interrogation id="1527" name="Slipper Prints" code1="" code2="">
+<text>I don't know whose these are.</text>
+</interrogation>
+<interrogation id="1528" name="Men's Shoe Prints" code1="" code2="">
+<text>I don't know whose these are.</text>
+</interrogation>
+<interrogation id="1529" name="Women's Shoe Prints" code1="" code2="">
+<text>I don't know whose these are.</text>
+</interrogation>
+<interrogation id="1530" name="The Cheroot in the Pond" code1="" code2="">
+<text>I don't know anything about it.</text>
+</interrogation>
+<interrogation id="1601" name="The events of yesterday" code1="" code2="">
+<text><p>I have worked here for six months and I don't like it. Last night I
+helped Mrs. Goodbody to prepare dinner and afterwards I served
+coffee in the lounge to Mrs. Sarah and Miss. Milicent. Then I helped
+Mrs. G. to wash up whilst Mr. Billingsgate cleaned the boots. Just
+before we went to bed there was a loud bang. I thought it was a shot
+but Mrs. G. said it was a door banging. Then we went to bed. Mrs. G.
+and I had to sleep behind a curtain in the butlers' pantry 'cos Sir
+Redvers had come unexpectedly and taken our room. Last thing was
+I woke when Mr. Coniston woke Mr. B, but I stayed where I was.</p></text>
+</interrogation>
+<interrogation id="1603" name="Alibi" code1="" code2="">
+<text>I'm not good where times are concerned. I s'pose I was with Mr. B.
+and Mrs. G. in Mr. B.'s room.</text>
+</interrogation>
+<interrogation id="1604" name="These Slippers" code1="" code2="">
+<text>I don't know whose slippers these are.</text>
+</interrogation>
+<interrogation id="1605" name="These Boots" code1="" code2="">
+<text>Mr. B. cleaned boots after dinner.</text>
+</interrogation>
+<interrogation id="1606" name="The Knife" code1="" code2="">
+<text>I don't know anything about the knife.</text>
+</interrogation>
+<interrogation id="1607" name="The Cigarettes" code1="" code2="">
+<text>I don't smoke. Colonel Darnley smoked cigars.</text>
+</interrogation>
+<interrogation id="1608" name="This Service Revolver" code1="" code2="">
+<text>I don't know anything about it.</text>
+</interrogation>
+<interrogation id="1609" name="The Missing Statue" code1="" code2="">
+<text>I wasn't aware it was missing.</text>
+</interrogation>
+<interrogation id="1610" name="The Gramophone" code1="" code2="">
+<text>There is a gramophone in the morning room.</text>
+</interrogation>
+<interrogation id="1611" name="The Piano" code1="" code2="">
+<text>There are two pianos, one in the music room and the other in the
+morning room.</text>
+</interrogation>
+<interrogation id="1612" name="These Lady's Shoes" code1="" code2="">
+<text>These are Mrs. Sarah's shoes. i don't know when they were last worn.</text>
+</interrogation>
+<interrogation id="1613" name="This newspaper" code1="" code2="">
+<text>I don't know anything about it.</text>
+</interrogation>
+<interrogation id="1614" name="This Letter" code1="" code2="">
+<text>I don't know anything about it.</text>
+</interrogation>
+<interrogation id="1615" name="This Handkerchief" code1="" code2="">
+<text>Both the ladies have this sort of hanky. Sometimes mrs. G. is given
+the older ones.</text>
+</interrogation>
+<interrogation id="1616" name="Colonel Darnley" code1="" code2="">
+<text>Very strict. I didn't like him.</text>
+</interrogation>
+<interrogation id="1617" name="Sarah Darnley" code1="" code2="">
+<text>If you ask me she didn't like the Colonel. He was too old for her.</text>
+</interrogation>
+<interrogation id="1618" name="Milicent Darnley" code1="" code2="">
+<text>A determined young woman. It's lucky for the Colonel that he agreed
+to less Miss. Milicent marry Mr. Coniston.</text>
+</interrogation>
+<interrogation id="1619" name="Arthur Coniston" code1="" code2="">
+<text>A very nice gentleman. I'm suprised the Colonel liked him.</text>
+</interrogation>
+<interrogation id="1620" name="Sir Redvers Slingsby" code1="" code2="">
+<text>I didn't know the gentleman.</text>
+</interrogation>
+<interrogation id="1621" name="Arnold Billingsgate" code1="" code2="">
+<text>An old fuddy-duddy.</text>
+</interrogation>
+<interrogation id="1622" name="Mildred Goodbody" code1="" code2="">
+<text>Very kind to me.</text>
+</interrogation>
+<interrogation id="1624" name="Ronald Mellors" code1="" code2="">
+<text>A rough man. A womanizer by all accounts.</text>
+</interrogation>
+<interrogation id="1625" name="Flat-footed Bootprints" code1="" code2="">
+<text>I don't know anything about them.</text>
+</interrogation>
+<interrogation id="1626" name="Hob-nailed Bootprints" code1="" code2="">
+<text>I don't know anything about them.</text>
+</interrogation>
+<interrogation id="1627" name="Slipper Prints" code1="" code2="">
+<text>I don't know anything about them.</text>
+</interrogation>
+<interrogation id="1628" name="Men's Shoe Prints" code1="" code2="">
+<text>I don't know anything about them.</text>
+</interrogation>
+<interrogation id="1629" name="Women's Shoe Prints" code1="" code2="">
+<text>I don't know anything about them.</text>
+</interrogation>
+<interrogation id="1630" name="The Cheroot in the Pond" code1="" code2="">
+<text>I don't know anything about it.</text>
+</interrogation>
+<interrogation id="1701" name="Ronald Mellor's Statement" code1="" code2="">
+<text><p>I have worked for Colonel Darnley for five years. He was strict
+but fair. I have no complaints. Last night I did my last rounds at
+8.00 pm. I saw nothing suspicious. I spent the rest of the evening at
+home and went to bed at 10.00. I didn't hear any strange noises. It
+wasn't the weather for poachers.</p></text>
+</interrogation>
+<interrogation id="1703" name="Alibi" code1="" code2="">
+<text>I was in my cottage alone all evening and I don't gave a tinker's
+curse if you believe me or not. If you look for my tracks to the big
+house. you won't find them.</text>
+</interrogation>
+<interrogation id="1704" name="These Slippers" code1="" code2="">
+<text>I don't give a damn about slippers.</text>
+</interrogation>
+<interrogation id="1705" name="These Boots" code1="" code2="">
+<text>Piss off! I'm not showing anyone my boots.</text>
+</interrogation>
+<interrogation id="1706" name="The Knife" code1="" code2="">
+<text>I don't know anything about any bloody knife!</text>
+</interrogation>
+<interrogation id="1707" name="The Cigarettes" code1="" code2="">
+<text>Go to hell! I'm not answering any questions.</text>
+</interrogation>
+<interrogation id="1708" name="This Service Revolver" code1="" code2="">
+<text>I don't own a revolver, I use a shotgun.</text>
+</interrogation>
+<interrogation id="1709" name="The Missing Statue" code1="" code2="">
+<text>Mrs. G. at the big house turned away a tramp. That'd be two days
+ago. I caught him lurking about and found the statue in the pond.</text>
+</interrogation>
+<interrogation id="1710" name="The Gramophone" code1="" code2="">
+<text>I don't know anything about any gramophone.</text>
+</interrogation>
+<interrogation id="1711" name="The Piano" code1="" code2="">
+<text>I don't know anything about any bloody piano.</text>
+</interrogation>
+<interrogation id="1712" name="These Lady's Shoes" code1="" code2="">
+<text>Do I look like I wear lady's shoes?</text>
+</interrogation>
+<interrogation id="1713" name="This Newspaper" code1="" code2="">
+<text>I only ever read the racing pages.</text>
+</interrogation>
+<interrogation id="1714" name="This Letter" code1="" code2="">
+<text>Why should I know anything about some bloody letter?</text>
+</interrogation>
+<interrogation id="1715" name="This Handkerchief" code1="" code2="">
+<text>Do I look like I use lady's hankys?</text>
+</interrogation>
+<interrogation id="1716" name="Colonel Darnley" code1="" code2="">
+<text>I've nothing to say.</text>
+</interrogation>
+<interrogation id="1717" name="Sarah Darnley" code1="" code2="">
+<text>I've nothing to say.</text>
+</interrogation>
+<interrogation id="1718" name="Milicent Darnley" code1="" code2="">
+<text>I've nothing to say.</text>
+</interrogation>
+<interrogation id="1719" name="Arthur Coniston" code1="" code2="">
+<text>I've nothing to say.</text>
+</interrogation>
+<interrogation id="1720" name="Sir Redvers Slingsby" code1="" code2="">
+<text>I've nothing to say.</text>
+</interrogation>
+<interrogation id="1721" name="Arnold Billingsgate" code1="" code2="">
+<text>I've nothing to say.</text>
+</interrogation>
+<interrogation id="1722" name="Mildred Goodbody" code1="" code2="">
+<text>I've nothing to say.</text>
+</interrogation>
+<interrogation id="1723" name="Norah Bagsby" code1="" code2="">
+<text>I've nothing to say.</text>
+</interrogation>
+<interrogation id="1725" name="Flat-footed Bootprints" code1="" code2="">
+<text>Clear off! I'm not showing anyone my boots.</text>
+</interrogation>
+<interrogation id="1726" name="Hob-nailed Bootprints" code1="" code2="">
+<text>Clear off! I'm not showing anyone my boots.</text>
+</interrogation>
+<interrogation id="1727" name="Slipper Prints" code1="" code2="">
+<text>I don't know whose they are.</text>
+</interrogation>
+<interrogation id="1728" name="Men's Shoe Prints" code1="" code2="">
+<text>I don't know whose these are.</text>
+</interrogation>
+<interrogation id="1729" name="Women's Shoe Prints" code1="" code2="">
+<text>Do I look like I wear women's shoes?</text>
+</interrogation>
+<interrogation id="1730" name="The Cheroot in the Pond" code1="" code2="">
+<text>I don't know anything about it.</text>
+</interrogation>
+</darnley>

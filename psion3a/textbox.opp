@@ -1,0 +1,348 @@
+REM ******************************************************
+REM * Procedures to manipulate a scrolling text/list box *
+REM ******************************************************
+
+REM The text to be manipulated is held in a global array - text$(85,75)
+REM The style of the text is held in a global array      - textstyl%(85)
+
+PROC textbox%:(title$,list%,width%,noitems%)
+
+	REM ***** Main procedure *****
+  
+	REM title$   = Title of box 
+	REM list%    = TRUE if this is to be a list box rather than a text box
+	REM width%   = The width of the box.  If width%=0, or noitems%=1
+	REM            then this procedure works out the width itself
+	REM noitems% = The no of lines in the box and thus its length
+
+	LOCAL attop$(20)				: REM Message displayed when reach top of box
+	LOCAL atbtm$(20)				: REM Message displayed when reach btm of box
+	LOCAL curitem%					: REM Currently selected item / line in box
+	LOCAL topitem%					: REM Line currently at the top of the box
+	LOCAL boxwid%						: REM The width of the box
+	LOCAL boxhgt%						: REM The height of the box
+	LOCAL temp%
+	LOCAL i%
+	LOCAL noinbox%					: REM Actual number of items displayed in the box
+	LOCAL txtwin%						: REM Handle to text window
+	LOCAL events%(6)				: REM Array to store keyboard information
+
+	IF list%=TRUE
+		attop$="At top of list."
+		atbtm$="At bottom of list."
+	ELSE
+		attop$="At top of text."
+		atbtm$="At bottom of text."
+	ENDIF
+
+	curitem%=1
+	topitem%=1
+
+	REM Determine the necessary width for Text Box window
+	boxwid%=width%
+	IF boxwid%=0 OR noitems%=1
+		gSTYLE 1
+		boxwid%=gTWIDTH(title$)
+		gSTYLE 0
+		i%=0
+		DO
+			i%++
+			temp%=gTWIDTH(text$(i%))
+			IF temp%>boxwid% : boxwid%=temp% : ENDIF
+		UNTIL i%=noitems%
+		boxwid%=boxwid%+24 : REM To account for border
+		IF boxwid%>SCRWID : RAISE -22 : ENDIF : REM Raise an error if the required Text Box is bigger than the screen
+	ENDIF
+
+	REM Determine the necessary height for the List Box window
+	boxhgt%=((noitems%+1)*TXTHGT)+20
+
+	REM Deal with the problem of there being too many items to fit in the Text Box.
+	IF boxhgt%>SCRHGT
+		boxhgt%=SCRHGT
+		boxhgt%=boxhgt%-20-TXTHGT
+		noinbox%=INT(boxhgt%/TXTHGT)
+		boxhgt%=((noinbox%+1)*TXTHGT)+20
+	ELSE
+		noinbox%=noitems%
+	ENDIF
+
+	REM Create the Text Box window and bitmap
+	txtwin%=gCREATE((SCRWID-boxwid%)/2,(SCRHGT-boxhgt%)/2,boxwid%,boxhgt%,0)
+
+	REM Draw the border and title straight onto the window
+	gUSE txtwin%
+	gBORDER 515
+	gSTYLE 1
+	gAT (boxwid%-gTWIDTH(title$))/2,TXTHGT+2
+	gPRINT title$
+	gAT 1,TXTHGT+7
+	gLINEBY boxwid%-4,0
+	gSTYLE 0
+
+	filltext:(list%,noitems%,noinbox%,topitem%,curitem%,boxwid%,boxhgt%)
+
+	gVISIBLE ON
+
+	DO
+
+		IF TESTEVENT
+
+			REM Handle Events
+			GETEVENT events%()
+
+label3::
+
+			IF events%(1)=$404
+
+				/* Respond to X event sent from system */
+				IF LEFT$(GETCMD$,1)="X" : exit:(FALSE) : ENDIF
+
+			ELSEIF events%(1)=$402
+
+				/* Pause if sent to background */
+				GETEVENT events%()
+				GOTO label3
+
+			ELSEIF (events%(1) AND $400)=0
+
+				REM Process keyboard events
+				GIPRINT ""
+
+				REM Up Arrow
+				IF events%(1)=256
+					IF list%=TRUE
+						IF curitem%>1
+							highlit:(curitem%,topitem%,boxwid%)
+							curitem%--
+							IF curitem%=topitem%-1
+								topitem%--
+								scrllup:(boxwid%,boxhgt%,topitem%,noitems%,noinbox%)
+							ENDIF
+							gSTYLE 4
+							highlit:(curitem%,topitem%,boxwid%)
+							gSTYLE 0
+						ELSE
+							GIPRINT attop$
+						ENDIF
+					ELSEIF topitem%>1
+						topitem%--
+						scrllup:(boxwid%,boxhgt%,topitem%,noitems%,noinbox%)
+					ELSE
+						GIPRINT attop$
+					ENDIF
+				ENDIF
+
+				REM Down Arrow
+				IF events%(1)=257
+					IF list%=TRUE
+						IF curitem%<noitems%
+							highlit:(curitem%,topitem%,boxwid%)
+							curitem%++
+							IF curitem%=topitem%+noinbox%
+								topitem%++
+								scrlldwn:(boxwid%,boxhgt%,topitem%,noitems%,noinbox%)
+							ENDIF
+							gSTYLE 4
+							highlit:(curitem%,topitem%,boxwid%)
+							gSTYLE 0
+						ELSE
+							GIPRINT atbtm$
+						ENDIF
+					ELSEIF topitem%<noitems%-noinbox%+1
+						topitem%++
+						scrlldwn:(boxwid%,boxhgt%,topitem%,noitems%,noinbox%)
+					ELSE
+						GIPRINT atbtm$
+					ENDIF
+				ENDIF
+      
+				REM Page Up
+				IF events%(1)=260
+					IF topitem%>1
+						topitem%-=noinbox%
+						IF topitem%<1 : topitem%=1 : ENDIF
+						curitem%=topitem%+noinbox%-1
+						filltext:(list%,noitems%,noinbox%,topitem%,curitem%,boxwid%,boxhgt%)
+					ELSEIF curitem%=topitem%
+						GIPRINT attop$
+					ELSEIF list%=TRUE
+						highlit:(curitem%,topitem%,boxwid%)
+						curitem%=topitem%
+						gSTYLE 4
+						highlit:(curitem%,topitem%,boxwid%)
+						gSTYLE 0
+					ENDIF
+				ENDIF
+    
+				REM Page Down
+				IF events%(1)=261
+					IF topitem%<noitems%-noinbox%+1
+						topitem%+=noinbox%
+						IF topitem%>noitems%-noinbox%+1 : topitem%=noitems%-noinbox%+1 : ENDIF
+						curitem%=topitem%
+						filltext:(list%,noitems%,noinbox%,topitem%,curitem%,boxwid%,boxhgt%)
+					ELSEIF list%=TRUE AND curitem%=noitems% OR (list%=FALSE AND curitem%=noitems%-noinbox%+1)
+						GIPRINT atbtm$
+					ELSEIF list%=TRUE
+						highlit:(curitem%,topitem%,boxwid%)
+						curitem%=noitems%
+						gSTYLE 4
+						highlit:(curitem%,topitem%,boxwid%)
+						gSTYLE 0
+					ENDIF
+				ENDIF
+      
+				REM Home
+				IF events%(1)=262
+					IF curitem%<>1
+						topitem%=1
+						curitem%=1
+						filltext:(list%,noitems%,noinbox%,topitem%,curitem%,boxwid%,boxhgt%)
+					ELSE
+						GIPRINT attop$
+					ENDIF
+				ENDIF
+
+				REM End
+				IF events%(1)=263
+					IF curitem%<>noitems%
+						topitem%=noitems%-noinbox%+1
+						curitem%=noitems%
+						filltext:(list%,noitems%,noinbox%,topitem%,curitem%,boxwid%,boxhgt%)
+					ELSE
+						GIPRINT atbtm$
+					ENDIF     
+				ENDIF
+
+				REM Enter
+				IF events%(1)=13
+					gCLOSE txtwin%
+					IF list%=TRUE : RETURN curitem%
+					ELSE          : RETURN 0
+					ENDIF
+				ENDIF
+ 
+				REM Menu
+				IF events%(1)=290
+					menuf%=TRUE
+					gCLOSE txtwin%
+					RETURN 0
+				ENDIF
+      
+				REM Escape
+				IF events%(1)=27
+					gCLOSE txtwin%
+					RETURN 0
+				ENDIF
+      
+				REM Exit (Psion-x)
+				IF events%(1)=%x+512
+					exit:(TRUE)       
+				ENDIF
+   
+			ENDIF
+
+			REM If the text box is simply being used for viewing then the current item is always the top item
+			IF list%=FALSE : curitem%=topitem% : ENDIF
+
+		ENDIF
+
+	UNTIL 0
+
+ENDP
+
+PROC filltext:(list%,noitems%,noinbox%,topitem%,curitem%,boxwid%,boxhgt%)
+
+	REM ***** Fills text into the text box *****
+
+	LOCAL i%
+  
+	i%=0
+	DO
+  
+		i%++
+		gAT 8,10+TXTHGT+i%*TXTHGT
+  
+		REM If a list box highlight the currently selected item  
+		IF list%=TRUE AND i%-1+topitem%=curitem% : gSTYLE 4
+		ELSE                                     : gSTYLE 0
+		ENDIF
+    
+		REM Print the line
+		gPRINTB text$(i%-1+topitem%),boxwid%-22,2,1,1,0
+  
+		REM If txtstyl%=-1 for current line then strike-thru 
+		IF txtstyl%(i%-1+topitem%)=-1
+			gAT 8,13+TXTHGT/2+i%*TXTHGT
+			gLINEBY gTWIDTH(text$(i%-1+topitem%)),0
+		ENDIF
+  
+	UNTIL i%=noinbox%
+  
+	gSTYLE 0
+  
+	arrows:(boxwid%,boxhgt%,topitem%,noitems%,noinbox%)
+  
+	gUPDATE
+ 
+ENDP 
+
+PROC arrows:(boxwid%,boxhgt%,topitem%,noitems%,noinbox%)
+
+	REM ***** Draws arrows in box to indicate whether it can scroll up or down *****
+  
+	REM Up arrow
+	gAT boxwid%-14,23+TXTHGT
+	IF topitem%>1 : gTMODE 0
+	ELSE          : gTMODE 1
+	ENDIF
+	gPRINT CHR$(24)
+  
+	REM Down arrow
+	gAT boxwid%-14,boxhgt%-8
+	IF topitem%<noitems%-noinbox%+1 : gTMODE 0
+	ELSE                            : gTMODE 1
+	ENDIF
+	gPRINT CHR$(25)
+  
+	gTMODE 0
+ 
+ENDP
+
+PROC highlit:(curitem%,topitem%,boxwid%)
+
+	REM ***** Highlight/Dehighlight the current item in a list box *****
+
+	gAT 8,10+TXTHGT+(curitem%-topitem%+1)*TXTHGT
+	gPRINTB text$(curitem%),boxwid%-22,2,1,1,1
+	IF txtstyl%(curitem%)=-1
+		gAT 8,13+TXTHGT/2+(curitem%-topitem%+1)*TXTHGT
+		gLINEBY gTWIDTH(text$(curitem%)),0
+	ENDIF
+
+ENDP
+
+PROC scrllup:(boxwid%,boxhgt%,topitem%,noitems%,noinbox%)
+
+	REM ***** Scrolls text box up *****
+  
+	gSCROLL 0,TXTHGT,8,12+TXTHGT,boxwid%-22,TXTHGT*(noinbox%-1)+2
+	gAT 8,10+2*TXTHGT
+	gPRINTB text$(topitem%),boxwid%-22,2,1,1,0
+	arrows:(boxwid%,boxhgt%,topitem%,noitems%,noinbox%)
+	gUPDATE
+  
+ENDP
+
+PROC scrlldwn:(boxwid%,boxhgt%,topitem%,noitems%,noinbox%)
+
+	REM ***** Scrolls text box down *****
+  
+	gSCROLL 0,-TXTHGT,8,12+2*TXTHGT,boxwid%-22,TXTHGT*(noinbox%-1)+2
+	gAT 8,10+TXTHGT*(noinbox%+1)
+	gPRINTB text$(topitem%+noinbox%-1),boxwid%-22,2,1,1,0
+	arrows:(boxwid%,boxhgt%,topitem%,noitems%,noinbox%)
+	gUPDATE
+  
+ENDP  
