@@ -1,0 +1,109 @@
+PROC Main:
+	LOCAL ident$(200,3)
+	LOCAL noitems%,top%,btm%
+	LOCAL temp$(3)
+	LOCAL counter%
+	LOCAL length%(18)
+
+	REM Initialise the database
+	OPEN "loc::m:\dat\sealed2.dbf",A,id$,name$,loc$,code$,field1$,field2$,field3$,field4$,field5$,field6$,field7$,field8$,field9$,field10$,field11$,field12$,field13$,field14$,field15$,field16$,field17$,field18$
+
+	counter%=0
+	DO
+		counter%=counter%+1
+		length%(counter%)=0
+	UNTIL counter%=18
+
+	FIRST
+	noitems%=0
+
+	REM Load the string with the id$
+	DO
+		noitems%=noitems%+1
+		ident$(noitems%)=A.id$
+		NEXT
+	UNTIL EOF
+
+	REM Bubble Sort
+	top%=1
+	btm%=2
+
+	DO
+		IF VAL(ident$(btm%))<VAL(ident$(top%))
+			temp$=ident$(btm%)
+			ident$(btm%)=ident$(top%)
+			ident$(top%)=temp$
+		ENDIF
+		btm%=btm%+1
+		IF btm%=noitems%+1
+			top%=top%+1
+			btm%=top%+1
+		ENDIF
+		IF btm%=noitems%+1 : BREAK : ENDIF
+	UNTIL 0
+
+	IF EXIST("loc::m:\dat\darnley2.dbf") : DELETE "loc::m:\dat\darnley2.dbf" : ENDIF
+	CREATE "loc::m:\dat\darnley2.dbf",B,id$,name$,loc$,code$,field1$,field2$,field3$,field4$,field5$,field6$,field7$,field8$,field9$,field10$,field11$,field12$,field13$,field14$,field15$,field16$,field17$,field18$
+	counter%=0
+	DO
+		counter%=counter%+1
+		B.id$=ident$(counter%)
+		USE A
+		FIRST
+		FINDFIELD(ident$(counter%),1,1,1)
+		PRINT "Writing Record ";ident$(counter%)
+		B.name$=A.name$
+		B.loc$=A.loc$
+		B.code$=A.code$
+		B.field1$=A.field1$
+		IF LEN(A.field1$)>length%(1) : length%(1)=LEN(A.field1$) : ENDIF
+		B.field2$=A.field2$
+		IF LEN(A.field2$)>length%(2) : length%(2)=LEN(A.field2$) : ENDIF
+		B.field3$=A.field3$ 
+		IF LEN(A.field3$)>length%(3) : length%(3)=LEN(A.field3$) : ENDIF
+		B.field4$=A.field4$
+		IF LEN(A.field4$)>length%(4) : length%(4)=LEN(A.field4$) : ENDIF
+		B.field5$=A.field5$
+		IF LEN(A.field5$)>length%(5) : length%(5)=LEN(A.field5$) : ENDIF
+		B.field6$=A.field6$
+		IF LEN(A.field6$)>length%(6) : length%(6)=LEN(A.field6$) : ENDIF
+		B.field7$=A.field7$
+		IF LEN(A.field7$)>length%(7) : length%(7)=LEN(A.field7$) : ENDIF
+		B.field8$=A.field8$
+		IF LEN(A.field8$)>length%(8) : length%(8)=LEN(A.field8$) : ENDIF
+		B.field9$=A.field9$
+		IF LEN(A.field9$)>length%(9) : length%(9)=LEN(A.field9$) : ENDIF
+		B.field10$=A.field10$ 
+		IF LEN(A.field10$)>length%(10) : length%(10)=LEN(A.field10$) : ENDIF
+		B.field11$=A.field11$ 
+		IF LEN(A.field11$)>length%(11) : length%(11)=LEN(A.field11$) : ENDIF
+		B.field12$=A.field12$ 
+		IF LEN(A.field12$)>length%(12) : length%(12)=LEN(A.field12$) : ENDIF
+		B.field13$=A.field13$ 
+		IF LEN(A.field13$)>length%(13) : length%(13)=LEN(A.field13$) : ENDIF
+		B.field14$=A.field14$ 
+		IF LEN(A.field14$)>length%(14) : length%(14)=LEN(A.field14$) : ENDIF
+		B.field15$=A.field15$ 
+		IF LEN(A.field15$)>length%(15) : length%(15)=LEN(A.field15$) : ENDIF
+		B.field16$=A.field16$ 
+		IF LEN(A.field16$)>length%(16) : length%(16)=LEN(A.field16$) : ENDIF
+		B.field17$=A.field17$ 
+		IF LEN(A.field17$)>length%(17) : length%(17)=LEN(A.field17$) : ENDIF
+		B.field18$=A.field18$ 
+		IF LEN(A.field18$)>length%(18) : length%(18)=LEN(A.field18$) : ENDIF
+
+		USE B
+		APPEND
+	UNTIL counter%=noitems%
+
+	CLOSE
+	CLOSE
+
+	counter%=0
+	DO
+		counter%=counter%+1
+		PRINT "Field ";counter%;" Length is : ";length%(counter%)
+	UNTIL counter%=18
+	
+	GET
+ENDP

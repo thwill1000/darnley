@@ -1,0 +1,979 @@
+/***************************/
+/* THE SEALED ROOM MURDER  */
+/***************************/
+/* (C) T & J Williams 1996 */
+/***************************/
+
+#define TRUE																		-1
+#define FALSE																		0
+#define DELTA																		5
+#define SCRWID																	480
+#define SCRHGT																	160
+#define SCRLFT																	0
+#define SCRTOP																	0
+#define TXTHGT																	15
+
+#define gLINE(X,Y,DX,DY)												gAT X,Y : gLINEBY DX,DY
+#define gPOINT(X,Y)															gAT X,Y : gLINEBY 0,0
+#define gPRINTBAT(X,Y,STRING,WIDTH,ALIGNMENT)		gAT X,Y : gPRINTB STRING,WIDTH,ALIGNMENT
+#define gPRINTAT(X,Y,STRING)										gAT X,Y : gPRINT STRING
+
+#define SWISS_8																	9
+#define SWISS_11																10
+#define SWISS_13																11
+#define SWISS_16																12
+#define NORMAL																	0
+#define BOLD																		1
+#define DOUBLE_HEIGHT														8
+#define DOUBLE_HEIGHT_BOLD											9
+
+#define CHECK1																	65
+#define CHECK2																	94
+
+#define INCORRECT																BEEP 5,300 : GIPRINT "Incorrect.  I suggest you investigate further" : RETURN
+
+APP Sealed
+	TYPE $1000
+	ICON "\PIC\MAGICON.PIC"
+ENDA
+
+PROC main:
+
+	GLOBAL text$(85,75)														: REM Array of 85 strings of length 75 characters
+	GLOBAL txtstyl%(85)														: REM Array containing the text styles for the above
+	GLOBAL ident$(85,4)
+
+	GLOBAL roomid$(2)															: REM ID number of current room/zone as a string 
+	GLOBAL asked%(60)															: REM Memory cell holding whether a given question has been asked
+	GLOBAL quest%(30)															: REM Array holding whether a given question can be asked (TRUE for can be asked)
+	GLOBAL object%(52)														: REM Array holding whether an object is visible in its current location (TRUE for visible)
+	GLOBAL who$(9,20)															: REM Array holding list of people (8 suspects + 1 victim)
+	GLOBAL darnpic%																: REM Handle to map bitmap
+	GLOBAL x%(31),y%(31),w%(31),h%(31)						: REM Description of map zones
+	GLOBAL magid%																	: REM Cursor/sprite handle 
+	GLOBAL magx%,magy%														: REM Position of cursor
+	GLOBAL menuf%
+	GLOBAL psionf%
+	GLOBAL questf%
+	GLOBAL finishf%																: REM Have the final questions been answered
+	GLOBAL regflag%
+	GLOBAL regname$(18)
+
+	LOCAL  events%(6)
+	LOCAL  action%
+
+	ESCAPE OFF
+
+	BUSY "Please Wait"
+
+	REM Initialise the game
+	init:
+
+	REM Initialise the default screen
+	gUPDATE OFF
+	gSETWIN SCRLFT,SCRTOP,SCRWID,SCRHGT
+
+	REM Initialise the database
+	OPEN "\app\slddat\sealed.dbf",A,id$,name$,loc$,code$,field1$,field2$,field3$,field4$,field5$,field6$,field7$,field8$,field9$,field10$,field11$,field12$,field13$,field14$,field15$,field16$,field17$,field18$
+
+	REM Setup the map
+	map:
+
+	REM Display the 'magnifying glass'
+	gORDER magid%,1
+	DRAWSPRITE magx%+SCRLFT-10,magy%+SCRTOP+10
+	gUPDATE
+
+	BUSY OFF
+
+	/* Display the titles */
+	titles:
+
+	/* Display the introduction */
+	describe:("401",2,"")
+
+	REM Main Loop
+
+	DO
+
+		IF TESTEVENT=TRUE OR menuf%=TRUE
+
+			IF menuf%=FALSE : GETEVENT events%() : ENDIF
+
+label1::
+
+			IF events%(1)=$404
+
+				/* Respond to X event sent from system */
+				IF LEFT$(GETCMD$,1)="X" : exit:(FALSE) : ENDIF
+
+			ELSEIF events%(1)=$402
+
+				/* Pause if sent to background */
+				GETEVENT events%()
+				GOTO label1
+
+			ELSEIF (events%(1) AND $400)=0 OR menuf%=TRUE
+
+				/* Process keyboard events */
+
+				/* Move cursor */
+				IF events%(1)=256 : magy%-=DELTA : movemag: : ENDIF
+				IF events%(1)=257 : magy%+=DELTA : movemag: : ENDIF
+				IF events%(1)=258 : magx%+=DELTA : movemag: : ENDIF
+				IF events%(1)=259 : magx%-=DELTA : movemag: : ENDIF
+
+				IF events%(1)=290 OR menuf%=TRUE
+					LOCK ON
+					mendef:
+					action%=MENU+512
+					LOCK OFF
+				ELSEIF events%(1)<512 AND psionf%=FALSE 
+					action%=events%(1)+512
+				ELSE
+					action%=events%(1)
+				ENDIF
+
+				menuf%=FALSE
+
+				IF action%=(%a+512)                              : dabout:                 : ENDIF
+				IF action%=(%w+512)                              : whois:                  : ENDIF
+				IF action%=(%d+512) OR action%=13 OR action%=525 : describe:(roomid$,1,"") : ENDIF
+				IF action%=(%r+512)                              : dreg%:                  : ENDIF
+				IF action%=(%e+512)                              : examine:                : ENDIF
+      
+				IF action%=(%q+512)
+					IF questf%=FALSE : questf%=TRUE : GIPRINT "Asked questions visible"
+					ELSE questf%=FALSE : GIPRINT "Asked questions invisible"
+					ENDIF
+				ENDIF
+      
+				IF action%=(%p+512)
+					IF psionf%=FALSE : psionf%=TRUE : GIPRINT "Hot keys need Psion"
+					ELSE psionf%=FALSE : GIPRINT "Hot keys don't need Psion"
+					ENDIF
+				ENDIF
+      
+				IF action%=(%c+512) : finish: : ENDIF
+				IF action%=(%i+512) : inter:  : ENDIF
+				IF action%=(%x+512) OR action%=27 : exit:(TRUE) : ENDIF
+				IF action%=(%t+512) : describe:("401",2,"") : ENDIF
+			
+			ENDIF
+			
+		ENDIF
+
+	UNTIL 0
+
+ENDP
+
+PROC mendef:
+
+	mINIT
+	mCARD "Game","Describe Room",%d,"Examine Objects",%e,"Interrogate",%i,"Who is?",%w,"Repeat Introduction",%t,"Close Case",%c
+
+	IF questf%=FALSE AND psionf%=FALSE
+		mCARD "Special","About",%a,"Register",%r,"Asked Questions Visible",%q,"Hot Keys need Psion",%p,"Restart",%s,"Exit",%x
+	ENDIF
+
+	IF questf%=FALSE AND psionf%=TRUE
+		mCARD "Special","About",%a,"Register",%r,"Asked Questions Visible",%q,"Hot Keys don't need Psion",%p,"Restart",%s,"Exit",%x
+	ENDIF
+
+	IF questf%=TRUE AND psionf%=FALSE
+		mCARD "Special","About",%a,"Register",%r,"Asked Questions Hidden",%q,"Hot Keys need Psion",%p,"Restart",%s,"Exit",%x
+	ENDIF
+
+	IF questf%=TRUE AND psionf%=TRUE
+		mCARD "Special","About",%a,"Register",%r,"Asked Questions Hidden",%q,"Hot Keys don't need Psion",%p,"Restart",%s,"Exit",%x
+	ENDIF
+
+ENDP
+
+PROC whois:
+
+	/* Presents a list of people and describes the one selected */
+
+	LOCAL whores%
+	LOCAL whoid$(4)
+
+	DO
+		whores%=slctwho%:("Who is?",TRUE,170)
+		IF whores%=0 : RETURN : ENDIF
+		whoid$=GEN$(whores%+100,4)
+		describe:(whoid$,1,"Who is : ")
+	UNTIL menuf%=TRUE
+
+ENDP
+
+PROC inter:
+
+	/* Presents a list of people and a list of topics and then displays */
+	/* What they have to say about the selected topic */
+
+	LOCAL whores%
+	LOCAL whatid$(4)
+	LOCAL what%
+	LOCAL i%,j%
+	LOCAL strk%
+	LOCAL topic%
+	LOCAL baseid%
+	LOCAL noitems%
+
+	DO
+	
+		whores%=slctWho%:("Interrogate who?",FALSE,170)
+		IF whores%=0 : RETURN : ENDIF
+		
+		baseid%=1000+(whores%-1)*100
+		j%=2**whores%
+		
+		DO
+			
+			noitems%=2
+			text$(1)=CHR$(254)+"The events of yesterday" : txtstyl%(1)=0 : ident$(1)=GEN$(baseid%+1,4)
+			text$(2)=CHR$(254)+"Your alibi"              : txtstyl%(2)=0 : ident$(2)=GEN$(baseid%+3,4)
+
+			POKEB(PEEKW($1c)+7),0
+			FINDFIELD(GEN$(baseid%+4,4),1,1,3)
+	
+			i%=4
+
+			DO
+				strk%=FALSE
+				IF quest%(i%)=TRUE
+					IF j%=(asked%(i%) AND j%) : strk%=TRUE : ENDIF
+					IF NOT(strk%=TRUE AND questf%=FALSE) 
+						noitems%++
+						text$(noitems%)=CHR$(254)+A.name$
+						txtstyl%(noitems%)=strk%
+						ident$(noitems%)=A.id$
+					ENDIF
+				ENDIF
+				NEXT
+				IF EOF : BREAK : ENDIF
+				i%=VAL(A.id$)-baseid%
+			UNTIL i%>99
+
+			what%=textbox%:("Ask "+who$(whores%+1)+" about what?",TRUE,300,noitems%)
+		
+			IF what%=0 OR menuf%=TRUE : BREAK : ENDIF
+		
+			whatid$=ident$(what%)
+			i%=VAL(whatid$)-baseid%
+			asked%(i%)=asked%(i%) OR j%
+
+			IF i%=1 : describe:(whatid$,2,who$(whores%+1)+" : ")
+			ELSE      describe:(whatid$,1,who$(whores%+1)+" : ")
+	  	ENDIF
+		
+		UNTIL menuf%=TRUE
+	
+	UNTIL menuf%=TRUE
+
+ENDP
+
+PROC examine:
+
+	/* Presents a list of objects in the current location and describes the selected one */
+
+	LOCAL whatid$(3)
+	LOCAL what%
+	LOCAL i%
+	LOCAL noitems%
+
+	DO
+	
+		noitems%=0
+		POKEB(PEEKW($1c)+7),0
+		FINDFIELD("201",1,1,3)
+	
+		i%=1
+
+		DO
+			IF VAL(A.loc$)=VAL(roomid$) AND object%(i%)=TRUE
+				noitems%++
+				text$(noitems%)=CHR$(254)+A.name$
+				txtstyl%(noitems%)=0
+				ident$(noitems%)=A.id$
+			ENDIF
+			NEXT
+			i%=VAL(A.id$)-200
+		UNTIL i%>99
+
+		IF noitems%=0
+			GIPRINT "There are no items of interest here."
+			RETURN
+		ENDIF
+
+		what%=textbox%:("Examine what?",TRUE,240,noitems%)
+		IF what%=0 : RETURN : ENDIF
+		
+		whatid$=ident$(what%)
+
+		describe:(whatid$,1,"Examine : ")
+
+	UNTIL menuf%=TRUE
+
+ENDP
+
+PROC textify%:(noitems%)
+
+	/* Copies data into the text$ array */
+
+	LOCAL items%
+
+	items%=noitems%
+
+	IF A.field1$<>""  : items%++ : txtstyl%(items%)=0 : text$(items%)=A.field1$ : ENDIF
+	IF A.field2$<>""  : items%++ : txtstyl%(items%)=0 : text$(items%)=A.field2$ : ENDIF
+	IF A.field3$<>""  : items%++ : txtstyl%(items%)=0 : text$(items%)=A.field3$ : ENDIF
+	IF A.field4$<>""  : items%++ : txtstyl%(items%)=0 : text$(items%)=A.field4$ : ENDIF
+	IF A.field5$<>""  : items%++ : txtstyl%(items%)=0 : text$(items%)=A.field5$ : ENDIF
+	IF A.field6$<>""  : items%++ : txtstyl%(items%)=0 : text$(items%)=A.field6$ : ENDIF
+	IF A.field7$<>""  : items%++ : txtstyl%(items%)=0 : text$(items%)=A.field7$ : ENDIF
+	IF A.field8$<>""  : items%++ : txtstyl%(items%)=0 : text$(items%)=A.field8$ : ENDIF
+	IF A.field9$<>""  : items%++ : txtstyl%(items%)=0 : text$(items%)=A.field9$ : ENDIF
+	IF A.field10$<>"" : items%++ : txtstyl%(items%)=0 : text$(items%)=A.field10$ : ENDIF
+	IF A.field11$<>"" : items%++ : txtstyl%(items%)=0 : text$(items%)=A.field11$ : ENDIF
+	IF A.field12$<>"" : items%++ : txtstyl%(items%)=0 : text$(items%)=A.field12$ : ENDIF
+	IF A.field13$<>"" : items%++ : txtstyl%(items%)=0 : text$(items%)=A.field13$ : ENDIF
+	IF A.field14$<>"" : items%++ : txtstyl%(items%)=0 : text$(items%)=A.field14$ : ENDIF
+	IF A.field15$<>"" : items%++ : txtstyl%(items%)=0 : text$(items%)=A.field15$ : ENDIF
+	IF A.field16$<>"" : items%++ : txtstyl%(items%)=0 : text$(items%)=A.field16$ : ENDIF
+	IF A.field17$<>"" : items%++ : txtstyl%(items%)=0 : text$(items%)=A.field17$ : ENDIF
+	IF A.field18$<>"" : items%++ : txtstyl%(items%)=0 : text$(items%)=A.field18$ : ENDIF
+
+	RETURN items%
+
+ENDP
+
+PROC slctwho%:(title$,colflag%,width%)
+
+	/* Presents a list of people and returns the one selected */
+	/* colflag%=TRUE if Colonel Darnley is to be included in the list */
+
+	LOCAL i%
+	LOCAL noitems%
+
+	IF colflag%=TRUE
+		text$(1)=CHR$(254)+who$(1)
+		txtstyl%(1)=0
+		noitems%=1
+		i%=0
+	ELSE
+		noitems%=0
+		i%=1
+	ENDIF
+
+	DO
+		noitems%++
+		text$(noitems%)=CHR$(254)+who$(noitems%+i%)
+		txtstyl%(noitems%)=0
+		IF colflag%=FALSE AND noitems%=8 : BREAK : ENDIF
+	UNTIL noitems%=9
+
+	RETURN textbox%:(title$,TRUE,width%,noitems%)
+
+ENDP
+
+PROC finish:
+
+	/* Ask questions to determine whether the player has solved the murder */
+
+	LOCAL temp1%
+
+	/* If playing the unregistered version then display the bumpf and then the */
+	/* Registration section. */
+	IF regflag%=FALSE
+		IF dreg%:<>1 : RETURN : ENDIF
+	ENDIF
+
+	/* Remove all the strike-thrus from the text data */
+	temp1%=0
+	DO
+		temp1%++
+		txtstyl%(temp1%)=0
+	UNTIL temp1%=85
+
+	/* Q1 : Who smoked cigarettes in the summer house? */
+	/* A1 : Mellors */
+	IF finishf%=0
+		temp1%=slctwho%:("Who smoked cigarettes in the summer house?",TRUE,400)
+		IF temp1%<>9 : INCORRECT : ENDIF
+		finishf%++
+	ENDIF
+
+	/* Q2 : Who dropped the handkerchief in the summer house? */
+	/* A2 : Sarah Darnley */
+	IF finishf%=1
+		temp1%=slctwho%:("Who dropped the handkerchief in the summer house?",TRUE,450)
+		IF temp1%<>2 : INCORRECT : ENDIF
+		finishf%++
+	ENDIF
+
+	/* Q3 : What was the source of the music in the morning room? */
+	/* A3 : Gramophone */
+	IF finishf%=2
+		IF questn%:("What was the source of the music in the morning room?","gramophone","record",FALSE)=FALSE : INCORRECT : ENDIF
+		finishf%++
+	ENDIF
+
+	/* Q4 : Where did the murderer hide the gun? */
+	/* A4 : Armour or Hall */
+	IF finishf%=3
+		IF questn%:("Where did the murderer hide the gun?","armour","hall",FALSE)=FALSE : INCORRECT : ENDIF
+		finishf%++
+	ENDIF
+	
+	/* Q5 : When did the murder occur? */
+	/* A5 : 11:05 - 11:35 */
+	IF finishf%=4
+		text$(1)=CHR$(254)+"10:05 - 10:35 pm"
+		text$(2)=CHR$(254)+"10:35 - 11:05 pm"
+		text$(3)=CHR$(254)+"11:05 - 11:35 pm"
+		text$(4)=CHR$(254)+"11:35 - 12:05 am"
+		text$(5)=CHR$(254)+"12:05 - 12:35 am"
+		temp1%=textbox%:("When did the murder occur?",TRUE,250,5)	
+		IF temp1%<>3 : INCORRECT : ENDIF
+		finishf%++
+	ENDIF
+
+	/* Q6 : Which door did the murderer leave the kitchen by? */
+	/* A6 : The door to the Kitchen Garden */
+	IF finishf%=5
+		text$(1)=CHR$(254)+"The door to the kitchen garden"
+		text$(2)=CHR$(254)+"The door to the Butler's pantry"
+		text$(3)=CHR$(254)+"He/she was never in the kitchen"
+		temp1%=textbox%:("Which door did the murderer leave the kitchen by?",TRUE,400,3)	
+		IF temp1%<>1 : INCORRECT : ENDIF
+		finishf%++
+	ENDIF
+
+	/* Q7 : Why were the murderers bootprints flat-footed? */
+	/* A7 : Big/large boots */
+	IF finishf%=6
+		IF questn%:("Why were the murderers bootprints flat-footed?","big","large",FALSE)=FALSE : INCORRECT : ENDIF
+		finishf%++
+	ENDIF
+
+	/* Q8 : What caused the first bang that was heard? */
+	/* A8 : A door slamming */
+	IF finishf%=7
+		IF questn%:("What caused the first bang that was heard?","door","slam",FALSE)=FALSE : INCORRECT : ENDIF
+		finishf%++
+	ENDIF
+
+	/* Q9 : Where was the murderer when the shot was fired? */
+	/* A9 : On the terrace */
+	IF finishf%=8
+		text$(1)=CHR$(254)+"In the study"
+		text$(2)=CHR$(254)+"On the terrace"
+		text$(3)=CHR$(254)+"By the pond"
+		text$(4)=CHR$(254)+"In the lounge"
+		text$(5)=CHR$(254)+"In the hall"
+		temp1%=textbox%:("Where was the murderer when the shot was fired?",TRUE,400,5)	
+		IF temp1%<>2 : INCORRECT : ENDIF
+		finishf%++
+	ENDIF
+
+	/* Q10 : Who was the letter written by Colonel Darnley for? */
+	/* A10 : Arthur */
+	IF finishf%=9
+		temp1%=slctwho%:("Who was the letter written by Colonel Darnley for?",FALSE,400)
+		IF temp1%<>3 : INCORRECT : ENDIF
+		finishf%++
+	ENDIF
+	
+	/* Q11 : What was the motive for the murder? */
+	/* A11 : Marry Millicent */
+	IF finishf%=10
+		IF questn%:("What was the motive for the murder?","marr","milicent",TRUE)=FALSE : INCORRECT : ENDIF
+		finishf%++
+	ENDIF
+
+	/* Q12 : How did the murderer hide the bullet hole in the french window? */
+	/* A12 : By throwing a stone thru it */
+	IF finishf%=11
+		IF questn%:("How did the murderer hide the bullet hole in the window?","stone","rock",FALSE)=FALSE : INCORRECT : ENDIF
+		finishf%++
+	ENDIF
+
+	/* Q13 : Who was the murderer? */
+	/* A10 : Arthur */
+	IF finishf%=12
+		temp1%=slctwho%:("Who was the murderer?",FALSE,200)
+		IF temp1%<>3 : INCORRECT : ENDIF
+		finishf%++
+	ENDIF
+
+	/* CONGRATULATIONS */
+
+	text$(1)="Congratulations Inspector.  With your evidence"
+	text$(2)="Arthur Coniston is arrested, tried and found"
+	text$(3)="guilty of the murder of Colonel Sebastian Darnley."
+	text$(4)="He is sentenced to 30 years of imprisonment at"
+	text$(5)="her majesty's pleasure."
+	textbox%:("*** CONGRATULATIONS ***",FALSE,340,5)	
+		
+	/* Describe what really happened at Darnley Park */
+	describe:("300",7,"")
+
+ENDP
+
+PROC questn%:(quest$,ans1$,ans2$,andf%)
+
+	/* Asks a question an checks the answer against up to two valid possibilities */
+	/* if andf%=TRUE the both ans1$ AND ans2$ must appear in the answer. */
+
+	LOCAL answer$(80)
+
+	LOCK ON
+	dINIT ""
+	dTEXT "",quest$,$302
+	dEDIT answer$,">"
+	DIALOG
+	LOCK OFF
+	
+	answer$=LOWER$(answer$)
+	
+	IF andf%=FALSE
+		IF LOC(answer$,ans1$)>0 OR LOC(answer$,ans2$)>0
+			RETURN TRUE
+		ELSE
+			RETURN FALSE
+		ENDIF
+	ELSE
+		IF LOC(answer$,ans1$)>0 AND LOC(answer$,ans2$)>0
+			RETURN TRUE
+		ELSE
+			RETURN FALSE
+		ENDIF
+	ENDIF	
+
+ENDP
+	
+PROC init:
+
+	LOCAL bit$(6,30)
+
+	roomid$="17"
+	magx%=144
+	magy%=114
+
+	REM Create the 'magnifying glass' sprite
+	bit$(1)="\app\slddat\magnify.pic"
+	bit$(2)="\app\slddat\magnify2.pic"
+	bit$(3)=""
+	bit$(4)=""
+	bit$(5)=""
+	bit$(6)=""
+	magid%=CREATESPRITE
+	APPENDSPRITE 100,bit$()
+
+	IF EXIST("M:\OPD\SEALED.INI")
+		/* Read in the state of the current game */
+		read:
+	ELSE
+		/* Create the ini file */
+		initmem:
+		regname$="UNREGISTERED"
+		regflag%=FALSE
+		write:
+	ENDIF
+
+	REM Fill the array of character names
+	who$(1)="Colonel Darnley"
+	who$(2)="Sarah Darnley"
+	who$(3)="Milicent Darnley"
+	who$(4)="Arthur Coniston"
+	who$(5)="Sir Redvers Slingsby"
+	who$(6)="Arnold Billingsgate"
+	who$(7)="Mildred Goodbody"
+	who$(8)="Norah Bagsby"
+	who$(9)="Ronald Mellors"
+
+	REM Define the map zones
+	x%(1)=357  : y%(1)=24   : w%(1)=16  : h%(1)=18
+	x%(2)=51   : y%(2)=2    : w%(2)=103 : h%(2)=24
+	x%(3)=154  : y%(3)=2    : w%(3)=53  : h%(3)=24
+	x%(4)=207  : y%(4)=2    : w%(4)=55  : h%(4)=43
+	x%(5)=51   : y%(5)=26   : w%(5)=20  : h%(5)=29
+	x%(6)=71   : y%(6)=26   : w%(6)=31  : h%(6)=29
+	x%(7)=102  : y%(7)=26   : w%(7)=32  : h%(7)=29
+	x%(8)=134  : y%(8)=25   : w%(8)=19  : h%(8)=63
+	x%(9)=153  : y%(9)=26   : w%(9)=31  : h%(9)=19
+	x%(10)=184 : y%(10)=26  : w%(10)=23 : h%(10)=19
+	x%(11)=207 : y%(11)=45  : w%(11)=55 : h%(11)=50
+	x%(12)=51  : y%(12)=55  : w%(12)=51 : h%(12)=40
+	x%(13)=102 : y%(13)=55  : w%(13)=32 : h%(13)=40
+	x%(14)=153 : y%(14)=45  : w%(14)=54 : h%(14)=24
+	x%(15)=153 : y%(15)=69  : w%(15)=25 : h%(15)=20
+	x%(16)=178 : y%(16)=69  : w%(16)=29 : h%(16)=20
+	x%(17)=137 : y%(17)=89  : w%(17)=14 : h%(17)=49
+	x%(18)=151 : y%(18)=89  : w%(18)=50 : h%(18)=21
+	x%(19)=51  : y%(19)=108 : w%(19)=32 : h%(19)=30
+	x%(20)=83  : y%(20)=101 : w%(20)=54 : h%(20)=37
+	x%(21)=151 : y%(21)=110 : w%(21)=50 : h%(21)=28
+	x%(22)=201 : y%(22)=101 : w%(22)=37 : h%(22)=37
+	x%(23)=238 : y%(23)=112 : w%(23)=24 : h%(23)=26
+	x%(24)=305 : y%(24)=23  : w%(24)=33 : h%(24)=33
+	x%(25)=338 : y%(25)=23  : w%(25)=35 : h%(25)=33
+	x%(26)=373 : y%(26)=23  : w%(26)=38 : h%(26)=33
+	x%(27)=305 : y%(27)=56  : w%(27)=33 : h%(27)=31
+	x%(28)=338 : y%(28)=56  : w%(28)=36 : h%(28)=31
+	x%(29)=374 : y%(29)=56  : w%(29)=38 : h%(29)=31
+	x%(30)=51  : y%(30)=95  : w%(30)=86 : h%(30)=13
+	x%(31)=201 : y%(31)=89  : w%(31)=61 : h%(31)=23
+
+ENDP
+
+PROC initmem:
+
+	/* Initialise the flags and memory cells recording the state of the game */
+
+	LOCAL i%
+
+
+	REM Set flags
+	menuf%=FALSE
+	psionf%=TRUE
+	questf%=FALSE
+
+	REM Clear the memory cell that records if you've already asked a question
+	i%=0
+	DO
+		i%++
+		asked%(i%)=0
+	UNTIL i%=60
+
+	REM Initialise the objects array
+	i%=0
+	DO
+		i%++
+		object%(i%)=TRUE
+	UNTIL i%=52
+	object%(2)=FALSE
+	object%(3)=FALSE
+	object%(17)=FALSE
+
+	REM Initialise the questions array
+	i%=0
+  
+	REM Statement & alibi
+	DO
+		i%++
+		quest%(i%)=TRUE
+	UNTIL i%=3
+  
+	REM Objects
+	DO
+		i%++
+		quest%(i%)=FALSE
+	UNTIL i%=15
+  
+	REM People
+	DO
+		i%++
+		quest%(i%)=TRUE
+	UNTIL i%=24
+  
+	REM More objects
+	DO
+		i%++
+		quest%(i%)=FALSE
+	UNTIL i%=30
+
+ENDP
+
+PROC location:
+
+	REM ***** Writes current location to screen *****
+
+	LOCAL room$(60)
+
+	POKEB PEEKW(28)+8,0
+	FINDFIELD(Roomid$,1,1,3)
+	room$="Current Location : "+A.name$
+	gUSE 1
+	gAT 0,14
+	gSTYLE 1
+	gPRINTB room$,480,3,1,1,0
+	gSTYLE 0
+
+ENDP
+
+PROC map:
+
+	REM ***** Loads and displays the map graphic *****
+
+	gVISIBLE OFF
+	darnpic%=gLOADBIT("\app\slddat\sealed.pic",0,0)
+	gUSE 1
+	gAT 0,20
+	gCOPY darnpic%,0,0,480,140,3
+	gCLOSE darnpic%
+
+	REM Display the current location
+	location:
+	gVISIBLE ON
+	gUPDATE
+
+ENDP
+
+PROC describe:(index$,norecs%,prefix$)
+
+	REM ***** Prepares and then presents a description *****
+
+	LOCAL counter%
+	LOCAL noitems%
+
+	POKEB(PEEKW($1c)+7),0
+	FINDFIELD(index$,1,1,3)
+	noitems%=0
+	counter%=0
+
+	DO
+		counter%++
+		noitems%=textify%:(noitems%)
+		IF counter%<norecs% : NEXT : ENDIF
+	UNTIL counter%=norecs%
+
+	textbox%:(prefix$+A.name$,FALSE,480,noitems%)
+
+	IF A.code$<>"~" : trans: : ENDIF
+
+ENDP
+
+PROC movemag:
+
+	REM ***** Move the magnifying glass icon *****
+
+	LOCAL counter%
+	LOCAL oldid$(2)
+
+	IF magx%<10  : magx%=10  : ENDIF
+	IF magx%>470 : magx%=470 : ENDIF
+	IF magy%<10  : magy%=10  : ENDIF
+	IF magy%>130 : magy%=130 : ENDIF
+
+	POSSPRITE magx%+SCRLFT-10,magy%+SCRTOP+10
+
+	counter%=0
+	oldid$=roomid$
+
+	DO
+		counter%++
+		IF magx%>x%(counter%) AND magy%>y%(counter%) AND magx%<x%(counter%)+w%(counter%) AND magy%<y%(counter%)+h%(counter%)
+			roomid$=GEN$(counter%,4)
+			IF roomid$ <> oldid$ : location: : ENDIF
+			BREAK
+		ENDIF
+	UNTIL counter%=31
+
+	gUPDATE
+
+ENDP
+
+PROC trans:
+
+	REM ***** Translate the 'code' in the data entrys *****
+
+	LOCAL length%
+	LOCAL pos%
+	LOCAL param$(3)
+	LOCAL char$(1)
+	LOCAL command$(1)
+	LOCAL number%
+
+	length%=LEN(A.code$)
+
+	pos%=0
+	param$=""
+	DO
+		pos%++
+		char$=MID$(A.code$,pos%,1)
+		IF pos%=length% OR char$=","
+			IF pos%=length% : param$+=char$ : ENDIF
+			command$=LEFT$(param$,1)
+			number%=VAL(RIGHT$(param$,LEN(param$)-1))
+			IF command$="C" : quest%(number%)=TRUE : ENDIF
+			IF command$="F" : object%(number%)=TRUE : ENDIF
+			param$=""
+		ELSE
+			param$+=char$
+		ENDIF
+	UNTIL pos%=length%
+
+ENDP
+
+PROC dabout:
+
+	LOCK ON
+	dINIT ""
+	dTEXT "","The Sealed Room Murder (1.0)",$102
+	dTEXT "",CHR$(184) + " Tom & Jim Williams 1996",$202
+	IF regflag%=TRUE
+		dTEXT "","This copy registered to : ",2
+		dTEXT "",regname$,$202
+	ELSE
+		dTEXT "","** UNREGISTERED VERSION **",2
+		dTEXT "","Please register this game",2
+		dTEXT "","by choosing REGISTER from the menu",$202
+	ENDIF
+	dTEXT "","Registration fees and bug reports to :",2
+	dTEXT "","Tom Williams, 32 Egerton Road, Davenport,",2
+	dTEXT "","Stockport. SK3 8SR. United Kingdom.",2
+	dTEXT "","Email : thw1000@cam.ac.uk until AUG'97",2
+	DIALOG
+	LOCK OFF
+
+ENDP
+
+PROC dreg%:
+
+	LOCAL temp$(20),temp2$(20),length%
+
+	IF regflag%=TRUE
+		BEEP 5,300
+		GIPRINT "This version is already registered"
+		RETURN
+	ENDIF
+  
+	LOCK ON
+	dINIT ""
+	dTEXT "","Registration (Page 1 of 3)",$302
+	dTEXT "","In order to complete your investigation of THE SEALED ROOM"
+	dTEXT "","MURDER, and find out whether you have successfully identified"
+	dTEXT "","the murderer you must register this game."
+	dTEXT "","Those of you who have already registered a copy of GOBBLER my"
+	dTEXT "","Pacman clone get free registration - simply type in your GOBBLER"
+	dTEXT "","registration code when asked.  Equally, those who register this"
+	dTEXT "","game are automatically registered users for GOBBLER."
+	DIALOG
+  
+	dINIT ""
+	dTEXT "","Registration (Page 2 of 3)",$302
+	dTEXT "","Registration costs just œ6 (+œ1 if paid in foreign currency.)"
+	dTEXT "","I will accept cheques made payable to MR. T. WILLIAMS, postal"
+	dTEXT "","orders, or at YOUR risk, cash."
+	dTEXT "","Please send payment to me at the following address:"
+	dTEXT "","Tom Williams, 32 Egerton Road, Davenport,",$102
+	dTEXT "","Stockport. SK3 8SR. United Kingdom.",$102
+	DIALOG
+  
+	dINIT ""
+	dTEXT "","Registration (Page 3 of 3)",$302
+	dEDIT temp$,"Code:"
+	dBUTTONS "Cancel",-27,"Register",13
+	IF DIALOG=0 : LOCK OFF : RETURN 0 : ENDIF
+  
+	temp2$=decode$:(temp$)
+	length%=LEN(temp2$)
+	IF PEEKB(UADD(ADDR(temp2$),1))=CHECK1 AND PEEKB(UADD(ADDR(temp2$),length%))=CHECK2
+		regflag%=1
+		regname$=MID$(temp2$,2,length%-2)
+		writhigh:
+		GIPRINT "Thank you for registering "+regname$
+		LOCK OFF
+		RETURN 1
+	ELSE
+		GIPRINT "Registration code incorrect"
+		BEEP 5,300
+		LOCK OFF
+		RETURN 0
+	ENDIF
+  
+ENDP
+
+PROC titles:
+
+	/* Display the game title */
+
+	LOCAL tmpwin%
+	LOCAL events%(6)
+
+	tmpwin%=gCREATE((SCRWID-250)/2,(SCRHGT-92)/2,250,92,0)
+	gBORDER 515
+	gFONT SWISS_16 : gSTYLE DOUBLE_HEIGHT_BOLD
+	gPRINTBAT(5,30,"THE SEALED ROOM MURDER",240,3)
+	gFONT SWISS_8 : gSTYLE NORMAL
+	gPRINTBAT(5,40,CHR$(184)+"Thomas H. Williams 1996",240,3)
+	gFONT SWISS_11
+	IF regflag%=TRUE
+		gPRINTBAT(5,56,"Registered To",240,3)
+		gPRINTBAT(5,68,regname$,240,3)
+	ELSE
+		gPRINTBAT(5,56,"** UNREGISTERED VERSION **",240,3)
+		gPRINTBAT(5,68,"Please Register This Game",240,3)
+	ENDIF
+	gFONT SWISS_13
+	gPRINTBAT(5,87,"PRESS A KEY",240,3)
+	gVISIBLE ON
+	gUPDATE
+
+	/* Event Handling */
+
+	DO
+	
+		IF TESTEVENT
+
+			GETEVENT events%()
+
+label2::
+
+			IF (events%(1) AND $400)=0
+			
+				/* Process keyboard events */
+				IF events%(1)=%x+512 OR events%(1)=27
+					exit:(TRUE)
+				ELSE
+					gCLOSE tmpwin%
+					RETURN
+				ENDIF
+			
+			ELSEIF events%(1)=$404
+			
+				/* Respond to X event sent from system */
+				IF LEFT$(GETCMD$,1)="X" : exit:(FALSE) : ENDIF
+			
+			ELSEIF events%(1)=$402
+			
+				/* Sent to background */
+				GETEVENT events%()
+				GOTO label2
+			
+			ENDIF
+			
+		ENDIF
+
+	UNTIL 0
+
+ENDP
+
+PROC exit:(prompt%)
+
+	/* Close down and exit program */
+	/* If prompt%=TRUE then prompt first */
+
+	IF prompt%=TRUE
+		LOCK ON
+		dINIT "Exit the Sealed Room Murder?"
+		dBUTTONS "No",-%n,"Yes",%y
+		IF DIALOG<>121 : LOCK OFF : RETURN : ENDIF
+		LOCK OFF
+	ENDIF
+	
+	/* Close down the database */
+	CLOSE
+	
+	/* Save the state of the current game */
+	write:
+	
+	STOP
+
+ENDP
+
+#include "TEXTBOX.OPP"
+#include "CODE1.OPP"
+#include "DARNLEY2.OPP"

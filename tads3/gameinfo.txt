@@ -1,0 +1,12 @@
+Name: The Sealed Room Murder
+Byline: by Jim & Tom Williams
+HtmlByline: by <a href="mailto:thwill@ntlworld.com"> Tom Williams</a>
+AuthorEmail: Tom Williams <thwill@ntlworld.com>
+Desc: CUSTOMIZE - this should provide a brief description of the game, in plain text format.
+HtmlDesc: CUSTOMIZE - this should provide a brief description of the game, in <b>HTML</b> format.
+Version: 0.1
+ReleaseDate: 2007-12-30
+Language: en-US
+LicenseType: Freeware
+CopyingRules: Nominal cost only; compilations allowed
+PresentationProfile: Default
