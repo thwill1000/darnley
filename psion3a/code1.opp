@@ -1,0 +1,50 @@
+PROC code$:(incode$)
+
+  REM ***********************************
+  REM * This procedure encodes a string *
+  REM ***********************************
+
+  LOCAL xcode$(20),temp$(20),i%,j%,length%
+
+  xcode$=incode$
+  length%=PEEKB(ADDR(xcode$))
+
+  j%=0
+  DO
+    j%++
+    i%=PEEKB(UADD(ADDR(xcode$),j%))
+    i%+=j%
+    IF i%>126 : i%=31+(i%-126) : ENDIF
+    POKEB UADD(ADDR(temp$),length%+1-j%),i%
+  UNTIL j%=length%
+  POKEB ADDR(temp$),length%
+  
+  RETURN temp$
+
+ENDP
+  
+PROC decode$:(incode$)
+
+  REM ***********************************
+  REM * This procedure decodes a string *
+  REM ***********************************
+
+  LOCAL xcode$(20),temp$(20),i%,j%,length%
+
+  xcode$=incode$
+  length%=PEEKB(ADDR(xcode$))
+
+  POKEB ADDR(temp$),length%
+  j%=0
+  DO
+    j%++
+    i%=PEEKB(UADD(ADDR(xcode$),length%+1-j%))
+    i%-=j%
+    IF i%<32 : i%=126+(i%-31) : ENDIF
+    POKEB UADD(ADDR(temp$),j%),i%
+  UNTIL j%=20
+  
+  RETURN temp$
+  
+ENDP  
+

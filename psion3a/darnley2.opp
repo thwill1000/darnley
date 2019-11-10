@@ -1,0 +1,137 @@
+/*******************************/
+/*   THE SEALED ROOM MURDER    */
+/*  File Handling Procedures   */
+/*******************************/
+/* (C) Thomas H. Williams 1996 */
+/*******************************/
+
+#define INI_FILE_ERROR			IF ret%<0 : inierror:(ret%,iniopen%,inihand%) : ENDIF
+
+PROC write:
+
+	/* Write the .ini file */
+
+	LOCAL inihand%,iniopen%,ret%,file$(25),temp$(20),i%,regcode$(20),length%
+
+	LOCK ON
+
+	iniopen%=FALSE
+	file$="M:\OPD\SEALED.INI"
+	temp$=""
+	length%=PEEKB(ADDR(regname$))
+	i%=0
+	DO
+		i%++
+		POKEB UADD(ADDR(temp$),i%+1),PEEKB(UADD(ADDR(regname$),i%))
+	UNTIL i%=length%  
+	POKEB ADDR(temp$),length%+2
+
+	IF regflag%=TRUE
+		POKEB UADD(ADDR(temp$),1),CHECK1
+		POKEB UADD(ADDR(temp$),length%+2),CHECK2
+	ELSE
+		POKEB UADD(ADDR(temp$),1),32
+		POKEB UADD(ADDR(temp$),length%+2),32
+	ENDIF
+
+	regcode$=code$:(temp$)
+
+	ret%=IOOPEN(inihand%,file$,$0102)
+	INI_FILE_ERROR
+  
+	iniopen%=TRUE
+  
+	/* Write the registration code */
+	ret%=IOWRITE(inihand%,ADDR(regcode$),21)
+	INI_FILE_ERROR
+  
+	/* Write the preference flags */
+	ret%=IOWRITE(inihand%,ADDR(psionf%),2)
+	INI_FILE_ERROR
+	ret%=IOWRITE(inihand%,ADDR(questf%),2)
+	INI_FILE_ERROR
+  
+	/* Write the game position flags */ 
+	ret%=IOWRITE(inihand%,ADDR(finishf%),2)
+	INI_FILE_ERROR
+	ret%=IOWRITE(inihand%,ADDR(asked%(1)),120)
+	INI_FILE_ERROR
+	ret%=IOWRITE(inihand%,ADDR(quest%(1)),60)
+	INI_FILE_ERROR
+	ret%=IOWRITE(inihand%,ADDR(object%(1)),104)
+	INI_FILE_ERROR
+
+	ret%=IOCLOSE(inihand%)
+	INI_FILE_ERROR
+  
+	iniopen%=FALSE
+  
+	LOCK OFF
+  
+ENDP
+
+PROC read:
+
+	/* Read the .ini file */
+
+	LOCAL inihand%,iniopen%,ret%,file$(25),temp$(20),i%,regcode$(20),length%
+
+	LOCK ON
+
+	iniopen%=FALSE
+	file$="M:\OPD\SEALED.INI"
+	
+	ret%=IOOPEN(inihand%,file$,$0000)
+	INI_FILE_ERROR
+  
+	iniopen%=TRUE
+  
+	/* Read the registration code */
+	ret%=IOREAD(inihand%,ADDR(regcode$),21)
+	INI_FILE_ERROR
+  
+	/* Write the preference flags */
+	ret%=IOREAD(inihand%,ADDR(psionf%),2)
+	INI_FILE_ERROR
+	ret%=IOREAD(inihand%,ADDR(questf%),2)
+	INI_FILE_ERROR
+  
+	/* Write the game position flags */ 
+	ret%=IOREAD(inihand%,ADDR(finishf%),2)
+	INI_FILE_ERROR
+	ret%=IOREAD(inihand%,ADDR(asked%(1)),120)
+	INI_FILE_ERROR
+	ret%=IOREAD(inihand%,ADDR(quest%(1)),60)
+	INI_FILE_ERROR
+	ret%=IOREAD(inihand%,ADDR(object%(1)),104)
+	INI_FILE_ERROR
+
+	ret%=IOCLOSE(inihand%)
+	INI_FILE_ERROR
+  
+	iniopen%=FALSE
+  
+	temp$=decode$:(regcode$)
+  
+	length%=PEEKB(ADDR(temp$))
+	regname$=MID$(temp$,2,length%-2)
+	IF PEEKB(UADD(ADDR(temp$),1))=CHECK1 AND PEEKB(UADD(ADDR(temp$),length%))=CHECK2
+		regflag%=TRUE
+	ELSE
+		regflag%=FALSE
+	ENDIF
+
+	LOCK OFF
+  
+ENDP
+
+PROC inierror:(err%,iniopen%,inihand%)
+
+	GIPRINT ERR$(err%)
+	IF iniopen%=TRUE : IOCLOSE(inihand%) : ENDIF
+	LOCK OFF
+	BEEP 5,300
+	PAUSE -50
+	STOP
+
+ENDP

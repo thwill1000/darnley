@@ -1,0 +1,27 @@
+PSIONICS FILE - BITMAP.FMT
+==========================
+Format of Bitmap files
+Last modified 1994-02-26
+========================
+A bitmap file (also called a .PIC file) begins with an 8 byte header of the
+following form:
+  Offset  0 to   2: "PIC"
+  Offset  3 (byte): $DC
+  Offset  4 (byte): format version number
+  Offset  5 (byte): OPL runtime version number
+  Offset  6 (word): number of bitmaps in the file
+
+The format and OPL runtime version number are always $30.
+
+This header is then followed by the appropriate number of bitmap descriptor
+records. These are each 12 bytes:
+  Offset  0 (word): CRC of bitmap data (but not descriptor)
+  Offset  2 (word): width of bitmap
+  Offset  4 (word): height of bitmap
+  Offset  6 (word): size of bitmap data in bytes
+  Offset  8 (long): position of data relative to the end of the last record
+                    [I believe; I don't have any multi-picture files yet.]
+
+The data is stored from top to bottom. Each row is rounded up to an even
+number of bytes, and is stored from left to right, with bit 0 of each byte
+being the leftmost pixel of the 8 represented.
