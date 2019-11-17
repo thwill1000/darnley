@@ -2,29 +2,30 @@
 
 A murder mystery adventure game.
 
-(c) 1997-2019 Tom & Jim Williams, All Rights Reserved
+(c) 1987-2019 Tom & Jim Williams, All Rights Reserved
 
 The following potted development history is "to the best of my
 recollection":
 
-The original design dates back to my early teens and was mostly
-done by me and my dad (though my dad's diary records that I tried to
-interest my mum in giving a persepctive on what girls might want in
-a video game) on a holiday in Wales sometime in the late 80's or early
-90's. The intended target was the ZX Spectrum; the paper design has
-been lost (or is misfiled in a box in the atic) and if an
-implementation ever started on the ZX Spectrum it has been lost.
+The original design dates back to a family holiday on Mull in 1987
+(when I would have been 13.) My dad and I devised the game over a
+series of walks and wrote up the design in the evenings (the original
+papers are now lost, or misfiled in a box in the attic.) I also recall
+trying to interest my mum in giving a persepctive on what girls might
+want in a video game. The intended target was the ZX Spectrum but if
+an implementation was ever started it has been lost (alongside
+everything else I wrote for the ZX Spectrum, BBC Micro and Amiga 500.)
 
-Shortly afterwards I also started an implementation in BBC BASIC but
-abandoned it due to memory constraints (and lack of talent.) This
-implementation has also been lost.
+Presumably shortly afterwards I recall starting an implementation in
+BBC BASIC but abandoned it due to memory constraints (and lack of
+talent.)
 
 In the late 90's whilst at University I revived the idea and created
-the most complete to date implementation in OPL on the Psion 3a.
+the, to date,  most complete implementation in OPL on the Psion 3a.
 
 In August 2013 I wrote a C# utility to convert the Psion database file
-(.dbf) to XML and after a brief flirtation with implementing it as a
-.ASPX web-app I implemented the game (over another holiday with my
+(.dbf) to XML and after a brief flirtation with the possibilities of a
+.ASPX web-app I started an implementation (over another holiday with my
 parents) in the TADS 3 Interactive Fiction development system.
 This attempt didn't continue beyond the holiday, one of the reasons
 was a realisation that the game as designed was too primitive for
