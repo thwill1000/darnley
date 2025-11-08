@@ -11,7 +11,7 @@ The original design dates back to a family holiday on Mull in 1987
 (when I would have been 13.) My dad and I devised the game over a
 series of walks and wrote up the design in the evenings (the original
 papers are now lost, or misfiled in a box in the attic.) I also recall
-trying to interest my mum in giving a persepctive on what girls might
+trying to interest my mum in giving a perspective on what girls might
 want in a video game. The intended target was the ZX Spectrum but if
 an implementation was ever started it has been lost (alongside
 everything else I wrote for the ZX Spectrum, BBC Micro and Amiga 500.)
