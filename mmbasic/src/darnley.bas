@@ -9,13 +9,14 @@ Option Explicit
 #Include "console.inc"
 #Include "adventlib.inc"
 
-DIRECTIONS$(1) = "Forward"
-DIRECTIONS$(2) = "Aft"
+'DIRECTIONS$(1) = "Forward"
+'DIRECTIONS$(2) = "Aft"
 
 init_advent()
+r = 17 ' Drive
 
 Do
-  If describe Then describe_room()
+  If describe Then describe_loc()
 
   r_new = r
   command$ = get_input$()
@@ -25,7 +26,7 @@ Do
   If verb$ = "drop" Then
     ok = cmd_drop()
   ElseIf verb$ = "go" Then
-    ok = cmd_go()
+    ok = verb_go()
   ElseIf verb$ = "inventory" Then
     ok = cmd_inventory()
   ElseIf verb$ = "look" Then
