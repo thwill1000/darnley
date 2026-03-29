@@ -22,6 +22,7 @@ Dim exits(Max(NUM_ROOMS, 2), MAX_NUM_EXITS)
 Dim oname$(Max(NUM_OBJECTS, 2))
 Dim olocation(Max(NUM_OBJECTS, 2))
 Dim command$
+Dim words$(10) Length 20
 Dim noun$, verb$
 
 Sub init_advent()
@@ -29,8 +30,8 @@ Sub init_advent()
   init_console()
   read_rooms()
   read_objects()
-  print_text("introduction", "magenta")
-  print_newline()
+'  print_text("introduction", "magenta")
+'  print_newline()
 End Sub
 
 ' Initialises and clears console/terminal
@@ -44,66 +45,61 @@ End Sub
 
 ' Count the number of objects
 Function count_objects()
-  Local obj$, loc
-  Restore object_data
-  Do
-    Read obj$
-    If obj$ = "" Then Exit Do
-    Read loc
-    Inc count_objects
-  Loop
+  count_objects = 2
+'  Local obj$, loc
+'  Restore object_data
+'  Do
+'    Read obj$
+'    If obj$ = "" Then Exit Do
+'    Read loc
+'    Inc count_objects
+'  Loop
 End Function
 
 ' Read the objects data
 Sub read_objects()
-  Local i
-  Restore object_data
-  For i = 1 To NUM_OBJECTS
-    Read oname$(i), olocation(i)
-  Next
+'  Local i
+'  Restore object_data
+'  For i = 1 To NUM_OBJECTS
+'    Read oname$(i), olocation(i)
+'  Next
 End Sub
 
 ' Count the number of rooms
 Function count_rooms()
-  Local i, s$, exits(MAX_NUM_EXITS)
-  Restore room_data
+  Local s$
+  Restore location_data
   Do
     Read s$
     If s$ = "" Then Exit Do
-    Do While Right$(s$, 1) = "@"
-      Read s$
-    Loop
-    For i = 1 To MAX_NUM_EXITS
-      Read exits(i)
-    Next
     Inc count_rooms
   Loop
 End Function
 
 ' Read the room data
 Sub read_rooms()
-  Local i, j, s$
-  Restore room_data
+  Local i, s$
+  Restore location_data
   For i = 1 To NUM_ROOMS
     Read s$
     rooms$(i) = s$
-    Do While Right$(rooms$(i), 1) = "@"
-      rooms$(i) = Left$(rooms$(i), Len(rooms$(i)) - 1) + " "
-      Read s$
-      rooms$(i) = rooms$(i) + s$
-    Loop
+'    Do While Right$(rooms$(i), 1) = "@"
+'      rooms$(i) = Left$(rooms$(i), Len(rooms$(i)) - 1) + " "
+'      Read s$
+'      rooms$(i) = rooms$(i) + s$
+'    Loop
 
-    For j = 1 To MAX_NUM_EXITS
-      Read exits(i, j)
-    Next
+'    For j = 1 To MAX_NUM_EXITS
+'      Read exits(i, j)
+'    Next
   Next
 End Sub
 
-' Describe the current room
-Sub describe_room()
+' Describe the current location
+Sub describe_loc()
   con.foreground("yellow")
   If DEBUG Then con.print("(" + Str$(r) + ") ")
-  con.println("You are " + rooms$(r))
+  con.println("Location: " + Field$(rooms$(r), 2, "|"))
   con.print("You can see: ")
   Local count = 0, i
   For i = 1 To NUM_OBJECTS
@@ -117,13 +113,14 @@ Sub describe_room()
   If count = 0 Then con.print("Nothing of interest")
   con.println()
   con.print("Exits: ")
+  Const num_exits = Val(Field$(rooms$(r), 3, "|"))
   count = 0
-  For i = 1 To MAX_NUM_EXITS
-    If exits(r, i) <> 0 Then
-      If count > 0 Then con.print(", ")
-      con.print(DIRECTIONS$(i))
-      Inc count
-    EndIf
+  Local exit_label$
+  For i = 1 To num_exits
+    If count > 0 Then con.print(", ")
+    exit_label$ = Field$(rooms$(r), 3 + i, "|")
+    con.print(Field$(get_loc$(exit_label$), 2, "|"))
+    Inc count
   Next
   If count = 0 Then con.print("No way out")
   con.println()
@@ -131,6 +128,17 @@ Sub describe_room()
   describe = 0
   con.foreground("reset")
 End Sub
+
+Function get_loc$(label$)
+  Local i
+  For i = 1 To NUM_ROOMS
+    If Field$(rooms$(i), 1, "|") = label$ Then
+      get_loc$ = rooms$(i)
+      Exit Function
+    EndIf
+  Next
+  Error "Location not found: " + label$
+End Function
 
 ' Prints a newline
 Sub print_newline()
@@ -218,7 +226,9 @@ Function split_words%(cmd$, words$())
   i% = 1
   For p% = 1 To Len(cmd$)
     ch$ = LCase$(Mid$(cmd$, p%, 1))
-    If ch$ = " " Then
+    If ch$ = "'" Then
+      ' Removed from word
+    ElseIf ch$ = " " Then
       If Len(words$(i%)) > 0 Then Inc i%
       If i% > Bound(words$()) Then
         split_words% = 1 ' Too many words
@@ -235,11 +245,41 @@ Function split_words%(cmd$, words$())
   Next
 End Function
 
+Function find_word%(haystack$(), needle$)
+  Local i%
+  For i% = 1 To Bound(haystack$(), 1)
+    If LCase$(haystack$(i%)) = LCase$(needle$) Then
+      find_word% = i%
+      Exit For
+    EndIf
+  Next
+End Function
+
+
+Sub remove_words(words$(), remove$())
+  Local i% = 1, found%, result%
+  Do While i% <= Bound(remove$(), 1)
+    found% = find_word%(words$(), remove$(i%))
+    If found% Then
+      result% = remove_word%(words$(), found%)
+    Else
+      Inc i%
+    EndIf
+  Loop
+End Sub
+
+Sub print_words(words$())
+  Local i
+  For i = 1 To Bound(words$(), 1)
+    If words$(i) = "" Then Exit Sub
+    con.println(words$(i))
+  Next
+End Sub
+
 ' Perform common parsing into verb$ and noun$
 Function parse_common(cmd$)
 
   ' Split command into array of words
-  Local words$(10) Length 20
   Select Case split_words%(cmd$, words$())
     Case 1
       print_fail "Too many words."
@@ -250,26 +290,31 @@ Function parse_common(cmd$)
   End Select
   If parse_common Then Exit Function
 
-  ' Handle commands with > 2 words
-  If words$(2) = "to" Or words$(2) = "with" Or words$(2) = "up" Then
-    ' Discard TO, UP and WITH between <verb> and <noun>
-    parse_common = remove_word%(words$(), 2)
-  ElseIf (words$(1) = "switch" Or words$(1) = "turn") And words$(2) = "on" Then
-    ' SWITCH ON <noun> and TURN ON <noun>
-    words$(1) = "switch-on"
-    parse_common = remove_word%(words$(), 2)
-  EndIf
+'  ' Handle commands with > 2 words
+'  If words$(2) = "to" Or words$(2) = "with" Or words$(2) = "up" Then
+'    ' Discard TO, UP and WITH between <verb> and <noun>
+'    parse_common = remove_word%(words$(), 2)
+'  ElseIf (words$(1) = "switch" Or words$(1) = "turn") And words$(2) = "on" Then
+'    ' SWITCH ON <noun> and TURN ON <noun>
+'    words$(1) = "switch-on"
+'    parse_common = remove_word%(words$(), 2)
+'  EndIf
 
-  If parse_common Then
-    print_fail "Unexpected error!"
-    Exit Function
-  EndIf
+'  If parse_common Then
+'    print_fail "Unexpected error!"
+'    Exit Function
+'  EndIf
 
-  If count_words%(words$()) > 2 Then
-    print_fail "Sorry, I (mostly) only accept two word commands."
-    parse_common = 1
-    Exit Function
-  EndIf
+  Local remove$(2) = ("to", "the")
+  remove_words(words$(), remove$())
+
+'  print_words(words$())
+
+'  If count_words%(words$()) > 2 Then
+'    print_fail "Sorry, I (mostly) only accept two word commands."
+'    parse_common = 1
+'    Exit Function
+'  EndIf
 
   ' Tranform verbs
   verb$ = ""
@@ -363,25 +408,49 @@ Function cmd_examine()
   EndIf
 End Function
 
+Function lookup_loc%(id$)
+  Local i%
+  For i% = 1 To NUM_ROOMS
+    If id$ = Field$(rooms$(i%), 1, "|") Then
+      lookup_loc% = i%
+      Exit Function
+    EndIf
+  Next
+  Error "Location not found: " + id$
+End Function
+
 ' Handle the GO verb
-Function cmd_go()
-  cmd_go = 1
-  Select Case noun$
-    Case "north"
-      r_new = exits(r, 1)
-    Case "south"
-      r_new = exits(r, 2)
-    Case "east"
-      r_new = exits(r, 3)
-    Case "west"
-      r_new = exits(r, 4)
-    Case "up"
-      r_new = exits(r, 5)
-    Case "down"
-      r_new = exits(r, 6)
-    Case Else
-      print_fail "You can't go there"
-  End Select
+Function verb_go()
+  Local word_count% = count_words%(words$())
+  Local loc_words$(10) Length 20
+  Local best% = 0, best_match% = 0, i%, j%, match%, result%
+
+  Const num_exits% = Val(Field$(rooms$(r), 3, "|"))
+  Local loc%, loc_id$, loc_name$
+  For i% = 1 To num_exits%
+    loc_id$ = Field$(rooms$(r), 3 + i%, "|")
+    loc% = lookup_loc%(loc_id$)
+    loc_name$ = Field$(rooms$(loc%), 2, "|")
+    result% = split_words%(loc_name$, loc_words$())
+
+    match% = 0
+    For j% = 2 To word_count%
+      If words$(j%) = "" Then Exit For
+      If find_word%(loc_words$(), words$(j%)) Then Inc match%
+    Next
+
+    If match% > best_match% Then
+      best_match% = match%
+      r_new = loc%
+    EndIf
+  Next
+
+  If Not best_match% Then
+    print_fail("You can't go there.")
+    r_new = r
+  EndIf
+
+  verb_go = 1
 End Function
 
 ' Handle the INVENTORY verb
