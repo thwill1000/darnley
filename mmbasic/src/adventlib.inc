@@ -18,9 +18,10 @@ Dim describe = 1
 Dim ok
 Dim r = 1, r_new
 Dim rooms$(Max(NUM_ROOMS, 2))
-Dim exits(Max(NUM_ROOMS, 2), MAX_NUM_EXITS)
-Dim oname$(Max(NUM_OBJECTS, 2))
-Dim olocation(Max(NUM_OBJECTS, 2))
+Dim objects$(Max(NUM_OBJECTS, 2))
+' Dim exits(Max(NUM_ROOMS, 2), MAX_NUM_EXITS)
+' Dim oname$(Max(NUM_OBJECTS, 2))
+' Dim olocation(Max(NUM_OBJECTS, 2))
 Dim command$
 Dim words$(10) Length 20
 Dim noun$, verb$
@@ -45,24 +46,34 @@ End Sub
 
 ' Count the number of objects
 Function count_objects()
-  count_objects = 2
-'  Local obj$, loc
-'  Restore object_data
-'  Do
-'    Read obj$
-'    If obj$ = "" Then Exit Do
-'    Read loc
-'    Inc count_objects
-'  Loop
+  Local s$
+  Restore object_data
+  Do
+    Read s$
+    If s$ = "" Then Exit Do
+    Inc count_objects
+  Loop
 End Function
 
 ' Read the objects data
 Sub read_objects()
-'  Local i
-'  Restore object_data
-'  For i = 1 To NUM_OBJECTS
-'    Read oname$(i), olocation(i)
-'  Next
+  Local i%, s$
+  Restore object_data
+  For i% = 1 To NUM_OBJECTS
+    Read s$
+    objects$(i%) = s$
+  Next
+
+  ' Check no object is located in an invalid location
+  Local obj_tag$
+  Local loc_tag$
+  For i% = 1 To NUM_OBJECTS
+    obj_tag$ = Field$(objects$(i%), 1, "|")
+    loc_tag$ = Field$(objects$(i%), 3, "|")
+    If Not find_loc%(loc_tag$, 1) Then
+      Error "Object " + obj_tag$ + " has invalid location: " + loc_tag$
+    EndIf
+  Next
 End Sub
 
 ' Count the number of rooms
@@ -78,20 +89,24 @@ End Function
 
 ' Read the room data
 Sub read_rooms()
-  Local i, s$
+  Local i%, j%, s$
   Restore location_data
-  For i = 1 To NUM_ROOMS
+  For i% = 1 To NUM_ROOMS
     Read s$
-    rooms$(i) = s$
-'    Do While Right$(rooms$(i), 1) = "@"
-'      rooms$(i) = Left$(rooms$(i), Len(rooms$(i)) - 1) + " "
-'      Read s$
-'      rooms$(i) = rooms$(i) + s$
-'    Loop
+    rooms$(i%) = s$
+  Next
 
-'    For j = 1 To MAX_NUM_EXITS
-'      Read exits(i, j)
-'    Next
+  ' Check no room has an invalid exit
+  Local exit_tag$, loc_tag$, num_exits%
+  For i% = 1 To NUM_ROOMS
+    loc_tag$ = Field$(rooms$(i%), 1, "|")
+    num_exits% = Val(Field$(rooms$(i%), 3, "|"))
+    For j% = 1 To num_exits%
+      exit_tag$ = Field$(rooms$(i%), 3 + j%, "|")
+      If Not find_loc%(exit_tag$, 1) Then
+        Error "Room " + loc_tag$ + " has invalid exit: " + exit_tag$
+      EndIf
+    Next
   Next
 End Sub
 
@@ -100,18 +115,23 @@ Sub describe_loc()
   con.foreground("yellow")
   If DEBUG Then con.print("(" + Str$(r) + ") ")
   con.println("Location: " + Field$(rooms$(r), 2, "|"))
+
+  ' Iterate through objects to find those at the current location
   con.print("You can see: ")
-  Local count = 0, i
-  For i = 1 To NUM_OBJECTS
-    If olocation(i) = r Then
-      If count > 0 Then con.print(", ")
-      con.print(Field$(oname$(i), 2, "|"))
-      If DEBUG Then con.print(" (" + Str$(i) + ")")
-      Inc count
+  Local count%, i%, oloc%
+  For i% = 1 To NUM_OBJECTS
+    oloc% = find_loc%(Field$(objects$(i%), 3, "|"), 1)
+    If oloc% = r Then
+      If count% > 0 Then con.print(", ")
+      con.print(Field$(objects$(i%), 2, "|"))
+      If DEBUG Then con.print(" (" + Str$(i%) + ")")
+      Inc count%
     EndIf
   Next
-  If count = 0 Then con.print("Nothing of interest")
+  If count% = 0 Then con.print("Nothing of interest")
   con.println()
+
+  ' Iterate through exits for the current location
   con.print("Exits: ")
   Const num_exits = Val(Field$(rooms$(r), 3, "|"))
   count = 0
@@ -119,25 +139,28 @@ Sub describe_loc()
   For i = 1 To num_exits
     If count > 0 Then con.print(", ")
     exit_label$ = Field$(rooms$(r), 3 + i, "|")
-    con.print(Field$(get_loc$(exit_label$), 2, "|"))
+    con.print(Field$(rooms$(find_loc%(exit_label$)), 2, "|"))
     Inc count
   Next
   If count = 0 Then con.print("No way out")
   con.println()
+
   con.println()
   describe = 0
   con.foreground("reset")
 End Sub
 
-Function get_loc$(label$)
+Function find_loc%(tag$, no_error%)
   Local i
   For i = 1 To NUM_ROOMS
-    If Field$(rooms$(i), 1, "|") = label$ Then
-      get_loc$ = rooms$(i)
-      Exit Function
+    If Field$(rooms$(i), 1, "|") = tag$ Then
+      find_loc% = i
+      Exit For
     EndIf
   Next
-  Error "Location not found: " + label$
+  If Not no_error% And Not find_loc% Then
+    Error "Location not found: " + tag$
+  EndIf
 End Function
 
 ' Prints a newline
