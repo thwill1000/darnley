@@ -24,6 +24,8 @@ Do
   If ok = 1 Then Goto command_end
 
   Select Case verb$
+    Case "ask"
+      ok = verb_ask()
     Case "drop"
       ok = cmd_drop()
     Case "go"
@@ -190,4 +192,15 @@ Data "OBJ249_FOOTPRINTS_EL|Footprints|LOC022_EAST_LAWN"
 Data "OBJ250_CIGARETTE_ENDS_GC|Cigarette Ends|LOC023_GAMEKEEPERS_COTTAGE"
 Data "OBJ251_ARMOUR|Armour|LOC008_HALL"
 Data "OBJ252_DOOR_MAT|Door Mat|LOC008_HALL"
+Data ""
+
+people_data:
+Data "P_SARAH_DARNLEY|sarah"
+Data "P_MILLICENT_DARNLEY|millicent milicent"
+Data "P_ARTHUR_CONISTON|arthur coniston"
+Data "P_REDVERS_SLINGSBY|redvers slingsby"
+Data "P_ARNOLD_BILLINGSGATE|arnold billingsgate"
+Data "P_MILDRED_GOODBODY|mildred goodbody"
+Data "P_NORAH_BAGSBY|norah bagsby"
+Data "P_RONALD_MELLORS|ronald mellors"
 Data ""

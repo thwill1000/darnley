@@ -4,24 +4,26 @@
 
 If Mm.Info$(Device X) = "MMB4L" And Mm.Info(Version) < 80000000 Then Option Resolution Pixel
 
+Const ASSETS_DIR$ = "../assets"
+Const MAX_WORDS = 10
+Const MAX_WORD_LENGTH = 20
 Const MAX_NUM_EXITS = 6
 Const INVENTORY = -1
 Const HIDDEN_ROOM = -2
 Const LIMBO = -3
-Const NUM_ROOMS = count_rooms()
-Const NUM_OBJECTS = count_objects()
+Const NUM_ROOMS = count_data%("location_data")
+Const NUM_OBJECTS = count_data%("object_data")
+Const NUM_PEOPLE = count_data%("people_data")
 
-Dim DIRECTIONS$(6) = ( "North", "South", "East", "West", "Up", "Down" )
+'Dim DIRECTIONS$(6) = ( "North", "South", "East", "West", "Up", "Down" )
 
 Dim DEBUG = 0
 Dim describe = 1
 Dim ok
 Dim r = 1, r_new
-Dim rooms$(Max(NUM_ROOMS, 2))
-Dim objects$(Max(NUM_OBJECTS, 2))
-' Dim exits(Max(NUM_ROOMS, 2), MAX_NUM_EXITS)
-' Dim oname$(Max(NUM_OBJECTS, 2))
-' Dim olocation(Max(NUM_OBJECTS, 2))
+Dim rooms$(Max(NUM_ROOMS, 2)) Length 255
+Dim objects$(Max(NUM_OBJECTS, 2)) Length 128
+Dim people$(Max(NUM_PEOPLE, 2)) Length 128
 Dim command$
 Dim words$(10) Length 20
 Dim noun$, verb$
@@ -31,6 +33,7 @@ Sub init_advent()
   init_console()
   read_rooms()
   read_objects()
+  read_people()
 '  print_text("introduction", "magenta")
 '  print_newline()
 End Sub
@@ -44,14 +47,14 @@ Sub init_console()
   Cls
 End Sub
 
-' Count the number of objects
-Function count_objects()
+' Count the number of data entries
+Function count_data%(label$)
   Local s$
-  Restore object_data
+  Restore label$
   Do
     Read s$
     If s$ = "" Then Exit Do
-    Inc count_objects
+    Inc count_data%
   Loop
 End Function
 
@@ -76,17 +79,6 @@ Sub read_objects()
   Next
 End Sub
 
-' Count the number of rooms
-Function count_rooms()
-  Local s$
-  Restore location_data
-  Do
-    Read s$
-    If s$ = "" Then Exit Do
-    Inc count_rooms
-  Loop
-End Function
-
 ' Read the room data
 Sub read_rooms()
   Local i%, j%, s$
@@ -107,6 +99,16 @@ Sub read_rooms()
         Error "Room " + loc_tag$ + " has invalid exit: " + exit_tag$
       EndIf
     Next
+  Next
+End Sub
+
+' Read the people data
+Sub read_people()
+  Local i%, j%, s$
+  Restore people_data
+  For i% = 1 To NUM_PEOPLE
+    Read s$
+    people$(i%) = s$
   Next
 End Sub
 
@@ -283,7 +285,6 @@ Function find_word%(haystack$(), needle$)
   Next
 End Function
 
-
 Sub remove_words(words$(), remove$())
   Local i% = 1, found%, result%
   Do While i% <= Bound(remove$(), 1)
@@ -297,11 +298,13 @@ Sub remove_words(words$(), remove$())
 End Sub
 
 Sub print_words(words$())
-  Local i
-  For i = 1 To Bound(words$(), 1)
-    If words$(i) = "" Then Exit Sub
-    con.println(words$(i))
+  Local count%, i%
+  For i% = 1 To Bound(words$(), 1)
+    If words$(i%) = "" Then Exit For
+    con.println(words$(i%))
+    Inc count%
   Next
+  Print Str$(count%) + " words"
 End Sub
 
 ' Perform common parsing into verb$ and noun$
@@ -411,6 +414,100 @@ Function parse_common(cmd$)
   EndIf
 End Function
 
+Function find_person%(words$(), first%, last%)
+  Local person_words$(MAX_WORDS) Length MAX_WORD_LENGTH
+  Local i%, match_count%, person_word_count%
+
+'  Print NUM_PEOPLE
+  For i% = 1 To NUM_PEOPLE
+    person_word_count% = split_words%(Field$(people$(i%), 2, "|"), person_words$())
+'    print_words(person_words$())
+    match_count% = find_matches%(person_words$(), words$(), first%, last%)
+    If match_count% Then
+      find_person% = i%
+'      print_success("FOUND " + people$(find_person%))
+      Exit Function
+    EndIf
+  Next
+
+  print_fail("NOT FOUND")
+End Function
+
+' Handle the ASK verb
+Function verb_ask()
+  verb_ask = 1
+
+  Const about_idx% = find_word%(words$(), "about")
+  If Not about_idx% Then
+    print_fail "Try: ASK person ABOUT subject"
+    Exit Function
+  EndIf
+
+  Const person_idx% = find_person%(words$(), 1, about_idx% - 1)
+  If Not person_idx% Then
+    print_fail "You don't know that person."
+    Exit Function
+  EndIf
+
+  Local i%, subject_words$(MAX_WORDS) Length 20
+  For i% = 1 To Bound(words$(), 1) - about_idx%
+    subject_words$(i%) = words$(i% + about_idx%)
+  Next
+
+  Const filename$ = LCase$(Mid$(Field$(people$(person_idx%), 1, "|"), 3)) + ".msg"
+  Open ASSETS_DIR$ + "/" + filename$ For Input As #1
+
+  Local file_word_count%, file_words$(MAX_WORDS) Length 20, match_count%, s$
+  Local best_match_count%, best_match_line%, line_num%
+  Do
+    Line Input #1, s$
+    If Eof(#1) Then Exit Do
+    file_word_count% = split_words%(s$, file_words$())
+    match_count% = find_matches%(file_words$(), subject_words$())
+    If match_count% > best_match_count% Then
+      best_match_count% = match_count%
+      best_match_line% = line_num%
+    EndIf
+    Do While s$ <> ""
+      Line Input #1, s$
+      Inc line_num%
+    Loop
+    Inc line_num%
+  Loop
+  Close #1
+
+'  Print "Best match line: " best_match_line%
+
+  con.println()
+  con.foreground("cyan")
+  con.print(Chr$(34))
+
+  If best_match_count% = 0 Then
+    print_success Chr$(34) + "I don't know what you are talking about." + Chr$(34)
+  Else
+    Local first% = 1
+    line_num% = 0
+    Open ASSETS_DIR$ + "/" + filename$ For Input As #1
+    Do
+      Line Input #1, s$
+      If line_num% = best_match_line% Then
+        Do
+          Line Input #1, s$
+          If s$ = "" Then Exit Do
+          If first% Then first% = 0 Else con.print(" ")
+          con.print(s$)
+        Loop
+        Exit Do
+      EndIf
+      Inc line_num%
+    Loop
+    Close #1
+  EndIf
+
+  con.println(Chr$(34))
+  con.foreground("reset")
+End Function
+
 ' Handle the DROP verb
 Function cmd_drop()
   cmd_drop = 1
@@ -495,9 +592,11 @@ Function lookup_loc%(id$)
   Error "Location not found: " + id$
 End Function
 
-Function find_matches%(haystack$(), needles$())
+Function find_matches%(haystack$(), needles$(), first%, last%)
   Local i%, j%, s$
-  For i% = 1 To Bound(needles$(), 1)
+  If Not first% Then first% = 1
+  If Not last% Then last% = Bound(needles$(), 1)
+  For i% = first% To last%
     s$ = LCase$(needles$(i%))
     If s$ = "" Then Exit For
     For j% = 1 To Bound(haystack$(), 1)
@@ -614,7 +713,7 @@ Sub print_message(tag$)
   ' Read from "../assets/darnley.msg" until a line with the given tag is found
   ' and print the following lines until an empty line is encountered.
   Local s$
-  Open "../assets/darnley.msg" For Input As #1
+  Open ASSETS_DIR$ + "/darnley.msg" For Input As #1
   Do
     Line Input #1, s$
     If Eof(#1) Then
