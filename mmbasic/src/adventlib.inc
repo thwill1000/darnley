@@ -115,6 +115,10 @@ Sub describe_loc()
   con.foreground("yellow")
   If DEBUG Then con.print("(" + Str$(r) + ") ")
   con.println("Location: " + Field$(rooms$(r), 2, "|"))
+  Const loc_tag$ = Field$(rooms$(r), 1, "|")
+  con.println()
+  print_message(loc_tag$)
+  con.println()
 
   ' Iterate through objects to find those at the current location
   con.print("You can see: ")
@@ -129,6 +133,7 @@ Sub describe_loc()
     EndIf
   Next
   If count% = 0 Then con.print("Nothing of interest")
+  con.println()
   con.println()
 
   ' Iterate through exits for the current location
@@ -540,4 +545,26 @@ Sub press_key_to_continue()
   Do While Inkey$ <> "" : Loop ' Clear input buffer
   Do While Inkey$ = "" : Loop
   con.lines = 0
+End Sub
+
+Sub print_message(tag$)
+  ' Read from "../assets/darnley.msg" until a line with the given tag is found
+  ' and print the following lines until an empty line is encountered.
+  Local s$
+  Open "../assets/darnley.msg" For Input As #1
+  Do
+    Line Input #1, s$
+    If Eof(#1) Then
+      Error "Message not found: " + tag$
+    ElseIf s$ = tag$ Then
+      Do
+        Line Input #1, s$
+        If s$ = "" Then Exit Do
+        con.print(s$ + " ")
+      Loop
+      Exit Do
+    EndIf
+  Loop
+  Close #1
+  con.println()
 End Sub

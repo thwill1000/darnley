@@ -60,7 +60,7 @@ Situated on the east side of the house, the maze consists of low
 box hedges. The marks in the snow cannot be deciphered into
 footprints.
 
-LOC012_WEST_SIDE_HOUSE
+LOC012_WEST_WALK
 The gravel path around the house passes between the smooth snow
 covered tennis court and a bed of withered flowers covered in snow.
 Various footprints are visible in the snow.
@@ -96,7 +96,7 @@ ending in a flight of steps leading up to the principal entrance of the
 house, flanked by a pair of stone lions. The snow reveals a mass of
 footprints.
 
-LOC018_AVENUE_OF_STATUES
+LOC018_EAST_WALK
 This gravel path runs east-west across the front of the house flanked
 by an avenue of statues. The snow covered gravel is too rough to
 distinguish footprints.
