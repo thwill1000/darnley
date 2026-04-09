@@ -213,97 +213,96 @@ PER109_RONALD_MELLORS
 The Gamekeeper. Stocky, black curly hair, good looking, surly-
 looking. Wears working clothes and hob-nailed boots. Age 35.
 
-ITM201_POND
+OBJ201_POND
 Near the centre of the pond the ice is thinner as if it has frozen again
 after having been broken. Beneath the ice you can see the missing
 statue from the fourth pedestal.
 
-ITM202_SUNKEN_STATUE
+OBJ202_SUNKEN_STATUE
 The statue that is beneath the ice is the same as those on the
 pedestals. Stuck in a crevice of the statue is the soaked butt of a
 cheroot.
 
-ITM203_REVOLVER
+OBJ203_REVOLVER
 The revolver found in the hall is a Webley-Fosbery .455 service
 revolver. One bullet has been discharged from it.
 
-ITM204_STATUES
+OBJ204_STATUES
 The statues form a set of four, representing the Four Seasons. They
 are of Italian marble and rest on their own weight rather than being
 cemented to their plinths. Some strength would be required to move
 one.
 
-ITM205_FOOTPRINTS_POND
+OBJ205_FOOTPRINTS_POND
 Only one set of footprints can be made out in the snow. They are of
 flat footed bootprints coming to and from the terrace.
 
-ITM206_SLIPPERS
+OBJ206_SLIPPERS
 The slippers are slightly damp and stained with mud.
 
-ITM207_CIGARETTES
+OBJ207_CIGARETTES
 These cigarettes are an expensive brand by Tribourg & Freyer.
 
-ITM208_KNIFE
+OBJ208_KNIFE
 This kitchen knife is stained with blood.
 
-ITM209_BOOTS
+OBJ209_BOOTS
 All these boots are polished clean except for a mud stained pair that
 apparently belong to Sir Redvers Slingsby.
 
-ITM212_FOOTPRINTS_KITCHEN_GARDEN
+OBJ212_FOOTPRINTS_KITCHEN_GARDEN
 Both flat footed boot prints and slipper prints can be seen going
 between the kitchen and the maze.
 
-ITM213_BED_MASTER
+OBJ213_BED_MASTER
 This double bed has not been slept in.
 
-ITM214_WARDROBE
+OBJ214_WARDROBE
 As well as clothes the wardrobe contains a selection of
 men's and women's shoes.
 
-ITM215_CIGARS
+OBJ215_CIGARS
 The cigars are Burmah cheroots.
 
-ITM216_DRESSING_TABLE
+OBJ216_DRESSING_TABLE
 There is nothing of note on the dressing table.
 
-ITM217_SHOES
+OBJ217_SHOES
 This selection of mens and womens shoes is unremarkable. One set of
 lady's shoes is mud-stained.
 
-ITM219_CORRESPONDENCE
+OBJ219_CORRESPONDENCE
 These letters are all from Mrs. Goodbody's nephew.
 
-ITM220_PHOTOGRAPHS
+OBJ220_PHOTOGRAPHS
 These photographs depict Mrs. Goodbody's various ugly relatives.
 
-ITM221_SUIT
+OBJ221_SUIT
 This gentleman's country-suit is apparently Sir Redvers'.
 
-ITM222_NEWSPAPER
+OBJ222_NEWSPAPER
 One headline on the front page catches your eye -
 'Collapse of Rio Plata Mining Co. - Our co-respondent in Lima, Peru
 reports the collapse of several silver mining companies through the
 fraud of their directors. These frauds are expected to cause heavy
 loss to British investors.'
 
-ITM223_PIPE
+OBJ223_PIPE
 The pipe is in the style called 'calabash' with a meerschaum bowl and
 amber mouthpiece.
 
-ITM224_BOOKSHELF
+OBJ224_BOOKSHELF
 The bookshelf contains books on self-improvement and domestic
 accounts.
 
-ITM225_FRENCH_WINDOW_TERRACE
+OBJ225_FRENCH_WINDOW_TERRACE
 One of the panes is smashed, but there is no glass on the terrace. The
 window lock shows that it cannot be locked or unlocked from outside.
 
-ITM226_FOOTPRINTS_TERRACE
-A mess of footprints including boots, slippers and some
-shoe prints.
+OBJ226_FOOTPRINTS_TERRACE
+A mess of footprints including boots, slippers and some shoe prints.
 
-ITM227_COLONEL_DARNLEY_BODY
+OBJ227_BODY
 The body is dressed in a smoking jacket open at the chest. There is a
 bloody bullet wound in the front of his dress-shirt. The bullet has not
 passed through the body. Evidently the Colonel had got out of his
@@ -312,63 +311,63 @@ caused him to spin and fall and the furniture had got in the way,
 further deflecting the body. It is no longer possible to tell the
 direction of the shot.
 
-ITM228_PORT_GLASS
+OBJ228_PORT_GLASS
 The port glass is one of a set engraved with the words 'Floreat
 Darnley'. A crust of dried liquid is at the bottom and lip marks on the
 rim though no trace of lipstick.
 
-ITM229_TANTALUS_OF_PORT
+OBJ229_TANTALUS
 The tantalus is made of cherrywood. It holds an empty decanter
 with a silver label marked 'Brandy' and a half full decanter marked
 'Port'. The decanters are normally inaccessible since they are held in
 place by a sort of 'lid' of wood which is fastened by a small lock. The
 key is in the lock.
 
-ITM230_LETTER
+OBJ230_LETTER
 The letter is an incomplete draft : 'Dear Sir, I have considered your
 monstrous suggestion and find I cannot....'
 
-ITM231_RACK_OF_GUNS
+OBJ231_GUN_RACK
 One of the pistols is missing from this rack.
 
-ITM232_FRENCH_WINDOW_STUDY
+OBJ232_FRENCH_WINDOW_STUDY
 One pane is smashed. The glass on the floor is apparently from this.
 
-ITM233_GLASS_STUDY
+OBJ233_SHATTERED_GLASS
 This glass is apparently from the smashed French Window.
 
-ITM234_GRAMOPHONE
+OBJ234_GRAMOPHONE
 It has a device for playing several records in sequence. All the
 records are Chopin.
 
-ITM235_PIANO_MORNING_ROOM
+OBJ235_PIANO_MORNING_ROOM
 There are several sheets of Schubert Lied music on the piano's music
 stand.
 
-ITM236_DISPLAY_CASE_HALL
+OBJ236_DISPLAY_CASE
 According to a label at the front of the case these flints and shards of
 pottery were found in the grounds of the house.
 
-ITM237_FOOTPRINTS_WEST_SIDE
+OBJ237_FOOTPRINTS_WEST
 There are slipper prints, flat-footed boot prints and some shoe prints
 heading to and from the terrace and the the front of the house.
 
-ITM238_CIGAR_STUB_MUSIC_ROOM
+OBJ238_CIGAR_STUB_MUSIC_ROOM
 This cigar stub is a straight dark cylinder rather than the
 conventional shape. That and the tarry appearance suggests a
 cheroot.
 
-ITM239_PIANO_MUSIC_ROOM
+OBJ239_PIANO_MUSIC_ROOM
 The sheets of music on the piano are for duets.
 
-ITM240_WINE_GLASSES
+OBJ240_WINE_GLASSES
 The three wine glasses are all dirty.
 
-ITM241_ASHTRAY_BILLIARD_ROOM
+OBJ241_ASHTRAY_BILLIARD_ROOM
 The ashtray contains the remains of three cigars, one Havana and
 two cheroots.
 
-ITM243_FOOTPRINTS_DRIVE
+OBJ243_FOOTPRINTS_DRIVE
 The prints from flat footed boots go east and west along the gravel
 path in front of the house. Slipper prints come from the house and
 head east and west along the path. Prints from men's shoes come
@@ -377,37 +376,37 @@ from the frontdoor and the west lawn. At the gate end of the drive
 the prints from men's hobnailed boots go between the west lawn and
 the stables.
 
-ITM244_FOOTPRINTS_SOUTHEAST
+OBJ244_FOOTPRINTS_SOUTHEAST
 The prints from flat footed boots and men's slippers are visible in the
 snow heading around the corner of the house, to and from the maze
 and avenue of statues.
 
-ITM245_CIGARETTE_ENDS_SUMMERHOUSE
+OBJ245_CIGARETTE_ENDS_SH
 These cigarette ends come from a cheap, mass produced brand.
 
-ITM246_HANDKERCHIEF
+OBJ246_HANDKERCHIEF
 This is a lady's hanky, plain lace edged and perfumed.
 
-ITM247_FOOTPRINTS_WEST_LAWN
+OBJ247_FOOTPRINTS_WEST_LAWN
 Prints from lady's shoes and men's hob-nailed boots can be seen in the
 snow going between the drive and the summer house.
 
-ITM248_FOOTPRINTS_STABLES
+OBJ248_FOOTPRINTS_STABLES
 The prints from hob-nailed boots can be seen in the snow going
 between the drive and the east lawn.
 
-ITM249_FOOTPRINTS_EAST_LAWN
+OBJ249_FOOTPRINTS_EAST_LAWN
 The prints from hob-nailed boots can be seen in the snow going east
 to west between the stables and the cottage.
 
-ITM250_CIGARETTE_ENDS_COTTAGE
+OBJ250_CIGARETTE_ENDS_COTTAGE
 These cigarette ends come from a cheap, mass produced brand.
 
-ITM251_ARMOUR
+OBJ251_ARMOUR
 A suit of Civil War three-quarter armour with a closed helmet.
 Examination discovers a revolver concealed in the helmet.
 
-ITM252_DOOR_MAT
+OBJ252_DOOR_MAT
 Some blurb about a damp doormat.
 
 REC300_WHAT_REALLY_HAPPENED
