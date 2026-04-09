@@ -501,19 +501,21 @@ that he had left these prints in following the murderers boot-trail
 would not hold water. The murderer had to leave footprints in two
 sets of footwear. Coniston's slippers were the only other set.
 
-REC401_SEALED_ROOM_MURDER_INTRO
+SEALED_ROOM_INTRO
 You have been summoned to Darnley Park one winter's day to
 investigate the murder of Colonel Sebastian Darnley at some time
-the previous evening.
-The suspects are:
-Sarah Darnley - the deceased's wife
-Millicent Darnley - the deceased's daughter
-Arthur Coniston - fiance of Millicent
-Sir Redvers Slingsby - friend of the deceased
-Arnold Billingsgate - butler
-Mildred Goodbody - cook
-Norah Bagsby - housemaid
-Ronald Mellors - gamekeeper
+the previous evening.@
+@
+The suspects are:@
+  Sarah Darnley - the deceased's wife@
+  Millicent Darnley - the deceased's daughter@
+  Arthur Coniston - fiance of Millicent@
+  Sir Redvers Slingsby - friend of the deceased@
+  Arnold Billingsgate - butler@
+  Mildred Goodbody - cook@
+  Norah Bagsby - housemaid@
+  Ronald Mellors - gamekeeper@
+@
 You are free to search the house and grounds and to question the
 suspects. Examination of the scene and skillful interrogation will
 yield sufficient information to solve the mystery. And mystery it is!

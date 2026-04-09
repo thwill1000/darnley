@@ -793,17 +793,24 @@ End Sub
 Sub print_message(tag$)
   ' Read from "../assets/darnley.msg" until a line with the given tag is found
   ' and print the following lines until an empty line is encountered.
-  Local s$
+  Local first%, s$
   Open ASSETS_DIR$ + "/darnley.msg" For Input As #1
   Do
     Line Input #1, s$
     If Eof(#1) Then
       Error "Message not found: " + tag$
     ElseIf s$ = tag$ Then
+      first% = 1
       Do
         Line Input #1, s$
         If s$ = "" Then Exit Do
-        con.print(s$ + " ")
+        If first% Then first% = 0 Else s$ = " " + s$
+        If Right$(s$, 1) = "@" Then
+          con.println(Left$(s$, Len(s$) - 1))
+          first% = 1
+        Else
+          con.print(s$)
+        EndIf
       Loop
       Exit Do
     EndIf
