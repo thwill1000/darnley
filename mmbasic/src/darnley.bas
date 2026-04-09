@@ -15,6 +15,11 @@ Option Explicit
 init_advent()
 r = 17 ' Drive
 
+con.foreground("magenta")
+print_message("SEALED_ROOM_INTRO")
+con.foreground("reset")
+con.println()
+
 Do
   If describe Then describe_loc()
 
