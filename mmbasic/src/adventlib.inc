@@ -622,16 +622,16 @@ End Function
 
 ' Handle the EXAMINE verb
 Function verb_examine()
-  Local best%, i%, match_loc%, match_obj%, obj_loc%, obj_loc_tag$, obj_name$, obj_words$(10) Length 20, result%
+  Local best%, i%, match_loc%, match_obj%, oloc%, obj_loc_tag$, oname$, obj_words$(10) Length 20, result%
 
   For i% = 1 To NUM_OBJECTS
     obj_loc_tag$ = Field$(objects$(i%), 3, "|")
-    obj_name$ = Field$(objects$(i%), 2, "|")
-    result% = split_words%(obj_name$, obj_words$())
+    oname$ = Field$(objects$(i%), 2, "|")
+    result% = split_words%(oname$, obj_words$())
     result% = find_matches%(obj_words$(), words$())
     If result% Then
-      obj_loc% = find_loc%(obj_loc_tag$)
-      If obj_loc% = r Then
+      oloc% = find_loc%(obj_loc_tag$)
+      If oloc% = r Then
         If match_loc% = r And result% > best% Then
           ' Latest match and previous match in current location, latest is a better match
           match_obj% = i%
@@ -639,13 +639,13 @@ Function verb_examine()
         ElseIf match_loc% <> r Then
           ' Latest match in current location, previous match not
           match_obj% = i%
-          match_loc% = obj_loc%
+          match_loc% = oloc%
           best = result%
         EndIf
       ElseIf match_loc% <> r And result% > best% Then
         ' Neither match in current locatiom, latest is a better match
         match_obj% = i%
-        match_loc% = obj_loc%
+        match_loc% = oloc%
         best = result%
       EndIf
     EndIf

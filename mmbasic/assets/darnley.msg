@@ -302,7 +302,7 @@ window lock shows that it cannot be locked or unlocked from outside.
 OBJ226_FOOTPRINTS_TERRACE
 A mess of footprints including boots, slippers and some shoe prints.
 
-OBJ227_BODY
+P_THE_BODY
 The body is dressed in a smoking jacket open at the chest. There is a
 bloody bullet wound in the front of his dress-shirt. The bullet has not
 passed through the body. Evidently the Colonel had got out of his
