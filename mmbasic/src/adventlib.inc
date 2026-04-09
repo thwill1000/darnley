@@ -433,6 +433,37 @@ Function find_person%(words$(), first%, last%)
   print_fail("NOT FOUND")
 End Function
 
+' Finds object, looking in current location first before looking globally.
+Function find_obj%(words$(), first%, last%)
+  Local obj_words$(MAX_WORDS) Length MAX_WORD_LENGTH
+  Local i%, match_count%, obj_word_count%
+
+  For i% = 1 To NUM_OBJECTS
+    obj_word_count% = split_words%(Field$(objects$(i%), 2, "|"), obj_words$())
+'    print_words(person_words$())
+    match_count% = find_matches%(obj_words$(), words$(), first%, last%)
+    If match_count% Then
+      find_obj% = i%
+'      print_success("FOUND " + people$(find_person%))
+      Exit Function
+    EndIf
+  Next
+
+  print_fail("NOT FOUND")
+End Function
+
+Function is_person%(obj_idx%)
+  is_person% = Field$(objects$(obj_idx%), 4, "|") = "1"
+End Function
+
+Function obj_loc%(obj_idx%)
+  obj_loc% = find_loc%(Field$(objects$(obj_idx%), 3, "|"))
+End Function
+
+Function obj_name$(obj_idx%)
+  obj_name$ = Field$(objects$(obj_idx%), 2, "|")
+End Function
+
 ' Handle the ASK verb
 Function verb_ask()
   verb_ask = 1
@@ -443,18 +474,36 @@ Function verb_ask()
     Exit Function
   EndIf
 
-  Const person_idx% = find_person%(words$(), 1, about_idx% - 1)
-  If Not person_idx% Then
+  Const obj_idx% = find_obj2%(words$(), 1, about_idx% - 1)
+  If Not obj_idx% Then
     print_fail "You don't know that person."
     Exit Function
   EndIf
 
-  Local i%, subject_words$(MAX_WORDS) Length 20
+  ' Check the "person" is present.
+  If obj_loc%(obj_idx%) <> r Then
+    Local msg$ = obj_name$(obj_idx%)
+    If Not is_person%(obj_idx%) Then msg$ = "The " + LCase$(msg$)
+    If Right$(msg$, 1) = "s" Then Cat msg$, " are not here." Else Cat msg$, " is not here."
+    print_fail msg$
+    Exit Function
+  EndIf
+
+  ' Check if the "person" is an inanimate object.
+  If Not is_person%(obj_idx%) Then
+    Local msg$ = obj_name$(obj_idx%)
+    If Not is_person%(obj_idx%) Then msg$ = "The " + LCase$(msg$)
+    If Right$(msg$, 1) = "s" Then Cat msg$, " do not answer." Else Cat msg$, " does not answer."
+    print_fail msg$
+    Exit Function
+  EndIf
+
+  Local i%, subject_words$(MAX_WORDS) Length MAX_WORD_LENGTH
   For i% = 1 To Bound(words$(), 1) - about_idx%
     subject_words$(i%) = words$(i% + about_idx%)
   Next
 
-  Const filename$ = LCase$(Mid$(Field$(people$(person_idx%), 1, "|"), 3)) + ".msg"
+  Const filename$ = LCase$(Mid$(Field$(objects$(obj_idx%), 1, "|"), 3)) + ".msg"
   Open ASSETS_DIR$ + "/" + filename$ For Input As #1
 
   Local file_word_count%, file_words$(MAX_WORDS) Length 20, match_count%, s$
@@ -531,6 +580,38 @@ Function verb_help()
   print_success "  EXAMINE object"
   print_success "  ASK person ABOUT subject"
   print_success "  QUIT"
+End Function
+
+Function find_obj2%(words$(), first%, last%))
+  Local i%, match_loc%, match_obj%, max_num_matches%, num_matches%
+  Local oloc%, obj_loc_tag$, oname$, obj_words$(MAX_WORDS) Length MAX_WORD_LENGTH
+  Local obj_word_count%
+
+  For i% = 1 To NUM_OBJECTS
+    obj_loc_tag$ = Field$(objects$(i%), 3, "|")
+    oname$ = Field$(objects$(i%), 2, "|")
+    obj_word_count% = split_words%(oname$, obj_words$())
+    num_matches% = find_matches%(obj_words$(), words$(), first%, last%)
+    If Not num_matches Then Continue For
+    oloc% = find_loc%(obj_loc_tag$)
+    If oloc% = r Then
+      If match_loc% = r And num_matches% > max_num_matches% Then
+        ' Latest match and previous match in current location, latest is a better match
+        find_obj2% = i%
+        max_num_matches% = num_matches%
+      ElseIf match_loc% <> r Then
+        ' Latest match in current location, previous match not
+        find_obj2% = i%
+        match_loc% = oloc%
+        max_num_matches% = num_matches%
+      EndIf
+    ElseIf match_loc% <> r And num_matches% > max_num_matches% Then
+      ' Neither match in current locatiom, latest is a better match
+      find_obj2% = i%
+      match_loc% = oloc%
+      max_num_matches% = num_matches%
+    EndIf
+  Next
 End Function
 
 ' Handle the EXAMINE verb

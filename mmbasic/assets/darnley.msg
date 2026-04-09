@@ -129,8 +129,8 @@ by oil cloth, an unmade bed, a slop-stone sink and an open fire with a
 pot hanging over it. The place is very dirty; the hearth is littered
 with foodscraps, the ends of cigarettes and newspapers.
 
-LOC024_MILICENT_BEDROOM
-Milicent Darnley's bedroom is decorated to a young lady's taste
+LOC024_MILLICENT_BEDROOM
+Millicent Darnley's bedroom is decorated to a young lady's taste
 with a bed, wardrobe, dressing table and a small writing table.
 The surfaces are covered with small ornaments, mainly of dogs
 and the walls have pictures of favourite pets.
@@ -179,37 +179,37 @@ tempered. He had only a small inheritance but made a fortune on the
 stock exchange. He was free with his tips on the market, but didn't
 always follow his own recommendations.
 
-PER102_SARAH_DARNLEY
+P_SARAH_DARNLEY
 Colonel Darnley's wife. Aged 27. Fair-haired, beautiful and
 sophisticated. She wears a morning dress and shows signs of tired-
 ness and stress.
 
-PER103_MILLICENT_DARNLEY
+P_MILLICENT_DARNLEY
 Colonel Darnley's daughter. Aged 23. Well-dressed but rather plain.
 Cool and determined looking. She wears a blouse and skirt.
 
-PER104_ARTHUR_CONISTON
+P_ARTHUR_CONISTON
 Millicent Darnley's fiance. Aged 25. Average height and very good
 looking. His manner is honest and friendly. He dresses fashionably
 and wears black patent shoes.
 
-PER105_SIR_REDVERS_SLINGSBY
+P_REDVERS_SLINGSBY
 Friend of the deceased. Aged 52. Very tall and boney with side
 whiskers and a red face. Wears country-tweeds and boots. His
 manner is ill-tempered.
 
-PER106_ARNOLD_BILLINGSGATE
+P_ARNOLD_BILLINGSGATE
 The Butler. Aged about 60; gentlemanly manners; bald and thin;
 average height. Wears a tail coat and ordinary men's shoes.
 
-PER107_MILDRED_GOODBODY
+P_MILDRED_GOODBODY
 The Cook. Aged 55. Pleasant-faced. Cheerful. Overweight.
 
-PER108_NORAH_BAGSBY
+P_NORAH_BAGSBY
 The Housemaid. Aged 19. Small pale girl who sniffs a lot. Wears a
 maid's uniform.
 
-PER109_RONALD_MELLORS
+P_RONALD_MELLORS
 The Gamekeeper. Stocky, black curly hair, good looking, surly-
 looking. Wears working clothes and hob-nailed boots. Age 35.
 
@@ -411,11 +411,11 @@ Some blurb about a damp doormat.
 
 REC300_WHAT_REALLY_HAPPENED
 On the morning of the murder Arthur Coniston, the boy-friend of
-Milicent Darnley, arrived by arrangement to ask Colonel Darnley for
+Millicent Darnley, arrived by arrangement to ask Colonel Darnley for
 permission to marry his daughter. This conversation took place
 during the afternoon and Colonel Darnley refused the request.
 Although he found Coniston amusing, he felt that his visitor was
-after Milicent's inheritance. Coniston, now resolved upon murder,
+after Millicent's inheritance. Coniston, now resolved upon murder,
 quietly informing the other members of the household that the
 Colonel had agreed to tbe marriage. He was unaware that the Colonel
 had decided to write him a letter confirming his rejection. During the
@@ -425,13 +425,13 @@ Colonel Darnley. In the morning's papers was news of the collapse of
 these shares. Angry with his friend, Slingsby had rushed down to
 Darnley Park to ask the Colonel to lend him money to avoid ruin.
 
-Dinner that evening finished at 9.00. Milicent and Sarah retired
+Dinner that evening finished at 9.00. Millicent and Sarah retired
 to the lounge for coffee while the men drank port and played
 billiards. At nine 9.30 the gentlemen joined the ladies while the
 servants ate in the kitchen. The atmosphere was tense since
 Slingsby had not had opportunity to raise his problems. At 10.00 that
 night impatience got the better of him and he drew Darnley to the
-study whilst Coniston and Milicent went to the music room to sing
+study whilst Coniston and Millicent went to the music room to sing
 duets. For half an hour Slingsby and the Colonel quarelled (at this
 time Billingsgate was cleaning boots in the kitchen) and at 10.30
 Slingsby stormed out of the study by the hall door, slamming it
@@ -445,9 +445,9 @@ Sarah Darnley was unhappy with her husband and having an
 affair with Mellors, the gamekeeper. She had arranged to meet
 Mellors at the summer house at 10.45. Mellors was there, waiting and
 smoking cigarettes. Sarah took steps to keep the affair secret and to
-maintain to Milicent the pretence that she was in the house, she told
+maintain to Millicent the pretence that she was in the house, she told
 her of her intention to play on the morning room piano. In truth she
-played a series of gramophone records which Milicent heard from her
+played a series of gramophone records which Millicent heard from her
 room. It was not necessary for her to take account of Colonel Darnley
 since experience had taught her that the Colonel would lock himself
 in his study and get drunk on such an occasion as this. Sarah next
@@ -507,8 +507,8 @@ investigate the murder of Colonel Sebastian Darnley at some time
 the previous evening.
 The suspects are:
 Sarah Darnley - the deceased's wife
-Milicent Darnley - the deceased's daughter
-Arthur Coniston - fiance of Milicent
+Millicent Darnley - the deceased's daughter
+Arthur Coniston - fiance of Millicent
 Sir Redvers Slingsby - friend of the deceased
 Arnold Billingsgate - butler
 Mildred Goodbody - cook
