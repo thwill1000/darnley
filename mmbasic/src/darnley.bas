@@ -23,21 +23,24 @@ Do
   ok = parse(command$)
   If ok = 1 Then Goto command_end
 
-  If verb$ = "drop" Then
-    ok = cmd_drop()
-  ElseIf verb$ = "go" Then
-    ok = verb_go()
-  ElseIf verb$ = "inventory" Then
-    ok = cmd_inventory()
-  ElseIf verb$ = "look" Then
-    ok = cmd_look()
-  ElseIf verb$ = "quit" Then
-    ok = cmd_quit()
-  ElseIf verb$ = "take" Then
-    ok = cmd_take()
-  ElseIf verb$ = "examine" Then
-    ok = verb_examine()
-  EndIf
+  Select Case verb$
+    Case "drop"
+      ok = cmd_drop()
+    Case "go"
+      ok = verb_go()
+    Case "help"
+      ok = verb_help()
+    Case "inventory"
+      ok = cmd_inventory()
+    Case "look"
+      ok = cmd_look()
+    Case "quit"
+      ok = cmd_quit()
+    Case "take"
+      ok = cmd_take()
+    Case "examine"
+      ok = verb_examine()
+  End Select
 
 command_end:
 

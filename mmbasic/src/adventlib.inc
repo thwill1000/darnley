@@ -426,6 +426,16 @@ Function cmd_drop()
   If Not found Then print_fail "You're not carrying that"
 End Function
 
+' Handdle the HELP verb
+Function verb_help()
+  verb_help = 1
+  print_success "Try one of the following commands:"
+  print_success "  GO location"
+  print_success "  EXAMINE object"
+  print_success "  ASK person ABOUT subject"
+  print_success "  QUIT"
+End Function
+
 ' Handle the EXAMINE verb
 Function verb_examine()
   Local best%, i%, match_loc%, match_obj%, obj_loc%, obj_loc_tag$, obj_name$, obj_words$(10) Length 20, result%
