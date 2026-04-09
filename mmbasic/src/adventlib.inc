@@ -452,8 +452,8 @@ Function find_obj%(words$(), first%, last%)
   print_fail("NOT FOUND")
 End Function
 
-Function is_person%(obj_idx%)
-  is_person% = Field$(objects$(obj_idx%), 4, "|") = "1"
+Function obj_is_person%(obj_idx%)
+  obj_is_person% = Field$(objects$(obj_idx%), 4, "|") = "2"
 End Function
 
 Function obj_loc%(obj_idx%)
@@ -480,19 +480,19 @@ Function verb_ask()
     Exit Function
   EndIf
 
-  ' Check the "person" is present.
+  ' Check the object is present
   If obj_loc%(obj_idx%) <> r Then
     Local msg$ = obj_name$(obj_idx%)
-    If Not is_person%(obj_idx%) Then msg$ = "The " + LCase$(msg$)
+    If Not obj_is_person%(obj_idx%) Then msg$ = "The " + LCase$(msg$)
     If Right$(msg$, 1) = "s" Then Cat msg$, " are not here." Else Cat msg$, " is not here."
     print_fail msg$
     Exit Function
   EndIf
 
-  ' Check if the "person" is an inanimate object.
-  If Not is_person%(obj_idx%) Then
+  ' Check the object is a person
+  If Not obj_is_person%(obj_idx%) Then
     Local msg$ = obj_name$(obj_idx%)
-    If Not is_person%(obj_idx%) Then msg$ = "The " + LCase$(msg$)
+    If Not obj_is_person%(obj_idx%) Then msg$ = "The " + LCase$(msg$)
     If Right$(msg$, 1) = "s" Then Cat msg$, " do not answer." Else Cat msg$, " does not answer."
     print_fail msg$
     Exit Function
@@ -511,11 +511,17 @@ Function verb_ask()
   Do
     Line Input #1, s$
     If Eof(#1) Then Exit Do
-    file_word_count% = split_words%(s$, file_words$())
-    match_count% = find_matches%(file_words$(), subject_words$())
-    If match_count% > best_match_count% Then
-      best_match_count% = match_count%
+    If s$ = "*" And best_match_count% = 0 Then
+      ' Should be last response
+      best_match_count% = 100
       best_match_line% = line_num%
+    Else
+      file_word_count% = split_words%(s$, file_words$())
+      match_count% = find_matches%(file_words$(), subject_words$())
+      If match_count% > best_match_count% Then
+        best_match_count% = match_count%
+        best_match_line% = line_num%
+      EndIf
     EndIf
     Do While s$ <> ""
       Line Input #1, s$
@@ -529,7 +535,7 @@ Function verb_ask()
 
   con.println()
   con.foreground("cyan")
-  con.print(Chr$(34))
+  If best_match_count% < 100 Then con.print(Chr$(34))
 
   If best_match_count% = 0 Then
     print_success Chr$(34) + "I don't know what you are talking about." + Chr$(34)
@@ -553,7 +559,7 @@ Function verb_ask()
     Close #1
   EndIf
 
-  con.println(Chr$(34))
+  If best_match_count% < 100 Then con.println(Chr$(34)) Else con.println()
   con.foreground("reset")
 End Function
 
@@ -749,23 +755,70 @@ Function cmd_look()
   EndIf
 End Function
 
-' Handle the TAKE verb
-Function cmd_take()
-  cmd_take = 1
-  Local found = 0
-  Local i
-  For i = 1 To NUM_OBJECTS
-    If noun$ = LCase$(Field$(oname$(i), 1, "|")) And olocation(i) = r Then
-      If Field$(oname$(i), 3, "|") = "0" Then
-        print_fail "You can't take that."
-      Else
-        print_success "Taken."
-        olocation(i) = INVENTORY
-      EndIf
-      found = 1
-    EndIf
+Function cat_words$(words$(), si%, ei%)
+  Local first% = 1, i%
+  If Not si% Then si% = 1
+  If Not ei% Then ei% = MAX_WORDS
+  For i% = si% To ei%
+    If words$(i%) = "" Then Exit For
+    If first% Then first% = 0 Else Cat cat_words$, " "
+    Cat cat_words$, words$(i%)
   Next
-  If Not found Then print_fail "You don't see that here."
+End Function
+
+Function obj_weight%(obj_idx%)
+  obj_weight% = Val(Field$(objects$(obj_idx%), 5, "|"))
+End Function
+
+Function obj_is_takeable%(obj_idx%)
+  obj_is_takeable% = Field$(objects$(obj_idx%), 4, "|") = "1"
+End Function
+
+' Handle the TAKE verb
+Function verb_take()
+  verb_take = 1
+
+  ' Check object exists
+  Const o% = find_obj2%(words$(), 2)
+  If Not o% Then
+    Local msg$ = "I do not understand the word"
+    If count_words%(words$()) > 2 Then Cat msg$, "s"
+    Cat msg$, " " + Chr$(39) + cat_words$(words$(), 2) + Chr$(39) + "."
+    print_fail msg$
+    Exit Function
+  EndIf
+
+  ' Check object is present
+  If obj_loc%(o%) <> r Then
+    Local msg$ = obj_name$(o%)
+    If Not obj_is_person%(o%) Then msg$ = "The " + LCase$(msg$)
+    If Right$(msg$, 1) = "s" Then Cat msg$, " are not here." Else Cat msg$, " is not here."
+    print_fail msg$
+    Exit Function
+  EndIf
+
+  ' Check if the object is not a person
+  If obj_is_person%(o%) Then
+    print_fail "That would be inappropriate."
+    Exit Function
+  EndIf
+
+  ' Check if the object is too heavy
+  If obj_weight%(o%) >= 100 Then
+    Local msg$ = "The " + LCase$(obj_name$(o%))
+    If Right$(msg$, 1) = "s" Then Cat msg$, " are too heavy." Else Cat msg$, " is too heavy."
+    print_fail msg$
+    Exit Function
+  EndIf
+
+  ' Check if the object is takeable
+  If Not obj_is_takeable%(o%) Then
+    print_fail "You cannot take the " + LCase$(obj_name$(o%)) + "."
+    Exit Function
+  EndIf
+
+  ' For the moment nothing can be taken
+  print_fail "There is no need to carry the " + LCase$(obj_name$(o%)) + " around with you."
 End Function
 
 ' Handle the QUIT verb
