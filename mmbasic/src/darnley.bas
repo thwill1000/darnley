@@ -35,115 +35,8 @@ Do
     ok = cmd_quit()
   ElseIf verb$ = "take" Then
     ok = cmd_take()
-  ElseIf verb$ = "cuddle" Then
-    print_fail "That's not terribly British; at least not in the 1940's."
-    ok = 1
-  ElseIf verb$ = "rescue" Or verb$ = "save" Then
-    If noun$ = "soldier" Then
-      If r = 1 Then
-        If olocation(6) = r Then
-          print_fail "You need to tell me how to rescue him."
-          ok = 1
-        EndIf
-      Else
-        print_fail "You don't see a soldier here."
-        ok = 1
-      EndIf
-    Else
-      print_fail "You can't rescue that."
-      ok = 1
-    EndIf
   ElseIf verb$ = "examine" Then
-    If noun$ = "bunk" Then
-      If r = 2 Then
-        If olocation(2) = HIDDEN_ROOM Then
-          print_success "You find a blanket."
-          olocation(2) = r
-          describe = 1
-        Else
-          print_success "You find nothing but bedbugs."
-        EndIf
-      Else
-        print_fail "You don't see a bunk here."
-      EndIf
-    ElseIf noun$ = "chest" Then
-      If r = 3 Then
-        If olocation(1) = HIDDEN_ROOM Then
-          print_success "You find a rope."
-          olocation(1) = r
-          describe = 1
-        Else
-          print_success "It is empty."
-        EndIf
-      Else
-        print_fail "You don't see a chest here."
-      EndIf
-    Else
-      ok = cmd_examine()
-    EndIf
-    ok = 1
-  ElseIf verb$ = "throw" Then
-    If noun$ = "rope" Then
-      If olocation(1) = INVENTORY Then
-        If r = 1 Then
-          print_success "The rope splashes in the water and you tug in the shivering soldier. ", 1
-          print_success "Find something to WARM him up!"
-          olocation(6) = HIDDEN_ROOM
-          olocation(7) = r
-          olocation(1) = HIDDEN_ROOM
-          describe=1
-        Else
-          print_fail "You can't throw the rope here."
-        EndIf
-      Else
-        print_fail "You don't have a rope."
-      EndIf
-    Else
-      print_fail "You can't throw that."
-    EndIf
-    ok = 1
-  ElseIf verb$ = "warm" Then
-    If noun$ = "soldier" Then
-      If olocation(2) = INVENTORY Then
-        If olocation(7) = r Then
-          print_success "You drape the blanket over the soldier's shoulders and he stops ", 1
-          print_success "shivering. SET the sails to head back to England."
-          olocation(2) = HIDDEN_ROOM
-          olocation(7) = HIDDEN_ROOM
-          olocation(8) = 1
-          describe = 1
-          ok = 1
-        Else
-          print_fail "You don't see a soldier here."
-          ok = 1
-        EndIf
-      Else
-        print_fail "You don't have a blanket."
-        ok = 1
-      EndIf
-    Else
-      print_fail "You can't warm that."
-      ok = 1
-    EndIf
-  ElseIf verb$ = "set" Then
-    If noun$ = "sails" Then
-      If r = 1 Then
-        If olocation(8) = r Then
-          print_success "You set the sails and are soon heading back to England."
-          next_chapter("chapter-2.bas")
-          ok = 1
-        Else
-          print_fail "You need to help the soldier first."
-          ok = 1
-        EndIf
-      Else
-        print_fail "You don't see any sails here."
-        ok = 1
-      EndIf
-    Else
-      print_fail "You can't set that."
-      ok = 1
-    EndIf
+    ok = verb_examine()
   EndIf
 
 command_end:
@@ -250,7 +143,7 @@ Data "OBJ201_POND|Pond|LOC005_ORNAMENTAL_POND"
 Data "OBJ202_SUNKEN_STATUE|Sunken Statue|LOC005_ORNAMENTAL_POND"
 Data "OBJ203_REVOLVER|Revolver|LOC008_HALL"
 Data "OBJ204_STATUES|Statues|LOC005_ORNAMENTAL_POND"
-Data "OBJ205_FOOTPRINTS|Footprints|LOC005_ORNAMENTAL_POND"
+Data "OBJ205_FOOTPRINTS_POND|Footprints|LOC005_ORNAMENTAL_POND"
 Data "OBJ206_SLIPPERS|Slippers|LOC029_GUEST_ROOM"
 Data "OBJ207_CIGARETTES|Cigarettes|LOC029_GUEST_ROOM"
 Data "OBJ208_KNIFE|Knife|LOC009_KITCHEN"
@@ -267,15 +160,15 @@ Data "OBJ221_SUIT|Suit|LOC026_SERVANTS_QUARTERS"
 Data "OBJ222_NEWSPAPER|Newspaper|LOC026_SERVANTS_QUARTERS"
 Data "OBJ223_PIPE|Pipe|LOC026_SERVANTS_QUARTERS"
 Data "OBJ224_BOOKSHELF|Bookshelf|LOC010_BUTLERS_PANTRY"
-Data "OBJ225_FRENCH_WINDOW|French Window|LOC006_TERRACE"
-Data "OBJ226_FOOTPRINTS|Footprints|LOC006_TERRACE"
+Data "OBJ225_FRENCH_WINDOW_TERRACE|French Window|LOC006_TERRACE"
+Data "OBJ226_FOOTPRINTS_TERRACE|Footprints|LOC006_TERRACE"
 Data "OBJ227_BODY|Colonel Darnley's Body|LOC007_COLONELS_STUDY"
 Data "OBJ228_PORT_GLASS|Port Glass|LOC007_COLONELS_STUDY"
 Data "OBJ229_TANTALUS|Tantalus of Port|LOC007_COLONELS_STUDY"
 Data "OBJ230_LETTER|Letter|LOC007_COLONELS_STUDY"
 Data "OBJ231_GUN_RACK|Rack of Guns|LOC007_COLONELS_STUDY"
 Data "OBJ232_FRENCH_WINDOW_STUDY|French Window|LOC007_COLONELS_STUDY"
-Data "OBJ233_GLASS|Glass|LOC007_COLONELS_STUDY"
+Data "OBJ233_SHATTERED_GLASS|Shattered glass|LOC007_COLONELS_STUDY"
 Data "OBJ234_GRAMOPHONE|Gramophone|LOC028_MORNING_ROOM"
 Data "OBJ235_PIANO_MORNING|Piano|LOC028_MORNING_ROOM"
 Data "OBJ236_DISPLAY_CASE|Display Case|LOC008_HALL"

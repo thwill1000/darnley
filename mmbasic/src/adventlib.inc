@@ -333,7 +333,7 @@ Function parse_common(cmd$)
 '    Exit Function
 '  EndIf
 
-  Local remove$(2) = ("to", "the")
+  Local remove$(3) = ("of", "the", "to")
   remove_words(words$(), remove$())
 
 '  print_words(words$())
@@ -427,13 +427,51 @@ Function cmd_drop()
 End Function
 
 ' Handle the EXAMINE verb
-Function cmd_examine()
-  cmd_examine = 1
-  If noun$ = "" Then
-    print_fail "You need to tell me what to " + UCase$(verb$) + "."
+Function verb_examine()
+  Local best%, i%, match_loc%, match_obj%, obj_loc%, obj_loc_tag$, obj_name$, obj_words$(10) Length 20, result%
+
+  For i% = 1 To NUM_OBJECTS
+    obj_loc_tag$ = Field$(objects$(i%), 3, "|")
+    obj_name$ = Field$(objects$(i%), 2, "|")
+    result% = split_words%(obj_name$, obj_words$())
+    result% = find_matches%(obj_words$(), words$())
+    If result% Then
+      obj_loc% = find_loc%(obj_loc_tag$)
+      If obj_loc% = r Then
+        If match_loc% = r And result% > best% Then
+          ' Latest match and previous match in current location, latest is a better match
+          match_obj% = i%
+          best = result%
+        ElseIf match_loc% <> r Then
+          ' Latest match in current location, previous match not
+          match_obj% = i%
+          match_loc% = obj_loc%
+          best = result%
+        EndIf
+      ElseIf match_loc% <> r And result% > best% Then
+        ' Neither match in current locatiom, latest is a better match
+        match_obj% = i%
+        match_loc% = obj_loc%
+        best = result%
+      EndIf
+    EndIf
+  Next
+
+  If match_loc% = r Then
+    ' Object exists and is present
+    con.println()
+    con.foreground("cyan")
+    print_message(Field$(objects$(match_obj%), 1, "|"))
+    con.foreground("reset")
+  ElseIf match_loc% Then
+    ' Object exists and is not present
+    print_fail "You do not see that here."
   Else
-    print_fail "You don't see anything remarkable about that."
+    ' Unknown object
+    print_fail "You cannot examine that, or it is unremarkable."
   EndIf
+
+  verb_examine = 1
 End Function
 
 Function lookup_loc%(id$)
@@ -445,6 +483,21 @@ Function lookup_loc%(id$)
     EndIf
   Next
   Error "Location not found: " + id$
+End Function
+
+Function find_matches%(haystack$(), needles$())
+  Local i%, j%, s$
+  For i% = 1 To Bound(needles$(), 1)
+    s$ = LCase$(needles$(i%))
+    If s$ = "" Then Exit For
+    For j% = 1 To Bound(haystack$(), 1)
+      If haystack$(j%) = "" Then Exit For
+      If s$ = LCase$(haystack$(j%)) Then
+        Inc find_matches%
+        Exit For
+      EndIf
+    Next
+  Next
 End Function
 
 ' Handle the GO verb
