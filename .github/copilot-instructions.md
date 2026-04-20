@@ -63,3 +63,6 @@ mmbasic/
 - Constants use `ALL_CAPS` (e.g., `NUM_ROOMS`, `INVENTORY`, `HIDDEN_ROOM`).
 - Location IDs follow the pattern `LOC###_DESCRIPTIVE_NAME`; object IDs follow `OBJ###_NAME` or `P_PERSON_NAME`.
 - `Field$(s$, n, "|")` is the standard way to extract pipe-delimited fields.
+- Arrays cannot be declared with a single element — the minimum size is 2 (e.g., `Dim a$(2)` not `Dim a$(1)`).
+- Array initialisers must supply exactly as many values as the declared size (e.g., `Local a$(2) = ("x", "")` for a 2-element array).
+- Sub, function and variable names have a maximum length of 32 characters, **not** counting any `%`, `!` or `$` type suffix; names with a base of 33+ characters cause a "name too long" error at runtime.
