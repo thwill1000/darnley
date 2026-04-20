@@ -418,25 +418,6 @@ Function parse_common(cmd$)
   EndIf
 End Function
 
-Function find_person%(words$(), first%, last%)
-  Local person_words$(MAX_WORDS) Length MAX_WORD_LENGTH
-  Local i%, match_count%, person_word_count%
-
-'  Print NUM_PEOPLE
-  For i% = 1 To NUM_PEOPLE
-    person_word_count% = split_words%(Field$(people$(i%), 2, "|"), person_words$())
-'    print_words(person_words$())
-    match_count% = find_matches%(person_words$(), words$(), first%, last%)
-    If match_count% Then
-      find_person% = i%
-'      print_success("FOUND " + people$(find_person%))
-      Exit Function
-    EndIf
-  Next
-
-  print_fail("NOT FOUND")
-End Function
-
 ' Finds object, looking in current location first before looking globally.
 Function find_obj%(words$(), first%, last%)
   Local obj_words$(MAX_WORDS) Length MAX_WORD_LENGTH
