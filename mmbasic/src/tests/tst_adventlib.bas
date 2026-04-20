@@ -18,6 +18,10 @@ Option Default Integer
 #Include "sptest/unittest.inc"
 #Include "../adventlib.inc"
 
+read_rooms()
+read_objects()
+read_people()
+
 add_test("test_count_words")
 add_test("test_count_words_gvn_full")
 add_test("test_count_words_gvn_gap")
@@ -33,6 +37,10 @@ add_test("test_remove_words_gvn_multiple")
 add_test("test_remove_words_gvn_not_found")
 add_test("test_remove_words_gvn_duplicates")
 add_test("test_remove_words_gvn_empty")
+add_test("test_find_obj")
+add_test("test_find_obj_gvn_not_found")
+add_test("test_find_obj_gvn_prefers_local")
+add_test("test_find_obj_gvn_first_last")
 add_test("test_split_words_gvn_empty")
 add_test("test_split_words_gvn_ws_only")
 add_test("test_split_words_gvn_one_word")
@@ -174,6 +182,33 @@ Sub test_remove_words_gvn_empty()
   assert_string_equals("four", words$(4))
 End Sub
 
+Sub test_find_obj()
+  ' Object 1 (Red Key) is in room 2, current room is 1 - only "key" matches OBJ001
+  r = 1
+  Local words$(4) = ("key", "", "", "")
+  assert_int_equals(1, find_obj%(words$()))
+End Sub
+
+Sub test_find_obj_gvn_not_found()
+  r = 1
+  Local words$(4) = ("purple", "goblet", "", "")
+  assert_int_equals(0, find_obj%(words$()))
+End Sub
+
+Sub test_find_obj_gvn_prefers_local()
+  ' Object 1 (Red Key) is in room 2, object 2 (Red Gem) is in room 1 (current)
+  r = 1
+  Local words$(4) = ("red", "", "", "")
+  assert_int_equals(2, find_obj%(words$()))
+End Sub
+
+Sub test_find_obj_gvn_first_last()
+  ' Search only words(2..2) = "key" - should find object 1
+  r = 1
+  Local words$(4) = ("ignore", "key", "", "")
+  assert_int_equals(1, find_obj%(words$(), 2, 2))
+End Sub
+
 Sub test_split_words_gvn_empty()
   Local words$(10)
   assert_int_equals(0, split_words%("", words$()))
@@ -245,10 +280,14 @@ Sub test_split_words_gvn_upper_case()
 End Sub
 
 location_data:
+Data "LOC001|Room One|2|LOC002|LOC002"
+Data "LOC002|Room Two|2|LOC001|LOC001"
 Data "" ' End of locations
 
 object_data:
-data "" ' End of objects
+Data "OBJ001|Red Key|LOC002|1|1"
+Data "OBJ002|Red Gem|LOC001|1|1"
+Data "" ' End of objects
 
 people_data:
 Data "" ' End of people
