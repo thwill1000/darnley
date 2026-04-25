@@ -12,9 +12,14 @@ MMBasic is an interpreter — there is no build step.
 # Run the game
 cd mmbasic/src && mmbasic darnley.bas
 
-# Run the unit tests
+# Run a single test file
 cd mmbasic/src/tests && mmbasic tst_adventlib.bas
+
+# Run all test files
+cd mmbasic/src/tests && mmbasic sptest/sptest.bas
 ```
+
+`sptest.bas` auto-discovers files matching `tst_*.bas`, `test_*.bas`, `*_test.bas`, or `*_tst*.bas` in the current directory.
 
 The `splib/` and `sptest/` directories under `mmbasic/src/tests/` are vendored copies of the [splib](https://github.com/thwill1000/mmbasic-splib) library.
 
