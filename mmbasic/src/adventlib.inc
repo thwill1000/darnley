@@ -1,30 +1,27 @@
-' Adventure Game Library
-' Copyright (c) 2025-2026 Melody Elizabeth Williams
+' Adventure Game Library v2
 ' Copyright (c) 2025-2026 Thomas Hugo Williams
 
 If Mm.Info$(Device X) = "MMB4L" And Mm.Info(Version) < 80000000 Then Option Resolution Pixel
 
-Const ASSETS_DIR$ = "../assets"
+Const ASSETS_DIR$ = Mm.Info(Path) + "../assets"
+Const MESSAGE_FILE$ = ASSETS_DIR$ + "/darnley.msg"
 Const MAX_WORDS = 10
 Const MAX_WORD_LENGTH = 20
-Const MAX_NUM_EXITS = 6
 Const INVENTORY = -1
 Const HIDDEN_ROOM = -2
 Const LIMBO = -3
 Const NUM_ROOMS = count_data%("location_data")
 Const NUM_OBJECTS = count_data%("object_data")
 Const NUM_PEOPLE = count_data%("people_data")
-
-'Dim DIRECTIONS$(6) = ( "North", "South", "East", "West", "Up", "Down" )
+Const MAX_TAKEABLE_WEIGHT = 99
+Const WILDCARD_MATCH = 100
 
 Dim DEBUG = 0
-Dim describe = 1
-Dim ok
+Dim describe% = 1
 Dim r = 1, r_new
 Dim rooms$(Max(NUM_ROOMS, 2)) Length 255
 Dim objects$(Max(NUM_OBJECTS, 2)) Length 128
 Dim people$(Max(NUM_PEOPLE, 2)) Length 128
-Dim command$
 Dim words$(10) Length 20
 Dim noun$, verb$
 
@@ -34,8 +31,6 @@ Sub init_advent()
   read_rooms()
   read_objects()
   read_people()
-'  print_text("introduction", "magenta")
-'  print_newline()
 End Sub
 
 ' Initialises and clears console/terminal
@@ -67,17 +62,43 @@ Sub read_objects()
     objects$(i%) = s$
   Next
 
-  ' Check no object is located in an invalid location
-  Local obj_tag$
-  Local loc_tag$
+  Local error_count%, loc_tag$, obj_tag$
   For i% = 1 To NUM_OBJECTS
     obj_tag$ = Field$(objects$(i%), 1, "|")
     loc_tag$ = Field$(objects$(i%), 3, "|")
+
+    ' Check object is in a valid location
     If Not find_loc%(loc_tag$, 1) Then
-      Error "Object " + obj_tag$ + " has invalid location: " + loc_tag$
+      con.println("Object " + obj_tag$ + " has invalid location: " + loc_tag$)
+      Inc error_count%
+    EndIf
+
+    ' Check object has a message entry (for EXAMINE verb)
+    If Not message_exists%(obj_tag$) Then
+      con.println("Object " + obj_tag$ + " has no message file entry")
+      Inc error_count%
     EndIf
   Next
+
+  If error_count% Then
+    con.println(Str$(error_count%) + " object data errors found!")
+    End
+  EndIf
 End Sub
+
+' Checks that a given message exists in the message file
+Function message_exists%(tag$)
+  Local s$
+  Open MESSAGE_FILE$ For Input As #1
+  Do While Not Eof(#1)
+    Input #1, s$
+    If Field$(s$, 1, "|") = tag$ Then
+      message_exists% = 1
+      Exit Do
+    EndIf
+  Loop
+  Close #1
+End Function
 
 ' Read the room data
 Sub read_rooms()
@@ -88,18 +109,31 @@ Sub read_rooms()
     rooms$(i%) = s$
   Next
 
-  ' Check no room has an invalid exit
-  Local exit_tag$, loc_tag$, num_exits%
+  Local error_count%, exit_tag$, loc_tag$, num_exits%
   For i% = 1 To NUM_ROOMS
     loc_tag$ = Field$(rooms$(i%), 1, "|")
+
+    ' Check no room has an invalid exit
     num_exits% = Val(Field$(rooms$(i%), 3, "|"))
     For j% = 1 To num_exits%
       exit_tag$ = Field$(rooms$(i%), 3 + j%, "|")
       If Not find_loc%(exit_tag$, 1) Then
-        Error "Room " + loc_tag$ + " has invalid exit: " + exit_tag$
+        con.println("Room " + loc_tag$ + " has invalid exit: " + exit_tag$)
+        Inc error_count%
       EndIf
     Next
+
+    ' Check room has a message entry (for LOOK verb)
+    If Not message_exists%(loc_tag$) Then
+      con.println("Room " + loc_tag$ + " has no message file entry")
+      Inc error_count%
+    EndIf
   Next
+
+  If error_count% Then
+    con.println(Str$(error_count%) + " room data errors found!")
+    End
+  EndIf
 End Sub
 
 ' Read the people data
@@ -140,28 +174,28 @@ Sub describe_loc()
 
   ' Iterate through exits for the current location
   con.print("Exits: ")
-  Const num_exits = Val(Field$(rooms$(r), 3, "|"))
-  count = 0
+  Const num_exits% = Val(Field$(rooms$(r), 3, "|"))
+  count% = 0
   Local exit_label$
-  For i = 1 To num_exits
-    If count > 0 Then con.print(", ")
-    exit_label$ = Field$(rooms$(r), 3 + i, "|")
+  For i% = 1 To num_exits%
+    If count% > 0 Then con.print(", ")
+    exit_label$ = Field$(rooms$(r), 3 + i%, "|")
     con.print(Field$(rooms$(find_loc%(exit_label$)), 2, "|"))
-    Inc count
+    Inc count%
   Next
-  If count = 0 Then con.print("No way out")
+  If count% = 0 Then con.print("No way out")
   con.println()
 
   con.println()
-  describe = 0
+  describe% = 0
   con.foreground("reset")
 End Sub
 
 Function find_loc%(tag$, no_error%)
-  Local i
-  For i = 1 To NUM_ROOMS
-    If Field$(rooms$(i), 1, "|") = tag$ Then
-      find_loc% = i
+  Local i%
+  For i% = 1 To NUM_ROOMS
+    If Field$(rooms$(i%), 1, "|") = tag$ Then
+      find_loc% = i%
       Exit For
     EndIf
   Next
@@ -180,7 +214,7 @@ Sub print_success(s$, no_newline%)
   con.foreground("cyan")
   con.print(s$)
   If no_newline% Then con.flush() Else con.println()
-  con.foreground("white")
+  con.foreground("reset")
 End Sub
 
 ' Print message for a failed action
@@ -188,12 +222,12 @@ Sub print_fail(s$, no_newline%)
   con.foreground("red")
   con.print(s$)
   If no_newline% Then con.flush() Else con.println()
-  con.foreground("white")
+  con.foreground("reset")
 End Sub
 
 ' Prints text read from DATA
 Sub print_text(label$, fg$)
-  Local i, j, s$
+  Local s$
   Restore label$
   If fg$ <> "" Then con.foreground(fg$)
   Do
@@ -214,7 +248,10 @@ Function get_input$(prompt$)
   EndIf
 End Function
 
-' Counts the number of entries in an array of words until an empty entry is encountered.
+' Counts the number of words in an array, stopping at the first empty element.
+'
+' @param words$()  The array of words to count.
+' @return          The number of non-empty words found before the first gap.
 Function count_words%(words$())
   Local i%
   For i% = Bound(words$(), 0) To Bound(words$(), 1)
@@ -223,8 +260,14 @@ Function count_words%(words$())
   Next
 End Function
 
-' Removes a word from an array of words shuffling the other words down and replacing the last
-' element with an empty string.
+' Removes a word from an array of words, shuffling subsequent words down
+' and clearing the last element.
+'
+' @param words$()  The array of words to modify.
+' @param index%    The index of the word to remove.
+' @return          0 on success,
+'                  1 if the index is out of bounds, or
+'                  1 if the element at index% is already empty.
 Function remove_word%(words$(), index%)
   If index% < Bound(words$(), 0) Or index% > Bound(words$(), 1) Then
     remove_word% = 1 ' Invalid index
@@ -243,9 +286,18 @@ Function remove_word%(words$(), index%)
   words$(Bound(words$(), 1)) = ""
 End Function
 
-
-' Splits command string into individual words at space boundaries ignoring additional spaces.
-' The returned words are all in lower case.
+' Splits a command string into individual words at space boundaries.
+'
+' Multiple consecutive spaces are treated as a single delimiter.
+' Apostrophes are stripped silently (e.g. "can't" becomes "cant").
+' All returned words are normalised to lower case.
+'
+' @param cmd$     The input string to split.
+' @param words$() Output array, cleared on entry.
+' @return         0 on success,
+'                 1 if the word count exceeds the array bounds, or
+'                 2 if any single word exceeds the element length limit.
+'                 On error the array may be partially populated.
 Function split_words%(cmd$, words$())
   Local i%
   For i% = Bound(words$(), 0) To Bound(words$(), 1)
@@ -253,20 +305,21 @@ Function split_words%(cmd$, words$())
   Next
 
   Local ch$, p%
-  i% = 1
+  i% = Bound(words$(), 0)
   For p% = 1 To Len(cmd$)
     ch$ = LCase$(Mid$(cmd$, p%, 1))
     If ch$ = "'" Then
       ' Removed from word
     ElseIf ch$ = " " Then
       If Len(words$(i%)) > 0 Then Inc i%
-      If i% > Bound(words$()) Then
+    Else
+      If i% > Bound(words$(), 1) Then
         split_words% = 1 ' Too many words
         Exit Function
       EndIf
-    Else
+
       On Error Skip
-      words$(i%) = words$(i%) + ch$
+      Cat words$(i%), ch$
       If Mm.ErrNo Then
         split_words% = 2 ' Word too long
         Exit Function
@@ -275,9 +328,14 @@ Function split_words%(cmd$, words$())
   Next
 End Function
 
+' Searches an array of words for a given string, case-insensitively.
+'
+' @param haystack$()  The array to search.
+' @param needle$      The word to search for.
+' @return             The index of the first match, or 0 if not found.
 Function find_word%(haystack$(), needle$)
   Local i%
-  For i% = 1 To Bound(haystack$(), 1)
+  For i% = Bound(haystack$(), 0) To Bound(haystack$(), 1)
     If LCase$(haystack$(i%)) = LCase$(needle$) Then
       find_word% = i%
       Exit For
@@ -285,8 +343,16 @@ Function find_word%(haystack$(), needle$)
   Next
 End Function
 
+' Removes all words in a removal list from an array of words.
+'
+' Each word in remove$() is searched for in words$() and removed if found.
+' Stops processing remove$() at the first empty element.
+' If a word appears multiple times in words$(), all occurrences are removed.
+'
+' @param words$()   The array of words to modify.
+' @param remove$()  The list of words to remove.
 Sub remove_words(words$(), remove$())
-  Local i% = 1, found%, result%
+  Local i% = Bound(remove$(), 0), found%, result%
   Do While i% <= Bound(remove$(), 1)
     If remove$(i%) = "" Then
       Inc i%
@@ -325,33 +391,11 @@ Function parse_common(cmd$)
   End Select
   If parse_common Then Exit Function
 
-'  ' Handle commands with > 2 words
-'  If words$(2) = "to" Or words$(2) = "with" Or words$(2) = "up" Then
-'    ' Discard TO, UP and WITH between <verb> and <noun>
-'    parse_common = remove_word%(words$(), 2)
-'  ElseIf (words$(1) = "switch" Or words$(1) = "turn") And words$(2) = "on" Then
-'    ' SWITCH ON <noun> and TURN ON <noun>
-'    words$(1) = "switch-on"
-'    parse_common = remove_word%(words$(), 2)
-'  EndIf
-
-'  If parse_common Then
-'    print_fail "Unexpected error!"
-'    Exit Function
-'  EndIf
-
+  ' Remove "padding" words that don't add meaning
   Local remove$(3) = ("of", "the", "to")
   remove_words(words$(), remove$())
 
-'  print_words(words$())
-
-'  If count_words%(words$()) > 2 Then
-'    print_fail "Sorry, I (mostly) only accept two word commands."
-'    parse_common = 1
-'    Exit Function
-'  EndIf
-
-  ' Tranform verbs
+  ' Transform verbs
   verb$ = ""
   Select Case words$(1)
     Case "d", "down"
@@ -430,7 +474,7 @@ Function obj_name$(obj_idx%)
   obj_name$ = Field$(objects$(obj_idx%), 2, "|")
 End Function
 
-' Handle the ASK verb
+' Handles the ASK verb
 Function verb_ask()
   verb_ask = 1
 
@@ -446,20 +490,19 @@ Function verb_ask()
     Exit Function
   EndIf
 
-  ' Check the object is present
+  ' Check the direct object is present
   If obj_loc%(obj_idx%) <> r Then
     Local msg$ = obj_name$(obj_idx%)
     If Not obj_is_person%(obj_idx%) Then msg$ = "The " + LCase$(msg$)
-    If Right$(msg$, 1) = "s" Then Cat msg$, " are not here." Else Cat msg$, " is not here."
+    Cat msg$, Choice(Right$(msg$, 1) = "s", " are", " is") + " not here."
     print_fail msg$
     Exit Function
   EndIf
 
-  ' Check the object is a person
+  ' Handles the direct object not being a person
   If Not obj_is_person%(obj_idx%) Then
-    Local msg$ = obj_name$(obj_idx%)
-    If Not obj_is_person%(obj_idx%) Then msg$ = "The " + LCase$(msg$)
-    If Right$(msg$, 1) = "s" Then Cat msg$, " do not answer." Else Cat msg$, " does not answer."
+    Local msg$ = "The " + LCase$(obj_name$(obj_idx%))
+    Cat msg$, Choice(Right$(msg$, 1) = "s", " do", " does") + " not answer."
     print_fail msg$
     Exit Function
   EndIf
@@ -479,7 +522,7 @@ Function verb_ask()
     If Eof(#1) Then Exit Do
     If s$ = "*" And best_match_count% = 0 Then
       ' Should be last response
-      best_match_count% = 100
+      best_match_count% = WILDCARD_MATCH
       best_match_line% = line_num%
     Else
       file_word_count% = split_words%(s$, file_words$())
@@ -501,23 +544,17 @@ Function verb_ask()
 
   con.println()
   con.foreground("cyan")
-  If best_match_count% < 100 Then con.print(Chr$(34))
+  If best_match_count% < WILDCARD_MATCH Then con.print(Chr$(34))
 
   If best_match_count% = 0 Then
-    print_success Chr$(34) + "I don't know what you are talking about." + Chr$(34)
+    print_success "I don't know what you are talking about."
   Else
-    Local first% = 1
     line_num% = 0
     Open ASSETS_DIR$ + "/" + filename$ For Input As #1
     Do
       Line Input #1, s$
       If line_num% = best_match_line% Then
-        Do
-          Line Input #1, s$
-          If s$ = "" Then Exit Do
-          If first% Then first% = 0 Else con.print(" ")
-          con.print(s$)
-        Loop
+        print_message_lines()
         Exit Do
       EndIf
       Inc line_num%
@@ -525,26 +562,27 @@ Function verb_ask()
     Close #1
   EndIf
 
-  If best_match_count% < 100 Then con.println(Chr$(34)) Else con.println()
+  If best_match_count% < WILDCARD_MATCH Then con.println(Chr$(34)) Else con.println()
   con.foreground("reset")
 End Function
 
-' Handle the DROP verb
-Function cmd_drop()
-  cmd_drop = 1
-  Local found = 0
-  Local i
-  For i = 1 To NUM_OBJECTS
-    If noun$ = LCase$(Field$(oname$(i), 1, "|")) And olocation(i) = INVENTORY Then
-      print_success "Dropped."
-      olocation(i) = r
-      found = 1
-    EndIf
-  Next
-  If Not found Then print_fail "You're not carrying that"
+' Handles the DROP verb
+Function verb_drop()
+  verb_drop = 1
+  print_fail "Unimplemented."
+  ' Local found = 0
+  ' Local i
+  ' For i = 1 To NUM_OBJECTS
+  '   If noun$ = LCase$(Field$(oname$(i), 1, "|")) And olocation(i) = INVENTORY Then
+  '     print_success "Dropped."
+  '     olocation(i) = r
+  '     found = 1
+  '   EndIf
+  ' Next
+  ' If Not found Then print_fail "You're not carrying that"
 End Function
 
-' Handle the HELP verb
+' Handles the HELP verb
 Function verb_help()
   verb_help = 1
   print_success "Try one of the following commands:"
@@ -554,8 +592,19 @@ Function verb_help()
   print_success "  QUIT"
 End Function
 
-Function find_obj%(words$(), first%, last%))
-  Local i%, match_loc%, match_obj%, max_num_matches%, num_matches%
+' Finds the best matching object for the given words.
+'
+' Iterates all objects and scores each by counting how many of the words
+' in the range [first%, last%] match words in the object name. The object
+' with the highest score is returned, with ties broken in favour of objects
+' in the current room (r).
+'
+' @param words$()  Array of words to match against object names.
+' @param first%    Index of first word to consider (default 0 = start from 1).
+' @param last%     Index of last word to consider (default 0 = use full range).
+' @return          Index into objects$() of the best match, or 0 if not found.
+Function find_obj%(words$(), first%, last%)
+  Local i%, match_loc%, max_num_matches%, num_matches%
   Local oloc%, obj_loc_tag$, oname$, obj_words$(MAX_WORDS) Length MAX_WORD_LENGTH
   Local obj_word_count%
 
@@ -566,19 +615,13 @@ Function find_obj%(words$(), first%, last%))
     num_matches% = find_matches%(obj_words$(), words$(), first%, last%)
     If Not num_matches Then Continue For
     oloc% = find_loc%(obj_loc_tag$)
-    If oloc% = r Then
-      If match_loc% = r And num_matches% > max_num_matches% Then
-        ' Latest match and previous match in current location, latest is a better match
-        find_obj% = i%
-        max_num_matches% = num_matches%
-      ElseIf match_loc% <> r Then
-        ' Latest match in current location, previous match not
-        find_obj% = i%
-        match_loc% = oloc%
-        max_num_matches% = num_matches%
-      EndIf
-    ElseIf match_loc% <> r And num_matches% > max_num_matches% Then
-      ' Neither match in current locatiom, latest is a better match
+    If num_matches% > max_num_matches% Then
+      ' Prefer best match
+      find_obj% = i%
+      match_loc% = oloc%
+      max_num_matches% = num_matches%
+    ElseIf num_matches% = max_num_matches% And match_loc% <> r And oloc% = r Then
+      ' If matches are of same quality, prefer first match in current location
       find_obj% = i%
       match_loc% = oloc%
       max_num_matches% = num_matches%
@@ -586,45 +629,19 @@ Function find_obj%(words$(), first%, last%))
   Next
 End Function
 
-' Handle the EXAMINE verb
+' Handles the EXAMINE verb
 Function verb_examine()
-  Local best%, i%, match_loc%, match_obj%, oloc%, obj_loc_tag$, oname$, obj_words$(10) Length 20, result%
+  Const obj% = find_obj%(words$())
+  Const oloc% = Choice(obj%, obj_loc%(obj%), 0)
 
-  For i% = 1 To NUM_OBJECTS
-    obj_loc_tag$ = Field$(objects$(i%), 3, "|")
-    oname$ = Field$(objects$(i%), 2, "|")
-    result% = split_words%(oname$, obj_words$())
-    result% = find_matches%(obj_words$(), words$())
-    If result% Then
-      oloc% = find_loc%(obj_loc_tag$)
-      If oloc% = r Then
-        If match_loc% = r And result% > best% Then
-          ' Latest match and previous match in current location, latest is a better match
-          match_obj% = i%
-          best = result%
-        ElseIf match_loc% <> r Then
-          ' Latest match in current location, previous match not
-          match_obj% = i%
-          match_loc% = oloc%
-          best = result%
-        EndIf
-      ElseIf match_loc% <> r And result% > best% Then
-        ' Neither match in current locatiom, latest is a better match
-        match_obj% = i%
-        match_loc% = oloc%
-        best = result%
-      EndIf
-    EndIf
-  Next
-
-  If match_loc% = r Then
+  If oloc% = r Then
     ' Object exists and is present
     con.println()
     con.foreground("cyan")
-    print_message(Field$(objects$(match_obj%), 1, "|"))
+    print_message(Field$(objects$(obj%), 1, "|"))
     con.foreground("reset")
-  ElseIf match_loc% Then
-    ' Object exists and is not present
+  ElseIf oloc% Then
+    ' Object exists but is not present
     print_fail "You do not see that here."
   Else
     ' Unknown object
@@ -634,17 +651,13 @@ Function verb_examine()
   verb_examine = 1
 End Function
 
-Function lookup_loc%(id$)
-  Local i%
-  For i% = 1 To NUM_ROOMS
-    If id$ = Field$(rooms$(i%), 1, "|") Then
-      lookup_loc% = i%
-      Exit Function
-    EndIf
-  Next
-  Error "Location not found: " + id$
-End Function
-
+' Counts how many words in needles$() have a match in haystack$(), case-insensitively.
+'
+' @param haystack$()  The array of words to search. Must be Option Base 1.
+' @param needles$()   The array of words to match. Must be Option Base 1.
+' @param first%       Index of first needle to consider (default 0 = start from 1).
+' @param last%        Index of last needle to consider (default 0 = use full range).
+' @return             The number of needles that matched at least one word in haystack$().
 Function find_matches%(haystack$(), needles$(), first%, last%)
   Local i%, j%, s$
   If Not first% Then first% = 1
@@ -652,7 +665,7 @@ Function find_matches%(haystack$(), needles$(), first%, last%)
   For i% = first% To last%
     s$ = LCase$(needles$(i%))
     If s$ = "" Then Exit For
-    For j% = 1 To Bound(haystack$(), 1)
+    For j% = Bound(haystack$(), 0) To Bound(haystack$(), 1)
       If haystack$(j%) = "" Then Exit For
       If s$ = LCase$(haystack$(j%)) Then
         Inc find_matches%
@@ -662,26 +675,32 @@ Function find_matches%(haystack$(), needles$(), first%, last%)
   Next
 End Function
 
-' Handle the GO verb
+' Handles the GO verb, setting r_new to the best matching exit location.
+'
+' Iterates the exits of the current room (r) and scores each by counting how
+' many of the player's words (from index 2 onwards) match words in the exit's
+' location name. The exit with the highest score is chosen.
+'
+' On success, r_new is set to the index of the destination room.
+' On failure, r_new is set to r (no movement) and an error message is printed.
+'
+' Note: r_new is a global that must be acted on by the caller after this
+' function returns. It is not updated by any other verb handler.
+'
+' @return  1 always (indicating the verb was handled).
 Function verb_go()
   Local word_count% = count_words%(words$())
   Local loc_words$(10) Length 20
-  Local best% = 0, best_match% = 0, i%, j%, match%, result%
+  Local best_match% = 0, i%, match%, result%
 
   Const num_exits% = Val(Field$(rooms$(r), 3, "|"))
-  Local loc%, loc_id$, loc_name$
+  Local loc%, loc_tag$, loc_name$
   For i% = 1 To num_exits%
-    loc_id$ = Field$(rooms$(r), 3 + i%, "|")
-    loc% = lookup_loc%(loc_id$)
+    loc_tag$ = Field$(rooms$(r), 3 + i%, "|")
+    loc% = find_loc%(loc_tag$)
     loc_name$ = Field$(rooms$(loc%), 2, "|")
     result% = split_words%(loc_name$, loc_words$())
-
-    match% = 0
-    For j% = 2 To word_count%
-      If words$(j%) = "" Then Exit For
-      If find_word%(loc_words$(), words$(j%)) Then Inc match%
-    Next
-
+    match% = find_matches%(loc_words$(), words$(), 2)
     If match% > best_match% Then
       best_match% = match%
       r_new = loc%
@@ -696,35 +715,36 @@ Function verb_go()
   verb_go = 1
 End Function
 
-' Handle the INVENTORY verb
-Function cmd_inventory()
-  cmd_inventory = 1
-  Local count = 0, i
-  print_newline()
-  print_success "You are carrying: "
-  For i=1 To NUM_OBJECTS
-    If olocation(i) = INVENTORY Then
-      print_success "  " + Field$(oname$(i), 2, "|")
-      Inc count
-    EndIf
-  Next
-  If count = 0 Then print_success "  Nothing"
+' Handles the INVENTORY verb
+Function verb_inventory()
+  verb_inventory = 1
+  print_fail "Unimplemented."
+  ' Local count = 0, i
+  ' con.println()
+  ' print_success "You are carrying: "
+  ' For i=1 To NUM_OBJECTS
+  '   If olocation(i) = INVENTORY Then
+  '     print_success "  " + Field$(oname$(i), 2, "|")
+  '     Inc count
+  '   EndIf
+  ' Next
+  ' If count = 0 Then print_success "  Nothing"
 End Function
 
-' Handle the LOOK verb
-Function cmd_look()
-  cmd_look = 1
+' Handles the LOOK verb
+Function verb_look()
+  verb_look = 1
   If noun$ <> "" Then
     print_fail "Perhaps you meant EXAMINE " + UCase$(noun$) + "."
   Else
-    describe = 1
+    describe% = 1
   EndIf
 End Function
 
 Function cat_words$(words$(), si%, ei%)
   Local first% = 1, i%
-  If Not si% Then si% = 1
-  If Not ei% Then ei% = MAX_WORDS
+  If Not si% Then si% = Bound(words$(), 0)
+  If Not ei% Then ei% = Bound(words$(), 1)
   For i% = si% To ei%
     If words$(i%) = "" Then Exit For
     If first% Then first% = 0 Else Cat cat_words$, " "
@@ -740,7 +760,7 @@ Function obj_is_takeable%(obj_idx%)
   obj_is_takeable% = Field$(objects$(obj_idx%), 4, "|") = "1"
 End Function
 
-' Handle the TAKE verb
+' Handles the TAKE verb
 Function verb_take()
   verb_take = 1
 
@@ -770,7 +790,7 @@ Function verb_take()
   EndIf
 
   ' Check if the object is too heavy
-  If obj_weight%(o%) >= 100 Then
+  If obj_weight%(o%) > MAX_TAKEABLE_WEIGHT Then
     Local msg$ = "The " + LCase$(obj_name$(o%))
     If Right$(msg$, 1) = "s" Then Cat msg$, " are too heavy." Else Cat msg$, " is too heavy."
     print_fail msg$
@@ -787,16 +807,16 @@ Function verb_take()
   print_fail "There is no need to carry the " + LCase$(obj_name$(o%)) + " around with you."
 End Function
 
-' Handle the QUIT verb
-Function cmd_quit()
-  cmd_quit = 1
+' Handles the QUIT verb
+Function verb_quit()
+  verb_quit = 1
   print_success "Goodbye!"
   End
 End Function
 
 ' Runs the next chapter
 Sub next_chapter(filename$)
-  print_newline()
+  con.println()
   press_key_to_continue()
   Run Mm.Info(Path) + filename$
   Cls
@@ -809,31 +829,44 @@ Sub press_key_to_continue()
   con.lines = 0
 End Sub
 
+' Prints a message from the assets message file to the console.
+'
+' Searches darnley.msg for a line matching tag$ and prints the lines that
+' follow it until an empty line is encountered. Consecutive lines are joined
+' with a space unless a line ends with "@", which forces a line break at that
+' point (the "@" itself is not printed).
+'
+' Raises an error if tag$ is not found in the file.
+'
+' @param tag$  The tag to search for in the message file.
 Sub print_message(tag$)
-  ' Read from "../assets/darnley.msg" until a line with the given tag is found
-  ' and print the following lines until an empty line is encountered.
-  Local first%, s$
-  Open ASSETS_DIR$ + "/darnley.msg" For Input As #1
+  Local s$
+  Open MESSAGE_FILE$ For Input As #1
   Do
     Line Input #1, s$
     If Eof(#1) Then
+      Close #1
       Error "Message not found: " + tag$
     ElseIf s$ = tag$ Then
-      first% = 1
-      Do
-        Line Input #1, s$
-        If s$ = "" Then Exit Do
-        If first% Then first% = 0 Else s$ = " " + s$
-        If Right$(s$, 1) = "@" Then
-          con.println(Left$(s$, Len(s$) - 1))
-          first% = 1
-        Else
-          con.print(s$)
-        EndIf
-      Loop
+      print_message_lines()
       Exit Do
     EndIf
   Loop
   Close #1
   con.println()
+End Sub
+
+Sub print_message_lines()
+  Local first% = 1, s$
+  Do
+    Line Input #1, s$
+    If s$ = "" Then Exit Do
+    If first% Then first% = 0 Else s$ = " " + s$
+    If Right$(s$, 1) = "@" Then
+      con.println(Left$(s$, Len(s$) - 1))
+      first% = 1
+    Else
+      con.print(s$)
+    EndIf
+  Loop
 End Sub
