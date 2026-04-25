@@ -1,26 +1,30 @@
-events of yesterday
-I have worked for the Darnley family since I was a boy. Colonel
-Darnley was a very honest, decent gentleman. Last night I waited on
-the guests at dinner. There was the family, Sir Redvers and Mr.
-Coniston. Afterwards I served port to the gentlemen in the billiard
-room. I had my own dinner at 9.30 with the other servants, then
-cleaned boots. I was disturbed by a loud bang at 10.30. I thought it
-was a door so did nothing about it. Shortly afterwards I went to bed
-in the butlers' pantry and was woken by Mr. Coniston at 11.30. He
-said that he had not been able to sleep and had gone to the lounge
-to smoke. He saw a light under the study doors and was concerned
-because the doors were locked and Colonel Darnley would not answer.
-I offered to get my own keys but Mr. Coniston said it was too
-urgent. As far as the study is concerned the Colonel kept the keys
-on his person and I keep mine hidden - I won't say where - but you
-can be sure no-one can get their on hand either. We left through the
-kitchen door and I walked round to the french windows, Mr. Coniston
-ran and was there a couple of seconds before me. He threw a stone
-through the window and one of us, me I think put his hand through
-the hole to open the lock. I can confirm that the window was locked.
-We both went into the room and saw the Colonel's body with a bullet
-through the chest. The body was on the floor and you couldn't tell
-where the shot had come from. The Colonel's keys were in the locks
+events yesterday murder
+I have worked for the Darnley family since I was a boy. Colonel Darnley
+was a very honest, decent gentleman. Last night I waited on the guests
+at dinner. There was the family, Sir Redvers and Mr. Coniston. The
+atmosphere at dinner, I am bound to say, was not entirely comfortable.
+Afterwards I served port to the gentlemen in the billiard room and
+withdrew at a little after nine.@
+@
+I had my own dinner at 9.30 with the other servants, then cleaned boots.
+I was disturbed by a loud bang at 10.30 - a door slamming, I assumed,
+given the tempers that evening - and did nothing about it. Shortly
+afterwards I went to bed in the butler's pantry.@
+@
+I was woken by Mr. Coniston at 11.30. He said that he had not been able
+to sleep and had gone to the lounge to smoke. He saw a light under the
+study doors and was concerned because the doors were locked and Colonel
+Darnley would not answer. I offered to get my own keys but Mr. Coniston
+said it was too urgent. As far as the study is concerned the Colonel
+kept the keys on his person and I keep mine hidden - I won't say where
+- but you can be sure no-one can get their hand on them either. We left
+through the kitchen door and I walked round to the French windows;
+Mr. Coniston ran and was there a couple of seconds before me. He threw
+a stone through the window and one of us - I think myself - put a hand
+through the hole to open the lock. I can confirm that the window was
+locked. We both went into the room and saw the Colonel's body with a
+bullet through the chest. The body was on the floor and you couldn't
+tell where the shot had come from. The Colonel's keys were in the locks
 of the two doors.
 
 alibi
@@ -51,8 +55,10 @@ It belongs to the master and was kept in the study. The study is
 normally unlocked and it could have been removed at any time.
 
 missing statue
-Mr. Mellors told me that a tramp pitched it into the pond two days
-ago.
+Mr. Mellors told me that a tramp pitched it into the pond two days ago.
+I repeated this to the Colonel at the time and he seemed to accept it, though
+he was not best pleased. Personally I should have thought a tramp would have
+more use for a statue he could carry off than one at the bottom of a pond.
 
 gramophone
 There is a gramophone in the morning room.
@@ -62,7 +68,7 @@ There are two pianos, one in the music room and the other in the
 morning room.
 
 ladys shoes
-I'm not sure. They may be Mrs. Sarah's or Miss Milicent's.
+I'm not sure. They may be Mrs. Sarah's or Miss Millicent's.
 
 newspaper
 I'm afraid I don't recognise it.
@@ -76,16 +82,16 @@ I don't know anything about it.
 colonel darnley
 The master was extremely good to his family.
 
-sarah darnley
+sarah
 I don't believe it is proper to speak of the family.
 
-milicent darnley
+millicent
 I don't believe it is proper to speak of the family.
 
 arthur coniston
 I scarcely know the gentleman.
 
-sir redvers slingsby
+redvers slingsby
 I've met the gentleman once or twice. A very hot-tempered man.
 
 mildred goodbody
@@ -99,7 +105,7 @@ He's the gamekeeper. He seems honest enough.
 
 flatfooted bootprints
 I've studied all the people here and none of them are flat-footed.
-It's a mystery ro me why the bootprints should be flat-footed.
+It's a mystery to me why the bootprints should be flat-footed.
 
 hobnailed bootprints
 I don't know whose these are.
@@ -116,3 +122,6 @@ I don't know whose these are.
 cheroot in the pond
 As far as I'm aware only the Colonel smoked cheroots. But he was a
 most particular man and would never throw a butt into the pond.
+
+*
+"I don't believe that falls within my knowledge, I'm afraid."

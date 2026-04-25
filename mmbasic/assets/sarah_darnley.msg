@@ -1,44 +1,37 @@
-events of yesterday
+events yesterday murder
 I married Sebastian two years ago. I am more than twenty years
-younger than he - really not much older than Milicent. We have been
-very happy together. Last night we all had dinner together. After-
-wards the men played billiards while Milicent and I had coffee in
-the lounge. At about 9.30 the men joined us for half an hour then
-Arthur and Milicent said that they were going to the music room.
-Sebastian and Sir Redvers had business to talk about so they went
-into the study. I heard them quarelling but couldn't tell what
-about. Next there was a loud noise which I took to be Sir Redvers
-leaving the study by the door to the hall and banging the door. I
-stayed in the lounge for ten minutes and then went upstairs where I
-ran into Milicent on the landing. She said that she had left Arthur
-in the billiard room and was going to bed. I went into the morning
-room and played some Chopin nocturnes on the piano there until about
-11.30 when I heard a noise like a shot which I thought was
-poachers. Looking at my watch I decided it was time to go to bed. I
-was getting changed when I heard Billingsgate rush upstairs to wake
-Sir Redvers. Milicent heard the racket and came into my room from
-hers. And the rest you know.
+younger than he - really not much older than Millicent. We have
+been very happy together. Last night we all had dinner together.
+Afterwards the men played billiards while Millicent and I had
+coffee in the lounge.@
+@
+At about 9.30 the men joined us for half an hour then Arthur and
+Millicent said that they were going to the music room. Sebastian
+and Sir Redvers had business to talk about so they went into the
+study. I heard them quarrelling but couldn't tell what about.
+Next there was a loud noise which I took to be Sir Redvers leaving
+the study by the door to the hall and banging the door. I stayed
+in the lounge for ten minutes and then went upstairs where I ran
+into Millicent on the landing. She said that she had left Arthur
+in the music room and was going to bed.@
+@
+I went into the morning room and played some Chopin nocturnes on
+the piano there until about 11.30 when I heard a noise like a shot
+which I thought was poachers. Looking at my watch I decided it was
+time to go to bed.@
+@
+I was getting changed when I heard Billingsgate rush upstairs to
+wake Sir Redvers. Millicent heard the racket and came into my room
+from hers. And the rest you know.
 
 alibi
 At 10.30 I was reading and drinking coffee in the lounge - on my
 own, I'm afraid. At 11.30 I was playing the piano in the morning
 room - also alone, alas! I don't suppose it looks to good?
 
-slippers
-I don't know whose slippers these are.
-
-boots
-I don't know anything about them.
-
-knife
-I don't know anything about the knife.
-
 cigarettes
 I can't imagine why you are asking me this question. Arthur
 Coniston smokes cigarettes.
-
-service revolver
-I don't recognise it.
 
 missing statue
 I believe a rather nasty tramp, who called two days ago threw it
@@ -74,21 +67,21 @@ handkerchief
 You found it in the summer house? I'm absolutely sure it isn't mine.
 
 colonel darnley
-He was somewhat strict and suspicous by nature, but we were happy
+He was somewhat strict and suspicious by nature, but we were happy
 enough.
 
-milicent darnley
+millicent
 Her father spoiled her so she got used to having her own way.
 Sebastian probably agreed to Arthur Coniston's proposal for fear of
-what Milicent would do if he refused. I can't see him crossing
-Milicent on a matter like that.
+what Millicent would do if he refused. I can't see him crossing
+Millicent on a matter like that.
 
 arthur coniston
-A charmer. I was suspicous of his motives for marrying Milicent, but
+A charmer. I was suspicious of his motives for marrying Millicent, but
 Arthur said that when he asked Sebastian my husband agreed, so I am
 probably mistaken.
 
-sir redvers slingsby
+redvers slingsby
 I felt he had some sort of grudge against Sebastian.
 
 arnold billingsgate
@@ -104,19 +97,24 @@ ronald mellors
 A very loyal gamekeeper.
 
 flatfooted bootprints
-I'm too distressed to talk about this.
+I'm too distressed to think clearly about bootprints, I'm afraid.
 
 hobnailed bootprints
-I'm too distressed to talk about this.
+I really couldn't say. I wasn't paying attention to people's boots.
 
 slipper prints
-I'm too distressed to talk about this.
+I don't know whose slippers those would be. I'm sorry, this is all rather too
+much.
 
 mens shoe prints
-I'm too distressed to talk about this.
+I'm afraid I don't notice that sort of thing at the best of times.
 
 womens shoe prints
-I'm too distressed to talk about this.
+I couldn't say whose they are. I'm really not in a fit state to be asked about
+footprints.
 
 cheroot in the pond
 I don't know anything about it.
+
+*
+"I'm afraid I really couldn't say. This has all been such a terrible shock."
