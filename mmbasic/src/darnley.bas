@@ -12,46 +12,47 @@ Option Explicit
 'DIRECTIONS$(1) = "Forward"
 'DIRECTIONS$(2) = "Aft"
 
+Dim result%
+
 init_advent()
 r = 17 ' Drive
 
 con.foreground("magenta")
 print_message("SEALED_ROOM_INTRO")
 con.foreground("reset")
-con.println()
+print_newline()
 
 Do
-  If describe Then describe_loc()
+  If describe% Then describe_loc()
 
   r_new = r
-  command$ = get_input$()
-  ok = parse(command$)
-  If ok = 1 Then Goto command_end
+  result% = parse(get_input$())
+  If result% = 1 Then Goto command_end
 
   Select Case verb$
     Case "ask"
-      ok = verb_ask()
+      result% = verb_ask()
     Case "drop"
-      ok = cmd_drop()
+      result% = verb_drop()
     Case "go"
-      ok = verb_go()
+      result% = verb_go()
     Case "help"
-      ok = verb_help()
+      result% = verb_help()
     Case "inventory"
-      ok = cmd_inventory()
+      result% = verb_inventory()
     Case "look"
-      ok = cmd_look()
+      result% = verb_look()
     Case "quit"
-      ok = cmd_quit()
+      result% = verb_quit()
     Case "take"
-      ok = verb_take()
+      result% = verb_take()
     Case "examine"
-      ok = verb_examine()
+      result% = verb_examine()
   End Select
 
 command_end:
 
-  If Not ok Then print_fail "That doesn't seem to work."
+  If Not result% Then print_fail "That doesn't seem to work."
 
   If r_new = 0 Then
     print_fail "You can't go that way."
@@ -60,7 +61,7 @@ command_end:
 
   If r_new <> r Then
     r = r_new
-    describe = 1
+    describe% = 1
   EndIf
 
   print_newline()
@@ -169,8 +170,8 @@ Data "OBJ206_SLIPPERS|Slippers|LOC029_GUEST_ROOM|1|1"
 Data "OBJ207_CIGARETTES|Cigarettes|LOC029_GUEST_ROOM|1|1"
 Data "OBJ208_KNIFE|Knife|LOC009_KITCHEN|1|1"
 Data "OBJ209_BOOTS|Boots|LOC009_KITCHEN|1|1"
-Data "OBJ212_FOOTPRINTS|Footprints|LOC003_KITCHEN_GARDEN|0|100"
-Data "OBJ213_BED|Bed|LOC027_MASTER_BEDROOM|0|100"
+Data "OBJ212_FOOTPRINTS_KG|Footprints|LOC003_KITCHEN_GARDEN|0|100"
+Data "OBJ213_BED_MASTER|Bed|LOC027_MASTER_BEDROOM|0|100"
 Data "OBJ214_WARDROBE|Wardrobe|LOC027_MASTER_BEDROOM|0|100"
 Data "OBJ215_CIGARS|Cigars|LOC027_MASTER_BEDROOM|1|1"
 Data "OBJ216_DRESSING_TABLE|Dressing Table|LOC027_MASTER_BEDROOM|0|100"
@@ -193,13 +194,13 @@ Data "OBJ233_SHATTERED_GLASS|Shattered glass|LOC007_COLONELS_STUDY|0|100"
 Data "OBJ234_GRAMOPHONE|Gramophone|LOC028_MORNING_ROOM|0|100"
 Data "OBJ235_PIANO_MORNING|Piano|LOC028_MORNING_ROOM|0|100"
 Data "OBJ236_DISPLAY_CASE|Display Case|LOC008_HALL|0|100"
-Data "OBJ237_FOOTPRINTS_WEST|Footprints|LOC012_WEST_WALK|0|100"
+Data "OBJ237_FOOTPRINTS_WW|Footprints|LOC012_WEST_WALK|0|100"
 Data "OBJ238_CIGAR_STUB|Cigar Stub|LOC015_MUSIC_ROOM|1|1"
 Data "OBJ239_PIANO_MUSIC|Piano|LOC015_MUSIC_ROOM|0|100"
 Data "OBJ240_WINE_GLASSES|Wine Glasses|LOC016_BILLIARD_ROOM|0|1"
 Data "OBJ241_ASHTRAY|Ashtray|LOC016_BILLIARD_ROOM|1|1"
 Data "OBJ243_FOOTPRINTS_DRIVE|Footprints|LOC017_DRIVE|0|0"
-Data "OBJ244_FOOTPRINTS_SE|Footprints|LOC018_EAST_WALK|0|0"
+Data "OBJ244_FOOTPRINTS_EW|Footprints|LOC018_EAST_WALK|0|0"
 Data "OBJ245_CIGARETTE_ENDS_SH|Cigarette Ends|LOC019_SUMMER_HOUSE|1|1"
 Data "OBJ246_HANDKERCHIEF|Handkerchief|LOC019_SUMMER_HOUSE|1|1"
 Data "OBJ247_FOOTPRINTS_WL|Footprints|LOC020_WEST_LAWN|0|0"
