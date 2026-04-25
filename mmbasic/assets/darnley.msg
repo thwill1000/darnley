@@ -2,7 +2,7 @@ LOC001_BATHROOM
 The bathroom contains an enamelled cast iron bath with claw feet
 and a toilet bearing a brass tablet calling it 'The Imperial Avenger'.
 A washstand with a marble top and a pedestal washbowl complete
-the ensemble. Various toileteries are scattered around in the normal
+the ensemble. Various toiletries are scattered around in the normal
 way.
 
 LOC002_ORCHARD
@@ -25,8 +25,8 @@ The pond is covered in ice. In the four corners of the pond are
 stone pedestals. These hold statues.
 
 LOC006_TERRACE
-From the house a french window leads onto this paved terrace, which
-shows traces of many footprints in the snow. The french window is
+From the house a French window leads onto this paved terrace, which
+shows traces of many footprints in the snow. The French window is
 open and has a broken pane.
 
 LOC007_COLONELS_STUDY
@@ -35,7 +35,7 @@ study. A port glass is by his body and a tantalus of port stands on a
 table. The room is panelled and contains several club-chairs, some
 glass cases holding stuffed birds and a writing table with a letter on
 it as well as various sporting magazines and a rack of sporting guns
-and pistols. As you walk on the floor by the french window in the
+and pistols. As you walk on the floor by the French window in the
 west wall, you feel broken glass underfoot.
 
 LOC008_HALL
@@ -43,7 +43,7 @@ The walls of the hall are decorated with swords and Civil War
 armour. The floor is marble. The only furniture is a glass case
 containing various flints and shards of pottery. At the far end of the
 hall, two sets of fine armour stand either side of the stairs which
-have barley-sugar bannisters and carved pineapple finials.
+have barley-sugar banisters and carved pineapple finials.
 
 LOC009_KITCHEN
 The kitchen has game birds hanging from the ceiling and the usual
@@ -51,7 +51,7 @@ kitchen furniture. On the sink draining-board is a knife. By the
 outside door is a line of boots and some cleaning brushes and polish.
 
 LOC010_BUTLERS_PANTRY
-The butlers' pantry is laid out as a sitting room with a bed behind a
+The butler's pantry is laid out as a sitting room with a bed behind a
 curtain. Two temporary beds have been made up. There is a small
 bookshelf.
 
@@ -75,7 +75,7 @@ mantlepiece is an Indian rosewood box with an ivory inlay.
 LOC014_DINING_ROOM
 The dining room holds a fine oak table with chairs in William and
 Mary style. A glass case contains various pieces of Delft pottery. A
-sideboard holding a silver wine cooler and a pair of Sevres porcellain
+sideboard holding a silver wine cooler and a pair of Sevres porcelain
 urns stand against one wall. The fireplace is of carved marble and
 the walls hold various Italian landscapes.
 
@@ -174,7 +174,7 @@ smooth cover of snow is broken by footprints.
 
 PER101_COLONEL_DARNLEY
 Aged 60. The Colonel served in the South African War and
-contracted enteric fever which left him feeling debiliated and short-
+contracted enteric fever which left him feeling debilitated and short-
 tempered. He had only a small inheritance but made a fortune on the
 stock exchange. He was free with his tips on the market, but didn't
 always follow his own recommendations.
@@ -194,7 +194,7 @@ looking. His manner is honest and friendly. He dresses fashionably
 and wears black patent shoes.
 
 P_REDVERS_SLINGSBY
-Friend of the deceased. Aged 52. Very tall and boney with side
+Friend of the deceased. Aged 52. Very tall and bony with side
 whiskers and a red face. Wears country-tweeds and boots. His
 manner is ill-tempered.
 
@@ -250,7 +250,7 @@ OBJ209_BOOTS
 All these boots are polished clean except for a mud stained pair that
 apparently belong to Sir Redvers Slingsby.
 
-OBJ212_FOOTPRINTS_KITCHEN_GARDEN
+OBJ212_FOOTPRINTS_KG
 Both flat footed boot prints and slipper prints can be seen going
 between the kitchen and the maze.
 
@@ -334,13 +334,13 @@ OBJ232_FRENCH_WINDOW_STUDY
 One pane is smashed. The glass on the floor is apparently from this.
 
 OBJ233_SHATTERED_GLASS
-This glass is apparently from the smashed French Window.
+This glass is apparently from the smashed French window.
 
 OBJ234_GRAMOPHONE
 It has a device for playing several records in sequence. All the
 records are Chopin.
 
-OBJ235_PIANO_MORNING_ROOM
+OBJ235_PIANO_MORNING
 There are several sheets of Schubert Lied music on the piano's music
 stand.
 
@@ -348,22 +348,22 @@ OBJ236_DISPLAY_CASE
 According to a label at the front of the case these flints and shards of
 pottery were found in the grounds of the house.
 
-OBJ237_FOOTPRINTS_WEST
+OBJ237_FOOTPRINTS_WW
 There are slipper prints, flat-footed boot prints and some shoe prints
-heading to and from the terrace and the the front of the house.
+heading to and from the terrace and the front of the house.
 
-OBJ238_CIGAR_STUB_MUSIC_ROOM
+OBJ238_CIGAR_STUB
 This cigar stub is a straight dark cylinder rather than the
 conventional shape. That and the tarry appearance suggests a
 cheroot.
 
-OBJ239_PIANO_MUSIC_ROOM
+OBJ239_PIANO_MUSIC
 The sheets of music on the piano are for duets.
 
 OBJ240_WINE_GLASSES
 The three wine glasses are all dirty.
 
-OBJ241_ASHTRAY_BILLIARD_ROOM
+OBJ241_ASHTRAY
 The ashtray contains the remains of three cigars, one Havana and
 two cheroots.
 
@@ -372,11 +372,11 @@ The prints from flat footed boots go east and west along the gravel
 path in front of the house. Slipper prints come from the house and
 head east and west along the path. Prints from men's shoes come
 from the house and go west. Prints from lady's shoes head to and
-from the frontdoor and the west lawn. At the gate end of the drive
+from the front door and the west lawn. At the gate end of the drive
 the prints from men's hobnailed boots go between the west lawn and
 the stables.
 
-OBJ244_FOOTPRINTS_SOUTHEAST
+OBJ244_FOOTPRINTS_EW
 The prints from flat footed boots and men's slippers are visible in the
 snow heading around the corner of the house, to and from the maze
 and avenue of statues.
@@ -387,19 +387,19 @@ These cigarette ends come from a cheap, mass produced brand.
 OBJ246_HANDKERCHIEF
 This is a lady's hanky, plain lace edged and perfumed.
 
-OBJ247_FOOTPRINTS_WEST_LAWN
+OBJ247_FOOTPRINTS_WL
 Prints from lady's shoes and men's hob-nailed boots can be seen in the
 snow going between the drive and the summer house.
 
-OBJ248_FOOTPRINTS_STABLES
+OBJ248_FOOTPRINTS_ST
 The prints from hob-nailed boots can be seen in the snow going
 between the drive and the east lawn.
 
-OBJ249_FOOTPRINTS_EAST_LAWN
+OBJ249_FOOTPRINTS_EL
 The prints from hob-nailed boots can be seen in the snow going east
 to west between the stables and the cottage.
 
-OBJ250_CIGARETTE_ENDS_COTTAGE
+OBJ250_CIGARETTE_ENDS_GC
 These cigarette ends come from a cheap, mass produced brand.
 
 OBJ251_ARMOUR
@@ -407,7 +407,8 @@ A suit of Civil War three-quarter armour with a closed helmet.
 Examination discovers a revolver concealed in the helmet.
 
 OBJ252_DOOR_MAT
-Some blurb about a damp doormat.
+The doormat is made of coarse coir and bears the word 'WELCOME' in faded
+letters. It is damp with recent use.
 
 REC300_WHAT_REALLY_HAPPENED
 On the morning of the murder Arthur Coniston, the boy-friend of
@@ -417,7 +418,7 @@ during the afternoon and Colonel Darnley refused the request.
 Although he found Coniston amusing, he felt that his visitor was
 after Millicent's inheritance. Coniston, now resolved upon murder,
 quietly informing the other members of the household that the
-Colonel had agreed to tbe marriage. He was unaware that the Colonel
+Colonel had agreed to the marriage. He was unaware that the Colonel
 had decided to write him a letter confirming his rejection. During the
 afternoon an unexpected visitor arrived, Sir Redvers Slingsby who
 had invested in Peruvian mining shares on the advice of his friend
@@ -427,12 +428,12 @@ Darnley Park to ask the Colonel to lend him money to avoid ruin.
 
 Dinner that evening finished at 9.00. Millicent and Sarah retired
 to the lounge for coffee while the men drank port and played
-billiards. At nine 9.30 the gentlemen joined the ladies while the
+billiards. At 9.30 the gentlemen joined the ladies while the
 servants ate in the kitchen. The atmosphere was tense since
 Slingsby had not had opportunity to raise his problems. At 10.00 that
 night impatience got the better of him and he drew Darnley to the
 study whilst Coniston and Millicent went to the music room to sing
-duets. For half an hour Slingsby and the Colonel quarelled (at this
+duets. For half an hour Slingsby and the Colonel quarrelled (at this
 time Billingsgate was cleaning boots in the kitchen) and at 10.30
 Slingsby stormed out of the study by the hall door, slamming it
 furiously. This noise was interpreted by some as a shot. The
@@ -475,11 +476,11 @@ she was discovered. In her haste Sarah dropped a handkerchief in
 the summer house.
 
 Coniston now came to the boldest part of his plot. He woke
-Billingsgate and persuaded him to break in by the french window
+Billingsgate and persuaded him to break in by the French window
 instead of searching for his keys. Coniston took care to reach the
 patio before his companion and threw a stone through the same pane
 of glass that bore the bullet-hole from the fatal shot, thus
-obliterating the evidence of from where the shooting took place. He
+obliterating the evidence of where the shooting took place. He
 then invited Billingsgate to open the window and confirm that it had
 been locked. He also told the Butler that he intended to follow the
 murderer's bootprints which were clear in the snow. The object of
@@ -489,8 +490,8 @@ his slippers when he first stole and returned the boots.
 Various minor clues led towards Coniston as the murderer, but one
 was fatal to him. It was evident that the murderer had worn the
 boots and returned them to the kitchen. How then had the murderer
-left the kitchen in his/her own footwear? There were only two
-possibilities : the murderer had left via the butlers' pantry or the
+left the kitchen in his or her own footwear? There were only two
+possibilities : the murderer had left via the butler's pantry or the
 outside door. The former was impossible since three people were
 occupying the pantry of whom at least one (Mrs. Goodbody) had been
 wakened by the shot and would have heard any stranger entering the
@@ -522,4 +523,4 @@ yield sufficient information to solve the mystery. And mystery it is!
 The body of Colonel Darnley was found in his study, the doors and
 window of which were all locked from the inside. The only keys were
 in the possession of the Colonel and his faithful butler. How could
-the sealed-room murder be comitted?
+the sealed-room murder be committed?
