@@ -578,7 +578,7 @@ Function cmd_drop()
   If Not found Then print_fail "You're not carrying that"
 End Function
 
-' Handdle the HELP verb
+' Handle the HELP verb
 Function verb_help()
   verb_help = 1
   print_success "Try one of the following commands:"
