@@ -418,25 +418,6 @@ Function parse_common(cmd$)
   EndIf
 End Function
 
-' Finds object, looking in current location first before looking globally.
-Function find_obj%(words$(), first%, last%)
-  Local obj_words$(MAX_WORDS) Length MAX_WORD_LENGTH
-  Local i%, match_count%, obj_word_count%
-
-  For i% = 1 To NUM_OBJECTS
-    obj_word_count% = split_words%(Field$(objects$(i%), 2, "|"), obj_words$())
-'    print_words(person_words$())
-    match_count% = find_matches%(obj_words$(), words$(), first%, last%)
-    If match_count% Then
-      find_obj% = i%
-'      print_success("FOUND " + people$(find_person%))
-      Exit Function
-    EndIf
-  Next
-
-  print_fail("NOT FOUND")
-End Function
-
 Function obj_is_person%(obj_idx%)
   obj_is_person% = Field$(objects$(obj_idx%), 4, "|") = "2"
 End Function
@@ -459,7 +440,7 @@ Function verb_ask()
     Exit Function
   EndIf
 
-  Const obj_idx% = find_obj2%(words$(), 1, about_idx% - 1)
+  Const obj_idx% = find_obj%(words$(), 1, about_idx% - 1)
   If Not obj_idx% Then
     print_fail "You don't know that person."
     Exit Function
@@ -573,7 +554,7 @@ Function verb_help()
   print_success "  QUIT"
 End Function
 
-Function find_obj2%(words$(), first%, last%))
+Function find_obj%(words$(), first%, last%))
   Local i%, match_loc%, match_obj%, max_num_matches%, num_matches%
   Local oloc%, obj_loc_tag$, oname$, obj_words$(MAX_WORDS) Length MAX_WORD_LENGTH
   Local obj_word_count%
@@ -588,17 +569,17 @@ Function find_obj2%(words$(), first%, last%))
     If oloc% = r Then
       If match_loc% = r And num_matches% > max_num_matches% Then
         ' Latest match and previous match in current location, latest is a better match
-        find_obj2% = i%
+        find_obj% = i%
         max_num_matches% = num_matches%
       ElseIf match_loc% <> r Then
         ' Latest match in current location, previous match not
-        find_obj2% = i%
+        find_obj% = i%
         match_loc% = oloc%
         max_num_matches% = num_matches%
       EndIf
     ElseIf match_loc% <> r And num_matches% > max_num_matches% Then
       ' Neither match in current locatiom, latest is a better match
-      find_obj2% = i%
+      find_obj% = i%
       match_loc% = oloc%
       max_num_matches% = num_matches%
     EndIf
@@ -764,7 +745,7 @@ Function verb_take()
   verb_take = 1
 
   ' Check object exists
-  Const o% = find_obj2%(words$(), 2)
+  Const o% = find_obj%(words$(), 2)
   If Not o% Then
     Local msg$ = "I do not understand the word"
     If count_words%(words$()) > 2 Then Cat msg$, "s"
