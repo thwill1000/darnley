@@ -149,8 +149,11 @@ Sub test_split_words_gvn_upper_case()
   assert_string_equals("", words$(3))
 End Sub
 
-room_data:
-Data "" ' End of rooms
+location_data:
+Data "" ' End of locations
 
 object_data:
 data "" ' End of objects
+
+people_data:
+Data "" ' End of people
