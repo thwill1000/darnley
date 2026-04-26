@@ -23,6 +23,14 @@ Dim words$(10) Length 20
 Dim noun$, verb$
 Dim msg_file$
 
+Function FAILED(i%) As Integer
+  FAILED = i%
+End Function
+
+Function SUCCEEDED(i%) As Integer
+  SUCCEEDED = Not i%
+End Function
+
 Sub init_advent()
   If Val(Mm.CmdLine$) <> 0 Then r = Val(Mm.CmdLine$)
   init_msg_file(ASSETS_DIR$ + "/darnley.msg")

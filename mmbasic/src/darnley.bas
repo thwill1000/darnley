@@ -9,9 +9,13 @@ Option Explicit
 #Include "console.inc"
 #Include "adventlib.inc"
 
+Const NUM_QUESTIONS = count_data%("question_data")
+
+Dim questions$(Max(NUM_QUESTIONS, 2)) Length 128
 Dim result%
 
 init_advent()
+read_questions();
 r = 17 ' Drive
 
 con.foreground("magenta")
@@ -49,9 +53,95 @@ Loop
 
 End
 
+' Read the questions data
+Sub read_questions()
+  Local i%, j%, s$
+  Restore question_data
+  For i% = 1 To NUM_QUESTIONS
+    Read s$
+    questions$(i%) = s$
+  Next
+End Sub
+
 ' Parse user input
 Function parse(cmd$)
   parse = parse_common(cmd$)
+End Function
+
+' Handle the ACCUSE verb
+Function verb_accuse()
+  verb_accuse = 1
+  Local answer$, correct%, response$, response_words$(MAX_WORDS), result%, i%, msg$, q%
+  con.println()
+
+  For q% = 1 To NUM_QUESTIONS + 1
+    ' Can't answer the final question unless all the previous answers are correct
+    If q% = NUM_QUESTIONS And correct% <> NUM_QUESTIONS - 1 Then
+      msg$ = "You only answered " + Str$(Int((100 * correct%) / (NUM_QUESTIONS - 1)))
+      Cat msg$, "% of the questions correctly, so you can't make an accusation yet."
+      print_fail msg$
+      Exit Function
+    EndIf
+
+    If q% = NUM_QUESTIONS + 1 Then
+      If correct% = NUM_QUESTIONS Then Exit For
+      print_fail "That's not correct. Think again."
+      q% = NUM_QUESTIONS - 1
+      Continue For
+    EndIf
+
+    con.foreground("cyan")
+    print_message(Field$(questions$(q%), 1, "|"))
+    con.foreground("reset")
+    con.println()
+    answer$ = get_input$("Your answer: ")
+    con.println()
+
+    ' Split the answer into words
+    Select Case split_words%(answer$, words$())
+      Case 1
+        print_fail "Too many words."
+        Inc q%, -1
+        Continue For
+      Case 2
+        print_fail "Word too long."
+        Inc q%, -1
+        Continue For
+    End Select
+
+    ' Compare the answer to the expected responses
+    i% = 2
+    Do
+      response$ = Field$(questions$(q%), i%, "|")
+      If response$ = "" Then Exit Do
+      result% = split_words%(response$, response_words$())
+      If FAILED(result%) Then Error "split_words%() failed: " + Str$(result%)
+      result% = find_matches%(response_words$(), words$())
+      If result% = count_words%(response_words$()) Then
+        ' The player's response included all the response_words$()
+        Inc correct%
+        Exit Do
+      EndIf
+      Inc i%
+    Loop
+
+    ' If correct% Then
+    '   print_success "Correct!"
+    ' Else
+    '   print_fail "Incorrect!"
+    ' EndIf
+  Next
+
+  con.foreground("green")
+  print_message("CONGRATULATIONS")
+  print_newline()
+  print_message("WHAT_REALLY_HAPPENED")
+  con.foreground("reset")
+  print_newline()
+  con.println("Goodbye!")
+  print_newline()
+
+  End
 End Function
 
 ' Handles the HELP verb
@@ -59,6 +149,7 @@ Function verb_help()
   verb_help = 1
   print_newline()
   print_success "Try one of the following commands:"
+  print_success "  ACCUSE                      - initiate the 'end game'"
   print_success "  ASK <person> ABOUT <topic>  - question suspects"
   print_success "  EXAMINE <object>            - examine clues"
   print_success "  GO <location>               - move around the house"
@@ -160,4 +251,20 @@ Data "OBJ249_FOOTPRINTS_EL|Footprints|LOC022_EAST_LAWN|0|0"
 Data "OBJ250_CIGARETTE_ENDS_GC|Cigarette Ends|LOC023_GAMEKEEPERS_COTTAGE|1|1"
 Data "OBJ251_ARMOUR|Armour|LOC008_HALL|0|100"
 Data "OBJ252_DOOR_MAT|Door Mat|LOC008_HALL|0|1"
+Data ""
+
+question_data:
+Data "Q_1|ronald|mellors"
+Data "Q_2|sarah"
+Data "Q_3|gramaphone|gramophone|record"
+Data "Q_4|pond"
+Data "Q_5|c"
+Data "Q_6|garden"
+Data "Q_7|big|large"
+Data "Q_8|door|slam"
+Data "Q_9|terrace"
+Data "Q_10|arthur|coniston"
+Data "Q_11|marry millicent|marry milicent"
+Data "Q_12|stone|rock"
+Data "Q_13|arthur|coniston"
 Data ""
