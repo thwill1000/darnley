@@ -410,7 +410,9 @@ OBJ252_DOOR_MAT
 The doormat is made of coarse coir and bears the word 'WELCOME' in faded
 letters. It is damp with recent use.
 
-REC300_WHAT_REALLY_HAPPENED
+WHAT_REALLY_HAPPENED
+What really happened at Darnley Park?@
+@
 On the morning of the murder Arthur Coniston, the boy-friend of
 Millicent Darnley, arrived by arrangement to ask Colonel Darnley for
 permission to marry his daughter. This conversation took place
@@ -424,8 +426,8 @@ afternoon an unexpected visitor arrived, Sir Redvers Slingsby who
 had invested in Peruvian mining shares on the advice of his friend
 Colonel Darnley. In the morning's papers was news of the collapse of
 these shares. Angry with his friend, Slingsby had rushed down to
-Darnley Park to ask the Colonel to lend him money to avoid ruin.
-
+Darnley Park to ask the Colonel to lend him money to avoid ruin.@
+@
 Dinner that evening finished at 9.00. Millicent and Sarah retired
 to the lounge for coffee while the men drank port and played
 billiards. At 9.30 the gentlemen joined the ladies while the
@@ -440,8 +442,8 @@ furiously. This noise was interpreted by some as a shot. The
 slamming of the door underlined the generally tense atmosphere.
 The ladies went upstairs but Arthur Coniston stayed in the music
 room smoking a cheroot and considering his plan. He was unaware
-that Sarah had plans of her own.
-
+that Sarah had plans of her own.@
+@
 Sarah Darnley was unhappy with her husband and having an
 affair with Mellors, the gamekeeper. She had arranged to meet
 Mellors at the summer house at 10.45. Mellors was there, waiting and
@@ -453,8 +455,8 @@ room. It was not necessary for her to take account of Colonel Darnley
 since experience had taught her that the Colonel would lock himself
 in his study and get drunk on such an occasion as this. Sarah next
 left the house and went down to the summer house where she met
-Mellors.
-
+Mellors.@
+@
 Leaving the music room, Coniston tried the study door and finding
 it locked, guessed what was happening and devised his plan. He had
 stolen a gun from the study earlier in the day. He now changed into
@@ -473,8 +475,8 @@ kitchen, changed the boots for the slippers and then entered the
 house by the front door. He did not notice Sarah who had heard the
 shot and rushed back before everyone was roused by the noise and
 she was discovered. In her haste Sarah dropped a handkerchief in
-the summer house.
-
+the summer house.@
+@
 Coniston now came to the boldest part of his plot. He woke
 Billingsgate and persuaded him to break in by the French window
 instead of searching for his keys. Coniston took care to reach the
@@ -485,8 +487,8 @@ then invited Billingsgate to open the window and confirm that it had
 been locked. He also told the Butler that he intended to follow the
 murderer's bootprints which were clear in the snow. The object of
 this move was to provide an explanation of the trail already left by
-his slippers when he first stole and returned the boots.
-
+his slippers when he first stole and returned the boots.@
+@
 Various minor clues led towards Coniston as the murderer, but one
 was fatal to him. It was evident that the murderer had worn the
 boots and returned them to the kitchen. How then had the murderer
@@ -524,3 +526,52 @@ The body of Colonel Darnley was found in his study, the doors and
 window of which were all locked from the inside. The only keys were
 in the possession of the Colonel and his faithful butler. How could
 the sealed-room murder be committed?
+
+Q_1
+Who smoked cigarettes in the summer house?
+
+Q_2
+Who dropped the handkerchief in the summer house?
+
+Q_3
+What was the source of the music in the morning room?
+
+Q_4
+Where did the murderer hide the gun?
+
+Q_5
+When did the murder occur? (type letter)@
+ a) 10:05 - 10:35 pm@
+ b) 10:35 - 11:05 pm@
+ c) 11:05 - 11:35 pm@
+ d) 11:35 - 12:05 am@
+ e) 12:05 - 12:35 am
+
+Q_6
+Which door did the murderer leave the kitchen by?
+
+Q_7
+Why were the murderer's bootprints flat-footed?
+
+Q_8
+What caused the first bang that was heard?
+
+Q_9
+Where was the murderer when the shot was fired?
+
+Q_10
+Who was the letter written by Colonel Darnley for?
+
+Q_11
+What was the motive for the murder?
+
+Q_12
+How did the murderer hide the bullet hole in the window?
+
+Q_13
+Who was the murderer?
+
+CONGRATULATIONS
+Congratulations Inspector. With your evidence Arthur Coniston is arrested,
+tried and found guilty of the murder of Colonel Sebastian Darnley. He is
+sentenced to 30 years of imprisonment at her majesty's pleasure.
