@@ -19,6 +19,8 @@ Option Default Integer
 #Include "../adventlib.inc"
 
 add_test("test_count_words")
+add_test("test_count_words_gvn_full")
+add_test("test_count_words_gvn_gap")
 add_test("test_remove_word")
 add_test("test_remove_word_gvn_empty")
 add_test("test_remove_word_gvn_invalid_idx")
@@ -45,6 +47,16 @@ Sub test_count_words()
 
   words$(2) = "bar"
   assert_int_equals(2, count_words%(words$()))
+End Sub
+
+Sub test_count_words_gvn_full()
+  Local words$(4) = ("one", "two", "three", "four")
+  assert_int_equals(4, count_words%(words$()))
+End Sub
+
+Sub test_count_words_gvn_gap()
+  Local words$(4) = ("one", "", "three", "four")
+  assert_int_equals(1, count_words%(words$()))
 End Sub
 
 Sub test_remove_word()
