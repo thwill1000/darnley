@@ -21,6 +21,10 @@ Option Default Integer
 add_test("test_count_words")
 add_test("test_count_words_gvn_full")
 add_test("test_count_words_gvn_gap")
+add_test("test_find_word")
+add_test("test_find_word_gvn_empty")
+add_test("test_find_word_gvn_not_found")
+add_test("test_find_word_gvn_upper_case")
 add_test("test_remove_word")
 add_test("test_remove_word_gvn_empty")
 add_test("test_remove_word_gvn_invalid_idx")
@@ -57,6 +61,30 @@ End Sub
 Sub test_count_words_gvn_gap()
   Local words$(4) = ("one", "", "three", "four")
   assert_int_equals(1, count_words%(words$()))
+End Sub
+
+Sub test_find_word()
+  Local words$(4) = ("one", "two", "three", "four")
+  assert_int_equals(1, find_word%(words$(), "one"))
+  assert_int_equals(2, find_word%(words$(), "two"))
+  assert_int_equals(4, find_word%(words$(), "four"))
+End Sub
+
+Sub test_find_word_gvn_empty()
+  Local words$(4)
+  assert_int_equals(0, find_word%(words$(), "foo"))
+End Sub
+
+Sub test_find_word_gvn_not_found()
+  Local words$(4) = ("one", "two", "three", "four")
+  assert_int_equals(0, find_word%(words$(), "five"))
+End Sub
+
+Sub test_find_word_gvn_upper_case()
+  Local words$(4) = ("one", "TWO", "Three", "")
+  assert_int_equals(2, find_word%(words$(), "two"))
+  assert_int_equals(2, find_word%(words$(), "TWO"))
+  assert_int_equals(3, find_word%(words$(), "three"))
 End Sub
 
 Sub test_remove_word()
