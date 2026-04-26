@@ -288,11 +288,15 @@ End Function
 Sub remove_words(words$(), remove$())
   Local i% = 1, found%, result%
   Do While i% <= Bound(remove$(), 1)
-    found% = find_word%(words$(), remove$(i%))
-    If found% Then
-      result% = remove_word%(words$(), found%)
-    Else
+    If remove$(i%) = "" Then
       Inc i%
+    Else
+      found% = find_word%(words$(), remove$(i%))
+      If found% Then
+        result% = remove_word%(words$(), found%)
+      Else
+        Inc i%
+      EndIf
     EndIf
   Loop
 End Sub
