@@ -12,7 +12,6 @@ Const HIDDEN_ROOM = -2
 Const LIMBO = -3
 Const NUM_ROOMS = count_data%("location_data")
 Const NUM_OBJECTS = count_data%("object_data")
-Const NUM_PEOPLE = count_data%("people_data")
 Const MAX_TAKEABLE_WEIGHT = 99
 Const WILDCARD_MATCH = 100
 
@@ -21,7 +20,6 @@ Dim describe% = 1
 Dim r = 1, r_new
 Dim rooms$(Max(NUM_ROOMS, 2)) Length 255
 Dim objects$(Max(NUM_OBJECTS, 2)) Length 128
-Dim people$(Max(NUM_PEOPLE, 2)) Length 128
 Dim words$(10) Length 20
 Dim noun$, verb$
 
@@ -30,7 +28,6 @@ Sub init_advent()
   init_console()
   read_rooms()
   read_objects()
-  read_people()
 End Sub
 
 ' Initialises and clears console/terminal
@@ -134,16 +131,6 @@ Sub read_rooms()
     con.println(Str$(error_count%) + " room data errors found!")
     End
   EndIf
-End Sub
-
-' Read the people data
-Sub read_people()
-  Local i%, j%, s$
-  Restore people_data
-  For i% = 1 To NUM_PEOPLE
-    Read s$
-    people$(i%) = s$
-  Next
 End Sub
 
 ' Describe the current location
