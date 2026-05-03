@@ -72,40 +72,6 @@ End
 ' Parse user input
 Function parse(cmd$)
   parse = parse_common(cmd$)
-  If parse <> 0 Then Exit Function
-
-  Select Case verb$
-    Case "f", "forward", "foreward"
-      verb$ = "go"
-      noun$ = "north"
-    Case "a", "aft"
-      verb$ = "go"
-      noun$ = "south"
-    Case "adjust"
-      verb$ = "set"
-    Case "wrap"
-      verb$ = "warm"
-  End Select
-
-  Select Case noun$
-    Case "f", "forward", "foreward"
-      verb$ = "go"
-      noun$ = "north"
-    Case "a", "aft"
-      verb$ = "go"
-      noun$ = "south"
-    Case "sail"
-      noun$ = "sails"
-  End Select
-
-  If verb$ = "open" And noun$ = "chest" Then
-    verb$ = "examine"
-  ElseIf verb$ = "give" And noun$ = "rope" Then
-    verb$ = "throw"
-  ElseIf verb$ = "give" And noun$ = "blanket" Then
-    verb$ = "warm"
-    noun$ = "soldier"
-  EndIf
 End Function
 
 introduction:
