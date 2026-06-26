@@ -26,26 +26,9 @@ Do
   result% = parse(get_input$())
   If result% = 1 Then Goto command_end
 
-  Select Case verb$
-    Case "ask"
-      result% = verb_ask()
-    Case "drop"
-      result% = verb_drop()
-    Case "go"
-      result% = verb_go()
-    Case "help"
-      result% = verb_help()
-    Case "inventory"
-      result% = verb_inventory()
-    Case "look"
-      result% = verb_look()
-    Case "quit"
-      result% = verb_quit()
-    Case "take"
-      result% = verb_take()
-    Case "examine"
-      result% = verb_examine()
-  End Select
+  On Error Skip 1
+  result% = Call("verb_" + verb$)
+  If Mm.ErrNo <> 0 Then result% = 0
 
 command_end:
 
