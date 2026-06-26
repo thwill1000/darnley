@@ -2,7 +2,7 @@
 
 A murder mystery adventure game.
 
-(c) 1987-2019 Tom & Jim Williams, All Rights Reserved
+(c) 1987-2026 Tom & Jim Williams, All Rights Reserved
 
 The following potted development history is "to the best of my
 recollection":
