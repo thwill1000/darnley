@@ -569,16 +569,6 @@ Function verb_drop()
   ' If Not found Then print_fail "You're not carrying that"
 End Function
 
-' Handles the HELP verb
-Function verb_help()
-  verb_help = 1
-  print_success "Try one of the following commands:"
-  print_success "  GO location"
-  print_success "  EXAMINE object"
-  print_success "  ASK person ABOUT subject"
-  print_success "  QUIT"
-End Function
-
 ' Finds the best matching object for the given words.
 '
 ' Iterates all objects and scores each by counting how many of the words

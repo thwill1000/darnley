@@ -54,6 +54,18 @@ Function parse(cmd$)
   parse = parse_common(cmd$)
 End Function
 
+' Handles the HELP verb
+Function verb_help()
+  verb_help = 1
+  print_newline()
+  print_success "Try one of the following commands:"
+  print_success "  ASK <person> ABOUT <topic>  - question suspects"
+  print_success "  EXAMINE <object>            - examine clues"
+  print_success "  GO <location>               - move around the house"
+  print_success "  LOOK                        - redescribe the current location"
+  print_success "  QUIT                        - exit the game"
+End Function
+
 location_data:
 Data "LOC001_BATHROOM|Bathroom|1|LOC025_LANDING"
 Data "LOC002_ORCHARD|Orchard|2|LOC003_KITCHEN_GARDEN|LOC006_TERRACE"
