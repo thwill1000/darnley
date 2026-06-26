@@ -74,13 +74,6 @@ Function parse(cmd$)
   parse = parse_common(cmd$)
 End Function
 
-introduction:
-Data "Between May 26 and June 4, 1940, Allied soldiers were evacuated from the beaches of Dunkirk, "
-Data "France, after they were encircled by German forces. Over 338,000 troops were rescued by both "
-Data "the Royal Navy and civilian craft (nicknamed 'little ships'). This was important, for if those troops "
-Data "had died, British morale would have plummeted and Germany might well have won the war."
-Data ""
-
 location_data:
 Data "LOC001_BATHROOM|Bathroom|1|LOC025_LANDING"
 Data "LOC002_ORCHARD|Orchard|2|LOC003_KITCHEN_GARDEN|LOC006_TERRACE"
