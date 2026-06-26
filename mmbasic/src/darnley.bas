@@ -9,9 +9,6 @@ Option Explicit
 #Include "console.inc"
 #Include "adventlib.inc"
 
-'DIRECTIONS$(1) = "Forward"
-'DIRECTIONS$(2) = "Aft"
-
 Dim result%
 
 init_advent()
