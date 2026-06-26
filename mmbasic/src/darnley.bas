@@ -1,5 +1,5 @@
-' WW2 Adventure Game - Chapter 1
-' Copyright (c) 2025-2026 Melody Elizabeth Williams
+' The Sealed Room Murder
+' Copyright (c) 1987-2026 Tom & Jim Williams, All Rights Reserved
 
 Option Base 1
 Option Default Integer
