@@ -1,5 +1,5 @@
 events yesterday murder
-Father was a difficult man to live with but I never expected - this!
+"Father was a difficult man to live with but I never expected - this!
 Last night we all ate together until coffee which Sarah and I took
 together in the lounge. The men joined us later for half an hour,
 then Arthur and I went into the music room where we talked for a
@@ -22,93 +22,93 @@ thought.@
 @
 Then at about midnight there was a racket of people everywhere. I
 went into Sarah's room and found her undressing there. We went into
-the morning room and found Billingsgate waking Sir Redvers.
+the morning room and found Billingsgate waking Sir Redvers."
 
 alibi
-I was with Arthur in the music room at 10.30 and, naturally, I was
-alone in bed at 11.30.
+"I was with Arthur in the music room at 10.30 and, naturally, I was
+alone in bed at 11.30."
 
 slippers
-I don't know whose slippers these are.
+"I don't know whose slippers these are."
 
 boots
-I don't know anything about these boots.
+"I don't know anything about these boots."
 
 cigarettes
-I don't smoke. My father smoked cigars.
+"I don't smoke. My father smoked cigars."
 
 missing statue
-Someone - I forget who - told me that a beggar had pushed it into
-the pond. Out of spite I suppose.
+"Someone - I forget who - told me that a beggar had pushed it into
+the pond. Out of spite I suppose."
 
 gramophone
-We have a gramophone in the morning room.
+"We have a gramophone in the morning room."
 
 piano
-Which piano? Arthur and I played duets on the music room piano for a
+"Which piano? Arthur and I played duets on the music room piano for a
 while after dinner. I remember that later, Sarah said she intended
 to play the morning room piano. I woke up at about 11.20 and heard
 Sarah still playing a Chopin nocturne. She was having difficulty and
-repeated the same piece again and again.
+repeated the same piece again and again."
 
 ladys shoes
-They aren't my shoes.
+"They aren't my shoes."
 
 newspaper
-I don't often read the newspaper.
+"I don't often read the newspaper."
 
 handkerchief
-I'm always losing handkerchiefs so I suppose it could be mine. I
+"I'm always losing handkerchiefs so I suppose it could be mine. I
 don't remember when I lose them. I certainly wasn't in the summer
-house yesterday. Is it important?
+house yesterday. Is it important?"
 
 colonel darnley
-Daddy was a tyrant but always kind to me. He was always fearful that
-Sarah would leave him for a younger man.
+"Daddy was a tyrant but always kind to me. He was always fearful that
+Sarah would leave him for a younger man."
 
 sarah
-We got on well enough though it is difficult to have a step-mother
+"We got on well enough though it is difficult to have a step-mother
 who is almost the same age. I thought she would leave daddy some day
 as soon as she found a lover. But, of course, she would need Daddy's
-money.
+money."
 
 arthur coniston
-He's a darling! I don't know how he persuaded daddy to agree, so I
-am probably mistaken.
+"He's a darling! I don't know how he persuaded daddy to agree, so I
+am probably mistaken."
 
 redvers slingsby
-I didn't know him before last night.
+"I didn't know him before last night."
 
 arnold billingsgate
-A decent old fellow.
+"A decent old fellow."
 
 mildred goodbody
-An old dear.
+"An old dear."
 
 norah bagsby
-A clumsy girl.
+"A clumsy girl."
 
 ronald mellors
-Furtive. I don't like the way he looks at my step-mother. I advised
-Daddy to get rid of him.
+"Furtive. I don't like the way he looks at my step-mother. I advised
+Daddy to get rid of him."
 
 flatfooted bootprints
-I'm afraid I paid no attention to footprints. Really, is that the sort of thing
-one is expected to notice?
+"I'm afraid I paid no attention to footprints. Really, is that the sort of thing
+one is expected to notice?"
 
 hobnailed bootprints
-I couldn't tell you. I don't make a habit of studying people's footwear.
+"I couldn't tell you. I don't make a habit of studying people's footwear."
 
 slipper prints
-I really couldn't say. I don't see how I could be expected to recognise a
-slipper print.
+"I really couldn't say. I don't see how I could be expected to recognise a
+slipper print."
 
 mens shoe prints
-That is rather beyond me I'm afraid. Aren't you the detective?
+"That is rather beyond me I'm afraid. Aren't you the detective?"
 
 womens shoe prints
-I might recognise my own shoes, but I couldn't tell you whose prints these are
-from looking at them in the snow.
+"I might recognise my own shoes, but I couldn't tell you whose prints these are
+from looking at them in the snow."
 
 *
 "I'm afraid that is rather outside my knowledge.

@@ -564,7 +564,6 @@ Function verb_ask()
 
   con.println()
   con.foreground("cyan")
-  If best_match_count% < WILDCARD_MATCH Then con.print(Chr$(34))
 
   If best_match_count% = 0 Then
     print_success "I don't know what you are talking about."
@@ -582,7 +581,7 @@ Function verb_ask()
     Close #1
   EndIf
 
-  If best_match_count% < WILDCARD_MATCH Then con.println(Chr$(34)) Else con.println()
+  con.println()
   con.foreground("reset")
 End Function
 
