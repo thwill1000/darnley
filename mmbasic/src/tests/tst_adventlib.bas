@@ -36,9 +36,9 @@ Sub con.println(s$)
   Cat con_output$, s$ + sys.CRLF$
 End Sub
 
+init_msg_file(Mm.Info(Path) + "test.msg")
 read_rooms()
 read_objects()
-read_people()
 
 add_test("test_cat_words_gvn_empty")
 add_test("test_cat_words_gvn_one")
@@ -826,6 +826,3 @@ Data "OBJ002|Red Key|LOC002|1|1"         ' non-local
 Data "OBJ003|Red Gem|LOC001|1|1"         ' local
 Data "OBJ004|Red Curious Key|LOC002|1|1" ' non-local
 Data "" ' End of objects
-
-people_data:
-Data "" ' End of people
