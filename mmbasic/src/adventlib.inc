@@ -359,6 +359,26 @@ Sub remove_words(words$(), remove$())
   Loop
 End Sub
 
+' Removes duplicate words from an array in-place, preserving the order of
+' first occurrences. Comparison is case-insensitive. Empty elements are not
+' considered words and stop iteration early; after the call, all empty
+' elements remain at the tail of the array.
+'
+' @param words$()  The array of words to deduplicate.
+Sub unique_words(words$())
+  Local i%, j%, result%
+  For i% = Bound(words$(), 0) To Bound(words$(), 1)
+    If words$(i%) = "" Then Exit For
+    For j% = i% + 1 To Bound(words$(), 1)
+      If words$(j%) = "" Then Exit For
+      If LCase$(words$(i%)) = LCase$(words$(j%)) Then
+        result% = remove_word%(words$(), j%)
+        Inc j%, -1
+      EndIf
+    Next
+  Next
+End Sub
+
 Sub print_words(words$())
   Local count%, i%
   For i% = 1 To Bound(words$(), 1)
