@@ -635,22 +635,31 @@ End Function
 
 ' Counts how many words in needles$() have a match in haystack$(), case-insensitively.
 '
+' Each haystack element may only be matched once; duplicate needles cannot
+' both match the same haystack word.
+'
 ' @param haystack$()  The array of words to search. Must be Option Base 1.
 ' @param needles$()   The array of words to match. Must be Option Base 1.
 ' @param first%       Index of first needle to consider (default 0 = start from 1).
 ' @param last%        Index of last needle to consider (default 0 = use full range).
-' @return             The number of needles that matched at least one word in haystack$().
+' @return             The number of needles that matched a distinct haystack word.
 Function find_matches%(haystack$(), needles$(), first%, last%)
-  Local i%, j%, s$
+  Local i%, j%
+  Const hay_lo% = Bound(haystack$(), 0), hay_hi% = Bound(haystack$(), 1)
+  Local used%(hay_hi%)
+
   If Not first% Then first% = 1
   If Not last% Then last% = Bound(needles$(), 1)
+
+  Local s$
   For i% = first% To last%
     s$ = LCase$(needles$(i%))
     If s$ = "" Then Exit For
-    For j% = Bound(haystack$(), 0) To Bound(haystack$(), 1)
+    For j% = hay_lo% To hay_hi%
       If haystack$(j%) = "" Then Exit For
-      If s$ = LCase$(haystack$(j%)) Then
+      If Not used%(j%) And s$ = LCase$(haystack$(j%)) Then
         Inc find_matches%
+        used%(j%) = 1
         Exit For
       EndIf
     Next
