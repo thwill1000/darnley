@@ -16,7 +16,8 @@ Dim result%
 
 init_advent()
 read_questions();
-r = 17 ' Drive
+r = -1
+r_new = 17 ' Drive
 
 con.foreground("magenta")
 print_message("SEALED_ROOM_INTRO")
@@ -24,9 +25,14 @@ con.foreground("reset")
 print_newline()
 
 Do
+  ' If the player's location has changed then set flag to describe their new location
+  If r_new <> r Then
+    r = r_new
+    describe% = 1
+  EndIf
+
   If describe% Then describe_loc()
 
-  r_new = r
   result% = parse(get_input$())
   If result% = 1 Then Goto command_end
 
@@ -37,16 +43,6 @@ Do
 command_end:
 
   If Not result% Then print_fail "That doesn't seem to work."
-
-  If r_new = 0 Then
-    print_fail "You can't go that way."
-    r_new = r
-  EndIf
-
-  If r_new <> r Then
-    r = r_new
-    describe% = 1
-  EndIf
 
   print_newline()
 Loop
