@@ -71,3 +71,4 @@ mmbasic/
 - Arrays cannot be declared with a single element — the minimum size is 2 (e.g., `Dim a$(2)` not `Dim a$(1)`).
 - Array initialisers must supply exactly as many values as the declared size (e.g., `Local a$(2) = ("x", "")` for a 2-element array).
 - Sub, function and variable names have a maximum length of 32 characters, **not** counting any `%`, `!` or `$` type suffix; names with a base of 33+ characters cause a "name too long" error at runtime.
+- MmBasic has no `Dec` command for decrementing numbers, use `Inc` with a negative argument instead, e.g. `Inc x%, -2`
