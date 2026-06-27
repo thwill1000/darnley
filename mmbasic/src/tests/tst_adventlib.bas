@@ -654,16 +654,11 @@ Sub test_find_matches_gvn_no_needles()
   assert_int_equals(0, find_matches%(haystack$(), needles$(), 0, 0))
 End Sub
 
-' Duplicate needle matched twice if found
-' A needle that appears twice in needles$() is counted twice if it matches,
-' since the function scores needle matches not distinct word matches.
-' This may produce unexpected results in find_obj%() and verb_go%() where
-' the score is used to rank candidates - a repeated word in the player's
-' input would unfairly boost a candidate's score.
+' Duplicate needle 'cat' is only matched once
 Sub test_find_matches_gvn_dupe()
   Local haystack$(4) = ("cat", "dog", "", "")
   Local needles$(4) = ("cat", "cat", "", "")
-  assert_int_equals(2, find_matches%(haystack$(), needles$(), 0, 0))
+  assert_int_equals(1, find_matches%(haystack$(), needles$(), 0, 0))
 End Sub
 
 ' first% skips earlier needles
