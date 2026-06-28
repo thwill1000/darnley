@@ -94,7 +94,7 @@ LOC017_DRIVE
 From a pair of splendid wrought iron gates the drive runs north
 ending in a flight of steps leading up to the principal entrance of the
 house, flanked by a pair of stone lions. The snow reveals a mass of
-footprints.
+[[red:footprints]].
 
 LOC018_EAST_WALK
 This gravel path runs east-west across the front of the house flanked
