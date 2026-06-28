@@ -28,6 +28,7 @@ Dim con.history%(255)   ' history buffer for user input.
 Dim con.spin_enabled    ' is the progress spinner enabled ?
 Dim con.spin_shown      ' is the progress spinner currently displayed ?
 Dim con.disable_flush%  ' set 1 to temporarily disable flushing the console write buffer, buf$.
+Dim con.fg$ = "reset"   ' current foreground colour
 
 Sub con.init(width%, height%, spin_enabled%)
   con.WIDTH = width%
@@ -71,42 +72,114 @@ Function con.in$(p$, echo)
   con.in$ = s$
 End Function
 
-' Outputs s$.
+' Outputs s$ to the console, parsing any [[colour:text]] markup found within it.
 '
-' s$ is appended to con.buf$ one character at a time. Only when we switch from
-' non-spaces to spaces or vice versa do we flush the contents of con.buf$ to the
-' console. As a result calling this function will probably not print the
-' entirety of s$; ' the last 'word' or part thereof may be left in con.buf$.
+' Each [[colour:text]] span is printed in the named colour, with the colour
+' reset to default afterwards. Plain text outside spans is printed normally.
+' A single [ or [[ without a matching closing ]] is treated as literal text.
+'
+' s$ is appended to con.buf$ one character at a time via con.print_segment_cb().
+' Only when switching between spaces and non-spaces is con.buf$ flushed to the
+' console, so calling this function will probably not print the entirety of s$;
+' the last word or part thereof may be left in con.buf$.
+'
+' @param  s$  String to print, optionally containing [[colour:text]] markup.
 Sub con.print(s$)
-  Local c$, i
+  con.parse_markup(s$, "con.print_segment_cb")
+End Sub
 
-  For i = 1 To Len(s$)
-    c$ = Mid$(s$, i, 1)
+' Parses a string containing [[colour:text]] markup and invokes callback$ once
+' per segment. Segments are either plain text or a coloured span; the two
+' always alternate, beginning and ending with plain text (which may be empty
+' if the string starts or ends with a span).
+'
+' The callback must be the name of a Sub accepting exactly two String
+' parameters: (text$, colour$). For plain segments colour$ is empty; for
+' coloured spans colour$ is the name between [[ and the colon.
+'
+' Malformed tags — where [[ has no matching ]], or where no colon appears
+' before ]] — are emitted as the literal text "[[" and parsing continues
+' from the character after the opening [[.
+'
+' Nesting of spans is not supported.
+'
+' @param  s$         String to parse, optionally containing [[colour:text]] markup.
+' @param  callback$  Name of Sub to call for each segment.
+Sub con.parse_markup(s$, callback$)
+  Local chunk$, fg$, p_close%, p_colon%, p_open%, remainder$
+
+  remainder$ = s$
+  Do While Len(remainder$) > 0
+    p_open% = InStr(remainder$, "[[")
+
+    If Not p_open% Then
+      Call callback$, remainder$, ""
+      Exit Do
+    EndIf
+
+    If p_open% > 1 Then
+      Call callback$, Left$(remainder$, p_open% - 1), ""
+    EndIf
+
+    p_colon% = InStr(p_open%, remainder$, ":")
+    p_close% = InStr(p_open%, remainder$, "]]")
+
+    ' Handle malformed markup by just emitting text literally:
+    ' No colon at all, no colon within closing brackets, no closing-brackets, colon but no colour
+    If Not p_colon% Or p_colon% > p_close% Or Not p_close% Or p_colon% = p_open% + 2 Then
+      Call callback$, "[[", ""
+      remainder$ = Mid$(remainder$, p_open% + 2)
+      Continue Do
+    EndIf
+
+    fg$ = Mid$(remainder$, p_open% + 2, p_colon% - p_open% - 2)
+    chunk$  = Mid$(remainder$, p_colon% + 1, p_close% - p_colon% - 1)
+
+    Call callback$, chunk$, fg$
+
+    remainder$ = Mid$(remainder$, p_close% + 2)
+  Loop
+End Sub
+
+' Internal callback for con.print(). Prints one segment of text, optionally
+' in a named foreground colour.
+'
+' If fg$ is non-empty, con.buf$ is flushed before applying the colour and
+' again before resetting it, ensuring buffered text on either side of the
+' coloured span is printed in the correct colour.
+'
+' @param  s$   Plain text segment to print (no markup).
+' @param  fg$  Colour name to pass to con.foreground(), or empty string
+'              for unstyled text.
+Sub con.print_segment_cb(s$, fg$)
+  Local c$, i%, old_fg$
+
+  If fg$ <> "" Then
+    old_fg$ = con.fg$
+    con.foreground(fg$)
+  EndIf
+
+  For i% = 1 To Len(s$)
+    c$ = Mid$(s$, i%, 1)
     Select Case c$
-      Case Chr$(13) : ' CR
-        ' Ignore carriage returns
-
-      Case Chr$(10) : ' LF
-        con.endl()
-        con.space = 0
-
+      Case Chr$(13) : ' CR — ignore
+      Case Chr$(10) : con.endl() : con.space = 0
       Case " " :
         If Not con.space Then con.flush() : con.space = 1
         Cat con.buf$, " "
         con.count = 0
-
       Case "`" :
         If con.space Then con.flush() : con.space = 0
         Cat con.buf$, "'"
         con.count = 0
-
       Case Else :
         If con.space Then con.flush() : con.space = 0
         Cat con.buf$, c$
         con.count = 0
-
     End Select
   Next
+
+  If fg$ <> "" Then con.foreground(old_fg$)
 End Sub
 
 ' Writes con.buf$ to the console and clears it.
@@ -249,35 +322,38 @@ Sub con.close_all()
   con.close_out()
 End Sub
 
-Sub con.foreground(c$)
-  Local type% = con.get_type%()
+Sub con.foreground(fg$)
+  ' Flush anything in previous foreground colour
+  con.flush()
+
+  If fg$ = "purple" Then fg$ = "magenta"
+
+  Const type% = con.get_type%()
+
   If type% And con.SCREEN% Then
-    If c$ = "purple" Then
-      c$ = "magenta"
-    ElseIf c$ = "reset" Then
-      c$ = "white"
-    EndIf
-    Execute "Colour Rgb(" + c$ + ")"
+    Execute "Colour Rgb(" + Choice(fg$ = "reset", "white", fg$) + ")"
   EndIf
 
   If type% And con.SERIAL% Then
     con.set_type(con.SERIAL%)
     Local ansi%
-    Select Case LCase$(c$)
+    Select Case LCase$(fg$)
       Case "black"   : ansi% = 30
       Case "red"     : ansi% = 31
       Case "green"   : ansi% = 32
       Case "yellow"  : ansi% = 33
       Case "blue"    : ansi% = 34
-      Case "magenta", "purple" : ansi% = 35
+      Case "magenta" : ansi% = 35
       Case "cyan"    : ansi% = 36
       Case "white"   : ansi% = 37
       Case "reset"   : ansi% = 0
-      Case Else      : Error "Unknown VT100 colour: " + c$
+      Case Else      : Error "Unknown VT100 colour: " + fg$
     End Select
     Print Chr$(27) + "[" + Str$(ansi%) + "m";
     con.set_type(type%)
   EndIf
+
+  con.fg$ = fg$
 End Sub
 
 Sub con.bell()
