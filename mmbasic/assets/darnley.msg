@@ -259,13 +259,26 @@ Only one set of footprints can be made out in the snow. They are of
 flat footed bootprints coming to and from the terrace.
 
 OBJ206_SLIPPERS
-The slippers are slightly damp and stained with mud.
+The slippers are slightly damp and stained with mud. The mud appears fresh
+and is concentrated around the heel and toe areas, as if the wearer had walked
+purposefully through wet ground. The slippers are well-made with silk lining,
+though the lining is now darkened and stained. They give off a faint smell of
+earth and something else - perhaps tobacco smoke.
 
 OBJ207_CIGARETTES
-These cigarettes are an expensive brand by Tribourg & Freyer.
+These cigarettes are an expensive brand by Fribourg & Treyer, made in London.
+The packet is nearly full, with only a few cigarettes removed. The gold embossed
+lettering on the blue packet gleams in the light. The cigarettes themselves are
+pure white, tightly rolled, and of excellent quality. As a guest in the house,
+Arthur Coniston has left his personal supply in the guest room where he is staying.
 
 OBJ208_KNIFE
-This kitchen knife is stained with blood.
+This is a kitchen knife used for preparing game. The blade shows signs of recent
+use and is stained with blood - quite dry now, darkened
+to a dull rust colour. The knife is wickedly sharp and the wooden handle bears
+the initials "W.D." burnt into it - presumably a previous owner. It lies on the
+draining board amongst other kitchen utensils, seemingly unused since dinner
+preparation.
 
 OBJ209_BOOTS
 All these boots are polished clean except for a large mud stained pair.
@@ -275,21 +288,42 @@ Both flat footed boot prints and slipper prints can be seen going
 between the kitchen and the maze.
 
 OBJ213_BED_MASTER
-This double bed has not been slept in.
+The Colonel's bed is large and ornate with heavy mahogany posts. The linen sheets
+and quilted coverlet on one side have been disturbed — slept in — whilst the other
+side remains pristine and undisturbed. Clearly Mrs. Darnley slept here, but the
+Colonel did not. A silk nightshirt is carefully folded and placed upon the Colonel's
+pillow. On the bedside table sits a small bottle of sleeping draught, the stopper
+removed and a spoon beside it, yet the bed itself remains untouched on his side.
+Whatever the Colonel was doing last night, sleep in his own bed was not his intention.
 
 OBJ214_WARDROBE
-As well as clothes the wardrobe contains a selection of
-men's and women's [[green:shoes]].
+As well as clothes the wardrobe contains a selection of men's and women's [[green:shoes]].
+The wardrobe is impressive - made of polished mahogany with ornate brass handles.
+Inside hang numerous dresses, petticoats, and undergarments in organised rows.
+The men's clothing includes smoking jackets, dinner suits, and country wear. One
+suit of country tweeds hangs noticeably alone, somewhat apart from the Colonel's
+own garments - it appears to belong to a visitor.
 
 OBJ215_CIGARS
-The cigars are Burmah cheroots.
+The humidor is mahogany with a glass front, bearing the inscription
+"S.D. - 1910" in silver lettering. It contains Burmah cheroots — straight, dark
+cylinders, unfashionable compared to the Havanas favoured by gentlemen of means,
+but evidently the Colonel's longstanding and unashamed preference. A military
+man's smoke: practical, strong, and unpretentious.
 
 OBJ216_DRESSING_TABLE
-There is nothing of note on the dressing table.
+The dressing table is of polished walnut with a triple mirror and a glass top
+beneath which family photographs have been arranged. The surface holds the usual
+feminine effects - powder, scent bottles, a hairbrush and comb in silver plate -
+all neatly ordered. One scent bottle has been knocked on its side and not
+righted, which seems at odds with the general tidiness of the room.
 
 OBJ217_SHOES
-This selection of men's and women's shoes is unremarkable. One set of
-lady's shoes is mud-stained.
+This selection of men's and women's shoes ranges from formal evening wear to
+practical country footwear. The women's shoes include delicate satin evening
+slippers and sturdy walking boots. The men's collection is equally varied. Most
+are clean and well-maintained, but one pair of lady's shoes - soft kid leather
+with a slight heel - bears fresh, damp, muddy stains around the heel and sole.
 
 OBJ219_CORRESPONDENCE
 These letters are all from Mrs. Goodbody's nephew.
@@ -298,7 +332,12 @@ OBJ220_PHOTOGRAPHS
 These photographs depict Mrs. Goodbody's various ugly relatives.
 
 OBJ221_SUIT
-This gentleman's country-suit is apparently Sir Redvers'.
+This gentleman's country-suit is apparently Sir Redvers' own garment. It is made
+of fine Scotch tweed in a dark green and brown pattern, well-tailored and evidently
+expensive. The suit has been carefully hung in the servants' quarters wardrobe,
+though this is an odd place for a visitor's good clothing. Why would Sir Redvers
+leave his suit here rather than in his guest room? Inside the jacket pocket,
+a label reads "Hawes & Curtis, Piccadilly."
 
 OBJ222_NEWSPAPER
 One headline on the front page catches your eye -
@@ -308,16 +347,26 @@ fraud of their directors. These frauds are expected to cause heavy
 loss to British investors.'
 
 OBJ223_PIPE
-The pipe is in the style called 'calabash' with a meerschaum bowl and
-amber mouthpiece.
+The pipe is in the style called 'calabash' with a meerschaum bowl and amber
+mouthpiece - a gentleman's smoking pipe of considerable quality and expense. The
+bowl still bears the residue of tobacco, now darkened and hardened. The pipe sits
+on the servants' quarters washstand, suggesting it belonged to a visitor. The
+amber mouthpiece shows signs of much use and is polished smooth by years of
+handling.
 
 OBJ224_BOOKSHELF
-The bookshelf contains books on self-improvement and domestic
-accounts.
+A modest shelf of books: volumes on household management, domestic accounts, and
+the improving literature favoured by the respectable working man. A Bible, much
+used. A copy of Smiles's Self-Help with a name written inside the front cover in
+careful copperplate — Arnold Billingsgate, 1889. The books tell you rather more
+about their owner than he may be willing to tell you himself.
 
 OBJ225_FRENCH_WINDOW_TERRACE
-One of the panes is smashed, but there is no glass on the terrace. The
-window lock shows that it cannot be locked or unlocked from outside.
+One of the panes is smashed into jagged teeth of glass. There is, however, no
+glass on the terrace itself - it has all fallen inward into the study. The
+window lock shows that it cannot be locked or unlocked from outside; the
+mechanism is internal. The wooden frame shows no signs of tampering or forcing
+- the glass has simply been broken from outside, the lock then opened from within.
 
 OBJ226_FOOTPRINTS_TERRACE
 A mess of footprints including boots, slippers and some shoe prints.
@@ -348,13 +397,27 @@ The letter is an incomplete draft: "Dear Sir, I have considered your
 monstrous suggestion and find I cannot..."
 
 OBJ231_GUN_RACK
-One of a pair of revolvers with decorated grips is missing from this rack.
+This mahogany rack is mounted on the study wall and displays sporting rifles and
+revolvers. It is a fine piece of craftsmanship with brass fittings and glass
+panels. One pair of decorative revolvers with engraved grips should be present,
+but only one remains. The missing revolver has left a clear outline in the felt
+backing, showing exactly where it once rested.
 
 OBJ232_FRENCH_WINDOW_STUDY
-One pane is smashed. The glass on the floor is apparently from this.
+The study side of this French window bears a jagged hole where one pane has been
+smashed. The glass on the floor inside is sprinkled across the carpet and the sill.
+No glass lies on the terrace outside - it all fell inward. The hole is roughly
+hand-sized, large enough for someone to reach through and manipulate the lock.
+The frame is solid mahogany and bears no marks of forcing or violence beyond the
+broken pane itself.
 
 OBJ233_SHATTERED_GLASS
-This glass is apparently from the smashed French window.
+This glass is apparently from the smashed French window pane. The shards are sharp
+and glittering, some as large as a man's hand, others fine as sand. The glass has
+a peculiar property - when examined closely, each shard seems to have fallen
+inward. Yet the pattern of breakage is odd; some pieces rest atop others in a
+way that suggests the breakage may not have been a single violent impact, but
+perhaps more deliberate - possibly even repeated strikes against the pane.
 
 OBJ234_GRAMOPHONE
 It has a device for playing several records in sequence. All the
@@ -365,27 +428,39 @@ There are several sheets of Schubert Lied music on the piano's music
 stand.
 
 OBJ236_DISPLAY_CASE
-According to a label at the front of the case these flints and shards of
-pottery were found in the grounds of the house.
+This glass case is mounted on the hall wall and displays an interesting collection
+of archaeological finds. According to a label at the front, these flints and
+pottery shards were discovered in the grounds of the estate during excavations some
+years ago. The case is kept locked with a small brass key. Inside, carefully
+arranged on black velvet, lie hand-axes, arrowheads, and ancient pottery fragments
+- the Colonel apparently had an interest in the history beneath his own land.
 
 OBJ237_FOOTPRINTS_WW
 There are slipper prints, flat-footed boot prints and some shoe prints
 heading to and from the terrace and the front of the house.
 
 OBJ238_CIGAR_STUB
-This cigar stub is a straight dark cylinder rather than the
-conventional shape. That and the tarry appearance suggests a
-cheroot.
+A cheroot stub sits in the brass ashtray on the music room piano — a straight
+dark cylinder, partially smoked and carefully stubbed out, the ash still faintly
+moist. Someone was in this room recently, smoking.
 
 OBJ239_PIANO_MUSIC
 The sheets of music on the piano are for duets.
 
 OBJ240_WINE_GLASSES
-The three wine glasses are all dirty.
+The three wine glasses are all dirty, bearing the stains of red wine that has
+long since dried. They sit atop the bookcase in the billiard room, clearly forgotten
+after last night's game. The glasses are fine crystal, part of a set, with
+delicate stems. The wine residue in each glass suggests they were filled and then
+left standing - perhaps abandoned hastily?
 
 OBJ241_ASHTRAY
-The ashtray contains the remains of three cigars, one Havana and
-two cheroots.
+This ashtray rests atop the billiard room bookcase and contains the remains of
+three cigars - one Havana and two cheroots. The ash is dark and densely packed,
+suggesting these cigars were smoked in succession without pause, and were clenched
+hard rather than smoked in a relaxed manner. The Havana is of the finest quality,
+yet it has been stubbed out half-smoked. One of the cheroots is charred and blackened
+as if it burned intensely before being discarded.
 
 OBJ243_FOOTPRINTS_DRIVE
 The prints from flat footed boots go east and west along the gravel
@@ -402,10 +477,18 @@ snow heading around the corner of the house, to and from the maze
 and avenue of statues.
 
 OBJ245_CIGARETTE_ENDS_SH
-These cigarette ends come from a cheap, mass produced brand.
+These cigarette ends come from a cheap, mass produced brand. There are
+perhaps a dozen of them scattered about the summer house floor, some trodden into
+the dust, others carefully arranged. The tobacco inside is coarse and poor quality.
+They suggest prolonged occupation of the summer house by someone of modest means
+- or someone pretending to be.
 
 OBJ246_HANDKERCHIEF
-This is a lady's hanky, plain lace edged and perfumed.
+This is a lady's handkerchief of plain linen with delicate lace edging and a faint
+perfume - the scent is floral, sweet, and distinctly expensive. The handkerchief
+is initialled with an ornate "M" worked in pale silk thread. It is slightly damp
+and bears traces of dirt on one corner, as if it has been clutched in a nervous
+hand. The perfume is distinctive - not common, and quite costly.
 
 OBJ247_FOOTPRINTS_WL
 Prints from lady's shoes and men's hob-nailed boots can be seen in the
@@ -421,13 +504,26 @@ to west between the stables and the cottage.
 
 OBJ250_CIGARETTE_ENDS_GC
 These cigarette ends come from a cheap, mass produced brand.
+There are perhaps twenty of them scattered about the cottage hearth amongst food
+scraps and newspapers. The tobacco is coarse and cheap. Ronald Mellors
+apparently smokes incessantly, and his choice of cigarette reflects his
+station.
 
 OBJ251_ARMOUR
-Suits of Civil War three-quarter armour with a closed helmet.
+Two suits of Civil War three-quarter armour stand to either side of the
+staircase, their visors closed. The plate is old but well maintained, the metal
+dark and oiled. Someone has polished the breastplates recently - you can see
+your own reflection, distorted, staring back at you. They are the kind of thing
+that seems merely decorative in daylight and considerably less so after dark.
 
 OBJ252_DOOR_MAT
-The doormat is made of coarse coir and bears the word 'WELCOME' in faded
-letters. It is damp with recent use.
+The doormat is made of coarse coir and bears the word 'WELCOME' in faded letters.
+It is decidedly damp with recent use, the moisture having soaked through to the
+wooden floor beneath it. The dampness is concentrated at the edges and corners
+where water might drip from wet boots or shoes. There are distinct muddy footprints
+impressed into the coir - at least two sets, one noticeably smaller than the other.
+The mat has not yet dried, suggesting the wet footprints are fresh - from last night
+or early this morning.
 
 OBJ253_CHEROOT_BUTT
 This is the sodden butt of a Burmah cheroot, waterlogged from its time in
@@ -437,7 +533,11 @@ cigarette. It was wedged in a crevice of the statue as if placed there
 deliberately or dropped in haste.
 
 OBJ254_MUSIC_ROOM_ASHTRAY
-This brass ashtray contains a [[green:cigar stub]].
+This brass ashtray of considerable quality sits on the piano. It contains a single
+cigar stub — a cheroot by the appearance — partially smoked and carefully stubbed
+out. The cigar bears the tooth marks of someone who smoked it clenched between their
+teeth. Beside the stub lies a small pile of ash. The stub is the only evidence of
+smoking in this room, yet someone claims to have smoked here recently. Odd.
 
 WHAT_REALLY_HAPPENED
 What really happened at Darnley Park?@
