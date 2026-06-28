@@ -5,11 +5,13 @@ A washstand with a marble top and a pedestal washbowl complete
 the ensemble. A heavy mahogany door leads back out to the [[green:Upstairs landing]].
 
 LOC002_ORCHARD
-The park wall lies north with several pear-trees trained in espalier
-against it. Numerous apple trees stand bare of fruit. A path east leads
-to the [[green:Kitchen garden]], whilst the south opens onto a
-[[green:Paved terrace]]. Various marks on the ground are too unclear
-to discern as footprints.
+The park wall runs along the north boundary, several pear-trees trained
+in espalier against the old stone. Bare apple trees stand in rows across
+the frozen ground, their branches black against a white sky. A dusting
+of snow covers the grass between the trunks, too disturbed by fallen
+twigs and animal tracks to preserve any clear footprints. A path east
+leads to the [[green:Kitchen garden]], whilst the south opens onto a
+[[green:Paved terrace]].
 
 LOC003_KITCHEN_GARDEN
 The kitchen garden lies frozen and barren under snow. [[green:Footprints]]
@@ -18,9 +20,13 @@ the [[green:Outhouses]] to the east, and the [[green:Kitchen]] door to the
 south.
 
 LOC004_OUTHOUSES
-This section of the grounds contains various outhouses: a laundry, coal store and
-pigeon-coop. The [[green:Kitchen garden]] lies west, the [[green:Maze]]
-to the south.
+A cluster of low brick buildings occupies this corner of the grounds: a
+laundry with its copper still cold, a coal store with a dusting of black
+dust on the snow outside its door, and a timber pigeon-coop from which
+the occasional soft sound emerges. The smell of coal smoke and damp
+brick hangs in the cold air. Boot marks cross the snow between the
+buildings without settling into any clear pattern. The [[green:Kitchen
+garden]] lies west, the [[green:Maze]] to the south.
 
 LOC005_ORNAMENTAL_POND
 At the western end of a [[green:Paved terrace]] stands an ornamental
@@ -31,7 +37,7 @@ held [[green:marble statues]] - the Four Seasons - but one is missing.
 LOC006_TERRACE
 This paved terrace extends from the house westward toward an
 [[green:Ornamental pond]]. The snow shows a profusion of [[green:footprints]] -
-many passers have crossed here. To the north lies the [[green:Orchard]], east
+many feet have crossed here. To the north lies the [[green:Orchard]], east
 a [[green:french window]] into the [[green:Colonel's Study]], and south the
 [[green:West walk]].
 
@@ -45,13 +51,16 @@ a jagged hole; [[green:shattered]] glass litters the floor. A
 [[green:Hall]] and the [[green:Lounge]].
 
 LOC008_HALL
-The hall walls bear swords and Civil War armour. Marble floors
-gleam beneath, with a [[green:door mat]] lying at the entrance. A glass
-[[green:display case]] holds flints and pottery shards. Two suits of fine
-[[green:armour]] stand either side of the stairs.
-Doors lead to the [[green:Dining room]], [[green:Music room]],
-[[green:Main drive]], [[green:Colonel's Study]], [[green:Lounge]], or you could
-climb the stairs to the [[green:Upstairs landing]].
+A heavy oak front door with polished brass fittings stands at one end of
+the hall, opening onto the [[green:Main drive]], a [[green:door mat]] at its
+foot, damp with recent use. The marble floor extends the length of the
+room, reflecting what little winter light finds its way through the fanlight
+above the door. The walls carry swords and Civil War pikes, and two suits
+of fine [[green:armour]] stand sentinel either side of the staircase. A
+glass [[green:display case]] mounted on the wall holds flints and pottery
+shards collected from the estate grounds. Doors lead to the
+[[green:Dining room]], [[green:Music room]], [[green:Colonel's Study]], and
+[[green:Lounge]], or the staircase climbs to the [[green:Upstairs landing]].
 
 LOC009_KITCHEN
 Game birds hang from the ceiling in this well-appointed kitchen. On the
@@ -68,9 +77,13 @@ beds have been made up. A small [[green:bookshelf]] holds various volumes.
 [[green:Kitchen]] and [[green:Dining room]].
 
 LOC011_MAZE
-The maze consists of low box hedges planted on the east side of the house.
-Marks in the snow cannot be deciphered into footprints. The [[green:Outhouses]]
-lie north, the [[green:East walk]] west, and the [[green:East lawn]] south.
+Low box hedges, trimmed to chest height, form the walls of this modest
+maze on the east side of the house. The hedges are dark and winter-dense,
+their surfaces carrying a thin crust of snow along each flat top. The
+snow on the paths between them has been scuffed and disturbed - possibly
+by several people - but the compressed and broken surface will not yield
+clear footprints. The [[green:Outhouses]] lie north, the
+[[green:East walk]] west, the [[green:East lawn]] south.
 
 LOC012_WEST_WALK
 A gravel path runs clockwise around the house between the snow-covered tennis court
@@ -108,7 +121,7 @@ and [[green:Music room]].
 
 LOC017_DRIVE
 From wrought-iron gates, the drive sweeps northward toward stone lions flanking
-steps that climb to the [[green:Hall]]. Paths branch away: clockwise around the
+steps that climb to the [[green:Hall]] door. Paths branch away: clockwise around the
 house along snow-covered gravel toward the [[green:West walk]] and [[green:West lawn]],
 or anti-clockwise through an avenue of statues along the [[green:East walk]]
 towards the distant [[green:Stables]]. The snow reveals a confused tangle of
@@ -124,25 +137,37 @@ the [[green:Stables]] to the south, the [[green:East lawn]] and the
 
 LOC019_SUMMER_HOUSE
 A wooden summer house stands on a patch of lawn. Inside are croquet mallets and
-hoops, several [[green:cigarette ends]], and a [[green:handkerchief]]. You can
-exit to the [[green:West walk]] or [[green:West lawn]].
+hoops, several [[green:cigarette ends]], and a [[green:handkerchief]]. Exits lead
+to the [[green:West walk]] and [[green:West lawn]].
 
 LOC020_WEST_LAWN
-Between the summer house and the drive lies a lawn planted with young saplings.
-The snow covering shows [[green:footprints]] criss-crossing its expanse. The
+A broad lawn stretches between the west walk and the drive, planted with
+young copper beeches still small enough to seem provisional - an
+optimistic planting, their bare winter branches fine as pen-strokes
+against the grey sky. The snow covering is largely intact but crossed
+by [[green:footprints]] in two or three directions. The
 [[green:Main drive]], [[green:West walk]], and [[green:Summer house]] are near.
 
 LOC021_STABLES
-The stables are falling into disrepair. One section houses Colonel Darnley's
-bay hunter, the other garages a large Daimler. The yard is crossed by
-[[green:footprints]] and littered with straw and oil spills. The tack room
-holds saddle and gear for the horse. You can access the [[green:Main drive]],
-[[green:East walk]], and [[green:East lawn]] from here.
+The stable block is a handsome structure going gently to seed: loose
+slates on the roof, paint flaking from the doors, but the horses
+inside well-tended enough. One loose box houses Colonel Darnley's bay
+hunter, its breath steaming in the cold air. The other half of the
+building has been converted to garage a large Daimler, incongruous
+beneath a coating of road dust and a worn tarpaulin. The yard between
+the buildings is crossed by [[green:footprints]] and littered with
+straw and the dark stains of engine oil. The tack room off the yard
+holds saddle and gear for the horse. Access to the [[green:Main drive]],
+[[green:East walk]], and [[green:East lawn]] lies beyond the yard gate.
 
 LOC022_EAST_LAWN
-An area of lawn between the [[green:Stables]] and a [[green:Gamekeeper's Cottage]].
-The smooth snow covering is broken by [[green:footprints]]. The [[green:Maze]]
-lies to the north.
+An open lawn lies between the stable yard and the gamekeeper's cottage,
+sheltered to the north by the box-hedge maze. The snow here is
+undisturbed at the margins but broken by [[green:footprints]] crossing
+from east to west - boot marks, deep and purposeful. A rook picks at
+something in the middle distance and does not bother to fly off.
+The [[green:Maze]] lies to the north, the [[green:Stables]] to the west,
+the [[green:Gamekeeper's Cottage]] to the east.
 
 LOC023_GAMEKEEPERS_COTTAGE
 In the damp shade of chestnut trees stands a gamekeeper's cottage tucked
@@ -383,7 +408,7 @@ OBJ224_BOOKSHELF
 A modest shelf of books: volumes on household management, domestic accounts, and
 the improving literature favoured by the respectable working man. A Bible, much
 used. A copy of Smiles's Self-Help with a name written inside the front cover in
-careful copperplate — Arnold Billingsgate, 1889. The books tell you rather more
+careful copperplate - Arnold Billingsgate, 1889. The books tell you rather more
 about their owner than he may be willing to tell you himself.
 
 OBJ225_FRENCH_WINDOW_TERRACE
