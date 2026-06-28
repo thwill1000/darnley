@@ -2,175 +2,198 @@ LOC001_BATHROOM
 The bathroom contains an enamelled cast iron bath with claw feet
 and a toilet bearing a brass tablet calling it 'The Imperial Avenger'.
 A washstand with a marble top and a pedestal washbowl complete
-the ensemble. Various toiletries are scattered around in the normal
-way.
+the ensemble. A heavy mahogany door leads back out to the [[green:Upstairs landing]].
 
 LOC002_ORCHARD
-The park wall lies north and has several pear-trees trained in
-espalier against it. There are a large number of apple trees, but no
-fruit. There are various marks on the ground, too unclear to be sure
-that they are footprints.
+The park wall lies north with several pear-trees trained in espalier
+against it. Numerous apple trees stand bare of fruit. A path east leads
+to the [[green:Kitchen garden]], whilst the south opens onto a
+[[green:Paved terrace]]. Various marks on the ground are too unclear
+to discern as footprints.
 
 LOC003_KITCHEN_GARDEN
-The kitchen garden is full of frozen vegetables lying under snow.
-Various footprints are visible in the snow.
+The kitchen garden lies frozen and barren under snow. [[green:Footprints]]
+criss-cross the frozen vegetables. The [[green:Orchard]] spreads to the north,
+the [[green:Outhouses]] to the east, and the [[green:Kitchen]] door to the
+south.
 
 LOC004_OUTHOUSES
-This section of the garden contains various outhouses; a laundry, a
-coal store and a pigeon-coop.
+This section of the grounds contains various outhouses: a laundry, coal store and
+pigeon-coop. The [[green:Kitchen garden]] lies west, the [[green:Maze]]
+to the south.
 
 LOC005_ORNAMENTAL_POND
-An ornamental pond stands at the western end of the terrace.
-The pond is covered in ice. In the four corners of the pond are
-stone pedestals. These hold statues.
+At the western end of a [[green:Paved terrace]] stands an ornamental
+[[green:pond]], its surface frozen and hard. Four stone pedestals once held
+marble [[green:statues]]—the Four Seasons—but one has been knocked into the
+water below. The [[green:sunken statue]] lies visible through the ice, and
+[[green:footprints]] in the snow circle the pond's edge.
 
 LOC006_TERRACE
-From the house a French window leads onto this paved terrace, which
-shows traces of many footprints in the snow. The French window is
-open and has a broken pane.
+This paved terrace extends from the house westward toward an
+[[green:Ornamental pond]]. The snow shows a profusion of [[green:footprints]] -
+many passers have crossed here. To the north lies the [[green:Orchard]], east
+a [[green:french window]] into the [[green:Colonel's Study]], and south the
+[[green:West walk]].
 
 LOC007_COLONELS_STUDY
-Colonel Darnley's body lies on a turkish carpet in the middle of the
-study. A port glass is by his body and a tantalus of port stands on a
-table. The room is panelled and contains several club-chairs, some
-glass cases holding stuffed birds and a writing table with a letter on
-it as well as various sporting magazines and a rack of sporting guns
-and pistols. As you walk on the floor by the French window in the
-west wall, you feel broken glass underfoot.
+[[green:Colonel Darnley's]] body lies upon a turkish carpet, a [[green:port glass]]
+beside it. A [[green:tantalus]] of decanters stands on the table, and a [[green:letter]] -
+unfinished - rests upon the writing desk. A [[green:gun rack]] displays sporting
+pieces, one notably absent. A [[green:French window]] in the west wall bears
+a jagged hole; [[green:shattered glass]] litters the floor. A
+[[green:Paved terrace]] lies beyond, the [[green:Hall]] to the east, and the
+[[green:Lounge]] south.
 
 LOC008_HALL
-The walls of the hall are decorated with swords and Civil War
-armour. The floor is marble. The only furniture is a glass case
-containing various flints and shards of pottery. At the far end of the
-hall, two sets of fine armour stand either side of the stairs which
-have barley-sugar banisters and carved pineapple finials.
+The hall walls bear swords and Civil War armour. Marble floors
+gleam beneath, with a [[green:door mat]] lying at the entrance. A glass
+[[green:display case]] holds flints and pottery shards. Two suits of fine
+[[green:armour]] stand either side of the stairs.
+Doors lead to the [[green:Dining room]], [[green:Music room]],
+[[green:Main drive]], [[green:Colonel's Study]], [[green:Lounge]], or you could
+climb the stairs to the [[green:Upstairs landing]].
 
 LOC009_KITCHEN
-The kitchen has game birds hanging from the ceiling and the usual
-kitchen furniture. On the sink draining-board is a knife. By the
-outside door is a line of boots and some cleaning brushes and polish.
+Game birds hang from the ceiling in this well-appointed kitchen. On the
+sink's draining-board lies a [[green:knife]]. By the outside door stands a
+line of [[green:boots]] alongside cleaning brushes and polish.
+The house-keeper, [[green:Mildred Goodbody]] stands here overseeing the work.
+Doors lead to the [[green:Kitchen garden]], [[green:Butler's pantry]],
+and [[green:Dining room]].
 
 LOC010_BUTLERS_PANTRY
-The butler's pantry is laid out as a sitting room with a bed behind a
-curtain. Two temporary beds have been made up. There is a small
-bookshelf.
+A small sitting room with a [[green:bed]] behind a curtain, two temporary
+beds have been made up. A small [[green:bookshelf]] holds various volumes.
+[[green:Arnold Billingsgate]] tends to his duties. Doors lead to the
+[[green:Kitchen]] and [[green:Dining room]].
 
 LOC011_MAZE
-Situated on the east side of the house, the maze consists of low
-box hedges. The marks in the snow cannot be deciphered into
-footprints.
+The maze consists of low box hedges planted on the east side of the house.
+Marks in the snow cannot be deciphered into footprints. The [[green:Outhouses]]
+lie north, the [[green:East walk]] west, and the [[green:East lawn]] south.
 
 LOC012_WEST_WALK
-The gravel path around the house passes between the smooth snow
-covered tennis court and a bed of withered flowers covered in snow.
-Various footprints are visible in the snow.
+A gravel path runs clockwise around the house between the snow-covered tennis court
+and a bed of withered flowers. [[green:Footprints]] are visible in the snow.
+The [[green:Main drive]] lies east, the [[green:Summer house]] south-west, the
+[[green:West lawn]] south, and a [[green:Paved terrace]] north.
 
 LOC013_LOUNGE
-The centrepiece of the lounge is a three piece suite on a Chinese
-carpet. There are several tables holding magazines and novels
-marked with bookmarks. Recent family portraits are on the walls.
-The fireplace is carved and holds the remains of a fire. On the
-mantlepiece is an Indian rosewood box with an ivory inlay.
+A three-piece suite dominates this room on a Chinese carpet, scattered with
+magazines and novels. Recent family portraits hang on the walls. The fireplace
+is carved marble holding the remains of a fire, its mantelpiece bearing an
+Indian rosewood box with ivory inlay. [[green:Millicent Darnley]] sits here.
+Doors lead to the [[green:Hall]] and the [[green:Colonel's Study]].
 
 LOC014_DINING_ROOM
-The dining room holds a fine oak table with chairs in William and
-Mary style. A glass case contains various pieces of Delft pottery. A
-sideboard holding a silver wine cooler and a pair of Sevres porcelain
-urns stand against one wall. The fireplace is of carved marble and
-the walls hold various Italian landscapes.
+A fine oak table with William and Mary chairs occupies the centre. A glass
+case displays Delft pottery, whilst a sideboard holds a silver wine cooler
+and Sevres urns. The fireplace is carved marble, its walls hung with Italian
+landscapes. Doors lead to the [[green:Hall]], [[green:Kitchen]],
+[[green:Butler's pantry]], [[green:Music room]], and [[green:Billiard room]].
 
 LOC015_MUSIC_ROOM
-In the centre of the music room is a piano and, on top, a brass ashtray
-with the stub of a cigar in it. There are several chairs, a music stand
-and in one corner a large harp with broken strings.
+A [[green:piano]] occupies the centre with a brass ashtray on top,
+containing a [[green:cigar stub]]. Several chairs, a music stand, and a large
+harp with broken strings complete the room. [[green:Arthur Coniston]] lingers
+here. Doors lead to the [[green:Hall]], [[green:Dining room]], and
+[[green:Billiard room]].
 
 LOC016_BILLIARD_ROOM
-A full size table occupies the centre and of the wall a board indicates
-the result of a game. There is a small bookcase holding magazines
-and several novels by Conan Doyle and Buchan. On top of the book-
-case are three wine glasses and an ashtray.
+A full-size billiard table commands the centre. A board on the wall records a
+recent game. Shelves hold magazines and novels by Conan Doyle and Buchan. Three
+[[green:wine glasses]] and an [[green:ashtray]] rest atop the bookcase. Sir
+[[green:Redvers Slingsby]] stands here. Doors lead to the [[green:Dining room]]
+and [[green:Music room]].
 
 LOC017_DRIVE
-From a pair of splendid wrought iron gates the drive runs north
-ending in a flight of steps leading up to the principal entrance of the
-house, flanked by a pair of stone lions. The snow reveals a mass of
-[[red:footprints]].
+From wrought-iron gates, the drive sweeps northward toward stone lions flanking
+steps that climb to the [[green:Hall]]. Paths branch away: clockwise around the
+house along snow-covered gravel toward the [[green:West walk]] and [[green:West lawn]],
+or anti-clockwise through an avenue of statues along the [[green:East walk]]
+towards the distant [[green:Stables]]. The snow reveals a confused tangle of
+[[green:footprints]] - boot marks, slipper prints, and shoe tracks criss-crossing
+in all directions.
 
 LOC018_EAST_WALK
-This gravel path runs east-west across the front of the house flanked
-by an avenue of statues. The snow covered gravel is too rough to
-distinguish footprints.
+This gravel path runs east-west across the front of the house, flanked by an
+avenue of statues. [[green:Footprints]] mark the snow-covered gravel. The
+[[green:Main drive]] lies to the west, a box-hedge [[green:Maze]] to the east,
+the [[green:Stables]] to the south, the [[green:East lawn]] and the
+[[green:Gamekeeper's Cottage]] to the south-east.
 
 LOC019_SUMMER_HOUSE
-A wooden summer house stands on a patch of lawn. Inside can be
-seen some croquet mallets and hoops, several cigarette ends and a
-handkerchief.
+A wooden summer house stands on a patch of lawn. Inside are croquet mallets and
+hoops, several [[green:cigarette ends]], and a [[green:handkerchief]]. You can
+exit to the [[green:West walk]] or [[green:West lawn]].
 
 LOC020_WEST_LAWN
-Between the summer house and the drive is a lawn. It is planted with
-a few saplings and the covering of snow shows footprints.
+Between the summer house and the drive lies a lawn planted with young saplings.
+The snow covering shows [[green:footprints]] criss-crossing its expanse. The
+[[green:Main drive]], [[green:West walk]], and [[green:Summer house]] are near.
 
 LOC021_STABLES
-The stables are falling into disrepair. One part contains Colonel
-Darnley's bay hunter. The other garages a large Daimler. The yard
-is full of straw and oil spills, and is crossed by footprints. The tack
-room holds the saddle and gear for the horse.
+The stables are falling into disrepair. One section houses Colonel Darnley's
+bay hunter, the other garages a large Daimler. The yard is crossed by
+[[green:footprints]] and littered with straw and oil spills. The tack room
+holds saddle and gear for the horse. You can access the [[green:Main drive]],
+[[green:East walk]], and [[green:East lawn]] from here.
 
 LOC022_EAST_LAWN
-An area of lawn between the stables and the cottage. The smooth
-covering of snow is broken by footprints.
+An area of lawn between the [[green:Stables]] and a [[green:Gamekeeper's Cottage]].
+The smooth snow covering is broken by [[green:footprints]]. The [[green:Maze]]
+lies to the north.
 
 LOC023_GAMEKEEPERS_COTTAGE
-In the damp shade of some chestnut trees is a gamekeeper's cottage
-tucked against the south-east corner of the park. The door of the
-cottage is open and footprints are visible across the threshold. Inside
-are various items of game, two shotguns on the wall, a table covered
-by oil cloth, an unmade bed, a slop-stone sink and an open fire with a
-pot hanging over it. The place is very dirty; the hearth is littered
-with foodscraps, the ends of cigarettes and newspapers.
+In the damp shade of chestnut trees stands a gamekeeper's cottage tucked
+against the south-east corner. The door stands open. Inside are game items,
+two shotguns on the wall, an oil-cloth table, an unmade bed, a slop-stone
+sink, and an open fire. [[green:Cigarette ends]] litter the dirty hearth
+amongst food scraps and newspapers. [[green:Ronald Mellors]] dwells here.
+Paths lead from here onto the [[green:East walk]] and [[green:East lawn]].
 
 LOC024_MILLICENT_BEDROOM
-Millicent Darnley's bedroom is decorated to a young lady's taste
-with a bed, wardrobe, dressing table and a small writing table.
-The surfaces are covered with small ornaments, mainly of dogs
-and the walls have pictures of favourite pets.
+Millicent Darnley's bedroom is decorated to a young lady's taste, with a bed,
+wardrobe, dressing table, and small writing table. The surfaces overflow with
+small dog ornaments and the walls display pictures of favourite pets. Doors
+lead out to the [[green:Upstairs landing]] and [[green:Master bedroom]].
 
 LOC025_LANDING
-The landing walls hold some fine antlers and animal heads and some
-bad portraits of the Darnley ancestors.
+The landing walls hold fine antlers and animal heads alongside poor portraits
+of the Darnley ancestors. Doors lead to the [[green:Bathroom]],
+[[green:Millicent's bedroom]], [[green:Morning room]],
+[[green:Servants' quarters]], or you could take the stairs down into the
+[[green:Hall]].
 
 LOC026_SERVANTS_QUARTERS
-The servants' quarters consist of a single room with two single beds,
-a rail for hanging clothes on behind a curtain, a wash stand and a
-chest of drawers. On the chest is a bundle of correspondence and
-various framed photographs. A gentleman's country-suit with a
-newspaper in the pocket is hanging on the rail amongst the dresses
-and a pipe is on the washstand.
+A single room with two single beds, a rail for clothes behind a curtain, a wash
+stand and chest of drawers. On the chest rest a bundle of [[green:correspondence]]
+and framed [[green:photographs]]. A gentleman's country-[[green:suit]] with a [[green:newspaper]]
+in the pocket hangs among the dresses, and a [[green:pipe]] rests on the washstand.
+The maid, [[green:Norah Bagsby]], is tidying this cramped space. Only a door to the
+[[green:Upstairs landing]] provides egress.
 
 LOC027_MASTER_BEDROOM
-Colonel and Mrs. Darnley's bedroom is heavily panelled and reflects
-the Colonel's tastes, with sporting prints and a humidor of cigars.
-There is a double bed, a dressing table, wardrobe and trouser press. A
-small bathroom is attached.
+Colonel and Mrs. Darnley's bedroom is heavily panelled with sporting prints and
+a humidor of [[green:cigars]]. A [[green:double bed]], [[green:dressing table]],
+[[green:wardrobe]], and trouser press furnish the room. A selection of
+[[green:shoes]] - men's and women's - stands in the wardrobe. A small bathroom is attached.
+Doors lead to the [[green:Upstairs landing]], [[green:Millicent's bedroom]], and
+the [[green:Morning room]].
 
 LOC028_MORNING_ROOM
-The morning room holds a chintz sofa and an occasional table with
-magazines and books. Against one wall is a piano. On a table stands
-a gramophone. There are various pictures, mainly watercolours of
-birds.
+A chintz sofa and occasional table with magazines and books furnish this room.
+A [[green:piano]] stands against one wall, whilst a [[green:gramophone]] sits on
+a table, surrounded by watercolour bird pictures. [[green:Sarah Darnley]] rests
+here. Doors lead to the [[green:Upstairs landing]], [[green:Master bedroom]], and
+the [[green:Guest room]].
 
 LOC029_GUEST_ROOM
-A guest-room decorated in blue with wardrobe, bed, washstand and
-writing-table. By the bed is a pair of men's slippers. On the writing
-table is a pack of cigarettes and some stationary and pens.
-
-LOC030_GRAVEL_WALK
-The gravel walk is covered by snow too broken to show the traces of
-footprints.
-
-LOC031_SOUTHEAST_CORNER
-At the south-east corner of the house is a square of empty lawn. The
-smooth cover of snow is broken by footprints.
+A guest-room decorated in blue with wardrobe, bed, washstand, and writing-table.
+By the bed lies a pair of men's [[green:slippers]], slightly damp and mud-stained.
+On the writing table sits a pack of [[green:cigarettes]] - an expensive brand - along
+with stationary and pens. The only door leads back into the [[green:Morning room]].
 
 PER101_COLONEL_DARNLEY
 Aged 60. The Colonel served in the South African War and
@@ -268,7 +291,7 @@ OBJ216_DRESSING_TABLE
 There is nothing of note on the dressing table.
 
 OBJ217_SHOES
-This selection of mens and womens shoes is unremarkable. One set of
+This selection of men's and women's shoes is unremarkable. One set of
 lady's shoes is mud-stained.
 
 OBJ219_CORRESPONDENCE
