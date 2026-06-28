@@ -57,7 +57,7 @@ LOC009_KITCHEN
 Game birds hang from the ceiling in this well-appointed kitchen. On the
 sink's draining-board lies a [[green:knife]]. By the outside door stands a
 line of [[green:boots]] alongside cleaning brushes and polish.
-The house-keeper, [[green:Mildred Goodbody]] stands here overseeing the work.
+The cook, [[green:Mildred Goodbody]] stands here overseeing the work.
 Doors lead to the [[green:Kitchen garden]], [[green:Butler's pantry]],
 and [[green:Dining room]].
 
@@ -201,38 +201,63 @@ stock exchange. He was free with his tips on the market, but didn't
 always follow his own recommendations.
 
 P_SARAH_DARNLEY
-Colonel Darnley's wife. Aged 27. Fair-haired, beautiful and
-sophisticated. She wears a morning dress and shows signs of tired-
-ness and stress.
+Colonel Darnley's wife. Aged 27. Fair-haired and beautiful, with the kind of
+effortless sophistication that comes from knowing one's own effect on a room.
+She wears a morning dress that manages to look elegant despite the
+circumstances, though her eyes are shadowed and her composure - whilst
+convincing - appears to require some maintenance. She is perhaps twenty years
+younger than her husband, and looks it.
 
 P_MILLICENT_DARNLEY
-Colonel Darnley's daughter. Aged 23. Well-dressed but rather plain.
-Cool and determined looking. She wears a blouse and skirt.
+Colonel Darnley's daughter. Aged 23. Well-dressed in a blouse and skirt, rather
+plain in feature but with a directness of gaze that more than compensates. There
+is a composed, watchful quality about her - she gives the impression of a woman
+who generally gets what she wants and has thought carefully about how to get it.
+Grief, if she feels it, is kept well in hand.
 
 P_ARTHUR_CONISTON
-Millicent Darnley's fiance. Aged 25. Average height and very good
-looking. His manner is honest and friendly. He dresses fashionably
-and wears black patent shoes.
+Millicent Darnley's fiance. Aged 25. Average height, very good looking, and
+thoroughly aware of both facts. He dresses fashionably and wears black patent
+shoes that seem faintly incongruous in a house where a murder has just occurred.
+His manner is open and friendly in the way that practised charm always is - easy
+to like, harder to read.
 
 P_REDVERS_SLINGSBY
-Friend of the deceased. Aged 52. Very tall and bony with side
-whiskers and a red face. Wears country-tweeds and boots. His
-manner is ill-tempered.
+Friend of the deceased. Aged 52. Very tall and angular, with side-whiskers and a
+complexion that suggests either robust outdoor health or a considerable
+acquaintance with the decanter. He wears country tweeds and boots and carries
+himself with the ill-tempered authority of a man accustomed to having his
+opinions treated as facts. He is not taking the present situation well.
 
 P_ARNOLD_BILLINGSGATE
-The Butler. Aged about 60; gentlemanly manners; bald and thin;
-average height. Wears a tail coat and ordinary men's shoes.
+The butler. Aged about 60. Bald, thin, and immaculately turned out in a tail
+coat, with the gentlemanly manners and careful neutrality of expression that the
+position demands. He wears ordinary men's shoes polished to a mirror finish. Of
+all the people in the house he appears the most genuinely distressed by the
+Colonel's death, though he would consider any outward display of that distress
+to be unprofessional.
 
 P_MILDRED_GOODBODY
-The Cook. Aged 55. Pleasant-faced. Cheerful. Overweight.
+The cook. Aged 55. A broad, pleasant-faced woman with cheerful eyes and flour on
+her apron, who gives the impression that very little in life has ever quite
+managed to get the better of her. She meets your gaze directly and answers
+questions without apparent calculation. In a household currently full of people
+choosing their words with great care, she is a refreshing exception.
 
 P_NORAH_BAGSBY
-The Housemaid. Aged 19. Small pale girl who sniffs a lot. Wears a
-maid's uniform.
+The housemaid. Aged 19. A small, pale girl in a maid's uniform who sniffs
+occasionally and has the look of someone who would very much rather be somewhere
+else. She is not unintelligent, but she is young and nervous and the events of
+the night have clearly unsettled her more than she is letting on. She answers
+questions readily enough, though her eyes dart toward the door at intervals.
 
 P_RONALD_MELLORS
-The Gamekeeper. Stocky, black curly hair, good looking, surly-
-looking. Wears working clothes and hob-nailed boots. Age 35.
+The gamekeeper. Aged 35. Stocky and dark with black curly hair and the kind of
+good looks that owe nothing to grooming or effort. He wears working clothes and
+hob-nailed boots and regards you with an expression of settled hostility that
+suggests this is simply his default manner rather than evidence of a guilty
+conscience - though of course it need not be one or the other. He will not, it
+is already clear, be volunteering anything.
 
 OBJ201_POND
 Near the centre of the pond the ice is thinner as if it has frozen again
@@ -289,7 +314,7 @@ between the kitchen and the maze.
 
 OBJ213_BED_MASTER
 The Colonel's bed is large and ornate with heavy mahogany posts. The linen sheets
-and quilted coverlet on one side have been disturbed — slept in — whilst the other
+and quilted coverlet on one side have been disturbed - slept in - whilst the other
 side remains pristine and undisturbed. Clearly Mrs. Darnley slept here, but the
 Colonel did not. A silk nightshirt is carefully folded and placed upon the Colonel's
 pillow. On the bedside table sits a small bottle of sleeping draught, the stopper
@@ -306,7 +331,7 @@ own garments - it appears to belong to a visitor.
 
 OBJ215_CIGARS
 The humidor is mahogany with a glass front, bearing the inscription
-"S.D. - 1910" in silver lettering. It contains Burmah cheroots — straight, dark
+"S.D. - 1910" in silver lettering. It contains Burmah cheroots - straight, dark
 cylinders, unfashionable compared to the Havanas favoured by gentlemen of means,
 but evidently the Colonel's longstanding and unashamed preference. A military
 man's smoke: practical, strong, and unpretentious.
@@ -440,7 +465,7 @@ There are slipper prints, flat-footed boot prints and some shoe prints
 heading to and from the terrace and the front of the house.
 
 OBJ238_CIGAR_STUB
-A cheroot stub sits in the brass ashtray on the music room piano — a straight
+A cheroot stub sits in the brass ashtray on the music room piano - a straight
 dark cylinder, partially smoked and carefully stubbed out, the ash still faintly
 moist. Someone was in this room recently, smoking.
 
@@ -534,7 +559,7 @@ deliberately or dropped in haste.
 
 OBJ254_MUSIC_ROOM_ASHTRAY
 This brass ashtray of considerable quality sits on the piano. It contains a single
-cigar stub — a cheroot by the appearance — partially smoked and carefully stubbed
+cigar stub - a cheroot by the appearance - partially smoked and carefully stubbed
 out. The cigar bears the tooth marks of someone who smoked it clenched between their
 teeth. Beside the stub lies a small pile of ash. The stub is the only evidence of
 smoking in this room, yet someone claims to have smoked here recently. Odd.
