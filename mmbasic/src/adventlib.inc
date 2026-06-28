@@ -148,7 +148,6 @@ End Sub
 
 ' Describe the current location
 Sub describe_loc()
-  con.foreground("yellow")
   If DEBUG Then con.print("(" + Str$(r) + ") ")
   con.println("Location: " + Field$(rooms$(r), 2, "|"))
   Const loc_tag$ = Field$(rooms$(r), 1, "|")
@@ -156,39 +155,37 @@ Sub describe_loc()
   print_message(loc_tag$)
   con.println()
 
-  ' Iterate through objects to find those at the current location
-  con.print("You can see: ")
-  Local count%, i%, oloc%
-  For i% = 1 To NUM_OBJECTS
-    oloc% = find_loc%(Field$(objects$(i%), 3, "|"), 1)
-    If oloc% = r Then
-      If count% > 0 Then con.print(", ")
-      con.print(Field$(objects$(i%), 2, "|"))
-      If DEBUG Then con.print(" (" + Str$(i%) + ")")
-      Inc count%
-    EndIf
-  Next
-  If count% = 0 Then con.print("Nothing of interest")
-  con.println()
-  con.println()
+  ' ' Iterate through objects to find those at the current location
+  ' con.print("You can see: ")
+  ' Local count%, i%, oloc%
+  ' For i% = 1 To NUM_OBJECTS
+  '   oloc% = find_loc%(Field$(objects$(i%), 3, "|"), 1)
+  '   If oloc% = r Then
+  '     If count% > 0 Then con.print(", ")
+  '     con.print(Field$(objects$(i%), 2, "|"))
+  '     If DEBUG Then con.print(" (" + Str$(i%) + ")")
+  '     Inc count%
+  '   EndIf
+  ' Next
+  ' If count% = 0 Then con.print("Nothing of interest")
+  ' con.println()
+  ' con.println()
 
-  ' Iterate through exits for the current location
-  con.print("Exits: ")
-  Const num_exits% = Val(Field$(rooms$(r), 3, "|"))
-  count% = 0
-  Local exit_label$
-  For i% = 1 To num_exits%
-    If count% > 0 Then con.print(", ")
-    exit_label$ = Field$(rooms$(r), 3 + i%, "|")
-    con.print(Field$(rooms$(find_loc%(exit_label$)), 2, "|"))
-    Inc count%
-  Next
-  If count% = 0 Then con.print("No way out")
-  con.println()
+  ' ' Iterate through exits for the current location
+  ' con.print("Exits: ")
+  ' Const num_exits% = Val(Field$(rooms$(r), 3, "|"))
+  ' count% = 0
+  ' Local exit_label$
+  ' For i% = 1 To num_exits%
+  '   If count% > 0 Then con.print(", ")
+  '   exit_label$ = Field$(rooms$(r), 3 + i%, "|")
+  '   con.print(Field$(rooms$(find_loc%(exit_label$)), 2, "|"))
+  '   Inc count%
+  ' Next
+  ' If count% = 0 Then con.print("No way out")
+  ' con.println()
 
-  con.println()
   describe% = 0
-  con.foreground("reset")
 End Sub
 
 Function find_loc%(tag$, no_error%)
