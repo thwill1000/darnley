@@ -588,17 +588,10 @@ End Function
 ' Handles the DROP verb
 Function verb_drop()
   verb_drop = 1
-  print_fail "Unimplemented."
-  ' Local found = 0
-  ' Local i
-  ' For i = 1 To NUM_OBJECTS
-  '   If noun$ = LCase$(Field$(oname$(i), 1, "|")) And olocation(i) = INVENTORY Then
-  '     print_success "Dropped."
-  '     olocation(i) = r
-  '     found = 1
-  '   EndIf
-  ' Next
-  ' If Not found Then print_fail "You're not carrying that"
+  Local msg$ = "This game does not require you to TAKE, DROP or otherwise manipulate objects. Just "
+  Cat msg$, "explore your surroundings, search for and EXAMINE the clues and ASK questions of the "
+  Cat msg$, "suspects."
+  print_fail msg$
 End Function
 
 ' Finds the best matching object for the given words.
@@ -735,18 +728,7 @@ End Function
 
 ' Handles the INVENTORY verb
 Function verb_inventory()
-  verb_inventory = 1
-  print_fail "Unimplemented."
-  ' Local count = 0, i
-  ' con.println()
-  ' print_success "You are carrying: "
-  ' For i=1 To NUM_OBJECTS
-  '   If olocation(i) = INVENTORY Then
-  '     print_success "  " + Field$(oname$(i), 2, "|")
-  '     Inc count
-  '   EndIf
-  ' Next
-  ' If count = 0 Then print_success "  Nothing"
+  verb_inventory = verb_drop()
 End Function
 
 ' Handles the LOOK verb
@@ -780,49 +762,49 @@ End Function
 
 ' Handles the TAKE verb
 Function verb_take()
-  verb_take = 1
+  verb_take = verb_drop()
 
-  ' Check object exists
-  Const o% = find_obj%(words$(), 2)
-  If Not o% Then
-    Local msg$ = "I do not understand the word"
-    If count_words%(words$()) > 2 Then Cat msg$, "s"
-    Cat msg$, " " + Chr$(39) + cat_words$(words$(), 2) + Chr$(39) + "."
-    print_fail msg$
-    Exit Function
-  EndIf
+  ' ' Check object exists
+  ' Const o% = find_obj%(words$(), 2)
+  ' If Not o% Then
+  '   Local msg$ = "I do not understand the word"
+  '   If count_words%(words$()) > 2 Then Cat msg$, "s"
+  '   Cat msg$, " " + Chr$(39) + cat_words$(words$(), 2) + Chr$(39) + "."
+  '   print_fail msg$
+  '   Exit Function
+  ' EndIf
 
-  ' Check object is present
-  If obj_loc%(o%) <> r Then
-    Local msg$ = obj_name$(o%)
-    If Not obj_is_person%(o%) Then msg$ = "The " + LCase$(msg$)
-    If Right$(msg$, 1) = "s" Then Cat msg$, " are not here." Else Cat msg$, " is not here."
-    print_fail msg$
-    Exit Function
-  EndIf
+  ' ' Check object is present
+  ' If obj_loc%(o%) <> r Then
+  '   Local msg$ = obj_name$(o%)
+  '   If Not obj_is_person%(o%) Then msg$ = "The " + LCase$(msg$)
+  '   If Right$(msg$, 1) = "s" Then Cat msg$, " are not here." Else Cat msg$, " is not here."
+  '   print_fail msg$
+  '   Exit Function
+  ' EndIf
 
-  ' Check if the object is not a person
-  If obj_is_person%(o%) Then
-    print_fail "That would be inappropriate."
-    Exit Function
-  EndIf
+  ' ' Check if the object is not a person
+  ' If obj_is_person%(o%) Then
+  '   print_fail "That would be inappropriate."
+  '   Exit Function
+  ' EndIf
 
-  ' Check if the object is too heavy
-  If obj_weight%(o%) > MAX_TAKEABLE_WEIGHT Then
-    Local msg$ = "The " + LCase$(obj_name$(o%))
-    If Right$(msg$, 1) = "s" Then Cat msg$, " are too heavy." Else Cat msg$, " is too heavy."
-    print_fail msg$
-    Exit Function
-  EndIf
+  ' ' Check if the object is too heavy
+  ' If obj_weight%(o%) > MAX_TAKEABLE_WEIGHT Then
+  '   Local msg$ = "The " + LCase$(obj_name$(o%))
+  '   If Right$(msg$, 1) = "s" Then Cat msg$, " are too heavy." Else Cat msg$, " is too heavy."
+  '   print_fail msg$
+  '   Exit Function
+  ' EndIf
 
-  ' Check if the object is takeable
-  If Not obj_is_takeable%(o%) Then
-    print_fail "You cannot take the " + LCase$(obj_name$(o%)) + "."
-    Exit Function
-  EndIf
+  ' ' Check if the object is takeable
+  ' If Not obj_is_takeable%(o%) Then
+  '   print_fail "You cannot take the " + LCase$(obj_name$(o%)) + "."
+  '   Exit Function
+  ' EndIf
 
-  ' For the moment nothing can be taken
-  print_fail "There is no need to carry the " + LCase$(obj_name$(o%)) + " around with you."
+  ' ' For the moment nothing can be taken
+  ' print_fail "There is no need to carry the " + LCase$(obj_name$(o%)) + " around with you."
 End Function
 
 ' Handles the QUIT verb
