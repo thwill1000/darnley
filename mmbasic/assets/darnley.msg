@@ -24,10 +24,9 @@ to the south.
 
 LOC005_ORNAMENTAL_POND
 At the western end of a [[green:Paved terrace]] stands an ornamental
-[[green:pond]], its surface frozen and hard. Four stone pedestals once held
-marble [[green:statues]]—the Four Seasons—but one has been knocked into the
-water below. The [[green:sunken statue]] lies visible through the ice, and
-[[green:footprints]] in the snow circle the pond's edge.
+[[green:pond]], its surface frozen and hard. Four stone pedestals around it once
+held [[green:marble statues]] - the Four Seasons - but one is missing.
+[[green:Footprints]] in the snow circle the pond's edge.
 
 LOC006_TERRACE
 This paved terrace extends from the house westward toward an
@@ -37,13 +36,13 @@ a [[green:french window]] into the [[green:Colonel's Study]], and south the
 [[green:West walk]].
 
 LOC007_COLONELS_STUDY
-[[green:Colonel Darnley's]] body lies upon a turkish carpet, a [[green:port glass]]
-beside it. A [[green:tantalus]] of decanters stands on the table, and a [[green:letter]] -
-unfinished - rests upon the writing desk. A [[green:gun rack]] displays sporting
+[[green:Colonel Darnley's body]] lies upon a turkish carpet, a [[green:port glass]]
+beside it. A [[green:tantalus]] of decanters stands on the table, and a [[green:letter]] rests upon
+the writing desk. A [[green:gun rack]] displays sporting
 pieces, one notably absent. A [[green:French window]] in the west wall bears
-a jagged hole; [[green:shattered glass]] litters the floor. A
-[[green:Paved terrace]] lies beyond, the [[green:Hall]] to the east, and the
-[[green:Lounge]] south.
+a jagged hole; [[green:shattered]] glass litters the floor. A
+[[green:Paved terrace]] lies beyond the window, otherwise doors lead to the
+[[green:Hall]] and the [[green:Lounge]].
 
 LOC008_HALL
 The hall walls bear swords and Civil War armour. Marble floors
@@ -63,7 +62,7 @@ Doors lead to the [[green:Kitchen garden]], [[green:Butler's pantry]],
 and [[green:Dining room]].
 
 LOC010_BUTLERS_PANTRY
-A small sitting room with a [[green:bed]] behind a curtain, two temporary
+A small sitting room with a bed behind a curtain, two temporary
 beds have been made up. A small [[green:bookshelf]] holds various volumes.
 [[green:Arnold Billingsgate]] tends to his duties. Doors lead to the
 [[green:Kitchen]] and [[green:Dining room]].
@@ -94,8 +93,8 @@ landscapes. Doors lead to the [[green:Hall]], [[green:Kitchen]],
 [[green:Butler's pantry]], [[green:Music room]], and [[green:Billiard room]].
 
 LOC015_MUSIC_ROOM
-A [[green:piano]] occupies the centre with a brass ashtray on top,
-containing a [[green:cigar stub]]. Several chairs, a music stand, and a large
+A [[green:piano]] occupies the centre with a [[green:brass ashtray]] on top.
+Several chairs, a music stand, and a large
 harp with broken strings complete the room. [[green:Arthur Coniston]] lingers
 here. Doors lead to the [[green:Hall]], [[green:Dining room]], and
 [[green:Billiard room]].
@@ -177,8 +176,7 @@ The maid, [[green:Norah Bagsby]], is tidying this cramped space. Only a door to 
 LOC027_MASTER_BEDROOM
 Colonel and Mrs. Darnley's bedroom is heavily panelled with sporting prints and
 a humidor of [[green:cigars]]. A [[green:double bed]], [[green:dressing table]],
-[[green:wardrobe]], and trouser press furnish the room. A selection of
-[[green:shoes]] - men's and women's - stands in the wardrobe. A small bathroom is attached.
+[[green:wardrobe]], and trouser press furnish the room. A small bathroom is attached.
 Doors lead to the [[green:Upstairs landing]], [[green:Millicent's bedroom]], and
 the [[green:Morning room]].
 
@@ -239,16 +237,16 @@ looking. Wears working clothes and hob-nailed boots. Age 35.
 OBJ201_POND
 Near the centre of the pond the ice is thinner as if it has frozen again
 after having been broken. Beneath the ice you can see the missing
-statue from the fourth pedestal.
+marble [[green:statue]] and a [[green:revolver]].
 
 OBJ202_SUNKEN_STATUE
 The statue that is beneath the ice is the same as those on the
 pedestals. Stuck in a crevice of the statue is the soaked butt of a
-cheroot.
+[[green:cheroot]].
 
 OBJ203_REVOLVER
-The revolver found in the hall is a Webley-Fosbery .455 service
-revolver. One bullet has been discharged from it.
+The revolver found in the pond is a fine quality weapon with decorative grips.
+One bullet has been discharged from it.
 
 OBJ204_STATUES
 The statues form a set of four, representing the Four Seasons. They
@@ -270,8 +268,7 @@ OBJ208_KNIFE
 This kitchen knife is stained with blood.
 
 OBJ209_BOOTS
-All these boots are polished clean except for a mud stained pair that
-apparently belong to Sir Redvers Slingsby.
+All these boots are polished clean except for a large mud stained pair.
 
 OBJ212_FOOTPRINTS_KG
 Both flat footed boot prints and slipper prints can be seen going
@@ -282,7 +279,7 @@ This double bed has not been slept in.
 
 OBJ214_WARDROBE
 As well as clothes the wardrobe contains a selection of
-men's and women's shoes.
+men's and women's [[green:shoes]].
 
 OBJ215_CIGARS
 The cigars are Burmah cheroots.
@@ -347,11 +344,11 @@ place by a sort of 'lid' of wood which is fastened by a small lock. The
 key is in the lock.
 
 OBJ230_LETTER
-The letter is an incomplete draft : 'Dear Sir, I have considered your
-monstrous suggestion and find I cannot....'
+The letter is an incomplete draft: "Dear Sir, I have considered your
+monstrous suggestion and find I cannot..."
 
 OBJ231_GUN_RACK
-One of the pistols is missing from this rack.
+One of a pair of revolvers with decorated grips is missing from this rack.
 
 OBJ232_FRENCH_WINDOW_STUDY
 One pane is smashed. The glass on the floor is apparently from this.
@@ -426,12 +423,21 @@ OBJ250_CIGARETTE_ENDS_GC
 These cigarette ends come from a cheap, mass produced brand.
 
 OBJ251_ARMOUR
-A suit of Civil War three-quarter armour with a closed helmet.
-Examination discovers a revolver concealed in the helmet.
+Suits of Civil War three-quarter armour with a closed helmet.
 
 OBJ252_DOOR_MAT
 The doormat is made of coarse coir and bears the word 'WELCOME' in faded
 letters. It is damp with recent use.
+
+OBJ253_CHEROOT_BUTT
+This is the sodden butt of a Burmah cheroot, waterlogged from its time in
+the pond. Despite being soaked, you can still make out its straight dark
+cylinder shape, characteristic of a cheroot rather than a conventional
+cigarette. It was wedged in a crevice of the statue as if placed there
+deliberately or dropped in haste.
+
+OBJ254_MUSIC_ROOM_ASHTRAY
+This brass ashtray contains a [[green:cigar stub]].
 
 WHAT_REALLY_HAPPENED
 What really happened at Darnley Park?@

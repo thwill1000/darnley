@@ -22,7 +22,7 @@ happen. At 11.30 I was asleep like a good Christian, and the Devil
 take you if a fellow needs an alibi!"
 
 boots
-"These are certainly my boots. I last wore them yesterday afternoon
+"Those are certainly my boots. I last wore them yesterday afternoon
 and put them out for Billingsgate to clean. I certainly didn't wear
 them after dinner and can't explain who may have. I suppose that, if
 the staff were asleep, someone could have sneaked into the kitchen
