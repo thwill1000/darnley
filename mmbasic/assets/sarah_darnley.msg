@@ -48,7 +48,7 @@ piano
 and no-one else came into the room."
 
 ladys shoes
-"Yes, these are my shoes, but I don't recall when I last wore them. I
+"Yes, those are my shoes, but I don't recall when I last wore them. I
 have no idea why they should be damp - possibly I had them on
 earlier yesterday."
 
