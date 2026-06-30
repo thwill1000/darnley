@@ -15,7 +15,7 @@ Dim questions$(Max(NUM_QUESTIONS, 2)) Length 128
 Dim result%
 
 init_advent()
-read_questions();
+read_questions()
 r = -1
 r_new = 17 ' Drive
 
