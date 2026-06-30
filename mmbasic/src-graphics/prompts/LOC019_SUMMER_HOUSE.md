@@ -1,0 +1,5 @@
+# LOC019_SUMMER_HOUSE
+
+Pixel art, VGA 256-colour palette, 480x320 pixels (displayed at 240x160), style of early 1990s point-and-click adventure games such as Police Quest or King's Quest VI. Hard pixel edges throughout, no anti-aliasing, no modern rendering techniques. Muted period-appropriate colour palette. Static background scene, no characters, no UI elements, no text overlays.
+
+Wooden summer house on a snow-covered lawn. The focal point is the structure itself—rendered with bold dark wood framework, a peaked roof, and open entrance visible as a dark rectangle. The interior suggests croquet mallets and hoops as dark angular shapes within. The second anchor is the surrounding snow-covered ground with footprints visible as dark shadowed lines leading to and from the building. Withered grass and dead flower beds are visible in patches through the snow. The background shows distant trees or shrubs rendered as dark silhouettes. The wooden walls show weathering and grain texture suggested through subtle horizontal lines. Colour palette: dark browns for wood, cream and grey snow, pale overcast sky. Cold, somewhat isolated feeling. Winter daylight. No figures.
