@@ -33,7 +33,7 @@ End Function
 
 Sub init_advent()
   If Val(Mm.CmdLine$) <> 0 Then r = Val(Mm.CmdLine$)
-  init_msg_file(ASSETS_DIR$ + "/darnley.msg")
+  init_msg_file(ASSETS_DIR$ + "/messages.dat")
   init_console()
   read_rooms()
   read_objects()
