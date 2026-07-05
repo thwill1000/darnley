@@ -1,0 +1,5 @@
+# LOC018_EAST_WALK
+
+Pixel art, VGA 256-colour palette, 480x320 pixels (displayed at 240x160), style of early 1990s point-and-click adventure games such as Police Quest or King's Quest VI. Hard pixel edges throughout, no anti-aliasing, no modern rendering techniques. Muted period-appropriate colour palette. Static background scene, no characters, no UI elements, no text overlays.
+
+Gravel path flanked by an avenue of statues. The focal point is the central perspective of the path receding to the horizon, rendered as converging pale grey gravel lines with snow accumulation along edges. Statues line the path on both sides, rendered as simple dark stone silhouettes alternating left-right—simplified as pedestaled forms with minimal detail. Footprints mark the snow-covered gravel in multiple directions. The background shows the path disappearing into winter haze toward distant buildings or gates. Sky is pale and overcast. Colour palette: pale grey gravel, cream snow, dark stone statues and pedestals, pale grey-blue sky. Cold, formal atmosphere. Winter daylight, clear and flat. No figures.

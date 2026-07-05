@@ -1,0 +1,5 @@
+# LOC020_WEST_LAWN
+
+Pixel art, VGA 256-colour palette, 480x320 pixels (displayed at 240x160), style of early 1990s point-and-click adventure games such as Police Quest or King's Quest VI. Hard pixel edges throughout, no anti-aliasing, no modern rendering techniques. Muted period-appropriate colour palette. Static background scene, no characters, no UI elements, no text overlays.
+
+Broad open lawn with young copper beech trees. The focal point is the geometric arrangement of small bare trees—rendered as dark silhouettes with fine branching patterns against white snow, arranged in a planted row suggesting optimistic spacing. The background shows the distant house rendered as a dark mass on the horizon. Snow covers the lawn largely intact, with clear footprints crossing in two or three directions—visible as darker shadowed lines. In the foreground, snow depth varies, showing patches of dead grass poking through. The sky is pale grey, flat and overcast. Colour palette: dark tree silhouettes, cream and grey snow, pale sky, subtle earth tones where grass shows through. No vegetation in leaf. Winter daylight, cold and bleak. No figures.

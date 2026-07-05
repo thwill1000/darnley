@@ -1,0 +1,5 @@
+# LOC012_WEST_WALK
+
+Pixel art, VGA 256-colour palette, 480x320 pixels (displayed at 240x160), style of early 1990s point-and-click adventure games such as Police Quest or King's Quest VI. Hard pixel edges throughout, no anti-aliasing, no modern rendering techniques. Muted period-appropriate colour palette. Static background scene, no characters, no UI elements, no text overlays.
+
+Gravel path running clockwise around the house between snow and withered flowers. The focal point is the path itself rendered as a diagonal line of pale grey gravel receding toward the horizon, with footprints visible as darker shadowed indentations. To the left is a snow-covered tennis court suggested by a low net or boundary line rendered in simple lines. To the right, a bed of withered flowers shows dark woody stems and branches poking through patches of snow. The background shows the distant corner of the house rendered as a dark silhouette. Snow patches are irregular, thicker in shadowed areas. Colour palette: pale grey gravel, cream snow, dark browns for withered plants and distant stonework, pale sky. No figure. Winter daylight, flat and cold.

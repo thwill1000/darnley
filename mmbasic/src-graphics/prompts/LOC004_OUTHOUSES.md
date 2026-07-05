@@ -1,0 +1,5 @@
+# LOC004_OUTHOUSES
+
+Pixel art, VGA 256-colour palette, 480x320 pixels (displayed at 240x160), style of early 1990s point-and-click adventure games such as Police Quest or King's Quest VI. Hard pixel edges throughout, no anti-aliasing, no modern rendering techniques. Muted period-appropriate colour palette. Static background scene, no characters, no UI elements, no text overlays.
+
+Cluster of low brick utility buildings rendered as bold silhouettes against a snowy ground. The focal point is a laundry structure with a peaked roof dominating the left-centre, its brick pattern suggested through subtle horizontal lines. A coal store with a dark doorway and black smudges of coal dust visible in the snow sits centre. To the right, a timber pigeon-coop with primitive wooden framework creates a secondary focal point. Snow blankets everything, thicker on flat roofs, thinner on the cold earth between buildings. Footprints and boot marks criss-cross the snowy yard without clear pattern. Brick rendered in muted rust-browns and greys; wood in dark charcoal. Sky pale and overcast. No figures. Winter daylight, cold and flat.

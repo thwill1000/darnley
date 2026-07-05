@@ -1,0 +1,5 @@
+# LOC022_EAST_LAWN
+
+Pixel art, VGA 256-colour palette, 480x320 pixels (displayed at 240x160), style of early 1990s point-and-click adventure games such as Police Quest or King's Quest VI. Hard pixel edges throughout, no anti-aliasing, no modern rendering techniques. Muted period-appropriate colour palette. Static background scene, no characters, no UI elements, no text overlays.
+
+Open lawn sheltered to the north by the box-hedge maze. The focal point is deep, purposeful boot prints crossing from east to west through the snow—rendered as clear dark lines suggesting serious, hurried movement. The background shows the dark silhouette of the maze hedge line defining the northern boundary. To the distant right, the gamekeeper's cottage is suggested as a small dark structure under chestnut trees. The foreground snow is largely undisturbed at the margins but broken by the crossing prints in the centre. A single rook picking in the middle distance is rendered as a tiny dark shape. Sky is pale grey, overcast. Colour palette: cream and grey snow, dark boot prints, dark hedge silhouette, muted sky. Cold, open, somewhat desolate. Winter daylight. No human figures.

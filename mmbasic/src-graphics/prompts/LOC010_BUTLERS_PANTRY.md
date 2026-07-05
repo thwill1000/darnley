@@ -1,0 +1,5 @@
+# LOC010_BUTLERS_PANTRY
+
+Pixel art, VGA 256-colour palette, 480x320 pixels (displayed at 240x160), style of early 1990s point-and-click adventure games such as Police Quest or King's Quest VI. Hard pixel edges throughout, no anti-aliasing, no modern rendering techniques. Muted period-appropriate colour palette. Static background scene, no characters, no UI elements, no text overlays.
+
+Small butler's pantry with cramped, functional furnishings. The focal point is a modest bed tucked into the corner, rendered with bold dark wood frame and pale bedding, with a curtain rail suggested above it. A small bookshelf mounted on the wall displays books as a series of thin vertical lines in varying browns and greys. The second anchor is a simple wooden chair rendered in perspective. The room has plain cream plaster walls and a dark wooden floor with scattered boards suggested through linear perspective. A single doorway is visible in the background. The ceiling is low and plain. Colour palette: cream walls, dark browns for wood and books, pale bedding, grey shadows. Warm but dim interior lighting. Compact, austere space. No figures.

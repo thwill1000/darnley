@@ -1,0 +1,5 @@
+# LOC005_ORNAMENTAL_POND
+
+Pixel art, VGA 256-colour palette, 480x320 pixels (displayed at 240x160), style of early 1990s point-and-click adventure games such as Police Quest or King's Quest VI. Hard pixel edges throughout, no anti-aliasing, no modern rendering techniques. Muted period-appropriate colour palette. Static background scene, no characters, no UI elements, no text overlays.
+
+Frozen ornamental pond under pale grey winter sky. The primary focal point is the ice-covered water surface rendered in pale blue-grey with fine linear details suggesting cracks and thin areas. Four stone pedestals positioned at cardinal points around the pond—three hold marble statues rendered as simple, dignified silhouettes; one pedestal stands empty and prominent. The statues are light grey marble against darker stone bases. Footprints in the snow circle the pond's edge, visible as faint shadowed lines. In the background, a balustrade or low fence suggests the terrace boundary. Foreground snow is white with grey shadows. Colour palette: pale ice-blue, stone grey, cream snow, dark shadows. No figures. Cold, flat daylight with grey cast.
