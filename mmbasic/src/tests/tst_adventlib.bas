@@ -34,10 +34,10 @@ End Sub
 
 Sub con.println(s$)
   Cat con_output$, s$ + sys.CRLF$
-  Print s$
 End Sub
 
-init_msg_file(Mm.Info(Path) + "test.msg")
+adv.asset_dir$ = Mm.Info(Path)
+adv.msg_file$ = adv.asset_dir$ + "test.msg"
 read_rooms()
 read_objects()
 
