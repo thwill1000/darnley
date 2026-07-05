@@ -54,6 +54,15 @@ add_test("test_cat_words_gvn_si_eq_ei")
 add_test("test_cat_words_gvn_si_gt_ei")
 add_test("test_cat_words_stops_at_empty")
 add_test("test_cat_words_gvn_si_at_empty")
+add_test("test_add_flags_gvn_one_token")
+add_test("test_add_flags_multiple_tokens")
+add_test("test_add_flags_gvn_duplicate")
+add_test("test_add_flags_stops_at_empty")
+add_test("test_has_flags_gvn_empty_set")
+add_test("test_has_flags_gvn_all_present")
+add_test("test_has_flags_gvn_one_missing")
+add_test("test_has_flags_gvn_empty_tokens")
+add_test("test_has_flags_gvn_no_partial")
 add_test("test_count_data_gvn_empty")
 add_test("test_count_data_gvn_one")
 add_test("test_count_data_gvn_multiple")
@@ -137,6 +146,7 @@ End
 
 Sub setup_test()
   con_output$ = ""
+  init_flags()
 End Sub
 
 ' Empty array returns empty string
@@ -215,6 +225,78 @@ End Sub
 Sub test_cat_words_gvn_si_at_empty()
   Local words$(4) = ("one", "", "three", "four")
   assert_string_equals("", cat_words$(words$(), 2, 0))
+End Sub
+
+' Adding a single token makes it findable
+Sub test_add_flags_gvn_one_token()
+  Local tokens$(2) = ("FOO", "")
+  add_flags(tokens$())
+  assert_int_equals(1, has_flags%(tokens$()))
+End Sub
+
+' Adding multiple tokens makes them all findable
+Sub test_add_flags_multiple_tokens()
+  Local tokens$(3) = ("FOO", "BAR", "")
+  add_flags(tokens$())
+  assert_int_equals(1, has_flags%(tokens$()))
+
+  Local check$(2) = ("BAR", "")
+  assert_int_equals(1, has_flags%(check$()))
+End Sub
+
+' Adding a token already present does not error and is idempotent
+Sub test_add_flags_gvn_duplicate()
+  Local tokens$(2) = ("FOO", "")
+  add_flags(tokens$())
+  add_flags(tokens$())
+  assert_int_equals(1, has_flags%(tokens$()))
+End Sub
+
+' Empty element in tokens$() stops processing; later tokens are not added
+Sub test_add_flags_stops_at_empty()
+  Local tokens$(3) = ("FOO", "", "BAR")
+  add_flags(tokens$())
+  assert_int_equals(1, has_flags%(tokens$()))
+
+  Local check$(2) = ("BAR", "")
+  assert_int_equals(0, has_flags%(check$()))
+End Sub
+
+' An empty flag set has no tokens
+Sub test_has_flags_gvn_empty_set()
+  Local tokens$(2) = ("FOO", "")
+  assert_int_equals(0, has_flags%(tokens$()))
+End Sub
+
+' Returns 1 when all requested tokens are present
+Sub test_has_flags_gvn_all_present()
+  Local tokens$(3) = ("FOO", "BAR", "")
+  add_flags(tokens$())
+  assert_int_equals(1, has_flags%(tokens$()))
+End Sub
+
+' Returns 0 when at least one requested token is missing
+Sub test_has_flags_gvn_one_missing()
+  Local tokens$(2) = ("FOO", "")
+  add_flags(tokens$())
+
+  Local check$(3) = ("FOO", "BAR", "")
+  assert_int_equals(0, has_flags%(check$()))
+End Sub
+
+' An empty tokens$() array trivially returns 1 (no requirements to satisfy)
+Sub test_has_flags_gvn_empty_tokens()
+  Local tokens$(2)
+  assert_int_equals(1, has_flags%(tokens$()))
+End Sub
+
+' A token that is a substring of a present token must not match
+Sub test_has_flags_gvn_no_partial()
+  Local tokens$(2) = ("FOOBAR", "")
+  add_flags(tokens$())
+
+  Local check$(2) = ("FOO", "")
+  assert_int_equals(0, has_flags%(check$()))
 End Sub
 
 ' Empty data block returns zero

@@ -22,6 +22,7 @@ Dim rooms$(Max(NUM_ROOMS, 2)) Length 255
 Dim objects$(Max(NUM_OBJECTS, 2)) Length 128
 Dim words$(10) Length 20
 Dim noun$, verb$
+Dim flags%(128)  ' LongString of "|TOKEN|TOKEN|..." flags, 1KB capacity
 
 Function FAILED(i%) As Integer
   FAILED = i%
@@ -34,6 +35,7 @@ End Function
 Sub init_advent()
   If Val(Mm.CmdLine$) <> 0 Then r = Val(Mm.CmdLine$)
   init_console()
+  init_flags()
   read_rooms()
   read_objects()
 End Sub
@@ -45,6 +47,11 @@ Sub init_console()
   con.init(w%, h%, 0)
   If Mm.Info(Device X) = "MMB4L" Then Console Resize con.WIDTH, con.HEIGHT
   Cls
+End Sub
+
+Sub init_flags()
+  LongString Clear flags%()
+  LongString Append flags%(), "|"
 End Sub
 
 ' Count the number of data entries
@@ -238,6 +245,44 @@ Function get_input$(prompt$)
   Else
     get_input$ = con.in$(prompt$, 1)
   EndIf
+End Function
+
+' Adds each non-empty token in tokens$() to the flags set, skipping any
+' already present. Stops at the first empty element.
+'
+' @param tokens$()  Array of flag tokens to add.
+Sub add_flags(tokens$())
+  Local i%, token$
+  For i% = Bound(tokens$(), 0) To Bound(tokens$(), 1)
+    token$ = tokens$(i%)
+    If token$ = "" Then Exit Sub
+    If LInStr(flags%(), "|" + token$ + "|") = 0 Then
+      LongString Append flags%(), token$ + "|"
+    EndIf
+  Next
+End Sub
+
+' Returns 1 if every non-empty token in tokens$() is present in the flags
+' set, 0 otherwise. Stops at the first empty element. An array containing
+' no tokens trivially returns 1.
+'
+' @param tokens$()  Array of tokens to check.
+Function has_flags%(tokens$())
+  has_flags% = count_set_flags%(tokens$()) = count_words%(tokens$())
+End Function
+
+' Counts how many of the given tokens are present in the flags set.
+' Stops at the first empty element.
+'
+' @param tokens$()  Array of flag tokens to check.
+' @return           The number of tokens present.
+Function count_set_flags%(tokens$())
+  Local i%, token$
+  For i% = Bound(tokens$(), 0) To Bound(tokens$(), 1)
+    token$ = tokens$(i%)
+    If token$ = "" Then Exit Function
+    If LInStr(flags%(), "|" + token$ + "|") <> 0 Then Inc count_set_flags%
+  Next
 End Function
 
 ' Counts the number of words in an array, stopping at the first empty element.
