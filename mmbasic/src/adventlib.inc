@@ -586,42 +586,69 @@ Function verb_ask()
     Exit Function
   EndIf
 
-  Const obj_idx% = find_obj%(words$(), 1, about_idx% - 1)
-  If Not obj_idx% Then
+  Const obj_idx% = resolve_ask_target%(about_idx%)
+  If Not obj_idx% Then Exit Function
+
+  Local subject_words$(MAX_WORDS) Length MAX_WORD_LENGTH
+  extract_subject_words(about_idx%, subject_words$())
+
+  Const filename$ = LCase$(Mid$(Field$(objects$(obj_idx%), 1, "|"), 3)) + ".msg"
+
+  Local best_match_count%, best_match_line%
+  scan_ask_responses(filename$, subject_words$(), best_match_count%, best_match_line%)
+
+  print_ask_result(filename$, best_match_count%, best_match_line%)
+End Function
+
+' Resolves the direct object of ASK ... ABOUT ..., printing a failure
+' message and returning 0 if it can't be found, isn't present, or isn't
+' a person.
+Function resolve_ask_target%(about_idx%)
+  resolve_ask_target% = find_obj%(words$(), 1, about_idx% - 1)
+  If Not resolve_ask_target% Then
     print_fail "You don't know that person."
     Exit Function
   EndIf
 
-  ' Check the direct object is present
-  If obj_loc%(obj_idx%) <> r Then
-    Local msg$ = obj_name$(obj_idx%)
-    If Not obj_is_person%(obj_idx%) Then msg$ = "The " + LCase$(msg$)
+  If obj_loc%(resolve_ask_target%) <> r Then
+    Local msg$ = obj_name$(resolve_ask_target%)
+    If Not obj_is_person%(resolve_ask_target%) Then msg$ = "The " + LCase$(msg$)
     Cat msg$, Choice(Right$(msg$, 1) = "s", " are", " is") + " not here."
     print_fail msg$
+    resolve_ask_target% = 0
     Exit Function
   EndIf
 
-  ' Handles the direct object not being a person
-  If Not obj_is_person%(obj_idx%) Then
-    Local msg$ = "The " + LCase$(obj_name$(obj_idx%))
+  If Not obj_is_person%(resolve_ask_target%) Then
+    Local msg$ = "The " + LCase$(obj_name$(resolve_ask_target%))
     Cat msg$, Choice(Right$(msg$, 1) = "s", " do", " does") + " not answer."
     print_fail msg$
-    Exit Function
+    resolve_ask_target% = 0
   EndIf
+End Function
 
-  Local i%, subject_words$(MAX_WORDS) Length MAX_WORD_LENGTH
+' Populates subject_words$() with the words following "about" in words$().
+Sub extract_subject_words(about_idx%, subject_words$())
+  Local i%
   For i% = 1 To Bound(words$(), 1) - about_idx%
     subject_words$(i%) = words$(i% + about_idx%)
   Next
+End Sub
 
-  Const filename$ = LCase$(Mid$(Field$(objects$(obj_idx%), 1, "|"), 3)) + ".msg"
+' Scans filename$ for the response whose keyword line best matches
+' subject_words$(), respecting !requires eligibility. Returns the winning
+' match count/line via best_match_count%/best_match_line% (0/0 if none).
+Sub scan_ask_responses(filename$, subject_words$(), best_match_count%, best_match_line%)
   Open adv.asset_dir$ + "/" + filename$ For Input As #1
 
   Local file_word_count%, file_words$(MAX_WORDS) Length 20, match_count%, s$
-  Local best_match_count%, best_match_line%, line_num%
+  Local line_num%
   Local requires$(MAX_WORDS) Length MAX_WORD_LENGTH
   Local provides$(MAX_WORDS) Length MAX_WORD_LENGTH
   Local first_line$, lines_consumed%, eligible%, result%
+
+  best_match_count% = 0
+  best_match_line% = 0
 
   Do
     Line Input #1, s$
@@ -656,8 +683,12 @@ Function verb_ask()
     Inc line_num%
   Loop
   Close #1
+End Sub
 
-'  Print "Best match line: " best_match_line%
+' Prints the winning response from scan_ask_responses(), or a generic
+' fallback if best_match_count% is 0.
+Sub print_ask_result(filename$, best_match_count%, best_match_line%)
+  Local s$, line_num%
 
   con.println()
   con.foreground("cyan")
@@ -665,7 +696,6 @@ Function verb_ask()
   If best_match_count% = 0 Then
     print_success "I don't know what you are talking about."
   Else
-    line_num% = 0
     Open adv.asset_dir$ + "/" + filename$ For Input As #1
     Do
       Line Input #1, s$
@@ -680,7 +710,7 @@ Function verb_ask()
 
   con.println()
   con.foreground("reset")
-End Function
+End Sub
 
 ' Handles the DROP verb
 Function verb_drop()
