@@ -1,0 +1,5 @@
+# LOC002_ORCHARD
+
+Pixel art, VGA 256-colour palette, 480x320 pixels (displayed at 240x160), style of early 1990s point-and-click adventure games such as Police Quest or King's Quest VI. Hard pixel edges throughout, no anti-aliasing, no modern rendering techniques. Muted period-appropriate colour palette. Static background scene, no characters, no UI elements, no text overlays.
+
+Winter orchard under grey overcast sky. A low stone wall with weathered brick runs horizontally across the mid-ground, anchoring the composition. Beyond, bare apple trees recede in rows into the snowy middle distance—rendered with minimal branches as simple dark silhouettes against white ground. In the foreground left, a single gnarled pear-tree trained against the wall, its bare branches creating a distinctive twisted pattern. Snow covers the ground with patches of dead grass and dark earth showing through. The sky is uniform pale grey fading slightly at the horizon. Colour palette: browns, greys, off-whites for snow, dark charcoal for tree silhouettes and stone. No figures. Overcast daylight, flat and cool, characteristic of a winter morning.

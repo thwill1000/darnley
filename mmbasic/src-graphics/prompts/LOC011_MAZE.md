@@ -1,0 +1,5 @@
+# LOC011_MAZE
+
+Pixel art, VGA 256-colour palette, 480x320 pixels (displayed at 240x160), style of early 1990s point-and-click adventure games such as Police Quest or King's Quest VI. Hard pixel edges throughout, no anti-aliasing, no modern rendering techniques. Muted period-appropriate colour palette. Static background scene, no characters, no UI elements, no text overlays.
+
+Box hedge maze in winter. The dominant focal point is the orderly geometry of chest-height hedges forming the maze walls, rendered as parallel dark lines receding in perspective toward the middle distance. The hedges show snow crust along their flat tops—subtle white lines emphasizing their tops. Pathways between hedges are snow-covered with compressed and disturbed surface; boot marks and scuffed areas visible but not forming clear individual prints. The foreground path is clear and leads directly away. Background shows the far wall of the maze fading into winter haze. Sky is pale and overcast. Colour palette: dark grey-green for evergreen hedge, cream and grey snow, pale sky. Flat winter daylight. No vegetation in leaf. No figures. Cold, somewhat enclosed feeling.

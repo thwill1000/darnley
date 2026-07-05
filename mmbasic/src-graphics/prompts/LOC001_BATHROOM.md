@@ -1,0 +1,5 @@
+# LOC001_BATHROOM
+
+Pixel art, VGA 256-colour palette, 480x320 pixels (displayed at 240x160), style of early 1990s point-and-click adventure games such as Police Quest or King's Quest VI. Hard pixel edges throughout, no anti-aliasing, no modern rendering techniques. Muted period-appropriate colour palette. Static background scene, no characters, no UI elements, no text overlays.
+
+A narrow bathroom interior lit by weak winter daylight from a high window. The focal point is a cast-iron bathtub with claw feet rendered in bold silhouette against cream-tiled walls, positioned left-of-centre. A pedestal washbowl with marble top occupies the right foreground, simplified but recognisable. Beyond, a toilet with a brass nameplate catch the eye. The mahogany door frame, dark and substantial, anchors the background. Walls are off-white with darker grout lines suggested through minimal cross-hatching. The floor is black-and-white tile in a simple checkerboard pattern. Overhead, a dark ceiling beam runs horizontally. Overall colour palette: creams, dark browns, slate greys, with brass highlights. No figure. Dim interior lighting with slight cool cast from the distant window.

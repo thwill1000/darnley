@@ -1,0 +1,5 @@
+# LOC003_KITCHEN_GARDEN
+
+Pixel art, VGA 256-colour palette, 480x320 pixels (displayed at 240x160), style of early 1990s point-and-click adventure games such as Police Quest or King's Quest VI. Hard pixel edges throughout, no anti-aliasing, no modern rendering techniques. Muted period-appropriate colour palette. Static background scene, no characters, no UI elements, no text overlays.
+
+Frozen kitchen garden under overcast winter sky. The focal point is the orderly geometry of raised beds rendered in bold, dark browns or greys, arranged in perspective toward a middle-distance wall or hedge. Patches of snow cling to the frozen ground between beds. A weathered wooden fence or trellis structure anchors the right side in silhouette. In the foreground, the unmistakable cross-hatching of footprints in snow leading across the beds—suggested through subtle diagonal lines. The background shows distant evergreen shrubs or hedge marking the garden boundary. Colour palette: pale cream snow, dark browns for soil and wood, slate grey for shadows and sky. Flat, cold daylight with slight blue-grey cast. No vegetation in leaf, no figures.
