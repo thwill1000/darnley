@@ -10,6 +10,7 @@ Option Explicit
 #Include "adventlib.inc"
 
 Const NUM_QUESTIONS = count_data%("question_data")
+Const NUM_CLUES = count_data%("clue_data")
 
 Dim questions$(Max(NUM_QUESTIONS, 2)) Length 128
 Dim result%
@@ -59,6 +60,18 @@ Sub read_questions()
   Next
 End Sub
 
+' Reads the clue_data into tokens$().
+'
+' @param tokens$()  Output array, populated from clue_data.
+Sub read_clues(tokens$())
+  Local i%, s$
+  Restore clue_data
+  For i% = 1 To NUM_CLUES
+    Read s$
+    tokens$(i%) = s$
+  Next
+End Sub
+
 ' Parse user input
 Function parse(cmd$)
   parse = parse_common(cmd$)
@@ -67,6 +80,19 @@ End Function
 ' Handle the ACCUSE verb
 Function verb_accuse()
   verb_accuse = 1
+
+  Local clues$(Max(NUM_CLUES, 2)) Length MAX_WORD_LENGTH
+  read_clues(clues$())
+  Const found% = count_set_flags%(clues$())
+
+  If found% < NUM_CLUES Then
+    Local msg$ = "You have found " + Str$(found%) + " of the " + Str$(NUM_CLUES)
+    Cat msg$, " clues needed to make an accusation. "
+    Cat msg$, Str$(NUM_CLUES - found%) + " more remain to be discovered."
+    print_fail msg$
+    Exit Function
+  EndIf
+
   Local answer$, correct%, response$, response_words$(MAX_WORDS), result%, i%, msg$, q%
   con.println()
 
@@ -265,4 +291,11 @@ Data "Q_10|arthur|coniston"
 Data "Q_11|marry millicent|marry milicent"
 Data "Q_12|stone|rock"
 Data "Q_13|arthur|coniston"
+Data ""
+
+clue_data:
+' Placeholder tokens — replace with actual minted clue tokens once
+' !provides directives have been added to the .msg files.
+Data "TOKEN_ONE"
+Data "TOKEN_TWO"
 Data ""
