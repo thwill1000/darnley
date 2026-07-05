@@ -3,7 +3,6 @@
 
 If Mm.Info$(Device X) = "MMB4L" And Mm.Info(Version) < 80000000 Then Option Resolution Pixel
 
-Const ASSETS_DIR$ = Mm.Info(Path) + "../assets"
 Const MAX_WORDS = 10
 Const MAX_WORD_LENGTH = 20
 Const INVENTORY = -1
@@ -14,6 +13,8 @@ Const NUM_OBJECTS = count_data%("object_data")
 Const MAX_TAKEABLE_WEIGHT = 99
 Const WILDCARD_MATCH = 100
 
+Dim adv.asset_dir$ = Mm.Info(Path) + "../assets"
+Dim adv.msg_file$ = adv.asset_dir$ + "/messages.dat"
 Dim DEBUG = 0
 Dim describe% = 1
 Dim r = 1, r_new
@@ -21,7 +22,6 @@ Dim rooms$(Max(NUM_ROOMS, 2)) Length 255
 Dim objects$(Max(NUM_OBJECTS, 2)) Length 128
 Dim words$(10) Length 20
 Dim noun$, verb$
-Dim msg_file$
 
 Function FAILED(i%) As Integer
   FAILED = i%
@@ -33,14 +33,9 @@ End Function
 
 Sub init_advent()
   If Val(Mm.CmdLine$) <> 0 Then r = Val(Mm.CmdLine$)
-  init_msg_file(ASSETS_DIR$ + "/messages.dat")
   init_console()
   read_rooms()
   read_objects()
-End Sub
-
-Sub init_msg_file(f$)
-  msg_file$ = f$
 End Sub
 
 ' Initialises and clears console/terminal
@@ -99,7 +94,7 @@ End Sub
 ' Checks that a given message exists in the message file
 Function message_exists%(tag$)
   Local s$
-  Open msg_file$ For Input As #1
+  Open adv.msg_file$ For Input As #1
   Do While Not Eof(#1)
     Input #1, s$
     If Field$(s$, 1, "|") = tag$ Then
@@ -530,7 +525,7 @@ Function verb_ask()
   Next
 
   Const filename$ = LCase$(Mid$(Field$(objects$(obj_idx%), 1, "|"), 3)) + ".msg"
-  Open ASSETS_DIR$ + "/" + filename$ For Input As #1
+  Open adv.asset_dir$ + "/" + filename$ For Input As #1
 
   Local file_word_count%, file_words$(MAX_WORDS) Length 20, match_count%, s$
   Local best_match_count%, best_match_line%, line_num%
@@ -566,7 +561,7 @@ Function verb_ask()
     print_success "I don't know what you are talking about."
   Else
     line_num% = 0
-    Open ASSETS_DIR$ + "/" + filename$ For Input As #1
+    Open adv.asset_dir$ + "/" + filename$ For Input As #1
     Do
       Line Input #1, s$
       If line_num% = best_match_line% Then
@@ -838,7 +833,7 @@ End Sub
 ' @param tag$  The tag to search for in the message file.
 Sub print_message(tag$)
   Local s$
-  Open msg_file$ For Input As #1
+  Open adv.msg_file$ For Input As #1
   Do
     Line Input #1, s$
     If Eof(#1) Then
