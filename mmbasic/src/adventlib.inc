@@ -285,6 +285,51 @@ Function count_set_flags%(tokens$())
   Next
 End Function
 
+' Reads zero or more directive lines ("!requires ..." / "!provides ...")
+' immediately following a keyword line that has already been read by the
+' caller. At most one "!requires" and one "!provides" line are recognised,
+' in either order; any other line is treated as the first line of the
+' response body.
+'
+' On return the file is positioned immediately after the first message
+' line (i.e. one Line Input has always been performed to find it), and
+' lines_consumed% reports how many lines in total were read by this call
+' (directives plus the one message line), so callers tracking a running
+' line count can stay in sync.
+'
+' @param[in]  fnbr%             File number, already positioned after the
+'                               keyword line.
+' @param[out]  requires$()      Tokens from "!requires", cleared first.
+' @param[out]  provides$()      Tokens from "!provides", cleared first.
+' @param[out]  first_line$      The first line of the message body.
+' @param[out]  lines_consumed%  Number of lines read by this call.
+Sub read_directives(fnbr%, requires$(), provides$(), first_line$, lines_consumed%)
+  Local i%, result%, s$
+
+  For i% = Bound(requires$(), 0) To Bound(requires$(), 1) : requires$(i%) = "" : Next
+  For i% = Bound(provides$(), 0) To Bound(provides$(), 1) : provides$(i%) = "" : Next
+  lines_consumed% = 0
+
+  Local directives_seen%
+  Do While directives_seen% < 2
+    Line Input #fnbr%, s$
+    Inc lines_consumed%
+    If Left$(s$, 10) = "!requires " Then
+      result% = split_words%(Mid$(s$, 11), requires$())
+      Inc directives_seen%
+    ElseIf Left$(s$, 10) = "!provides " Then
+      result% = split_words%(Mid$(s$, 11), provides$())
+      Inc directives_seen%
+    Else
+      first_line$ = s$
+      Exit Sub
+    EndIf
+  Loop
+
+  Line Input #fnbr%, first_line$
+  Inc lines_consumed%
+End Sub
+
 ' Counts the number of words in an array, stopping at the first empty element.
 '
 ' @param words$()  The array of words to count.
@@ -574,21 +619,36 @@ Function verb_ask()
 
   Local file_word_count%, file_words$(MAX_WORDS) Length 20, match_count%, s$
   Local best_match_count%, best_match_line%, line_num%
+  Local requires$(MAX_WORDS) Length MAX_WORD_LENGTH
+  Local provides$(MAX_WORDS) Length MAX_WORD_LENGTH
+  Local first_line$, lines_consumed%, eligible%, result%
+
   Do
     Line Input #1, s$
     If Eof(#1) Then Exit Do
-    If s$ = "*" And best_match_count% = 0 Then
-      ' Should be last response
-      best_match_count% = WILDCARD_MATCH
-      best_match_line% = line_num%
-    Else
-      file_word_count% = split_words%(s$, file_words$())
-      match_count% = find_matches%(file_words$(), subject_words$())
-      If match_count% > best_match_count% Then
-        best_match_count% = match_count%
+
+    If s$ = "*" Then
+      If best_match_count% = 0 Then
+        best_match_count% = WILDCARD_MATCH
         best_match_line% = line_num%
       EndIf
+    Else
+      read_directives(1, requires$(), provides$(), first_line$, lines_consumed%)
+      Inc line_num%, lines_consumed%
+
+      eligible% = has_flags%(requires$())
+      If eligible% Then
+        file_word_count% = split_words%(s$, file_words$())
+        match_count% = find_matches%(file_words$(), subject_words$())
+        If match_count% > best_match_count% Then
+          best_match_count% = match_count%
+          best_match_line% = line_num% - lines_consumed%
+        EndIf
+      EndIf
+
+      s$ = first_line$
     EndIf
+
     Do While s$ <> ""
       Line Input #1, s$
       Inc line_num%
@@ -893,10 +953,22 @@ Sub print_message(tag$)
   con.println()
 End Sub
 
+' Prints the response lines for the current message entry, skipping any
+' leading directive lines ("!requires" / "!provides") and applying any
+' "!provides" tokens to the flags set.
+'
+' The file must be positioned immediately after the keyword line. On return
+' the file is positioned at the blank line terminating the entry (or EOF).
 Sub print_message_lines()
   Local first% = 1, s$
+  Local requires$(MAX_WORDS) Length MAX_WORD_LENGTH
+  Local provides$(MAX_WORDS) Length MAX_WORD_LENGTH
+  Local lines_consumed%
+
+  read_directives(1, requires$(), provides$(), s$, lines_consumed%)
+  add_flags(provides$())
+
   Do
-    Line Input #1, s$
     If s$ = "" Then Exit Do
     If first% Then first% = 0 Else s$ = " " + s$
     If Right$(s$, 1) = "@" Then
@@ -905,5 +977,6 @@ Sub print_message_lines()
     Else
       con.print(s$)
     EndIf
+    Line Input #1, s$
   Loop
 End Sub
