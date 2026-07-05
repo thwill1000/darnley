@@ -18,3 +18,6 @@ Description of object 3
 
 OBJ004
 Description of object 4
+
+P_TEST_SUSPECT
+A test suspect.

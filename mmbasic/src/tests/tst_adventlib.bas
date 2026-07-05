@@ -5,6 +5,8 @@ Option Base 1
 Option Explicit On
 Option Default Integer
 
+Const ut.MAX_TESTS% = 150
+
 #Include "splib/system.inc"
 #Include "splib/array.inc"
 #Include "splib/bits.inc"
@@ -17,6 +19,8 @@ Option Default Integer
 #Include "splib/vt100.inc"
 #Include "sptest/unittest.inc"
 #Include "../adventlib.inc"
+
+Const TEST_DIRECTIVES_FILE$ = Mm.Info(Path) + "test_directives.msg"
 
 Dim con_output$
 
@@ -110,6 +114,13 @@ add_test("test_parse_common_dir_full")
 add_test("test_parse_common_noun_aliases")
 add_test("test_parse_common_intercepts")
 add_test("test_parse_common_split_errors")
+add_test("test_read_directives_gvn_none")
+add_test("test_read_directives_requires")
+add_test("test_read_directives_provides")
+add_test("test_read_directives_gvn_both")
+add_test("test_read_directives_reversed")
+add_test("test_read_directives_multi_tok")
+add_test("test_read_directives_empty_rsp")
 add_test("test_remove_word")
 add_test("test_remove_word_gvn_empty")
 add_test("test_remove_word_gvn_invalid_idx")
@@ -140,6 +151,10 @@ add_test("test_unique_words_gvn_dupe")
 add_test("test_unique_words_gvn_case")
 add_test("test_unique_words_gvn_mult_dupes")
 add_test("test_unique_words_gvn_adjacent")
+add_test("test_verb_ask_skips_ineligible")
+add_test("test_verb_ask_applies_provides")
+add_test("test_verb_ask_gvn_flag_met_wins")
+add_test("test_verb_ask_gvn_all_blocked")
 
 run_tests()
 End
@@ -612,6 +627,115 @@ Sub test_parse_common_split_errors()
   assert_string_equals("<red>Word too long." + sys.CRLF$ + "<reset>", con_output$)
 End Sub
 
+' No directives — first line read is treated as the response immediately
+Sub test_read_directives_gvn_none()
+  Local requires$(4), provides$(4), first_line$, lines_consumed%, s$
+  Open TEST_DIRECTIVES_FILE$ For Input As #1
+  Line Input #1, s$ ' consume keyword line "plain"
+  read_directives(1, requires$(), provides$(), first_line$, lines_consumed%)
+  Close #1
+
+  assert_string_equals(str.quote$("plain response"), first_line$)
+  assert_int_equals(1, lines_consumed%)
+  assert_string_equals("", requires$(1))
+  assert_string_equals("", provides$(1))
+End Sub
+
+' A "!requires" directive is parsed and excluded from the response
+Sub test_read_directives_requires()
+  Local requires$(4), provides$(4), first_line$, lines_consumed%, s$
+  Open TEST_DIRECTIVES_FILE$ For Input As #1
+  seek_to_keyword("requires_only")
+  read_directives(1, requires$(), provides$(), first_line$, lines_consumed%)
+  Close #1
+
+  assert_string_equals(str.quote$("requires only"), first_line$)
+  assert_int_equals(2, lines_consumed%)
+  assert_string_equals("token_a", requires$(1))
+  assert_string_equals("", requires$(2))
+  assert_string_equals("", provides$(1))
+End Sub
+
+' Positions file #1 immediately after the named keyword line.
+Sub seek_to_keyword(keyword$)
+  Local s$
+  Do
+    If Eof(#1) Then Error "Keyword not found: " + keyword$
+    Line Input #1, s$
+  Loop Until s$ = keyword$
+End Sub
+
+' A "!provides" directive is parsed and excluded from the response
+Sub test_read_directives_provides()
+  Local requires$(4), provides$(4), first_line$, lines_consumed%, s$
+  Open TEST_DIRECTIVES_FILE$ For Input As #1
+  seek_to_keyword("provides_only")
+  read_directives(1, requires$(), provides$(), first_line$, lines_consumed%)
+  Close #1
+
+  assert_string_equals(str.quote$("provides only"), first_line$)
+  assert_int_equals(2, lines_consumed%)
+  assert_string_equals("token_b", provides$(1))
+  assert_string_equals("", requires$(1))
+End Sub
+
+' Both directives present, "!requires" before "!provides"
+Sub test_read_directives_gvn_both()
+  Local requires$(4), provides$(4), first_line$, lines_consumed%, s$
+  Open TEST_DIRECTIVES_FILE$ For Input As #1
+  seek_to_keyword("both_directives")
+  read_directives(1, requires$(), provides$(), first_line$, lines_consumed%)
+  Close #1
+
+  assert_string_equals(str.quote$("both directives"), first_line$)
+  assert_int_equals(3, lines_consumed%)
+  assert_string_equals("token_a", requires$(1))
+  assert_string_equals("token_b", provides$(1))
+End Sub
+
+' Both directives present, "!provides" before "!requires" (order independent)
+Sub test_read_directives_reversed()
+  Local requires$(4), provides$(4), first_line$, lines_consumed%, s$
+  Open TEST_DIRECTIVES_FILE$ For Input As #1
+  seek_to_keyword("provides_before_requires")
+  read_directives(1, requires$(), provides$(), first_line$, lines_consumed%)
+  Close #1
+
+  assert_string_equals(str.quote$("reversed order"), first_line$)
+  assert_int_equals(3, lines_consumed%)
+  assert_string_equals("token_d", requires$(1))
+  assert_string_equals("token_c", provides$(1))
+End Sub
+
+' Multiple space-separated tokens on a single directive line
+Sub test_read_directives_multi_tok()
+  Local requires$(4), provides$(4), first_line$, lines_consumed%, s$
+  Open TEST_DIRECTIVES_FILE$ For Input As #1
+  seek_to_keyword("multi_token")
+  read_directives(1, requires$(), provides$(), first_line$, lines_consumed%)
+  Close #1
+
+  assert_string_equals(str.quote$("multi token response"), first_line$)
+  assert_string_equals("token_a", requires$(1))
+  assert_string_equals("token_b", requires$(2))
+  assert_string_equals("", requires$(3))
+  assert_string_equals("token_c", provides$(1))
+  assert_string_equals("token_d", provides$(2))
+  assert_string_equals("", provides$(3))
+End Sub
+
+' No directives and an immediately blank response body
+Sub test_read_directives_empty_rsp()
+  Local requires$(4), provides$(4), first_line$, lines_consumed%, s$
+  Open TEST_DIRECTIVES_FILE$ For Input As #1
+  seek_to_keyword("empty_response")
+  read_directives(1, requires$(), provides$(), first_line$, lines_consumed%)
+  Close #1
+
+  assert_string_equals("", first_line$)
+  assert_int_equals(1, lines_consumed%)
+End Sub
+
 Sub test_remove_word()
   Local words$(4) = ("one", "two", "three", "four")
   assert_int_equals(0, remove_word%(words$(), 2))
@@ -955,6 +1079,60 @@ Sub test_unique_words_gvn_adjacent()
   assert_string_equals("", words$(4))
 End Sub
 
+' "!requires" entry is ineligible (flag not set); the next eligible entry
+' is used instead, and its "!provides" token is granted.
+Sub test_verb_ask_skips_ineligible()
+  r = 1
+  Local result% = parse_common("ask test suspect about gramophone")
+  assert_int_equals(0, result%)
+
+  con_output$ = ""
+  Const handled% = Call("verb_" + verb$)
+  assert_int_equals(1, handled%)
+
+  assert_int_equals(1, InStr(con_output$, "line B") > 0)
+  assert_int_equals(0, InStr(con_output$, "line A") > 0)
+End Sub
+
+' A successful response's "!provides" tokens are added to the flags set
+Sub test_verb_ask_applies_provides()
+  r = 1
+  Local tokens$(2) = ("heard_gramophone", "")
+  assert_int_equals(0, has_flags%(tokens$()))
+
+  Local result% = parse_common("ask test suspect about gramophone")
+  result% = Call("verb_" + verb$)
+
+  assert_int_equals(1, result%)
+  assert_int_equals(1, has_flags%(tokens$()))
+End Sub
+
+' When the required flag IS set, the gated entry becomes eligible and
+' wins, since it appears first in the file (ties favour earlier entries).
+Sub test_verb_ask_gvn_flag_met_wins()
+  r = 1
+  Local tokens$(2) = ("visited_pond", "")
+  add_flags(tokens$())
+
+  Local result% = parse_common("ask test suspect about gramophone")
+  con_output$ = ""
+  result% = Call("verb_" + verb$)
+
+  assert_int_equals(1, result%)
+  assert_int_equals(1, InStr(con_output$, "line A") > 0)
+End Sub
+
+' All entries for a keyword are gated and unmet; falls through to "*"
+Sub test_verb_ask_gvn_all_blocked()
+  r = 1
+  Local result% = parse_common("ask test suspect about piano only")
+  con_output$ = ""
+  result% = Call("verb_" + verb$)
+
+  assert_int_equals(1, result%)
+  assert_int_equals(1, InStr(con_output$, "wildcard fallback") > 0)
+End Sub
+
 location_data:
 Data "LOC001|Room One|2|LOC002|LOC003"
 Data "LOC002|Room Two|2|LOC001|LOC003"
@@ -966,4 +1144,5 @@ Data "OBJ001|Green Door|LOC001|0|100"    ' local, non-takeable, heavy - iterated
 Data "OBJ002|Red Key|LOC002|1|1"         ' non-local
 Data "OBJ003|Red Gem|LOC001|1|1"         ' local
 Data "OBJ004|Red Curious Key|LOC002|1|1" ' non-local
+Data "P_TEST_SUSPECT|Test Suspect|LOC001|2|100" ' person, for verb_ask() tests
 Data "" ' End of objects
