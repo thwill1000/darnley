@@ -612,7 +612,7 @@ Sub test_remove_words_gvn_empty()
   assert_string_equals("four", words$(4))
 End Sub
 
-basic' No matches found in haystack
+' No matches found in haystack
 Sub test_find_matches_gvn_none()
   Local haystack$(4) = ("cat", "dog", "bird", "")
   Local needles$(4) = ("fish", "frog", "", "")
