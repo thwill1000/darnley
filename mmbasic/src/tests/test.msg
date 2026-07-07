@@ -21,3 +21,9 @@ Description of object 4
 
 P_TEST_SUSPECT
 A test suspect.
+
+P_OTHER_SUSPECT
+Another test suspect.
+
+P_NO_WILDCARD
+A test suspect with no wildcard fallback in their dedicated .msg file.

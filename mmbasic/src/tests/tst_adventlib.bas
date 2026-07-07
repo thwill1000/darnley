@@ -155,6 +155,11 @@ add_test("test_verb_ask_skips_ineligible")
 add_test("test_verb_ask_applies_provides")
 add_test("test_verb_ask_gvn_flag_met_wins")
 add_test("test_verb_ask_gvn_all_blocked")
+add_test("test_verb_ask_gvn_no_about")
+add_test("test_verb_ask_gvn_no_target")
+add_test("test_verb_ask_gvn_not_here")
+add_test("test_verb_ask_gvn_not_person")
+add_test("test_verb_ask_gvn_no_wildcard")
 
 run_tests()
 End
@@ -1133,6 +1138,61 @@ Sub test_verb_ask_gvn_all_blocked()
   assert_int_equals(1, InStr(con_output$, "wildcard fallback") > 0)
 End Sub
 
+' No "about" in the input — prints the usage hint
+Sub test_verb_ask_gvn_no_about()
+  r = 1
+  Local result% = parse_common("ask test suspect")
+  assert_int_equals(0, result%)
+  result% = verb_ask()
+
+  assert_int_equals(1, result%)
+  assert_int_equals(1, InStr(con_output$, "Try: ASK person ABOUT subject") > 0)
+End Sub
+
+' Direct object does not match any known object/person
+Sub test_verb_ask_gvn_no_target()
+  r = 1
+  Local result% = parse_common("ask nonexistent thing about gramophone")
+  assert_int_equals(0, result%)
+  result% = verb_ask()
+
+  assert_int_equals(1, result%)
+  assert_int_equals(1, InStr(con_output$, "You don't know that person.") > 0)
+End Sub
+
+' Direct object exists and is a person, but is not in the current room
+Sub test_verb_ask_gvn_not_here()
+  r = 1
+  Local result% = parse_common("ask other suspect about gramophone")
+  assert_int_equals(0, result%)
+  result% = verb_ask()
+
+  assert_int_equals(1, result%)
+  assert_int_equals(1, InStr(con_output$, "Other Suspect is not here.") > 0)
+End Sub
+
+' Direct object exists and is present, but is not a person
+Sub test_verb_ask_gvn_not_person()
+  r = 1
+  Local result% = parse_common("ask green door about gramophone")
+  assert_int_equals(0, result%)
+  result% = verb_ask()
+
+  assert_int_equals(1, result%)
+  assert_int_equals(1, InStr(con_output$, "The green door does not answer.") > 0)
+End Sub
+
+' No subject-word match and no wildcard "*" entry in the .msg file
+Sub test_verb_ask_gvn_no_wildcard()
+  r = 1
+  Local result% = parse_common("ask no wildcard about something else entirely")
+  assert_int_equals(0, result%)
+  result% = verb_ask()
+
+  assert_int_equals(1, result%)
+  assert_int_equals(1, InStr(con_output$, "I don't know what you are talking about.") > 0)
+End Sub
+
 location_data:
 Data "LOC001|Room One|2|LOC002|LOC003"
 Data "LOC002|Room Two|2|LOC001|LOC003"
@@ -1145,4 +1205,6 @@ Data "OBJ002|Red Key|LOC002|1|1"         ' non-local
 Data "OBJ003|Red Gem|LOC001|1|1"         ' local
 Data "OBJ004|Red Curious Key|LOC002|1|1" ' non-local
 Data "P_TEST_SUSPECT|Test Suspect|LOC001|2|100" ' person, for verb_ask() tests
+Data "P_OTHER_SUSPECT|Other Suspect|LOC002|2|100" ' person, not in current room - verb_ask() tests
+Data "P_NO_WILDCARD|No Wildcard|LOC001|2|100" ' person whose .msg file has no "*" fallback
 Data "" ' End of objects
