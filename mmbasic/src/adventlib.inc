@@ -23,6 +23,7 @@ Dim objects$(Max(NUM_OBJECTS, 2)) Length 128
 Dim words$(10) Length 20
 Dim noun$, verb$
 Dim flags%(128)  ' LongString of "|TOKEN|TOKEN|..." flags, 1KB capacity
+Dim visited$
 
 Function FAILED(i%) As Integer
   FAILED = i%
@@ -38,6 +39,7 @@ Sub init_advent()
   init_flags()
   read_rooms()
   read_objects()
+  visited$ = String$(NUM_ROOMS, "0")
 End Sub
 
 ' Initialises and clears console/terminal
@@ -47,7 +49,7 @@ Sub init_console()
   con.init(w%, h%, 0)
   con.prompt_colour$ = "yellow"
   If Mm.Info(Device X) = "MMB4L" Then Console Resize con.WIDTH, con.HEIGHT
-  Cls
+  con.clear()
 End Sub
 
 Sub init_flags()
@@ -152,11 +154,23 @@ End Sub
 ' Describe the current location
 Sub describe_loc()
   If DEBUG Then con.print("(" + Str$(r) + ") ")
+
+  If Mid$(visited$, r, 1) = "0" Then con.clear()
+
   con.foreground("green")
   con.println(Field$(rooms$(r), 2, "|"))
   con.foreground("reset")
+
   Const loc_tag$ = Field$(rooms$(r), 1, "|")
-  con.println()
+
+  If Mid$(visited$, r, 1) = "0" Then
+    Const y% = con.image_placeholder%(160 + Mm.Info(FontHeight))
+    Load Jpg adv.asset_dir$ + "/images/" + loc_tag$ + ".jpg", 40, y% + Mm.Info(FontHeight) / 2
+    Mid$(visited$, r, 1) = "1"
+  Else
+    con.println()
+  EndIf
+
   print_message(loc_tag$)
   con.println()
 
@@ -867,6 +881,7 @@ Function verb_look()
   If noun$ <> "" Then
     print_fail "Perhaps you meant EXAMINE " + UCase$(noun$) + "."
   Else
+    Mid$(visited$, r, 1) = "0"
     describe% = 1
   EndIf
 End Function
@@ -949,7 +964,7 @@ Sub next_chapter(filename$)
   con.println()
   press_key_to_continue()
   Run Mm.Info(Path) + filename$
-  Cls
+  con.clear()
 End Sub
 
 Sub press_key_to_continue()
