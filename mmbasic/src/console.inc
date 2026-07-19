@@ -37,6 +37,15 @@ Sub con.init(width%, height%, spin_enabled%)
   con.spin_enabled = spin_enabled%
 End Sub
 
+Sub con.clear()
+  Cls
+  con.buf$ = ""
+  con.space = 0
+  con.count = 0
+  con.lines = 0
+  con.x = 1
+End Sub
+
 ' @param  p$  prompt
 Function con.in$(p$, echo)
   Local s$
@@ -664,3 +673,18 @@ Sub con.invert()
     Colour bg%, fg%
   EndIf
 End Sub
+
+Function con.image_placeholder%(height%)
+  con.image_placeholder% = Mm.Info(VPos)
+  Local original% = con.image_placeholder%
+  Local num_lines% = height% / Mm.Info(FontHeight)
+  Do While num_lines% > 0
+    con.println()
+    con.count = 0
+    Inc num_lines%, -1
+    If con.image_placeholder% + height% + Mm.Info(FontHeight) > Mm.VRes Then
+      Inc con.image_placeholder%, -Mm.Info(FontHeight)
+    EndIf
+  Loop
+'  con.print(Str$(original%) + " " + Str$(con.image_placeholder%) + " ")
+End Function
