@@ -758,3 +758,14 @@ CONGRATULATIONS
 Congratulations Inspector. With your evidence Arthur Coniston is arrested,
 tried and found guilty of the murder of Colonel Sebastian Darnley. He is
 sentenced to 30 years of imprisonment at her majesty's pleasure.
+
+HELP_TEXT
+Try one of the following commands:@
+  [[green:ACCUSE]]@
+  [[green:ASK]] person [[green:ABOUT]] topic@
+  [[green:EXAMINE]] object@
+  [[green:GO]] location@
+  [[green:LOOK]]@
+  [[green:QUIT]]@
+  [[green:SAVE]]@
+  [[green:RESTORE]]
