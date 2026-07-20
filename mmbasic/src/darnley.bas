@@ -5,6 +5,9 @@ Option Base 1
 Option Default Integer
 Option Explicit
 
+If Mm.Device$ = "MMB4L" Then Option Simulate PicoMiteVGA
+' If Mm.Device$ = "MMB4L" Then Option Simulate PicoCalc
+
 #Include "system.inc"
 #Include "console.inc"
 #Include "adventlib.inc"
@@ -14,6 +17,11 @@ Const NUM_CLUES = count_data%("clue_data")
 
 Dim questions$(Max(NUM_QUESTIONS, 2)) Length 128
 Dim result%
+
+Option Console Both
+On Error Skip ' Ignore failure to set Mode on PicoCalc
+Mode 2
+Font 7
 
 init_advent()
 read_questions()
