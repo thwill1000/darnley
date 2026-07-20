@@ -176,14 +176,8 @@ End Function
 ' Handles the HELP verb
 Function verb_help()
   verb_help = 1
-  print_newline()
-  print_success "Try one of the following commands:"
-  print_success "  ACCUSE                      - initiate the 'end game'"
-  print_success "  ASK <person> ABOUT <topic>  - question suspects"
-  print_success "  EXAMINE <object>            - examine clues"
-  print_success "  GO <location>               - move around the house"
-  print_success "  LOOK                        - redescribe the current location"
-  print_success "  QUIT                        - exit the game"
+  con.println()
+  print_message("HELP_TEXT")
 End Function
 
 location_data:
