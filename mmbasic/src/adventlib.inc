@@ -151,7 +151,9 @@ End Sub
 ' Describe the current location
 Sub describe_loc()
   If DEBUG Then con.print("(" + Str$(r) + ") ")
-  con.println("Location: " + Field$(rooms$(r), 2, "|"))
+  con.foreground("green")
+  con.println(Field$(rooms$(r), 2, "|"))
+  con.foreground("reset")
   Const loc_tag$ = Field$(rooms$(r), 1, "|")
   con.println()
   print_message(loc_tag$)
