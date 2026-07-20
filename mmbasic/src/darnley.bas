@@ -12,6 +12,7 @@ If Mm.Device$ = "MMB4L" Then Option Simulate PicoMiteVGA
 #Include "console.inc"
 #Include "adventlib.inc"
 
+Const VERSION$ = "v0.9.0"
 Const NUM_QUESTIONS = count_data%("question_data")
 Const NUM_CLUES = count_data%("clue_data")
 
@@ -28,6 +29,17 @@ read_questions()
 r = -1
 r_new = 17 ' Drive
 
+If HAS_GFX Then
+  Load Jpg adv.asset_dir$ + "/images/SPLASH_SCREEN.jpg"
+  Print @(320 - Len(VERSION$) * Mm.Info(FontWidth), 240 - Mm.Info(FontHeight)) VERSION$
+  Pause 5000
+  con.clear()
+EndIf
+
+con.foreground("green")
+con.println("The Sealed Room Murder (" + VERSION$ + ")")
+con.println()
+con.foreground("reset")
 print_message("SEALED_ROOM_INTRO")
 print_newline()
 con.show_more_prompt()
