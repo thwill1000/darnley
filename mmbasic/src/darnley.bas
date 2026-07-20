@@ -31,6 +31,7 @@ r_new = 17 ' Drive
 print_message("SEALED_ROOM_INTRO")
 print_newline()
 con.show_more_prompt()
+con.clear()
 
 Do
   ' If the player's location has changed then set flag to describe their new location
