@@ -199,15 +199,7 @@ Sub con.flush()
   EndIf
 
   Do
-    If con.x = 1 And con.lines > con.HEIGHT - 2 Then
-      If con.more Then
-        Print "[MORE] ";
-        Do While Inkey$ <> "" : Loop
-        Do While Inkey$ = "" : Pause 1 : Loop
-        Print
-      EndIf
-      con.lines = 0
-    EndIf
+    If con.x = 1 And con.lines > con.HEIGHT - 2 Then con.show_more_prompt()
 
     If con.x + Len(con.buf$) > con.WIDTH + 1 Then
       Print
@@ -226,6 +218,21 @@ Sub con.flush()
     con.buf$ = remainder$
     con.flush()
   EndIf
+End Sub
+
+' Shows the "[MORE]" prompt and waits for a keypress,
+' also clears the 'con.lines' page counter.
+Sub con.show_more_prompt()
+  con.lines = 0
+  If Not con.more Then Exit Sub
+  Print "[MORE] ";
+  Do While Inkey$ <> "" : Loop
+  Do While Inkey$ = "" : Pause 1 : Loop
+
+  ' Use backspace char (0x8) to erase [MORE] prompt and return to beginning of line.
+  Print Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8);
+  Print "       ";
+  Print Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8);
 End Sub
 
 ' Flushes con.buf$ to the console and then writes CRLF.
