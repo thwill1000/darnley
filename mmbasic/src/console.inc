@@ -29,6 +29,7 @@ Dim con.spin_enabled    ' is the progress spinner enabled ?
 Dim con.spin_shown      ' is the progress spinner currently displayed ?
 Dim con.disable_flush%  ' set 1 to temporarily disable flushing the console write buffer, buf$.
 Dim con.fg$ = "reset"   ' current foreground colour
+Dim con.prompt_colour$ = "reset"  ' prompt colour
 
 Sub con.init(width%, height%, spin_enabled%)
   con.WIDTH = width%
@@ -40,6 +41,8 @@ End Sub
 Function con.in$(p$, echo)
   Local s$
 
+  Const old_fg$ = con.fg$
+  con.foreground(con.prompt_colour$)
   con.print(p$)
   con.flush()
 
@@ -68,6 +71,8 @@ Function con.in$(p$, echo)
       If s$ <> "" Then Print #con.fd_out, s$
     EndIf
   EndIf
+
+  con.foreground(old_fg$)
 
   con.in$ = s$
 End Function
@@ -225,6 +230,10 @@ End Sub
 Sub con.show_more_prompt()
   con.lines = 0
   If Not con.more Then Exit Sub
+
+  Const old_fg$ = con.fg$
+  con.foreground(con.prompt_colour$, 1)
+
   Print "[MORE] ";
   Do While Inkey$ <> "" : Loop
   Do While Inkey$ = "" : Pause 1 : Loop
@@ -233,6 +242,8 @@ Sub con.show_more_prompt()
   Print Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8);
   Print "       ";
   Print Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8);
+
+  con.foreground(old_fg$, 1)
 End Sub
 
 ' Flushes con.buf$ to the console and then writes CRLF.
@@ -329,9 +340,9 @@ Sub con.close_all()
   con.close_out()
 End Sub
 
-Sub con.foreground(fg$)
+Sub con.foreground(fg$, no_flush%)
   ' Flush anything in previous foreground colour
-  con.flush()
+  If Not no_flush% Then con.flush()
 
   If fg$ = "purple" Then fg$ = "magenta"
 
