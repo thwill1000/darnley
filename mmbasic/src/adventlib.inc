@@ -3,6 +3,7 @@
 
 If Mm.Info$(Device X) = "MMB4L" And Mm.Info(Version) < 80000000 Then Option Resolution Pixel
 
+Const HAS_GFX = 1 ' Set to 0 to disable Graphics
 Const MAX_WORDS = 10
 Const MAX_WORD_LENGTH = 20
 Const INVENTORY = -1
@@ -155,7 +156,9 @@ End Sub
 Sub describe_loc()
   If DEBUG Then con.print("(" + Str$(r) + ") ")
 
-  If Mid$(visited$, r, 1) = "0" Then con.clear()
+  Const show_gfx% = HAS_GFX And (Mid$(visited$, r, 1) = "0")
+
+  If show_gfx% Then con.clear()
 
   con.foreground("green")
   con.println(Field$(rooms$(r), 2, "|"))
@@ -163,7 +166,7 @@ Sub describe_loc()
 
   Const loc_tag$ = Field$(rooms$(r), 1, "|")
 
-  If Mid$(visited$, r, 1) = "0" Then
+  If show_gfx% Then
     Const y% = con.image_placeholder%(160 + Mm.Info(FontHeight))
     Load Jpg adv.asset_dir$ + "/images/" + loc_tag$ + ".jpg", 40, y% + Mm.Info(FontHeight) / 2
     Mid$(visited$, r, 1) = "1"
