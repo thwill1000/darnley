@@ -45,6 +45,7 @@ Sub init_console()
   Const w% = Mm.HRes \ Mm.Info(FontWidth)
   Const h% = Mm.VRes \ Mm.Info(FontHeight)
   con.init(w%, h%, 0)
+  con.prompt_colour$ = "yellow"
   If Mm.Info(Device X) = "MMB4L" Then Console Resize con.WIDTH, con.HEIGHT
   Cls
 End Sub
