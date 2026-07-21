@@ -12,6 +12,7 @@ If Mm.Device$ = "MMB4L" Then Option Simulate PicoMiteVGA
 #Include "console.inc"
 #Include "adventlib.inc"
 
+Const VERSION = 9300 ' 0.9.0
 Const NUM_QUESTIONS = count_data%("question_data")
 Const NUM_CLUES = count_data%("clue_data")
 
@@ -28,10 +29,8 @@ read_questions()
 r = -1
 r_new = 17 ' Drive
 
-print_message("SEALED_ROOM_INTRO")
-print_newline()
-con.show_more_prompt()
-con.clear()
+show_splash()
+show_intro("The Sealed Room Murder")
 
 Do
   ' If the player's location has changed then set flag to describe their new location
