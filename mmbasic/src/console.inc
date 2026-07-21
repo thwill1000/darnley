@@ -244,8 +244,7 @@ Sub con.show_more_prompt()
   con.foreground(con.prompt_colour$, 1)
 
   Print "[MORE] ";
-  Do While Inkey$ <> "" : Loop
-  Do While Inkey$ = "" : Pause 1 : Loop
+  con.wait_for_key()
 
   ' Use backspace char (0x8) to erase [MORE] prompt and return to beginning of line.
   Print Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8);
@@ -253,6 +252,11 @@ Sub con.show_more_prompt()
   Print Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8);
 
   con.foreground(old_fg$, 1)
+End Sub
+
+Sub con.wait_for_key()
+  Do While Inkey$ <> "" : Pause 1 : Loop
+  Do While Inkey$ = "" : Pause 1 : Loop
 End Sub
 
 ' Flushes con.buf$ to the console and then writes CRLF.

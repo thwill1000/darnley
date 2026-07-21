@@ -152,6 +152,25 @@ Sub read_rooms()
   EndIf
 End Sub
 
+Sub show_splash()
+  If Not HAS_GFX Then Exit Sub
+  Load Jpg adv.asset_dir$ + "/images/SPLASH_SCREEN.jpg"
+  Const v$ = "v" + sys.format_version$(VERSION)
+  Print @(320 - Len(v$) * Mm.Info(FontWidth), 240 - Mm.Info(FontHeight)) v$
+  con.wait_for_key()
+  con.clear()
+End Sub
+
+Sub show_intro(title$)
+  Const v$ = "v" + sys.format_version$(VERSION)
+  con.println("[[green:" + title$ + " (" + v$ + ")]]")
+  con.println()
+  print_message("INTRO")
+  print_newline()
+  con.show_more_prompt()
+  con.clear()
+End Sub
+
 ' Describe the current location
 Sub describe_loc()
   If DEBUG Then con.print("(" + Str$(r) + ") ")
