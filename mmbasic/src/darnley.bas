@@ -28,9 +28,7 @@ read_questions()
 r = -1
 r_new = 17 ' Drive
 
-con.foreground("magenta")
 print_message("SEALED_ROOM_INTRO")
-con.foreground("reset")
 print_newline()
 
 Do
