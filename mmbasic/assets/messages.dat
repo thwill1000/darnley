@@ -684,27 +684,31 @@ would not hold water. The murderer had to leave footprints in two
 sets of footwear. Coniston's slippers were the only other set.
 
 SEALED_ROOM_INTRO
+[[green:The Sealed Room Murder]]@
+@
 You have been summoned to Darnley Park one winter's day to
 investigate the murder of Colonel Sebastian Darnley at some time
 the previous evening.@
 @
 The suspects are:@
-  Sarah Darnley - the deceased's wife@
-  Millicent Darnley - the deceased's daughter@
-  Arthur Coniston - fiance of Millicent@
-  Sir Redvers Slingsby - friend of the deceased@
-  Arnold Billingsgate - butler@
-  Mildred Goodbody - cook@
-  Norah Bagsby - housemaid@
-  Ronald Mellors - gamekeeper@
+@
+  [[green:Sarah Darnley]]        - the deceased's wife@
+  [[green:Millicent Darnley]]    - the deceased's daughter@
+  [[green:Arthur Coniston]]      - fiance of Millicent@
+  [[green:Sir Redvers Slingsby]] - friend of the deceased@
+  [[green:Arnold Billingsgate]]  - butler@
+  [[green:Mildred Goodbody]]     - cook@
+  [[green:Norah Bagsby]]         - housemaid@
+  [[green:Ronald Mellors]]       - gamekeeper@
 @
 You are free to search the house and grounds and to question the
 suspects. Examination of the scene and skillful interrogation will
 yield sufficient information to solve the mystery. And mystery it is!
 The body of Colonel Darnley was found in his study, the doors and
 window of which were all locked from the inside. The only keys were
-in the possession of the Colonel and his faithful butler. How could
-the sealed-room murder be committed?
+in the possession of the Colonel and his faithful butler.@
+@
+[[green:How could the sealed-room murder be committed?]]
 
 Q_1
 Who smoked cigarettes in the summer house?
