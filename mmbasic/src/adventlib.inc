@@ -49,7 +49,10 @@ Sub init_console()
   Const h% = Mm.VRes \ Mm.Info(FontHeight)
   con.init(w%, h%, 0)
   con.prompt_colour$ = "yellow"
-  If Mm.Info(Device X) = "MMB4L" Then Console Resize con.WIDTH, con.HEIGHT
+  If Mm.Info(Device X) = "MMB4L" Then
+    On Error Skip
+    Console Resize con.WIDTH, con.HEIGHT
+  EndIf
   con.clear()
 End Sub
 
@@ -161,6 +164,13 @@ Sub show_splash()
   con.clear()
 End Sub
 
+Sub show_end_screen()
+  If Not HAS_GFX Then Exit Sub
+  Load Jpg adv.asset_dir$ + "/images/END_SCREEN.jpg"
+  con.wait_for_key()
+  con.clear()
+End Sub
+
 Sub show_intro(title$)
   Const v$ = "v" + sys.format_version$(VERSION)
   con.println("[[green:" + title$ + " (" + v$ + ")]]")
@@ -247,20 +257,11 @@ Sub print_newline()
   con.println()
 End Sub
 
-' Print message for a successful action
-Sub print_success(s$, no_newline%)
-  con.foreground("cyan")
-  con.print(s$)
-  If no_newline% Then con.flush() Else con.println()
-  con.foreground("reset")
-End Sub
-
 ' Print message for a failed action
 Sub print_fail(s$, no_newline%)
-  con.foreground("red")
-  con.print(s$)
+  con.println()
+  con.print("[[red:" + s$ + "]]")
   If no_newline% Then con.flush() Else con.println()
-  con.foreground("reset")
 End Sub
 
 ' Prints text read from DATA
@@ -733,7 +734,7 @@ Sub print_ask_result(filename$, best_match_count%, best_match_line%)
   con.foreground("cyan")
 
   If best_match_count% = 0 Then
-    print_success "I don't know what you are talking about."
+    print_fail "I don't know what you are talking about."
   Else
     Open adv.asset_dir$ + "/" + filename$ For Input As #1
     Do
@@ -754,6 +755,7 @@ End Sub
 ' Handles the DROP verb
 Function verb_drop()
   verb_drop = 1
+  con.println()
   Local msg$ = "This game does not require you to TAKE, DROP or otherwise manipulate objects. Just "
   Cat msg$, "explore your surroundings, search for and EXAMINE the clues and ASK questions of the "
   Cat msg$, "suspects."
@@ -977,24 +979,11 @@ End Function
 ' Handles the QUIT verb
 Function verb_quit()
   verb_quit = 1
-  print_success "Goodbye!"
+  con.println()
+  con.println("Goodbye!")
+  con.println()
   End
 End Function
-
-' Runs the next chapter
-Sub next_chapter(filename$)
-  con.println()
-  press_key_to_continue()
-  Run Mm.Info(Path) + filename$
-  con.clear()
-End Sub
-
-Sub press_key_to_continue()
-  con.println("Press any key to continue.")
-  Do While Inkey$ <> "" : Loop ' Clear input buffer
-  Do While Inkey$ = "" : Loop
-  con.lines = 0
-End Sub
 
 ' Prints a message from the assets message file to the console.
 '
@@ -1006,7 +995,7 @@ End Sub
 ' Raises an error if tag$ is not found in the file.
 '
 ' @param tag$  The tag to search for in the message file.
-Sub print_message(tag$)
+Sub print_message(tag$, no_eol%)
   Local s$
   Open adv.msg_file$ For Input As #1
   Do
@@ -1020,7 +1009,7 @@ Sub print_message(tag$)
     EndIf
   Loop
   Close #1
-  con.println()
+  If Not no_eol% Then con.println()
 End Sub
 
 ' Prints the response lines for the current message entry, skipping any

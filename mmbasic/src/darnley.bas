@@ -15,8 +15,10 @@ If Mm.Device$ = "MMB4L" Then Option Simulate PicoMiteVGA
 Const VERSION = 9300 ' 0.9.0
 Const NUM_QUESTIONS = count_data%("question_data")
 Const NUM_CLUES = count_data%("clue_data")
+Const NUM_ACCUSE_REPLIES = count_data%("accuse_reply_data")
 
 Dim questions$(Max(NUM_QUESTIONS, 2)) Length 128
+Dim accuse_replies$(Max(NUM_ACCUSE_REPLIES, 2)) Length 32
 Dim result%
 
 Option Console Both
@@ -26,6 +28,7 @@ Font 7
 
 init_advent()
 read_questions()
+read_accuse_replies()
 r = -1
 r_new = 17 ' Drive
 
@@ -67,6 +70,16 @@ Sub read_questions()
   Next
 End Sub
 
+' Read the non-committal accuse replies data
+Sub read_accuse_replies()
+  Local i%, s$
+  Restore accuse_reply_data
+  For i% = 1 To NUM_ACCUSE_REPLIES
+    Read s$
+    accuse_replies$(i%) = s$
+  Next
+End Sub
+
 ' Reads the clue_data into tokens$().
 '
 ' @param tokens$()  Output array, populated from clue_data.
@@ -94,37 +107,39 @@ Function verb_accuse()
 
   If found% < NUM_CLUES Then
     Local msg$ = "You have found " + Str$(found%) + " of the " + Str$(NUM_CLUES)
-    Cat msg$, " clues needed to make an accusation. "
-    Cat msg$, Str$(NUM_CLUES - found%) + " more remain to be discovered."
+    Cat msg$, " clues needed to make an accusation."
     print_fail msg$
     Exit Function
   EndIf
 
-  Local answer$, correct%, response$, response_words$(MAX_WORDS), result%, i%, msg$, q%
   con.println()
+  con.foreground("cyan")
+  print_message("ACCUSE_TEXT")
+  con.foreground("reset")
 
-  For q% = 1 To NUM_QUESTIONS + 1
+  Local answer$, correct%, response$, response_words$(MAX_WORDS), result%, i%, msg$, q%
+
+  For q% = 1 To NUM_QUESTIONS
     ' Can't answer the final question unless all the previous answers are correct
-    If q% = NUM_QUESTIONS And correct% <> NUM_QUESTIONS - 1 Then
-      msg$ = "You only answered " + Str$(Int((100 * correct%) / (NUM_QUESTIONS - 1)))
-      Cat msg$, "% of the questions correctly, so you can't make an accusation yet."
-      print_fail msg$
-      Exit Function
-    EndIf
+    ' If q% = NUM_QUESTIONS And correct% <> NUM_QUESTIONS - 1 Then
+    '   msg$ = "You only answered " + Str$(Int((100 * correct%) / (NUM_QUESTIONS - 1)))
+    '   Cat msg$, "% of the questions correctly, so you can't make an accusation yet."
+    '   print_fail msg$
+    '   Exit For 'Function
+    ' EndIf
 
-    If q% = NUM_QUESTIONS + 1 Then
-      If correct% = NUM_QUESTIONS Then Exit For
-      print_fail "That's not correct. Think again."
-      q% = NUM_QUESTIONS - 1
-      Continue For
-    EndIf
+    ' If q% = NUM_QUESTIONS + 1 Then
+    '   If correct% = NUM_QUESTIONS Then Exit For
+    '   print_fail "That's not correct. Think again."
+    '   q% = NUM_QUESTIONS - 1
+    '   Continue For
+    ' EndIf
 
-    con.foreground("cyan")
-    print_message(Field$(questions$(q%), 1, "|"))
+    con.println()
+    con.foreground("yellow")
+    print_message(Field$(questions$(q%), 1, "|"), 1)
+    answer$ = get_input$(" ")
     con.foreground("reset")
-    con.println()
-    answer$ = get_input$("Your answer: ")
-    con.println()
 
     ' Split the answer into words
     Select Case split_words%(answer$, words$())
@@ -154,23 +169,62 @@ Function verb_accuse()
       Inc i%
     Loop
 
-    ' If correct% Then
-    '   print_success "Correct!"
-    ' Else
-    '   print_fail "Incorrect!"
-    ' EndIf
+    con.println()
+    If q% <> NUM_QUESTIONS Then print_accuse_reply()
   Next
 
-  con.foreground("green")
-  print_message("CONGRATULATIONS")
-  print_newline()
-  print_message("WHAT_REALLY_HAPPENED")
-  con.foreground("reset")
-  print_newline()
-  con.println("Goodbye!")
-  print_newline()
+  correct% = NUM_QUESTIONS - 1
+  If correct% = NUM_QUESTIONS Then
+    con.println()
+    con.foreground("cyan")
+    print_message("CONGRATULATIONS")
+    con.foreground("reset")
+    con.println()
+    con.show_more_prompt()
+    con.clear()
+    print_message("WHAT_REALLY_HAPPENED")
+    con.println()
+    con.show_more_prompt()
+    con.clear()
+    show_end_screen()
+    End
+  Else
+    msg$ = "You answered " + Str$(correct%) + " of " + Str$(NUM_QUESTIONS)
+    Cat msg$, " questions correctly."
+    print_fail msg$
+    con.println()
+    con.foreground("cyan")
+    print_message("INCORRECT_ACCUSATION")
+    con.foreground("reset")
+    con.println()
+    con.show_more_prompt()
+    con.clear()
+    describe% = 1
+  EndIf
+End Function
 
-  End
+' Prints a random non-committal reply after an ACCUSE answer, avoiding
+' repeating the same reply twice in a row.
+Sub print_accuse_reply()
+  Static last_idx%
+  Local idx%
+  Do
+    idx% = Int(Rnd * NUM_ACCUSE_REPLIES) + 1
+  Loop Until idx% <> last_idx% Or NUM_ACCUSE_REPLIES = 1
+  last_idx% = idx%
+  con.foreground("cyan")
+  con.println(Chr$(34) + accuse_replies$(idx%) + Chr$(34))
+  con.foreground("reset")
+End Sub
+
+' Handles the CHEAT verb
+Function verb_cheat()
+  verb_cheat = 1
+  con.println()
+  print_message("CHEAT_TEXT")
+  Local clues$(Max(NUM_CLUES, 2)) Length MAX_WORD_LENGTH
+  read_clues(clues$())
+  add_flags(clues$())
 End Function
 
 ' Handles the HELP verb
@@ -295,8 +349,12 @@ Data "Q_13|arthur|coniston"
 Data ""
 
 clue_data:
-' Placeholder tokens — replace with actual minted clue tokens once
-' !provides directives have been added to the .msg files.
-Data "TOKEN_ONE"
-Data "TOKEN_TWO"
-Data ""
+Data "cigarettes", "handkerchief", "gramophone", "gun", "butt", "boots"
+Data "letter", ""
+
+accuse_reply_data:
+Data "Indeed.", "Go on.", "So you say.", "I see.", "Quite.", "Noted."
+Data "Is that so?", "Very well.", "Hm. Continue.", "I shall bear that in mind."
+Data "Interesting.", "You may be right.", "We shall see.", "Duly noted."
+Data "I make no comment.", "As you say.", "Perhaps.", "That is one view."
+Data "I shall consider it.", "Just so.", ""
