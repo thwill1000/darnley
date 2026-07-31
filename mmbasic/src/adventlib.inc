@@ -159,7 +159,7 @@ Sub show_splash()
   If Not HAS_GFX Then Exit Sub
   Load Jpg adv.asset_dir$ + "/images/SPLASH_SCREEN.jpg"
   Const v$ = "v" + sys.format_version$(VERSION)
-  Print @(320 - Len(v$) * Mm.Info(FontWidth), 240 - Mm.Info(FontHeight)) v$
+  Text 320 - Len(v$) * Mm.Info(FontWidth), 240 - Mm.Info(FontHeight), v$
   con.wait_for_key()
   con.clear()
 End Sub
