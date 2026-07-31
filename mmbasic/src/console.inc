@@ -35,6 +35,12 @@ Sub con.init(width%, height%, spin_enabled%)
   con.WIDTH = width%
   con.HEIGHT = height%
   con.spin_enabled = spin_enabled%
+
+  If Mm.Info(Device X) = "MMB4L" Then
+    ' A 'feature' of the current version of MMB4L (v0.8) is that by default
+    ' it hides the console cursor except when waiting at the BASIC prompt.
+    Console HideCursor False
+  EndIf
 End Sub
 
 Sub con.clear()
@@ -64,7 +70,7 @@ Function con.in$(p$, echo)
     Loop
     If Eof(con.fd_in) And s$ = "" Then s$ = "*replay off"
   Else
-    s$ = con.readln$("", con.WIDTH - con.x, con.history%())
+    s$ = con.readln$("", 255, con.history%())
   EndIf
 
   ' If we read from a file then echo what we read.
@@ -498,7 +504,7 @@ Function con.readln$(initial$, max_len%, history%())
 
   con.readln$ = initial$
   p% = Len(initial$) + 1
-  Print initial$;
+  con.puts(initial$)
   hidx% = Choice(initial$ = "", -1, con.history_find%(history%(), initial$))
 
   Local show% = 1
@@ -522,12 +528,15 @@ Function con.readln$(initial$, max_len%, history%())
           ' Delete the character immediately to the left.
           s$ = Mid$(con.readln$, p%)
           con.readln$ = Left$(con.readln$, p% - 2) + s$
-          Print Chr$(&h08) s$ " " String$(Len(s$) + 1, &h08);
+          con.cursor_backward()
+          con.puts(s$ + " ")
+          con.cursor_backward(Len(s$) + 1)
           Inc p%, -1
         EndIf
 
       Case 10, 13 ' Enter
         Print
+        con.x = 1
         If con.readln$ <> "" Then con.history_put(history%(), con.readln$)
         Exit Do
 
@@ -538,7 +547,8 @@ Function con.readln$(initial$, max_len%, history%())
           ' Delete the current character.
           s$ = Mid$(con.readln$, p% + 1)
           con.readln$ = Left$(con.readln$, p% - 1) + s$
-          Print s$ " " String$(Len(s$) + 1, &h08);
+          con.puts(s$ + " ")
+          con.cursor_backward(Len(s$) + 1)
         EndIf
 
       Case 128, 129 ' Up, Down
@@ -552,19 +562,22 @@ Function con.readln$(initial$, max_len%, history%())
           If s$ = "" Then s$ = con.readln$ : Inc hidx%, -1
         EndIf
 
-        Print String$(p% - 1, &h08) String$(p% - 1, " ") String$(p% - 1, &h08) s$;
+        If p% > 1 Then con.cursor_backward(p% - 1)
+        con.puts(String$(p% - 1, " "))
+        If p% > 1 Then con.cursor_backward(p% - 1)
+        con.puts(s$)
         con.readln$ = s$
         p% = Len(s$) + 1
 
       Case 130 ' Left
         If p% > 1 Then
           Inc p%, -1
-          Print Chr$(&h08);
+          con.cursor_backward()
         EndIf
 
       Case 131 ' Right
         If p% <= Len(con.readln$) Then
-          Print Mid$(con.readln$, p%, 1);
+          con.cursor_forward()
           Inc p%
         EndIf
 
@@ -572,17 +585,15 @@ Function con.readln$(initial$, max_len%, history%())
         overwrite% = Not overwrite%
 
       Case 134 ' Home
-        Print String$(p% - 1, &h08);
+        con.cursor_backward(p% - 1)
         p% = 1
 
       Case 135 ' End
-        Do While p% <= Len(con.readln$)
-          Print Mid$(con.readln$, p%, 1);
-          Inc p%
-        Loop
+        con.cursor_forward(Len(con.readln$))
+        Inc p, Len(con.readln$)
 
       Case < 32, > 126
-        ' Print "<" Str$(Asc(ch$)) ">";
+        ' con.puts("<" + Str$(Asc(ch$)) + ">")
         ' con.bell()
 
       Case Else
@@ -592,13 +603,13 @@ Function con.readln$(initial$, max_len%, history%())
             con.bell()
           Else
             Cat con.readln$, ch$
-            Print ch$;
+            con.puts(ch$)
             Inc p%
           EndIf
         ElseIf overwrite% Then
           ' Overwrite.
           con.readln$ = Left$(con.readln$, p% - 1) + ch$ + Mid$(con.readln$, p% + 1)
-          Print ch$;
+          con.puts(ch$)
           Inc p%
         Else
           ' Insert.
@@ -607,7 +618,8 @@ Function con.readln$(initial$, max_len%, history%())
           Else
             s$ = Mid$(con.readln$, p%)
             con.readln$ = Left$(con.readln$, p% - 1) + ch$ + s$
-            Print ch$ s$ String$(Len(s$), &h08);
+            con.puts(ch$ + s$)
+            con.cursor_backward(Len(s$))
             Inc p%
           EndIf
         EndIf
@@ -616,6 +628,53 @@ Function con.readln$(initial$, max_len%, history%())
 
   If sys.break_flag% Then con.readln$ = ""
 End Function
+
+' Writes s$ directly to the console, immediately and without word-wrapping,
+' colour markup parsing, or buffering via con.buf$ (unlike con.print()).
+' Used by the line-editor (con.readln$()) to echo raw keystrokes at the
+' current cursor position, where con.x must be updated in lock-step with
+' what has actually been written to the screen.
+Sub con.puts(s$)
+  Print s$;
+  Inc con.x, Len(s$)
+  con.x = ((con.x - 1) Mod con.WIDTH) + 1
+  If con.x = 1 Then Print
+End Sub
+
+' Moves cursor forward,
+' if at the end of row then moves it to beginning of the next row.
+Sub con.cursor_forward(count%)
+  Local x%, y%
+  con.get_pos(x%, y%)
+  If count% = 0 Then count% = 1
+  Do While count% > 0
+    Inc x%
+    If x% > con.WIDTH Then
+      x% = 1
+      Inc y%
+    EndIf
+    Inc count%, -1
+  Loop
+  con.set_pos(x%, y%)
+End Sub
+
+' Moves cursor backward,
+' if at the beginning of row then moves it to the end of the previous row.
+Sub con.cursor_backward(count%)
+  Local x%, y%
+  con.get_pos(x%, y%)
+  If count% = 0 Then count% = 1
+  Do While count% > 0
+    If x% = 1 Then
+      x% = con.WIDTH
+      Inc y%, -1
+    Else
+      Inc x%, -1
+    EndIf
+    Inc count%, -1
+  Loop
+  con.set_pos(x%, y%)
+End Sub
 
 ' Hide/show cursor on the VGA/LCD screen.
 Sub con.show_cursor(show%)
@@ -648,22 +707,44 @@ Sub con.set_font(size%)
   wb(&h20, con.HEIGHT)
   wb(&h21, con.WIDTH)
   If Mm.Info(Device X) = "MMB4L" Then Console Resize con.WIDTH, con.HEIGHT
+
+  ' Snap the cursor to the new character grid (TODO: test with Z-MIM)
   Local x%, y%
   con.get_pos(x%, y%)
-  Print @(x% * Mm.Info(FontWidth), (y% - 1) * Mm.Info(FontHeight))
+  con.set_pos(x%, y%)
 End Sub
 
+' Gets the current text cursor position, in 1-indexed character cells, for
+' the currently active font.
+'
+' Flushes con.buf$ first, since HPos/VPos reflect what has actually been
+' printed to the screen and any buffered-but-unflushed text would make the
+' position stale.
+'
+' Asserts that the recomputed x% agrees with con.x, which tracks the cursor
+' column independently (see con.print_segment_cb() etc).
+'
+' @param[out]  x%  Column of the cursor, 1-indexed.
+' @param[out]  y%  Row of the cursor, 1-indexed.
 Sub con.get_pos(x%, y%)
   con.flush()
-  x% = Mm.Info(HPos) \ Mm.Info(FontWidth)
-  y% = Mm.Info(VPos) \ Mm.Info(FontHeight)
-  if x% <> con.x - 1 Then Error "Mismatched x-values"
+  x% = Mm.Info(HPos) \ Mm.Info(FontWidth) + 1
+  y% = Mm.Info(VPos) \ Mm.Info(FontHeight) + 1
+  If x% <> con.x Then Error "Mismatched x-values"
 End Sub
 
+' Moves the text cursor to the given 1-indexed character cell, using the
+' currently active font's cell dimensions to convert to pixels.
+'
+' Flushes con.buf$ first, so any pending buffered text is written at the old
+' position before the cursor moves.
+'
+' @param[in]  x%  Column to move the cursor to, 1-indexed.
+' @param[in]  y%  Row to move the cursor to, 1-indexed.
 Sub con.set_pos(x%, y%)
   con.flush()
-  Print @(x% * Mm.Info(FontWidth), y% * Mm.Info(FontHeight));
-  con.x = x% + 1
+  Print @((x% - 1) * Mm.Info(FontWidth), (y% - 1) * Mm.Info(FontHeight));
+  con.x = x%
 End Sub
 
 Sub con.invert()
