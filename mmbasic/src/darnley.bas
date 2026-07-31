@@ -23,7 +23,7 @@ Dim result%
 
 Option Console Both
 On Error Skip ' Ignore failure to set Mode on PicoCalc
-Mode 2
+Mode Choice(InStr(Mm.Device$, "PicoMite"), 2, 7)
 Font 7
 
 init_advent()
