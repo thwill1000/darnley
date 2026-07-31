@@ -178,6 +178,9 @@ Sub show_intro(title$)
   print_message("INTRO")
   print_newline()
   con.show_more_prompt(1)
+  print_message("HELP_TEXT")
+  print_newline()
+  con.show_more_prompt()
   con.clear()
 End Sub
 
