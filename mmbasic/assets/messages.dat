@@ -767,15 +767,34 @@ CHEAT_TEXT
 [[cyan:You rotter - all clue flags set.]]
 
 HELP_TEXT
-Try one of the following commands:@
-  [[green:ACCUSE]]@
-  [[green:ASK]] person [[green:ABOUT]] topic@
-  [[green:EXAMINE]] object@
-  [[green:GO]] location@
+The game accepts the following commands:@
+@
+  [[green:ACCUSE]] [[cyan:person]]@
+    - accuse a suspect of the murder, the suspect@
+      must be in your current location@
+  [[green:ASK]] [[cyan:person]] [[green:ABOUT]] topic@
+    - interrogate a suspect about a given topic@
+  [[green:EXAMINE]] [[cyan:object]]@
+    - get additional detail about an object (or@
+      person)@
+  [[green:GO]] [[cyan:location]]@
+    - go to a location visible from your current@
+      location@
+  [[green:HELP]]@
+    - reshow this text@
   [[green:LOOK]]@
-  [[green:QUIT]]@
+    - reshow the current location illustration@
+      and description@
   [[green:SAVE]]@
-  [[green:RESTORE]]
+    - save current proress@
+  [[green:RESTORE]]@
+    - restore previously saved progress@
+  [[green:RECORD]]@
+    - start recording a script of your inputs@
+  [[green:REPLAY]]@
+    - replay a previously recorded script@
+  [[green:QUIT]]@
+    - exit the game
 
 ACCUSE_TEXT
 "So, you believe you have solved the mystery of the Colonel's death?
