@@ -242,20 +242,22 @@ End Sub
 
 ' Shows the "[MORE]" prompt and waits for a keypress,
 ' also clears the 'con.lines' page counter.
-Sub con.show_more_prompt()
+Sub con.show_more_prompt(extra%)
   con.lines = 0
   If Not con.more Then Exit Sub
 
   Const old_fg$ = con.fg$
   con.foreground(con.prompt_colour$, 1)
 
-  Print "[MORE] ";
+  Local msg$ = "[MORE] "
+  If extra% Then Cat msg$, "- press a key"
+  Print msg$;
   con.wait_for_key()
 
   ' Use backspace char (0x8) to erase [MORE] prompt and return to beginning of line.
-  Print Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8);
-  Print "       ";
-  Print Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8) + Chr$(8);
+  Print String$(Len(msg$), Chr$(8));
+  Print String$(Len(msg$), " ");
+  Print String$(Len(msg$), Chr$(8));
 
   con.foreground(old_fg$, 1)
 End Sub

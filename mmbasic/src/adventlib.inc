@@ -177,7 +177,7 @@ Sub show_intro(title$)
   con.println()
   print_message("INTRO")
   print_newline()
-  con.show_more_prompt()
+  con.show_more_prompt(1)
   con.clear()
 End Sub
 
