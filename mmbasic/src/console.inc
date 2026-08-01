@@ -252,7 +252,7 @@ Sub con.show_more_prompt(extra%)
   Local msg$ = "[MORE] "
   If extra% Then Cat msg$, "- press a key"
   Print msg$;
-  con.wait_for_key()
+  Local tmp$ = con.wait_for_key$()
 
   ' Use backspace char (0x8) to erase [MORE] prompt and return to beginning of line.
   Print String$(Len(msg$), Chr$(8));
@@ -262,10 +262,16 @@ Sub con.show_more_prompt(extra%)
   con.foreground(old_fg$, 1)
 End Sub
 
-Sub con.wait_for_key()
+Function con.wait_for_key$(duration%)
   Do While Inkey$ <> "" : Pause 1 : Loop
-  Do While Inkey$ = "" : Pause 1 : Loop
-End Sub
+  Local end_wait% = Timer + duration%
+  If duration% = 0 Then end_wait% = &h7FFFFFFFFFFFFFFF
+  con.wait_for_key$ = Inkey$
+  Do While Timer < end_wait% And con.wait_for_key$ = ""
+    Pause 1
+    con.wait_for_key$ = Inkey$
+  Loop
+End Function
 
 ' Flushes con.buf$ to the console and then writes CRLF.
 Sub con.endl()

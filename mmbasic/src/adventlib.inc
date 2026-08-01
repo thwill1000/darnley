@@ -159,15 +159,19 @@ Sub show_splash()
   If Not HAS_GFX Then Exit Sub
   Load Jpg adv.asset_dir$ + "/images/SPLASH_SCREEN.jpg"
   Const v$ = "v" + sys.format_version$(VERSION)
-  Text 320 - Len(v$) * Mm.Info(FontWidth), 240 - Mm.Info(FontHeight), v$
-  con.wait_for_key()
+  Text Mm.HRes - Len(v$) * Mm.Info(FontWidth), Mm.VRes - Mm.Info(FontHeight), v$
+  Local key$ = con.wait_for_key$(1000)
+  If key$ = "" Then
+    Text Mm.HRes / 2, Mm.VRes - Mm.Info(FontHeight), " PRESS A KEY ", C
+    key$ = con.wait_for_key$()
+  EndIf
   con.clear()
 End Sub
 
 Sub show_end_screen()
   If Not HAS_GFX Then Exit Sub
   Load Jpg adv.asset_dir$ + "/images/END_SCREEN.jpg"
-  con.wait_for_key()
+  Local tmp$ = con.wait_for_key$()
   con.clear()
 End Sub
 
