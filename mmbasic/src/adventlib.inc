@@ -443,12 +443,11 @@ Function split_words%(cmd$, words$())
         Exit Function
       EndIf
 
-      On Error Skip
-      Cat words$(i%), ch$
-      If Mm.ErrNo Then
+      If Len(words$(i%)) = MAX_WORD_LENGTH Then
         split_words% = 2 ' Word too long
         Exit Function
       EndIf
+      Cat words$(i%), ch$
     EndIf
   Next
 End Function
