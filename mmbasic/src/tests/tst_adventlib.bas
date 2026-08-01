@@ -121,6 +121,13 @@ add_test("test_read_directives_gvn_both")
 add_test("test_read_directives_reversed")
 add_test("test_read_directives_multi_tok")
 add_test("test_read_directives_empty_rsp")
+add_test("test_print_body_gvn_single_line")
+add_test("test_print_body_gvn_multi_line")
+add_test("test_print_body_gvn_empty")
+add_test("test_pml_gvn_plain")
+add_test("test_pml_applies_provides")
+add_test("test_pml_gvn_multiline")
+add_test("test_pml_ignores_requires")
 add_test("test_remove_word")
 add_test("test_remove_word_gvn_empty")
 add_test("test_remove_word_gvn_invalid_idx")
@@ -160,6 +167,19 @@ add_test("test_verb_ask_gvn_no_target")
 add_test("test_verb_ask_gvn_not_here")
 add_test("test_verb_ask_gvn_not_person")
 add_test("test_verb_ask_gvn_no_wildcard")
+add_test("test_pm_gvn_plain")
+add_test("test_pm_gvn_eol_default")
+add_test("test_pm_gvn_no_eol")
+add_test("test_pm_skips_ineligible")
+add_test("test_pm_gvn_flag_met_wins")
+add_test("test_pm_skips_multiline")
+add_test("test_pm_applies_provides")
+add_test("test_pm_gvn_all_blocked")
+add_test("test_pm_gvn_not_found")
+add_test("test_pmf_gvn_success")
+add_test("test_pmf_gvn_not_found")
+' TODO: this fails and shouldn't
+add_test("test_pmf_gvn_all_blocked")
 
 run_tests()
 End
@@ -741,6 +761,90 @@ Sub test_read_directives_empty_rsp()
   assert_int_equals(1, lines_consumed%)
 End Sub
 
+' A single-line body is printed as-is, with no trailing newline added
+Sub test_print_body_gvn_single_line()
+  Local s$
+  Open TEST_DIRECTIVES_FILE$ For Input As #1
+  seek_to_keyword("plain")
+  Line Input #1, s$
+  print_body(s$)
+  Close #1
+
+  assert_string_equals(str.quote$("plain response"), con_output$)
+End Sub
+
+' A multi-line body ("@"-broken) forces a line break at the "@" and
+' continues printing subsequent lines without a leading space
+Sub test_print_body_gvn_multi_line()
+  Local s$
+  Open TEST_DIRECTIVES_FILE$ For Input As #1
+  seek_to_keyword("multiline_plain")
+  Line Input #1, s$
+  print_body(s$)
+  Close #1
+
+  assert_string_equals(Chr$(34) + "first line of body" + sys.CRLF$ + "second line of body" + Chr$(34), con_output$)
+End Sub
+
+' An empty first line (s$ = "") prints nothing
+Sub test_print_body_gvn_empty()
+  print_body("")
+  assert_string_equals("", con_output$)
+End Sub
+
+' Reads directives and prints the body for an entry with no directives
+Sub test_pml_gvn_plain()
+  Open TEST_DIRECTIVES_FILE$ For Input As #1
+  seek_to_keyword("plain")
+  print_message_lines()
+  Close #1
+
+  assert_string_equals(str.quote$("plain response"), con_output$)
+End Sub
+
+' A "!provides" token on the entry is applied to the flags set
+Sub test_pml_applies_provides()
+  Local tokens$(2) = ("token_b", "")
+  assert_int_equals(0, has_flags%(tokens$()))
+
+  Open TEST_DIRECTIVES_FILE$ For Input As #1
+  seek_to_keyword("provides_only")
+  print_message_lines()
+  Close #1
+
+  assert_int_equals(1, has_flags%(tokens$()))
+  assert_string_equals(str.quote$("provides only"), con_output$)
+End Sub
+
+' A multi-line body with "!provides" both prints correctly and applies
+' the token
+Sub test_pml_gvn_multiline()
+  Local tokens$(2) = ("token_e", "")
+
+  Open TEST_DIRECTIVES_FILE$ For Input As #1
+  seek_to_keyword("multiline_provides")
+  print_message_lines()
+  Close #1
+
+  assert_int_equals(1, has_flags%(tokens$()))
+  assert_string_equals(Chr$(34) + "line one" + sys.CRLF$ + "line two" + Chr$(34), con_output$)
+End Sub
+
+' print_message_lines() does not check "!requires" - it unconditionally
+' prints the entry it is positioned at, since the caller is responsible
+' for having already selected an eligible entry
+Sub test_pml_ignores_requires()
+  Local tokens$(2) = ("token_a", "")
+  assert_int_equals(0, has_flags%(tokens$()))
+
+  Open TEST_DIRECTIVES_FILE$ For Input As #1
+  seek_to_keyword("both_directives")
+  print_message_lines()
+  Close #1
+
+  assert_string_equals(str.quote$("both directives"), con_output$)
+End Sub
+
 Sub test_remove_word()
   Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
   assert_int_equals(0, remove_word%(words$(), 2))
@@ -1191,6 +1295,101 @@ Sub test_verb_ask_gvn_no_wildcard()
 
   assert_int_equals(1, result%)
   assert_int_equals(1, InStr(con_output$, "I don't know what you are talking about.") > 0)
+End Sub
+
+' Plain entry with no directives prints successfully
+Sub test_pm_gvn_plain()
+  Local result% = print_message%("PLAIN_MSG")
+  assert_int_equals(0, result%)
+End Sub
+
+' Default (no_eol% unset) appends a trailing blank line after the body
+Sub test_pm_gvn_eol_default()
+  Local result% = print_message%("PLAIN_MSG")
+  assert_int_equals(0, result%)
+  assert_string_equals(str.quote$("plain message body") + sys.CRLF$, con_output$)
+End Sub
+
+' no_eol% suppresses the trailing blank line
+Sub test_pm_gvn_no_eol()
+  Local result% = print_message%("PLAIN_MSG", 1)
+  assert_int_equals(0, result%)
+  assert_string_equals(str.quote$("plain message body"), con_output$)
+End Sub
+
+' An entry gated on an unmet "!requires" is skipped; the next eligible
+' entry for the same tag is used instead
+Sub test_pm_skips_ineligible()
+  Local result% = print_message%("SKIP_INELIGIBLE_MSG")
+  assert_int_equals(0, result%)
+  assert_int_equals(1, InStr(con_output$, "line B") > 0)
+  assert_int_equals(0, InStr(con_output$, "line A") > 0)
+End Sub
+
+' When the required flag IS set, the gated entry becomes eligible and
+' wins, since it appears first in the file (ties favour earlier entries)
+Sub test_pm_gvn_flag_met_wins()
+  Local tokens$(2) = ("needs_token", "")
+  add_flags(tokens$())
+
+  Local result% = print_message%("SKIP_INELIGIBLE_MSG")
+  assert_int_equals(0, result%)
+  assert_int_equals(1, InStr(con_output$, "line A") > 0)
+  assert_int_equals(0, InStr(con_output$, "line B") > 0)
+End Sub
+
+' Skipping an ineligible multi-line ("@"-broken) body correctly advances
+' past all of its lines before resuming the scan
+Sub test_pm_skips_multiline()
+  Local result% = print_message%("MULTI_LINE_GATED_MSG")
+  assert_int_equals(0, result%)
+  assert_string_equals(str.quote$("the real body") + sys.CRLF$, con_output$)
+End Sub
+
+' A successful match's "!provides" tokens are added to the flags set
+Sub test_pm_applies_provides()
+  Local tokens$(2) = ("granted_token", "")
+  assert_int_equals(0, has_flags%(tokens$()))
+
+  Local result% = print_message%("PROVIDES_MSG")
+
+  assert_int_equals(0, result%)
+  assert_int_equals(1, has_flags%(tokens$()))
+End Sub
+
+' All entries for a tag are gated and unmet - returns 1, nothing printed
+Sub test_pm_gvn_all_blocked()
+  Local result% = print_message%("ALL_BLOCKED_MSG")
+  assert_int_equals(1, result%)
+  assert_string_equals("", con_output$)
+End Sub
+
+' Tag does not exist in the message file at all - returns 1
+Sub test_pm_gvn_not_found()
+  Local result% = print_message%("NO_SUCH_TAG")
+  assert_int_equals(1, result%)
+End Sub
+
+' print_message_or_fail() does not raise when an eligible entry is found
+Sub test_pmf_gvn_success()
+  print_message_or_fail("PLAIN_MSG")
+  assert_int_equals(1, InStr(con_output$, "plain message body") > 0)
+End Sub
+
+' print_message_or_fail() raises when the tag is not found at all
+Sub test_pmf_gvn_not_found()
+  On Error Ignore
+  print_message_or_fail("NO_SUCH_TAG")
+  assert_raw_error("Message not found: NO_SUCH_TAG")
+  On Error Abort
+End Sub
+
+' print_message_or_fail() raises when all matching entries are blocked
+Sub test_pmf_gvn_all_blocked()
+  On Error Ignore
+  print_message_or_fail("ALL_BLOCKED_MSG")
+  assert_raw_error("Message not found: ALL_BLOCKED_MSG")
+  On Error Abort
 End Sub
 
 location_data:
