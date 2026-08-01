@@ -114,7 +114,7 @@ Function verb_accuse()
 
   con.println()
   con.foreground("cyan")
-  print_message("ACCUSE_TEXT")
+  print_message_or_fail("ACCUSE_TEXT")
   con.foreground("reset")
 
   Local answer$, correct%, response$, response_words$(MAX_WORDS), result%, i%, msg$, q%
@@ -137,7 +137,7 @@ Function verb_accuse()
 
     con.println()
     con.foreground("yellow")
-    print_message(Field$(questions$(q%), 1, "|"), 1)
+    print_message_or_fail(Field$(questions$(q%), 1, "|"), 1)
     answer$ = get_input$(" ")
     con.foreground("reset")
 
@@ -177,12 +177,12 @@ Function verb_accuse()
   If correct% = NUM_QUESTIONS Then
     con.println()
     con.foreground("cyan")
-    print_message("CONGRATULATIONS")
+    print_message_or_fail("CONGRATULATIONS")
     con.foreground("reset")
     con.println()
     con.show_more_prompt()
     con.clear()
-    print_message("WHAT_REALLY_HAPPENED")
+    print_message_or_fail("WHAT_REALLY_HAPPENED")
     con.println()
     con.show_more_prompt()
     con.clear()
@@ -194,7 +194,7 @@ Function verb_accuse()
     print_fail msg$
     con.println()
     con.foreground("cyan")
-    print_message("INCORRECT_ACCUSATION")
+    print_message_or_fail("INCORRECT_ACCUSATION")
     con.foreground("reset")
     con.println()
     con.show_more_prompt()
@@ -221,7 +221,7 @@ End Sub
 Function verb_cheat()
   verb_cheat = 1
   con.println()
-  print_message("CHEAT_TEXT")
+  print_message_or_fail("CHEAT_TEXT")
   Local clues$(Max(NUM_CLUES, 2)) Length MAX_WORD_LENGTH
   read_clues(clues$())
   add_flags(clues$())
@@ -231,7 +231,7 @@ End Function
 Function verb_help()
   verb_help = 1
   con.println()
-  print_message("HELP_TEXT")
+  print_message_or_fail("HELP_TEXT")
 End Function
 
 location_data:

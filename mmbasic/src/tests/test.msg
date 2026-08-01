@@ -27,3 +27,29 @@ Another test suspect.
 
 P_NO_WILDCARD
 A test suspect with no wildcard fallback in their dedicated .msg file.
+
+PLAIN_MSG
+"plain message body"
+
+SKIP_INELIGIBLE_MSG
+!requires NEEDS_TOKEN
+"line A - needs token"
+
+SKIP_INELIGIBLE_MSG
+"line B - unconditional fallback"
+
+MULTI_LINE_GATED_MSG
+!requires NEVER_SET
+"first line of never shown@
+second line of never shown"
+
+MULTI_LINE_GATED_MSG
+"the real body"
+
+ALL_BLOCKED_MSG
+!requires NEVER_SET
+"never shown"
+
+PROVIDES_MSG
+!provides granted_token
+"provides message body"

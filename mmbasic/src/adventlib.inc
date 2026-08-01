@@ -179,10 +179,10 @@ Sub show_intro(title$)
   Const v$ = "v" + sys.format_version$(VERSION)
   con.println("[[green:" + title$ + " (" + v$ + ")]]")
   con.println()
-  print_message("INTRO")
+  print_message_or_fail("INTRO")
   print_newline()
   con.show_more_prompt(1)
-  print_message("HELP_TEXT")
+  print_message_or_fail"HELP_TEXT")
   print_newline()
   con.show_more_prompt()
   con.clear()
@@ -210,7 +210,7 @@ Sub describe_loc()
     con.println()
   EndIf
 
-  print_message(loc_tag$)
+  print_message_or_fail(loc_tag$)
   con.println()
 
   ' ' Iterate through objects to find those at the current location
@@ -265,10 +265,18 @@ Sub print_newline()
 End Sub
 
 ' Print message for a failed action
-Sub print_fail(s$, no_newline%)
-  con.println()
+'
+' @param[in] s$      The failure message to print, in red.
+' @param[in] flags%  Bitmask controlling layout:
+'                       &h01 - suppress the leading blank line normally
+'                              printed before the message.
+'                       &h02 - do not terminate the message with a newline;
+'                              instead just flush the console buffer,
+'                              leaving the cursor on the same line.
+Sub print_fail(s$, flags%)
+  If (flags% And &h01) = 0 Then con.println()
   con.print("[[red:" + s$ + "]]")
-  If no_newline% Then con.flush() Else con.println()
+  If (flags% And &h02) = 0 Then con.println() Else con.flush()
 End Sub
 
 ' Prints text read from DATA
@@ -355,6 +363,7 @@ Sub read_directives(fnbr%, requires$(), provides$(), first_line$, lines_consumed
 
   For i% = Bound(requires$(), 0) To Bound(requires$(), 1) : requires$(i%) = "" : Next
   For i% = Bound(provides$(), 0) To Bound(provides$(), 1) : provides$(i%) = "" : Next
+  first_line$ = ""
   lines_consumed% = 0
 
   Local directives_seen%
@@ -809,20 +818,17 @@ End Function
 Function verb_examine()
   Const obj% = find_obj%(words$())
   Const oloc% = Choice(obj%, obj_loc%(obj%), 0)
+  Local ok% = 0
 
   If oloc% = r Then
     ' Object exists and is present
     con.println()
     con.foreground("cyan")
-    print_message(Field$(objects$(obj%), 1, "|"))
+    ok% = print_message%(Field$(objects$(obj%), 1, "|")) = 0
     con.foreground("reset")
-  ElseIf oloc% Then
-    ' Object exists but is not present
-    print_fail "You do not see that here."
-  Else
-    ' Unknown object
-    print_fail "You cannot examine that, or it is unremarkable."
   EndIf
+
+  If Not ok% Then print_fail("That is not here, cannot be examined or is unremarkable.", 1)
 
   verb_examine = 1
 End Function
@@ -991,48 +997,78 @@ Function verb_quit()
   End
 End Function
 
-' Prints a message from the assets message file to the console.
+' Prints the first entry in the message file matching tag$ whose !requires
+' (if any) is currently satisfied. Any !provides tokens on the winning
+' entry are applied to the flags set.
 '
-' Searches darnley.msg for a line matching tag$ and prints the lines that
-' follow it until an empty line is encountered. Consecutive lines are joined
-' with a space unless a line ends with "@", which forces a line break at that
-' point (the "@" itself is not printed).
+' Entries matching tag$ but failing their !requires are skipped, and
+' scanning continues for a later entry with the same tag.
 '
-' Raises an error if tag$ is not found in the file.
-'
-' @param tag$  The tag to search for in the message file.
-Sub print_message(tag$, no_eol%)
+' @param tag$     The tag to search for in the message file.
+' @param no_eol%  If set, suppresses the trailing blank line on success.
+' @return         0 on success, 1 if no eligible entry was found.
+Function print_message%(tag$, no_eol%)
+  Const fnbr% = 1
   Local s$
-  Open adv.msg_file$ For Input As #1
-  Do
-    Line Input #1, s$
-    If Eof(#1) Then
-      Close #1
-      Error "Message not found: " + tag$
-    ElseIf s$ = tag$ Then
-      print_message_lines()
-      Exit Do
-    EndIf
-  Loop
-  Close #1
-  If Not no_eol% Then con.println()
-End Sub
-
-' Prints the response lines for the current message entry, skipping any
-' leading directive lines ("!requires" / "!provides") and applying any
-' "!provides" tokens to the flags set.
-'
-' The file must be positioned immediately after the keyword line. On return
-' the file is positioned at the blank line terminating the entry (or EOF).
-Sub print_message_lines()
-  Local first% = 1, s$
   Local requires$(MAX_WORDS) Length MAX_WORD_LENGTH
   Local provides$(MAX_WORDS) Length MAX_WORD_LENGTH
-  Local lines_consumed%
+  Local first_line$, lines_consumed%
+
+  print_message% = 1
+
+  Open adv.msg_file$ For Input As #1
+  Do While Not Eof(fnbr%)
+    Line Input #fnbr%, s$
+    If s$ = tag$ Then
+      read_directives(fnbr%, requires$(), provides$(), first_line$, lines_consumed%)
+
+      If has_flags%(requires$()) Then
+        add_flags(provides$())
+        print_body(first_line$)
+        print_message% = 0
+        Exit Do
+      Else
+        ' Ineligible - skip past the rest of this entry's body and keep scanning.
+        Do While first_line$ <> ""
+          Line Input #fnbr%, first_line$
+        Loop
+      EndIf
+    EndIf
+  Loop
+  Close fnbr%
+
+  If print_message% = 0 And Not no_eol% Then con.println()
+End Function
+
+' As print_message%(), but raises an error if no eligible entry is found.
+' For use by callers that treat a missing/ineligible message as a data bug
+' rather than a normal game-state outcome.
+Sub print_message_or_fail(tag$, no_eol%)
+  If print_message%(tag$, no_eol%) Then Error "Message not found: " + tag$
+End Sub
+
+' Reads directives and prints the body for the entry positioned immediately
+' after the keyword line, applying any "!provides" tokens unconditionally.
+' Used by callers (e.g. print_ask_result()) that have already picked an
+' eligible entry and don't need print_message%()'s scanning/gating.
+Sub print_message_lines()
+  Local requires$(MAX_WORDS) Length MAX_WORD_LENGTH
+  Local provides$(MAX_WORDS) Length MAX_WORD_LENGTH
+  Local s$, lines_consumed%
 
   read_directives(1, requires$(), provides$(), s$, lines_consumed%)
   add_flags(provides$())
+  print_body(s$)
+End Sub
 
+' Prints the response body lines for the current message entry.
+'
+' The file must be positioned immediately after any directive lines, with
+' s$ holding the first line of the body (which may be "" for an empty
+' body). On return the file is positioned at the blank line terminating
+' the entry (or EOF).
+Sub print_body(s$)
+  Local first% = 1
   Do
     If s$ = "" Then Exit Do
     If first% Then first% = 0 Else s$ = " " + s$

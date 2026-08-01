@@ -25,3 +25,13 @@ multi_token
 "multi token response"
 
 empty_response
+
+multiline_plain
+"first line of body@
+second line of body"
+
+multiline_provides
+!provides TOKEN_E
+"line one@
+line two"
+
