@@ -171,79 +171,79 @@ End Sub
 
 ' Empty array returns empty string
 Sub test_cat_words_gvn_empty()
-  Local words$(4)
+  Local words$(4) Length MAX_WORD_LENGTH
   assert_string_equals("", cat_words$(words$(), 0, 0))
 End Sub
 
 ' Single word returns that word
 Sub test_cat_words_gvn_one()
-  Local words$(4) = ("foo", "", "", "")
+  Local words$(4) Length MAX_WORD_LENGTH = ("foo", "", "", "")
   assert_string_equals("foo", cat_words$(words$(), 0, 0))
 End Sub
 
 ' Multiple words joined with spaces
 Sub test_cat_words_gvn_multiple()
-  Local words$(4) = ("one", "two", "three", "")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "")
   assert_string_equals("one two three", cat_words$(words$(), 0, 0))
 End Sub
 
 ' Full array with no empty elements
 Sub test_cat_words_gvn_full()
-  Local words$(4) = ("one", "two", "three", "four")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
   assert_string_equals("one two three four", cat_words$(words$(), 0, 0))
 End Sub
 
 ' si%=0 defaults to starting at index 1
 Sub test_cat_words_gvn_si_default()
-  Local words$(4) = ("one", "two", "three", "")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "")
   assert_string_equals("one two three", cat_words$(words$(), 0, 4))
 End Sub
 
 ' ei%=0 defaults to MAX_WORDS
 Sub test_cat_words_gvn_ei_default()
-  Local words$(4) = ("one", "two", "three", "")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "")
   assert_string_equals("one two three", cat_words$(words$(), 1, 0))
 End Sub
 
 ' si% starts concatenation from a later index
 Sub test_cat_words_gvn_si()
-  Local words$(4) = ("one", "two", "three", "")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "")
   assert_string_equals("two three", cat_words$(words$(), 2, 0))
 End Sub
 
 ' ei% stops concatenation before end of words
 Sub test_cat_words_gvn_ei()
-  Local words$(4) = ("one", "two", "three", "four")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
   assert_string_equals("one two", cat_words$(words$(), 1, 2))
 End Sub
 
 ' si% and ei% together select a middle slice
 Sub test_cat_words_gvn_si_and_ei()
-  Local words$(4) = ("one", "two", "three", "four")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
   assert_string_equals("two three", cat_words$(words$(), 2, 3))
 End Sub
 
 ' si% equal to ei% returns a single word
 Sub test_cat_words_gvn_si_eq_ei()
-  Local words$(4) = ("one", "two", "three", "four")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
   assert_string_equals("two", cat_words$(words$(), 2, 2))
 End Sub
 
 ' si% beyond ei% returns empty string
 Sub test_cat_words_gvn_si_gt_ei()
-  Local words$(4) = ("one", "two", "three", "four")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
   assert_string_equals("", cat_words$(words$(), 3, 2))
 End Sub
 
 ' Empty element within range stops concatenation early
 Sub test_cat_words_stops_at_empty()
-  Local words$(4) = ("one", "two", "", "four")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "", "four")
   assert_string_equals("one two", cat_words$(words$(), 0, 0))
 End Sub
 
 ' si% pointing at an empty element returns empty string
 Sub test_cat_words_gvn_si_at_empty()
-  Local words$(4) = ("one", "", "three", "four")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "", "three", "four")
   assert_string_equals("", cat_words$(words$(), 2, 0))
 End Sub
 
@@ -363,7 +363,7 @@ Data "beta"
 Data "" ' End
 
 Sub test_count_words()
-  Local words$(4)
+  Local words$(4) Length MAX_WORD_LENGTH
   assert_int_equals(0, count_words%(words$()))
 
   words$(1) = "foo"
@@ -374,12 +374,12 @@ Sub test_count_words()
 End Sub
 
 Sub test_count_words_gvn_full()
-  Local words$(4) = ("one", "two", "three", "four")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
   assert_int_equals(4, count_words%(words$()))
 End Sub
 
 Sub test_count_words_gvn_gap()
-  Local words$(4) = ("one", "", "three", "four")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "", "three", "four")
   assert_int_equals(1, count_words%(words$()))
 End Sub
 
@@ -418,24 +418,24 @@ Sub test_find_loc_gvn_error()
 End Sub
 
 Sub test_find_word()
-  Local words$(4) = ("one", "two", "three", "four")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
   assert_int_equals(1, find_word%(words$(), "one"))
   assert_int_equals(2, find_word%(words$(), "two"))
   assert_int_equals(4, find_word%(words$(), "four"))
 End Sub
 
 Sub test_find_word_gvn_empty()
-  Local words$(4)
+  Local words$(4) Length MAX_WORD_LENGTH
   assert_int_equals(0, find_word%(words$(), "foo"))
 End Sub
 
 Sub test_find_word_gvn_not_found()
-  Local words$(4) = ("one", "two", "three", "four")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
   assert_int_equals(0, find_word%(words$(), "five"))
 End Sub
 
 Sub test_find_word_gvn_upper_case()
-  Local words$(4) = ("one", "TWO", "Three", "")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "TWO", "Three", "")
   assert_int_equals(2, find_word%(words$(), "two"))
   assert_int_equals(2, find_word%(words$(), "TWO"))
   assert_int_equals(3, find_word%(words$(), "three"))
@@ -615,21 +615,21 @@ End Sub
 ' Intercepted verbs kill and use return 1
 Sub test_parse_common_intercepts()
   assert_int_equals(1, parse_common("kill guard"))
-  assert_string_equals("<red>This is not that sort of game." + sys.CRLF$ + "<reset>", con_output$)
+  assert_string_equals(sys.CRLF$ + "[[red:This is not that sort of game.]]" + sys.CRLF$, con_output$)
 
   con_output$ = ""
   assert_int_equals(1, parse_common("use key"))
-  assert_string_equals("<red>You need to tell me how to use that." + sys.CRLF$ + "<reset>", con_output$)
+  assert_string_equals(sys.CRLF$ + "[[red:You need to tell me how to use that.]]" + sys.CRLF$, con_output$)
 End Sub
 
 ' split_words% errors return 1
 Sub test_parse_common_split_errors()
   assert_int_equals(1, parse_common("one two three four five six seven eight nine ten eleven"))
-  assert_string_equals("<red>Too many words." + sys.CRLF$ + "<reset>", con_output$)
+  assert_string_equals(sys.CRLF$ + "[[red:Too many words.]]" + sys.CRLF$, con_output$)
 
   con_output$ = ""
   assert_int_equals(1, parse_common("abcdefghijklmnopqrstuv"))
-  assert_string_equals("<red>Word too long." + sys.CRLF$ + "<reset>", con_output$)
+  assert_string_equals(sys.CRLF$ + "[[red:Word too long.]]" + sys.CRLF$, con_output$)
 End Sub
 
 ' No directives — first line read is treated as the response immediately
@@ -742,7 +742,7 @@ Sub test_read_directives_empty_rsp()
 End Sub
 
 Sub test_remove_word()
-  Local words$(4) = ("one", "two", "three", "four")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
   assert_int_equals(0, remove_word%(words$(), 2))
   assert_string_equals("one", words$(1))
   assert_string_equals("three", words$(2))
@@ -763,12 +763,12 @@ Sub test_remove_word()
 End Sub
 
 Sub test_remove_word_gvn_empty()
-  Local words$(4) = ("foo", "bar", "", "")
+  Local words$(4) Length MAX_WORD_LENGTH = ("foo", "bar", "", "")
   assert_int_equals(1, remove_word%(words$(), 3))
 End Sub
 
 Sub test_remove_word_gvn_invalid_idx()
-  Local words$(4) = ("one", "two", "three", "four")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
   assert_int_equals(1, remove_word%(words$(), 0))
   assert_int_equals(1, remove_word%(words$(), 5))
 End Sub
@@ -784,7 +784,7 @@ Sub test_remove_words()
 End Sub
 
 Sub test_remove_words_gvn_multiple()
-  Local words$(4) = ("one", "two", "three", "four")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
   Local rm$(2) = ("two", "four")
   remove_words(words$(), rm$())
   assert_string_equals("one", words$(1))
@@ -794,7 +794,7 @@ Sub test_remove_words_gvn_multiple()
 End Sub
 
 Sub test_remove_words_gvn_not_found()
-  Local words$(4) = ("one", "two", "three", "four")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
   Local rm$(2) = ("five", "")
   remove_words(words$(), rm$())
   assert_string_equals("one", words$(1))
@@ -804,7 +804,7 @@ Sub test_remove_words_gvn_not_found()
 End Sub
 
 Sub test_remove_words_gvn_duplicates()
-  Local words$(4) = ("one", "two", "two", "four")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "two", "four")
   Local rm$(2) = ("two", "")
   remove_words(words$(), rm$())
   assert_string_equals("one", words$(1))
@@ -814,7 +814,7 @@ Sub test_remove_words_gvn_duplicates()
 End Sub
 
 Sub test_remove_words_gvn_empty()
-  Local words$(4) = ("one", "two", "three", "four")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
   Local rm$(2)
   remove_words(words$(), rm$())
   assert_string_equals("one", words$(1))
@@ -917,7 +917,7 @@ End Sub
 Sub test_find_obj_gvn_current()
   ' Object 3 (Red Gem) is in room 1, current room is 1 - only "gem" matches OBJ003
   r = 1
-  Local words$(4) = ("gem", "", "", "")
+  Local words$(4) Length MAX_WORD_LENGTH = ("gem", "", "", "")
   assert_int_equals(3, find_obj%(words$()))
 End Sub
 
@@ -925,50 +925,50 @@ Sub test_find_obj_gvn_other()
   ' "key" matches OBJ002 and OBJ004 (both non-local);
   ' OBJ002 returned as first equal match
   r = 1
-  Local words$(4) = ("key", "", "", "")
+  Local words$(4) Length MAX_WORD_LENGTH = ("key", "", "", "")
   assert_int_equals(2, find_obj%(words$()))
 End Sub
 
 Sub test_find_obj_gvn_not_found()
   r = 1
-  Local words$(4) = ("purple", "goblet", "", "")
+  Local words$(4) Length MAX_WORD_LENGTH = ("purple", "goblet", "", "")
   assert_int_equals(0, find_obj%(words$()))
 End Sub
 
 Sub test_find_obj_rtns_current()
   ' Object 2 (Red Key) is in room 2, object 3 (Red Gem) is in room 1 (current)
   r = 1
-  Local words$(4) = ("red", "", "", "")
+  Local words$(4) Length MAX_WORD_LENGTH = ("red", "", "", "")
   assert_int_equals(3, find_obj%(words$()))
 End Sub
 
 Sub test_find_obj_rtns_best()
   r = 1
-  Local words$(4) = ("curious", "key", "red", "")
+  Local words$(4) Length MAX_WORD_LENGTH = ("curious", "key", "red", "")
   assert_int_equals(4, find_obj%(words$()))
 End Sub
 
 Sub test_split_words_gvn_empty()
-  Local words$(10)
+  Local words$(10) Length MAX_WORD_LENGTH
   assert_int_equals(0, split_words%("", words$()))
   assert_string_equals("", words$(1))
 End Sub
 
 Sub test_split_words_gvn_ws_only()
-  Local words$(10)
+  Local words$(10) Length MAX_WORD_LENGTH
   assert_int_equals(0, split_words%("   ", words$()))
   assert_string_equals("", words$(1))
 End Sub
 
 Sub test_split_words_gvn_one_word()
-  Local words$(10)
+  Local words$(10) Length MAX_WORD_LENGTH
   assert_int_equals(0, split_words%("foo", words$()))
   assert_string_equals("foo", words$(1))
   assert_string_equals("", words$(2))
 End Sub
 
 Sub test_split_words_gvn_two_words()
-  Local words$(10)
+  Local words$(10) Length MAX_WORD_LENGTH
   assert_int_equals(0, split_words%("foo bar", words$()))
   assert_string_equals("foo", words$(1))
   assert_string_equals("bar", words$(2))
@@ -976,7 +976,7 @@ Sub test_split_words_gvn_two_words()
 End Sub
 
 Sub test_split_words_gvn_whitespace()
-  Local words$(10)
+  Local words$(10) Length MAX_WORD_LENGTH
   assert_int_equals(0, split_words%("  foo    bar snafu  ", words$()))
   assert_string_equals("foo", words$(1))
   assert_string_equals("bar", words$(2))
@@ -985,7 +985,7 @@ Sub test_split_words_gvn_whitespace()
 End Sub
 
 Sub test_split_words_gvn_max_words()
-  Local words$(4)
+  Local words$(4) Length MAX_WORD_LENGTH
   assert_int_equals(0, split_words%("one two three four", words$()))
   assert_string_equals("one", words$(1))
   assert_string_equals("two", words$(2))
@@ -994,24 +994,24 @@ Sub test_split_words_gvn_max_words()
 End Sub
 
 Sub test_split_words_gvn_too_many()
-  Local words$(4)
+  Local words$(4) Length MAX_WORD_LENGTH
   assert_int_equals(1, split_words%("one two three four five", words$()))
 End Sub
 
 Sub test_split_words_gvn_max_length()
-  Local words$(4) Length 10
+  Local words$(4) Length MAX_WORD_LENGTH
   assert_int_equals(0, split_words%("10-letters", words$()))
   assert_string_equals("10-letters", words$(1))
   assert_string_equals("", words$(2))
 End Sub
 
 Sub test_split_words_gvn_too_long()
-  Local words$(4) Length 10
-  assert_int_equals(2, split_words%("11-letters-", words$()))
+  Local words$(4) Length MAX_WORD_LENGTH
+  assert_int_equals(2, split_words%("21-letters12345678901", words$()))
 End Sub
 
 Sub test_split_words_gvn_upper_case()
-  Local words$(10)
+  Local words$(10) Length MAX_WORD_LENGTH
   assert_int_equals(0, split_words%("FOO BAR", words$()))
   assert_string_equals("foo", words$(1))
   assert_string_equals("bar", words$(2))
@@ -1019,7 +1019,7 @@ Sub test_split_words_gvn_upper_case()
 End Sub
 
 Sub test_split_words_gvn_trail_space()
-  Local words$(4)
+  Local words$(4) Length MAX_WORD_LENGTH
   assert_int_equals(0, split_words%("one two three four ", words$()))
   assert_string_equals("one", words$(1))
   assert_string_equals("two", words$(2))
@@ -1029,14 +1029,14 @@ End Sub
 
 ' Empty array is unchanged
 Sub test_unique_words_gvn_empty()
-  Local words$(4)
+  Local words$(4) Length MAX_WORD_LENGTH
   unique_words(words$())
   assert_string_equals("", words$(1))
 End Sub
 
 ' No duplicates, array unchanged
 Sub test_unique_words_gvn_no_dupes()
-  Local words$(4) = ("one", "two", "three", "")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "")
   unique_words(words$())
   assert_string_equals("one", words$(1))
   assert_string_equals("two", words$(2))
@@ -1046,7 +1046,7 @@ End Sub
 
 ' Duplicate removed and array shuffled down
 Sub test_unique_words_gvn_dupe()
-  Local words$(4) = ("one", "two", "one", "")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "one", "")
   unique_words(words$())
   assert_string_equals("one", words$(1))
   assert_string_equals("two", words$(2))
@@ -1056,7 +1056,7 @@ End Sub
 
 ' Comparison is case-insensitive
 Sub test_unique_words_gvn_case()
-  Local words$(4) = ("one", "ONE", "three", "")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "ONE", "three", "")
   unique_words(words$())
   assert_string_equals("one", words$(1))
   assert_string_equals("three", words$(2))
@@ -1066,7 +1066,7 @@ End Sub
 
 ' Multiple duplicates all removed
 Sub test_unique_words_gvn_mult_dupes()
-  Local words$(4) = ("one", "one", "one", "two")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "one", "one", "two")
   unique_words(words$())
   assert_string_equals("one", words$(1))
   assert_string_equals("two", words$(2))
@@ -1076,7 +1076,7 @@ End Sub
 
 ' Adjacent duplicates handled correctly
 Sub test_unique_words_gvn_adjacent()
-  Local words$(4) = ("one", "two", "two", "")
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "two", "")
   unique_words(words$())
   assert_string_equals("one", words$(1))
   assert_string_equals("two", words$(2))
