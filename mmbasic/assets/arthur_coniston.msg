@@ -15,14 +15,14 @@ to get to my bedroom I had to go through the morning room where the
 gramophone was playing a Chopin nocturne but there was no-one there.@
 @
 I undressed and went to bed but couldn't sleep. At about 11.30 I heard
-a noise — a door banging, so I thought at the time. I decided to go
+a noise - a door banging, so I thought at the time. I decided to go
 downstairs and smoke another cigar in the lounge. I noticed a light
 under the study door and knocked on it to see who was there. I got
 worried when it was locked and no-one answered so I got Billingsgate
 and together we went outside and round to the French window. It was
 locked too, so I picked a stone up and broke the glass. Billingsgate
 stuck his hand through the hole and tried the lock. He told me it was
-locked on the inside, and — damn me! — he was right. We both went
+locked on the inside, and - damn me! - he was right. We both went
 inside and found Darnley on the floor, shot and dead. When we checked
 the doors to the hall and lounge we found the Colonel's keys in the
 locks, so it would have been impossible to open them from the outside.

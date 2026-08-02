@@ -63,7 +63,7 @@ LOC006_TERRACE
 This paved terrace extends from the house westward toward an
 [[green:Ornamental pond]]. The snow shows a profusion of [[green:footprints]] -
 many feet have crossed here. To the north lies the [[green:Orchard]], east
-a [[green:french window]] into the [[green:Colonel's Study]], and south the
+a [[green:French window]] into the [[green:Colonel's Study]], and south the
 [[green:West walk]].
 
 LOC007_COLONELS_STUDY
@@ -319,6 +319,7 @@ pedestals. Stuck in a crevice of the statue is the soaked butt of a
 [[green:cheroot]].
 
 OBJ203_REVOLVER
+!provides gun
 The revolver found in the pond is a fine quality weapon with decorative grips.
 One bullet has been discharged from it.
 
@@ -355,6 +356,7 @@ draining board amongst other kitchen utensils, seemingly unused since dinner
 preparation.
 
 OBJ209_BOOTS
+!provides boots
 All these boots are polished clean except for a large mud stained pair.
 
 OBJ212_FOOTPRINTS_KG
@@ -467,6 +469,7 @@ place by a sort of 'lid' of wood which is fastened by a small lock. The
 key is in the lock.
 
 OBJ230_LETTER
+!provides letter
 The letter is an incomplete draft: "Dear Sir, I have considered your
 monstrous suggestion and find I cannot..."
 
@@ -494,6 +497,7 @@ way that suggests the breakage may not have been a single violent impact, but
 perhaps more deliberate - possibly even repeated strikes against the pane.
 
 OBJ234_GRAMOPHONE
+!provides gramophone
 It has a device for playing several records in sequence. All the
 records are Chopin.
 
@@ -551,6 +555,7 @@ snow heading around the corner of the house, to and from the maze
 and avenue of statues.
 
 OBJ245_CIGARETTE_ENDS_SH
+!provides cigarettes
 These cigarette ends come from a cheap, mass produced brand. There are
 perhaps a dozen of them scattered about the summer house floor, some trodden into
 the dust, others carefully arranged. The tobacco inside is coarse and poor quality.
@@ -558,6 +563,7 @@ They suggest prolonged occupation of the summer house by someone of modest means
 - or someone pretending to be.
 
 OBJ246_HANDKERCHIEF
+!provides handkerchief
 This is a lady's handkerchief of plain linen with delicate lace edging and a faint
 perfume - the scent is floral, sweet, and distinctly expensive. The handkerchief
 is initialled with an ornate "M" worked in pale silk thread. It is slightly damp
@@ -600,6 +606,7 @@ The mat has not yet dried, suggesting the wet footprints are fresh - from last n
 or early this morning.
 
 OBJ253_CHEROOT_BUTT
+!provides butt
 This is the sodden butt of a Burmah cheroot, waterlogged from its time in
 the pond. Despite being soaked, you can still make out its straight dark
 cylinder shape, characteristic of a cheroot rather than a conventional
@@ -614,7 +621,7 @@ teeth. Beside the stub lies a small pile of ash. The stub is the only evidence o
 smoking in this room, yet someone claims to have smoked here recently. Odd.
 
 WHAT_REALLY_HAPPENED
-What really happened at Darnley Park?@
+[[green:What really happened at Darnley Park?:]]@
 @
 On the morning of the murder Arthur Coniston, the boy-friend of
 Millicent Darnley, arrived by arrangement to ask Colonel Darnley for
@@ -700,8 +707,8 @@ possibilities : the murderer had left via the butler's pantry or the
 outside door. The former was impossible since three people were
 occupying the pantry of whom at least one (Mrs. Goodbody) had been
 wakened by the shot and would have heard any stranger entering the
-room. The second was possible but the murderer would leave the foot-
-prints of his ordinary footwear. Other than the boots, there were
+room. The second was possible but the murderer would leave the
+footprints of his ordinary footwear. Other than the boots, there were
 prints only from Arthur Coniston's slippers. Coniston's explanation
 that he had left these prints in following the murderers boot-trail
 would not hold water. The murderer had to leave footprints in two
@@ -746,7 +753,7 @@ Q_11
 What was the motive for the murder?
 
 Q_12
-How did the murderer hide the bullet hole in the window?
+How did the murderer hide the bullet hole in the French window?
 
 Q_13
 Who was the murderer?
@@ -755,6 +762,9 @@ CONGRATULATIONS
 Congratulations Inspector. With your evidence Arthur Coniston is arrested,
 tried and found guilty of the murder of Colonel Sebastian Darnley. He is
 sentenced to 30 years of imprisonment at her majesty's pleasure.
+
+CHEAT_TEXT
+[[cyan:You rotter - all clue flags set.]]
 
 HELP_TEXT
 Try one of the following commands:@
@@ -766,3 +776,16 @@ Try one of the following commands:@
   [[green:QUIT]]@
   [[green:SAVE]]@
   [[green:RESTORE]]
+
+ACCUSE_TEXT
+"So, you believe you have solved the mystery of the Colonel's death?
+Very well. I shall put to you the questions that any competent
+detective must be able to answer before naming a murderer. Answer
+carefully - and honestly, mind - for a false accusation is worse
+than none at all."
+
+INCORRECT_ACCUSATION
+"No. Somewhere in your account the facts do not add up - either
+the person you have named is not the one who did it, or you have
+mistaken some detail of how it was done. Go back over your
+questioning and look again."
