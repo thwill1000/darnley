@@ -5,7 +5,7 @@ together in the lounge. The men joined us later for half an hour,
 then Arthur and I went into the music room where we talked for a
 while and played duets on the piano.@
 @
-At about 10.30 I decided to go to bed. I know the time because I
+At about 10:30 I decided to go to bed. I know the time because I
 looked at my watch when there was a loud noise — probably a poacher
 somewhere. Arthur stayed in the music room and I went upstairs. I
 think I saw Sir Redvers disappearing into his bedroom, but I was
@@ -14,7 +14,7 @@ intending to play the piano in the morning room and hoped it
 wouldn't disturb me. I went to my room and stayed there. I heard
 Sarah playing the piano and then drifted off to sleep.@
 @
-I woke up at about 11.20 by the bedside clock and heard Sarah still
+I woke up at about 11:20 by the bedside clock and heard Sarah still
 playing a Chopin nocturne. She seemed to be having difficulty since
 the same part was being repeated over and over again. I went back to
 sleep for a few minutes when there was a bang — a door slamming, I
@@ -26,7 +26,7 @@ the morning room and found Billingsgate waking Sir Redvers."
 
 alibi
 "I was with Arthur in the music room at 10.30 and, naturally, I was
-alone in bed at 11.30."
+alone in bed at 11:30."
 
 slippers
 "I don't know whose slippers these are."
