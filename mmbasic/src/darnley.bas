@@ -3,19 +3,23 @@
 
 Option Base 1
 Option Default Integer
-Option Explicit
+Option Explicit On
 
 If Mm.Device$ = "MMB4L" Then Option Simulate PicoMiteVGA
 ' If Mm.Device$ = "MMB4L" Then Option Simulate PicoCalc
 
 #Include "splib/system.inc"
+#Include "splib/file.inc"
 #Include "console.inc"
+#Include "script.inc"
 #Include "adventlib.inc"
 
 Const VERSION = 9300 ' 0.9.0
 Const NUM_QUESTIONS = count_data%("question_data")
 Const NUM_CLUES = count_data%("clue_data")
 Const NUM_ACCUSE_REPLIES = count_data%("accuse_reply_data")
+
+Const advent.file$ = "darnley" ' Required by 'script.inc'
 
 Dim questions$(Max(NUM_QUESTIONS, 2)) Length 128
 Dim accuse_replies$(Max(NUM_ACCUSE_REPLIES, 2)) Length 32
