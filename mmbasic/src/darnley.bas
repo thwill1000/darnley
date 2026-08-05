@@ -53,7 +53,7 @@ Do
 
 command_end:
 
-  If Not result% Then print_fail "That doesn't seem to work."
+  If Not result% Then print_fail("That doesn't seem to work.")
 
   con.println()
 Loop
@@ -108,7 +108,7 @@ Function verb_accuse()
   If found% < NUM_CLUES Then
     Local msg$ = "You have found " + Str$(found%) + " of the " + Str$(NUM_CLUES)
     Cat msg$, " clues needed to make an accusation."
-    print_fail msg$
+    print_fail(msg$)
     Exit Function
   EndIf
 
@@ -124,13 +124,13 @@ Function verb_accuse()
     ' If q% = NUM_QUESTIONS And correct% <> NUM_QUESTIONS - 1 Then
     '   msg$ = "You only answered " + Str$(Int((100 * correct%) / (NUM_QUESTIONS - 1)))
     '   Cat msg$, "% of the questions correctly, so you can't make an accusation yet."
-    '   print_fail msg$
+    '   print_fail(msg$)
     '   Exit For 'Function
     ' EndIf
 
     ' If q% = NUM_QUESTIONS + 1 Then
     '   If correct% = NUM_QUESTIONS Then Exit For
-    '   print_fail "That's not correct. Think again."
+    '   print_fail("That's not correct. Think again.")
     '   q% = NUM_QUESTIONS - 1
     '   Continue For
     ' EndIf
@@ -144,11 +144,11 @@ Function verb_accuse()
     ' Split the answer into words
     Select Case split_words%(answer$, words$())
       Case 1
-        print_fail "Too many words."
+        print_fail("Too many words.")
         Inc q%, -1
         Continue For
       Case 2
-        print_fail "Word too long."
+        print_fail("Word too long.")
         Inc q%, -1
         Continue For
     End Select
@@ -191,7 +191,7 @@ Function verb_accuse()
   Else
     msg$ = "You answered " + Str$(correct%) + " of " + Str$(NUM_QUESTIONS)
     Cat msg$, " questions correctly."
-    print_fail msg$
+    print_fail(msg$)
     con.println()
     con.foreground("cyan")
     print_message_or_fail("INCORRECT_ACCUSATION")
