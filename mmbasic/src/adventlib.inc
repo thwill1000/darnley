@@ -521,10 +521,10 @@ Function parse_common(cmd$)
   ' Split command into array of words
   Select Case split_words%(cmd$, words$())
     Case 1
-      print_fail "Too many words."
+      print_fail("Too many words.")
       parse_common = 1
     Case 2
-      print_fail "Word too long."
+      print_fail("Word too long.")
       parse_common = 1
   End Select
   If parse_common Then Exit Function
@@ -593,10 +593,10 @@ Function parse_common(cmd$)
 
   If verb$ = "kill" Then
     parse_common = 1
-    print_fail "This is not that sort of game."
+    print_fail("This is not that sort of game.")
   ElseIf verb$ = "use" Then
     parse_common = 1
-    print_fail "You need to tell me how to use that."
+    print_fail("You need to tell me how to use that.")
   EndIf
 End Function
 
@@ -618,7 +618,7 @@ Function verb_ask()
 
   Const about_idx% = find_word%(words$(), "about")
   If Not about_idx% Then
-    print_fail "Try: ASK person ABOUT subject"
+    print_fail("Try: ASK person ABOUT subject")
     Exit Function
   EndIf
 
@@ -642,7 +642,7 @@ End Function
 Function resolve_ask_target%(about_idx%)
   resolve_ask_target% = find_obj%(words$(), 1, about_idx% - 1)
   If Not resolve_ask_target% Then
-    print_fail "You don't know that person."
+    print_fail()"You don't know that person.")
     Exit Function
   EndIf
 
@@ -650,7 +650,7 @@ Function resolve_ask_target%(about_idx%)
     Local msg$ = obj_name$(resolve_ask_target%)
     If Not obj_is_person%(resolve_ask_target%) Then msg$ = "The " + LCase$(msg$)
     Cat msg$, Choice(Right$(msg$, 1) = "s", " are", " is") + " not here."
-    print_fail msg$
+    print_fail(msg$)
     resolve_ask_target% = 0
     Exit Function
   EndIf
@@ -658,7 +658,7 @@ Function resolve_ask_target%(about_idx%)
   If Not obj_is_person%(resolve_ask_target%) Then
     Local msg$ = "The " + LCase$(obj_name$(resolve_ask_target%))
     Cat msg$, Choice(Right$(msg$, 1) = "s", " do", " does") + " not answer."
-    print_fail msg$
+    print_fail(msg$)
     resolve_ask_target% = 0
   EndIf
 End Function
@@ -730,7 +730,7 @@ Sub print_ask_result(filename$, best_match_count%, best_match_line%)
   con.foreground("cyan")
 
   If best_match_count% = 0 Then
-    print_fail "I don't know what you are talking about."
+    print_fail("I don't know what you are talking about.")
   Else
     Open adv.asset_dir$ + "/" + filename$ For Input As #1
     Do
@@ -754,7 +754,7 @@ Function verb_drop()
   Local msg$ = "This game does not require you to TAKE, DROP or otherwise manipulate objects. Just "
   Cat msg$, "explore your surroundings, search for and EXAMINE the clues and ASK questions of the "
   Cat msg$, "suspects."
-  print_fail msg$
+  print_fail(msg$)
 End Function
 
 ' Finds the best matching object for the given words.
@@ -896,7 +896,7 @@ End Function
 Function verb_look()
   verb_look = 1
   If noun$ <> "" Then
-    print_fail "Perhaps you meant EXAMINE " + UCase$(noun$) + "."
+    print_fail("Perhaps you meant EXAMINE " + UCase$(noun$) + ".")
   Else
     Mid$(visited$, r, 1) = "0"
     describe% = 1
@@ -932,7 +932,7 @@ Function verb_take()
   '   Local msg$ = "I do not understand the word"
   '   If count_words%(words$()) > 2 Then Cat msg$, "s"
   '   Cat msg$, " " + Chr$(39) + cat_words$(words$(), 2) + Chr$(39) + "."
-  '   print_fail msg$
+  '   print_fail(msg$)
   '   Exit Function
   ' EndIf
 
@@ -941,13 +941,13 @@ Function verb_take()
   '   Local msg$ = obj_name$(o%)
   '   If Not obj_is_person%(o%) Then msg$ = "The " + LCase$(msg$)
   '   If Right$(msg$, 1) = "s" Then Cat msg$, " are not here." Else Cat msg$, " is not here."
-  '   print_fail msg$
+  '   print_fail(msg$)
   '   Exit Function
   ' EndIf
 
   ' ' Check if the object is not a person
   ' If obj_is_person%(o%) Then
-  '   print_fail "That would be inappropriate."
+  '   print_fail("That would be inappropriate.")
   '   Exit Function
   ' EndIf
 
@@ -955,18 +955,18 @@ Function verb_take()
   ' If obj_weight%(o%) > MAX_TAKEABLE_WEIGHT Then
   '   Local msg$ = "The " + LCase$(obj_name$(o%))
   '   If Right$(msg$, 1) = "s" Then Cat msg$, " are too heavy." Else Cat msg$, " is too heavy."
-  '   print_fail msg$
+  '   print_fail(msg$)
   '   Exit Function
   ' EndIf
 
   ' ' Check if the object is takeable
   ' If Not obj_is_takeable%(o%) Then
-  '   print_fail "You cannot take the " + LCase$(obj_name$(o%)) + "."
+  '   print_fail("You cannot take the " + LCase$(obj_name$(o%)) + ".")
   '   Exit Function
   ' EndIf
 
   ' ' For the moment nothing can be taken
-  ' print_fail "There is no need to carry the " + LCase$(obj_name$(o%)) + " around with you."
+  ' print_fail("There is no need to carry the " + LCase$(obj_name$(o%)) + " around with you.")
 End Function
 
 ' Handles the QUIT verb
