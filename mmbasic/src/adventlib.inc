@@ -211,7 +211,6 @@ Sub describe_loc()
   EndIf
 
   print_message_or_fail(loc_tag$)
-  con.println()
 
   ' ' Iterate through objects to find those at the current location
   ' con.print("You can see: ")
@@ -260,18 +259,8 @@ Function find_loc%(tag$, no_error%)
 End Function
 
 ' Print message for a failed action
-'
-' @param[in] s$      The failure message to print, in red.
-' @param[in] flags%  Bitmask controlling layout:
-'                       &h01 - suppress the leading blank line normally
-'                              printed before the message.
-'                       &h02 - do not terminate the message with a newline;
-'                              instead just flush the console buffer,
-'                              leaving the cursor on the same line.
 Sub print_fail(s$, flags%)
-  If (flags% And &h01) = 0 Then con.println()
-  con.print("[[red:" + s$ + "]]")
-  If (flags% And &h02) = 0 Then con.println() Else con.flush()
+  con.println("[[red:" + s$ + "]]")
 End Sub
 
 ' Prompt the user for input
@@ -642,7 +631,7 @@ End Function
 Function resolve_ask_target%(about_idx%)
   resolve_ask_target% = find_obj%(words$(), 1, about_idx% - 1)
   If Not resolve_ask_target% Then
-    print_fail()"You don't know that person.")
+    print_fail("You don't know that person.")
     Exit Function
   EndIf
 
@@ -726,7 +715,6 @@ End Sub
 Sub print_ask_result(filename$, best_match_count%, best_match_line%)
   Local s$, line_num%
 
-  con.println()
   con.foreground("cyan")
 
   If best_match_count% = 0 Then
@@ -800,8 +788,6 @@ Function verb_examine()
   Const oloc% = Choice(obj%, obj_loc%(obj%), 0)
   Local ok% = 0
 
-  con.println()
-
   If oloc% = r Then
     ' Object exists and is present
     con.foreground("cyan")
@@ -809,7 +795,7 @@ Function verb_examine()
     con.foreground("reset")
   EndIf
 
-  If Not ok% Then print_fail("That is not here, cannot be examined or is unremarkable.", 1)
+  If Not ok% Then print_fail("That is not here, cannot be examined or is unremarkable.")
 
   verb_examine = 1
 End Function
@@ -972,7 +958,6 @@ End Function
 ' Handles the QUIT verb
 Function verb_quit()
   verb_quit = 1
-  con.println()
   con.println("Goodbye!")
   con.println()
   End
@@ -986,7 +971,7 @@ End Function
 ' scanning continues for a later entry with the same tag.
 '
 ' @param tag$     The tag to search for in the message file.
-' @param no_eol%  If set, suppresses the trailing blank line on success.
+' @param no_eol%  If not 0 then don't print EOL at end of message.
 ' @return         0 on success, 1 if no eligible entry was found.
 Function print_message%(tag$, no_eol%)
   Const fnbr% = 1
@@ -1018,14 +1003,14 @@ Function print_message%(tag$, no_eol%)
   Loop
   Close fnbr%
 
-  If print_message% = 0 And Not no_eol% Then con.println()
+  If print_message% = 0 And no_eol% = 0 Then con.println()
 End Function
 
 ' As print_message%(), but raises an error if no eligible entry is found.
 ' For use by callers that treat a missing/ineligible message as a data bug
 ' rather than a normal game-state outcome.
 Sub print_message_or_fail(tag$, no_eol%)
-  If print_message%(tag$, no_eol%) Then Error "Message not found: " + tag$
+  If print_message%(tag$, no_eol%) Then print_fail("ERROR: message " + UCase$(tag$) + " not found.")
 End Sub
 
 ' Reads directives and prints the body for the entry positioned immediately

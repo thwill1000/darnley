@@ -19,6 +19,7 @@ Const NUM_ACCUSE_REPLIES = count_data%("accuse_reply_data")
 
 Dim questions$(Max(NUM_QUESTIONS, 2)) Length 128
 Dim accuse_replies$(Max(NUM_ACCUSE_REPLIES, 2)) Length 32
+Dim cmd$
 Dim result%
 
 Option Console Both
@@ -44,7 +45,11 @@ Do
 
   If describe% Then describe_loc()
 
-  result% = parse(get_input$())
+  con.println()
+  cmd$ = get_input$()
+  con.println()
+  con.lines = 0 ' So we don't show [MORE] with a blank line at top of display
+  result% = parse(cmd$)
   If result% = 1 Then Goto command_end
 
   On Error Skip 1
@@ -54,8 +59,6 @@ Do
 command_end:
 
   If Not result% Then print_fail("That doesn't seem to work.")
-
-  con.println()
 Loop
 
 End
@@ -112,7 +115,6 @@ Function verb_accuse()
     Exit Function
   EndIf
 
-  con.println()
   con.foreground("cyan")
   print_message_or_fail("ACCUSE_TEXT")
   con.foreground("reset")
@@ -140,6 +142,7 @@ Function verb_accuse()
     print_message_or_fail(Field$(questions$(q%), 1, "|"), 1)
     answer$ = get_input$(" ")
     con.foreground("reset")
+    con.println()
 
     ' Split the answer into words
     Select Case split_words%(answer$, words$())
@@ -169,13 +172,17 @@ Function verb_accuse()
       Inc i%
     Loop
 
-    con.println()
-    If q% <> NUM_QUESTIONS Then print_accuse_reply()
+    ' Uncomment for debugging
+    ' If response$ = "" Then response$ = "incorrect"
+
+    If response$ = "incorrect" Then
+      print_fail("Incorrect.")
+    Else If q% <> NUM_QUESTIONS Then
+      print_accuse_reply()
+    EndIf
   Next
 
-  correct% = NUM_QUESTIONS - 1
   If correct% = NUM_QUESTIONS Then
-    con.println()
     con.foreground("cyan")
     print_message_or_fail("CONGRATULATIONS")
     con.foreground("reset")
@@ -220,7 +227,6 @@ End Sub
 ' Handles the CHEAT verb
 Function verb_cheat()
   verb_cheat = 1
-  con.println()
   print_message_or_fail("CHEAT_TEXT")
   Local clues$(Max(NUM_CLUES, 2)) Length MAX_WORD_LENGTH
   read_clues(clues$())
@@ -230,7 +236,6 @@ End Function
 ' Handles the HELP verb
 Function verb_help()
   verb_help = 1
-  con.println()
   print_message_or_fail("HELP_TEXT")
 End Function
 
