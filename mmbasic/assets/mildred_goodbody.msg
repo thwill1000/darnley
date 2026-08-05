@@ -1,18 +1,18 @@
 events yesterday murder
 "I have worked here for five years. Last night I cooked and washed up
-with Norah. At about 10.30 I heard a loud bang, it gave me quite a
+with Norah. At about 10:30 I heard a loud bang, it gave me quite a
 shock. Not long after we went to bed; me and Norah behind the curtain
 and Mr. B. on the other side. We had to muck in with Mr. B. because
 Sir Redvers had turned up unexpectedly and taken our room.@
 @
-I was woken up by a shot at 11.20 (according to my clock); the others
+I was woken up by a shot at 11:20 (according to my clock); the others
 were still asleep. I didn't bother 'cos I thought it was poachers. A few
 minutes later Mr. Coniston turned up in his dressing gown and slippers
 and woke up Mr. B., but I couldn't hear what it was about."
 
 alibi
 "We was all three together, me, Norah and Mr. B. in Mr. B.'s pantry
-at 10.30 and 11.30. Of course we was asleep at 11.30 so I suppose
+at 10:30 and 11:30. Of course we was asleep at 11:30 so I suppose
 any of us could have slipped out without the others noticing."
 
 slippers

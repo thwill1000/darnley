@@ -6,12 +6,12 @@ atmosphere at dinner, I am bound to say, was not entirely comfortable.
 Afterwards I served port to the gentlemen in the billiard room and
 withdrew at a little after nine.@
 @
-I had my own dinner at 9.30 with the other servants, then cleaned boots.
-I was disturbed by a loud bang at 10.30 - a door slamming, I assumed,
+I had my own dinner at 9:30 with the other servants, then cleaned boots.
+I was disturbed by a loud bang at 10:30 - a door slamming, I assumed,
 given the tempers that evening - and did nothing about it. Shortly
 afterwards I went to bed in the butler's pantry.@
 @
-I was woken by Mr. Coniston at 11.30. He said that he had not been able
+I was woken by Mr. Coniston at 11:30. He said that he had not been able
 to sleep and had gone to the lounge to smoke. He saw a light under the
 study doors and was concerned because the doors were locked and Colonel
 Darnley would not answer. I offered to get my own keys but Mr. Coniston
@@ -28,8 +28,8 @@ tell where the shot had come from. The Colonel's keys were in the locks
 of the two doors."
 
 alibi
-"I was with Mrs. Goodbody and young Norah in my pantry at both 10.30
-and 11.30."
+"I was with Mrs. Goodbody and young Norah in my pantry at both 10:30
+and 11:30."
 
 slippers
 "I believe these are Mr. Coniston's slippers. He was wearing them

@@ -5,7 +5,7 @@ been very happy together. Last night we all had dinner together.
 Afterwards the men played billiards while Millicent and I had
 coffee in the lounge.@
 @
-At about 9.30 the men joined us for half an hour then Arthur and
+At about 9:30 the men joined us for half an hour then Arthur and
 Millicent said that they were going to the music room. Sebastian
 and Sir Redvers had business to talk about so they went into the
 study. I heard them quarrelling but couldn't tell what about.
@@ -16,7 +16,7 @@ into Millicent on the landing. She said that she had left Arthur
 in the music room and was going to bed.@
 @
 I went into the morning room and played some Chopin nocturnes on
-the piano there until about 11.30 when I heard a noise like a shot
+the piano there until about 11:30 when I heard a noise like a shot
 which I thought was poachers. Looking at my watch I decided it was
 time to go to bed.@
 @
@@ -25,8 +25,8 @@ wake Sir Redvers. Millicent heard the racket and came into my room
 from hers. And the rest you know."
 
 alibi
-"At 10.30 I was reading and drinking coffee in the lounge - on my
-own, I'm afraid. At 11.30 I was playing the piano in the morning
+"At 10:30 I was reading and drinking coffee in the lounge - on my
+own, I'm afraid. At 11:30 I was playing the piano in the morning
 room - also alone, alas! I don't suppose it looks to good?"
 
 cigarettes
@@ -38,13 +38,13 @@ missing statue
 into the pond."
 
 gramophone
-"The gramophone? I was in the morning room from about 10.40 until
-11.30 playing the piano. It's possible I played a record, but I
+"The gramophone? I was in the morning room from about 10:40 until
+11:30 playing the piano. It's possible I played a record, but I
 don't remember doing so."
 
 piano
 "If you mean the morning room piano, I was playing it from about
-10.40 until I heard the bang at 11.30. I was on my own throughout
+10:40 until I heard the bang at 11:30. I was on my own throughout
 and no-one else came into the room."
 
 ladys shoes
