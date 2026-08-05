@@ -343,6 +343,11 @@ Sub con.print_file(f$, center)
   Close #1
 End Sub
 
+' Prints string highlighted as a failure.
+Sub con.print_fail(s$)
+  con.println("[[red:" + s$ + "]]")
+End Sub
+
 Sub con.open_in(fd, f$)
   con.close_in()
   Open f$ For Input As #fd

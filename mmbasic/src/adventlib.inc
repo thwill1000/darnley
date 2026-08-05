@@ -1,6 +1,12 @@
 ' Adventure Game Library v2
 ' Copyright (c) 2025-2026 Thomas Hugo Williams
 
+On Error Skip 1 : Dim sys.VERSION = -1
+If sys.VERSION = -1 Then Error "'system.inc' not included"
+sys.requires("console", "script")
+sys.provides("advent")
+If sys.err$ <> "" Then Error sys.err$
+
 If Mm.Info$(Device X) = "MMB4L" And Mm.Info(Version) < 80000000 Then Option Resolution Pixel
 
 Const HAS_GFX = 1 ' Set to 0 to disable Graphics
@@ -521,6 +527,9 @@ Function parse_common(cmd$)
   ' Remove "padding" words that don't add meaning
   Local remove$(3) = ("of", "the", "to")
   remove_words(words$(), remove$())
+
+  ' Remove leading * from verb
+  If Left$(words$(1), 1) = "*" Then words$(1) = Mid$(words$(1), 2)
 
   ' Transform verbs
   verb$ = ""
@@ -1047,3 +1056,29 @@ Sub print_body(s$)
     Line Input #1, s$
   Loop
 End Sub
+
+' Handles the RECORD verb
+Function verb_record()
+  verb_record = 1
+  Select Case words$(2)
+    Case "", "on", "start"
+      script.record_on()
+    Case "off", "stop"
+      script.record_off()
+    Case Else
+      print_fail("Did you mean RECORD " + Choice(con.fd_out, "OFF", "ON") + "?")
+  End Select
+End Function
+
+' Handles the REPLAY verb
+Function verb_replay()
+  verb_replay = 1
+  Select Case words$(2)
+    Case "", "on", "start"
+      script.replay_on()
+    Case "off", "stop"
+      script.replay_off()
+    Case Else
+      print_fail("Did you mean REPLAY " + Choice(con.fd_in, "OFF", "ON") + "?")
+  End Select
+End Function
