@@ -180,10 +180,10 @@ Sub show_intro(title$)
   con.println("[[green:" + title$ + " (" + v$ + ")]]")
   con.println()
   print_message_or_fail("INTRO")
-  print_newline()
+  con.println()
   con.show_more_prompt(1)
   print_message_or_fail"HELP_TEXT")
-  print_newline()
+  con.println()
   con.show_more_prompt()
   con.clear()
 End Sub
@@ -258,11 +258,6 @@ Function find_loc%(tag$, no_error%)
     Error "Location not found: " + tag$
   EndIf
 End Function
-
-' Prints a newline
-Sub print_newline()
-  con.println()
-End Sub
 
 ' Print message for a failed action
 '
