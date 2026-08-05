@@ -55,7 +55,7 @@ command_end:
 
   If Not result% Then print_fail "That doesn't seem to work."
 
-  print_newline()
+  con.println()
 Loop
 
 End
