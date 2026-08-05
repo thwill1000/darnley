@@ -2,13 +2,13 @@ events yesterday murder
 "I have known Darnley for about 20 years. It was some confidential
 business dealings that brought me here urgently yesterday. Last
 night I had dinner with the family and young Coniston. Afterwards
-- at about 9.00 - we gentlemen had a game and some port in the
+- at about 9:00 - we gentlemen had a game and some port in the
 billiard room, then we joined the ladies in the lounge for half
 an hour.@
 @
-Darnley and I left the others at 10.00 and chatted about our
+Darnley and I left the others at 10:00 and chatted about our
 business for a while. The discussion was very friendly and I left
-Darnley alive at 10.30.@
+Darnley alive at 10:30.@
 @
 I was sleeping in the servants' quarters and went to bed straight
 away. Having had a bit to drink I slept very soundly and heard
@@ -16,9 +16,9 @@ nothing until Billingsgate woke me at midnight to tell me about
 this terrible business."
 
 alibi
-"I left Darnley alive at 10.30 and it's damn nonsense to suggest I
+"I left Darnley alive at 10:30 and it's damn nonsense to suggest I
 shot him with all the house awake and then waited to see what would
-happen. At 11.30 I was asleep like a good Christian, and the Devil
+happen. At 11:30 I was asleep like a good Christian, and the Devil
 take you if a fellow needs an alibi!"
 
 boots

@@ -1,8 +1,8 @@
 events yesterday murder
 "I have worked for Colonel Darnley for five years. He was strict but
-fair. I have no complaints. Last night I did my last rounds at 8.00
+fair. I have no complaints. Last night I did my last rounds at 8:00
 pm. I saw nothing suspicious. I spent the rest of the evening at
-home and went to bed at 10.00. I didn't hear any strange noises. It
+home and went to bed at 10:00. I didn't hear any strange noises. It
 wasn't the weather for poachers."
 
 alibi

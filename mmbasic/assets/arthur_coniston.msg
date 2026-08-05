@@ -3,18 +3,18 @@ events yesterday murder
 Colonel Darnley for permission to marry Millicent. I popped the question
 to the old boy in the afternoon and he agreed. Last night we all had
 dinner together and afterwards we fellows played a little billiards
-before joining the ladies for coffee. At about 10.00 Sir Redvers broke
+before joining the ladies for coffee. At about 10:00 Sir Redvers broke
 up the party by asking Darnley to go into the study with him. I asked
 Millicent to come with me to the music room where we played duets for
 half an hour.@
 @
 There was a noise. Millicent thought it was a poacher and hoped that
 Mellors would catch him. She decided to go to bed. I stayed on to smoke
-a cigar and didn't go up until 11.00. I noticed nothing odd except that
+a cigar and didn't go up until 11:00. I noticed nothing odd except that
 to get to my bedroom I had to go through the morning room where the
 gramophone was playing a Chopin nocturne but there was no-one there.@
 @
-I undressed and went to bed but couldn't sleep. At about 11.30 I heard
+I undressed and went to bed but couldn't sleep. At about 11:30 I heard
 a noise - a door banging, so I thought at the time. I decided to go
 downstairs and smoke another cigar in the lounge. I noticed a light
 under the study door and knocked on it to see who was there. I got
@@ -30,8 +30,8 @@ I had noticed some bootprints outside, so I went out and followed them.
 They led around the house to the kitchen door. I followed in my slippers."
 
 alibi
-"Millicent and I were together in the music room at 10.30. I don't
-know how anyone can be expected to have an alibi for 11.30.
+"Millicent and I were together in the music room at 10:30. I don't
+know how anyone can be expected to have an alibi for 11:30.
 Certainly a single gentleman could never admit to one, if you follow
 my meaning."
 
@@ -57,10 +57,10 @@ missing statue
 "I don't know what you're talking about."
 
 gramophone
-"When I went to bed at 11.00, the gramophone was playing a Chopin
+"When I went to bed at 11:00, the gramophone was playing a Chopin
 nocturne. Otherwise the morning room was empty. Later the record
 appeared to be stuck. It was still playing when I went downstairs
-shortly after 11.30."
+shortly after 11:30."
 
 piano
 "After dinner Millicent and I played duets on the piano in the music
