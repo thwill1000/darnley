@@ -274,20 +274,6 @@ Sub print_fail(s$, flags%)
   If (flags% And &h02) = 0 Then con.println() Else con.flush()
 End Sub
 
-' Prints text read from DATA
-Sub print_text(label$, fg$)
-  Local s$
-  Restore label$
-  If fg$ <> "" Then con.foreground(fg$)
-  Do
-    Read s$
-    If s$ = "" Then Exit Do
-    con.print(s$)
-  Loop
-  con.println()
-  If fg$ <> "" Then con.foreground("reset")
-End Sub
-
 ' Prompt the user for input
 Function get_input$(prompt$)
   If prompt$ = "" Then
