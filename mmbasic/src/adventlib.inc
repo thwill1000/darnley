@@ -3,7 +3,7 @@
 
 On Error Skip 1 : Dim sys.VERSION = -1
 If sys.VERSION = -1 Then Error "'system.inc' not included"
-sys.requires("console", "script")
+sys.requires("console", "script", "state")
 sys.provides("advent")
 If sys.err$ <> "" Then Error sys.err$
 
@@ -24,13 +24,10 @@ Dim adv.asset_dir$ = Mm.Info(Path) + "../assets"
 Dim adv.msg_file$ = adv.asset_dir$ + "/messages.dat"
 Dim DEBUG = 0
 Dim describe% = 1
-Dim r = 1, r_new
 Dim rooms$(Max(NUM_ROOMS, 2)) Length 255
 Dim objects$(Max(NUM_OBJECTS, 2)) Length 128
 Dim words$(10) Length 20
 Dim noun$, verb$
-Dim flags%(128)  ' LongString of "|TOKEN|TOKEN|..." flags, 1KB capacity
-Dim visited$
 
 Function FAILED(i%) As Integer
   FAILED = i%
@@ -43,10 +40,9 @@ End Function
 Sub init_advent()
   If Val(Mm.CmdLine$) <> 0 Then r = Val(Mm.CmdLine$)
   init_console()
-  init_flags()
   read_rooms()
   read_objects()
-  visited$ = String$(NUM_ROOMS, "0")
+  state.reset()
 End Sub
 
 ' Initialises and clears console/terminal
@@ -60,11 +56,6 @@ Sub init_console()
     Console Resize con.WIDTH, con.HEIGHT
   EndIf
   con.clear()
-End Sub
-
-Sub init_flags()
-  LongString Clear flags%()
-  LongString Append flags%(), "|"
 End Sub
 
 ' Count the number of data entries
@@ -842,23 +833,23 @@ Function find_matches%(haystack$(), needles$(), first%, last%)
   Next
 End Function
 
-' Handles the GO verb, setting r_new to the best matching exit location.
+' Handles the GO verb, setting `r` to the best matching exit location.
 '
 ' Iterates the exits of the current room (r) and scores each by counting how
 ' many of the player's words (from index 2 onwards) match words in the exit's
 ' location name. The exit with the highest score is chosen.
 '
-' On success, r_new is set to the index of the destination room.
-' On failure, r_new is set to r (no movement) and an error message is printed.
+' On success, `r` is set to the index of the destination room.
+' On failure, `r` is set to r (no movement) and an error message is printed.
 '
-' Note: r_new is a global that must be acted on by the caller after this
+' Note: `r` is a global that must be acted on by the caller after this
 ' function returns. It is not updated by any other verb handler.
 '
 ' @return  1 always (indicating the verb was handled).
 Function verb_go()
   Local word_count% = count_words%(words$())
   Local loc_words$(10) Length 20
-  Local best_match% = 0, i%, match%, result%
+  Local best_match% = 0, i%, match%, result%, r_new% = -1
 
   Const num_exits% = Val(Field$(rooms$(r), 3, "|"))
   Local loc%, loc_tag$, loc_name$
@@ -870,14 +861,11 @@ Function verb_go()
     match% = find_matches%(loc_words$(), words$(), 2)
     If match% > best_match% Then
       best_match% = match%
-      r_new = loc%
+      r_new% = loc%
     EndIf
   Next
 
-  If Not best_match% Then
-    print_fail("You can't go there.")
-    r_new = r
-  EndIf
+  If r_new% > -1 Then r = r_new% Else print_fail("You can't go there.")
 
   verb_go = 1
 End Function
@@ -1057,6 +1045,26 @@ Sub print_body(s$)
   Loop
 End Sub
 
+' Handles the DUMP verb
+Function verb_dump()
+  verb_dump = 1
+  con.println("ROOM      = " + Str$(r))
+  con.println("VISITED   = " + visited$)
+  Local num_flags% = 0, p%, p_old% = 2
+  If LLen(flags%()) > 1 Then
+    con.print("FLAGS     = ")
+    Do
+      p% = LInStr(flags%(), "|", p_old%)
+      If p% < 1 Then Exit Do
+      If num_flags% > 0 Then con.print(Space$(Len("FLAGS     = ")))
+      con.println(LGetStr$(flags%(), p_old%, p% - p_old%))
+      p_old% = p% + 1
+      Inc num_flags%
+    Loop
+  EndIf
+  con.println("NUM FLAGS = " + Str$(num_flags%))
+End Function
+
 ' Handles the RECORD verb
 Function verb_record()
   verb_record = 1
@@ -1081,4 +1089,17 @@ Function verb_replay()
     Case Else
       print_fail("Did you mean REPLAY " + Choice(con.fd_in, "OFF", "ON") + "?")
   End Select
+End Function
+
+' Handles the RESTORE verb
+Function verb_restore()
+  verb_restore = 1
+  Const ok% = state.restore%()
+  If ok% = 1 Then describe% = 1
+End Function
+
+' Handles the SAVE verb
+Function verb_save()
+  verb_save = 1
+  Const dummy% = state.save%()
 End Function

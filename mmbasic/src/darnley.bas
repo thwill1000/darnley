@@ -12,6 +12,7 @@ If Mm.Device$ = "MMB4L" Then Option Simulate PicoMiteVGA
 #Include "splib/file.inc"
 #Include "console.inc"
 #Include "script.inc"
+#Include "state.inc"
 #Include "adventlib.inc"
 
 Const VERSION = 9300 ' 0.9.0
@@ -25,6 +26,7 @@ Dim questions$(Max(NUM_QUESTIONS, 2)) Length 128
 Dim accuse_replies$(Max(NUM_ACCUSE_REPLIES, 2)) Length 32
 Dim cmd$
 Dim result%
+Dim r_old%
 
 Option Console Both
 On Error Skip ' Ignore failure to set Mode on PicoCalc
@@ -34,18 +36,15 @@ Font 7
 init_advent()
 read_questions()
 read_accuse_replies()
-r = -1
-r_new = find_loc%("LOC017_DRIVE")
+r = find_loc%("LOC017_DRIVE")
+r_old% = r
 
 show_splash()
 show_intro("The Sealed Room Murder")
 
 Do
   ' If the player's location has changed then set flag to describe their new location
-  If r_new <> r Then
-    r = r_new
-    describe% = 1
-  EndIf
+  If r_old% <> r Then describe% = 1 : r_old% = r
 
   If describe% Then describe_loc()
 
