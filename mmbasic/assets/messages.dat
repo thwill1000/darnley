@@ -30,13 +30,11 @@ A washstand with a marble top and a pedestal washbowl complete
 the ensemble. A heavy mahogany door leads back out to the [[green:Upstairs landing]].
 
 LOC002_ORCHARD
-The park wall runs along the north boundary, several pear-trees trained
-in espalier against the old stone. Bare apple trees stand in rows across
-the frozen ground, their branches black against a white sky. A dusting
-of snow covers the grass between the trunks, too disturbed by fallen
-twigs and animal tracks to preserve any clear footprints. A path east
-leads to the [[green:Kitchen garden]], whilst the south opens onto a
-[[green:Paved terrace]].
+Bare apple trees stand in rows across the frozen orchard ground,
+branches black against a white sky. A park wall runs along the north
+boundary. Snow covers the grass between the trunks, disturbed,
+footprints unclear. A path east leads to the [[green:Kitchen garden]],
+whilst the south opens onto a [[green:Paved terrace]].
 
 LOC003_KITCHEN_GARDEN
 The kitchen garden lies frozen and barren under snow. [[green:Footprints]]
@@ -45,13 +43,11 @@ the [[green:Outhouses]] to the east, and the [[green:Kitchen]] door to the
 south.
 
 LOC004_OUTHOUSES
-A cluster of low brick buildings occupies this corner of the grounds: a
-laundry with its copper still cold, a coal store with a dusting of black
-dust on the snow outside its door, and a timber pigeon-coop from which
-the occasional soft sound emerges. The smell of coal smoke and damp
-brick hangs in the cold air. Boot marks cross the snow between the
-buildings without settling into any clear pattern. The
-[[green:Kitchen garden]] lies west, the [[green:Maze]] to the south.
+A cluster of outbuildings occupies this corner: a laundry, a
+coal store, and a timber pigeon-coop. The smell of coal smoke and damp
+brick hangs in the air. Boot marks cross the snow between the buildings
+without settling into any clear pattern. The [[green:Kitchen garden]]
+lies west, the [[green:Maze]] to the south.
 
 LOC005_ORNAMENTAL_POND
 At the western end of a [[green:Paved terrace]] stands an ornamental
@@ -71,7 +67,7 @@ LOC007_COLONELS_STUDY
 beside it. A [[green:tantalus]] of decanters stands on the table, and a [[green:letter]] rests upon
 the writing desk. A [[green:gun rack]] displays sporting
 pieces, one notably absent. A [[green:French window]] in the west wall bears
-a jagged hole; [[green:shattered]] glass litters the floor. A
+a jagged hole; [[green:shattered glass]] litters the floor. A
 [[green:Paved terrace]] lies beyond the window, otherwise doors lead to the
 [[green:Hall]] and the [[green:Lounge]].
 
@@ -88,12 +84,12 @@ shards collected from the estate grounds. Doors lead to the
 [[green:Lounge]], or the staircase climbs to the [[green:Upstairs landing]].
 
 LOC009_KITCHEN
-Game birds hang from the ceiling in this well-appointed kitchen. On the
-sink's draining-board lies a [[green:knife]]. By the outside door stands a
-line of [[green:boots]] alongside cleaning brushes and polish.
-The cook, [[green:Mildred Goodbody]] stands here overseeing the work.
-Doors lead to the [[green:Kitchen garden]], [[green:Butler's pantry]],
-and [[green:Dining room]].
+Game birds hang from the ceiling of this kitchen. On the sink's
+draining-board lies a [[green:knife]]. By the outside door stands a
+line of [[green:boots]] and cleaning brushes. The cook,
+[[green:Mildred Goodbody]] oversees the work here. Doors lead to the
+[[green:Kitchen garden]], [[green:Butler's pantry]], and
+[[green:Dining room]].
 
 LOC010_BUTLERS_PANTRY
 A small sitting room with a bed behind a curtain, two temporary
@@ -102,13 +98,11 @@ beds have been made up. A small [[green:bookshelf]] holds various volumes.
 [[green:Kitchen]] and [[green:Dining room]].
 
 LOC011_MAZE
-Low box hedges, trimmed to chest height, form the walls of this modest
-maze on the east side of the house. The hedges are dark and winter-dense,
-their surfaces carrying a thin crust of snow along each flat top. The
-snow on the paths between them has been scuffed and disturbed - possibly
-by several people - but the compressed and broken surface will not yield
-clear footprints. The [[green:Outhouses]] lie north, the
-[[green:East walk]] west, the [[green:East lawn]] south.
+Chest-height box hedges form the walls of this modest maze. They are
+dark and winter-dense, with a thin crust of snow along each flat top.
+The paths between them are scuffed and disturbed but yield no clear
+footprints. The [[green:Outhouses]] lie north, the [[green:East walk]]
+west, the [[green:East lawn]] south.
 
 LOC012_WEST_WALK
 A gravel path runs clockwise around the house between the snow-covered tennis court
@@ -119,16 +113,15 @@ The [[green:Main drive]] lies east, the [[green:Summer house]] south-west, the
 LOC013_LOUNGE
 A three-piece suite dominates this room on a Chinese carpet, scattered with
 magazines and novels. Recent family portraits hang on the walls. The fireplace
-is carved marble holding the remains of a fire, its mantelpiece bearing an
-Indian rosewood box with ivory inlay. [[green:Millicent Darnley]] sits here.
-Doors lead to the [[green:Hall]] and the [[green:Colonel's Study]].
+is carved marble holding the remains of a fire. [[green:Millicent Darnley]] sits
+here. Doors lead to the [[green:Hall]] and the [[green:Colonel's Study]].
 
 LOC014_DINING_ROOM
-A fine oak table with William and Mary chairs occupies the centre. A glass
-case displays Delft pottery, whilst a sideboard holds a silver wine cooler
-and Sevres urns. The fireplace is carved marble, its walls hung with Italian
-landscapes. Doors lead to the [[green:Hall]], [[green:Kitchen]],
-[[green:Butler's pantry]], [[green:Music room]], and [[green:Billiard room]].
+A fine oak table with William and Mary chairs fills the centre. A glass case
+holds Delft pottery; a sideboard holds a silver wine cooler and Sevres urns.
+The marble fireplace's walls carry Italian landscapes. Doors lead to the
+[[green:Hall]], [[green:Kitchen]], [[green:Butler's pantry]],
+[[green:Music room]], and [[green:Billiard room]].
 
 LOC015_MUSIC_ROOM
 A [[green:piano]] occupies the centre with a [[green:brass ashtray]] on top.
@@ -145,19 +138,21 @@ recent game. Shelves hold magazines and novels by Conan Doyle and Buchan. Three
 and [[green:Music room]].
 
 LOC017_DRIVE
-From wrought-iron gates, the drive sweeps northward toward stone lions flanking
-steps that climb to the [[green:Hall]] door. Paths branch away: clockwise around the
-house along snow-covered gravel toward the [[green:West walk]] and [[green:West lawn]],
-or anti-clockwise through an avenue of statues along the [[green:East walk]]
-towards the distant [[green:Stables]]. The snow reveals a confused tangle of
-[[green:footprints]] criss-crossing in all directions.
+From wrought-iron gates, the drive sweeps northward toward a small red-brick
+Georgian manor, its weathered facade and plain symmetrical proportions
+speaking of an earlier, more restrained age, stone lions flanking
+steps that climb to the [[green:Hall]] door. Paths branch away: clockwise around
+the house along snow-covered gravel toward the [[green:West walk]] and
+[[green:West lawn]], or anti-clockwise through an avenue of statues along the
+[[green:East walk]] towards the [[green:Stables]]. The snow reveals a confused
+tangle of [[green:footprints]] criss-crossing in all directions.
 
 LOC018_EAST_WALK
 This gravel path runs east-west across the front of the house, flanked by an
 avenue of statues. [[green:Footprints]] mark the snow-covered gravel. The
 [[green:Main drive]] lies to the west, a box-hedge [[green:Maze]] to the east,
 the [[green:Stables]] to the south, the [[green:East lawn]] and the
-[[green:Gamekeeper's Cottage]] to the south-east.
+[[green:Gamekeeper's cottage]] to the south-east.
 
 LOC019_SUMMER_HOUSE
 A wooden summer house stands on a patch of lawn. Inside are croquet mallets and
@@ -166,8 +161,7 @@ to the [[green:West walk]] and [[green:West lawn]].
 
 LOC020_WEST_LAWN
 A broad lawn stretches between the west walk and the drive, planted with
-young copper beeches still small enough to seem provisional - an
-optimistic planting, their bare winter branches fine as pen-strokes
+young copper beeches, their bare winter branches fine as pen-strokes
 against the grey sky. The snow covering is largely intact but crossed
 by [[green:footprints]] in two or three directions. The
 [[green:Main drive]], [[green:West walk]], and [[green:Summer house]] are near.
@@ -185,21 +179,20 @@ holds saddle and gear for the horse. Access to the [[green:Main drive]],
 [[green:East walk]], and [[green:East lawn]] lies beyond the yard gate.
 
 LOC022_EAST_LAWN
-An open lawn lies between the stable yard and the gamekeeper's cottage,
-sheltered to the north by the box-hedge maze. The snow here is
-undisturbed at the margins but broken by [[green:footprints]] crossing
-from east to west - boot marks, deep and purposeful. A rook picks at
-something in the middle distance and does not bother to fly off.
-The [[green:Maze]] lies to the north, the [[green:Stables]] to the west,
-the [[green:Gamekeeper's Cottage]] to the east.
+An open lawn lies between the [[green:Stables]] and the
+[[green:Gamekeeper's cottage]], sheltered to the north by the box-hedge
+[[green:Maze]]. The snow here is undisturbed at the margins but broken by
+[[green:footprints]] crossing between east and west. A [[green:rook]] picks
+at something in the middle of the lawn.
 
 LOC023_GAMEKEEPERS_COTTAGE
-In the damp shade of chestnut trees stands a gamekeeper's cottage tucked
-against the south-east corner. The door stands open. Inside are game items,
-two shotguns on the wall, an oil-cloth table, an unmade bed, a slop-stone
-sink, and an open fire. [[green:Cigarette ends]] litter the dirty hearth
-amongst food scraps and newspapers. [[green:Ronald Mellors]] dwells here.
-Paths lead from here onto the [[green:East walk]] and [[green:East lawn]].
+In the damp shade of chestnut trees stands a Gamekeeper's cottage tucked
+against the south-east corner of the manor grounds. The door stands open.
+Inside are game items, two [[green:shotguns]] on the wall, an oil-cloth table,
+an unmade bed, a slop-stone sink, and an open fire. [[green:Cigarette ends]]
+litter the dirty hearth amongst food scraps and newspapers.
+[[green:Ronald Mellors]] dwells here. Paths lead away from the cottage onto the
+[[green:East walk]] and [[green:East lawn]].
 
 LOC024_MILLICENT_BEDROOM
 Millicent Darnley's bedroom is decorated to a young lady's taste, with a bed,
@@ -309,16 +302,26 @@ conscience - though of course it need not be one or the other. He will not, it
 is already clear, be volunteering anything.
 
 OBJ201_POND
+!provides x_pond
 Near the centre of the pond the ice is thinner as if it has frozen again
 after having been broken. Beneath the ice you can see the missing
 marble [[green:statue]] and a [[green:revolver]].
 
 OBJ202_SUNKEN_STATUE
+!requires x_pond
+!provides x_statue
 The statue that is beneath the ice is the same as those on the
 pedestals. Stuck in a crevice of the statue is the soaked butt of a
 [[green:cheroot]].
 
+OBJ202_SUNKEN_STATUE
+The statues form a set of four, representing the Four Seasons. They
+are of Italian marble and rest on their own weight rather than being
+cemented to their plinths. Some strength would be required to move
+one.
+
 OBJ203_REVOLVER
+!requires x_pond
 !provides gun
 The revolver found in the pond is a fine quality weapon with decorative grips.
 One bullet has been discharged from it.
@@ -361,7 +364,7 @@ All these boots are polished clean except for a large mud stained pair.
 
 OBJ212_FOOTPRINTS_KG
 Both flat footed boot prints and slipper prints can be seen going
-between the kitchen and the maze.
+between the kitchen and the outhouses.
 
 OBJ213_BED_MASTER
 The Colonel's bed is large and ornate with heavy mahogany posts. The linen sheets
@@ -373,12 +376,11 @@ removed and a spoon beside it, yet the bed itself remains untouched on his side.
 Whatever the Colonel was doing last night, sleep in his own bed was not his intention.
 
 OBJ214_WARDROBE
+!provides x_wardrobe
 As well as clothes the wardrobe contains a selection of men's and women's [[green:shoes]].
 The wardrobe is impressive - made of polished mahogany with ornate brass handles.
 Inside hang numerous dresses, petticoats, and undergarments in organised rows.
-The men's clothing includes smoking jackets, dinner suits, and country wear. One
-suit of country tweeds hangs noticeably alone, somewhat apart from the Colonel's
-own garments - it appears to belong to a visitor.
+The men's clothing includes smoking jackets, dinner suits, and country wear.
 
 OBJ215_CIGARS
 The humidor is mahogany with a glass front, bearing the inscription
@@ -395,6 +397,7 @@ all neatly ordered. One scent bottle has been knocked on its side and not
 righted, which seems at odds with the general tidiness of the room.
 
 OBJ217_SHOES
+!requires x_wardrobe
 This selection of men's and women's shoes ranges from formal evening wear to
 practical country footwear. The women's shoes include delicate satin evening
 slippers and sturdy walking boots. The men's collection is equally varied. Most
@@ -408,7 +411,7 @@ OBJ220_PHOTOGRAPHS
 These photographs depict Mrs. Goodbody's various ugly relatives.
 
 OBJ221_SUIT
-This gentleman's country-suit is apparently Sir Redvers' own garment. It is made
+This gentleman's country-suit apparently belongs to Sir Redvers. It is made
 of fine Scotch tweed in a dark green and brown pattern, well-tailored and evidently
 expensive. The suit has been carefully hung in the servants' quarters wardrobe,
 though this is an odd place for a visitor's good clothing. Why would Sir Redvers
@@ -476,12 +479,12 @@ monstrous suggestion and find I cannot..."
 OBJ231_GUN_RACK
 This mahogany rack is mounted on the study wall and displays sporting rifles and
 revolvers. It is a fine piece of craftsmanship with brass fittings and glass
-panels. One pair of decorative revolvers with engraved grips should be present,
+panels. A pair of decorative revolvers with engraved grips should be present,
 but only one remains. The missing revolver has left a clear outline in the felt
 backing, showing exactly where it once rested.
 
 OBJ232_FRENCH_WINDOW_STUDY
-The study side of this French window bears a jagged hole where one pane has been
+The French window bears a jagged hole where one pane has been
 smashed. The glass on the floor inside is sprinkled across the carpet and the sill.
 No glass lies on the terrace outside - it all fell inward. The hole is roughly
 hand-sized, large enough for someone to reach through and manipulate the lock.
@@ -566,21 +569,21 @@ OBJ246_HANDKERCHIEF
 !provides handkerchief
 This is a lady's handkerchief of plain linen with delicate lace edging and a faint
 perfume - the scent is floral, sweet, and distinctly expensive. The handkerchief
-is initialled with an ornate "M" worked in pale silk thread. It is slightly damp
+is initialled with an ornate "S" worked in pale silk thread. It is slightly damp
 and bears traces of dirt on one corner, as if it has been clutched in a nervous
 hand. The perfume is distinctive - not common, and quite costly.
 
 OBJ247_FOOTPRINTS_WL
 Prints from lady's shoes and men's hob-nailed boots can be seen in the
-snow going between the drive and the summer house.
+snow going to and from the drive and the summer house.
 
 OBJ248_FOOTPRINTS_ST
 The prints from hob-nailed boots can be seen in the snow going
-between the drive and the east lawn.
+to and from the drive and the east lawn.
 
 OBJ249_FOOTPRINTS_EL
-The prints from hob-nailed boots can be seen in the snow going east
-to west between the stables and the cottage.
+Deep and purposeful, the prints from hob-nailed boots can be seen in the snow
+going to and from the stables and the cottage.
 
 OBJ250_CIGARETTE_ENDS_GC
 These cigarette ends come from a cheap, mass produced brand.
@@ -606,6 +609,7 @@ The mat has not yet dried, suggesting the wet footprints are fresh - from last n
 or early this morning.
 
 OBJ253_CHEROOT_BUTT
+!requires x_statue
 !provides butt
 This is the sodden butt of a Burmah cheroot, waterlogged from its time in
 the pond. Despite being soaked, you can still make out its straight dark
@@ -616,9 +620,24 @@ deliberately or dropped in haste.
 OBJ254_MUSIC_ROOM_ASHTRAY
 This brass ashtray of considerable quality sits on the piano. It contains a single
 cigar stub - a cheroot by the appearance - partially smoked and carefully stubbed
-out. The cigar bears the tooth marks of someone who smoked it clenched between their
-teeth. Beside the stub lies a small pile of ash. The stub is the only evidence of
-smoking in this room, yet someone claims to have smoked here recently. Odd.
+out. The cheroot bears the tooth marks of someone who smoked it clenched between their
+teeth.
+
+OBJ255_ROOK
+A rook picks at something in the snow, unconcerned by your approach. It
+flies off with a lazy flap of black wings as you draw nearer, revealing
+nothing beneath but a scrap of frozen turf. As you move on, you glance
+back to see it has already dropped down again to resume its picking,
+as if you had never been there at all.
+
+OBJ256_SHOTGUNS
+Two shotguns are mounted on the wall above the hearth - plain,
+serviceable working guns rather than anything a gentleman would take
+out for sport, kept clean and ready for the vermin and pest control
+that are part of a gamekeeper's daily work. Both barrels are spotless
+and smell faintly of gun oil rather than powder - if they have been
+fired recently, they have since been thoroughly cleaned. A box of
+cartridges sits nearby on a shelf, a handful missing.
 
 WHAT_REALLY_HAPPENED
 [[green:What really happened at Darnley Park?:]]@
@@ -721,18 +740,19 @@ Q_2
 Who dropped the handkerchief in the summer house?
 
 Q_3
-What was the source of the music in the morning room?
+What was the source of the music from the morning room?
 
 Q_4
 Where did the murderer hide the gun?
 
 Q_5
-When did the murder occur? (type letter)@
+When did the murder occur: (type letter)@
  a) 10:05 - 10:35 pm@
  b) 10:35 - 11:05 pm@
  c) 11:05 - 11:35 pm@
  d) 11:35 - 12:05 am@
- e) 12:05 - 12:35 am
+ e) 12:05 - 12:35 am@
+?
 
 Q_6
 Which door did the murderer leave the kitchen by?
