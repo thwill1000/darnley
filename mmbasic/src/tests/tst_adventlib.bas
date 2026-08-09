@@ -18,6 +18,11 @@ Const ut.MAX_TESTS% = 150
 #Include "splib/set.inc"
 #Include "splib/vt100.inc"
 #Include "sptest/unittest.inc"
+
+sys.provides("console")
+
+#Include "../script.inc"
+#Include "../state.inc"
 #Include "../adventlib.inc"
 
 Const TEST_DIRECTIVES_FILE$ = Mm.Info(Path) + "test_directives.msg"
@@ -178,7 +183,6 @@ add_test("test_pm_gvn_all_blocked")
 add_test("test_pm_gvn_not_found")
 add_test("test_pmf_gvn_success")
 add_test("test_pmf_gvn_not_found")
-' TODO: this fails and shouldn't
 add_test("test_pmf_gvn_all_blocked")
 
 run_tests()
@@ -186,7 +190,7 @@ End
 
 Sub setup_test()
   con_output$ = ""
-  init_flags()
+  state.reset()
 End Sub
 
 ' Empty array returns empty string
@@ -635,21 +639,21 @@ End Sub
 ' Intercepted verbs kill and use return 1
 Sub test_parse_common_intercepts()
   assert_int_equals(1, parse_common("kill guard"))
-  assert_string_equals(sys.CRLF$ + "[[red:This is not that sort of game.]]" + sys.CRLF$, con_output$)
+  assert_string_equals("[[red:This is not that sort of game.]]" + sys.CRLF$, con_output$)
 
   con_output$ = ""
   assert_int_equals(1, parse_common("use key"))
-  assert_string_equals(sys.CRLF$ + "[[red:You need to tell me how to use that.]]" + sys.CRLF$, con_output$)
+  assert_string_equals("[[red:You need to tell me how to use that.]]" + sys.CRLF$, con_output$)
 End Sub
 
 ' split_words% errors return 1
 Sub test_parse_common_split_errors()
   assert_int_equals(1, parse_common("one two three four five six seven eight nine ten eleven"))
-  assert_string_equals(sys.CRLF$ + "[[red:Too many words.]]" + sys.CRLF$, con_output$)
+  assert_string_equals("[[red:Too many words.]]" + sys.CRLF$, con_output$)
 
   con_output$ = ""
   assert_int_equals(1, parse_common("abcdefghijklmnopqrstuv"))
-  assert_string_equals(sys.CRLF$ + "[[red:Word too long.]]" + sys.CRLF$, con_output$)
+  assert_string_equals("[[red:Word too long.]]" + sys.CRLF$, con_output$)
 End Sub
 
 ' No directives — first line read is treated as the response immediately
@@ -1378,18 +1382,14 @@ End Sub
 
 ' print_message_or_fail() raises when the tag is not found at all
 Sub test_pmf_gvn_not_found()
-  On Error Ignore
   print_message_or_fail("NO_SUCH_TAG")
-  assert_raw_error("Message not found: NO_SUCH_TAG")
-  On Error Abort
+  assert_string_equals("[[red:ERROR: message NO_SUCH_TAG not found.]]" + sys.CRLF$, con_output$)
 End Sub
 
 ' print_message_or_fail() raises when all matching entries are blocked
 Sub test_pmf_gvn_all_blocked()
-  On Error Ignore
   print_message_or_fail("ALL_BLOCKED_MSG")
-  assert_raw_error("Message not found: ALL_BLOCKED_MSG")
-  On Error Abort
+  assert_string_equals("[[red:ERROR: message ALL_BLOCKED_MSG not found.]]" + sys.CRLF$, con_output$)
 End Sub
 
 location_data:
