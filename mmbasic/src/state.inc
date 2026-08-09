@@ -16,6 +16,7 @@ Dim r            ' Current room
 Dim flags%(128)  ' LongString of "|TOKEN|TOKEN|..." flags, 1KB capacity
 Dim visited$     ' Characters in string are "1" if corresponding room visited,
                  ' otherwise "0".
+Dim state.cheat% ' Non-zero if CHEAT command has been used.
 
 Sub state.reset()
   r = 1
