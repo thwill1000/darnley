@@ -8,7 +8,7 @@ Option Explicit
 If Mm.Device$ = "MMB4L" Then Option Simulate PicoMiteVGA
 ' If Mm.Device$ = "MMB4L" Then Option Simulate PicoCalc
 
-#Include "system.inc"
+#Include "splib/system.inc"
 #Include "console.inc"
 #Include "adventlib.inc"
 
