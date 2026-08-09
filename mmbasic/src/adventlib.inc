@@ -1065,6 +1065,27 @@ Function verb_dump()
   con.println("NUM FLAGS = " + Str$(num_flags%))
 End Function
 
+' Handles the FONT verb
+Function verb_font()
+  If count_words%(words$()) <> 2 Then words$(2) = ""
+
+  Select Case words$(2)
+    Case "default"
+      con.set_font(7)
+      verb_font = 1
+    Case "small"
+      con.set_font(8)
+      verb_font = 1
+  End Select
+
+  If verb_font Then
+    con.println("OK.")
+  Else
+    con.print_fail("Try: FONT DEFAULT or FONT SMALL")
+    verb_font = 1
+  EndIf
+End Function
+
 ' Handles the RECORD verb
 Function verb_record()
   verb_record = 1
