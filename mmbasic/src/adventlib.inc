@@ -433,7 +433,9 @@ Function split_words%(cmd$, words$())
     EndIf
   Next
 
-  If words$(i%) = "#" Then words$(i%) = ""
+  If i% < Bound(words$(), 1) Then
+    If words$(i%) = "#" Then words$(i%) = ""
+  EndIf
 End Function
 
 ' Searches an array of words for a given string, case-insensitively.
