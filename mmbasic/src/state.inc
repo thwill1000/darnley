@@ -22,7 +22,7 @@ Sub state.reset()
   r = 1
   LongString Clear flags%()
   LongString Append flags%(), "|"
-  visited$ = String$(NUM_ROOMS, "0")
+  visited$ = String$(Bound(rooms$(), 1), "0")
 End Sub
 
 ' Saves the current game state to a file.

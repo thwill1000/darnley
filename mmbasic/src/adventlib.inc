@@ -15,17 +15,14 @@ Const MAX_WORD_LENGTH = 20
 Const INVENTORY = -1
 Const HIDDEN_ROOM = -2
 Const LIMBO = -3
-Const NUM_ROOMS = count_data%("location_data")
-Const NUM_OBJECTS = count_data%("object_data")
 Const MAX_TAKEABLE_WEIGHT = 99
 Const WILDCARD_MATCH = 100
 
 Dim adv.asset_dir$ = Mm.Info(Path) + "../assets"
 Dim adv.msg_file$ = adv.asset_dir$ + "/messages.dat"
+
 Dim DEBUG = 0
 Dim describe% = 1
-Dim rooms$(Max(NUM_ROOMS, 2)) Length 255
-Dim objects$(Max(NUM_OBJECTS, 2)) Length 128
 Dim words$(10) Length 20
 Dim noun$, verb$
 
@@ -37,11 +34,11 @@ Function SUCCEEDED(i%) As Integer
   SUCCEEDED = Not i%
 End Function
 
-Sub init_advent()
+Sub init_advent(f$)
   If Val(Mm.CmdLine$) <> 0 Then r = Val(Mm.CmdLine$)
   init_console()
-  read_rooms()
-  read_objects()
+  read_rooms(f$)
+  read_objects(f$)
   state.reset()
 End Sub
 
@@ -69,17 +66,75 @@ Function count_data%(label$)
   Loop
 End Function
 
-' Read the objects data
-Sub read_objects()
-  Local i%, s$
-  Restore object_data
-  For i% = 1 To NUM_OBJECTS
-    Read s$
-    objects$(i%) = s$
-  Next
+' Counts the data lines in a named section of an advent.dat-style file.
+' Blank lines and lines starting with "#" are skipped; the count stops at
+' EOF or the next line starting with "!".
+'
+' @param  f$        Path to the file.
+' @param  section$  Section header to find, e.g. "!locations".
+' @return           Number of data lines found in the section.
+Function count_advent_section%(f$, section$)
+  Local s$, found%
+  Const fnbr% = 1
+  Open f$ For Input As #fnbr%
 
-  Local error_count%, loc_tag$, obj_tag$
-  For i% = 1 To NUM_OBJECTS
+  Do While Not Eof(fnbr%)
+    Line Input #fnbr%, s$
+    If s$ = section$ Then found% = 1 : Exit Do
+  Loop
+  If Not found% Then Error "Section not found: " + section$
+
+  Do While Not Eof(fnbr%)
+    Line Input #fnbr%, s$
+    If Left$(s$, 1) = "!" Then Exit Do
+    If s$ <> "" And Left$(s$, 1) <> "#" Then Inc count_advent_section%
+  Loop
+
+  Close #fnbr%
+End Function
+
+' Reads all data lines belonging to !section from an advent.dat-style file
+' into dout$(), starting at dout$(1). Blank lines and lines
+' beginning "#" are skipped; reading stops at EOF or the next "!" line.
+'
+' @param  f$        Path to the file.
+' @param  section$  Section header to find, e.g. "!locations".
+' @param  dout$()   Output array, populated from index 1, cleared first.
+' @return           Number of data lines read into dout$().
+Function read_advent_section%(f$, section$, dout$())
+  Local i%, s$, found%
+  Const fnbr% = 1
+  Open f$ For Input As #fnbr%
+
+  For i% = Bound(dout$(), 0) To Bound(dout$(), 1) : dout$(i%) = "" : Next
+
+  Seek #fnbr%, 1
+  Do While Not Eof(fnbr%)
+    Line Input #fnbr%, s$
+    If s$ = section$ Then found% = 1 : Exit Do
+  Loop
+  If Not found% Then Error "Section not found: " + section$
+
+  Do While Not Eof(fnbr%)
+    Line Input #fnbr%, s$
+    If Left$(s$, 1) = "!" Then Exit Do
+    If s$ = "" Or Left$(s$, 1) = "#" Then Continue Do
+    Inc read_advent_section%
+    If read_advent_section% > Bound(dout$(), 1) Then Error "Too many entries in " + section$
+    dout$(read_advent_section%) = s$
+  Loop
+
+  Close #fnbr%
+End Function
+
+' Read the objects data
+Sub read_objects(f$)
+  Const num_objects% = count_advent_section%(f$, "!objects")
+  Dim objects$(Max(num_objects%, 2))
+  If read_advent_section%(f$, "!objects", objects$()) <> num_objects% Then Error "Object data mismatch"
+
+  Local error_count%, loc_tag$, obj_tag$, i%
+  For i% = Bound(objects$(), 0) To num_objects%
     obj_tag$ = Field$(objects$(i%), 1, "|")
     loc_tag$ = Field$(objects$(i%), 3, "|")
 
@@ -117,16 +172,13 @@ Function message_exists%(tag$)
 End Function
 
 ' Read the room data
-Sub read_rooms()
-  Local i%, j%, s$
-  Restore location_data
-  For i% = 1 To NUM_ROOMS
-    Read s$
-    rooms$(i%) = s$
-  Next
+Sub read_rooms(f$)
+  Const num_rooms% = count_advent_section%(f$, "!locations")
+  Dim rooms$(Max(num_rooms%, 2))
+  If read_advent_section%(f$, "!locations", rooms$()) <> num_rooms% Then Error "Location data mismatch"
 
-  Local error_count%, exit_tag$, loc_tag$, num_exits%
-  For i% = 1 To NUM_ROOMS
+  Local error_count%, exit_tag$, loc_tag$, num_exits%, i%, j%
+  For i% = Bound(rooms$(), 0) To num_rooms%
     loc_tag$ = Field$(rooms$(i%), 1, "|")
 
     ' Check no room has an invalid exit
@@ -180,7 +232,7 @@ Sub show_intro(title$)
   con.println()
   con.show_more_prompt(1)
   con.clear()
-  print_message_or_fail"HELP_TEXT")
+  print_message_or_fail("HELP_TEXT")
   con.println()
   con.show_more_prompt()
   con.clear()
@@ -213,7 +265,7 @@ Sub describe_loc()
   ' ' Iterate through objects to find those at the current location
   ' con.print("You can see: ")
   ' Local count%, i%, oloc%
-  ' For i% = 1 To NUM_OBJECTS
+  ' For i% = Bound(objects$(), 0) To Bound(objects$(), 1)
   '   oloc% = find_loc%(Field$(objects$(i%), 3, "|"), 1)
   '   If oloc% = r Then
   '     If count% > 0 Then con.print(", ")
@@ -245,7 +297,7 @@ End Sub
 
 Function find_loc%(tag$, no_error%)
   Local i%
-  For i% = 1 To NUM_ROOMS
+  For i% = Bound(rooms$(), 0) To Bound(rooms$(), 1)
     If Field$(rooms$(i%), 1, "|") = tag$ Then
       find_loc% = i%
       Exit For
@@ -499,7 +551,7 @@ End Sub
 
 Sub print_words(words$())
   Local count%, i%
-  For i% = 1 To Bound(words$(), 1)
+  For i% = Bound(words$(), 0) To Bound(words$(), 1)
     If words$(i%) = "" Then Exit For
     con.println(words$(i%))
     Inc count%
@@ -672,7 +724,7 @@ End Function
 ' Populates subject_words$() with the words following "about" in words$().
 Sub extract_subject_words(about_idx%, subject_words$())
   Local i%
-  For i% = 1 To Bound(words$(), 1) - about_idx%
+  For i% = Bound(words$(), 0) To Bound(words$(), 1) - about_idx%
     subject_words$(i%) = words$(i% + about_idx%)
   Next
 End Sub
@@ -778,7 +830,7 @@ Function find_obj%(words$(), first%, last%)
   Local oloc%, obj_loc_tag$, oname$, obj_words$(MAX_WORDS) Length MAX_WORD_LENGTH
   Local obj_word_count%
 
-  For i% = 1 To NUM_OBJECTS
+  For i% = Bound(objects$(), 0) To Bound(objects$(), 1)
     obj_loc_tag$ = Field$(objects$(i%), 3, "|")
     oname$ = Field$(objects$(i%), 2, "|")
     obj_word_count% = split_words%(oname$, obj_words$())
