@@ -3,7 +3,6 @@
 - Add ability to include # prefixed comments to message files
 - Separate room name from room tokens
   - Update Millicent's bedroom
-- Require player to be in same location as suspect when they ACCUSE
 - Separate person names from match tokens
 - "Fix" intrusive [MORE] prompts
 - Fix trailing full-stops after marked up text

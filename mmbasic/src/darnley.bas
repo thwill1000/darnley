@@ -107,6 +107,17 @@ End Function
 Function verb_accuse()
   verb_accuse = 1
 
+  If count_words%(words$()) < 2 Then
+    print_fail("Try: ACCUSE person")
+    Exit Function
+  EndIf
+
+  ' Check that the accused is present.
+  If Not state.cheat% Then
+    Const obj_idx% = resolve_ask_target%(MAX_WORDS + 1)
+    If Not obj_idx% Then Exit Function
+  EndIf
+
   Local clues$(Max(NUM_CLUES, 2)) Length MAX_WORD_LENGTH
   read_clues(clues$())
   Const found% = count_set_flags%(clues$())
@@ -234,6 +245,7 @@ Function verb_cheat()
   Local clues$(Max(NUM_CLUES, 2)) Length MAX_WORD_LENGTH
   read_clues(clues$())
   add_flags(clues$())
+  state.cheat% = 1
 End Function
 
 ' Handles the HELP verb
