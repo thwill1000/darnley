@@ -770,7 +770,6 @@ End Sub
 ' Handles the DROP verb
 Function verb_drop()
   verb_drop = 1
-  con.println()
   Local msg$ = "This game does not require you to TAKE, DROP or otherwise manipulate objects. Just "
   Cat msg$, "explore your surroundings, search for and EXAMINE the clues and ASK questions of the "
   Cat msg$, "suspects."
@@ -820,9 +819,10 @@ Function verb_examine()
   Const oloc% = Choice(obj%, obj_loc%(obj%), 0)
   Local ok% = 0
 
+  con.println()
+
   If oloc% = r Then
     ' Object exists and is present
-    con.println()
     con.foreground("cyan")
     ok% = print_message%(Field$(objects$(obj%), 1, "|")) = 0
     con.foreground("reset")
