@@ -56,6 +56,9 @@ End Sub
 Function con.in$(p$, echo)
   Local s$
 
+  ' Reset line counter to prevent unwanted [MORE] prompt.
+  con.lines = 0
+
   Const old_fg$ = con.fg$
   con.foreground(con.prompt_colour$)
   con.print(p$)
