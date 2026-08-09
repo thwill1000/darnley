@@ -3,7 +3,7 @@
 
 On Error Skip 1 : Dim sys.VERSION = -1
 If sys.VERSION = -1 Then Error "'system.inc' not included"
-sys.requires("console", "script", "state")
+sys.requires("console", "script", "state", "string")
 sys.provides("advent")
 If sys.err$ <> "" Then Error sys.err$
 
@@ -417,6 +417,7 @@ Function split_words%(cmd$, words$())
     If ch$ = "'" Then
       ' Removed from word
     ElseIf ch$ = " " Then
+      If words$(i%) = "#" Then words$(i%) = ""
       If Len(words$(i%)) > 0 Then Inc i%
     Else
       If i% > Bound(words$(), 1) Then
@@ -431,6 +432,8 @@ Function split_words%(cmd$, words$())
       Cat words$(i%), ch$
     EndIf
   Next
+
+  If words$(i%) = "#" Then words$(i%) = ""
 End Function
 
 ' Searches an array of words for a given string, case-insensitively.
@@ -637,7 +640,7 @@ Function resolve_ask_target%(about_idx%)
   EndIf
 
   If obj_loc%(resolve_ask_target%) <> r Then
-    Local msg$ = obj_name$(resolve_ask_target%)
+    Local msg$ = sanitize_name$(obj_name$(resolve_ask_target%))
     If Not obj_is_person%(resolve_ask_target%) Then msg$ = "The " + LCase$(msg$)
     Cat msg$, Choice(Right$(msg$, 1) = "s", " are", " is") + " not here."
     print_fail(msg$)
@@ -646,11 +649,22 @@ Function resolve_ask_target%(about_idx%)
   EndIf
 
   If Not obj_is_person%(resolve_ask_target%) Then
-    Local msg$ = "The " + LCase$(obj_name$(resolve_ask_target%))
+    Local msg$ = "The " + LCase$(sanitize_name$(obj_name$(resolve_ask_target%)))
     Cat msg$, Choice(Right$(msg$, 1) = "s", " do", " does") + " not answer."
     print_fail(msg$)
     resolve_ask_target% = 0
   EndIf
+End Function
+
+' Sanitizes name fields to remove anything after # and trim any whitespace.
+Function sanitize_name$(name$)
+  Local p% = InStr(name$, "#")
+  If p% > 1 Then
+    sanitize_name$ = Left$(name$, p% - 1)
+  Else
+    sanitize_name$ = name$
+  EndIf
+  sanitize_name$ = str.trim$(sanitize_name$)
 End Function
 
 ' Populates subject_words$() with the words following "about" in words$().
