@@ -25,6 +25,7 @@ sys.provides("console")
 #Include "../state.inc"
 #Include "../adventlib.inc"
 
+Const TEST_DATA_FILE$ = Mm.Info(Path) + "test_advent.dat"
 Const TEST_DIRECTIVES_FILE$ = Mm.Info(Path) + "test_directives.msg"
 
 Dim con_output$
@@ -47,8 +48,8 @@ End Sub
 
 adv.asset_dir$ = Mm.Info(Path)
 adv.msg_file$ = adv.asset_dir$ + "test.msg"
-read_rooms()
-read_objects()
+read_rooms(TEST_DATA_FILE$)
+read_objects(TEST_DATA_FILE$)
 
 add_test("test_cat_words_gvn_empty")
 add_test("test_cat_words_gvn_one")
@@ -1391,19 +1392,3 @@ Sub test_pmf_gvn_all_blocked()
   print_message_or_fail("ALL_BLOCKED_MSG")
   assert_string_equals("[[red:ERROR: message ALL_BLOCKED_MSG not found.]]" + sys.CRLF$, con_output$)
 End Sub
-
-location_data:
-Data "LOC001|Room One|2|LOC002|LOC003"
-Data "LOC002|Room Two|2|LOC001|LOC003"
-Data "LOC003|Room Three|2|LOC001|LOC002"
-Data "" ' End of locations
-
-object_data:
-Data "OBJ001|Green Door|LOC001|0|100"    ' local, non-takeable, heavy - iterated first
-Data "OBJ002|Red Key|LOC002|1|1"         ' non-local
-Data "OBJ003|Red Gem|LOC001|1|1"         ' local
-Data "OBJ004|Red Curious Key|LOC002|1|1" ' non-local
-Data "P_TEST_SUSPECT|Test Suspect|LOC001|2|100" ' person, for verb_ask() tests
-Data "P_OTHER_SUSPECT|Other Suspect|LOC002|2|100" ' person, not in current room - verb_ask() tests
-Data "P_NO_WILDCARD|No Wildcard|LOC001|2|100" ' person whose .msg file has no "*" fallback
-Data "" ' End of objects
