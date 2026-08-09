@@ -248,12 +248,6 @@ Function verb_cheat()
   state.cheat% = 1
 End Function
 
-' Handles the HELP verb
-Function verb_help()
-  verb_help = 1
-  print_message_or_fail("HELP_TEXT")
-End Function
-
 location_data:
 Data "LOC001_BATHROOM|Bathroom|1|LOC025_LANDING"
 Data "LOC002_ORCHARD|Orchard|2|LOC003_KITCHEN_GARDEN|LOC006_TERRACE"

@@ -1087,6 +1087,12 @@ Function verb_font()
   EndIf
 End Function
 
+' Handles the HELP verb
+Function verb_help()
+  verb_help = 1
+  print_message_or_fail("HELP_TEXT")
+End Function
+
 ' Handles the RECORD verb
 Function verb_record()
   verb_record = 1
