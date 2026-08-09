@@ -725,6 +725,7 @@ Sub con.set_font(size%)
   If Mm.Info(Device X) = "MMB4L" Then
     On Error Skip ' In case the console is maximized, in which case it can't be resized.
     Console Resize con.WIDTH, con.HEIGHT
+    On Error Clear
   EndIf
 
   ' Snap the cursor to the new character grid (TODO: test with Z-MIM)

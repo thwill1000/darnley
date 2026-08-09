@@ -797,7 +797,7 @@ The game accepts the following commands:@
   [[green:EXAMINE]] [[cyan:object]]@
     - get additional detail about an object (or@
       person)@
-  [[green:FONT]] [[cyan:DEFAULT]]|[[cyan:SMALL]]@
+  [[green:FONT]] [[cyan:DEFAULT]]|[[cyan:SERIF]]|[[cyan:SMALL]]@
     - change the font@
   [[green:GO]] [[cyan:location]]@
     - go to a location visible from your current@

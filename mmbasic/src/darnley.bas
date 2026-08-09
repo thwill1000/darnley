@@ -15,6 +15,7 @@ If Mm.Device$ = "MMB4L" Then Option Simulate PicoMiteVGA
 #Include "script.inc"
 #Include "state.inc"
 #Include "adventlib.inc"
+#Include "microserif6x8.inc"
 
 Const VERSION = 9300 ' 0.9.0
 Const NUM_ACCUSE_REPLIES = count_data%("accuse_reply_data")
