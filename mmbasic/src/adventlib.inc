@@ -195,7 +195,7 @@ Sub describe_loc()
   If show_gfx% Then con.clear()
 
   con.foreground("green")
-  con.println(Field$(rooms$(r), 2, "|"))
+  con.println(sanitize_name$(Field$(rooms$(r), 2, "|")))
   con.foreground("reset")
 
   Const loc_tag$ = Field$(rooms$(r), 1, "|")
