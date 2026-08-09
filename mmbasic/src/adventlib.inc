@@ -1142,6 +1142,9 @@ Function verb_font()
     Case "default"
       con.set_font(7)
       verb_font = 1
+    Case "serif"
+      con.set_font(10)
+      verb_font = 1
     Case "small"
       con.set_font(8)
       verb_font = 1
@@ -1150,7 +1153,7 @@ Function verb_font()
   If verb_font Then
     con.println("OK.")
   Else
-    con.print_fail("Try: FONT DEFAULT or FONT SMALL")
+    con.print_fail("Try: FONT DEFAULT, FONT SERIF, or FONT SMALL")
     verb_font = 1
   EndIf
 End Function
