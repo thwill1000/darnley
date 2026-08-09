@@ -720,9 +720,12 @@ Sub con.set_font(size%)
   Font size%
   con.WIDTH = Mm.HRes \ Mm.Info(FontWidth)
   con.HEIGHT = Mm.VRes \ Mm.Info(FontHeight)
-  wb(&h20, con.HEIGHT)
-  wb(&h21, con.WIDTH)
-  If Mm.Info(Device X) = "MMB4L" Then Console Resize con.WIDTH, con.HEIGHT
+  ' wb(&h20, con.HEIGHT) ' Needed for Z-MIM.
+  ' wb(&h21, con.WIDTH)
+  If Mm.Info(Device X) = "MMB4L" Then
+    On Error Skip ' In case the console is maximized, in which case it can't be resized.
+    Console Resize con.WIDTH, con.HEIGHT
+  EndIf
 
   ' Snap the cursor to the new character grid (TODO: test with Z-MIM)
   Local x%, y%
