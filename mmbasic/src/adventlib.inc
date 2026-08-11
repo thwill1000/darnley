@@ -22,7 +22,6 @@ Dim adv.asset_dir$ = Mm.Info(Path) + "../assets"
 Dim adv.msg_file$ = adv.asset_dir$ + "/messages.dat"
 
 Dim DEBUG = 0
-Dim describe% = 1
 Dim words$(10) Length 20
 Dim noun$, verb$
 
@@ -587,6 +586,8 @@ Function parse_common(cmd$)
       print_fail("Try: GO location")
       parse_common = 1
       Exit Function
+    Case "die", "end", "exit", "q", "restart", "reset", "start"
+      verb$ = "quit"
     Case "search", "check", "x"
       verb$ = "examine"
     Case "grab", "get"
@@ -595,8 +596,6 @@ Function parse_common(cmd$)
       verb$ = "inventory"
     Case "pick"
       verb$ = "take"
-    Case "q"
-      verb$ = "quit"
     Case "speak"
       verb$ = "talk"
     Case "walk", "exit"
@@ -1010,9 +1009,21 @@ End Function
 ' Handles the QUIT verb
 Function verb_quit()
   verb_quit = 1
-  con.println("Goodbye!")
-  con.println()
-  End
+  con.foreground("yellow")
+  con.println("Please choose [[green:(Q)]]uit, [[green:(R)]]estart or [[green:(C)]]ancel?")
+  con.foreground("reset")
+  Select Case LCase$(con.wait_for_key$())
+  Case "q"
+    con.println()
+    con.println("Goodbye!")
+    con.println()
+    End
+  Case "r"
+    state.restart% = 1
+  Case Else
+    con.println()
+    con.println("Cancelled.")
+  End Select
 End Function
 
 ' Prints the first entry in the message file matching tag$ whose !requires

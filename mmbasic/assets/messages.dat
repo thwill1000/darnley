@@ -812,7 +812,7 @@ The game accepts the following commands:@
   [[green:SAVE]] and [[green:RESTORE]]@
     - save and restore game progress@
   [[green:QUIT]]@
-    - exit the game
+    - restart or exit the game
 
 ACCUSE_TEXT
 "So, you believe you have solved the mystery of the Colonel's death?
