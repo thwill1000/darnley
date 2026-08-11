@@ -34,8 +34,8 @@ LOC029_GUEST_ROOM|Guest room|1|LOC028_MORNING_ROOM
 # id | name | location | flag | weight
 # flag = 1 -> takeable
 # flag = 2 -> person
-P_SARAH_DARNLEY|Sarah Darnley|LOC028_MORNING_ROOM|2|100
-P_MILLICENT_DARNLEY|Millicent Darnley|LOC013_LOUNGE|2|100
+P_SARAH_DARNLEY|Sarah Darnley # sara|LOC028_MORNING_ROOM|2|100
+P_MILLICENT_DARNLEY|Millicent Darnley # milicent|LOC013_LOUNGE|2|100
 P_ARTHUR_CONISTON|Arthur Coniston|LOC015_MUSIC_ROOM|2|100
 P_REDVERS_SLINGSBY|Sir Redvers Slingsby|LOC016_BILLIARD_ROOM|2|100
 P_ARNOLD_BILLINGSGATE|Arnold Billingsgate # butler|LOC010_BUTLERS_PANTRY|2|100
