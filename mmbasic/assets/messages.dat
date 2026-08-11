@@ -792,7 +792,7 @@ The game accepts the following commands:@
   [[green:ACCUSE]] [[cyan:person]]@
     - accuse a suspect of the murder, the suspect@
       must be in your current location@
-  [[green:ASK]] [[cyan:person]] [[green:ABOUT]] topic@
+  [[green:ASK]] [[cyan:person]] [[green:ABOUT]] [[cyan:topic]]@
     - interrogate a suspect about a given topic@
   [[green:EXAMINE]] [[cyan:object]]@
     - get additional detail about an object (or@
