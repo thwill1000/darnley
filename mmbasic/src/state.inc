@@ -12,17 +12,23 @@ If sys.err$ <> "" Then Error sys.err$
 Const state.SAVE_DIR$ = file.get_canonical$(Mm.Info$(Path) + "../saves")
 Const state.FD% = 1
 
-Dim r            ' Current room
-Dim flags%(128)  ' LongString of "|TOKEN|TOKEN|..." flags, 1KB capacity
-Dim visited$     ' Characters in string are "1" if corresponding room visited,
-                 ' otherwise "0".
-Dim state.cheat% ' Non-zero if CHEAT command has been used.
+Dim r              ' Current room
+Dim flags%(128)    ' LongString of "|TOKEN|TOKEN|..." flags, 1KB capacity
+Dim visited$       ' Characters in string are "1" if corresponding room visited,
+                   ' otherwise "0".
+
+Dim describe%      ' Non-zero to describe current location at start of game loop.
+Dim state.cheat%   ' Non-zero if CHEAT command has been used.
+Dim state.restart% ' Non-zero to restart the game.
 
 Sub state.reset()
   r = 1
   LongString Clear flags%()
   LongString Append flags%(), "|"
   visited$ = String$(Bound(rooms$(), 1), "0")
+  describe% = 1
+  state.cheat% = 0
+  state.restart% = 0
 End Sub
 
 ' Saves the current game state to a file.

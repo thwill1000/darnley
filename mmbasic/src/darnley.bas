@@ -36,6 +36,10 @@ init_advent(adv.asset_dir$ + "/advent.dat")
 read_questions(adv.asset_dir$ + "/advent.dat")
 read_clues(adv.asset_dir$ + "/advent.dat")
 read_accuse_replies()
+
+game_start:
+
+state.reset()
 r = find_loc%("LOC017_DRIVE")
 r_old% = r
 
@@ -62,6 +66,7 @@ Do
 command_end:
 
   If Not result% Then print_fail("That doesn't seem to work.")
+  If state.restart% Then Goto game_start
 Loop
 
 End
