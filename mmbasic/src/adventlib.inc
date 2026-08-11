@@ -588,7 +588,7 @@ Function parse_common(cmd$)
       Exit Function
     Case "die", "end", "exit", "q", "restart", "reset", "start"
       verb$ = "quit"
-    Case "search", "check", "x"
+    Case "check", "look", "search", "x"
       verb$ = "examine"
     Case "grab", "get"
       verb$ = "take"
@@ -838,6 +838,14 @@ End Function
 
 ' Handles the EXAMINE verb
 Function verb_examine()
+  verb_examine = 1
+
+  If words$(2) = "" Then
+    Mid$(visited$, r, 1) = "0"
+    describe% = 1
+    Exit Function
+  EndIf
+
   Const obj% = find_obj%(words$())
   Const oloc% = Choice(obj%, obj_loc%(obj%), 0)
   Local ok% = 0
@@ -850,8 +858,6 @@ Function verb_examine()
   EndIf
 
   If Not ok% Then print_fail("That is not here, cannot be examined or is unremarkable.")
-
-  verb_examine = 1
 End Function
 
 ' Counts how many words in needles$() have a match in haystack$(), case-insensitively.
@@ -927,17 +933,6 @@ End Function
 ' Handles the INVENTORY verb
 Function verb_inventory()
   verb_inventory = verb_drop()
-End Function
-
-' Handles the LOOK verb
-Function verb_look()
-  verb_look = 1
-  If noun$ <> "" Then
-    print_fail("Perhaps you meant EXAMINE " + UCase$(noun$) + ".")
-  Else
-    Mid$(visited$, r, 1) = "0"
-    describe% = 1
-  EndIf
 End Function
 
 Function cat_words$(words$(), si%, ei%)
