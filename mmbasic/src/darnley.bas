@@ -67,9 +67,9 @@ Do
   On Error Skip 1
   result% = Call("verb_" + verb$)
   If Mm.ErrNo Then
-    print_fail("I don't know the command `" + UCase$(words$(1)) + "`, try `HELP`.")
+    con.print_fail("I don't know the command `" + UCase$(words$(1)) + "`, try `HELP`.")
   ElseIf Not result% Then
-    print_fail("That doesn't seem to work.")
+    con.print_fail("That doesn't seem to work.")
   EndIf
 Loop
 
@@ -109,7 +109,7 @@ Function verb_accuse()
   verb_accuse = 1
 
   If count_words%(words$()) < 2 Then
-    print_fail("Try: ACCUSE person")
+    con.print_fail("Try: ACCUSE person")
     Exit Function
   EndIf
 
@@ -124,7 +124,7 @@ Function verb_accuse()
   If found% < Bound(clues$(), 1) Then
     Local msg$ = "You have found " + Str$(found%) + " of the " + Str$(Bound(clues$(), 1))
     Cat msg$, " clues needed to make an accusation."
-    print_fail(msg$)
+    con.print_fail(msg$)
     Exit Function
   EndIf
 
@@ -140,13 +140,13 @@ Function verb_accuse()
     ' If q% = num_questions% And correct% <> num_questions% - 1 Then
     '   msg$ = "You only answered " + Str$(Int((100 * correct%) / (num_questions% - 1)))
     '   Cat msg$, "% of the questions correctly, so you can't make an accusation yet."
-    '   print_fail(msg$)
+    '   con.print_fail(msg$)
     '   Exit For 'Function
     ' EndIf
 
     ' If q% = num_questions% + 1 Then
     '   If correct% = num_questions% Then Exit For
-    '   print_fail("That's not correct. Think again.")
+    '   con.print_fail("That's not correct. Think again.")
     '   q% = num_questions% - 1
     '   Continue For
     ' EndIf
@@ -161,11 +161,11 @@ Function verb_accuse()
     ' Split the answer into words
     Select Case split_words%(answer$, words$())
       Case 1
-        print_fail("Too many words.")
+        con.print_fail("Too many words.")
         Inc q%, -1
         Continue For
       Case 2
-        print_fail("Word too long.")
+        con.print_fail("Word too long.")
         Inc q%, -1
         Continue For
     End Select
@@ -190,7 +190,7 @@ Function verb_accuse()
     ' If response$ = "" Then response$ = "incorrect"
 
     If response$ = "incorrect" Then
-      print_fail("Incorrect.")
+      con.print_fail("Incorrect.")
     Else If q% <> num_questions% Then
       print_accuse_reply()
     EndIf
@@ -212,7 +212,7 @@ Function verb_accuse()
   Else
     msg$ = "You answered " + Str$(correct%) + " of " + Str$(num_questions%)
     Cat msg$, " questions correctly."
-    print_fail(msg$)
+    con.print_fail(msg$)
     con.println()
     con.foreground("cyan")
     print_message_or_fail("INCORRECT_ACCUSATION")

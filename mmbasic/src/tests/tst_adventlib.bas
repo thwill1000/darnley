@@ -46,6 +46,10 @@ Sub con.println(s$)
   Cat con_output$, s$ + sys.CRLF$
 End Sub
 
+Sub con.print_fail(s$)
+  con.println("[[red:" + s$ + "]]")
+End Sub
+
 adv.asset_dir$ = Mm.Info(Path)
 adv.msg_file$ = adv.asset_dir$ + "test.msg"
 read_rooms(TEST_DATA_FILE$)
