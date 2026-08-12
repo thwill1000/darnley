@@ -307,11 +307,6 @@ Function find_loc%(tag$, no_error%)
   EndIf
 End Function
 
-' Print message for a failed action
-Sub print_fail(s$, flags%)
-  con.println("[[red:" + s$ + "]]")
-End Sub
-
 ' Prompt the user for input
 Function get_input$(prompt$)
   If prompt$ = "" Then
@@ -564,10 +559,10 @@ Function parse_common(cmd$)
   ' Split command into array of words
   Select Case split_words%(cmd$, words$())
     Case 1
-      print_fail("Too many words.")
+      con.print_fail("Too many words.")
       parse_common = 1
     Case 2
-      print_fail("Word too long.")
+      con.print_fail("Word too long.")
       parse_common = 1
   End Select
   If parse_common Then Exit Function
@@ -583,7 +578,7 @@ Function parse_common(cmd$)
   verb$ = ""
   Select Case words$(1)
     Case "d", "down", "e", "east", "n", "north", "s", "south", "u", "up", "w", "west"
-      print_fail("Try: GO location")
+      con.print_fail("Try: GO location")
       parse_common = 1
       Exit Function
     Case "die", "end", "exit", "q", "restart", "reset", "start"
@@ -597,7 +592,7 @@ Function parse_common(cmd$)
     Case "i", "inv"
       verb$ = "inventory"
     Case "kill"
-      print_fail("This is not that sort of game.")
+      con.print_fail("This is not that sort of game.")
       parse_common = 1
       Exit Function
     Case "say", "speak", "talk", "tell"
@@ -627,7 +622,7 @@ Function verb_ask()
 
   Const about_idx% = find_word%(words$(), "about")
   If Not about_idx% Then
-    print_fail("Try: ASK person ABOUT subject")
+    con.print_fail("Try: ASK person ABOUT subject")
     Exit Function
   EndIf
 
@@ -651,7 +646,7 @@ End Function
 Function resolve_ask_target%(about_idx%)
   resolve_ask_target% = find_obj%(words$(), 1, about_idx% - 1)
   If Not resolve_ask_target% Then
-    print_fail("You don't know that person.")
+    con.print_fail("You don't know that person.")
     Exit Function
   EndIf
 
@@ -659,7 +654,7 @@ Function resolve_ask_target%(about_idx%)
     Local msg$ = sanitize_name$(obj_name$(resolve_ask_target%))
     If Not obj_is_person%(resolve_ask_target%) Then msg$ = "The " + LCase$(msg$)
     Cat msg$, Choice(Right$(msg$, 1) = "s", " are", " is") + " not here."
-    print_fail(msg$)
+    con.print_fail(msg$)
     resolve_ask_target% = 0
     Exit Function
   EndIf
@@ -667,7 +662,7 @@ Function resolve_ask_target%(about_idx%)
   If Not obj_is_person%(resolve_ask_target%) Then
     Local msg$ = "The " + LCase$(sanitize_name$(obj_name$(resolve_ask_target%)))
     Cat msg$, Choice(Right$(msg$, 1) = "s", " do", " does") + " not answer."
-    print_fail(msg$)
+    con.print_fail(msg$)
     resolve_ask_target% = 0
   EndIf
 End Function
@@ -749,7 +744,7 @@ Sub print_ask_result(filename$, best_match_count%, best_match_line%)
   con.foreground("cyan")
 
   If best_match_count% = 0 Then
-    print_fail("I don't know what you are talking about.")
+    con.print_fail("I don't know what you are talking about.")
   Else
     Open adv.asset_dir$ + "/" + filename$ For Input As #1
     Do
@@ -773,7 +768,7 @@ Function verb_drop()
   Local msg$ = "This game does not require you to TAKE, DROP or otherwise manipulate objects. Just "
   Cat msg$, "explore your surroundings, search for and EXAMINE the clues and ASK questions of the "
   Cat msg$, "suspects."
-  print_fail(msg$)
+  con.print_fail(msg$)
 End Function
 
 ' Finds the best matching object for the given words.
@@ -834,7 +829,7 @@ Function verb_examine()
     con.foreground("reset")
   EndIf
 
-  If Not ok% Then print_fail("That is not here, cannot be examined or is unremarkable.")
+  If Not ok% Then con.print_fail("That is not here, cannot be examined or is unremarkable.")
 End Function
 
 ' Counts how many words in needles$() have a match in haystack$(), case-insensitively.
@@ -902,7 +897,7 @@ Function verb_go()
     EndIf
   Next
 
-  If r_new% > -1 Then r = r_new% Else print_fail("You can't go there.")
+  If r_new% > -1 Then r = r_new% Else con.print_fail("You can't go there.")
 
   verb_go = 1
 End Function
@@ -941,7 +936,7 @@ Function verb_take()
   '   Local msg$ = "I do not understand the word"
   '   If count_words%(words$()) > 2 Then Cat msg$, "s"
   '   Cat msg$, " " + Chr$(39) + cat_words$(words$(), 2) + Chr$(39) + "."
-  '   print_fail(msg$)
+  '   con.print_fail(msg$)
   '   Exit Function
   ' EndIf
 
@@ -950,13 +945,13 @@ Function verb_take()
   '   Local msg$ = obj_name$(o%)
   '   If Not obj_is_person%(o%) Then msg$ = "The " + LCase$(msg$)
   '   If Right$(msg$, 1) = "s" Then Cat msg$, " are not here." Else Cat msg$, " is not here."
-  '   print_fail(msg$)
+  '   con.print_fail(msg$)
   '   Exit Function
   ' EndIf
 
   ' ' Check if the object is not a person
   ' If obj_is_person%(o%) Then
-  '   print_fail("That would be inappropriate.")
+  '   con.print_fail("That would be inappropriate.")
   '   Exit Function
   ' EndIf
 
@@ -964,18 +959,18 @@ Function verb_take()
   ' If obj_weight%(o%) > MAX_TAKEABLE_WEIGHT Then
   '   Local msg$ = "The " + LCase$(obj_name$(o%))
   '   If Right$(msg$, 1) = "s" Then Cat msg$, " are too heavy." Else Cat msg$, " is too heavy."
-  '   print_fail(msg$)
+  '   con.print_fail(msg$)
   '   Exit Function
   ' EndIf
 
   ' ' Check if the object is takeable
   ' If Not obj_is_takeable%(o%) Then
-  '   print_fail("You cannot take the " + LCase$(obj_name$(o%)) + ".")
+  '   con.print_fail("You cannot take the " + LCase$(obj_name$(o%)) + ".")
   '   Exit Function
   ' EndIf
 
   ' ' For the moment nothing can be taken
-  ' print_fail("There is no need to carry the " + LCase$(obj_name$(o%)) + " around with you.")
+  ' con.print_fail("There is no need to carry the " + LCase$(obj_name$(o%)) + " around with you.")
 End Function
 
 ' Handles the QUIT verb
@@ -1045,7 +1040,9 @@ End Function
 ' For use by callers that treat a missing/ineligible message as a data bug
 ' rather than a normal game-state outcome.
 Sub print_message_or_fail(tag$, no_eol%)
-  If print_message%(tag$, no_eol%) Then print_fail("ERROR: message " + UCase$(tag$) + " not found.")
+  If print_message%(tag$, no_eol%) Then
+    con.print_fail("ERROR: message " + UCase$(tag$) + " not found.")
+  EndIf
 End Sub
 
 ' Reads directives and prints the body for the entry positioned immediately
@@ -1142,7 +1139,7 @@ Function verb_record()
     Case "off", "stop"
       script.record_off()
     Case Else
-      print_fail("Did you mean RECORD " + Choice(con.fd_out, "OFF", "ON") + "?")
+      con.print_fail("Did you mean RECORD " + Choice(con.fd_out, "OFF", "ON") + "?")
   End Select
 End Function
 
@@ -1155,7 +1152,7 @@ Function verb_replay()
     Case "off", "stop"
       script.replay_off()
     Case Else
-      print_fail("Did you mean REPLAY " + Choice(con.fd_in, "OFF", "ON") + "?")
+      con.print_fail("Did you mean REPLAY " + Choice(con.fd_in, "OFF", "ON") + "?")
   End Select
 End Function
 
