@@ -442,6 +442,10 @@ End Function
 '
 ' Multiple consecutive spaces are treated as a single delimiter.
 ' Apostrophes are stripped silently (e.g. "can't" becomes "cant").
+' A double-quote or comma character is always split into its own
+' single-character word, even when not surrounded by spaces
+' (e.g. "hello becomes two words: " and "hello"; "foo,bar" becomes
+' three words: "foo", ",", "bar").
 ' All returned words are normalised to lower case.
 '
 ' @param cmd$     The input string to split.
@@ -465,6 +469,15 @@ Function split_words%(cmd$, words$())
     ElseIf ch$ = " " Then
       If words$(i%) = "#" Then words$(i%) = ""
       If Len(words$(i%)) > 0 Then Inc i%
+    ElseIf ch$ = Chr$(34) Or ch$ = "," Then
+      ' A double-quote or comma is always its own word, even mid-token
+      If Len(words$(i%)) > 0 Then Inc i%
+      If i% > Bound(words$(), 1) Then
+        split_words% = 1 ' Too many words
+        Exit Function
+      EndIf
+      words$(i%) = ch$
+      Inc i%
     Else
       If i% > Bound(words$(), 1) Then
         split_words% = 1 ' Too many words
@@ -595,7 +608,7 @@ Function parse_common(cmd$)
       con.print_fail("This is not that sort of game.")
       parse_common = 1
       Exit Function
-    Case "say", "speak", "talk", "tell"
+    Case "say", "speak", "talk", "tell", Chr$(34)
       verb$ = "ask"
     Case Else
       verb$ = words$(1)
@@ -620,7 +633,7 @@ End Function
 Function verb_ask()
   verb_ask = 1
 
-  Const about_idx% = find_word%(words$(), "about")
+  Const about_idx% = find_about%(words$())
   If Not about_idx% Then
     con.print_fail("Try: ASK person ABOUT subject")
     Exit Function
@@ -638,6 +651,23 @@ Function verb_ask()
   scan_ask_responses(filename$, subject_words$(), best_match_count%, best_match_line%)
 
   print_ask_result(filename$, best_match_count%, best_match_line%)
+End Function
+
+' Finds the index of the ASK verb's "about"/"," separator word, i.e. the
+' first occurrence of either "about" or ",", whichever comes first.
+'
+' @param  words$()  The array of words to search.
+' @return           The index of the separator, or 0 if neither is present.
+Function find_about%(words$())
+  Const about_idx% = find_word%(words$(), "about")
+  Const comma_idx% = find_word%(words$(), ",")
+  If about_idx% = 0 Then
+    find_about% = comma_idx%
+  ElseIf comma_idx% = 0 Then
+    find_about% = about_idx%
+  Else
+    find_about% = Min(about_idx%, comma_idx%)
+  EndIf
 End Function
 
 ' Resolves the direct object of ASK ... ABOUT ..., printing a failure

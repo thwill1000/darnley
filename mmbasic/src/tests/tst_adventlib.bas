@@ -116,7 +116,7 @@ add_test("test_parse_common_alias_examine")
 add_test("test_parse_common_alias_take")
 add_test("test_parse_common_alias_inv")
 add_test("test_parse_common_alias_go")
-add_test("test_parse_common_alias_speak")
+add_test("test_parse_common_alias_ask")
 add_test("test_parse_common_alias_q")
 add_test("test_parse_common_direct")
 add_test("test_parse_common_intercepts")
@@ -159,6 +159,12 @@ add_test("test_split_words_gvn_max_length")
 add_test("test_split_words_gvn_too_long")
 add_test("test_split_words_gvn_upper_case")
 add_test("test_split_words_gvn_trail_space")
+add_test("test_split_words_gvn_lead_quote")
+add_test("test_split_words_gvn_embed_quote")
+add_test("test_split_words_gvn_trail_quote")
+add_test("test_split_words_gvn_lead_comma")
+add_test("test_split_words_gvn_embed_comma")
+add_test("test_split_words_gvn_trail_comma")
 add_test("test_unique_words_gvn_empty")
 add_test("test_unique_words_gvn_no_dupes")
 add_test("test_unique_words_gvn_dupe")
@@ -177,6 +183,10 @@ add_test("test_pm_gvn_not_found")
 add_test("test_pmf_gvn_success")
 add_test("test_pmf_gvn_not_found")
 add_test("test_pmf_gvn_all_blocked")
+add_test("test_find_about_gvn_about")
+add_test("test_find_about_gvn_comma")
+add_test("test_find_about_gvn_both")
+add_test("test_find_about_gvn_neither")
 
 run_tests()
 End
@@ -539,10 +549,16 @@ Sub test_parse_common_alias_go()
   assert_string_equals("go", verb$)
 End Sub
 
-' Alias "speak" maps to verb "ask"
-Sub test_parse_common_alias_speak()
-  assert_int_equals(0, parse_common("speak"))
-  assert_string_equals("ask", verb$)
+' Aliases for "ask": say, speak, talk, tell, and the double-quote "
+Sub test_parse_common_alias_ask()
+  Local aliases$ = "ask|say|speak|talk|tell|" + Chr$(34)
+  Local i% = 1
+  Do While Field$(aliases$, i%, "|") <> ""
+    con_output$ = ""
+    assert_int_equals(0, parse_common(Field$(aliases$, i%, "|")))
+    assert_string_equals("ask", verb$)
+    Inc i%
+  Loop
 End Sub
 
 ' Alias "q" maps to verb "quit"
@@ -1058,6 +1074,60 @@ Sub test_split_words_gvn_trail_space()
   assert_string_equals("four", words$(4))
 End Sub
 
+' A leading double-quote is split into its own word even with no space
+Sub test_split_words_gvn_lead_quote()
+  Local words$(10) Length MAX_WORD_LENGTH
+  assert_int_equals(0, split_words%(Chr$(34) + "hello", words$()))
+  assert_string_equals(Chr$(34), words$(1))
+  assert_string_equals("hello", words$(2))
+  assert_string_equals("", words$(3))
+End Sub
+
+' A double-quote embedded mid-word is still split out on its own
+Sub test_split_words_gvn_embed_quote()
+  Local words$(10) Length MAX_WORD_LENGTH
+  assert_int_equals(0, split_words%("foo" + Chr$(34) + "bar", words$()))
+  assert_string_equals("foo", words$(1))
+  assert_string_equals(Chr$(34), words$(2))
+  assert_string_equals("bar", words$(3))
+End Sub
+
+' A trailing double-quote is split into its own word even with no space
+Sub test_split_words_gvn_trail_quote()
+  Local words$(10) Length MAX_WORD_LENGTH
+  assert_int_equals(0, split_words%("hello" + Chr$(34), words$()))
+  assert_string_equals("hello", words$(1))
+  assert_string_equals(Chr$(34), words$(2))
+  assert_string_equals("", words$(3))
+End Sub
+
+' A leading comma is split into its own word even with no space
+Sub test_split_words_gvn_lead_comma()
+  Local words$(10) Length MAX_WORD_LENGTH
+  assert_int_equals(0, split_words%(",hello", words$()))
+  assert_string_equals(",", words$(1))
+  assert_string_equals("hello", words$(2))
+  assert_string_equals("", words$(3))
+End Sub
+
+' A comma embedded mid-word is still split out on its own
+Sub test_split_words_gvn_embed_comma()
+  Local words$(10) Length MAX_WORD_LENGTH
+  assert_int_equals(0, split_words%("foo,bar", words$()))
+  assert_string_equals("foo", words$(1))
+  assert_string_equals(",", words$(2))
+  assert_string_equals("bar", words$(3))
+End Sub
+
+' A trailing comma is split into its own word even with no space
+Sub test_split_words_gvn_trail_comma()
+  Local words$(10) Length MAX_WORD_LENGTH
+  assert_int_equals(0, split_words%("hello,", words$()))
+  assert_string_equals("hello", words$(1))
+  assert_string_equals(",", words$(2))
+  assert_string_equals("", words$(3))
+End Sub
+
 ' Empty array is unchanged
 Sub test_unique_words_gvn_empty()
   Local words$(4) Length MAX_WORD_LENGTH
@@ -1204,4 +1274,31 @@ End Sub
 Sub test_pmf_gvn_all_blocked()
   print_message_or_fail("ALL_BLOCKED_MSG")
   assert_string_equals("[[red:ERROR: message ALL_BLOCKED_MSG not found.]]" + sys.CRLF$, con_output$)
+End Sub
+
+' find_about%() finds "about" when present and no comma
+Sub test_find_about_gvn_about()
+  Local words$(4) Length MAX_WORD_LENGTH = ("ask", "sarah", "about", "murder")
+  assert_int_equals(3, find_about%(words$()))
+End Sub
+
+' find_about%() finds "," when present and no "about"
+Sub test_find_about_gvn_comma()
+  Local words$(4) Length MAX_WORD_LENGTH = ("sarah", ",", "murder", "")
+  assert_int_equals(2, find_about%(words$()))
+End Sub
+
+' find_about%() prefers whichever separator comes first
+Sub test_find_about_gvn_both()
+  Local words$(5) Length MAX_WORD_LENGTH = ("sarah", ",", "about", "murder", "")
+  assert_int_equals(2, find_about%(words$()))
+
+  Local words2$(5) Length MAX_WORD_LENGTH = ("sarah", "about", ",", "murder", "")
+  assert_int_equals(2, find_about%(words2$()))
+End Sub
+
+' find_about%() returns 0 when neither separator is present
+Sub test_find_about_gvn_neither()
+  Local words$(3) Length MAX_WORD_LENGTH = ("sarah", "murder", "")
+  assert_int_equals(0, find_about%(words$()))
 End Sub

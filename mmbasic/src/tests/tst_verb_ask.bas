@@ -65,6 +65,7 @@ add_test("verb_ask() falls back to wildcard when all entries blocked", "test_ask
 add_test("verb_ask() prefers entry with more matching subject words", "test_ask_gvn_best_match")
 add_test("verb_ask() subject word matching is case-insensitive", "test_ask_gvn_case_insensitive")
 add_test("verb_ask() returns 1 (handled) on every path", "test_ask_always_returns_handled")
+add_test("test_ask_gvn_comma_synonym")
 
 run_tests()
 End
@@ -237,4 +238,15 @@ Sub test_ask_always_returns_handled()
 
   result% = parse_common("ask test suspect about gramophone")
   assert_int_equals(1, verb_ask())
+End Sub
+
+' Comma acts as a synonym for "about"
+Sub test_ask_gvn_comma_synonym()
+  Local result% = parse_common(Chr$(34) + "test suspect, gramophone")
+  assert_int_equals(0, result%)
+
+  result% = verb_ask()
+
+  assert_int_equals(1, result%)
+  assert_int_equals(1, InStr(con_output$, "line B") > 0)
 End Sub
