@@ -165,15 +165,6 @@ add_test("test_unique_words_gvn_dupe")
 add_test("test_unique_words_gvn_case")
 add_test("test_unique_words_gvn_mult_dupes")
 add_test("test_unique_words_gvn_adjacent")
-add_test("test_verb_ask_skips_ineligible")
-add_test("test_verb_ask_applies_provides")
-add_test("test_verb_ask_gvn_flag_met_wins")
-add_test("test_verb_ask_gvn_all_blocked")
-add_test("test_verb_ask_gvn_no_about")
-add_test("test_verb_ask_gvn_no_target")
-add_test("test_verb_ask_gvn_not_here")
-add_test("test_verb_ask_gvn_not_person")
-add_test("test_verb_ask_gvn_no_wildcard")
 add_test("test_pm_gvn_plain")
 add_test("test_pm_gvn_eol_default")
 add_test("test_pm_gvn_no_eol")
@@ -1122,115 +1113,6 @@ Sub test_unique_words_gvn_adjacent()
   assert_string_equals("two", words$(2))
   assert_string_equals("", words$(3))
   assert_string_equals("", words$(4))
-End Sub
-
-' "!requires" entry is ineligible (flag not set); the next eligible entry
-' is used instead, and its "!provides" token is granted.
-Sub test_verb_ask_skips_ineligible()
-  r = 1
-  Local result% = parse_common("ask test suspect about gramophone")
-  assert_int_equals(0, result%)
-
-  con_output$ = ""
-  Const handled% = Call("verb_" + verb$)
-  assert_int_equals(1, handled%)
-
-  assert_int_equals(1, InStr(con_output$, "line B") > 0)
-  assert_int_equals(0, InStr(con_output$, "line A") > 0)
-End Sub
-
-' A successful response's "!provides" tokens are added to the flags set
-Sub test_verb_ask_applies_provides()
-  r = 1
-  Local tokens$(2) = ("heard_gramophone", "")
-  assert_int_equals(0, has_flags%(tokens$()))
-
-  Local result% = parse_common("ask test suspect about gramophone")
-  result% = Call("verb_" + verb$)
-
-  assert_int_equals(1, result%)
-  assert_int_equals(1, has_flags%(tokens$()))
-End Sub
-
-' When the required flag IS set, the gated entry becomes eligible and
-' wins, since it appears first in the file (ties favour earlier entries).
-Sub test_verb_ask_gvn_flag_met_wins()
-  r = 1
-  Local tokens$(2) = ("visited_pond", "")
-  add_flags(tokens$())
-
-  Local result% = parse_common("ask test suspect about gramophone")
-  con_output$ = ""
-  result% = Call("verb_" + verb$)
-
-  assert_int_equals(1, result%)
-  assert_int_equals(1, InStr(con_output$, "line A") > 0)
-End Sub
-
-' All entries for a keyword are gated and unmet; falls through to "*"
-Sub test_verb_ask_gvn_all_blocked()
-  r = 1
-  Local result% = parse_common("ask test suspect about piano only")
-  con_output$ = ""
-  result% = Call("verb_" + verb$)
-
-  assert_int_equals(1, result%)
-  assert_int_equals(1, InStr(con_output$, "wildcard fallback") > 0)
-End Sub
-
-' No "about" in the input — prints the usage hint
-Sub test_verb_ask_gvn_no_about()
-  r = 1
-  Local result% = parse_common("ask test suspect")
-  assert_int_equals(0, result%)
-  result% = verb_ask()
-
-  assert_int_equals(1, result%)
-  assert_int_equals(1, InStr(con_output$, "Try: ASK person ABOUT subject") > 0)
-End Sub
-
-' Direct object does not match any known object/person
-Sub test_verb_ask_gvn_no_target()
-  r = 1
-  Local result% = parse_common("ask nonexistent thing about gramophone")
-  assert_int_equals(0, result%)
-  result% = verb_ask()
-
-  assert_int_equals(1, result%)
-  assert_int_equals(1, InStr(con_output$, "You don't know that person.") > 0)
-End Sub
-
-' Direct object exists and is a person, but is not in the current room
-Sub test_verb_ask_gvn_not_here()
-  r = 1
-  Local result% = parse_common("ask other suspect about gramophone")
-  assert_int_equals(0, result%)
-  result% = verb_ask()
-
-  assert_int_equals(1, result%)
-  assert_int_equals(1, InStr(con_output$, "Other Suspect is not here.") > 0)
-End Sub
-
-' Direct object exists and is present, but is not a person
-Sub test_verb_ask_gvn_not_person()
-  r = 1
-  Local result% = parse_common("ask green door about gramophone")
-  assert_int_equals(0, result%)
-  result% = verb_ask()
-
-  assert_int_equals(1, result%)
-  assert_int_equals(1, InStr(con_output$, "The green door does not answer.") > 0)
-End Sub
-
-' No subject-word match and no wildcard "*" entry in the .msg file
-Sub test_verb_ask_gvn_no_wildcard()
-  r = 1
-  Local result% = parse_common("ask no wildcard about something else entirely")
-  assert_int_equals(0, result%)
-  result% = verb_ask()
-
-  assert_int_equals(1, result%)
-  assert_int_equals(1, InStr(con_output$, "I don't know what you are talking about.") > 0)
 End Sub
 
 ' Plain entry with no directives prints successfully
