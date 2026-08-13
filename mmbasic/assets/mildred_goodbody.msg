@@ -72,6 +72,11 @@ dealings."
 arnold billingsgate
 "A gentleman. Very loyal to Colonel Darnley."
 
+mildred goodbody cook yourself who
+"Me? I've been cook here five years and I keep a good table, if I
+say so myself. I speak my mind plain, which some don't care for,
+but I've nothing to hide and no reason to mince my words now."
+
 norah bagsby
 "A good girl but lazy."
 

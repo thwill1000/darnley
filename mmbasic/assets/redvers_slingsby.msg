@@ -68,6 +68,11 @@ arthur coniston
 "Last night was the first time I met him but he seemed a decent
 fellow."
 
+redvers slingsby yourself who
+"Myself? An old friend of Darnley's, that's the whole of it. A
+plain-spoken man, and I don't intend to start mincing words on
+your account now."
+
 arnold billingsgate
 "I barely know the man."
 
