@@ -72,6 +72,11 @@ mildred goodbody
 norah bagsby
 "Silly girl. Always giggling."
 
+ronald mellors gamekeeper yourself who
+"What about me? I keep the game and see to the traps and the guns.
+Five years I've worked for the Colonel and done it well. I don't
+see as I owe anyone an account of myself."
+
 flatfooted bootprints
 "Clear off! I'm not showing anyone my boots."
 

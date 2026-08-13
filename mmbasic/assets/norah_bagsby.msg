@@ -63,6 +63,11 @@ arnold billingsgate
 mildred goodbody
 "Very kind to me."
 
+norah bagsby maid yourself who
+"I'm only the maid, sir. I've been here six months. I try to do my
+work proper, though I know Mrs. G. thinks I'm lazy sometimes. I
+don't know what more you'd want me to say about myself."
+
 ronald mellors
 "A rough man. A womanizer by all accounts."
 

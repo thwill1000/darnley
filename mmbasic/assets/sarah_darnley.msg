@@ -70,6 +70,12 @@ colonel darnley
 "He was somewhat strict and suspicious by nature, but we were happy
 enough."
 
+sarah yourself who
+"I know what's said of me - too young for my husband, too fond of
+admiration. I loved Sebastian in my own way, whatever anyone
+thinks. I don't expect you to understand a marriage from outside
+looking in."
+
 millicent
 "Her father spoiled her so she got used to having her own way.
 Sebastian probably agreed to Arthur Coniston's proposal for fear of

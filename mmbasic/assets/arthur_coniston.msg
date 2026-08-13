@@ -96,6 +96,11 @@ millicent
 "Be a gentleman, old fellow! Don't ask me to criticise my future
 wife."
 
+arthur coniston yourself who
+"Ha! What can I tell you about myself that you haven't already
+gathered? An ordinary sort of fellow, lucky enough to win
+Millicent's affection and, eventually, her father's blessing too."
+
 redvers slingsby
 "I scarcely know him but he seemed very angry with Darnley about
 something. I got the feeling he had money troubles. A dangerous
