@@ -21,6 +21,7 @@ sys.provides("console")
 
 #Include "../script.inc"
 #Include "../state.inc"
+#Include "../words.inc"
 #Include "../adventlib.inc"
 
 Const TEST_DATA_FILE$ = Mm.Info(Path) + "test_advent.dat"
