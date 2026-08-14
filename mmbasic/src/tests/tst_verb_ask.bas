@@ -74,6 +74,10 @@ add_test("verb_ask() treats ABOUT with no target as fallback", "test_ask_gvn_abo
 add_test("verb_ask() treats comma with no target as fallback", "test_ask_gvn_comma_no_target")
 add_test("verb_ask() ignores comment lines interspersed between entries", "test_ask_msg_comments_ignored")
 add_test("verb_ask() ignores a comment line immediately before the wildcard", "test_ask_comment_b4_wildcard")
+add_test("verb_ask() falls to wildcard when a mandatory '+' subject word is missing", "test_ask_gvn_plus_missing")
+add_test("verb_ask() matches when a mandatory '+' subject word is present", "test_ask_gvn_plus_present")
+add_test("verb_ask() matches when a forbidden '-' subject word is absent", "test_ask_gvn_minus_absent")
+add_test("verb_ask() falls to wildcard when a forbidden '-' subject word is present", "test_ask_gvn_minus_present")
 
 run_tests()
 End
@@ -356,6 +360,53 @@ End Sub
 ' prevent the wildcard from being reached when nothing else matches.
 Sub test_ask_comment_b4_wildcard()
   Local result% = parse_common("ask test suspect about piano only")
+  assert_int_equals(0, result%)
+
+  result% = verb_ask()
+
+  assert_int_equals(1, result%)
+  assert_int_equals(1, InStr(con_output$, "wildcard fallback") > 0)
+End Sub
+
+' Keyword line "+urgent news" requires "urgent" - asking about "news" alone
+' doesn't match it, so this falls through to the "*" wildcard
+Sub test_ask_gvn_plus_missing()
+  Local result% = parse_common("ask test suspect about news")
+  assert_int_equals(0, result%)
+
+  result% = verb_ask()
+
+  assert_int_equals(1, result%)
+  assert_int_equals(1, InStr(con_output$, "wildcard fallback") > 0)
+End Sub
+
+' Including the mandatory word "urgent" allows the entry to match
+Sub test_ask_gvn_plus_present()
+  Local result% = parse_common("ask test suspect about urgent news")
+  assert_int_equals(0, result%)
+
+  result% = verb_ask()
+
+  assert_int_equals(1, result%)
+  assert_int_equals(1, InStr(con_output$, "mandatory word matched - urgent news response") > 0)
+End Sub
+
+' Keyword line "quiet -secret" matches "quiet" alone, since the forbidden
+' word "secret" is absent from the subject
+Sub test_ask_gvn_minus_absent()
+  Local result% = parse_common("ask test suspect about quiet")
+  assert_int_equals(0, result%)
+
+  result% = verb_ask()
+
+  assert_int_equals(1, result%)
+  assert_int_equals(1, InStr(con_output$, "forbidden word absent - quiet response") > 0)
+End Sub
+
+' Including the forbidden word "secret" alongside "quiet" prevents that
+' entry from matching, so this falls through to the "*" wildcard
+Sub test_ask_gvn_minus_present()
+  Local result% = parse_common("ask test suspect about quiet secret")
   assert_int_equals(0, result%)
 
   result% = verb_ask()

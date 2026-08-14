@@ -59,6 +59,10 @@ add_test("verb_examine() fails when nothing matches and no exit matches", "test_
 add_test("verb_examine() suggests GO when words match an exit instead", "test_ex_gvn_suggests_go")
 add_test("verb_examine() does not suggest GO when an object match exists elsewhere", "test_ex_no_go_when_obj_elsewhere")
 add_test("verb_examine() always returns 1 (handled)", "test_ex_always_returns_handled")
+add_test("verb_examine() fails when a mandatory '+' word is missing from the command", "test_ex_gvn_plus_missing")
+add_test("verb_examine() succeeds when a mandatory '+' word is present", "test_ex_gvn_plus_present")
+add_test("verb_examine() matches when a forbidden '-' word is absent", "test_ex_gvn_minus_absent")
+add_test("verb_examine() fails to match when a forbidden '-' word is present", "test_ex_gvn_minus_present")
 
 run_tests()
 End
@@ -158,4 +162,50 @@ Sub test_ex_always_returns_handled()
 
   result% = parse_common("examine two")
   assert_int_equals(1, verb_examine())
+End Sub
+
+' OBJ005 "+Secret Panel" requires "secret" - typing just "panel" doesn't match it
+Sub test_ex_gvn_plus_missing()
+  Local result% = parse_common("examine panel")
+  assert_int_equals(0, result%)
+
+  Local ret% = verb_examine()
+
+  assert_int_equals(1, ret%)
+  assert_string_equals("[[red:That is not here, cannot be examined or is unremarkable.]]" + sys.CRLF$, con_output$)
+End Sub
+
+' Including the mandatory word "secret" allows OBJ005 to match
+Sub test_ex_gvn_plus_present()
+  Local result% = parse_common("examine secret panel")
+  assert_int_equals(0, result%)
+
+  Local ret% = verb_examine()
+
+  assert_int_equals(1, ret%)
+  assert_string_equals("<cyan>Description of secret panel" + sys.CRLF$ + "<reset>", con_output$)
+End Sub
+
+' OBJ006 "Old Statue -broken" matches "statue" alone, since the forbidden
+' word "broken" is absent from the command
+Sub test_ex_gvn_minus_absent()
+  Local result% = parse_common("examine statue")
+  assert_int_equals(0, result%)
+
+  Local ret% = verb_examine()
+
+  assert_int_equals(1, ret%)
+  assert_string_equals("<cyan>Description of statue" + sys.CRLF$ + "<reset>", con_output$)
+End Sub
+
+' Including the forbidden word "broken" alongside "statue" prevents OBJ006
+' from matching at all
+Sub test_ex_gvn_minus_present()
+  Local result% = parse_common("examine broken statue")
+  assert_int_equals(0, result%)
+
+  Local ret% = verb_examine()
+
+  assert_int_equals(1, ret%)
+  assert_string_equals("[[red:That is not here, cannot be examined or is unremarkable.]]" + sys.CRLF$, con_output$)
 End Sub

@@ -19,6 +19,12 @@ Description of object 3
 OBJ004
 Description of object 4
 
+OBJ005
+Description of secret panel
+
+OBJ006
+Description of statue
+
 P_TEST_SUSPECT
 A test suspect.
 

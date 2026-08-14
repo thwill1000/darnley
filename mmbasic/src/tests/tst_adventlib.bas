@@ -97,6 +97,16 @@ add_test("test_find_matches_gvn_last")
 add_test("test_find_matches_first_and_last")
 add_test("test_find_matches_first_gt_last")
 add_test("test_find_matches_empty_needle")
+add_test("test_find_matches_gvn_plus_miss")
+add_test("test_find_matches_gvn_plus_ok")
+add_test("test_find_matches_gvn_minus_ok")
+add_test("test_find_matches_gvn_minus_bad")
+add_test("test_find_matches_gvn_both_ok")
+add_test("test_find_matches_gvn_plus_fail")
+add_test("test_find_matches_gvn_minus_fail")
+add_test("test_find_matches_gvn_multi_plus")
+add_test("test_find_matches_gvn_plus_case")
+add_test("test_find_matches_gvn_minus_case")
 add_test("test_find_loc_gvn_first")
 add_test("test_find_loc_gvn_last")
 add_test("test_find_loc_gvn_middle")
@@ -965,6 +975,86 @@ Sub test_find_matches_empty_needle()
   Local haystack$(4) = ("cat", "dog", "bird", "")
   Local needles$(4) = ("cat", "", "bird", "")
   assert_int_equals(1, find_matches%(haystack$(), needles$(), 0, 0))
+End Sub
+
+' A '+' haystack word not matched by any needle forces 0, even though
+' another (non-prefixed) word did match.
+Sub test_find_matches_gvn_plus_miss()
+  Local haystack$(4) Length MAX_WORD_LENGTH = ("+cat", "dog", "", "")
+  Local needles$(4) Length MAX_WORD_LENGTH = ("dog", "", "", "")
+  assert_int_equals(0, find_matches%(haystack$(), needles$(), 0, 0))
+End Sub
+
+' A '+' haystack word that IS matched counts towards the total, same as a
+' plain word would; the prefix is stripped before comparison.
+Sub test_find_matches_gvn_plus_ok()
+  Local haystack$(4) Length MAX_WORD_LENGTH = ("+cat", "dog", "", "")
+  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "dog", "", "")
+  assert_int_equals(2, find_matches%(haystack$(), needles$(), 0, 0))
+End Sub
+
+' A '-' haystack word that is NOT matched has no effect - normal matches
+' still count.
+Sub test_find_matches_gvn_minus_ok()
+  Local haystack$(4) Length MAX_WORD_LENGTH = ("cat", "-dog", "", "")
+  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "", "", "")
+  assert_int_equals(1, find_matches%(haystack$(), needles$(), 0, 0))
+End Sub
+
+' A '-' haystack word that IS matched forces 0, even though other words
+' also matched.
+Sub test_find_matches_gvn_minus_bad()
+  Local haystack$(4) Length MAX_WORD_LENGTH = ("cat", "-dog", "", "")
+  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "dog", "", "")
+  assert_int_equals(0, find_matches%(haystack$(), needles$(), 0, 0))
+End Sub
+
+' Combination: mandatory word matched, forbidden word not matched -
+' succeeds, and the '+' match contributes to the count.
+Sub test_find_matches_gvn_both_ok()
+  Local haystack$(4) Length MAX_WORD_LENGTH = ("+cat", "-dog", "bird", "")
+  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "bird", "", "")
+  assert_int_equals(2, find_matches%(haystack$(), needles$(), 0, 0))
+End Sub
+
+' Combination: mandatory word left unmatched - fails even though the
+' forbidden word was correctly avoided.
+Sub test_find_matches_gvn_plus_fail()
+  Local haystack$(4) Length MAX_WORD_LENGTH = ("+cat", "-dog", "bird", "")
+  Local needles$(4) Length MAX_WORD_LENGTH = ("bird", "", "", "")
+  assert_int_equals(0, find_matches%(haystack$(), needles$(), 0, 0))
+End Sub
+
+' Combination: forbidden word matched - fails even though the mandatory
+' word was also matched.
+Sub test_find_matches_gvn_minus_fail()
+  Local haystack$(4) Length MAX_WORD_LENGTH = ("+cat", "-dog", "bird", "")
+  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "dog", "", "")
+  assert_int_equals(0, find_matches%(haystack$(), needles$(), 0, 0))
+End Sub
+
+' Multiple '+' words - if even one of several mandatory words is missing,
+' the whole match fails.
+Sub test_find_matches_gvn_multi_plus()
+  Local haystack$(4) Length MAX_WORD_LENGTH = ("+cat", "+dog", "bird", "")
+  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "bird", "", "")
+  assert_int_equals(0, find_matches%(haystack$(), needles$(), 0, 0))
+End Sub
+
+' Matching against a '+' word (after stripping the prefix) is still
+' case-insensitive.
+Sub test_find_matches_gvn_plus_case()
+  Local haystack$(4) Length MAX_WORD_LENGTH = ("+CAT", "", "", "")
+  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "", "", "")
+  assert_int_equals(1, find_matches%(haystack$(), needles$(), 0, 0))
+End Sub
+
+' Matching against a '-' word (after stripping the prefix) is still
+' case-insensitive when checking whether it was forbiddenly matched.
+Sub test_find_matches_gvn_minus_case()
+  Local haystack$(4) Length MAX_WORD_LENGTH = ("-CAT", "", "", "")
+  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "", "", "")
+  assert_int_equals(0, find_matches%(haystack$(), needles$(), 0, 0))
 End Sub
 
 ' r=LOC001; "two" matches the exit "Room Two" (LOC002)

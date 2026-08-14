@@ -946,31 +946,54 @@ End Function
 ' Each haystack element may only be matched once; duplicate needles cannot
 ' both match the same haystack word.
 '
-' @param haystack$()  The array of words to search. Must be Option Base 1.
-' @param needles$()   The array of words to match. Must be Option Base 1.
-' @param first%       Index of first needle to consider (default 0 = start from 1).
-' @param last%        Index of last needle to consider (default 0 = use full range).
-' @return             The number of needles that matched a distinct haystack word.
-Function find_matches%(haystack$(), needles$(), first%, last%)
-  Local i%, j%
-  Const hay_lo% = Bound(haystack$(), 0), hay_hi% = Bound(haystack$(), 1)
-  Local used%(hay_hi%)
+' A haystack word may carry a '+' or '-' prefix (not part of the word for
+' matching purposes, stripped before comparison):
+'   '+' - the word is MANDATORY: if it is not matched by any needle then
+'         the whole function returns 0, regardless of other matches found.
+'         A matched '+' word still counts towards the returned total.
+'   '-' - the word is FORBIDDEN: if it IS matched by any needle then the
+'         whole function returns 0, regardless of other matches found.
+'
+' @param haystack$()  The array of words to search.
+'                     Elements may be prefixed with '+' (mandatory) or '-'
+'                     (forbidden); the prefix is stripped before comparison.
+' @param needles$()   The array of words to match.
+' @param n_first%     Index of first needle to consider (default 0 = start from base).
+' @param n_last%      Index of last needle to consider (default 0 = use full range).
+' @return             The number of needles that matched a distinct haystack word,
+'                     or 0 if a '+' word was left unmatched or a '-' word was matched.
+Function find_matches%(haystack$(), needles$(), n_first%, n_last%)
+  Const h_first% = Bound(haystack$(), 0), h_last% = Bound(haystack$(), 1)
+  Local h_word$, i%, j%, prefix$, s$, used%(h_last%)
 
-  If Not first% Then first% = 1
-  If Not last% Then last% = Bound(needles$(), 1)
+  If n_first% = 0 Then n_first% = Bound(needles$(), 0)
+  If n_last% = 0 Then n_last% = Bound(needles$(), 1)
 
-  Local s$
-  For i% = first% To last%
-    s$ = LCase$(needles$(i%))
+  For i% = n_first% To n_last%
+    s$ = LCase$(needles$(i%)) ' TODO: needles$() should already be lower-case
     If s$ = "" Then Exit For
-    For j% = hay_lo% To hay_hi%
+    For j% = h_first% To h_last%
       If haystack$(j%) = "" Then Exit For
-      If Not used%(j%) And s$ = LCase$(haystack$(j%)) Then
+      h_word$ = LCase$(haystack$(j%)) ' TODO: haystack$() should already be lower-case
+      prefix$ = Left$(h_word$, 1)
+      If prefix$ = "+" Or prefix$ = "-" Then h_word$ = Mid$(h_word$, 2)
+      If Not used%(j%) And s$ = h_word$ Then
         Inc find_matches%
         used%(j%) = 1
         Exit For
       EndIf
     Next
+  Next
+
+  ' Enforce '+' (mandatory) and '-' (forbidden) prefixes.
+  For j% = h_first% To h_last%
+    If haystack$(j%) = "" Then Exit For
+    prefix$ = Left$(haystack$(j%), 1)
+    If prefix$ = "+" Then
+      If Not used%(j%) Then find_matches% = 0 : Exit Function
+    ElseIf prefix$ = "-" Then
+      If used%(j%) Then find_matches% = 0 : Exit Function
+    EndIf
   Next
 End Function
 
