@@ -231,7 +231,7 @@ End Sub
 ' between eligible entries favour the one appearing earlier in the file.
 Sub test_ask_gvn_flag_met_wins()
   Local tokens$(2) = ("visited_pond", "")
-  add_flags(tokens$())
+  state.add_flags(tokens$())
 
   Local result% = parse_common("ask test suspect about gramophone")
   assert_int_equals(0, result%)
@@ -245,7 +245,7 @@ End Sub
 ' A successful response's "!provides" tokens are added to the flags set.
 Sub test_ask_applies_provides()
   Local tokens$(2) = ("heard_gramophone", "")
-  assert_int_equals(0, has_flags%(tokens$()))
+  assert_int_equals(0, state.has_flags%(tokens$()))
 
   Local result% = parse_common("ask test suspect about gramophone")
   assert_int_equals(0, result%)
@@ -253,7 +253,7 @@ Sub test_ask_applies_provides()
   result% = verb_ask()
 
   assert_int_equals(1, result%)
-  assert_int_equals(1, has_flags%(tokens$()))
+  assert_int_equals(1, state.has_flags%(tokens$()))
 End Sub
 
 ' All entries for a keyword are gated and unmet; falls through to the "*"

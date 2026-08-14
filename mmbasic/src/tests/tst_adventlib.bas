@@ -508,14 +508,14 @@ End Sub
 ' A "!provides" token on the entry is applied to the flags set
 Sub test_pml_applies_provides()
   Local tokens$(2) = ("token_b", "")
-  assert_int_equals(0, has_flags%(tokens$()))
+  assert_int_equals(0, state.has_flags%(tokens$()))
 
   Open TEST_DIRECTIVES_FILE$ For Input As #1
   seek_to_keyword("provides_only")
   print_message_lines()
   Close #1
 
-  assert_int_equals(1, has_flags%(tokens$()))
+  assert_int_equals(1, state.has_flags%(tokens$()))
   assert_string_equals(str.quote$("provides only"), con_output$)
 End Sub
 
@@ -529,7 +529,7 @@ Sub test_pml_gvn_multiline()
   print_message_lines()
   Close #1
 
-  assert_int_equals(1, has_flags%(tokens$()))
+  assert_int_equals(1, state.has_flags%(tokens$()))
   assert_string_equals(Chr$(34) + "line one" + sys.CRLF$ + "line two" + Chr$(34), con_output$)
 End Sub
 
@@ -538,7 +538,7 @@ End Sub
 ' for having already selected an eligible entry
 Sub test_pml_ignores_requires()
   Local tokens$(2) = ("token_a", "")
-  assert_int_equals(0, has_flags%(tokens$()))
+  assert_int_equals(0, state.has_flags%(tokens$()))
 
   Open TEST_DIRECTIVES_FILE$ For Input As #1
   seek_to_keyword("both_directives")
@@ -821,7 +821,7 @@ End Sub
 ' wins, since it appears first in the file (ties favour earlier entries)
 Sub test_pm_gvn_flag_met_wins()
   Local tokens$(2) = ("needs_token", "")
-  add_flags(tokens$())
+  state.add_flags(tokens$())
 
   Local result% = print_message%("SKIP_INELIGIBLE_MSG")
   assert_int_equals(0, result%)
@@ -839,12 +839,12 @@ End Sub
 ' A successful match's "!provides" tokens are added to the flags set
 Sub test_pm_applies_provides()
   Local tokens$(2) = ("granted_token", "")
-  assert_int_equals(0, has_flags%(tokens$()))
+  assert_int_equals(0, state.has_flags%(tokens$()))
 
   Local result% = print_message%("PROVIDES_MSG")
 
   assert_int_equals(0, result%)
-  assert_int_equals(1, has_flags%(tokens$()))
+  assert_int_equals(1, state.has_flags%(tokens$()))
 End Sub
 
 ' All entries for a tag are gated and unmet - returns 1, nothing printed
