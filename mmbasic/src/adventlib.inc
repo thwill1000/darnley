@@ -326,44 +326,6 @@ Function get_input$(prompt$)
   EndIf
 End Function
 
-' Adds each non-empty token in tokens$() to the flags set, skipping any
-' already present. Stops at the first empty element.
-'
-' @param tokens$()  Array of flag tokens to add.
-Sub add_flags(tokens$())
-  Local i%, token$
-  For i% = Bound(tokens$(), 0) To Bound(tokens$(), 1)
-    token$ = tokens$(i%)
-    If token$ = "" Then Exit Sub
-    If LInStr(flags%(), "|" + token$ + "|") = 0 Then
-      LongString Append flags%(), token$ + "|"
-    EndIf
-  Next
-End Sub
-
-' Returns 1 if every non-empty token in tokens$() is present in the flags
-' set, 0 otherwise. Stops at the first empty element. An array containing
-' no tokens trivially returns 1.
-'
-' @param tokens$()  Array of tokens to check.
-Function has_flags%(tokens$())
-  has_flags% = count_set_flags%(tokens$()) = count_words%(tokens$())
-End Function
-
-' Counts how many of the given tokens are present in the flags set.
-' Stops at the first empty element.
-'
-' @param tokens$()  Array of flag tokens to check.
-' @return           The number of tokens present.
-Function count_set_flags%(tokens$())
-  Local i%, token$
-  For i% = Bound(tokens$(), 0) To Bound(tokens$(), 1)
-    token$ = tokens$(i%)
-    If token$ = "" Then Exit Function
-    If LInStr(flags%(), "|" + token$ + "|") <> 0 Then Inc count_set_flags%
-  Next
-End Function
-
 ' Reads zero or more directive lines ("!requires ..." / "!provides ...")
 ' immediately following a keyword line that has already been read by the
 ' caller. At most one "!requires" and one "!provides" line are recognised,
