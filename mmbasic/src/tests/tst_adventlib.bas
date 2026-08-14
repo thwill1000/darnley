@@ -21,6 +21,7 @@ sys.provides("console")
 
 #Include "../script.inc"
 #Include "../words.inc"
+#Include "../advdata.inc"
 #Include "../state.inc"
 #Include "../adventlib.inc"
 
@@ -51,8 +52,7 @@ End Sub
 
 adv.asset_dir$ = Mm.Info(Path)
 adv.msg_file$ = adv.asset_dir$ + "test.msg"
-read_rooms(TEST_DATA_FILE$)
-read_objects(TEST_DATA_FILE$)
+advdata.init(TEST_DATA_FILE$)
 
 add_test("test_count_data_gvn_empty")
 add_test("test_count_data_gvn_one")
@@ -81,12 +81,6 @@ add_test("test_find_matches_gvn_minus_fail")
 add_test("test_find_matches_gvn_multi_plus")
 add_test("test_find_matches_gvn_plus_case")
 add_test("test_find_matches_gvn_minus_case")
-add_test("test_find_loc_gvn_first")
-add_test("test_find_loc_gvn_last")
-add_test("test_find_loc_gvn_middle")
-add_test("test_find_loc_gvn_not_found")
-add_test("test_find_loc_no_err_on_found")
-add_test("test_find_loc_gvn_error")
 add_test("test_parse_common_rtns_success")
 add_test("test_parse_common_sets_verb")
 add_test("test_parse_common_sets_noun")
@@ -193,40 +187,6 @@ tcd_two_b:
 Data "alpha"
 Data "beta"
 Data "" ' End
-
-' Returns index of first room
-Sub test_find_loc_gvn_first()
-  assert_int_equals(1, find_loc%("LOC001", 1))
-End Sub
-
-' Returns index of last room
-Sub test_find_loc_gvn_last()
-  assert_int_equals(3, find_loc%("LOC003", 1))
-End Sub
-
-' Returns index of a middle room
-Sub test_find_loc_gvn_middle()
-  assert_int_equals(2, find_loc%("LOC002", 1))
-End Sub
-
-' Returns zero when not found and no_error% set
-Sub test_find_loc_gvn_not_found()
-  assert_int_equals(0, find_loc%("LOC999", 1))
-End Sub
-
-' no_error% does not affect a successful lookup
-Sub test_find_loc_no_err_on_found()
-  assert_int_equals(1, find_loc%("LOC001", 0))
-End Sub
-
-' Raises error when not found and no_error% unset
-Sub test_find_loc_gvn_error()
-  Local result%, msg$
-  On Error Ignore
-  result% = find_loc%("LOC999", 0)
-  assert_raw_error("Location not found: LOC999")
-  On Error Abort
-End Sub
 
 ' Returns 0 on successful parse
 Sub test_parse_common_rtns_success()
