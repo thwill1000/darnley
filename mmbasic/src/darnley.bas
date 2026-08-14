@@ -13,8 +13,8 @@ If Mm.Device$ = "MMB4L" Then Option Simulate PicoMiteVGA
 #Include "splib/string.inc"
 #Include "console.inc"
 #Include "script.inc"
-#Include "state.inc"
 #Include "words.inc"
+#Include "state.inc"
 #Include "adventlib.inc"
 #Include "microserif6x8.inc"
 
@@ -122,7 +122,7 @@ Function verb_accuse()
     If Not obj_idx% Then Exit Function
   EndIf
 
-  Const found% = count_set_flags%(clues$())
+  Const found% = state.count_set_flags%(clues$())
 
   If found% < Bound(clues$(), 1) Then
     Local msg$ = "You have found " + Str$(found%) + " of the " + Str$(Bound(clues$(), 1))
@@ -245,7 +245,7 @@ End Sub
 Function verb_cheat()
   verb_cheat = 1
   print_message_or_fail("CHEAT_TEXT")
-  add_flags(clues$())
+  state.add_flags(clues$())
   state.cheat% = 1
 End Function
 

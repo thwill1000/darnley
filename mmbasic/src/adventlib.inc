@@ -584,7 +584,7 @@ Sub scan_ask_responses(filename$, subject_words$(), best_match_count%, best_matc
       read_directives(1, requires$(), provides$(), first_line$, lines_consumed%)
       Inc line_num%, lines_consumed%
 
-      eligible% = has_flags%(requires$())
+      eligible% = state.has_flags%(requires$())
       If eligible% Then
         file_word_count% = split_words%(s$, file_words$())
         match_count% = find_matches%(file_words$(), subject_words$())
@@ -915,8 +915,8 @@ Function print_message%(tag$, no_eol%)
     If s$ = tag$ Then
       read_directives(fnbr%, requires$(), provides$(), first_line$, lines_consumed%)
 
-      If has_flags%(requires$()) Then
-        add_flags(provides$())
+      If state.has_flags%(requires$()) Then
+        state.add_flags(provides$())
         print_body(first_line$)
         print_message% = 0
         Exit Do
@@ -952,7 +952,7 @@ Sub print_message_lines()
   Local s$, lines_consumed%
 
   read_directives(1, requires$(), provides$(), s$, lines_consumed%)
-  add_flags(provides$())
+  state.add_flags(provides$())
   print_body(s$)
 End Sub
 

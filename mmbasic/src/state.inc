@@ -35,7 +35,7 @@ End Sub
 ' already present. Stops at the first empty element.
 '
 ' @param tokens$()  Array of flag tokens to add.
-Sub add_flags(tokens$())
+Sub state.add_flags(tokens$())
   Local i%, token$
   For i% = Bound(tokens$(), 0) To Bound(tokens$(), 1)
     token$ = tokens$(i%)
@@ -51,8 +51,8 @@ End Sub
 ' no tokens trivially returns 1.
 '
 ' @param tokens$()  Array of tokens to check.
-Function has_flags%(tokens$())
-  has_flags% = count_set_flags%(tokens$()) = count_words%(tokens$())
+Function state.has_flags%(tokens$())
+  state.has_flags% = state.count_set_flags%(tokens$()) = count_words%(tokens$())
 End Function
 
 ' Counts how many of the given tokens are present in the flags set.
@@ -60,12 +60,12 @@ End Function
 '
 ' @param tokens$()  Array of flag tokens to check.
 ' @return           The number of tokens present.
-Function count_set_flags%(tokens$())
+Function state.count_set_flags%(tokens$())
   Local i%, token$
   For i% = Bound(tokens$(), 0) To Bound(tokens$(), 1)
     token$ = tokens$(i%)
     If token$ = "" Then Exit Function
-    If LInStr(flags%(), "|" + token$ + "|") <> 0 Then Inc count_set_flags%
+    If LInStr(flags%(), "|" + token$ + "|") <> 0 Then Inc state.count_set_flags%
   Next
 End Function
 
