@@ -21,6 +21,7 @@ sys.provides("console")
 
 #Include "../script.inc"
 #Include "../words.inc"
+#Include "../advdata.inc"
 #Include "../state.inc"
 #Include "../adventlib.inc"
 
@@ -50,8 +51,7 @@ End Sub
 
 adv.asset_dir$ = Mm.Info(Path)
 adv.msg_file$ = adv.asset_dir$ + "test.msg"
-read_rooms(TEST_DATA_FILE$)
-read_objects(TEST_DATA_FILE$)
+advdata.init(TEST_DATA_FILE$)
 
 add_test("verb_ask() with no ABOUT asks first person in room about all words", "test_ask_gvn_no_about")
 add_test("verb_ask() with no ABOUT and matching keyword gets a real answer", "test_ask_gvn_no_about_matches")

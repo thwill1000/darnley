@@ -14,6 +14,7 @@ If Mm.Device$ = "MMB4L" Then Option Simulate PicoMiteVGA
 #Include "console.inc"
 #Include "script.inc"
 #Include "words.inc"
+#Include "advdata.inc"
 #Include "state.inc"
 #Include "adventlib.inc"
 #Include "microserif6x8.inc"

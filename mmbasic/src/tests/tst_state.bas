@@ -16,9 +16,14 @@ Option Default Integer
 sys.provides("console")
 
 #Include "../words.inc"
+#Include "../advdata.inc"
 #Include "../state.inc"
 
-Dim rooms$(10)
+Const TEST_DATA_FILE$ = Mm.Info(Path) + "test_advent.dat"
+
+adv.asset_dir$ = Mm.Info(Path)
+adv.msg_file$ = adv.asset_dir$ + "test.msg"
+advdata.init(TEST_DATA_FILE$)
 
 add_test("test_add_flags_gvn_one_token")
 add_test("test_add_flags_multiple_tokens")

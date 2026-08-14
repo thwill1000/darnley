@@ -21,6 +21,7 @@ sys.provides("console")
 
 #Include "../script.inc"
 #Include "../words.inc"
+#Include "../advdata.inc"
 #Include "../state.inc"
 #Include "../adventlib.inc"
 
@@ -50,8 +51,7 @@ End Sub
 
 adv.asset_dir$ = Mm.Info(Path)
 adv.msg_file$ = adv.asset_dir$ + "test.msg"
-read_rooms(TEST_DATA_FILE$)
-read_objects(TEST_DATA_FILE$)
+advdata.init(TEST_DATA_FILE$)
 
 add_test("verb_examine() with no noun re-describes the location", "test_ex_gvn_no_noun")
 add_test("verb_examine() finds an object present in the current room", "test_ex_gvn_found_present")
