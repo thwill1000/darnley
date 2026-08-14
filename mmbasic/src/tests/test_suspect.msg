@@ -15,6 +15,12 @@ piano only
 !requires NEVER_SET
 "never shown"
 
++urgent news
+"mandatory word matched - urgent news response"
+
+quiet -secret
+"forbidden word absent - quiet response"
+
 # comment immediately before the wildcard
 *
 "wildcard fallback"
