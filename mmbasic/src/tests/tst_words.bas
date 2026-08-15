@@ -31,10 +31,13 @@ add_test("test_cat_words_gvn_si_at_empty")
 add_test("test_count_words")
 add_test("test_count_words_gvn_full")
 add_test("test_count_words_gvn_gap")
-add_test("test_find_word")
-add_test("test_find_word_gvn_empty")
-add_test("test_find_word_gvn_not_found")
-add_test("test_find_word_gvn_upper_case")
+add_test("test_ffirst_gvn_match")
+add_test("test_ffirst_gvn_not_found")
+add_test("test_ffirst_gvn_first_of_dupes")
+add_test("test_ffirst_gvn_case_sensitive")
+add_test("test_ffirst_gvn_stops_at_empty")
+add_test("test_ffirst_gvn_empty_haystack")
+add_test("test_ffirst_gvn_last_element")
 add_test("test_remove_word")
 add_test("test_remove_word_gvn_empty")
 add_test("test_remove_word_gvn_invalid_idx")
@@ -169,28 +172,48 @@ Sub test_count_words_gvn_gap()
   assert_int_equals(1, count_words%(words$()))
 End Sub
 
-Sub test_find_word()
-  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
-  assert_int_equals(1, find_word%(words$(), "one"))
-  assert_int_equals(2, find_word%(words$(), "two"))
-  assert_int_equals(4, find_word%(words$(), "four"))
+' Needle present in haystack - returns its index
+Sub test_ffirst_gvn_match()
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "")
+  assert_int_equals(2, word.find_first%(words$(), "two"))
 End Sub
 
-Sub test_find_word_gvn_empty()
+' Needle absent from haystack - returns -1
+Sub test_ffirst_gvn_not_found()
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "")
+  assert_int_equals(-1, word.find_first%(words$(), "four"))
+End Sub
+
+' Needle appears more than once - returns the FIRST matching index
+Sub test_ffirst_gvn_first_of_dupes()
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "two", "")
+  assert_int_equals(2, word.find_first%(words$(), "two"))
+End Sub
+
+' Matching is case-SENSITIVE - differing case is not a match
+Sub test_ffirst_gvn_case_sensitive()
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "TWO", "three", "")
+  assert_int_equals(-1, word.find_first%(words$(), "two"))
+  assert_int_equals(2, word.find_first%(words$(), "TWO"))
+End Sub
+
+' Scanning stops at the first empty element - a match placed after a gap
+' is not found
+Sub test_ffirst_gvn_stops_at_empty()
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "", "three", "")
+  assert_int_equals(-1, word.find_first%(words$(), "three"))
+End Sub
+
+' Empty haystack array - always returns -1
+Sub test_ffirst_gvn_empty_haystack()
   Local words$(4) Length MAX_WORD_LENGTH
-  assert_int_equals(0, find_word%(words$(), "foo"))
+  assert_int_equals(-1, word.find_first%(words$(), "one"))
 End Sub
 
-Sub test_find_word_gvn_not_found()
+' Needle matches the very last element of a fully-populated array
+Sub test_ffirst_gvn_last_element()
   Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
-  assert_int_equals(0, find_word%(words$(), "five"))
-End Sub
-
-Sub test_find_word_gvn_upper_case()
-  Local words$(4) Length MAX_WORD_LENGTH = ("one", "TWO", "Three", "")
-  assert_int_equals(2, find_word%(words$(), "two"))
-  assert_int_equals(2, find_word%(words$(), "TWO"))
-  assert_int_equals(3, find_word%(words$(), "three"))
+  assert_int_equals(4, word.find_first%(words$(), "four"))
 End Sub
 
 Sub test_remove_word()

@@ -276,27 +276,26 @@ End Function
 Function verb_ask()
   verb_ask = 1
 
-  Local about_idx% = find_about%(words$())
+  Local comma_idx% = word.find_first%(words$(), ",")
   Local obj_idx%
 
-  If about_idx% > 2 Then
-    obj_idx% = resolve_ask_target%(about_idx%)
+  If comma_idx% > 2 Then
+    obj_idx% = resolve_ask_target%(comma_idx%)
     If Not obj_idx% Then Exit Function
   Else
-    ' No "about"/"," separator, or no target named before it (e.g.
-    ' "ask about topic" / "ask ,topic") - assume all remaining words are
-    ' the topic and direct the question at the first person present in
-    ' the current location.
+    ' No "," separator, or no person named before it (e.g. ",topic")
+    ' - assume all remaining words are the topic and direct the speech at the
+    ' first person present in the current location.
     obj_idx% = find_person_in_room%(r)
     If Not obj_idx% Then
       con.print_fail("There is no-one here to talk to.")
       Exit Function
     EndIf
-    about_idx% = 1
+    comma_idx% = 1
   EndIf
 
   Local subject_words$(MAX_WORDS) Length MAX_WORD_LENGTH
-  extract_subject_words(about_idx%, subject_words$())
+  extract_subject_words(comma_idx%, subject_words$())
 
   Const filename$ = LCase$(Mid$(Field$(objects$(obj_idx%), 1, "|"), 3)) + ".msg"
 
@@ -306,29 +305,12 @@ Function verb_ask()
   print_ask_result(filename$, best_match_count%, best_match_line%)
 End Function
 
-' Finds the index of the ASK verb's "about"/"," separator word, i.e. the
-' first occurrence of either "about" or ",", whichever comes first.
-'
-' @param  words$()  The array of words to search.
-' @return           The index of the separator, or 0 if neither is present.
-Function find_about%(words$())
-  Const about_idx% = find_word%(words$(), "about")
-  Const comma_idx% = find_word%(words$(), ",")
-  If about_idx% = 0 Then
-    find_about% = comma_idx%
-  ElseIf comma_idx% = 0 Then
-    find_about% = about_idx%
-  Else
-    find_about% = Min(about_idx%, comma_idx%)
-  EndIf
-End Function
-
-' Resolves the direct object of ASK ... ABOUT ..., printing a failure
-' message and returning 0 if it can't be found, isn't present, or isn't
-' a person.
-Function resolve_ask_target%(about_idx%)
+' Resolves the direct object of ("target name, subject words) printing
+' failure message and returning 0 if it can't be found, isn't present,
+' or isn't a person.
+Function resolve_ask_target%(comma_idx%)
   ' The target must exist (person/object)
-  resolve_ask_target% = find_obj%(words$(), 1, about_idx% - 1)
+  resolve_ask_target% = find_obj%(words$(), 1, comma_idx% - 1)
   If Not resolve_ask_target% Then
     con.print_fail("You don't know that person.")
     Exit Function
@@ -378,11 +360,11 @@ Function sanitize_name$(name$)
   sanitize_name$ = str.trim$(sanitize_name$)
 End Function
 
-' Populates subject_words$() with the words following "about" in words$().
-Sub extract_subject_words(about_idx%, subject_words$())
+' Populates subject_words$() with the words following "," in words$().
+Sub extract_subject_words(comma_idx%, subject_words$())
   Local i%
-  For i% = Bound(words$(), 0) To Bound(words$(), 1) - about_idx%
-    subject_words$(i%) = words$(i% + about_idx%)
+  For i% = Bound(words$(), 0) To Bound(words$(), 1) - comma_idx%
+    subject_words$(i%) = words$(i% + comma_idx%)
   Next
 End Sub
 
@@ -447,11 +429,10 @@ End Sub
 Sub print_ask_result(filename$, best_match_count%, best_match_line%)
   Local s$, line_num%
 
-  con.foreground("cyan")
-
   If best_match_count% = 0 Then
     con.print_fail("I don't know what you are talking about.")
   Else
+    con.foreground("cyan")
     Open adv.asset_dir$ + "/" + filename$ For Input As #1
     Do
       Line Input #1, s$
@@ -462,10 +443,9 @@ Sub print_ask_result(filename$, best_match_count%, best_match_line%)
       Inc line_num%
     Loop
     Close #1
+    con.foreground("reset")
+    con.println()
   EndIf
-
-  con.println()
-  con.foreground("reset")
 End Sub
 
 ' Handles the DROP verb
