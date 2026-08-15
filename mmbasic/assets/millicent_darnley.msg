@@ -115,6 +115,28 @@ womens shoe prints
 "I might recognise my own shoes, but I couldn't tell you whose prints these are
 from looking at them in the snow."
 
++accuse
+!requires all_clues accuse_b4_millicent
+!provides new_accuse accuse_millicent
+Her jaw sets and she regards you with cold, level eyes.@
+@
+"I heard you the first time. I did not do it then, and I do not do it
+now, however many times you care to repeat yourself."
+
++accuse
+!requires all_clues
+!provides new_accuse accuse_millicent accuse_b4_millicent
+Millicent's composure cracks for the first time since you met her - her
+eyes bright with sudden anger, or something close to it.@
+@
+"How dare you. My own father, and you accuse me? You had better be
+absolutely certain, because I will not forgive this lightly."
+
++accuse
+!provides new_accuse accuse_millicent
+"That is a wicked thing to say without proof. I hope you have better
+reasons than mere suspicion."
+
 *
 "I'm afraid that is rather outside my knowledge.
 Have you tried asking the servants?"

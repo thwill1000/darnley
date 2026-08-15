@@ -122,5 +122,27 @@ footprints."
 cheroot in the pond
 "I don't know anything about it."
 
++accuse
+!requires all_clues accuse_b4_sarah
+!provides new_accuse accuse_sarah
+She looks at you steadily now, some of the shock worn off, replaced by
+something harder to read.@
+@
+"You said that once already. I have nothing further to add, except that
+you are quite wrong."
+
++accuse
+!requires all_clues
+!provides new_accuse accuse_sarah accuse_b4_sarah
+Sarah's hand goes to her throat, the colour draining from her face.@
+@
+"Me? You cannot be serious. I - I don't know what to say to such a
+thing."
+
++accuse
+!provides new_accuse accuse_sarah
+"You mustn't say such things without evidence - it isn't fair, not to
+anyone."
+
 *
 "I'm afraid I really couldn't say. This has all been such a terrible shock."

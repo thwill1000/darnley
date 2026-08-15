@@ -327,13 +327,15 @@ End Function
 ' message and returning 0 if it can't be found, isn't present, or isn't
 ' a person.
 Function resolve_ask_target%(about_idx%)
+  ' The target must exist (person/object)
   resolve_ask_target% = find_obj%(words$(), 1, about_idx% - 1)
   If Not resolve_ask_target% Then
     con.print_fail("You don't know that person.")
     Exit Function
   EndIf
 
-  If obj_loc%(resolve_ask_target%) <> r Then
+  ' Unless "cheating" the target must be in the current location
+  If Not state.cheat% And obj_loc%(resolve_ask_target%) <> r Then
     Local msg$ = sanitize_name$(obj_name$(resolve_ask_target%))
     If Not obj_is_person%(resolve_ask_target%) Then msg$ = "The " + LCase$(msg$)
     Cat msg$, Choice(Right$(msg$, 1) = "s", " are", " is") + " not here."
@@ -342,6 +344,7 @@ Function resolve_ask_target%(about_idx%)
     Exit Function
   EndIf
 
+  ' The target must be a person
   If Not obj_is_person%(resolve_ask_target%) Then
     Local msg$ = "The " + LCase$(sanitize_name$(obj_name$(resolve_ask_target%)))
     Cat msg$, Choice(Right$(msg$, 1) = "s", " do", " does") + " not answer."

@@ -322,7 +322,7 @@ one.
 
 OBJ203_REVOLVER
 !requires x_pond
-!provides gun
+!provides gun new_clue
 The revolver found in the pond is a fine quality weapon with decorative grips.
 One bullet has been discharged from it.
 
@@ -359,7 +359,7 @@ draining board amongst other kitchen utensils, seemingly unused since dinner
 preparation.
 
 OBJ209_BOOTS
-!provides boots
+!provides boots new_clue
 All these boots are polished clean except for a large mud stained pair.
 
 OBJ212_FOOTPRINTS_KG
@@ -472,7 +472,7 @@ place by a sort of 'lid' of wood which is fastened by a small lock. The
 key is in the lock.
 
 OBJ230_LETTER
-!provides letter
+!provides letter new_clue
 The letter is an incomplete draft: "Dear Sir, I have considered your
 monstrous suggestion and find I cannot..."
 
@@ -500,7 +500,7 @@ way that suggests the breakage may not have been a single violent impact, but
 perhaps more deliberate - possibly even repeated strikes against the pane.
 
 OBJ234_GRAMOPHONE
-!provides gramophone
+!provides gramophone new_clue
 It has a device for playing several records in sequence. All the
 records are Chopin.
 
@@ -558,7 +558,7 @@ snow heading around the corner of the house, to and from the maze
 and avenue of statues.
 
 OBJ245_CIGARETTE_ENDS_SH
-!provides cigarettes
+!provides cigarettes new_clue
 These cigarette ends come from a cheap, mass produced brand. There are
 perhaps a dozen of them scattered about the summer house floor, some trodden into
 the dust, others carefully arranged. The tobacco inside is coarse and poor quality.
@@ -566,7 +566,7 @@ They suggest prolonged occupation of the summer house by someone of modest means
 - or someone pretending to be.
 
 OBJ246_HANDKERCHIEF
-!provides handkerchief
+!provides handkerchief new_clue
 This is a lady's handkerchief of plain linen with delicate lace edging and a faint
 perfume - the scent is floral, sweet, and distinctly expensive. The handkerchief
 is initialled with an ornate "S" worked in pale silk thread. It is slightly damp
@@ -610,7 +610,7 @@ or early this morning.
 
 OBJ253_CHEROOT_BUTT
 !requires x_statue
-!provides butt
+!provides butt new_clue
 This is the sodden butt of a Burmah cheroot, waterlogged from its time in
 the pond. Despite being soaked, you can still make out its straight dark
 cylinder shape, characteristic of a cheroot rather than a conventional
@@ -767,21 +767,13 @@ Q_9
 Where was the murderer when the shot was fired?
 
 Q_10
-Who was the letter written by Colonel Darnley for?
-
-Q_11
-What was the motive for the murder?
-
-Q_12
 How did the murderer hide the bullet hole in the French window?
 
-Q_13
-Who was the murderer?
+Q_11
+Who was the letter written by Colonel Darnley for?
 
-CONGRATULATIONS
-Congratulations Inspector. With your evidence Arthur Coniston is arrested,
-tried and found guilty of the murder of Colonel Sebastian Darnley. He is
-sentenced to 30 years of imprisonment at her majesty's pleasure.
+Q_12
+What was the motive for the murder?
 
 CHEAT_TEXT
 [[cyan:You rotter - cheat mode enabled.]]
@@ -789,22 +781,21 @@ CHEAT_TEXT
 HELP_TEXT
 The game accepts the following commands:@
 @
-  [[green:ACCUSE]] [[cyan:suspect]]@
-    - accuse a suspect of the murder, the suspect@
-      must be in your current location@
+  [[green:GO]] [[cyan:location]]@
+    - go to a visible location@
+  [[green:EXAMINE]] [[cyan:object]]@
+    - get additional detail about an object@
+  [[green:LOOK]]@
+    - redescribe current location@
   [[green:"]][[cyan:topic]]@
     - interrogate suspect in current location@
       about the given topic, e.g. [[green:"alibi]]@
-  [[green:EXAMINE]] [[cyan:object]]@
-    - get additional detail about an object@
+  [[green:"accuse]]@
+    - accuse a suspect in current location@
   [[green:FONT]] [[cyan:DEFAULT]]|[[cyan:SERIF]]|[[cyan:SMALL]]@
     - change the font@
-  [[green:GO]] [[cyan:location]]@
-    - go to a visible location@
   [[green:HELP]]@
     - show this text@
-  [[green:LOOK]]@
-    - redescribe current location@
   [[green:RECAP]]@
     - show the game introduction@
   [[green:RECORD]] [[cyan:ON]]|[[cyan:OFF]] and [[green:REPLAY]]@
@@ -815,14 +806,102 @@ The game accepts the following commands:@
     - restart or exit the game
 
 ACCUSE_TEXT
-"So, you believe you have solved the mystery of the Colonel's death?
-Very well. I shall put to you the questions that any competent
-detective must be able to answer before naming a murderer. Answer
-carefully - and honestly, mind - for a false accusation is worse
-than none at all."
+There are questions you must answer to press your accusation:
 
-INCORRECT_ACCUSATION
-"No. Somewhere in your account the facts do not add up - either
-the person you have named is not the one who did it, or you have
-mistaken some detail of how it was done. Go back over your
-questioning and look again."
+INCORRECT_ARNOLD
+No. Somewhere in your account the facts do not add up. Billingsgate
+inclines his head gravely, betraying nothing, as your explanation
+comes apart at the seams. Go back over your questioning and look
+again.
+
+INCORRECT_ARTHUR
+No. Somewhere in your account of events the facts do not add up.
+Coniston watches you flounder with the ghost of a smile playing about
+his lips, saying nothing. It's plausible you have the right man,
+Inspector, but not yet the right explanation. Go back over your
+questioning and look again.
+
+INCORRECT_MILDRED
+No. Somewhere in your account the facts do not add up. Mrs. Goodbody
+folds her arms and waits, entirely unmoved, while your case against
+her falls to pieces. Go back over your questioning and look again.
+
+INCORRECT_MILLICENT
+No. Somewhere in your account the facts do not add up. Millicent
+regards you with cold, watchful eyes as your reasoning falls apart in
+front of her. Go back over your questioning and look again.
+
+INCORRECT_NORAH
+No. Somewhere in your account the facts do not add up. Norah looks
+more frightened than relieved as your reasoning unravels - she is not
+yet convinced her ordeal is over. Go back over your questioning and
+look again.
+
+INCORRECT_REDVERS
+No. Somewhere in your account the facts do not add up. Slingsby's
+outrage curdles into something closer to satisfaction as your case
+against him collapses. Go back over your questioning and look again.
+
+INCORRECT_RONALD
+No. Somewhere in your account the facts do not add up. Mellors' flat
+stare does not waver as your explanation falls apart before him. Go
+back over your questioning and look again.
+
+INCORRECT_SARAH
+No. Somewhere in your account the facts do not add up. Sarah Darnley
+stands very still, waiting to see whether your case against her will
+hold - and it does not. Go back over your questioning and look again.
+
+CORRECT_ARNOLD
+Your account of the murder itself is sound, Inspector, every detail in
+its proper place - but you have named the wrong culprit. Billingsgate
+has served this family faithfully and had no hand in the Colonel's
+death, whatever your reasoning suggests. Go back over the evidence and
+look again at who was truly where.
+
+CORRECT_ARTHUR
+Congratulations Inspector. With your evidence Arthur Coniston is
+arrested, tried and found guilty of the murder of Colonel Sebastian
+Darnley. He is sentenced to 30 years of imprisonment at Her Majesty's
+pleasure.
+
+CORRECT_MILDRED
+Your account of the murder itself is sound, Inspector, every detail in
+its proper place - but you have named the wrong culprit. Mrs. Goodbody
+was asleep in the butler's pantry with the other servants that night,
+not committing murder. Go back over the evidence and look again at who
+was truly where.
+
+CORRECT_MILLICENT
+Your account of the murder itself is sound, Inspector, every detail in
+its proper place - but you have named the wrong culprit. Millicent
+Darnley cannot have done this, whatever your reasoning suggests about
+the method. Go back over the evidence and look again at who was truly
+where.
+
+CORRECT_NORAH
+Your account of the murder itself is sound, Inspector, every detail in
+its proper place - but you have named the wrong culprit. Young Norah
+Bagsby is guilty of nothing more than nerves. Go back over the
+evidence and look again at who was truly where.
+
+CORRECT_REDVERS
+Your account of the murder itself is sound, Inspector, every detail in
+its proper place - but you have named the wrong culprit. Sir Redvers
+Slingsby left the Colonel alive and well, whatever your case against
+him suggests. Go back over the evidence and look again at who was
+truly where.
+
+CORRECT_RONALD
+Your account of the murder itself is sound, Inspector, every detail in
+its proper place - but you have named the wrong culprit. Mellors may
+be surly and secretive, but he did not fire the shot that killed
+Colonel Darnley. Go back over the evidence and look again at who was
+truly where.
+
+CORRECT_SARAH
+Your account of the murder itself is sound, Inspector, every detail in
+its proper place - but you have named the wrong culprit. Sarah Darnley
+was elsewhere that night, and no amount of careful reasoning will make
+her fit a crime she did not commit. Go back over the evidence and look
+again at who was truly where.

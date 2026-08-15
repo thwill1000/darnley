@@ -71,5 +71,27 @@ don't know what more you'd want me to say about myself."
 ronald mellors
 "A rough man. A womanizer by all accounts."
 
++accuse
+!requires all_clues accuse_b4_norah
+!provides new_accuse accuse_norah
+She sniffs, dabbing at her eyes with her sleeve, though there is a
+flicker of something more wary beneath the tears now.@
+@
+"You asked me that before, sir. I told you I never done it, and I
+haven't changed my mind."
+
++accuse
+!requires all_clues
+!provides new_accuse accuse_norah accuse_b4_norah
+Norah's eyes go wide and her lip trembles - she looks for all the world
+as though she might burst into tears on the spot.@
+@
+"Me, sir? Oh, please, I never - I wouldn't know how to fire a gun if you
+paid me! I only been here six months, sir, honest!"
+
++accuse
+!provides new_accuse accuse_norah
+"Oh! You mustn't say that, not without you're sure - it isn't right."
+
 *
 "I wouldn't know about that. Nobody tells me anything."

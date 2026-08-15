@@ -95,5 +95,28 @@ womens shoe prints
 cheroot in the pond
 "I don't know anything about it."
 
++accuse
+!requires all_clues accuse_b4_ronald
+!provides new_accuse accuse_ronald
+He doesn't so much as blink.@
+@
+"Already told you once. Nothing's changed, and I'm not about to start
+singing a different tune just to please you."
+
++accuse
+!requires all_clues
+!provides new_accuse accuse_ronald accuse_b4_ronald
+Mellors doesn't flinch. He looks back at you with the same flat,
+unreadable hostility he's shown from the start, though something behind
+his eyes has sharpened.@
+@
+"Say that again and see what it gets you. I never touched him. Been
+saying so all along, and I'll keep saying it."
+
++accuse
+!provides new_accuse accuse_ronald
+"You'd best have something to back that up before you go saying it
+again."
+
 *
 "Do I look like I'd know anything about that?"
