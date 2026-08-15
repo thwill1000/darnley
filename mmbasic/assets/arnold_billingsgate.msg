@@ -129,5 +129,29 @@ cheroot in the pond
 "As far as I'm aware only the Colonel smoked cheroots. But he was a
 most particular man and would never throw a butt into the pond."
 
++accuse
+!requires all_clues accuse_b4_arnold
+!provides new_accuse accuse_arnold
+The butler's composure has returned, though something guarded remains
+in his manner.@
+@
+"You have already put that question to me, sir, and my answer has not
+changed in the meantime."
+
++accuse
+!requires all_clues
+!provides new_accuse accuse_arnold accuse_b4_arnold
+Billingsgate draws himself up, visibly wounded, though he masters
+himself with the discipline of long service.@
+@
+"I have served this family faithfully for the whole of my working life,
+sir. I should hope my conduct speaks for itself, whatever you may
+suspect."
+
++accuse
+!provides new_accuse accuse_arnold
+"Begging your pardon, but that is a very grave thing to suggest without
+proper cause."
+
 *
 "I don't believe that falls within my knowledge, I'm afraid."

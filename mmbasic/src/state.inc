@@ -31,6 +31,54 @@ Sub state.reset()
   state.restart% = 0
 End Sub
 
+' Returns 1 if the given single token is present in the flags set, 0 otherwise.
+' Unlike state.has_flags%() this checks exactly one token and does so directly
+' against the flags%() LongString, without delegating to state.has_flags%()
+' or state.count_set_flags%().
+'
+' @param  token$  The flag token to check for.
+Function state.has_flag%(token$)
+  If token$ = "" Then Exit Function
+  state.has_flag% = LInStr(flags%(), "|" + token$ + "|") <> 0
+End Function
+
+' Adds a single token to the flags set if not already present.
+' Direct LongString implementation - not built on state.add_flags().
+'
+' @param  token$  The flag token to add.
+Sub state.set_flag(token$)
+  If token$ = "" Then Exit Sub
+  If LInStr(flags%(), "|" + token$ + "|") = 0 Then
+    LongString Append flags%(), token$ + "|"
+  EndIf
+End Sub
+
+' Removes a single token from the flags set if present; a no-op if the
+' token is not present. Direct LongString implementation.
+'
+' @param  token$  The flag token to remove.
+Sub state.clear_flag(token$)
+  If token$ = "" Then Exit Sub
+
+  Const needle$ = "|" + token$ + "|"
+  Const p% = LInStr(flags%(), needle$)
+  If p% = 0 Then Exit Sub
+
+  ' before$ = everything up to and including the "|" that opens the token.
+  Const before$ = LGetStr$(flags%(), 1, p%)
+
+  ' shared_pipe% is the "|" that closes the token and simultaneously opens
+  ' whatever token (if any) follows - it must appear in the result exactly
+  ' once, so after$ starts immediately past it.
+  Const shared_pipe% = p% + Len(needle$) - 1
+  Const after_len% = LLen(flags%()) - shared_pipe%
+  Const after$ = Choice(after_len% > 0, LGetStr$(flags%(), shared_pipe% + 1, after_len%), "")
+
+  LongString Clear flags%()
+  LongString Append flags%(), before$
+  If after_len% > 0 Then LongString Append flags%(), after$
+End Sub
+
 ' Adds each non-empty token in tokens$() to the flags set, skipping any
 ' already present. Stops at the first empty element.
 '

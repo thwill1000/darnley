@@ -101,5 +101,27 @@ mens shoe prints
 womens shoe prints
 "I don't know whose these are."
 
++accuse
+!requires all_clues accuse_b4_mildred
+!provides new_accuse accuse_mildred
+She fixes you with a look that could curdle milk.@
+@
+"You asked me that already, and my answer's the same as it was then. I
+didn't do it, and that's flat."
+
++accuse
+!requires all_clues
+!provides new_accuse accuse_mildred accuse_b4_mildred
+Mrs. Goodbody plants her floury hands on her hips, drawing herself up
+to her full and considerable height.@
+@
+"Well I never! Me, murder the Colonel? I've cooked this family's dinners
+for five years and never so much as raised my voice, let alone a gun!"
+
++accuse
+!provides new_accuse accuse_mildred
+"Now that's a dreadful thing to say to a body, and no proof to back it
+up neither."
+
 *
 "I'm afraid you're asking the wrong person, dear."

@@ -138,5 +138,27 @@ cheroot in the pond
 and I went outside. Maybe I did throw it in the pond. Does it
 matter?"
 
++accuse
+!requires all_clues accuse_b4_arthur
+!provides new_accuse accuse_arthur
+Coniston spreads his hands, the picture of wounded innocence.@
+@
+"Again? Really, this is becoming tiresome. Have your say, then - let's
+have done with it."
+
++accuse
+!requires all_clues
+!provides new_accuse accuse_arthur accuse_b4_arthur
+Coniston's easy charm falters for just a moment - the faintest tightening
+around the eyes - before he recovers himself entirely.@
+@
+"My dear fellow, that's a serious thing to say to a man. I think you had
+better be very sure of your facts before you say it again."
+
++accuse
+!provides new_accuse accuse_arthur
+"Steady on! You can't go about making accusations without a shred of proof
+to back them up."
+
 *
 "Can't say I know anything about that. Sorry, old boy."

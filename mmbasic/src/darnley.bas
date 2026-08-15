@@ -48,7 +48,7 @@ r_old% = r
 
 show_splash()
 show_intro(1)
-show_help(1)
+show_help(0)
 
 Do
   If state.restart% Then Goto game_start
@@ -75,6 +75,10 @@ Do
   ElseIf Not result% Then
     con.print_fail("That doesn't seem to work.")
   EndIf
+
+  ' Special handling
+  If state.has_flag%("new_clue") Then handle_new_clue()
+  If state.has_flag%("new_accuse") Then handle_new_accusation()
 Loop
 
 End
@@ -108,53 +112,47 @@ Function parse(cmd$)
   parse = parse_common(cmd$)
 End Function
 
-' Handle the ACCUSE verb
-Function verb_accuse()
-  verb_accuse = 1
-
-  If count_words%(words$()) < 2 Then
-    con.print_fail("Try `ACCUSE person`.")
-    Exit Function
-  EndIf
-
-  ' Check that the accused is present.
-  If Not state.cheat% Then
-    Const obj_idx% = resolve_ask_target%(MAX_WORDS + 1)
-    If Not obj_idx% Then Exit Function
-  EndIf
-
+Sub handle_new_clue()
+  state.clear_flag("new_clue")
   Const found% = state.count_set_flags%(clues$())
+  If found% = Bound(clues$(), 1) Then state.set_flag("all_clues")
+End Sub
 
-  If found% < Bound(clues$(), 1) Then
-    Local msg$ = "You have found " + Str$(found%) + " of the " + Str$(Bound(clues$(), 1))
-    Cat msg$, " clues needed to make an accusation."
-    con.print_fail(msg$)
-    Exit Function
+Sub handle_new_accusation()
+  state.clear_flag("new_accuse")
+
+  ' Determine the accused
+  Local suspects$(8) Length 20 = ("arnold","arthur","mildred","millicent","norah","redvers","ronald","sarah")
+  Local accused$ = "", i%, s$
+  For i% = Bound(suspects$(), 0) To Bound(suspects$(), 1)
+    s$ = "accuse_" + suspects$(i%)
+    If state.has_flag%(s$) Then
+      state.clear_flag(s$)
+      accused$ = suspects$(i%)
+      Exit For
+    EndIf
+  Next
+  If accused$ = "" Then Error "Accused not found"
+
+  ' Check all the clues have been found
+  If Not state.has_flag%("all_clues") Then
+    Const found% = state.count_set_flags%(clues$())
+    If found% < Bound(clues$(), 1) Then
+      con.println()
+      Local msg$ = "You have found " + Str$(found%) + " of the " + Str$(Bound(clues$(), 1))
+      Cat msg$, " clues needed to make a successful accusation."
+      con.print_fail(msg$)
+      Exit Sub
+    EndIf
   EndIf
 
-  con.foreground("cyan")
+  con.println()
   print_message_or_fail("ACCUSE_TEXT")
-  con.foreground("reset")
 
-  Local answer$, correct%, response$, response_words$(MAX_WORDS), result%, i%, msg$, q%
+  Local answer$, correct%, response$, response_words$(MAX_WORDS), result%, msg$, q%
 
   Const num_questions% = Bound(questions$(), 1)
   For q% = Bound(questions$(), 0) To num_questions%
-    ' Can't answer the final question unless all the previous answers are correct
-    ' If q% = num_questions% And correct% <> num_questions% - 1 Then
-    '   msg$ = "You only answered " + Str$(Int((100 * correct%) / (num_questions% - 1)))
-    '   Cat msg$, "% of the questions correctly, so you can't make an accusation yet."
-    '   con.print_fail(msg$)
-    '   Exit For 'Function
-    ' EndIf
-
-    ' If q% = num_questions% + 1 Then
-    '   If correct% = num_questions% Then Exit For
-    '   con.print_fail("That's not correct. Think again.")
-    '   q% = num_questions% - 1
-    '   Continue For
-    ' EndIf
-
     con.println()
     con.foreground("yellow")
     print_message_or_fail(Field$(questions$(q%), 1, "|"), 1)
@@ -200,12 +198,22 @@ Function verb_accuse()
     EndIf
   Next
 
+  Local win% = 0
   If correct% = num_questions% Then
-    con.foreground("cyan")
-    print_message_or_fail("CONGRATULATIONS")
-    con.foreground("reset")
+    print_message_or_fail("CORRECT_" + UCase$(accused$))
+    win% = (accused$ = Field$(questions$(11), 2, "|"))
+  Else
+    print_message_or_fail("INCORRECT_" + UCase$(accused$))
     con.println()
-    con.show_more_prompt()
+    msg$ = "You answered " + Str$(correct%) + " of " + Str$(num_questions%)
+    Cat msg$, " questions correctly."
+    con.print_fail(msg$)
+  EndIf
+
+  con.println()
+  con.show_more_prompt()
+
+  If win% Then
     con.clear()
     print_message_or_fail("WHAT_REALLY_HAPPENED")
     con.println()
@@ -213,20 +221,10 @@ Function verb_accuse()
     con.clear()
     show_end_screen()
     End
-  Else
-    msg$ = "You answered " + Str$(correct%) + " of " + Str$(num_questions%)
-    Cat msg$, " questions correctly."
-    con.print_fail(msg$)
-    con.println()
-    con.foreground("cyan")
-    print_message_or_fail("INCORRECT_ACCUSATION")
-    con.foreground("reset")
-    con.println()
-    con.show_more_prompt()
-    con.clear()
-    describe% = 1
   EndIf
-End Function
+
+  describe% = 1
+End Sub
 
 ' Prints a random non-committal reply after an ACCUSE answer, avoiding
 ' repeating the same reply twice in a row.
@@ -247,6 +245,7 @@ Function verb_cheat()
   verb_cheat = 1
   print_message_or_fail("CHEAT_TEXT")
   state.add_flags(clues$())
+  state.set_flag("new_clue")
   state.cheat% = 1
 End Function
 

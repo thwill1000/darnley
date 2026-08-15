@@ -93,5 +93,28 @@ cheroot in the pond
 "A cheroot? Not me, old man! I'm one for Havanas if I'm not smoking
 the old pipe."
 
++accuse
+!requires all_clues accuse_b4_redvers
+!provides new_accuse accuse_redvers
+He glares at you with undisguised fury, though there is something else
+beneath it now - a flicker of unease.@
+@
+"You said your piece once already, and I gave you my answer. Don't try
+my patience further."
+
++accuse
+!requires all_clues
+!provides new_accuse accuse_redvers accuse_b4_redvers
+Slingsby's face darkens to an alarming shade of puce, his moustache
+fairly bristling with outrage.@
+@
+"By God, sir! I've a good mind to horsewhip you for that. I left Darnley
+alive and well, and I'll thank you to remember it!"
+
++accuse
+!provides new_accuse accuse_redvers
+"Confound it, man, you can't fling accusations about like that! Get your
+facts straight first."
+
 *
 "No idea whatsoever. Can we stick to the point?"
