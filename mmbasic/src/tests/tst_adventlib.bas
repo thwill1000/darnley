@@ -132,10 +132,6 @@ add_test("test_pm_comment_b4_entry")
 add_test("test_pmf_gvn_success")
 add_test("test_pmf_gvn_not_found")
 add_test("test_pmf_gvn_all_blocked")
-add_test("test_find_about_gvn_about")
-add_test("test_find_about_gvn_comma")
-add_test("test_find_about_gvn_both")
-add_test("test_find_about_gvn_neither")
 
 run_tests()
 End

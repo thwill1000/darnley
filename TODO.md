@@ -1,6 +1,5 @@
 # TODO: The Sealed Room Murder (MMBasic)
 
-- Remove ASK .. ABOUT verb
 - Support OR in the keyword matching for suspect.msg files
 - Support colour markup over multiple lines
 - Support asking suspect who they think the murderer was
