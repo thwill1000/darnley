@@ -52,7 +52,11 @@ adv.msg_file$ = adv.asset_dir$ + "test.msg"
 read_rooms(TEST_DATA_FILE$)
 read_objects(TEST_DATA_FILE$)
 
-add_test("verb_ask() with no ABOUT prints usage hint", "test_ask_gvn_no_about")
+add_test("verb_ask() with no ABOUT asks first person in room about all words", "test_ask_gvn_no_about")
+add_test("verb_ask() with no ABOUT and matching keyword gets a real answer", "test_ask_gvn_no_about_matches")
+add_test("verb_ask() with no ABOUT and no-one in room fails gracefully", "test_ask_gvn_no_about_no_person")
+add_test("verb_ask() with no ABOUT picks first person, not second", "test_ask_no_about_first_person")
+add_test("verb_ask() with no ABOUT and single word topic", "test_ask_no_about_one_word")
 add_test("verb_ask() when target not found", "test_ask_gvn_no_target")
 add_test("verb_ask() when target not in room", "test_ask_gvn_not_here")
 add_test("verb_ask() when target is not a person", "test_ask_gvn_not_person")
@@ -65,7 +69,9 @@ add_test("verb_ask() falls back to wildcard when all entries blocked", "test_ask
 add_test("verb_ask() prefers entry with more matching subject words", "test_ask_gvn_best_match")
 add_test("verb_ask() subject word matching is case-insensitive", "test_ask_gvn_case_insensitive")
 add_test("verb_ask() returns 1 (handled) on every path", "test_ask_always_returns_handled")
-add_test("test_ask_gvn_comma_synonym")
+add_test("verb_ask() accepts comma as a synonym for ABOUT", "test_ask_gvn_comma_synonym")
+add_test("verb_ask() treats ABOUT with no target as fallback", "test_ask_gvn_about_no_target")
+add_test("verb_ask() treats comma with no target as fallback", "test_ask_gvn_comma_no_target")
 
 run_tests()
 End
@@ -76,8 +82,10 @@ Sub setup_test()
   r = 1 ' LOC001, where P_TEST_SUSPECT and P_NO_WILDCARD live
 End Sub
 
-' No "about" in the input - prints the usage hint and does not attempt to
-' resolve a target at all.
+' No "about" in the input - all words after the verb become the subject,
+' and the question is directed at the first person present in the room.
+' "test"/"suspect" don't match any keyword in test_suspect.msg, so this
+' falls through to that file's wildcard "*" entry.
 Sub test_ask_gvn_no_about()
   Local result% = parse_common("ask test suspect")
   assert_int_equals(0, result%)
@@ -85,7 +93,61 @@ Sub test_ask_gvn_no_about()
   result% = verb_ask()
 
   assert_int_equals(1, result%)
-  assert_int_equals(1, InStr(con_output$, "Try: ASK person ABOUT subject") > 0)
+  assert_int_equals(0, InStr(con_output$, "Try: ASK person ABOUT subject") > 0)
+  assert_int_equals(1, InStr(con_output$, "wildcard fallback") > 0)
+End Sub
+
+' No "about" in the input, but the words happen to match a keyword in the
+' first room-occupant's .msg file - the fallback still resolves to a real,
+' non-wildcard answer.
+Sub test_ask_gvn_no_about_matches()
+  Local result% = parse_common("ask gramophone")
+  assert_int_equals(0, result%)
+
+  result% = verb_ask()
+
+  assert_int_equals(1, result%)
+  assert_int_equals(1, InStr(con_output$, "line B") > 0)
+  assert_int_equals(0, InStr(con_output$, "wildcard fallback") > 0)
+End Sub
+
+' No "about" in the input and no person present in the current room -
+' fails gracefully rather than resolving to object index 0.
+Sub test_ask_gvn_no_about_no_person()
+  r = 3 ' LOC003, contains no objects or people at all
+  Local result% = parse_common("ask gramophone")
+  assert_int_equals(0, result%)
+
+  result% = verb_ask()
+
+  assert_int_equals(1, result%)
+  assert_int_equals(1, InStr(con_output$, "There is no-one here to talk to.") > 0)
+End Sub
+
+' When multiple people occupy the current room, the fallback targets the
+' first one listed in the object data (P_TEST_SUSPECT), not P_OTHER_SUSPECT.
+Sub test_ask_no_about_first_person()
+  Local result% = parse_common("ask gramophone")
+  assert_int_equals(0, result%)
+
+  result% = verb_ask()
+
+  assert_int_equals(1, result%)
+  ' "line B" only appears in test_suspect.msg (P_TEST_SUSPECT's file),
+  ' confirming P_TEST_SUSPECT - not P_OTHER_SUSPECT - was asked.
+  assert_int_equals(1, InStr(con_output$, "line B") > 0)
+End Sub
+
+' A single-word command with no "about" still treats that one word as the
+' full subject.
+Sub test_ask_no_about_one_word()
+  Local result% = parse_common("ask gramophone")
+  assert_int_equals(0, result%)
+
+  result% = verb_ask()
+
+  assert_int_equals(1, result%)
+  assert_int_equals(1, InStr(con_output$, "line B") > 0)
 End Sub
 
 ' Direct object does not match any known object/person.
@@ -243,6 +305,31 @@ End Sub
 ' Comma acts as a synonym for "about"
 Sub test_ask_gvn_comma_synonym()
   Local result% = parse_common(Chr$(34) + "test suspect, gramophone")
+  assert_int_equals(0, result%)
+
+  result% = verb_ask()
+
+  assert_int_equals(1, result%)
+  assert_int_equals(1, InStr(con_output$, "line B") > 0)
+End Sub
+
+' "ask about topic" - "about" is the very first word, so no target was
+' named before it; falls back to asking the first person in the room,
+' identically to "ask topic".
+Sub test_ask_gvn_about_no_target()
+  Local result% = parse_common("ask about gramophone")
+  assert_int_equals(0, result%)
+
+  result% = verb_ask()
+
+  assert_int_equals(1, result%)
+  assert_int_equals(1, InStr(con_output$, "line B") > 0)
+End Sub
+
+' "ask ,topic" - comma is the very first word, so no target was named
+' before it; falls back identically to "ask about topic" / "ask topic".
+Sub test_ask_gvn_comma_no_target()
+  Local result% = parse_common("ask ,gramophone")
   assert_int_equals(0, result%)
 
   result% = verb_ask()
