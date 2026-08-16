@@ -106,6 +106,16 @@ clues evidence found discovered proof
 "I don't know anything about that, sir. I hope you find whatever
 you need to. I just want this all to be over."
 
+affair mellors ronald sarah summer house summerhouse together secret lovers
+!requires handkerchief cigarettes
+Norah's eyes go wide and she glances toward the door.@
+@
+"Oh, I - I really shouldn't say, sir. I don't know nothing about
+that, honest I don't." (She does not meet your eye as she says it.)
+
+affair mellors ronald sarah summer house summerhouse together secret lovers
+"I don't know anything about that, sir, honest."
+
 police investigation scotland yard inspector detective think of me
 "Oh, it does put the wind up me, having a proper detective in the
 house. I haven't done anything wrong, sir, honest I haven't - I just

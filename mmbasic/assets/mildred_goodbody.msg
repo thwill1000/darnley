@@ -137,6 +137,18 @@ clues evidence found discovered proof
 "That's your business, dear, not mine. I wouldn't know a clue if it
 sat in my soup. You get on with your job."
 
+affair mellors ronald sarah summer house summerhouse together secret lovers
+!requires handkerchief cigarettes
+She goes quiet for a moment, wiping her hands slowly on her apron.@
+@
+"I don't like to gossip, dear, truly I don't. But I've wondered,
+watching her these past months. Mrs. Sarah always did seem lonelier
+than a young wife ought to be. That's all I'll say on it."
+
+affair mellors ronald sarah summer house summerhouse together secret lovers
+"Now that's not a question I've an answer to, dear, nor one I'd
+care to guess at."
+
 police investigation scotland yard inspector detective think of me
 "Well, someone's got to sort this out, haven't they? You ask what
 you need to, dear, I've nothing to hide. Can't say the same for

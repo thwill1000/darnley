@@ -176,6 +176,17 @@ clues evidence found discovered proof
 not curious. I'll wait for you to tell me, rather than guess and
 make a fool of myself."
 
+affair mellors ronald sarah summer house summerhouse together secret lovers
+!requires handkerchief cigarettes
+Coniston's easy manner falters, just slightly.@
+@
+"I say, that's rather a suggestion to make. I really couldn't tell
+you - though now you mention it, Sarah did seem rather distracted
+lately. Best not read too much into that, though."
+
+affair mellors ronald sarah summer house summerhouse together secret lovers
+"Can't say that's ever occurred to me, old boy. Should it have?"
+
 police investigation scotland yard inspector detective think of me
 "Rather glad they sent someone who knows what he's doing, if I'm
 honest. This house needs answers, and quickly, before everyone's

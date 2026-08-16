@@ -159,6 +159,18 @@ clues evidence found discovered proof
 "I don't know what you've discovered, Inspector, and I find I'm
 almost afraid to ask. Just be sure, whatever you decide."
 
+affair mellors ronald sarah summer house summerhouse together secret lovers
+!requires handkerchief cigarettes
+Her face goes very pale, then very still.@
+@
+"I don't know what you think you've found, Inspector, but you are
+quite mistaken. I was in the morning room all evening, playing the
+piano. Ask Millicent, she heard me."
+
+affair mellors ronald sarah summer house summerhouse together secret lovers
+"I'm sorry - I don't understand the question. Mellors is our
+gamekeeper. I don't see what he has to do with anything."
+
 police investigation scotland yard inspector detective think of me
 "I want to know who did this as much as anyone, Inspector - more,
 perhaps. Ask whatever you must. I only hope it's over soon, for all

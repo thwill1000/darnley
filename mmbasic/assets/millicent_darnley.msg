@@ -152,6 +152,18 @@ clues evidence found discovered proof
 "I don't know what you've found and I'm not sure I want to. Just -
 please be certain, whatever you conclude. It matters rather a lot."
 
+affair mellors ronald sarah summer house summerhouse together secret lovers
+!requires handkerchief cigarettes
+She goes quite still, and for a moment says nothing at all.@
+@
+"I - I don't know what you're suggesting. Sarah was in the morning
+room, I heard her playing all evening. I really don't think you
+should say things like that."
+
+affair mellors ronald sarah summer house summerhouse together secret lovers
+"Goodness, what a thing to ask. I don't know anything about that,
+and I'm not sure I want to."
+
 police investigation scotland yard inspector detective think of me
 "I suppose you have to suspect all of us equally, don't you? It's a
 horrid feeling, being looked at that way in one's own home. But I

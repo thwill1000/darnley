@@ -129,6 +129,18 @@ clues evidence found discovered proof
 "Not my concern what you've found. I've told you what I know.
 Rest's up to you."
 
+affair mellors ronald sarah summer house summerhouse together secret lovers
+!requires handkerchief cigarettes
+His jaw tightens and, for the first time, he looks away from you.@
+@
+"I don't know what you're getting at, and I'll thank you not to say
+such things about Mrs. Darnley. She's a fine woman. That's all
+you'll get from me on the subject."
+
+affair mellors ronald sarah summer house summerhouse together secret lovers
+"Don't know what you mean. I keep to my own business, and I'd
+thank you to do the same."
+
 police investigation scotland yard inspector detective think of me
 "Don't much care for coppers poking round my cottage, if that's
 what you're asking. But get on with your job. I've nothing to hide
