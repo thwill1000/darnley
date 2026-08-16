@@ -84,32 +84,34 @@ Function split_words%(cmd$, words$())
   i% = Bound(words$(), 0)
   For p% = 1 To Len(cmd$)
     ch$ = LCase$(Mid$(cmd$, p%, 1))
-    If ch$ = "'" Then
-      ' Removed from word
-    ElseIf ch$ = " " Then
-      If words$(i%) = "#" Then words$(i%) = ""
-      If Len(words$(i%)) > 0 Then Inc i%
-    ElseIf ch$ = Chr$(34) Or ch$ = "," Then
-      ' A double-quote or comma is always its own word, even mid-token
-      If Len(words$(i%)) > 0 Then Inc i%
-      If i% > Bound(words$(), 1) Then
-        split_words% = 1 ' Too many words
-        Exit Function
-      EndIf
-      words$(i%) = ch$
-      Inc i%
-    Else
-      If i% > Bound(words$(), 1) Then
-        split_words% = 1 ' Too many words
-        Exit Function
-      EndIf
+    Select Case ch$
+      Case "'", "?", "!"
+        ' Removed from word
+      Case " "
+        If words$(i%) = "#" Then words$(i%) = ""
+        If Len(words$(i%)) > 0 Then Inc i%
+      Case Chr$(34), ","
+        ' A double-quote or comma is always its own word, even mid-token
+        If Len(words$(i%)) > 0 Then Inc i%
+        If i% > Bound(words$(), 1) Then
+          split_words% = 1 ' Too many words
+          Exit Function
+        EndIf
+        words$(i%) = ch$
+        Inc i%
+      Case Else
+        If i% > Bound(words$(), 1) Then
+          split_words% = 1 ' Too many words
+          Exit Function
+        EndIf
 
-      If Len(words$(i%)) = MAX_WORD_LENGTH Then
-        split_words% = 2 ' Word too long
-        Exit Function
+        If Len(words$(i%)) = MAX_WORD_LENGTH Then
+          split_words% = 2 ' Word too long
+          Exit Function
+        EndIf
+        Cat words$(i%), ch$
       EndIf
-      Cat words$(i%), ch$
-    EndIf
+    End Select
   Next
 
   If i% < Bound(words$(), 1) Then
