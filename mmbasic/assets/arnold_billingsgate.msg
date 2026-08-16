@@ -148,6 +148,11 @@ murder murderer think believe guilty who did it comitted killed
 only that a house such as this holds more secrets than its servants
 are ever told, above stairs or below."
 
+marriage married colonel colonels sarah wife husband happy
+"It is not my place to comment on the master's marriage, sir. I
+will say the Colonel was a generous husband, whatever else might be
+said of him."
+
 police investigation scotland yard inspector detective think of me
 "I have every confidence you will get to the bottom of it, sir. The
 household will give you whatever assistance it can - you have my

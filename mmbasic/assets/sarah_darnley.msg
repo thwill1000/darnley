@@ -140,6 +140,11 @@ murder murderer think believe guilty who did it comitted killed
 name someone - Sir Redvers seemed dreadfully agitated all evening. I
 don't like to say more than that."
 
+marriage married colonel colonels sarah wife husband happy
+"We were happy enough, in our own way. He was strict, and older
+than me, and people will talk regardless of what's true. I loved
+him, whatever anyone supposes."
+
 police investigation scotland yard inspector detective think of me
 "I want to know who did this as much as anyone, Inspector - more,
 perhaps. Ask whatever you must. I only hope it's over soon, for all

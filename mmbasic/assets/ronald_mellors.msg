@@ -112,6 +112,10 @@ murder murderer think believe guilty who did it comitted killed
 home than the grounds - that fine young gentleman's a sight too
 pleased with himself for my liking."
 
+marriage married colonel colonels sarah wife husband happy
+"None of my business what goes on in the big house between man and
+wife. I keep to my own affairs."
+
 police investigation scotland yard inspector detective think of me
 "Don't much care for coppers poking round my cottage, if that's
 what you're asking. But get on with your job. I've nothing to hide

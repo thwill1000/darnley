@@ -156,6 +156,11 @@ murder murderer think believe guilty who did it comitted killed
 Slingsby - man had the look of someone with troubles on his mind
 last night. But don't quote me, old boy."
 
+marriage married colonel colonels sarah wife husband happy
+"Not really my place to say. Darnley seemed fond enough of her, in
+his gruff way, but a young wife and an old husband - well, you can
+imagine the gossip."
+
 police investigation scotland yard inspector detective think of me
 "Rather glad they sent someone who knows what he's doing, if I'm
 honest. This house needs answers, and quickly, before everyone's
