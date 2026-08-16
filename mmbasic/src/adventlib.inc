@@ -223,18 +223,25 @@ Sub show_end_screen()
   con.clear()
 End Sub
 
-Sub show_intro(title$)
+Sub show_help(new_screen%)
+  If new_screen% Then con.clear()
+  print_message_or_fail("HELP_TEXT")
+  If new_screen% Then
+    con.println()
+    con.show_more_prompt(1)
+  EndIf
+End Sub
+
+Sub show_intro(new_screen%)
+  If new_screen% Then con.clear()
   Const v$ = "v" + sys.format_version$(VERSION)
-  con.println("[[green:" + title$ + " (" + v$ + ")]]")
+  con.println("[[green:" + advent.title$ + " (" + v$ + ")]]")
   con.println()
   print_message_or_fail("INTRO")
-  con.println()
-  con.show_more_prompt(1)
-  con.clear()
-  print_message_or_fail("HELP_TEXT")
-  con.println()
-  con.show_more_prompt()
-  con.clear()
+  If new_screen% Then
+    con.println()
+    con.show_more_prompt(1)
+  EndIf
 End Sub
 
 ' Describe the current location
@@ -602,6 +609,10 @@ Function parse_common(cmd$)
       verb$ = "go"
     Case "grab", "get", "pick"
       verb$ = "take"
+    Case "how"
+      verb$ = "help"
+    Case "intro", "introduction", "plot", "what", "who"
+      verb$ = "recap"
     Case "i", "inv"
       verb$ = "inventory"
     Case "kill"
@@ -1202,7 +1213,13 @@ End Function
 ' Handles the HELP verb
 Function verb_help()
   verb_help = 1
-  print_message_or_fail("HELP_TEXT")
+  show_help()
+End Function
+
+' Handles the RECAP verb
+Function verb_recap()
+  verb_recap = 1
+  show_intro()
 End Function
 
 ' Handles the RECORD verb

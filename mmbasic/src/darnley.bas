@@ -21,6 +21,7 @@ Const VERSION = 9300 ' 0.9.0
 Const NUM_ACCUSE_REPLIES = count_data%("accuse_reply_data")
 
 Const advent.file$ = "darnley" ' Required by 'script.inc'
+Const advent.title$ =  "The Sealed Room Murder" ' Required by 'adventlib.inc'
 
 Dim accuse_replies$(Max(NUM_ACCUSE_REPLIES, 2)) Length 32
 Dim cmd$
@@ -44,7 +45,8 @@ r = find_loc%("LOC017_DRIVE")
 r_old% = r
 
 show_splash()
-show_intro("The Sealed Room Murder")
+show_intro(1)
+show_help(1)
 
 Do
   If state.restart% Then Goto game_start
