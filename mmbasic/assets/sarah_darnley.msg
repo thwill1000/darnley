@@ -1,3 +1,7 @@
+hello hi morning afternoon evening greetings
+"Good morning, Inspector. Forgive me if I don't manage much of a
+smile today."
+
 events yesterday murder last night
 "I married Sebastian two years ago. I am more than twenty years
 younger than he - really not much older than Millicent. We have
@@ -148,6 +152,10 @@ thing."
 !provides new_accuse accuse_sarah
 "You mustn't say such things without evidence - it isn't fair, not to
 anyone."
+
+goodbye bye farewell thanks thank you
+"Goodbye, Inspector. Thank you for your discretion in all of
+this."
 
 *
 "I'm afraid I really couldn't say. This has all been such a terrible shock."

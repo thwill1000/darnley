@@ -1,3 +1,7 @@
+hello hi morning afternoon evening greetings
+"Good morning, dear. Can't say it's been much of one, what with
+everything, but sit yourself down if you need anything."
+
 events yesterday murder last night
 "I have worked here for five years. Last night I cooked and washed up
 with Norah. At about 10:30 I heard a loud bang, it gave me quite a
@@ -127,6 +131,10 @@ for five years and never so much as raised my voice, let alone a gun!"
 !provides new_accuse accuse_mildred
 "Now that's a dreadful thing to say to a body, and no proof to back it
 up neither."
+
+goodbye bye farewell thanks thank you
+"Off you go then, dear. Mind you eat something - you look like you
+could use it."
 
 *
 "I'm afraid you're asking the wrong person, dear."

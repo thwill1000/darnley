@@ -1,3 +1,7 @@
+hello hi morning afternoon evening greetings
+"Ah, hello there. Ghastly business, all this - still, glad to have
+someone competent looking into it."
+
 events yesterday murder last night
 "I was down for the weekend. It was no secret that I was going to ask
 Colonel Darnley for permission to marry Millicent. I popped the question
@@ -164,6 +168,10 @@ better be very sure of your facts before you say it again."
 !provides new_accuse accuse_arthur
 "Steady on! You can't go about making accusations without a shred of proof
 to back them up."
+
+goodbye bye farewell thanks thank you
+"Righto. Do let me know if there's anything else I can help with,
+won't you?"
 
 *
 "Can't say I know anything about that. Sorry, old boy."
