@@ -109,7 +109,7 @@ Function verb_accuse()
   verb_accuse = 1
 
   If count_words%(words$()) < 2 Then
-    con.print_fail("Try: ACCUSE person")
+    con.print_fail("Try `ACCUSE person`.")
     Exit Function
   EndIf
 
