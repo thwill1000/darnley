@@ -6,7 +6,7 @@ If sys.VERSION = -1 Then Error "'system.inc' not included"
 sys.provides("words")
 If sys.err$ <> "" Then Error sys.err$
 
-Const MAX_WORDS = 10
+Const MAX_WORDS = 20
 Const MAX_WORD_LENGTH = 20
 
 Function cat_words$(words$(), si%, ei%)
