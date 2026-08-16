@@ -185,6 +185,7 @@ add_test("test_pm_skips_multiline")
 add_test("test_pm_applies_provides")
 add_test("test_pm_gvn_all_blocked")
 add_test("test_pm_gvn_not_found")
+add_test("test_pm_comment_b4_entry")
 add_test("test_pmf_gvn_success")
 add_test("test_pmf_gvn_not_found")
 add_test("test_pmf_gvn_all_blocked")
@@ -1251,8 +1252,7 @@ End Sub
 Sub test_pm_skips_ineligible()
   Local result% = print_message%("SKIP_INELIGIBLE_MSG")
   assert_int_equals(0, result%)
-  assert_int_equals(1, InStr(con_output$, "line B") > 0)
-  assert_int_equals(0, InStr(con_output$, "line A") > 0)
+  assert_string_equals(str.quote$("line B - unconditional fallback") + sys.CRLF$, con_output$)
 End Sub
 
 ' When the required flag IS set, the gated entry becomes eligible and
@@ -1263,8 +1263,7 @@ Sub test_pm_gvn_flag_met_wins()
 
   Local result% = print_message%("SKIP_INELIGIBLE_MSG")
   assert_int_equals(0, result%)
-  assert_int_equals(1, InStr(con_output$, "line A") > 0)
-  assert_int_equals(0, InStr(con_output$, "line B") > 0)
+  assert_string_equals(str.quote$("line A - needs token") + sys.CRLF$, con_output$)
 End Sub
 
 ' Skipping an ineligible multi-line ("@"-broken) body correctly advances
@@ -1299,10 +1298,19 @@ Sub test_pm_gvn_not_found()
   assert_int_equals(1, result%)
 End Sub
 
+' A "#" comment line preceding an entry's keyword line is ignored by
+' print_message%() - it simply never matches tag$, so no special-casing
+' in print_message%() itself is required.
+Sub test_pm_comment_b4_entry()
+  Local result% = print_message%("commented_entry")
+  assert_int_equals(0, result%)
+  assert_string_equals(str.quote$("response after comment") + sys.CRLF$, con_output$)
+End Sub
+
 ' print_message_or_fail() does not raise when an eligible entry is found
 Sub test_pmf_gvn_success()
   print_message_or_fail("PLAIN_MSG")
-  assert_int_equals(1, InStr(con_output$, "plain message body") > 0)
+  assert_string_equals(str.quote$("plain message body") + sys.CRLF$, con_output$)
 End Sub
 
 ' print_message_or_fail() raises when the tag is not found at all

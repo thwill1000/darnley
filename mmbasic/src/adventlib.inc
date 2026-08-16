@@ -759,6 +759,12 @@ Sub scan_ask_responses(filename$, subject_words$(), best_match_count%, best_matc
     Line Input #1, s$
     If Eof(#1) Then Exit Do
 
+    ' Ignore comment lines between entries
+    If Left$(s$, 1) = "#" Then
+      Inc line_num%
+      Continue Do
+    EndIf
+
     If s$ = "*" Then
       If best_match_count% = 0 Then
         best_match_count% = WILDCARD_MATCH

@@ -34,4 +34,3 @@ multiline_provides
 !provides TOKEN_E
 "line one@
 line two"
-
