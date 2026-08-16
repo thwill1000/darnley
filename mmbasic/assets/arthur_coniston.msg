@@ -156,6 +156,11 @@ murder murderer think believe guilty who did it comitted killed
 Slingsby - man had the look of someone with troubles on his mind
 last night. But don't quote me, old boy."
 
+police investigation scotland yard inspector detective think of me
+"Rather glad they sent someone who knows what he's doing, if I'm
+honest. This house needs answers, and quickly, before everyone's
+nerves give out entirely."
+
 +accuse
 !requires all_clues accuse_b4_arthur
 !provides new_accuse accuse_arthur
@@ -178,7 +183,7 @@ better be very sure of your facts before you say it again."
 "Steady on! You can't go about making accusations without a shred of proof
 to back them up."
 
-goodbye bye farewell thanks thank you
+goodbye bye farewell thanks thank
 "Righto. Do let me know if there's anything else I can help with,
 won't you?"
 

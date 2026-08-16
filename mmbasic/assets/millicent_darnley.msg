@@ -133,6 +133,11 @@ murder murderer think believe guilty who did it comitted killed
 honest, Mellors has always given me an uneasy feeling. But that isn't
 proof, is it? Just a feeling."
 
+police investigation scotland yard inspector detective think of me
+"I suppose you have to suspect all of us equally, don't you? It's a
+horrid feeling, being looked at that way in one's own home. But I
+want whoever did this caught, so ask what you must."
+
 +accuse
 !requires all_clues accuse_b4_millicent
 !provides new_accuse accuse_millicent
@@ -155,7 +160,7 @@ absolutely certain, because I will not forgive this lightly."
 "That is a wicked thing to say without proof. I hope you have better
 reasons than mere suspicion."
 
-goodbye bye farewell thanks thank you
+goodbye bye farewell thanks thank
 "Goodbye, Inspector. I do hope you find whoever did this."
 
 *

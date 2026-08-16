@@ -88,6 +88,11 @@ murder murderer think believe guilty who did it comitted killed
 Millicent seemed ever so calm about it all, calmer than I'd have
 been. I don't mean nothing by that, mind."
 
+police investigation scotland yard inspector detective think of me
+"Oh, it does put the wind up me, having a proper detective in the
+house. I haven't done anything wrong, sir, honest I haven't - I just
+get nervous with all the questions."
+
 +accuse
 !requires all_clues accuse_b4_norah
 !provides new_accuse accuse_norah
@@ -110,7 +115,7 @@ paid me! I only been here six months, sir, honest!"
 !provides new_accuse accuse_norah
 "Oh! You mustn't say that, not without you're sure - it isn't right."
 
-goodbye bye farewell thanks thank you
+goodbye bye farewell thanks thank
 "Goodbye, sir. I hope you don't need me again - not because I mind,
 just, well, you know."
 

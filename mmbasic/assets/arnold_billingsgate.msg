@@ -148,6 +148,11 @@ murder murderer think believe guilty who did it comitted killed
 only that a house such as this holds more secrets than its servants
 are ever told, above stairs or below."
 
+police investigation scotland yard inspector detective think of me
+"I have every confidence you will get to the bottom of it, sir. The
+household will give you whatever assistance it can - you have my
+word on that, at least."
+
 +accuse
 !requires all_clues accuse_b4_arnold
 !provides new_accuse accuse_arnold
@@ -172,7 +177,7 @@ suspect."
 "Begging your pardon, but that is a very grave thing to suggest without
 proper cause."
 
-goodbye bye farewell thanks thank you
+goodbye bye farewell thanks thank
 "Very good, sir. I shall be about the house if you need anything
 further."
 

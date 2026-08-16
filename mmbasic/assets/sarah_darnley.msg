@@ -140,6 +140,11 @@ murder murderer think believe guilty who did it comitted killed
 name someone - Sir Redvers seemed dreadfully agitated all evening. I
 don't like to say more than that."
 
+police investigation scotland yard inspector detective think of me
+"I want to know who did this as much as anyone, Inspector - more,
+perhaps. Ask whatever you must. I only hope it's over soon, for all
+our sakes."
+
 +accuse
 !requires all_clues accuse_b4_sarah
 !provides new_accuse accuse_sarah
@@ -162,7 +167,7 @@ thing."
 "You mustn't say such things without evidence - it isn't fair, not to
 anyone."
 
-goodbye bye farewell thanks thank you
+goodbye bye farewell thanks thank
 "Goodbye, Inspector. Thank you for your discretion in all of
 this."
 
