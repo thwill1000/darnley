@@ -68,7 +68,7 @@ hear of it. She's half his age and twice as clever. A man in Darnley's position
 needs a wife who knows her place, not one who is always looking for something
 better. I shouldn't wonder if she had her eye on someone else entirely."
 
-millicent
+millicent milicent
 "A charming young lady. Spoiled by her father. Personally I
 shouldn't like to get on her wrong side."
 
@@ -114,6 +114,11 @@ of his, watchful sort of fellow. But that's guesswork, mind."
 marriage married colonel colonels sarah wife husband happy
 "I told Darnley he was a damned fool to marry a woman half his age,
 and I'll say it again now he's gone. She never suited him."
+
+engagement engaged marry marrying millicent milicent arthur
+"News to me until last night. I gather the Colonel only agreed to
+it yesterday. Can't say I know the fellow well enough to judge the
+match."
 
 police investigation scotland yard inspector detective think of me
 "About time too. Damned unpleasant business, having one's private

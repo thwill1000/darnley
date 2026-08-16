@@ -94,7 +94,7 @@ colonel darnley
 sarah
 "I don't believe it is proper to speak of the family."
 
-millicent
+millicent milicent
 "I don't believe it is proper to speak of the family."
 
 arthur coniston
@@ -152,6 +152,10 @@ marriage married colonel colonels sarah wife husband happy
 "It is not my place to comment on the master's marriage, sir. I
 will say the Colonel was a generous husband, whatever else might be
 said of him."
+
+engagement engaged marry marrying millicent milicent arthur
+"The Colonel gave his consent only yesterday afternoon, as I
+understand it. Miss Millicent seemed very happy about it indeed."
 
 police investigation scotland yard inspector detective think of me
 "I have every confidence you will get to the bottom of it, sir. The

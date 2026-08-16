@@ -84,7 +84,7 @@ admiration. I loved Sebastian in my own way, whatever anyone
 thinks. I don't expect you to understand a marriage from outside
 looking in."
 
-millicent
+millicent milicent
 "Her father spoiled her so she got used to having her own way.
 Sebastian probably agreed to Arthur Coniston's proposal for fear of
 what Millicent would do if he refused. I can't see him crossing
@@ -144,6 +144,11 @@ marriage married colonel colonels sarah wife husband happy
 "We were happy enough, in our own way. He was strict, and older
 than me, and people will talk regardless of what's true. I loved
 him, whatever anyone supposes."
+
+engagement engaged marry marrying millicent milicent arthur
+"Sebastian only agreed to it yesterday afternoon. Millicent was
+positively glowing when she told me. I'm glad she'll have that
+happiness, whatever else has happened."
 
 police investigation scotland yard inspector detective think of me
 "I want to know who did this as much as anyone, Inspector - more,

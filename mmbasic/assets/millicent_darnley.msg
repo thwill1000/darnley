@@ -138,6 +138,11 @@ marriage married colonel colonels sarah wife husband happy
 that she'd stay. I don't think either of them was truly happy,
 if I'm honest. But that's marriage for you, isn't it?"
 
+engagement engaged marry marrying millicent milicent arthur
+"I'm the last person to ask objectively! Daddy agreed only
+yesterday - I still can hardly believe it. I'd waited so long for
+him to say yes."
+
 police investigation scotland yard inspector detective think of me
 "I suppose you have to suspect all of us equally, don't you? It's a
 horrid feeling, being looked at that way in one's own home. But I

@@ -66,7 +66,7 @@ colonel darnley
 sarah
 "Far too young to have married the Colonel and not very happy."
 
-millicent
+millicent milicent
 "Not a young woman I should want to cross."
 
 arthur coniston
@@ -123,6 +123,10 @@ marriage married colonel colonels sarah wife husband happy
 "Not for me to say, dear, but I don't think either of them was
 what you'd call content. Still, that's their business and none of
 mine."
+
+engagement engaged marry marrying millicent milicent arthur
+"Oh, Miss Millicent was thrilled when it was agreed yesterday. She
+came straight down to the kitchen to tell me, bless her."
 
 police investigation scotland yard inspector detective think of me
 "Well, someone's got to sort this out, haven't they? You ask what

@@ -100,7 +100,7 @@ he agreed straight away. I was surprised, I admit it!"
 sarah
 "Very lively. I couldn't see old Darnley hanging on to her."
 
-millicent
+millicent milicent
 "Be a gentleman, old fellow! Don't ask me to criticise my future
 wife."
 
@@ -160,6 +160,10 @@ marriage married colonel colonels sarah wife husband happy
 "Not really my place to say. Darnley seemed fond enough of her, in
 his gruff way, but a young wife and an old husband - well, you can
 imagine the gossip."
+
+engagement engaged marry marrying millicent milicent arthur
+"Happiest news of my life, old boy! The Colonel gave his blessing
+yesterday afternoon. I still can't quite believe my luck."
 
 police investigation scotland yard inspector detective think of me
 "Rather glad they sent someone who knows what he's doing, if I'm
