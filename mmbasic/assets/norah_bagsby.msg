@@ -102,6 +102,10 @@ locked sealed study room door window how
 locked room and nobody able to get in or out - it doesn't seem
 natural."
 
+clues evidence found discovered proof
+"I don't know anything about that, sir. I hope you find whatever
+you need to. I just want this all to be over."
+
 police investigation scotland yard inspector detective think of me
 "Oh, it does put the wind up me, having a proper detective in the
 house. I haven't done anything wrong, sir, honest I haven't - I just

@@ -163,6 +163,10 @@ for it, sir. I keep my own key hidden, as I told you, and the
 Colonel's was on his person. I do not see how anyone could have got
 in or out."
 
+clues evidence found discovered proof
+"I couldn't say what you have found, sir, nor would I presume to
+ask. I trust you to make sense of it better than any of us could."
+
 police investigation scotland yard inspector detective think of me
 "I have every confidence you will get to the bottom of it, sir. The
 household will give you whatever assistance it can - you have my

@@ -133,6 +133,10 @@ locked sealed study room door window how
 sounds like something out of a novel, not something that happens in
 a respectable house."
 
+clues evidence found discovered proof
+"That's your business, dear, not mine. I wouldn't know a clue if it
+sat in my soup. You get on with your job."
+
 police investigation scotland yard inspector detective think of me
 "Well, someone's got to sort this out, haven't they? You ask what
 you need to, dear, I've nothing to hide. Can't say the same for

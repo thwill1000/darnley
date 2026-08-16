@@ -125,6 +125,10 @@ locked sealed study room door window how
 unless I'm sent for. Whatever went on with locked doors, you'll not
 get an answer from me."
 
+clues evidence found discovered proof
+"Not my concern what you've found. I've told you what I know.
+Rest's up to you."
+
 police investigation scotland yard inspector detective think of me
 "Don't much care for coppers poking round my cottage, if that's
 what you're asking. But get on with your job. I've nothing to hide
