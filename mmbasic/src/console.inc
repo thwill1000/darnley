@@ -16,6 +16,7 @@ Dim con.HEIGHT = 50
 Dim con.WIDTH = 100
 
 Dim con.buf$     ' console write buffer
+Dim con.buf_runs$ ' Deferred colour-change offsets within con.buf$, see con.buf_mark_colour()
 Dim con.space    ' was the last character written to con.buf$ a space?
 Dim con.lines    ' number of lines that have been output since the last prompt
 Dim con.count    ' number of newlines without an intervening character being printed
@@ -46,6 +47,7 @@ End Sub
 Sub con.clear()
   Cls
   con.buf$ = ""
+  con.buf_runs$ = ""
   con.space = 0
   con.count = 0
   con.lines = 0
@@ -167,19 +169,26 @@ End Sub
 ' Internal callback for con.print(). Prints one segment of text, optionally
 ' in a named foreground colour.
 '
-' If fg$ is non-empty, con.buf$ is flushed before applying the colour and
-' again before resetting it, ensuring buffered text on either side of the
-' coloured span is printed in the correct colour.
+' If `fg$` is non-empty, the colour change is recorded in `con.buf_run$` so
+' that it takes effect from the next character appended to con.buf$ onward
+' - WITHOUT flushing `con.buf$` or touching the physical terminal colour
+' immediately. This is deliberate: a "word" that spans a [[colour:text]]
+' boundary (e.g. "[[green:Dining room]].") must stay in `con.buf$` as a
+' single unit so that con.flush()'s word-wrap check sees its true full length,
+' rather than being forced to make a wrap decision on a partial word every
+' time a colour span starts or ends.
+'
+' Note that `con.fg$` tracks the "logical" current colour throughout.
 '
 ' @param  s$   Plain text segment to print (no markup).
-' @param  fg$  Colour name to pass to con.foreground(), or empty string
-'              for unstyled text.
+' @param  fg$  Colour name, or empty string for unstyled text.
 Sub con.print_segment_cb(s$, fg$)
   Local c$, i%, old_fg$
 
   If fg$ <> "" Then
     old_fg$ = con.fg$
-    con.foreground(fg$)
+    If fg$ <> con.fg$ Then Cat con.buf_runs$, Str$(Len(con.buf$) + 1) + ":" + fg$ + "|"
+    con.fg$ = fg$
   EndIf
 
   For i% = 1 To Len(s$)
@@ -202,7 +211,27 @@ Sub con.print_segment_cb(s$, fg$)
     End Select
   Next
 
-  If fg$ <> "" Then con.foreground(old_fg$)
+  If fg$ <> "" Then
+    If old_fg$ <> con.fg$ Then Cat con.buf_runs$, Str$(Len(con.buf$) + 1) + ":" + old_fg$ + "|"
+    con.fg$ = old_fg$
+  EndIf
+End Sub
+
+' Records that, from the next character appended to con.buf$ onward, the
+' colour should be fg$ - without flushing con.buf$ or touching the
+' physical terminal colour. This lets a "word" that spans multiple
+' [[colour:text]] markup spans stay in con.buf$ as a single unit, so
+' con.flush()'s word-wrap check sees its true full length instead of being
+' forced to make a wrap decision on a partial word at each colour boundary.
+'
+' con.fg$ continues to track the "logical" current colour throughout, so
+' code reading it (e.g. to save/restore around a span) behaves exactly as
+' it did before this change.
+'
+' @param  fg$  Colour name to switch to from this point in con.buf$ onward.
+Sub con.buf_mark_colour(fg$)
+  If fg$ <> con.fg$ Then Cat con.buf_runs$, Str$(Len(con.buf$) + 1) + ":" + fg$ + "|"
+  con.fg$ = fg$
 End Sub
 
 ' Writes con.buf$ to the console and clears it.
@@ -214,11 +243,15 @@ Sub con.flush()
 
   If con.spin_shown Then Print Chr$(8); " "; Chr$(8); : con.spin_shown = 0
 
-  ' If the buffer is wider than the console then split the buffer.
+  ' If the buffer is wider than the console then split the buffer. This is
+  ' a pathological case (a single unbroken "word" wider than the whole
+  ' console) that shouldn't occur in practice; colour-run fidelity is not
+  ' preserved across the split.
   Local remainder$
   If Len(con.buf$) > con.WIDTH Then
     remainder$ = "..." + Mid$(con.buf$, con.WIDTH + 1)
     con.buf$ = Left$(con.buf$, con.WIDTH)
+    con.buf_runs$ = ""
   EndIf
 
   Do
@@ -228,11 +261,12 @@ Sub con.flush()
       Print
       Inc con.lines
       con.x = 1
-      If con.space Then con.buf$ = "" : Exit Do
+      If con.space Then con.buf$ = "" : con.buf_runs$ = "" : Exit Do
     Else
-      Print con.buf$;
+      con.print_runs(con.buf$, con.buf_runs$)
       Inc con.x, Len(con.buf$)
       con.buf$ = ""
+      con.buf_runs$ = ""
       Exit Do
     EndIf
   Loop
@@ -241,6 +275,52 @@ Sub con.flush()
     con.buf$ = remainder$
     con.flush()
   EndIf
+End Sub
+
+' Prints text$, switching the physical colour at the offsets recorded in
+' runs$ (see con.buf_mark_colour()). Any text before the first recorded run
+' keeps whatever physical colour is already set on the terminal - i.e. it
+' inherits the colour left behind by the previous flush, which is correct
+' since no colour change was recorded for it.
+'
+' Colour switches use con.foreground(colour$, 1) - the no_flush% = 1 avoids
+' recursing back into con.flush() (this function is only ever called from
+' within it). Intermediate calls temporarily set con.fg$ to each run's
+' colour in turn, but since nothing reads con.fg$ until this function
+' returns, that's harmless: the final call restores it to final_fg$, the
+' logical "current" colour that was already correct on entry, so the
+' physical colour ends up matching it on exit, ready for whatever is
+' printed next.
+'
+' @param  text$  The text to print (this is con.buf$ at flush time).
+' @param  runs$  Deferred colour-change offsets, as built up by repeated
+'                calls to con.buf_mark_colour() (see that function for the
+'                "offset:colour|offset:colour|..." format). May be empty,
+'                in which case text$ is printed as a single unstyled run.
+Sub con.print_runs(text$, runs$)
+  If runs$ = "" Then Print text$; : Exit Sub
+
+  Const final_fg$ = con.fg$
+  Local c%, clr$, from%, next_off%, p%, tok$, remaining$
+  remaining$ = runs$
+  from% = 1
+  Do While remaining$ <> ""
+    p% = InStr(remaining$, "|")
+    tok$ = Left$(remaining$, p% - 1)
+    remaining$ = Mid$(remaining$, p% + 1)
+
+    c% = InStr(tok$, ":")
+    next_off% = Val(Left$(tok$, c% - 1))
+    clr$ = Mid$(tok$, c% + 1)
+
+    If next_off% > from% Then Print Mid$(text$, from%, next_off% - from%);
+    con.foreground(clr$, 1)
+    from% = next_off%
+  Loop
+
+  If from% <= Len(text$) Then Print Mid$(text$, from%);
+
+  con.foreground(final_fg$, 1)
 End Sub
 
 ' Shows the "[MORE]" prompt and waits for a keypress,
