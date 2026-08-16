@@ -142,6 +142,21 @@ right quite so literally, though."
 affair mellors ronald sarah summer house summerhouse together secret lovers
 "Can't say I've given it any thought. Why, should I have?"
 
+money finance business shares mining peru ruin debt
+!requires newspaper
+He goes rather grey about the gills.@
+@
+"Very well, since you've clearly found the wretched newspaper. Yes
+- I'd put a considerable sum into Peruvian silver on Darnley's own
+advice, and the whole thing collapsed overnight. I came here to ask
+him for a loan to cover it. We argued about it, I'll not deny that
+- but I left him alive and breathing, and that's the truth whatever
+you make of it."
+
+money finance business shares mining peru ruin debt
+"My business affairs are my own concern, and none of yours unless
+you can show otherwise."
+
 police investigation scotland yard inspector detective think of me
 "About time too. Damned unpleasant business, having one's private
 affairs picked over, but I'd rather have it done properly than not

@@ -149,6 +149,16 @@ affair mellors ronald sarah summer house summerhouse together secret lovers
 "Now that's not a question I've an answer to, dear, nor one I'd
 care to guess at."
 
+money finance business shares mining peru ruin debt
+!requires newspaper
+"I don't know the ins and outs of it, dear, but there was a queer
+tension in the house since Sir Redvers arrived. Mr. B. said the two
+of them were shut up in the study a good while, talking business."
+
+money finance business shares mining peru ruin debt
+"That's gentlemen's business, dear, not something they'd tell the
+cook."
+
 police investigation scotland yard inspector detective think of me
 "Well, someone's got to sort this out, haven't they? You ask what
 you need to, dear, I've nothing to hide. Can't say the same for

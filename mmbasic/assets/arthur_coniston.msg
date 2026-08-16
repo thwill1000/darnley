@@ -187,6 +187,17 @@ lately. Best not read too much into that, though."
 affair mellors ronald sarah summer house summerhouse together secret lovers
 "Can't say that's ever occurred to me, old boy. Should it have?"
 
+money finance business shares mining peru ruin debt
+!requires newspaper
+"Ah - so you've found that, have you. Darnley did mention old
+Slingsby had come a cropper over some mining shares. Seemed rather
+keen to keep it quiet, if I'm honest, which I suppose is
+understandable."
+
+money finance business shares mining peru ruin debt
+"Couldn't tell you. Money troubles aren't really the sort of thing
+a fellow discusses over billiards."
+
 police investigation scotland yard inspector detective think of me
 "Rather glad they sent someone who knows what he's doing, if I'm
 honest. This house needs answers, and quickly, before everyone's
