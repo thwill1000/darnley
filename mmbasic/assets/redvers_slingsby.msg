@@ -125,6 +125,11 @@ locked sealed study room door window how
 I certainly didn't lock it. If it was locked afterwards, someone
 did that after I'd gone, and I couldn't tell you who or how."
 
+clues evidence found discovered proof
+"Haven't the faintest what you've dug up, and I don't much care to
+speculate. Just make sure whatever you've got actually holds water
+before you go accusing anyone."
+
 police investigation scotland yard inspector detective think of me
 "About time too. Damned unpleasant business, having one's private
 affairs picked over, but I'd rather have it done properly than not

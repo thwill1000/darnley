@@ -148,6 +148,10 @@ locked sealed study room door window how
 broken from outside - I heard people saying it's impossible. I
 suppose that's why they needed a proper detective."
 
+clues evidence found discovered proof
+"I don't know what you've found and I'm not sure I want to. Just -
+please be certain, whatever you conclude. It matters rather a lot."
+
 police investigation scotland yard inspector detective think of me
 "I suppose you have to suspect all of us equally, don't you? It's a
 horrid feeling, being looked at that way in one's own home. But I

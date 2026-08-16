@@ -171,6 +171,11 @@ locked from the inside with the Colonel's own keys still in them.
 I broke the window pane myself to get us in - can't see how anyone
 managed it, honestly."
 
+clues evidence found discovered proof
+"No idea what you've turned up, old boy, and I shan't pretend I'm
+not curious. I'll wait for you to tell me, rather than guess and
+make a fool of myself."
+
 police investigation scotland yard inspector detective think of me
 "Rather glad they sent someone who knows what he's doing, if I'm
 honest. This house needs answers, and quickly, before everyone's

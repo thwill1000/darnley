@@ -155,6 +155,10 @@ locked sealed study room door window how
 keys, and that broken window - it's as though no one could possibly
 have got to him. And yet someone did."
 
+clues evidence found discovered proof
+"I don't know what you've discovered, Inspector, and I find I'm
+almost afraid to ask. Just be sure, whatever you decide."
+
 police investigation scotland yard inspector detective think of me
 "I want to know who did this as much as anyone, Inspector - more,
 perhaps. Ask whatever you must. I only hope it's over soon, for all
