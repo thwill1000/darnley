@@ -53,3 +53,7 @@ ALL_BLOCKED_MSG
 PROVIDES_MSG
 !provides granted_token
 "provides message body"
+
+# comment before commented_entry
+commented_entry
+"response after comment"

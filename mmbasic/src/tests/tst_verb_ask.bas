@@ -72,6 +72,8 @@ add_test("verb_ask() returns 1 (handled) on every path", "test_ask_always_return
 add_test("verb_ask() accepts comma as a synonym for ABOUT", "test_ask_gvn_comma_synonym")
 add_test("verb_ask() treats ABOUT with no target as fallback", "test_ask_gvn_about_no_target")
 add_test("verb_ask() treats comma with no target as fallback", "test_ask_gvn_comma_no_target")
+add_test("verb_ask() ignores comment lines interspersed between entries", "test_ask_msg_comments_ignored")
+add_test("verb_ask() ignores a comment line immediately before the wildcard", "test_ask_comment_b4_wildcard")
 
 run_tests()
 End
@@ -336,4 +338,28 @@ Sub test_ask_gvn_comma_no_target()
 
   assert_int_equals(1, result%)
   assert_int_equals(1, InStr(con_output$, "line B") > 0)
+End Sub
+
+' "#" comment lines placed before and between .msg entries are skipped by
+' the parser and do not disrupt keyword resolution.
+Sub test_ask_msg_comments_ignored()
+  Local result% = parse_common("ask test suspect about gramophone")
+  assert_int_equals(0, result%)
+
+  result% = verb_ask()
+
+  assert_int_equals(1, result%)
+  assert_int_equals(1, InStr(con_output$, "line B") > 0)
+End Sub
+
+' A comment line immediately preceding the "*" wildcard entry does not
+' prevent the wildcard from being reached when nothing else matches.
+Sub test_ask_comment_b4_wildcard()
+  Local result% = parse_common("ask test suspect about piano only")
+  assert_int_equals(0, result%)
+
+  result% = verb_ask()
+
+  assert_int_equals(1, result%)
+  assert_int_equals(1, InStr(con_output$, "wildcard fallback") > 0)
 End Sub
