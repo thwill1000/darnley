@@ -102,7 +102,12 @@ womens shoe prints
 cheroot in the pond
 "I don't know anything about it."
 
-murder murderer think believe guilty who did it comitted
+motive reason why think murder murdered kill killed
+"Not my place to guess. The Colonel wasn't an easy man to work for,
+but that's true of most gentlemen. I don't see it's my business to
+speculate further."
+
+murder murderer think believe guilty who did it comitted killed
 "Not my business to guess. But if you're asking, I'd look closer to
 home than the grounds - that fine young gentleman's a sight too
 pleased with himself for my liking."

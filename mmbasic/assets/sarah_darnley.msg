@@ -130,7 +130,12 @@ footprints."
 cheroot in the pond
 "I don't know anything about it."
 
-murder murderer think believe guilty who did it comitted
+motive reason why think murder murdered kill killed
+"I've asked myself that a hundred times since last night and I
+still can't answer it. Sebastian had his difficult side, but I
+never thought anyone hated him enough for this."
+
+murder murderer think believe guilty who did it comitted killed
 "I can't bear to think it was any of them, truly. If you insist I
 name someone - Sir Redvers seemed dreadfully agitated all evening. I
 don't like to say more than that."

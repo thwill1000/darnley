@@ -123,7 +123,12 @@ womens shoe prints
 "I might recognise my own shoes, but I couldn't tell you whose prints these are
 from looking at them in the snow."
 
-murder murderer think believe guilty who did it comitted
+motive reason why think murder murdered kill killed
+"I can't imagine why anyone would want to. Money, I suppose, is
+usually why people do dreadful things. Daddy could be difficult
+about money."
+
+murder murderer think believe guilty who did it comitted killed
 "I try not to think about it - it makes me feel rather sick. If I'm
 honest, Mellors has always given me an uneasy feeling. But that isn't
 proof, is it? Just a feeling."

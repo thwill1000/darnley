@@ -138,7 +138,12 @@ cheroot in the pond
 "As far as I'm aware only the Colonel smoked cheroots. But he was a
 most particular man and would never throw a butt into the pond."
 
-murder murderer think believe guilty who did it comitted
+motive reason why think murder murdered kill killed
+"I couldn't begin to guess, sir. The Colonel was not universally
+loved, if I am honest, but I know of no one with cause enough to
+do... this."
+
+murder murderer think believe guilty who did it comitted killed
 "That is not a question I am equipped to answer, sir. I will say
 only that a house such as this holds more secrets than its servants
 are ever told, above stairs or below."
