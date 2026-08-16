@@ -145,7 +145,7 @@ add_test("test_remove_words_gvn_duplicates")
 add_test("test_remove_words_gvn_empty")
 add_test("find_exit_match() matches single exit by name", "test_fem_gvn_match")
 add_test("find_exit_match() matches a different exit", "test_fem_gvn_other_match")
-add_test("find_exit_match() returns 0 when no exit matches", "test_fem_gvn_no_match")
+add_test("find_exit_match() returns -1 when no exit matches", "test_fem_gvn_no_match")
 add_test("find_exit_match() breaks ties in favour of first exit", "test_fem_gvn_tie_first")
 add_test("find_exit_match() matching is case-insensitive", "test_fem_gvn_case")
 add_test("find_obj() in current location", "test_find_obj_gvn_current")
@@ -984,7 +984,7 @@ End Sub
 Sub test_fem_gvn_no_match()
   r = 1
   Local words$(4) Length MAX_WORD_LENGTH = ("examine", "nonexistent", "", "")
-  assert_int_equals(0, find_exit_match%(words$()))
+  assert_int_equals(-1, find_exit_match%(words$()))
 End Sub
 
 ' "room" matches both "Room Two" and "Room Three" equally;
