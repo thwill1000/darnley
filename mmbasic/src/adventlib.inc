@@ -263,8 +263,8 @@ Function parse_common(cmd$)
       con.print_fail("This is not that sort of game.")
       parse_common = 1
       Exit Function
-    Case "say", "speak", "talk", "tell", Chr$(34)
-      verb$ = "ask"
+    Case "ask", "speak", "talk", "tell", Chr$(34)
+      verb$ = "say"
     Case Else
       verb$ = words$(1)
   End Select
@@ -272,15 +272,15 @@ Function parse_common(cmd$)
   noun$ = words$(2)
 End Function
 
-' Handles the ASK verb
-Function verb_ask()
-  verb_ask = 1
+' Handles the SAY verb
+Function verb_say()
+  verb_say = 1
 
   Local comma_idx% = word.find_first%(words$(), ",")
   Local obj_idx%
 
   If comma_idx% > 2 Then
-    obj_idx% = resolve_ask_target%(comma_idx%)
+    obj_idx% = resolve_say_target%(comma_idx%)
     If Not obj_idx% Then Exit Function
   Else
     ' No "," separator, or no person named before it (e.g. ",topic")
@@ -288,7 +288,7 @@ Function verb_ask()
     ' first person present in the current location.
     obj_idx% = find_person_in_room%(r)
     If Not obj_idx% Then
-      con.print_fail("There is no-one here to talk to.")
+      con.print_fail("There is no-one here to speak to.")
       Exit Function
     EndIf
     comma_idx% = 1
@@ -300,38 +300,38 @@ Function verb_ask()
   Const filename$ = LCase$(Mid$(Field$(objects$(obj_idx%), 1, "|"), 3)) + ".msg"
 
   Local best_match_count%, best_match_line%
-  scan_ask_responses(filename$, subject_words$(), best_match_count%, best_match_line%)
+  scan_say_responses(filename$, subject_words$(), best_match_count%, best_match_line%)
 
-  print_ask_result(filename$, best_match_count%, best_match_line%)
+  print_say_response(filename$, best_match_count%, best_match_line%)
 End Function
 
 ' Resolves the direct object of ("target name, subject words) printing
 ' failure message and returning 0 if it can't be found, isn't present,
 ' or isn't a person.
-Function resolve_ask_target%(comma_idx%)
+Function resolve_say_target%(comma_idx%)
   ' The target must exist (person/object)
-  resolve_ask_target% = find_obj%(words$(), 1, comma_idx% - 1)
-  If Not resolve_ask_target% Then
+  resolve_say_target% = find_obj%(words$(), 1, comma_idx% - 1)
+  If Not resolve_say_target% Then
     con.print_fail("You don't know that person.")
     Exit Function
   EndIf
 
   ' Unless "cheating" the target must be in the current location
-  If Not state.cheat% And obj_loc%(resolve_ask_target%) <> r Then
-    Local msg$ = sanitize_name$(obj_name$(resolve_ask_target%))
-    If Not obj_is_person%(resolve_ask_target%) Then msg$ = "The " + LCase$(msg$)
+  If Not state.cheat% And obj_loc%(resolve_say_target%) <> r Then
+    Local msg$ = sanitize_name$(obj_name$(resolve_say_target%))
+    If Not obj_is_person%(resolve_say_target%) Then msg$ = "The " + LCase$(msg$)
     Cat msg$, Choice(Right$(msg$, 1) = "s", " are", " is") + " not here."
     con.print_fail(msg$)
-    resolve_ask_target% = 0
+    resolve_say_target% = 0
     Exit Function
   EndIf
 
   ' The target must be a person
-  If Not obj_is_person%(resolve_ask_target%) Then
-    Local msg$ = "The " + LCase$(sanitize_name$(obj_name$(resolve_ask_target%)))
+  If Not obj_is_person%(resolve_say_target%) Then
+    Local msg$ = "The " + LCase$(sanitize_name$(obj_name$(resolve_say_target%)))
     Cat msg$, Choice(Right$(msg$, 1) = "s", " do", " does") + " not answer."
     con.print_fail(msg$)
-    resolve_ask_target% = 0
+    resolve_say_target% = 0
   EndIf
 End Function
 
@@ -371,7 +371,7 @@ End Sub
 ' Scans filename$ for the response whose keyword line best matches
 ' subject_words$(), respecting !requires eligibility. Returns the winning
 ' match count/line via best_match_count%/best_match_line% (0/0 if none).
-Sub scan_ask_responses(filename$, subject_words$(), best_match_count%, best_match_line%)
+Sub scan_say_responses(filename$, subject_words$(), best_match_count%, best_match_line%)
   Open adv.asset_dir$ + filename$ For Input As #1
 
   Local file_word_count%, file_words$(MAX_WORDS) Length 20, match_count%, s$
@@ -424,9 +424,9 @@ Sub scan_ask_responses(filename$, subject_words$(), best_match_count%, best_matc
   Close #1
 End Sub
 
-' Prints the winning response from scan_ask_responses(), or a generic
+' Prints the winning response from scan_say_responses(), or a generic
 ' fallback if best_match_count% is 0.
-Sub print_ask_result(filename$, best_match_count%, best_match_line%)
+Sub print_say_response(filename$, best_match_count%, best_match_line%)
   Local s$, line_num%
 
   If best_match_count% = 0 Then
@@ -752,7 +752,7 @@ End Sub
 
 ' Reads directives and prints the body for the entry positioned immediately
 ' after the keyword line, applying any "!provides" tokens unconditionally.
-' Used by callers (e.g. print_ask_result()) that have already picked an
+' Used by callers (e.g. print_say_response()) that have already picked an
 ' eligible entry and don't need print_message%()'s scanning/gating.
 Sub print_message_lines()
   Local requires$(MAX_WORDS) Length MAX_WORD_LENGTH
