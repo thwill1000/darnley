@@ -143,6 +143,11 @@ engagement engaged marry marrying millicent milicent arthur
 yesterday - I still can hardly believe it. I'd waited so long for
 him to say yes."
 
+locked sealed study room door window how
+"It doesn't make sense, does it? Both doors locked, the window
+broken from outside - I heard people saying it's impossible. I
+suppose that's why they needed a proper detective."
+
 police investigation scotland yard inspector detective think of me
 "I suppose you have to suspect all of us equally, don't you? It's a
 horrid feeling, being looked at that way in one's own home. But I

@@ -150,6 +150,11 @@ engagement engaged marry marrying millicent milicent arthur
 positively glowing when she told me. I'm glad she'll have that
 happiness, whatever else has happened."
 
+locked sealed study room door window how
+"I still can't make sense of it. Both doors locked with his own
+keys, and that broken window - it's as though no one could possibly
+have got to him. And yet someone did."
+
 police investigation scotland yard inspector detective think of me
 "I want to know who did this as much as anyone, Inspector - more,
 perhaps. Ask whatever you must. I only hope it's over soon, for all

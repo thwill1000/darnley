@@ -120,6 +120,11 @@ engagement engaged marry marrying millicent milicent arthur
 it yesterday. Can't say I know the fellow well enough to judge the
 match."
 
+locked sealed study room door window how
+"I left by the hall door at 10:30 and heard it slam behind me -
+I certainly didn't lock it. If it was locked afterwards, someone
+did that after I'd gone, and I couldn't tell you who or how."
+
 police investigation scotland yard inspector detective think of me
 "About time too. Damned unpleasant business, having one's private
 affairs picked over, but I'd rather have it done properly than not
