@@ -1,3 +1,6 @@
+hello hi morning afternoon evening greetings
+"Morning. Get on with your questions, then, if you've got some."
+
 events yesterday murder last night
 "I have worked for Colonel Darnley for five years. He was strict but
 fair. I have no complaints. Last night I did my last rounds at 8:00
@@ -122,6 +125,9 @@ saying so all along, and I'll keep saying it."
 !provides new_accuse accuse_ronald
 "You'd best have something to back that up before you go saying it
 again."
+
+goodbye bye farewell thanks thank you
+"Aye. Off with you, then."
 
 *
 "Do I look like I'd know anything about that?"

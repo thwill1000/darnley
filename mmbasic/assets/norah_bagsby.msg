@@ -1,3 +1,7 @@
+hello hi morning afternoon evening greetings
+"Oh - good morning, sir. Sorry, I'm all of a fluster still, what
+with everything that's happened."
+
 events yesterday murder last night
 "I have worked here for six months and I don't like it. Last night I
 helped Mrs. Goodbody to prepare dinner and afterwards I served coffee
@@ -97,6 +101,10 @@ paid me! I only been here six months, sir, honest!"
 +accuse
 !provides new_accuse accuse_norah
 "Oh! You mustn't say that, not without you're sure - it isn't right."
+
+goodbye bye farewell thanks thank you
+"Goodbye, sir. I hope you don't need me again - not because I mind,
+just, well, you know."
 
 *
 "I wouldn't know about that. Nobody tells me anything."

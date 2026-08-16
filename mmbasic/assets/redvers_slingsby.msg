@@ -1,3 +1,7 @@
+hello hi morning afternoon evening greetings
+"Morning. Damned unpleasant way to start a day, having policemen
+tramping about the place, but I suppose it can't be helped."
+
 events yesterday murder last night
 "I have known Darnley for about 20 years. It was some confidential
 business dealings that brought me here urgently yesterday. Last
@@ -120,6 +124,9 @@ alive and well, and I'll thank you to remember it!"
 !provides new_accuse accuse_redvers
 "Confound it, man, you can't fling accusations about like that! Get your
 facts straight first."
+
+goodbye bye farewell thanks thank you
+"Yes, yes. Get on with it, then."
 
 *
 "No idea whatsoever. Can we stick to the point?"

@@ -1,3 +1,7 @@
+hello hi morning afternoon evening greetings
+"Good day to you, sir. I only wish it were under happier
+circumstances."
+
 events yesterday murder last night
 "I have worked for the Darnley family since I was a boy. Colonel Darnley
 was a very honest, decent gentleman. Last night I waited on the guests
@@ -157,6 +161,10 @@ suspect."
 !provides new_accuse accuse_arnold
 "Begging your pardon, but that is a very grave thing to suggest without
 proper cause."
+
+goodbye bye farewell thanks thank you
+"Very good, sir. I shall be about the house if you need anything
+further."
 
 *
 "I don't believe that falls within my knowledge, I'm afraid."

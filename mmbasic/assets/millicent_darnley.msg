@@ -1,3 +1,7 @@
+hello hi morning afternoon evening greetings
+"Hello, Inspector. I suppose there's nothing 'good' about this
+morning, but you're welcome all the same."
+
 events yesterday murder last night
 "Father was a difficult man to live with but I never expected - this!
 Last night we all ate together until coffee which Sarah and I took
@@ -141,6 +145,9 @@ absolutely certain, because I will not forgive this lightly."
 !provides new_accuse accuse_millicent
 "That is a wicked thing to say without proof. I hope you have better
 reasons than mere suspicion."
+
+goodbye bye farewell thanks thank you
+"Goodbye, Inspector. I do hope you find whoever did this."
 
 *
 "I'm afraid that is rather outside my knowledge.
