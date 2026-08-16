@@ -146,10 +146,15 @@ cheroot in the pond
 and I went outside. Maybe I did throw it in the pond. Does it
 matter?"
 
-murder murderer think believe guilty who did it comitted
+motive reason why think murder murdered kill killed
+"Haven't the foggiest, old boy. Darnley wasn't an easy man, but
+plenty of people find their relatives difficult without shooting
+them. Money's always worth a look, though - isn't it always?"
+
+murder murderer think believe guilty who did it comitted killed
 "Good Lord, I haven't the faintest. Between you and me I'd watch
 Slingsby - man had the look of someone with troubles on his mind
-tonight. But don't quote me, old boy."
+last night. But don't quote me, old boy."
 
 +accuse
 !requires all_clues accuse_b4_arthur

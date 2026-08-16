@@ -109,7 +109,12 @@ mens shoe prints
 womens shoe prints
 "I don't know whose these are."
 
-murder murderer think believe guilty who did it comitted
+motive reason why think murder murdered kill killed
+"I couldn't say, dear. Folk don't usually tell the cook their
+darkest secrets. Though there's been a queer atmosphere in this
+house since Sir Redvers arrived, if you want my honest opinion."
+
+murder murderer think believe guilty who did it comitted killed
 "I try not to speculate, it's not my place. Though I'll say Sir
 Redvers had an almighty row with the Colonel that evening - words
 were raised. Make of that what you will."

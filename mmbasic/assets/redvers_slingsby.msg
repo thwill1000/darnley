@@ -101,7 +101,12 @@ cheroot in the pond
 "A cheroot? Not me, old man! I'm one for Havanas if I'm not smoking
 the old pipe."
 
-murder murderer think believe guilty who did it comitted
+motive reason why think murder murdered kill killed
+"Damned if I know. Man had his share of enemies in business, I
+shouldn't wonder - he gave tips that didn't always pan out, and
+some fellows take that sort of thing badly."
+
+murder murderer think believe guilty who did it comitted killed
 "Damned if I know. If you want my honest opinion, servants notice a
 great deal more than they let on - I shouldn't rule out that butler
 of his, watchful sort of fellow. But that's guesswork, mind."

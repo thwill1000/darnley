@@ -79,7 +79,11 @@ don't know what more you'd want me to say about myself."
 ronald mellors
 "A rough man. A womanizer by all accounts."
 
-murder murderer think believe guilty who did it comitted
+motive reason why think murder murdered kill killed
+"I don't know, sir, I really don't. The Colonel could be sharp with
+people. Maybe someone had a grudge, but I couldn't tell you who."
+
+murder murderer think believe guilty who did it comitted killed
 "Oh, I couldn't say, sir, it frightens me even to think it. Miss
 Millicent seemed ever so calm about it all, calmer than I'd have
 been. I don't mean nothing by that, mind."
