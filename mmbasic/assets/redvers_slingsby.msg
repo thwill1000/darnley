@@ -1,4 +1,4 @@
-events yesterday murder
+events yesterday murder last night
 "I have known Darnley for about 20 years. It was some confidential
 business dealings that brought me here urgently yesterday. Last
 night I had dinner with the family and young Coniston. Afterwards
@@ -92,6 +92,11 @@ them. I'm not flat-footed."
 cheroot in the pond
 "A cheroot? Not me, old man! I'm one for Havanas if I'm not smoking
 the old pipe."
+
+murder murderer think believe guilty who did it comitted
+"Damned if I know. If you want my honest opinion, servants notice a
+great deal more than they let on - I shouldn't rule out that butler
+of his, watchful sort of fellow. But that's guesswork, mind."
 
 +accuse
 !requires all_clues accuse_b4_redvers

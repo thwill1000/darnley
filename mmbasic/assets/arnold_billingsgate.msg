@@ -1,4 +1,4 @@
-events yesterday murder
+events yesterday murder last night
 "I have worked for the Darnley family since I was a boy. Colonel Darnley
 was a very honest, decent gentleman. Last night I waited on the guests
 at dinner. There was the family, Sir Redvers and Mr. Coniston. The
@@ -128,6 +128,11 @@ womens shoe prints
 cheroot in the pond
 "As far as I'm aware only the Colonel smoked cheroots. But he was a
 most particular man and would never throw a butt into the pond."
+
+murder murderer think believe guilty who did it comitted
+"That is not a question I am equipped to answer, sir. I will say
+only that a house such as this holds more secrets than its servants
+are ever told, above stairs or below."
 
 +accuse
 !requires all_clues accuse_b4_arnold

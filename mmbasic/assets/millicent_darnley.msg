@@ -1,4 +1,4 @@
-events yesterday murder
+events yesterday murder last night
 "Father was a difficult man to live with but I never expected - this!
 Last night we all ate together until coffee which Sarah and I took
 together in the lounge. The men joined us later for half an hour,
@@ -114,6 +114,11 @@ mens shoe prints
 womens shoe prints
 "I might recognise my own shoes, but I couldn't tell you whose prints these are
 from looking at them in the snow."
+
+murder murderer think believe guilty who did it comitted
+"I try not to think about it - it makes me feel rather sick. If I'm
+honest, Mellors has always given me an uneasy feeling. But that isn't
+proof, is it? Just a feeling."
 
 +accuse
 !requires all_clues accuse_b4_millicent

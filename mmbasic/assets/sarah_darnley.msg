@@ -1,4 +1,4 @@
-events yesterday murder
+events yesterday murder last night
 "I married Sebastian two years ago. I am more than twenty years
 younger than he - really not much older than Millicent. We have
 been very happy together. Last night we all had dinner together.
@@ -121,6 +121,11 @@ footprints."
 
 cheroot in the pond
 "I don't know anything about it."
+
+murder murderer think believe guilty who did it comitted
+"I can't bear to think it was any of them, truly. If you insist I
+name someone - Sir Redvers seemed dreadfully agitated all evening. I
+don't like to say more than that."
 
 +accuse
 !requires all_clues accuse_b4_sarah
