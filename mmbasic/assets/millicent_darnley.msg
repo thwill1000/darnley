@@ -164,6 +164,16 @@ affair mellors ronald sarah summer house summerhouse together secret lovers
 "Goodness, what a thing to ask. I don't know anything about that,
 and I'm not sure I want to."
 
+money finance business shares mining peru ruin debt
+!requires newspaper
+"Oh - is that what it was about? Daddy did mention something about
+Sir Redvers wanting money. I didn't think much of it at the time -
+gentlemen are always fussing over investments."
+
+money finance business shares mining peru ruin debt
+"I really don't know anything about finances. That's
+not the sort of thing anyone discusses with me."
+
 police investigation scotland yard inspector detective think of me
 "I suppose you have to suspect all of us equally, don't you? It's a
 horrid feeling, being looked at that way in one's own home. But I

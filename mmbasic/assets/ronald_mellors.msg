@@ -141,6 +141,16 @@ affair mellors ronald sarah summer house summerhouse together secret lovers
 "Don't know what you mean. I keep to my own business, and I'd
 thank you to do the same."
 
+money finance business shares mining peru ruin debt
+!requires newspaper
+"Don't know nothing about money and shares. Not my world. All I
+know is Sir Redvers came up the drive in a black temper yesterday
+afternoon."
+
+money finance business shares mining peru ruin debt
+"Nothing to do with me. I don't concern myself with gentlemen's
+money."
+
 police investigation scotland yard inspector detective think of me
 "Don't much care for coppers poking round my cottage, if that's
 what you're asking. But get on with your job. I've nothing to hide

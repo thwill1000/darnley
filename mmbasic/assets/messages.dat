@@ -419,6 +419,7 @@ leave his suit here rather than in his guest room? Inside the jacket pocket,
 a label reads "Hawes & Curtis, Piccadilly."
 
 OBJ222_NEWSPAPER
+!provides newspaper new_clue
 One headline on the front page catches your eye -
 'Collapse of Rio Plata Mining Co. - Our co-respondent in Lima, Peru
 reports the collapse of several silver mining companies through the

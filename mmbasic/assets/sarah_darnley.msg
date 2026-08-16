@@ -171,6 +171,15 @@ affair mellors ronald sarah summer house summerhouse together secret lovers
 "I'm sorry - I don't understand the question. Mellors is our
 gamekeeper. I don't see what he has to do with anything."
 
+money finance business shares mining peru ruin debt
+!requires newspaper
+"Sebastian did mention Sir Redvers needed to talk business
+urgently. I assumed it was the usual sort of thing - I didn't
+realise it was quite so serious until now."
+
+money finance business shares mining peru ruin debt
+"I really couldn't say. Sebastian didn't discuss finances with me."
+
 police investigation scotland yard inspector detective think of me
 "I want to know who did this as much as anyone, Inspector - more,
 perhaps. Ask whatever you must. I only hope it's over soon, for all
