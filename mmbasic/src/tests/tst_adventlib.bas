@@ -114,10 +114,7 @@ add_test("test_parse_common_alias_inv")
 add_test("test_parse_common_alias_go")
 add_test("test_parse_common_alias_speak")
 add_test("test_parse_common_alias_q")
-add_test("test_parse_common_dir_nsew")
-add_test("test_parse_common_dir_ud")
-add_test("test_parse_common_dir_full")
-add_test("test_parse_common_noun_aliases")
+add_test("test_parse_common_direct")
 add_test("test_parse_common_intercepts")
 add_test("test_parse_common_split_errors")
 add_test("test_read_directives_gvn_none")
@@ -485,8 +482,8 @@ End Sub
 
 ' Single word command sets noun$ to empty
 Sub test_parse_common_gvn_one_word()
-  Local result% = parse_common("look")
-  assert_string_equals("look", verb$)
+  Local result% = parse_common("examine")
+  assert_string_equals("examine", verb$)
   assert_string_equals("", noun$)
 End Sub
 
@@ -538,19 +535,19 @@ Sub test_parse_common_alias_inv()
   assert_string_equals("inventory", verb$)
 End Sub
 
-' Aliases for "go": walk, exit
+' Aliases for "go": g, walk
 Sub test_parse_common_alias_go()
-  assert_int_equals(0, parse_common("walk north"))
+  assert_int_equals(0, parse_common("g north"))
   assert_string_equals("go", verb$)
 
-  assert_int_equals(0, parse_common("exit north"))
+  assert_int_equals(0, parse_common("walk north"))
   assert_string_equals("go", verb$)
 End Sub
 
-' Alias "speak" maps to verb "talk"
+' Alias "speak" maps to verb "ask"
 Sub test_parse_common_alias_speak()
   assert_int_equals(0, parse_common("speak"))
-  assert_string_equals("talk", verb$)
+  assert_string_equals("ask", verb$)
 End Sub
 
 ' Alias "q" maps to verb "quit"
@@ -559,92 +556,22 @@ Sub test_parse_common_alias_q()
   assert_string_equals("quit", verb$)
 End Sub
 
-' Directional shortcuts: n, s, e, w
-Sub test_parse_common_dir_nsew()
-  assert_int_equals(0, parse_common("n"))
-  assert_string_equals("go", verb$)
-  assert_string_equals("north", noun$)
-
-  assert_int_equals(0, parse_common("s"))
-  assert_string_equals("go", verb$)
-  assert_string_equals("south", noun$)
-
-  assert_int_equals(0, parse_common("e"))
-  assert_string_equals("go", verb$)
-  assert_string_equals("east", noun$)
-
-  assert_int_equals(0, parse_common("w"))
-  assert_string_equals("go", verb$)
-  assert_string_equals("west", noun$)
+' Don't accept compass directions
+Sub test_parse_common_direct()
+  Local directions$ = "north|south|east|west|up|down|n|s|e|w|u|d"
+  Local i% = 1
+  Do While Field$(directions$, i%, "|") <> ""
+    con_output$ = ""
+    assert_int_equals(1, parse_common(Field$(directions$, i%, "|")))
+    assert_string_equals("[[red:Try: GO location]]" + sys.CRLF$, con_output$)
+    Inc i%
+  Loop
 End Sub
 
-' Directional shortcuts: u, d and full words
-Sub test_parse_common_dir_ud()
-  assert_int_equals(0, parse_common("u"))
-  assert_string_equals("go", verb$)
-  assert_string_equals("up", noun$)
-
-  assert_int_equals(0, parse_common("d"))
-  assert_string_equals("go", verb$)
-  assert_string_equals("down", noun$)
-
-  assert_int_equals(0, parse_common("up"))
-  assert_string_equals("go", verb$)
-  assert_string_equals("up", noun$)
-
-  assert_int_equals(0, parse_common("down"))
-  assert_string_equals("go", verb$)
-  assert_string_equals("down", noun$)
-End Sub
-
-' Full directional words: north, south, east, west
-Sub test_parse_common_dir_full()
-  assert_int_equals(0, parse_common("north"))
-  assert_string_equals("go", verb$)
-  assert_string_equals("north", noun$)
-
-  assert_int_equals(0, parse_common("south"))
-  assert_string_equals("go", verb$)
-  assert_string_equals("south", noun$)
-
-  assert_int_equals(0, parse_common("east"))
-  assert_string_equals("go", verb$)
-  assert_string_equals("east", noun$)
-
-  assert_int_equals(0, parse_common("west"))
-  assert_string_equals("go", verb$)
-  assert_string_equals("west", noun$)
-End Sub
-
-' Noun aliases: n, s, e, w, u, d expand when used as noun
-Sub test_parse_common_noun_aliases()
-  assert_int_equals(0, parse_common("go n"))
-  assert_string_equals("north", noun$)
-
-  assert_int_equals(0, parse_common("go s"))
-  assert_string_equals("south", noun$)
-
-  assert_int_equals(0, parse_common("go e"))
-  assert_string_equals("east", noun$)
-
-  assert_int_equals(0, parse_common("go w"))
-  assert_string_equals("west", noun$)
-
-  assert_int_equals(0, parse_common("go u"))
-  assert_string_equals("up", noun$)
-
-  assert_int_equals(0, parse_common("go d"))
-  assert_string_equals("down", noun$)
-End Sub
-
-' Intercepted verbs kill and use return 1
+' Intercepted verb "KILL" returns 1
 Sub test_parse_common_intercepts()
   assert_int_equals(1, parse_common("kill guard"))
   assert_string_equals("[[red:This is not that sort of game.]]" + sys.CRLF$, con_output$)
-
-  con_output$ = ""
-  assert_int_equals(1, parse_common("use key"))
-  assert_string_equals("[[red:You need to tell me how to use that.]]" + sys.CRLF$, con_output$)
 End Sub
 
 ' split_words% errors return 1

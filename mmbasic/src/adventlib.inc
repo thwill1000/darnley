@@ -579,7 +579,7 @@ Function parse_common(cmd$)
   ' Remove leading * from verb
   If Left$(words$(1), 1) = "*" Then words$(1) = Mid$(words$(1), 2)
 
-  ' Transform verbs
+  ' Handle verb synonyms
   verb$ = ""
   Select Case words$(1)
     Case "d", "down", "e", "east", "n", "north", "s", "south", "u", "up", "w", "west"
@@ -590,44 +590,23 @@ Function parse_common(cmd$)
       verb$ = "quit"
     Case "check", "look", "search", "x"
       verb$ = "examine"
+    Case "g", "walk"
+      verb$ = "go"
     Case "grab", "get", "pick"
       verb$ = "take"
     Case "i", "inv"
       verb$ = "inventory"
-    Case "speak"
-      verb$ = "talk"
-    Case "g", "walk"
-      verb$ = "go"
+    Case "kill"
+      print_fail("This is not that sort of game.")
+      parse_common = 1
+      Exit Function
+    Case "say", "speak", "talk", "tell"
+      verb$ = "ask"
     Case Else
       verb$ = words$(1)
   End Select
 
-  ' Transform nouns
-  noun$ = ""
-  Select Case words$(2)
-    Case "n"
-      noun$ = "north"
-    Case "s"
-      noun$ = "south"
-    Case "e"
-      noun$ = "east"
-    Case "w"
-      noun$ = "west"
-    Case "u"
-      noun$ = "up"
-    Case "d"
-      noun$ = "down"
-    Case Else
-      noun$ = words$(2)
-  End Select
-
-  If verb$ = "kill" Then
-    parse_common = 1
-    print_fail("This is not that sort of game.")
-  ElseIf verb$ = "use" Then
-    parse_common = 1
-    print_fail("You need to tell me how to use that.")
-  EndIf
+  noun$ = words$(2)
 End Function
 
 Function obj_is_person%(obj_idx%)
