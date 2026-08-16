@@ -2,6 +2,10 @@ hello hi morning afternoon evening greetings
 "Good morning, dear. Can't say it's been much of one, what with
 everything, but sit yourself down if you need anything."
 
+weather cold snow
+"Cold enough to freeze the milk, dear. Still, keeps the larder fresh
+at least. Silver linings, as they say."
+
 events yesterday murder last night
 "I have worked here for five years. Last night I cooked and washed up
 with Norah. At about 10:30 I heard a loud bang, it gave me quite a

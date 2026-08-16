@@ -2,6 +2,10 @@ hello hi morning afternoon evening greetings
 "Good morning, Inspector. Forgive me if I don't manage much of a
 smile today."
 
+weather cold snow
+"Dreadfully cold. Though I confess the weather is the last thing on
+my mind just now, Inspector."
+
 events yesterday murder last night
 "I married Sebastian two years ago. I am more than twenty years
 younger than he - really not much older than Millicent. We have
