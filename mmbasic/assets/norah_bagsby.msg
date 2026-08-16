@@ -88,6 +88,10 @@ murder murderer think believe guilty who did it comitted killed
 Millicent seemed ever so calm about it all, calmer than I'd have
 been. I don't mean nothing by that, mind."
 
+marriage married colonel colonels sarah wife husband happy
+"I don't like to gossip about my betters, sir. Mrs. Sarah always
+seemed a bit lonely to me, if you want my honest opinion."
+
 police investigation scotland yard inspector detective think of me
 "Oh, it does put the wind up me, having a proper detective in the
 house. I haven't done anything wrong, sir, honest I haven't - I just

@@ -111,6 +111,10 @@ murder murderer think believe guilty who did it comitted killed
 great deal more than they let on - I shouldn't rule out that butler
 of his, watchful sort of fellow. But that's guesswork, mind."
 
+marriage married colonel colonels sarah wife husband happy
+"I told Darnley he was a damned fool to marry a woman half his age,
+and I'll say it again now he's gone. She never suited him."
+
 police investigation scotland yard inspector detective think of me
 "About time too. Damned unpleasant business, having one's private
 affairs picked over, but I'd rather have it done properly than not

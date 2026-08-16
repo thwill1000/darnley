@@ -133,6 +133,11 @@ murder murderer think believe guilty who did it comitted killed
 honest, Mellors has always given me an uneasy feeling. But that isn't
 proof, is it? Just a feeling."
 
+marriage married colonel colonels sarah wife husband happy
+"Daddy was twenty years older than Sarah and never quite trusted
+that she'd stay. I don't think either of them was truly happy,
+if I'm honest. But that's marriage for you, isn't it?"
+
 police investigation scotland yard inspector detective think of me
 "I suppose you have to suspect all of us equally, don't you? It's a
 horrid feeling, being looked at that way in one's own home. But I
