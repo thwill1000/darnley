@@ -17,7 +17,7 @@ Const MAX_TAKEABLE_WEIGHT = 99
 Const WILDCARD_MATCH = 100
 
 Dim DEBUG = 0
-Dim words$(10) Length 20
+Dim words$(MAX_WORDS) Length 20
 Dim noun$, verb$
 
 Function FAILED(i%) As Integer
