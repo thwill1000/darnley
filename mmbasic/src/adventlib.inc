@@ -583,38 +583,24 @@ Function parse_common(cmd$)
   ' Transform verbs
   verb$ = ""
   Select Case words$(1)
-    Case "d", "down"
-      verb$ = "go"
-      words$(2) = "down"
-    Case "e", "east"
-      verb$ = "go"
-      words$(2) = "east"
+    Case "d", "down", "e", "east", "n", "north", "s", "south", "u", "up", "w", "west"
+      print_fail("Try: GO location")
+      parse_common = 1
+      Exit Function
     Case "search", "check", "x"
       verb$ = "examine"
     Case "grab", "get"
       verb$ = "take"
     Case "i", "inv"
       verb$ = "inventory"
-    Case "n", "north"
-      verb$ = "go"
-      words$(2) = "north"
     Case "pick"
       verb$ = "take"
     Case "q"
       verb$ = "quit"
-    Case "s", "south"
-      verb$ = "go"
-      words$(2) = "south"
     Case "speak"
       verb$ = "talk"
-    Case "u", "up"
-      verb$ = "go"
-      words$(2)= "up"
     Case "walk", "exit"
       verb$ = "go"
-    Case "w", "west"
-      verb$ = "go"
-      words$(2) = "west"
     Case Else
       verb$ = words$(1)
   End Select
