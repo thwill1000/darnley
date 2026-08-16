@@ -829,10 +829,12 @@ End Function
 ' given words, using the same word-matching approach as verb_go().
 '
 ' @param words$()  Array of words to match against exit location names.
-' @return          Index into rooms$() of the best matching exit, or 0 if none.
+' @return          Index into rooms$() of the best matching exit, or -1 if none.
 Function find_exit_match%(words$())
   Local loc_words$(10) Length 20
   Local best_match%, i%, loc%, loc_tag$, loc_name$, match%, result%
+
+  find_exit_match% = -1
 
   Const num_exits% = Val(Field$(rooms$(r), 3, "|"))
   For i% = 1 To num_exits%
@@ -909,7 +911,7 @@ Function verb_examine()
 
   If Not ok% Then
     Const exit_loc% = find_exit_match%(words$())
-    If exit_loc% Then
+    If exit_loc% > -1 Then
       con.print_fail("Try `GO " + UCase$(cat_words$(words$(), 2)) + "`.").
     Else
       con.print_fail("That is not here, cannot be examined or is unremarkable.")
@@ -964,26 +966,8 @@ End Function
 '
 ' @return  1 always (indicating the verb was handled).
 Function verb_go()
-  Local word_count% = count_words%(words$())
-  Local loc_words$(10) Length 20
-  Local best_match% = 0, i%, match%, result%, r_new% = -1
-
-  Const num_exits% = Val(Field$(rooms$(r), 3, "|"))
-  Local loc%, loc_tag$, loc_name$
-  For i% = 1 To num_exits%
-    loc_tag$ = Field$(rooms$(r), 3 + i%, "|")
-    loc% = find_loc%(loc_tag$)
-    loc_name$ = Field$(rooms$(loc%), 2, "|")
-    result% = split_words%(loc_name$, loc_words$())
-    match% = find_matches%(loc_words$(), words$(), 2)
-    If match% > best_match% Then
-      best_match% = match%
-      r_new% = loc%
-    EndIf
-  Next
-
+  Const r_new% = find_exit_match%(words$())
   If r_new% > -1 Then r = r_new% Else con.print_fail("You can't go there.")
-
   verb_go = 1
 End Function
 
