@@ -591,7 +591,7 @@ Function parse_common(cmd$)
   verb$ = ""
   Select Case words$(1)
     Case "d", "down", "e", "east", "n", "north", "s", "south", "u", "up", "w", "west"
-      con.print_fail("Try: GO location")
+      con.print_fail("Try `GO location`.")
       parse_common = 1
       Exit Function
     Case "die", "end", "exit", "q", "restart", "reset", "start"
@@ -825,6 +825,29 @@ Function verb_drop()
   con.print_fail(msg$)
 End Function
 
+' Finds the best matching exit location from the current room (r) for the
+' given words, using the same word-matching approach as verb_go().
+'
+' @param words$()  Array of words to match against exit location names.
+' @return          Index into rooms$() of the best matching exit, or 0 if none.
+Function find_exit_match%(words$())
+  Local loc_words$(10) Length 20
+  Local best_match%, i%, loc%, loc_tag$, loc_name$, match%, result%
+
+  Const num_exits% = Val(Field$(rooms$(r), 3, "|"))
+  For i% = 1 To num_exits%
+    loc_tag$ = Field$(rooms$(r), 3 + i%, "|")
+    loc% = find_loc%(loc_tag$)
+    loc_name$ = Field$(rooms$(loc%), 2, "|")
+    result% = split_words%(loc_name$, loc_words$())
+    match% = find_matches%(loc_words$(), words$(), 2)
+    If match% > best_match% Then
+      best_match% = match%
+      find_exit_match% = loc%
+    EndIf
+  Next
+End Function
+
 ' Finds the best matching object for the given words.
 '
 ' Iterates all objects and scores each by counting how many of the words
@@ -866,6 +889,7 @@ End Function
 Function verb_examine()
   verb_examine = 1
 
+  ' EXAMINE on its own redescribes the current location
   If words$(2) = "" Then
     Mid$(visited$, r, 1) = "0"
     describe% = 1
@@ -883,7 +907,14 @@ Function verb_examine()
     con.foreground("reset")
   EndIf
 
-  If Not ok% Then con.print_fail("That is not here, cannot be examined or is unremarkable.")
+  If Not ok% Then
+    Const exit_loc% = find_exit_match%(words$())
+    If exit_loc% Then
+      con.print_fail("Try `GO " + UCase$(cat_words$(words$(), 2)) + "`.").
+    Else
+      con.print_fail("That is not here, cannot be examined or is unremarkable.")
+    EndIf
+  EndIf
 End Function
 
 ' Counts how many words in needles$() have a match in haystack$(), case-insensitively.
@@ -1173,7 +1204,7 @@ Function verb_font()
   If verb_font Then
     con.println("OK.")
   Else
-    con.print_fail("Try: FONT DEFAULT, FONT SERIF, or FONT SMALL")
+    con.print_fail("Try `FONT DEFAULT`, `FONT SERIF`, or `FONT SMALL`.")
     verb_font = 1
   EndIf
 End Function

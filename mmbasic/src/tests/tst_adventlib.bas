@@ -143,6 +143,11 @@ add_test("test_remove_words_gvn_multiple")
 add_test("test_remove_words_gvn_not_found")
 add_test("test_remove_words_gvn_duplicates")
 add_test("test_remove_words_gvn_empty")
+add_test("find_exit_match() matches single exit by name", "test_fem_gvn_match")
+add_test("find_exit_match() matches a different exit", "test_fem_gvn_other_match")
+add_test("find_exit_match() returns 0 when no exit matches", "test_fem_gvn_no_match")
+add_test("find_exit_match() breaks ties in favour of first exit", "test_fem_gvn_tie_first")
+add_test("find_exit_match() matching is case-insensitive", "test_fem_gvn_case")
 add_test("find_obj() in current location", "test_find_obj_gvn_current")
 add_test("find_obj() in other location", "test_find_obj_gvn_other")
 add_test("find_obj() not found", "test_find_obj_gvn_not_found")
@@ -574,7 +579,7 @@ Sub test_parse_common_direct()
   Do While Field$(directions$, i%, "|") <> ""
     con_output$ = ""
     assert_int_equals(1, parse_common(Field$(directions$, i%, "|")))
-    assert_string_equals("[[red:Try: GO location]]" + sys.CRLF$, con_output$)
+    assert_string_equals("[[red:Try `GO location`.]]" + sys.CRLF$, con_output$)
     Inc i%
   Loop
 End Sub
@@ -959,6 +964,42 @@ Sub test_find_matches_empty_needle()
   Local haystack$(4) = ("cat", "dog", "bird", "")
   Local needles$(4) = ("cat", "", "bird", "")
   assert_int_equals(1, find_matches%(haystack$(), needles$(), 0, 0))
+End Sub
+
+' r=LOC001; "two" matches the exit "Room Two" (LOC002)
+Sub test_fem_gvn_match()
+  r = 1
+  Local words$(4) Length MAX_WORD_LENGTH = ("examine", "two", "", "")
+  assert_int_equals(2, find_exit_match%(words$()))
+End Sub
+
+' r=LOC001; "three" matches the exit "Room Three" (LOC003)
+Sub test_fem_gvn_other_match()
+  r = 1
+  Local words$(4) Length MAX_WORD_LENGTH = ("examine", "three", "", "")
+  assert_int_equals(3, find_exit_match%(words$()))
+End Sub
+
+' No word matches any exit name
+Sub test_fem_gvn_no_match()
+  r = 1
+  Local words$(4) Length MAX_WORD_LENGTH = ("examine", "nonexistent", "", "")
+  assert_int_equals(0, find_exit_match%(words$()))
+End Sub
+
+' "room" matches both "Room Two" and "Room Three" equally;
+' ties are broken in favour of the first-listed exit (LOC002)
+Sub test_fem_gvn_tie_first()
+  r = 1
+  Local words$(4) Length MAX_WORD_LENGTH = ("examine", "room", "", "")
+  assert_int_equals(2, find_exit_match%(words$()))
+End Sub
+
+' Matching is case-insensitive
+Sub test_fem_gvn_case()
+  r = 1
+  Local words$(4) Length MAX_WORD_LENGTH = ("examine", "TWO", "", "")
+  assert_int_equals(2, find_exit_match%(words$()))
 End Sub
 
 Sub test_find_obj_gvn_current()
