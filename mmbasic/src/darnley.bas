@@ -17,6 +17,7 @@ If Mm.Device$ = "MMB4L" Then Option Simulate PicoMiteVGA
 #Include "advdata.inc"
 #Include "state.inc"
 #Include "adventlib.inc"
+#Include "msgorder.inc"
 #Include "microserif6x8.inc"
 
 Const VERSION = 9300 ' 0.9.0
@@ -38,6 +39,7 @@ Font 7
 init_advent(adv.asset_dir$ + "/advent.dat")
 read_questions(adv.asset_dir$ + "/advent.dat")
 read_clues(adv.asset_dir$ + "/advent.dat")
+msgorder.validate_all(adv.asset_dir$)
 read_accuse_replies()
 
 game_start:

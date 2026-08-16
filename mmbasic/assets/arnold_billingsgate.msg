@@ -59,7 +59,7 @@ knife
 cigarettes
 "I don't smoke. Colonel Darnley smoked cigars."
 
-service revolver
+revolver
 "It belongs to the master and was kept in the study. The study is
 normally unlocked and it could have been removed at any time."
 
@@ -69,7 +69,7 @@ I repeated this to the Colonel at the time and he seemed to accept it, though
 he was not best pleased. Personally I should have thought a tramp would have
 more use for a statue he could carry off than one at the bottom of a pond."
 
-gramophone
+gramophone gramaphone
 "There is a gramophone in the morning room."
 
 piano
@@ -85,13 +85,13 @@ newspaper
 letter
 "I don't know anything about it."
 
-handkerchief
+handkerchief handkerchiefs
 "I don't know anything about it."
 
 colonel darnley
 "The master was extremely good to his family."
 
-sarah
+sarah sara
 "I don't believe it is proper to speak of the family."
 
 millicent milicent
@@ -109,13 +109,13 @@ ago than I care to count. I hope I have always given satisfaction.
 It is my place to see the household run smoothly and to be of
 service to the family, in their hour of need as in any other."
 
-mildred goodbody
+mildred goodbody cook
 "A fine woman. Honest as the day is long."
 
-norah bagsby
+norah bagsby maid housemaid
 "A decent-enough girl. A little lazy."
 
-ronald mellors
+ronald mellors gamekeeper
 "He's the gamekeeper. He seems honest enough."
 
 flatfooted bootprints

@@ -40,10 +40,10 @@ cigarettes
 "I smoke a pipe and the occasional Havana cigar. My pipe is in my
 room."
 
-service revolver
+revolver
 "I don't recognise it."
 
-gramophone
+gramophone gramaphone
 "The Darnley's have a gramophone in the morning room."
 
 piano
@@ -62,7 +62,7 @@ colonel darnley
 "A hard man but very fair. Once I had explained my business problem
 he agreed to help me out."
 
-sarah
+sarah sara
 "Darnley should never have married her. I told him so at the time but he wouldn't
 hear of it. She's half his age and twice as clever. A man in Darnley's position
 needs a wife who knows her place, not one who is always looking for something
@@ -81,16 +81,16 @@ redvers slingsby yourself who
 plain-spoken man, and I don't intend to start mincing words on
 your account now."
 
-arnold billingsgate
+arnold billingsgate butler
 "I barely know the man."
 
-mildred goodbody
+mildred goodbody cook
 "I don't know the woman."
 
-norah bagsby
+norah bagsby maid housemaid
 "I don't know the girl."
 
-ronald mellors
+ronald mellors gamekeeper
 "I don't know the man."
 
 flatfooted bootprints

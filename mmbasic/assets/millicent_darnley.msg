@@ -49,7 +49,7 @@ missing statue
 "Someone - I forget who - told me that a beggar had pushed it into
 the pond. Out of spite I suppose."
 
-gramophone
+gramophone gramaphone
 "We have a gramophone in the morning room."
 
 piano
@@ -65,7 +65,7 @@ ladys shoes
 newspaper
 "I don't often read the newspaper."
 
-handkerchief
+handkerchief handkerchiefs
 "I'm always losing handkerchiefs so I suppose it could be mine. I
 don't remember when I lose them. I certainly wasn't in the summer
 house yesterday. Is it important?"
@@ -74,7 +74,7 @@ colonel darnley
 "Daddy was a tyrant but always kind to me. He was always fearful that
 Sarah would leave him for a younger man."
 
-sarah
+sarah sara
 "We got on well enough though it is difficult to have a step-mother
 who is almost the same age. I thought she would leave daddy some day
 as soon as she found a lover. But, of course, she would need Daddy's
@@ -92,16 +92,16 @@ am probably mistaken."
 redvers slingsby
 "I didn't know him before last night."
 
-arnold billingsgate
+arnold billingsgate butler
 "A decent old fellow."
 
-mildred goodbody
+mildred goodbody cook
 "An old dear."
 
-norah bagsby
+norah bagsby maid housemaid
 "A clumsy girl."
 
-ronald mellors
+ronald mellors gamekeeper
 "Furtive. I don't like the way he looks at my step-mother. I advised
 Daddy to get rid of him."
 
