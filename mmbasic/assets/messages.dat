@@ -794,20 +794,19 @@ The game accepts the following commands:@
       must be in your current location@
   [[green:"]][[cyan:topic]]@
     - interrogate suspect in current location@
-      about a given topic, e.g. [[green:"alibi]]@
+      about the given topic, e.g. [[green:"alibi]]@
   [[green:EXAMINE]] [[cyan:object]]@
-    - get additional detail about an object (or@
-      person)@
+    - get additional detail about an object@
   [[green:FONT]] [[cyan:DEFAULT]]|[[cyan:SERIF]]|[[cyan:SMALL]]@
     - change the font@
   [[green:GO]] [[cyan:location]]@
-    - go to a location visible from your current@
-      location@
+    - go to a visible location@
   [[green:HELP]]@
     - show this text@
   [[green:LOOK]]@
-    - reshow the current location illustration@
-      and description@
+    - redescribe current location@
+  [[green:RECAP]]@
+    - show the game introduction@
   [[green:RECORD]] [[cyan:ON]]|[[cyan:OFF]] and [[green:REPLAY]]@
     - record or replay script of your inputs@
   [[green:SAVE]] and [[green:RESTORE]]@
