@@ -45,7 +45,7 @@ missing statue
 "I believe a rather nasty tramp, who called two days ago threw it
 into the pond."
 
-gramophone
+gramophone gramaphone
 "The gramophone? I was in the morning room from about 10:40 until
 11:30 playing the piano. It's possible I played a record, but I
 don't remember doing so."
@@ -71,14 +71,14 @@ Arthur told me that Sebastian had agreed to the marriage, and
 Redvers said that he and Sebastian had sorted out their business; so
 I'm at a loss about the letter."
 
-handkerchief
+handkerchief handkerchiefs
 "You found it in the summer house? I'm absolutely sure it isn't mine."
 
 colonel darnley
 "He was somewhat strict and suspicious by nature, but we were happy
 enough."
 
-sarah yourself who
+sarah sara yourself who
 "I know what's said of me - too young for my husband, too fond of
 admiration. I loved Sebastian in my own way, whatever anyone
 thinks. I don't expect you to understand a marriage from outside
@@ -98,16 +98,16 @@ probably mistaken."
 redvers slingsby
 "I felt he had some sort of grudge against Sebastian."
 
-arnold billingsgate
+arnold billingsgate butler
 "Very honest and loyal."
 
-mildred goodbody
+mildred goodbody cook
 "A gossip."
 
-norah bagsby
+norah bagsby maid housemaid
 "Lazy."
 
-ronald mellors
+ronald mellors gamekeeper
 "A very loyal gamekeeper."
 
 flatfooted bootprints

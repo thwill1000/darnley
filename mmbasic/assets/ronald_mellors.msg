@@ -29,14 +29,14 @@ knife
 cigarettes
 "I smoke cheap cigarettes. What of it? There's no law against it."
 
-service revolver
+revolver
 "I don't own a revolver, I use a shotgun."
 
 missing statue
 "Mrs. G. at the big house turned away a tramp. That'd be two days
 ago. I caught him lurking about and found the statue in the pond."
 
-gramophone
+gramophone gramaphone
 "I don't know anything about any gramophone."
 
 piano
@@ -51,13 +51,13 @@ newspaper
 letter
 "Why should I know anything about some bloody letter?"
 
-handkerchief
+handkerchief handkerchiefs
 "Do I look like I use lady's hankies?"
 
 colonel darnley
 "Strict but fair. I've said all I'm goin to say about him."
 
-sarah
+sarah sara
 "Mrs. Darnely is a fine woman. That's all I'm saying."
 
 millicent milicent
@@ -70,13 +70,13 @@ redvers slingsby
 "Bad-tempered old so-and-so. Came roaring up the drive yesterday afternoon like
 he owned the place."
 
-arnold billingsgate
+arnold billingsgate butler
 "Nosy old devil. Always watching."
 
-mildred goodbody
+mildred goodbody cook
 "Mrs. G. minds her own business. I'll say that for her."
 
-norah bagsby
+norah bagsby maid housemaid
 "Silly girl. Always giggling."
 
 ronald mellors gamekeeper yourself who

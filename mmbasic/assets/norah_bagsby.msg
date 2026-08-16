@@ -35,7 +35,7 @@ cigarettes
 missing statue
 "I wasn't aware it was missing."
 
-gramophone
+gramophone gramaphone
 "There is a gramophone in the morning room."
 
 piano
@@ -45,14 +45,14 @@ morning room."
 ladys shoes
 "These are Mrs. Sarah's shoes. I don't know when they were last worn."
 
-handkerchief
+handkerchief handkerchiefs
 "Both the ladies have this sort of hanky. Sometimes Mrs. G. is given
 the older ones."
 
 colonel darnley
 "Very strict. I didn't like him."
 
-sarah
+sarah sara
 "If you ask me she didn't like the Colonel. He was too old for her."
 
 millicent milicent
@@ -65,18 +65,18 @@ arthur coniston
 redvers slingsby
 "I didn't know the gentleman."
 
-arnold billingsgate
+arnold billingsgate butler
 "An old fuddy-duddy."
 
-mildred goodbody
+mildred goodbody cook
 "Very kind to me."
 
-norah bagsby maid yourself who
+norah bagsby maid housemaid yourself who
 "I'm only the maid, sir. I've been here six months. I try to do my
 work proper, though I know Mrs. G. thinks I'm lazy sometimes. I
 don't know what more you'd want me to say about myself."
 
-ronald mellors
+ronald mellors gamekeeper
 "A rough man. A womanizer by all accounts."
 
 motive reason why think murder murdered kill killed

@@ -43,7 +43,7 @@ missing statue
 "Mr. B. told me a tramp threw it into the pond. There was a smelly
 old villain came by a couple of days ago."
 
-gramophone
+gramophone gramaphone
 "There is a gramophone in the morning room."
 
 piano
@@ -56,14 +56,14 @@ ladys shoes
 newspaper
 "I don't have time to read the paper."
 
-handkerchief
+handkerchief handkerchiefs
 "Mrs. Sarah and Miss Millicent both have handkerchiefs like this one.
 I can't say whose it is."
 
 colonel darnley
 "A hard man both in his business dealings and with his family."
 
-sarah
+sarah sara
 "Far too young to have married the Colonel and not very happy."
 
 millicent milicent
@@ -77,7 +77,7 @@ redvers slingsby
 "I believe he was very cross with the Colonel about some business
 dealings."
 
-arnold billingsgate
+arnold billingsgate butler
 "A gentleman. Very loyal to Colonel Darnley."
 
 mildred goodbody cook yourself who
@@ -85,10 +85,10 @@ mildred goodbody cook yourself who
 say so myself. I speak my mind plain, which some don't care for,
 but I've nothing to hide and no reason to mince my words now."
 
-norah bagsby
+norah bagsby maid housemaid
 "A good girl but lazy."
 
-ronald mellors
+ronald mellors gamekeeper
 "Not a nice man. Not to be trusted. Colonel Darnley talked of giving
 him his notice; he'd already given him a warning letter."
 

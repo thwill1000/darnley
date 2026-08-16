@@ -58,13 +58,13 @@ cigarettes
 - those and cigars after dinner, Cheroots same as old Darnley. I
 would never smoke cheap cigarettes."
 
-service revolver
+revolver
 "I don't recognise it."
 
 missing statue
 "I don't know what you're talking about."
 
-gramophone
+gramophone gramaphone
 "When I went to bed at 11:00, the gramophone was playing a Chopin
 nocturne. Otherwise the morning room was empty. Later the record
 appeared to be stuck. It was still playing when I went downstairs
@@ -90,14 +90,14 @@ have been to old Slingsby. I fancy he had lost a lot of money and
 needed a loan. We had spoken in the afternoon and Darnley had agreed
 that I could marry Millicent."
 
-handkerchief
+handkerchief handkerchiefs
 "I don't know whose handkerchief it is."
 
 colonel darnley
 "A decent old buffer. When I asked his permission to marry Millicent
 he agreed straight away. I was surprised, I admit it!"
 
-sarah
+sarah sara
 "Very lively. I couldn't see old Darnley hanging on to her."
 
 millicent milicent
@@ -114,16 +114,16 @@ redvers slingsby
 something. I got the feeling he had money troubles. A dangerous
 fellow I should think."
 
-arnold billingsgate
+arnold billingsgate butler
 "I barely know the chap."
 
-mildred goodbody
+mildred goodbody cook
 "I don't know the woman."
 
-norah bagsby
+norah bagsby maid housemaid
 "I don't know the girl."
 
-ronald mellors
+ronald mellors gamekeeper
 "I don't know the chap."
 
 flatfooted bootprints

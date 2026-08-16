@@ -303,7 +303,7 @@ End Sub
 
 ' split_words% errors return 1
 Sub test_parse_common_split_errors()
-  assert_int_equals(1, parse_common("one two three four five six seven eight nine ten eleven"))
+  assert_int_equals(1, parse_common("1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21"))
   assert_string_equals("[[red:Too many words.]]" + sys.CRLF$, con_output$)
 
   con_output$ = ""
