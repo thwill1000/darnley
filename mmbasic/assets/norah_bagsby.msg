@@ -55,7 +55,7 @@ colonel darnley
 sarah
 "If you ask me she didn't like the Colonel. He was too old for her."
 
-millicent
+millicent milicent
 "A determined young woman. It's lucky for the Colonel that he agreed
 to let Miss Millicent marry Mr. Coniston."
 
@@ -91,6 +91,11 @@ been. I don't mean nothing by that, mind."
 marriage married colonel colonels sarah wife husband happy
 "I don't like to gossip about my betters, sir. Mrs. Sarah always
 seemed a bit lonely to me, if you want my honest opinion."
+
+engagement engaged marry marrying millicent milicent arthur
+"Miss Millicent was over the moon, sir, when the Colonel said yes
+yesterday. First happy thing to happen in this house in a while, I
+should think."
 
 police investigation scotland yard inspector detective think of me
 "Oh, it does put the wind up me, having a proper detective in the

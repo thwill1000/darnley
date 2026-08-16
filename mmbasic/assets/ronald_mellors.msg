@@ -60,7 +60,7 @@ colonel darnley
 sarah
 "Mrs. Darnely is a fine woman. That's all I'm saying."
 
-millicent
+millicent milicent
 "Miss Darnley never had much to do with me. Suited us both."
 
 arthur coniston
@@ -115,6 +115,10 @@ pleased with himself for my liking."
 marriage married colonel colonels sarah wife husband happy
 "None of my business what goes on in the big house between man and
 wife. I keep to my own affairs."
+
+engagement engaged marry marrying millicent milicent arthur
+"Didn't hear about it till it was all round the house. Don't know
+the young gentleman well enough to say more than that."
 
 police investigation scotland yard inspector detective think of me
 "Don't much care for coppers poking round my cottage, if that's
