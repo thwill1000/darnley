@@ -120,6 +120,11 @@ engagement engaged marry marrying millicent milicent arthur
 "Didn't hear about it till it was all round the house. Don't know
 the young gentleman well enough to say more than that."
 
+locked sealed study room door window how
+"Nothing to do with me. I don't go near the house of an evening
+unless I'm sent for. Whatever went on with locked doors, you'll not
+get an answer from me."
+
 police investigation scotland yard inspector detective think of me
 "Don't much care for coppers poking round my cottage, if that's
 what you're asking. But get on with your job. I've nothing to hide

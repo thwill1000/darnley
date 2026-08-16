@@ -97,6 +97,11 @@ engagement engaged marry marrying millicent milicent arthur
 yesterday. First happy thing to happen in this house in a while, I
 should think."
 
+locked sealed study room door window how
+"It frightens me something dreadful, sir, thinking about it. A
+locked room and nobody able to get in or out - it doesn't seem
+natural."
+
 police investigation scotland yard inspector detective think of me
 "Oh, it does put the wind up me, having a proper detective in the
 house. I haven't done anything wrong, sir, honest I haven't - I just

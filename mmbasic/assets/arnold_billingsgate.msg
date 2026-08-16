@@ -157,6 +157,12 @@ engagement engaged marry marrying millicent milicent arthur
 "The Colonel gave his consent only yesterday afternoon, as I
 understand it. Miss Millicent seemed very happy about it indeed."
 
+locked sealed study room door window how
+"I have turned it over in my mind and I confess I cannot account
+for it, sir. I keep my own key hidden, as I told you, and the
+Colonel's was on his person. I do not see how anyone could have got
+in or out."
+
 police investigation scotland yard inspector detective think of me
 "I have every confidence you will get to the bottom of it, sir. The
 household will give you whatever assistance it can - you have my

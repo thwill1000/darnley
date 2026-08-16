@@ -128,6 +128,11 @@ engagement engaged marry marrying millicent milicent arthur
 "Oh, Miss Millicent was thrilled when it was agreed yesterday. She
 came straight down to the kitchen to tell me, bless her."
 
+locked sealed study room door window how
+"I don't understand it at all, dear. Locked doors, broken windows -
+sounds like something out of a novel, not something that happens in
+a respectable house."
+
 police investigation scotland yard inspector detective think of me
 "Well, someone's got to sort this out, haven't they? You ask what
 you need to, dear, I've nothing to hide. Can't say the same for

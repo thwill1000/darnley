@@ -165,6 +165,12 @@ engagement engaged marry marrying millicent milicent arthur
 "Happiest news of my life, old boy! The Colonel gave his blessing
 yesterday afternoon. I still can't quite believe my luck."
 
+locked sealed study room door window how
+"Damned peculiar business. Billingsgate and I found both doors
+locked from the inside with the Colonel's own keys still in them.
+I broke the window pane myself to get us in - can't see how anyone
+managed it, honestly."
+
 police investigation scotland yard inspector detective think of me
 "Rather glad they sent someone who knows what he's doing, if I'm
 honest. This house needs answers, and quickly, before everyone's
