@@ -167,6 +167,17 @@ clues evidence found discovered proof
 "I couldn't say what you have found, sir, nor would I presume to
 ask. I trust you to make sense of it better than any of us could."
 
+affair mellors ronald sarah summer house summerhouse together secret lovers
+!requires handkerchief cigarettes
+Billingsgate's composure does not slip, but there is a long pause
+before he answers.@
+@
+"It is not my place to speculate about the private conduct of the
+family, sir. I have nothing further to say on the matter."
+
+affair mellors ronald sarah summer house summerhouse together secret lovers
+"That is not a subject on which I would presume to comment, sir."
+
 police investigation scotland yard inspector detective think of me
 "I have every confidence you will get to the bottom of it, sir. The
 household will give you whatever assistance it can - you have my

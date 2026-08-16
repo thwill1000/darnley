@@ -130,6 +130,18 @@ clues evidence found discovered proof
 speculate. Just make sure whatever you've got actually holds water
 before you go accusing anyone."
 
+affair mellors ronald sarah summer house summerhouse together secret lovers
+!requires handkerchief cigarettes
+He gives a short, humourless laugh.@
+@
+"Wouldn't surprise me in the least, if I'm honest. Told Darnley his
+wife would go looking for warmth elsewhere - man was thirty years
+her senior and colder than the weather. Didn't think I'd be proved
+right quite so literally, though."
+
+affair mellors ronald sarah summer house summerhouse together secret lovers
+"Can't say I've given it any thought. Why, should I have?"
+
 police investigation scotland yard inspector detective think of me
 "About time too. Damned unpleasant business, having one's private
 affairs picked over, but I'd rather have it done properly than not
