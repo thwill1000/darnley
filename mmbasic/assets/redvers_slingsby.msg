@@ -111,6 +111,11 @@ murder murderer think believe guilty who did it comitted killed
 great deal more than they let on - I shouldn't rule out that butler
 of his, watchful sort of fellow. But that's guesswork, mind."
 
+police investigation scotland yard inspector detective think of me
+"About time too. Damned unpleasant business, having one's private
+affairs picked over, but I'd rather have it done properly than not
+at all. Get on with it, man."
+
 +accuse
 !requires all_clues accuse_b4_redvers
 !provides new_accuse accuse_redvers
@@ -134,7 +139,7 @@ alive and well, and I'll thank you to remember it!"
 "Confound it, man, you can't fling accusations about like that! Get your
 facts straight first."
 
-goodbye bye farewell thanks thank you
+goodbye bye farewell thanks thank
 "Yes, yes. Get on with it, then."
 
 *

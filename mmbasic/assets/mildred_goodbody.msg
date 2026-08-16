@@ -119,6 +119,11 @@ murder murderer think believe guilty who did it comitted killed
 Redvers had an almighty row with the Colonel that evening - words
 were raised. Make of that what you will."
 
+police investigation scotland yard inspector detective think of me
+"Well, someone's got to sort this out, haven't they? You ask what
+you need to, dear, I've nothing to hide. Can't say the same for
+everyone in this house, mind."
+
 +accuse
 !requires all_clues accuse_b4_mildred
 !provides new_accuse accuse_mildred
@@ -141,7 +146,7 @@ for five years and never so much as raised my voice, let alone a gun!"
 "Now that's a dreadful thing to say to a body, and no proof to back it
 up neither."
 
-goodbye bye farewell thanks thank you
+goodbye bye farewell thanks thank
 "Off you go then, dear. Mind you eat something - you look like you
 could use it."
 

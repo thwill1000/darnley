@@ -112,6 +112,11 @@ murder murderer think believe guilty who did it comitted killed
 home than the grounds - that fine young gentleman's a sight too
 pleased with himself for my liking."
 
+police investigation scotland yard inspector detective think of me
+"Don't much care for coppers poking round my cottage, if that's
+what you're asking. But get on with your job. I've nothing to hide
+from you or anyone else."
+
 +accuse
 !requires all_clues accuse_b4_ronald
 !provides new_accuse accuse_ronald
@@ -135,7 +140,7 @@ saying so all along, and I'll keep saying it."
 "You'd best have something to back that up before you go saying it
 again."
 
-goodbye bye farewell thanks thank you
+goodbye bye farewell thanks thank
 "Aye. Off with you, then."
 
 *
