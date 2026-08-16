@@ -1,4 +1,4 @@
-events yesterday murder
+events yesterday murder last night
 "I was down for the weekend. It was no secret that I was going to ask
 Colonel Darnley for permission to marry Millicent. I popped the question
 to the old boy in the afternoon and he agreed. Last night we all had
@@ -137,6 +137,11 @@ cheroot in the pond
 "I suppose it could be mine. I fancy I was smoking when Billingsgate
 and I went outside. Maybe I did throw it in the pond. Does it
 matter?"
+
+murder murderer think believe guilty who did it comitted
+"Good Lord, I haven't the faintest. Between you and me I'd watch
+Slingsby - man had the look of someone with troubles on his mind
+tonight. But don't quote me, old boy."
 
 +accuse
 !requires all_clues accuse_b4_arthur

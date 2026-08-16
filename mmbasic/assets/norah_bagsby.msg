@@ -1,4 +1,4 @@
-events yesterday murder
+events yesterday murder last night
 "I have worked here for six months and I don't like it. Last night I
 helped Mrs. Goodbody to prepare dinner and afterwards I served coffee
 in the lounge to Mrs. Sarah and Miss Millicent. Then I helped Mrs. G.
@@ -70,6 +70,11 @@ don't know what more you'd want me to say about myself."
 
 ronald mellors
 "A rough man. A womanizer by all accounts."
+
+murder murderer think believe guilty who did it comitted
+"Oh, I couldn't say, sir, it frightens me even to think it. Miss
+Millicent seemed ever so calm about it all, calmer than I'd have
+been. I don't mean nothing by that, mind."
 
 +accuse
 !requires all_clues accuse_b4_norah

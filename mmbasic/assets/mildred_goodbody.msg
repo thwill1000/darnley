@@ -1,4 +1,4 @@
-events yesterday murder
+events yesterday murder last night
 "I have worked here for five years. Last night I cooked and washed up
 with Norah. At about 10:30 I heard a loud bang, it gave me quite a
 shock. Not long after we went to bed; me and Norah behind the curtain
@@ -100,6 +100,11 @@ mens shoe prints
 
 womens shoe prints
 "I don't know whose these are."
+
+murder murderer think believe guilty who did it comitted
+"I try not to speculate, it's not my place. Though I'll say Sir
+Redvers had an almighty row with the Colonel that evening - words
+were raised. Make of that what you will."
 
 +accuse
 !requires all_clues accuse_b4_mildred

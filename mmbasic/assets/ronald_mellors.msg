@@ -1,4 +1,4 @@
-events yesterday murder
+events yesterday murder last night
 "I have worked for Colonel Darnley for five years. He was strict but
 fair. I have no complaints. Last night I did my last rounds at 8:00
 pm. I saw nothing suspicious. I spent the rest of the evening at
@@ -94,6 +94,11 @@ womens shoe prints
 
 cheroot in the pond
 "I don't know anything about it."
+
+murder murderer think believe guilty who did it comitted
+"Not my business to guess. But if you're asking, I'd look closer to
+home than the grounds - that fine young gentleman's a sight too
+pleased with himself for my liking."
 
 +accuse
 !requires all_clues accuse_b4_ronald
