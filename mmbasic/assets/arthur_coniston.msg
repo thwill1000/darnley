@@ -2,6 +2,10 @@ hello hi morning afternoon evening greetings
 "Ah, hello there. Ghastly business, all this - still, glad to have
 someone competent looking into it."
 
+weather cold snow
+"Beastly cold, isn't it. Not that anyone's thinking much about the
+weather today, present company excepted."
+
 events yesterday murder last night
 "I was down for the weekend. It was no secret that I was going to ask
 Colonel Darnley for permission to marry Millicent. I popped the question

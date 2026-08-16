@@ -2,6 +2,10 @@ hello hi morning afternoon evening greetings
 "Morning. Damned unpleasant way to start a day, having policemen
 tramping about the place, but I suppose it can't be helped."
 
+weather cold snow
+"Damnable. Roads were a nightmare getting here yesterday, and it's
+only got worse since. Not that it's foremost in my mind at present."
+
 events yesterday murder last night
 "I have known Darnley for about 20 years. It was some confidential
 business dealings that brought me here urgently yesterday. Last

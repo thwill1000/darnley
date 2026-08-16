@@ -2,6 +2,10 @@ hello hi morning afternoon evening greetings
 "Oh - good morning, sir. Sorry, I'm all of a fluster still, what
 with everything that's happened."
 
+weather cold snow
+"Ever so cold, sir. My hands are chapped something dreadful from all
+the extra fires we've had to lay."
+
 events yesterday murder last night
 "I have worked here for six months and I don't like it. Last night I
 helped Mrs. Goodbody to prepare dinner and afterwards I served coffee

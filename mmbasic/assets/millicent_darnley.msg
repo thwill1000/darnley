@@ -2,6 +2,10 @@ hello hi morning afternoon evening greetings
 "Hello, Inspector. I suppose there's nothing 'good' about this
 morning, but you're welcome all the same."
 
+weather cold snow
+"Isn't it awful? Though I suppose all this snow means every
+footstep shows. Small mercies, given everything else."
+
 events yesterday murder last night
 "Father was a difficult man to live with but I never expected - this!
 Last night we all ate together until coffee which Sarah and I took

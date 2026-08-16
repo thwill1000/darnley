@@ -1,6 +1,10 @@
 hello hi morning afternoon evening greetings
 "Morning. Get on with your questions, then, if you've got some."
 
+weather cold snow
+"Cold. Bad for the game, snow like this - drives 'em to ground.
+Nothing else to say about it."
+
 events yesterday murder last night
 "I have worked for Colonel Darnley for five years. He was strict but
 fair. I have no complaints. Last night I did my last rounds at 8:00

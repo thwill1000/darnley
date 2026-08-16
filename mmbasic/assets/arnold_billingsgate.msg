@@ -2,6 +2,11 @@ hello hi morning afternoon evening greetings
 "Good day to you, sir. I only wish it were under happier
 circumstances."
 
+weather cold snow
+"Bitter, sir, quite bitter. The snow has been a trial for the
+outdoor staff, though I dare say it has been of some use to you in
+tracking footprints."
+
 events yesterday murder last night
 "I have worked for the Darnley family since I was a boy. Colonel Darnley
 was a very honest, decent gentleman. Last night I waited on the guests
