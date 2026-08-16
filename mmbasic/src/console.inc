@@ -194,17 +194,20 @@ Sub con.print_segment_cb(s$, fg$)
   For i% = 1 To Len(s$)
     c$ = Mid$(s$, i%, 1)
     Select Case c$
-      Case Chr$(13) : ' CR — ignore
-      Case Chr$(10) : con.endl() : con.space = 0
-      Case " " :
+      Case Chr$(13)
+        ' CR — ignore
+      Case Chr$(10)
+        con.endl()
+        con.space = 0
+      Case " "
         If Not con.space Then con.flush() : con.space = 1
         Cat con.buf$, " "
         con.count = 0
-      Case "`" :
+      Case "`"
         If con.space Then con.flush() : con.space = 0
-        Cat con.buf$, "'"
+        Cat con.buf$, Chr$(34)
         con.count = 0
-      Case Else :
+      Case Else
         If con.space Then con.flush() : con.space = 0
         Cat con.buf$, c$
         con.count = 0

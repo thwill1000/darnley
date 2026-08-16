@@ -47,26 +47,30 @@ show_splash()
 show_intro("The Sealed Room Murder")
 
 Do
+  If state.restart% Then Goto game_start
+
   ' If the player's location has changed then set flag to describe their new location
   If r_old% <> r Then describe% = 1 : r_old% = r
 
   If describe% Then describe_loc()
 
+  ' Prompt for command
   con.println()
   cmd$ = get_input$()
   con.println()
   con.lines = 0 ' So we don't show [MORE] with a blank line at top of display
-  result% = parse(cmd$)
-  If result% = 1 Then Goto command_end
 
+  ' Parse command
+  If FAILED(parse(cmd$)) Then Continue Do
+
+  ' Execute command
   On Error Skip 1
   result% = Call("verb_" + verb$)
-  If Mm.ErrNo <> 0 Then result% = 0
-
-command_end:
-
-  If Not result% Then print_fail("That doesn't seem to work.")
-  If state.restart% Then Goto game_start
+  If Mm.ErrNo Then
+    print_fail("I don't know the command `" + UCase$(words$(1)) + "`, try `HELP`.")
+  ElseIf Not result% Then
+    print_fail("That doesn't seem to work.")
+  EndIf
 Loop
 
 End
