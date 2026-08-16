@@ -18,7 +18,7 @@ Const LIMBO = -3
 Const MAX_TAKEABLE_WEIGHT = 99
 Const WILDCARD_MATCH = 100
 
-Dim adv.asset_dir$ = Mm.Info(Path) + "../assets"
+Dim adv.asset_dir$ = Mm.Info(Path) + "../assets/"
 Dim adv.msg_file$ = adv.asset_dir$ + "/messages.dat"
 
 Dim DEBUG = 0
@@ -633,14 +633,24 @@ End Function
 Function verb_ask()
   verb_ask = 1
 
-  Const about_idx% = find_about%(words$())
-  If Not about_idx% Then
-    con.print_fail("Try: ASK person ABOUT subject")
-    Exit Function
-  EndIf
+  Local about_idx% = find_about%(words$())
+  Local obj_idx%
 
-  Const obj_idx% = resolve_ask_target%(about_idx%)
-  If Not obj_idx% Then Exit Function
+  If about_idx% > 2 Then
+    obj_idx% = resolve_ask_target%(about_idx%)
+    If Not obj_idx% Then Exit Function
+  Else
+    ' No "about"/"," separator, or no target named before it (e.g.
+    ' "ask about topic" / "ask ,topic") - assume all remaining words are
+    ' the topic and direct the question at the first person present in
+    ' the current location.
+    obj_idx% = find_person_in_room%(r)
+    If Not obj_idx% Then
+      con.print_fail("There is no-one here to talk to.")
+      Exit Function
+    EndIf
+    about_idx% = 1
+  EndIf
 
   Local subject_words$(MAX_WORDS) Length MAX_WORD_LENGTH
   extract_subject_words(about_idx%, subject_words$())
@@ -697,6 +707,20 @@ Function resolve_ask_target%(about_idx%)
   EndIf
 End Function
 
+' Finds the first person-type object located in loc%, or 0 if none.
+'
+' @param  loc%  Index into rooms$() of the location to search.
+' @return       Index into objects$() of the first matching person, or 0.
+Function find_person_in_room%(loc%)
+  Local i%
+  For i% = Bound(objects$(), 0) To Bound(objects$(), 1)
+    If obj_is_person%(i%) And obj_loc%(i%) = loc% Then
+      find_person_in_room% = i%
+      Exit For
+    EndIf
+  Next
+End Function
+
 ' Sanitizes name fields to remove anything after # and trim any whitespace.
 Function sanitize_name$(name$)
   Local p% = InStr(name$, "#")
@@ -720,7 +744,7 @@ End Sub
 ' subject_words$(), respecting !requires eligibility. Returns the winning
 ' match count/line via best_match_count%/best_match_line% (0/0 if none).
 Sub scan_ask_responses(filename$, subject_words$(), best_match_count%, best_match_line%)
-  Open adv.asset_dir$ + "/" + filename$ For Input As #1
+  Open adv.asset_dir$ + filename$ For Input As #1
 
   Local file_word_count%, file_words$(MAX_WORDS) Length 20, match_count%, s$
   Local line_num%

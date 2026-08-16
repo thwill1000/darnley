@@ -789,11 +789,12 @@ CHEAT_TEXT
 HELP_TEXT
 The game accepts the following commands:@
 @
-  [[green:ACCUSE]] [[cyan:person]]@
+  [[green:ACCUSE]] [[cyan:suspect]]@
     - accuse a suspect of the murder, the suspect@
       must be in your current location@
-  [[green:ASK]] [[cyan:person]] [[green:ABOUT]] [[cyan:topic]]@
-    - interrogate a suspect about a given topic@
+  [[green:"]][[cyan:topic]]@
+    - interrogate suspect in current location@
+      about a given topic, e.g. [[green:"alibi]]@
   [[green:EXAMINE]] [[cyan:object]]@
     - get additional detail about an object (or@
       person)@
