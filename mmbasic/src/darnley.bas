@@ -174,27 +174,15 @@ Sub handle_new_accusation()
         Continue For
     End Select
 
-    ' Compare the answer to the expected responses
-    i% = 2
-    Do
-      pattern$ = Field$(questions$(q%), i%, "|")
-      If pattern$ = "" Then Exit Do
-      num_matches% = find_matches%(pattern$, words$())
-      If num_matches% Then
-        Inc correct%
-        Exit Do
-      EndIf
-      Inc i%
-    Loop
+    ' Compare the answer to the expected response pattern
+    pattern$ = Mid$(questions$(q%), InStr(questions$(q%), "|") + 1)
+    num_matches% = find_matches%(pattern$, words$())
+    If num_matches% Then Inc correct%
 
     ' Uncomment for debugging
-    ' If pattern$ = "" Then pattern$ = "incorrect"
+    ' If num_matches% = 0 Then con.print_fail("Incorrect.")
 
-    If pattern$ = "incorrect" Then
-      con.print_fail("Incorrect.")
-    Else If q% <> num_questions% Then
-      print_accuse_reply()
-    EndIf
+    If q% <> num_questions% Then print_accuse_reply()
   Next
 
   Local win% = 0
