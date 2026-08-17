@@ -20,7 +20,7 @@ If Mm.Device$ = "MMB4L" Then Option Simulate PicoMiteVGA
 #Include "msgorder.inc"
 #Include "microserif6x8.inc"
 
-Const VERSION = 9300 ' 0.9.0
+Const VERSION = 9301 ' 0.9.1
 Const NUM_ACCUSE_REPLIES = count_data%("accuse_reply_data")
 
 Const advent.file$ = "darnley" ' Required by 'script.inc'
