@@ -43,7 +43,7 @@ revolver
 missing statue
 "missing statue response"
 
-gramophone gramaphone
+gramophone
 "gramophone response"
 
 piano
@@ -58,16 +58,16 @@ newspaper
 letter
 "letter response"
 
-handkerchief handkerchiefs
+handkerchief
 "handkerchief response"
 
 colonel darnley
 "colonel darnley response"
 
-sarah sara
+sarah
 "sarah response"
 
-millicent milicent
+millicent
 "millicent response"
 
 arthur coniston
@@ -82,7 +82,7 @@ arnold billingsgate butler
 mildred goodbody cook
 "mildred response"
 
-norah bagsby maid housemaid
+norah bagsby maid
 "norah response"
 
 ronald mellors gamekeeper
@@ -106,19 +106,19 @@ womens shoe prints
 cheroot in the pond
 "cheroot in the pond response"
 
-motive reason why think murder murdered kill killed
+motive reason why think murder kill
 "motive response"
 
-murder murderer think believe guilty who did it comitted killed
+murder murderer think believe guilty who did it comitted kill
 "who did it response"
 
-marriage married colonel colonels sarah wife husband happy
+marriage colonel sarah wife husband happy
 "colonel's marriage response"
 
-engagement engaged marry marrying millicent milicent arthur
+engagement marriage millicent arthur coniston
 "millicent's engagement response"
 
-locked sealed study room door window how
+locked sealed study door window how
 "locked study response"
 
 clues evidence found discovered proof
@@ -131,11 +131,11 @@ affair mellors ronald sarah summer house summerhouse together secret lovers
 affair mellors ronald sarah summer house summerhouse together secret lovers
 "affair response"
 
-money finance business shares mining peru ruin debt
+money mining peru ruin
 !requires newspaper
 "finance response given newspaper"
 
-money finance business shares mining peru ruin debt
+money mining peru ruin
 "finance response"
 
 police investigation scotland yard inspector detective think of me

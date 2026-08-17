@@ -64,7 +64,7 @@ revolver
 missing statue
 "I don't know what you're talking about."
 
-gramophone gramaphone
+gramophone
 "When I went to bed at 11:00, the gramophone was playing a Chopin
 nocturne. Otherwise the morning room was empty. Later the record
 appeared to be stuck. It was still playing when I went downstairs
@@ -90,17 +90,17 @@ have been to old Slingsby. I fancy he had lost a lot of money and
 needed a loan. We had spoken in the afternoon and Darnley had agreed
 that I could marry Millicent."
 
-handkerchief handkerchiefs
+handkerchief
 "I don't know whose handkerchief it is."
 
 colonel darnley
 "A decent old buffer. When I asked his permission to marry Millicent
 he agreed straight away. I was surprised, I admit it!"
 
-sarah sara
+sarah
 "Very lively. I couldn't see old Darnley hanging on to her."
 
-millicent milicent
+millicent
 "Be a gentleman, old fellow! Don't ask me to criticise my future
 wife."
 
@@ -120,7 +120,7 @@ arnold billingsgate butler
 mildred goodbody cook
 "I don't know the woman."
 
-norah bagsby maid housemaid
+norah bagsby maid
 "I don't know the girl."
 
 ronald mellors gamekeeper
@@ -146,26 +146,26 @@ cheroot in the pond
 and I went outside. Maybe I did throw it in the pond. Does it
 matter?"
 
-motive reason why think murder murdered kill killed
+motive reason why think murder kill
 "Haven't the foggiest, old boy. Darnley wasn't an easy man, but
 plenty of people find their relatives difficult without shooting
 them. Money's always worth a look, though - isn't it always?"
 
-murder murderer think believe guilty who did it comitted killed
+murder murderer think believe guilty who did it comitted kill
 "Good Lord, I haven't the faintest. Between you and me I'd watch
 Slingsby - man had the look of someone with troubles on his mind
 last night. But don't quote me, old boy."
 
-marriage married colonel colonels sarah wife husband happy
+marriage colonel sarah wife husband happy
 "Not really my place to say. Darnley seemed fond enough of her, in
 his gruff way, but a young wife and an old husband - well, you can
 imagine the gossip."
 
-engagement engaged marry marrying millicent milicent arthur
+engagement marriage millicent arthur coniston
 "Happiest news of my life, old boy! The Colonel gave his blessing
 yesterday afternoon. I still can't quite believe my luck."
 
-locked sealed study room door window how
+locked sealed study door window how
 "Damned peculiar business. Billingsgate and I found both doors
 locked from the inside with the Colonel's own keys still in them.
 I broke the window pane myself to get us in - can't see how anyone
@@ -187,14 +187,14 @@ lately. Best not read too much into that, though."
 affair mellors ronald sarah summer house summerhouse together secret lovers
 "Can't say that's ever occurred to me, old boy. Should it have?"
 
-money finance business shares mining peru ruin debt
+money mining peru ruin
 !requires newspaper
 "Ah - so you've found that, have you. Darnley did mention old
 Slingsby had come a cropper over some mining shares. Seemed rather
 keen to keep it quiet, if I'm honest, which I suppose is
 understandable."
 
-money finance business shares mining peru ruin debt
+money mining peru ruin
 "Couldn't tell you. Money troubles aren't really the sort of thing
 a fellow discusses over billiards."
 

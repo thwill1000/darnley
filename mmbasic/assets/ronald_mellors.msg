@@ -36,7 +36,7 @@ missing statue
 "Mrs. G. at the big house turned away a tramp. That'd be two days
 ago. I caught him lurking about and found the statue in the pond."
 
-gramophone gramaphone
+gramophone
 "I don't know anything about any gramophone."
 
 piano
@@ -51,16 +51,16 @@ newspaper
 letter
 "Why should I know anything about some bloody letter?"
 
-handkerchief handkerchiefs
+handkerchief
 "Do I look like I use lady's hankies?"
 
 colonel darnley
 "Strict but fair. I've said all I'm goin to say about him."
 
-sarah sara
+sarah
 "Mrs. Darnely is a fine woman. That's all I'm saying."
 
-millicent milicent
+millicent
 "Miss Darnley never had much to do with me. Suited us both."
 
 arthur coniston
@@ -76,7 +76,7 @@ arnold billingsgate butler
 mildred goodbody cook
 "Mrs. G. minds her own business. I'll say that for her."
 
-norah bagsby maid housemaid
+norah bagsby maid
 "Silly girl. Always giggling."
 
 ronald mellors gamekeeper yourself who
@@ -102,25 +102,25 @@ womens shoe prints
 cheroot in the pond
 "I don't know anything about it."
 
-motive reason why think murder murdered kill killed
+motive reason why think murder kill
 "Not my place to guess. The Colonel wasn't an easy man to work for,
 but that's true of most gentlemen. I don't see it's my business to
 speculate further."
 
-murder murderer think believe guilty who did it comitted killed
+murder murderer think believe guilty who did it comitted kill
 "Not my business to guess. But if you're asking, I'd look closer to
 home than the grounds - that fine young gentleman's a sight too
 pleased with himself for my liking."
 
-marriage married colonel colonels sarah wife husband happy
+marriage colonel sarah wife husband happy
 "None of my business what goes on in the big house between man and
 wife. I keep to my own affairs."
 
-engagement engaged marry marrying millicent milicent arthur
+engagement marriage millicent arthur coniston
 "Didn't hear about it till it was all round the house. Don't know
 the young gentleman well enough to say more than that."
 
-locked sealed study room door window how
+locked sealed study door window how
 "Nothing to do with me. I don't go near the house of an evening
 unless I'm sent for. Whatever went on with locked doors, you'll not
 get an answer from me."
@@ -141,13 +141,13 @@ affair mellors ronald sarah summer house summerhouse together secret lovers
 "Don't know what you mean. I keep to my own business, and I'd
 thank you to do the same."
 
-money finance business shares mining peru ruin debt
+money mining peru ruin
 !requires newspaper
 "Don't know nothing about money and shares. Not my world. All I
 know is Sir Redvers came up the drive in a black temper yesterday
 afternoon."
 
-money finance business shares mining peru ruin debt
+money mining peru ruin
 "Nothing to do with me. I don't concern myself with gentlemen's
 money."
 

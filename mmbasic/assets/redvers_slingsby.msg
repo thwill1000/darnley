@@ -43,7 +43,7 @@ room."
 revolver
 "I don't recognise it."
 
-gramophone gramaphone
+gramophone
 "The Darnley's have a gramophone in the morning room."
 
 piano
@@ -62,13 +62,13 @@ colonel darnley
 "A hard man but very fair. Once I had explained my business problem
 he agreed to help me out."
 
-sarah sara
+sarah
 "Darnley should never have married her. I told him so at the time but he wouldn't
 hear of it. She's half his age and twice as clever. A man in Darnley's position
 needs a wife who knows her place, not one who is always looking for something
 better. I shouldn't wonder if she had her eye on someone else entirely."
 
-millicent milicent
+millicent
 "A charming young lady. Spoiled by her father. Personally I
 shouldn't like to get on her wrong side."
 
@@ -87,7 +87,7 @@ arnold billingsgate butler
 mildred goodbody cook
 "I don't know the woman."
 
-norah bagsby maid housemaid
+norah bagsby maid
 "I don't know the girl."
 
 ronald mellors gamekeeper
@@ -101,26 +101,26 @@ cheroot in the pond
 "A cheroot? Not me, old man! I'm one for Havanas if I'm not smoking
 the old pipe."
 
-motive reason why think murder murdered kill killed
+motive reason why think murder kill
 "Damned if I know. Man had his share of enemies in business, I
 shouldn't wonder - he gave tips that didn't always pan out, and
 some fellows take that sort of thing badly."
 
-murder murderer think believe guilty who did it comitted killed
+murder murderer think believe guilty who did it comitted kill
 "Damned if I know. If you want my honest opinion, servants notice a
 great deal more than they let on - I shouldn't rule out that butler
 of his, watchful sort of fellow. But that's guesswork, mind."
 
-marriage married colonel colonels sarah wife husband happy
+marriage colonel sarah wife husband happy
 "I told Darnley he was a damned fool to marry a woman half his age,
 and I'll say it again now he's gone. She never suited him."
 
-engagement engaged marry marrying millicent milicent arthur
+engagement marriage millicent arthur coniston
 "News to me until last night. I gather the Colonel only agreed to
 it yesterday. Can't say I know the fellow well enough to judge the
 match."
 
-locked sealed study room door window how
+locked sealed study door window how
 "I left by the hall door at 10:30 and heard it slam behind me -
 I certainly didn't lock it. If it was locked afterwards, someone
 did that after I'd gone, and I couldn't tell you who or how."
@@ -142,7 +142,7 @@ right quite so literally, though."
 affair mellors ronald sarah summer house summerhouse together secret lovers
 "Can't say I've given it any thought. Why, should I have?"
 
-money finance business shares mining peru ruin debt
+money mining peru ruin
 !requires newspaper
 He goes rather grey about the gills.@
 @
@@ -153,7 +153,7 @@ him for a loan to cover it. We argued about it, I'll not deny that
 - but I left him alive and breathing, and that's the truth whatever
 you make of it."
 
-money finance business shares mining peru ruin debt
+money mining peru ruin
 "My business affairs are my own concern, and none of yours unless
 you can show otherwise."
 

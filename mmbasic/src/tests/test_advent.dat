@@ -15,3 +15,10 @@ P_TEST_SUSPECT|Test Suspect|LOC001|2|100
 P_OTHER_SUSPECT|Other Suspect|LOC002|2|100
 P_NO_WILDCARD|No Wildcard|LOC001|2|100
 P_TEMPLATE_SUSPECT|Template Suspect|LOC004|2|100
+
+!synonyms
+millicent|milicent
+gramophone|gramaphone|gramaphon|
+sarah|sara
+placeholder|placeholder
+placeholder|placeholder
