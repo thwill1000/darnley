@@ -69,7 +69,7 @@ I repeated this to the Colonel at the time and he seemed to accept it, though
 he was not best pleased. Personally I should have thought a tramp would have
 more use for a statue he could carry off than one at the bottom of a pond."
 
-gramophone gramaphone
+gramophone
 "There is a gramophone in the morning room."
 
 piano
@@ -85,16 +85,16 @@ newspaper
 letter
 "I don't know anything about it."
 
-handkerchief handkerchiefs
+handkerchief
 "I don't know anything about it."
 
 colonel darnley
 "The master was extremely good to his family."
 
-sarah sara
+sarah
 "I don't believe it is proper to speak of the family."
 
-millicent milicent
+millicent
 "I don't believe it is proper to speak of the family."
 
 arthur coniston
@@ -112,7 +112,7 @@ service to the family, in their hour of need as in any other."
 mildred goodbody cook
 "A fine woman. Honest as the day is long."
 
-norah bagsby maid housemaid
+norah bagsby maid
 "A decent-enough girl. A little lazy."
 
 ronald mellors gamekeeper
@@ -138,26 +138,26 @@ cheroot in the pond
 "As far as I'm aware only the Colonel smoked cheroots. But he was a
 most particular man and would never throw a butt into the pond."
 
-motive reason why think murder murdered kill killed
+motive reason why think murder kill
 "I couldn't begin to guess, sir. The Colonel was not universally
 loved, if I am honest, but I know of no one with cause enough to
 do... this."
 
-murder murderer think believe guilty who did it comitted killed
+murder murderer think believe guilty who did it comitted kill
 "That is not a question I am equipped to answer, sir. I will say
 only that a house such as this holds more secrets than its servants
 are ever told, above stairs or below."
 
-marriage married colonel colonels sarah wife husband happy
+marriage colonel sarah wife husband happy
 "It is not my place to comment on the master's marriage, sir. I
 will say the Colonel was a generous husband, whatever else might be
 said of him."
 
-engagement engaged marry marrying millicent milicent arthur
+engagement marriage millicent arthur coniston
 "The Colonel gave his consent only yesterday afternoon, as I
 understand it. Miss Millicent seemed very happy about it indeed."
 
-locked sealed study room door window how
+locked sealed study door window how
 "I have turned it over in my mind and I confess I cannot account
 for it, sir. I keep my own key hidden, as I told you, and the
 Colonel's was on his person. I do not see how anyone could have got
@@ -178,14 +178,14 @@ family, sir. I have nothing further to say on the matter."
 affair mellors ronald sarah summer house summerhouse together secret lovers
 "That is not a subject on which I would presume to comment, sir."
 
-money finance business shares mining peru ruin debt
+money mining peru ruin
 !requires newspaper
 "I could not say what passed between the Colonel and Sir Redvers,
 sir - it is not my place to listen at doors. I will say Sir Redvers
 arrived rather suddenly yesterday, without prior arrangement, which
 struck me as unusual for a gentleman of his standing."
 
-money finance business shares mining peru ruin debt
+money mining peru ruin
 "That is not a matter I would have any knowledge of, sir."
 
 police investigation scotland yard inspector detective think of me

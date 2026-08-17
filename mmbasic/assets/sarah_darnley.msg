@@ -45,7 +45,7 @@ missing statue
 "I believe a rather nasty tramp, who called two days ago threw it
 into the pond."
 
-gramophone gramaphone
+gramophone
 "The gramophone? I was in the morning room from about 10:40 until
 11:30 playing the piano. It's possible I played a record, but I
 don't remember doing so."
@@ -71,20 +71,20 @@ Arthur told me that Sebastian had agreed to the marriage, and
 Redvers said that he and Sebastian had sorted out their business; so
 I'm at a loss about the letter."
 
-handkerchief handkerchiefs
+handkerchief
 "You found it in the summer house? I'm absolutely sure it isn't mine."
 
 colonel darnley
 "He was somewhat strict and suspicious by nature, but we were happy
 enough."
 
-sarah sara yourself who
+sarah yourself who
 "I know what's said of me - too young for my husband, too fond of
 admiration. I loved Sebastian in my own way, whatever anyone
 thinks. I don't expect you to understand a marriage from outside
 looking in."
 
-millicent milicent
+millicent
 "Her father spoiled her so she got used to having her own way.
 Sebastian probably agreed to Arthur Coniston's proposal for fear of
 what Millicent would do if he refused. I can't see him crossing
@@ -104,7 +104,7 @@ arnold billingsgate butler
 mildred goodbody cook
 "A gossip."
 
-norah bagsby maid housemaid
+norah bagsby maid
 "Lazy."
 
 ronald mellors gamekeeper
@@ -130,27 +130,27 @@ footprints."
 cheroot in the pond
 "I don't know anything about it."
 
-motive reason why think murder murdered kill killed
+motive reason why think murder kill
 "I've asked myself that a hundred times since last night and I
 still can't answer it. Sebastian had his difficult side, but I
 never thought anyone hated him enough for this."
 
-murder murderer think believe guilty who did it comitted killed
+murder murderer think believe guilty who did it comitted kill
 "I can't bear to think it was any of them, truly. If you insist I
 name someone - Sir Redvers seemed dreadfully agitated all evening. I
 don't like to say more than that."
 
-marriage married colonel colonels sarah wife husband happy
+marriage colonel sarah wife husband happy
 "We were happy enough, in our own way. He was strict, and older
 than me, and people will talk regardless of what's true. I loved
 him, whatever anyone supposes."
 
-engagement engaged marry marrying millicent milicent arthur
+engagement marriage millicent arthur coniston
 "Sebastian only agreed to it yesterday afternoon. Millicent was
 positively glowing when she told me. I'm glad she'll have that
 happiness, whatever else has happened."
 
-locked sealed study room door window how
+locked sealed study door window how
 "I still can't make sense of it. Both doors locked with his own
 keys, and that broken window - it's as though no one could possibly
 have got to him. And yet someone did."
@@ -171,13 +171,13 @@ affair mellors ronald sarah summer house summerhouse together secret lovers
 "I'm sorry - I don't understand the question. Mellors is our
 gamekeeper. I don't see what he has to do with anything."
 
-money finance business shares mining peru ruin debt
+money mining peru ruin
 !requires newspaper
 "Sebastian did mention Sir Redvers needed to talk business
 urgently. I assumed it was the usual sort of thing - I didn't
 realise it was quite so serious until now."
 
-money finance business shares mining peru ruin debt
+money mining peru ruin
 "I really couldn't say. Sebastian didn't discuss finances with me."
 
 police investigation scotland yard inspector detective think of me

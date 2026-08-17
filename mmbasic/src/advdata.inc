@@ -12,12 +12,13 @@ Dim adv.msg_file$ = adv.asset_dir$ + "/messages.dat"
 Sub advdata.init(f$)
   read_rooms(f$)
   read_objects(f$)
+  read_synonyms(f$)
 End Sub
 
 ' Read the room data
 Sub read_rooms(f$)
   Const num_rooms% = count_advent_section%(f$, "!locations")
-  Dim rooms$(Max(num_rooms%, 2))
+  Dim rooms$(Max(num_rooms%, 2)) Length 192
   If read_advent_section%(f$, "!locations", rooms$()) <> num_rooms% Then Error "Location data mismatch"
 
   Local error_count%, exit_tag$, loc_tag$, num_exits%, i%, j%
@@ -111,7 +112,7 @@ End Function
 ' Read the objects data
 Sub read_objects(f$)
   Const num_objects% = count_advent_section%(f$, "!objects")
-  Dim objects$(Max(num_objects%, 2))
+  Dim objects$(Max(num_objects%, 2)) Length 127
   If read_advent_section%(f$, "!objects", objects$()) <> num_objects% Then Error "Object data mismatch"
 
   Local error_count%, loc_tag$, obj_tag$, i%
@@ -164,6 +165,19 @@ Function message_exists%(tag$)
   Loop
   Close #1
 End Function
+
+' Read the synonyms data
+Sub read_synonyms(f$)
+  Const num_synonyms% = count_advent_section%(f$, "!synonyms")
+  Dim synonyms$(Max(num_synonyms%, 2)) Length 127
+  If read_advent_section%(f$, "!synonyms", synonyms$()) <> num_synonyms% Then Error "Synonym data mismatch"
+
+  ' Process to add a pipe to the front and end of each synonyms list
+  Local i%
+  For i% = Bound(synonyms$(), 0) To Bound(synonyms$(), 1)
+    synonyms$(i%) = "|" + synonyms$(i%) + "|"
+  Next
+End Sub
 
 Function obj_is_person%(obj_idx%)
   obj_is_person% = Field$(objects$(obj_idx%), 4, "|") = "2"

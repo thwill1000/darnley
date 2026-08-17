@@ -35,7 +35,7 @@ cigarettes
 missing statue
 "I wasn't aware it was missing."
 
-gramophone gramaphone
+gramophone
 "There is a gramophone in the morning room."
 
 piano
@@ -45,17 +45,17 @@ morning room."
 ladys shoes
 "These are Mrs. Sarah's shoes. I don't know when they were last worn."
 
-handkerchief handkerchiefs
+handkerchief
 "Both the ladies have this sort of hanky. Sometimes Mrs. G. is given
 the older ones."
 
 colonel darnley
 "Very strict. I didn't like him."
 
-sarah sara
+sarah
 "If you ask me she didn't like the Colonel. He was too old for her."
 
-millicent milicent
+millicent
 "A determined young woman. It's lucky for the Colonel that he agreed
 to let Miss Millicent marry Mr. Coniston."
 
@@ -71,7 +71,7 @@ arnold billingsgate butler
 mildred goodbody cook
 "Very kind to me."
 
-norah bagsby maid housemaid yourself who
+norah bagsby maid yourself who
 "I'm only the maid, sir. I've been here six months. I try to do my
 work proper, though I know Mrs. G. thinks I'm lazy sometimes. I
 don't know what more you'd want me to say about myself."
@@ -79,25 +79,25 @@ don't know what more you'd want me to say about myself."
 ronald mellors gamekeeper
 "A rough man. A womanizer by all accounts."
 
-motive reason why think murder murdered kill killed
+motive reason why think murder kill
 "I don't know, sir, I really don't. The Colonel could be sharp with
 people. Maybe someone had a grudge, but I couldn't tell you who."
 
-murder murderer think believe guilty who did it comitted killed
+murder murderer think believe guilty who did it comitted kill
 "Oh, I couldn't say, sir, it frightens me even to think it. Miss
 Millicent seemed ever so calm about it all, calmer than I'd have
 been. I don't mean nothing by that, mind."
 
-marriage married colonel colonels sarah wife husband happy
+marriage colonel sarah wife husband happy
 "I don't like to gossip about my betters, sir. Mrs. Sarah always
 seemed a bit lonely to me, if you want my honest opinion."
 
-engagement engaged marry marrying millicent milicent arthur
+engagement marriage millicent arthur coniston
 "Miss Millicent was over the moon, sir, when the Colonel said yes
 yesterday. First happy thing to happen in this house in a while, I
 should think."
 
-locked sealed study room door window how
+locked sealed study door window how
 "It frightens me something dreadful, sir, thinking about it. A
 locked room and nobody able to get in or out - it doesn't seem
 natural."
@@ -116,13 +116,13 @@ that, honest I don't." (She does not meet your eye as she says it.)
 affair mellors ronald sarah summer house summerhouse together secret lovers
 "I don't know anything about that, sir, honest."
 
-money finance business shares mining peru ruin debt
+money mining peru ruin
 !requires newspaper
 "I don't know much, sir, only that Sir Redvers seemed ever so cross
 when he arrived. Mrs. G. said it was money troubles, but I don't
 know more than that."
 
-money finance business shares mining peru ruin debt
+money mining peru ruin
 "I wouldn't know about that, sir. Nobody tells me anything."
 
 police investigation scotland yard inspector detective think of me

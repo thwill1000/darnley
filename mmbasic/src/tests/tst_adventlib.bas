@@ -140,6 +140,19 @@ add_test("test_pm_comment_b4_entry")
 add_test("test_pmf_gvn_success")
 add_test("test_pmf_gvn_not_found")
 add_test("test_pmf_gvn_all_blocked")
+add_test("apply_synonyms() leaves a word with no matching entry unchanged", "test_as_gvn_no_match")
+add_test("apply_synonyms() replaces an alias with its canonical form", "test_as_gvn_alias_replaced")
+add_test("apply_synonyms() leaves a word already in canonical form unchanged", "test_as_gvn_canonical_stays")
+add_test("apply_synonyms() matches a third alias token, not just the first", "test_as_gvn_third_token")
+add_test("apply_synonyms() only replaces the matching word among several", "test_as_gvn_mixed_words")
+add_test("apply_synonyms() replaces multiple words against different entries", "test_as_gvn_multi_entries")
+add_test("apply_synonyms() prefers the first matching entry when several match", "test_as_gvn_first_wins")
+add_test("apply_synonyms() matching is case-sensitive", "test_as_gvn_case_sensitive")
+add_test("apply_synonyms() does not match an unbounded substring", "test_as_gvn_no_partial")
+add_test("apply_synonyms() is a no-op when synonyms$() is empty", "test_as_gvn_empty_synonyms")
+add_test("apply_synonyms() stops processing on an empty word element", "test_as_gvn_empty_word")
+add_test("apply_synonyms() preserves word order and array positions", "test_as_gvn_preserves_order")
+add_test("apply_synonyms() handles a single-element words$() array", "test_as_gvn_single_word")
 
 run_tests()
 End
@@ -936,4 +949,126 @@ End Sub
 Sub test_find_about_gvn_neither()
   Local words$(3) Length MAX_WORD_LENGTH = ("sarah", "murder", "")
   assert_int_equals(0, find_about%(words$()))
+End Sub
+
+' A word with no matching entry anywhere in synonyms$() is left unchanged
+Sub test_as_gvn_no_match()
+  Local words$(4) Length MAX_WORD_LENGTH = ("hello", "", "", "")
+  apply_synonyms(words$())
+  assert_string_equals("hello", words$(1))
+End Sub
+
+' A word matching an alias token in an entry is replaced with the entry's
+' canonical (first real / second field) word
+Sub test_as_gvn_alias_replaced()
+  Local words$(4) Length MAX_WORD_LENGTH = ("milicent", "", "", "")
+  apply_synonyms(words$())
+  assert_string_equals("millicent", words$(1))
+End Sub
+
+' A word already equal to the canonical form still matches (it appears
+' bordered by pipes in the entry too) but ends up unchanged, since it is
+' replaced with itself
+Sub test_as_gvn_canonical_stays()
+  Local words$(4) Length MAX_WORD_LENGTH = ("millicent", "", "", "")
+  apply_synonyms(words$())
+  assert_string_equals("millicent", words$(1))
+End Sub
+
+' A word matching a THIRD (or later) alias token in an entry is still
+' converted to the entry's canonical (second) field, not left alone
+Sub test_as_gvn_third_token()
+  Local words$(4) Length MAX_WORD_LENGTH = ("gramaphon", "", "", "")
+  apply_synonyms(words$())
+  assert_string_equals("gramophone", words$(1))
+End Sub
+
+' Only the word(s) that actually match an entry are changed; unrelated
+' words in the same array are left alone
+Sub test_as_gvn_mixed_words()
+  Local words$(4) Length MAX_WORD_LENGTH = ("examine", "milicent", "please", "")
+  apply_synonyms(words$())
+  assert_string_equals("examine", words$(1))
+  assert_string_equals("millicent", words$(2))
+  assert_string_equals("please", words$(3))
+End Sub
+
+' Different words in the array can each match a different synonym entry
+Sub test_as_gvn_multi_entries()
+  Local words$(4) Length MAX_WORD_LENGTH = ("milicent", "gramaphone", "sara", "")
+  apply_synonyms(words$())
+  assert_string_equals("millicent", words$(1))
+  assert_string_equals("gramophone", words$(2))
+  assert_string_equals("sarah", words$(3))
+End Sub
+
+' If a word matches more than one entry, the FIRST matching entry (lowest
+' index in synonyms$()) wins, since the inner loop exits early
+Sub test_as_gvn_first_wins()
+  synonyms$(4) = "|first_canonical|dupe|"
+  synonyms$(5) = "|second_canonical|dupe|"
+  Local words$(4) Length MAX_WORD_LENGTH = ("dupe", "", "", "")
+  apply_synonyms(words$())
+  assert_string_equals("first_canonical", words$(1))
+End Sub
+
+' Matching is case-sensitive - a differently-cased word is not recognised
+Sub test_as_gvn_case_sensitive()
+  Local words$(4) Length MAX_WORD_LENGTH = ("MILICENT", "", "", "")
+  apply_synonyms(words$())
+  assert_string_equals("MILICENT", words$(1))
+End Sub
+
+' A word that is only a substring of an alias token (not the whole token,
+' bordered by pipes) must not match
+Sub test_as_gvn_no_partial()
+  Local words$(4) Length MAX_WORD_LENGTH = ("mili", "", "", "")
+  apply_synonyms(words$())
+  assert_string_equals("mili", words$(1))
+End Sub
+
+' With every synonyms$() entry empty, apply_synonyms() is a complete no-op
+Sub test_as_gvn_empty_synonyms()
+  Local i%, old_synonyms$(Bound(synonyms$(), 1))
+  For i% = Bound(synonyms$(), 0) To Bound(synonyms$(), 1)
+    old_synonyms$(i%) = synonyms$(i%)
+    synonyms$(i%) = ""
+  Next
+
+  Local words$(4) Length MAX_WORD_LENGTH = ("milicent", "gramaphone", "", "")
+  apply_synonyms(words$())
+  assert_string_equals("milicent", words$(1))
+  assert_string_equals("gramaphone", words$(2))
+
+  ' Restore synonyms
+  For i% = Bound(synonyms$(), 0) To Bound(synonyms$(), 1)
+    synonyms$(i%) = old_synonyms$(i%)
+  Next
+End Sub
+
+' An empty element in words$() halt the synonym processing
+Sub test_as_gvn_empty_word()
+  Local words$(4) Length MAX_WORD_LENGTH = ("milicent", "", "sara", "")
+  apply_synonyms(words$())
+  assert_string_equals("millicent", words$(1))
+  assert_string_equals("", words$(2))
+  assert_string_equals("sara", words$(3)) ' Not changed
+End Sub
+
+' Word order and array positions are preserved - only values change in place
+Sub test_as_gvn_preserves_order()
+  Local words$(5) Length MAX_WORD_LENGTH = ("say", "sara", "about", "milicent", "")
+  apply_synonyms(words$())
+  assert_string_equals("say", words$(1))
+  assert_string_equals("sarah", words$(2))
+  assert_string_equals("about", words$(3))
+  assert_string_equals("millicent", words$(4))
+  assert_string_equals("", words$(5))
+End Sub
+
+' A words$() array with a single populated element still works correctly
+Sub test_as_gvn_single_word()
+  Local words$(2) Length MAX_WORD_LENGTH = ("sara", "")
+  apply_synonyms(words$())
+  assert_string_equals("sarah", words$(1))
 End Sub

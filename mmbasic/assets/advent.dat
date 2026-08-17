@@ -23,7 +23,7 @@ LOC020_WEST_LAWN|West lawn|3|LOC017_DRIVE|LOC012_WEST_WALK|LOC019_SUMMER_HOUSE
 LOC021_STABLES|Stables|3|LOC017_DRIVE|LOC018_EAST_WALK|LOC022_EAST_LAWN
 LOC022_EAST_LAWN|East lawn|3|LOC011_MAZE|LOC021_STABLES|LOC023_GAMEKEEPERS_COTTAGE
 LOC023_GAMEKEEPERS_COTTAGE|Gamekeeper's cottage # gamekeeper|2|LOC018_EAST_WALK|LOC022_EAST_LAWN
-LOC024_MILLICENT_BEDROOM|Millicent's bedroom # milicent millicent milicents|2|LOC025_LANDING|LOC027_MASTER_BEDROOM
+LOC024_MILLICENT_BEDROOM|Millicent's bedroom # millicent|2|LOC025_LANDING|LOC027_MASTER_BEDROOM
 LOC025_LANDING|Upstairs landing|5|LOC001_BATHROOM|LOC024_MILLICENT_BEDROOM|LOC028_MORNING_ROOM|LOC026_SERVANTS_QUARTERS|LOC008_HALL
 LOC026_SERVANTS_QUARTERS|Servants' quarters # servant|1|LOC025_LANDING
 LOC027_MASTER_BEDROOM|Master bedroom|3|LOC025_LANDING|LOC024_MILLICENT_BEDROOM|LOC028_MORNING_ROOM
@@ -34,13 +34,13 @@ LOC029_GUEST_ROOM|Guest room|1|LOC028_MORNING_ROOM
 # id | name | location | flag | weight
 # flag = 1 -> takeable
 # flag = 2 -> person
-P_SARAH_DARNLEY|Sarah Darnley # sara|LOC028_MORNING_ROOM|2|100
-P_MILLICENT_DARNLEY|Millicent Darnley # milicent|LOC013_LOUNGE|2|100
+P_SARAH_DARNLEY|Sarah Darnley|LOC028_MORNING_ROOM|2|100
+P_MILLICENT_DARNLEY|Millicent Darnley|LOC013_LOUNGE|2|100
 P_ARTHUR_CONISTON|Arthur Coniston|LOC015_MUSIC_ROOM|2|100
 P_REDVERS_SLINGSBY|Sir Redvers Slingsby|LOC016_BILLIARD_ROOM|2|100
 P_ARNOLD_BILLINGSGATE|Arnold Billingsgate # butler|LOC010_BUTLERS_PANTRY|2|100
 P_MILDRED_GOODBODY|Mildred Goodbody # cook|LOC009_KITCHEN|2|100
-P_NORAH_BAGSBY|Norah Bagsby # maid housemaid|LOC026_SERVANTS_QUARTERS|2|100
+P_NORAH_BAGSBY|Norah Bagsby # maid|LOC026_SERVANTS_QUARTERS|2|100
 P_RONALD_MELLORS|Ronald Mellors # gamekeeper|LOC023_GAMEKEEPERS_COTTAGE|2|100
 OBJ201_POND|Pond|LOC005_ORNAMENTAL_POND|0|100
 OBJ202_SUNKEN_STATUE|Sunken statue|LOC005_ORNAMENTAL_POND|0|100
@@ -83,7 +83,7 @@ OBJ241_ASHTRAY|Ashtray|LOC016_BILLIARD_ROOM|1|1
 OBJ243_FOOTPRINTS_DRIVE|Footprints|LOC017_DRIVE|0|0
 OBJ244_FOOTPRINTS_EW|Footprints|LOC018_EAST_WALK|0|0
 OBJ245_CIGARETTE_ENDS_SH|Cigarette ends # cigarettes|LOC019_SUMMER_HOUSE|1|1
-OBJ246_HANDKERCHIEF|Handkerchief # handkerchiefs|LOC019_SUMMER_HOUSE|1|1
+OBJ246_HANDKERCHIEF|Handkerchief|LOC019_SUMMER_HOUSE|1|1
 OBJ247_FOOTPRINTS_WL|Footprints|LOC020_WEST_LAWN|0|0
 OBJ248_FOOTPRINTS_ST|Footprints|LOC021_STABLES|0|0
 OBJ249_FOOTPRINTS_EL|Footprints|LOC022_EAST_LAWN|0|0
@@ -95,11 +95,24 @@ OBJ254_MUSIC_ROOM_ASHTRAY|Brass ashtray|LOC015_MUSIC_ROOM|1|1
 OBJ255_ROOK|Rook # bird crow|LOC022_EAST_LAWN|0|100
 OBJ256_SHOTGUNS|Shotguns # shotgun|LOC023_GAMEKEEPERS_COTTAGE|1|1
 
+!synonyms
+colonel|colonels
+engagement|engaged
+gramophone|gramaphone
+handkerchief|handkerchiefs
+kill|killed
+maid|housemaid
+marriage|marry|married|marrying
+millicent|milicent
+money|finance|finances|financial|business|shares|debt|debts
+murder|murdered
+sarah|sara
+
 !questions
 # id | result matches...
 Q_1|ronald|mellors|gamekeeper
-Q_2|sarah|sara
-Q_3|gramaphone|gramophone|record
+Q_2|sarah
+Q_3|gramophone|record
 Q_4|pond
 Q_5|c
 Q_6|garden|outside|exterior
@@ -109,7 +122,7 @@ Q_9|terrace
 Q_10|stone|rock
 Q_11|arthur|coniston
 Q_12|redvers|slingsby
-Q_13|+marry +millicent|+marry +milicent|+marriage +millicent|+marriage +milicent
+Q_13|+marriage +millicent|+engagement +millicent
 
 !clues
 cigarettes

@@ -49,7 +49,7 @@ missing statue
 "Someone - I forget who - told me that a beggar had pushed it into
 the pond. Out of spite I suppose."
 
-gramophone gramaphone
+gramophone
 "We have a gramophone in the morning room."
 
 piano
@@ -65,7 +65,7 @@ ladys shoes
 newspaper
 "I don't often read the newspaper."
 
-handkerchief handkerchiefs
+handkerchief
 "I'm always losing handkerchiefs so I suppose it could be mine. I
 don't remember when I lose them. I certainly wasn't in the summer
 house yesterday. Is it important?"
@@ -74,13 +74,13 @@ colonel darnley
 "Daddy was a tyrant but always kind to me. He was always fearful that
 Sarah would leave him for a younger man."
 
-sarah sara
+sarah
 "We got on well enough though it is difficult to have a step-mother
 who is almost the same age. I thought she would leave daddy some day
 as soon as she found a lover. But, of course, she would need Daddy's
 money."
 
-millicent milicent yourself who
+millicent yourself who
 "I don't know what there is to say about me. I loved my father,
 whatever anyone supposes, and I mean to see whoever did this
 brought to justice - however long it takes."
@@ -98,7 +98,7 @@ arnold billingsgate butler
 mildred goodbody cook
 "An old dear."
 
-norah bagsby maid housemaid
+norah bagsby maid
 "A clumsy girl."
 
 ronald mellors gamekeeper
@@ -123,27 +123,27 @@ womens shoe prints
 "I might recognise my own shoes, but I couldn't tell you whose prints these are
 from looking at them in the snow."
 
-motive reason why think murder murdered kill killed
+motive reason why think murder kill
 "I can't imagine why anyone would want to. Money, I suppose, is
 usually why people do dreadful things. Daddy could be difficult
 about money."
 
-murder murderer think believe guilty who did it comitted killed
+murder murderer think believe guilty who did it comitted kill
 "I try not to think about it - it makes me feel rather sick. If I'm
 honest, Mellors has always given me an uneasy feeling. But that isn't
 proof, is it? Just a feeling."
 
-marriage married colonel colonels sarah wife husband happy
+marriage colonel sarah wife husband happy
 "Daddy was twenty years older than Sarah and never quite trusted
 that she'd stay. I don't think either of them was truly happy,
 if I'm honest. But that's marriage for you, isn't it?"
 
-engagement engaged marry marrying millicent milicent arthur
+engagement marriage millicent arthur coniston
 "I'm the last person to ask objectively! Daddy agreed only
 yesterday - I still can hardly believe it. I'd waited so long for
 him to say yes."
 
-locked sealed study room door window how
+locked sealed study door window how
 "It doesn't make sense, does it? Both doors locked, the window
 broken from outside - I heard people saying it's impossible. I
 suppose that's why they needed a proper detective."
@@ -164,13 +164,13 @@ affair mellors ronald sarah summer house summerhouse together secret lovers
 "Goodness, what a thing to ask. I don't know anything about that,
 and I'm not sure I want to."
 
-money finance business shares mining peru ruin debt
+money mining peru ruin
 !requires newspaper
 "Oh - is that what it was about? Daddy did mention something about
 Sir Redvers wanting money. I didn't think much of it at the time -
 gentlemen are always fussing over investments."
 
-money finance business shares mining peru ruin debt
+money mining peru ruin
 "I really don't know anything about finances. That's
 not the sort of thing anyone discusses with me."
 

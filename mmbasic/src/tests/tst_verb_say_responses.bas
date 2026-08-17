@@ -52,9 +52,11 @@ Sub con.print_fail(s$)
   con.println("[[red:" + s$ + "]]")
 End Sub
 
+' We need to usure we load the synonyms from the real "advent.dat"
 adv.asset_dir$ = Mm.Info(Path) + "../../assets/"
-adv.msg_file$ = Mm.Info(Path) + "test.msg"
-advdata.init(Mm.Info(Path) + "test_advent.dat")
+adv.msg_file$ = adv.asset_dir$ + "messages.dat"
+advdata.init(adv.asset_dir$ + "advent.dat")
+objects$(1) = "P_TEMPLATE_SUSPECT|Template Suspect|LOC001_BATHROOM|2|100"
 
 add_test("SAY 'hello' matches the greeting entry", "test_say_gvn_greeting")
 add_test("SAY about the weather matches the weather entry", "test_say_gvn_weather")
@@ -67,7 +69,7 @@ add_test("SAY about cigarettes matches the cigarettes entry", "test_say_gvn_ciga
 add_test("SAY about the revolver matches the revolver entry", "test_say_gvn_revolver")
 add_test("SAY about the missing statue matches that entry", "test_say_gvn_missing_statue")
 add_test("SAY about the gramophone matches the gramophone entry", "test_say_gvn_gramophone")
-add_test("SAY about the gramophone (misspelt) still matches", "test_say_gvn_gramaphone_misspelt")
+add_test("SAY about the gramaphone (misspelt) still matches", "test_say_gvn_gramaphone_misspelt")
 add_test("SAY about the piano matches the piano entry", "test_say_gvn_piano")
 add_test("SAY about lady's shoes matches that entry", "test_say_gvn_ladys_shoes")
 add_test("SAY about the newspaper matches the newspaper entry", "test_say_gvn_newspaper")
@@ -108,7 +110,7 @@ End
 Sub setup_test()
   con_output$ = ""
   state.reset()
-  r = 4 ' LOC004, where P_TEMPLATE_SUSPECT lives
+  r = 1
 End Sub
 
 ' Runs "say <cmd$>" against the template suspect and asserts the printed
@@ -170,7 +172,7 @@ End Sub
 
 ' The keyword line also lists the misspelling "gramaphone" as a synonym
 Sub test_say_gvn_gramaphone_misspelt()
-  assert_say_response("ask about the gramaphone", "gramophone response")
+  assert_say_response("tell me about the gramaphone", "gramophone response")
 End Sub
 
 Sub test_say_gvn_piano()

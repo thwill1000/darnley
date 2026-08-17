@@ -599,6 +599,7 @@ Function find_matches%(pattern$, needles$(), n_first%, n_last%)
   For i% = n_first% To n_last%
     needles$(i%) = LCase$(needles$(i%))
   Next
+  apply_synonyms(needles$())
 
   Do
     ' Process next sub-pattern, separated by "|"
@@ -917,9 +918,11 @@ End Function
 Sub apply_synonyms(words$())
   Local i%, j%
   For i% = Bound(words$(), 0) To Bound(words$(), 1)
+    If words$(i%) = "" Then Exit For
     For j% = Bound(synonyms$(), 0) To Bound(synonyms$(), 1)
       If InStr(synonyms$(j%), "|" + words$(i%) + "|") Then
         words$(i%) = Field$(synonyms$(j%), 2, "|")
+        Exit For
       EndIf
     Next
   Next
