@@ -207,12 +207,12 @@ End Function
 '
 ' @param  asset_dir$  Directory containing the template and suspect .msg files.
 Sub msgorder.validate_all(asset_dir$)
-  Local t_keys$(msgorder.MAX_ENTRIES%) Length 128, t_n%
+  Local t_keys$(msgorder.MAX_ENTRIES%), t_n%
   msgorder.read_entries(asset_dir$ + "/template_suspect.msg", t_keys$(), t_n%)
 
   Local suspects$(8) Length 32 = ("arnold_billingsgate.msg", "arthur_coniston.msg", "mildred_goodbody.msg", "millicent_darnley.msg", "norah_bagsby.msg", "redvers_slingsby.msg", "ronald_mellors.msg", "sarah_darnley.msg")
 
-  Local f_keys$(msgorder.MAX_ENTRIES%) Length 128, f_n%, err$, i%, error_count%
+  Local f_keys$(msgorder.MAX_ENTRIES%), f_n%, err$, i%, error_count%
 
   For i% = 1 To 8
     msgorder.read_entries(asset_dir$ + "/" + suspects$(i%), f_keys$(), f_n%)

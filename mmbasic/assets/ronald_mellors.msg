@@ -141,13 +141,13 @@ affair mellors ronald sarah summer house summerhouse together secret lovers
 "Don't know what you mean. I keep to my own business, and I'd
 thank you to do the same."
 
-money mining peru ruin
+money mining peru ruin +redvers | money mining peru ruin +slingsby
 !requires newspaper
 "Don't know nothing about money and shares. Not my world. All I
 know is Sir Redvers came up the drive in a black temper yesterday
 afternoon."
 
-money mining peru ruin
+money mining peru ruin redvers slingsby colonel darnley
 "Nothing to do with me. I don't concern myself with gentlemen's
 money."
 

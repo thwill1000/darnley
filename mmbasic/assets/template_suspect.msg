@@ -131,11 +131,11 @@ affair mellors ronald sarah summer house summerhouse together secret lovers
 affair mellors ronald sarah summer house summerhouse together secret lovers
 "affair response"
 
-money mining peru ruin
+money mining peru ruin +redvers | money mining peru ruin +slingsby
 !requires newspaper
-"finance response given newspaper"
+"finance response given newspaper and redvers"
 
-money mining peru ruin
+money mining peru ruin redvers slingsby colonel darnley
 "finance response"
 
 police investigation scotland yard inspector detective think of me
