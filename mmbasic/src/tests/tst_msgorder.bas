@@ -24,7 +24,7 @@ sys.provides("console")
 #Include "../advdata.inc"
 #Include "../state.inc"
 #Include "../adventlib.inc"
-#Include "../msgorder.inc"
+#Include "msgorder.inc"
 
 Const TEST_DATA_FILE$ = Mm.Info(Path) + "test_advent.dat"
 Const TEMPLATE_FILE$ = Mm.Info(Path) + "test_msgorder_template.msg"
