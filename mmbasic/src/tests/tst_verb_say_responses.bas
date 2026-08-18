@@ -91,7 +91,7 @@ add_test("SAY about men's shoe prints matches that entry", "test_say_gvn_mens_sh
 add_test("SAY about women's shoe prints matches that entry", "test_say_gvn_womens_shoe_prints")
 add_test("SAY about the cheroot in the pond matches that entry", "test_say_gvn_cheroot_pond")
 add_test("SAY about motive matches the motive entry", "test_say_gvn_motive")
-add_test("SAY about who did it matches that entry", "test_say_gvn_who_did_it")
+add_test("SAY Who do you think did it?", "test_say_gvn_who_did_it")
 add_test("SAY about the Colonel's marriage matches that entry", "test_say_gvn_marriage")
 add_test("SAY about the engagement matches that entry", "test_say_gvn_engagement")
 add_test("SAY about the locked study matches that entry", "test_say_gvn_locked_study")
@@ -101,6 +101,9 @@ add_test("SAY about the affair matches the gated entry once unlocked", "test_say
 add_test("SAY about finances falls to the unconditional entry when ungated", "test_say_gvn_finance_blocked")
 add_test("SAY about finances matches the gated entry once unlocked", "test_say_gvn_finance_unlocked")
 add_test("SAY about the police investigation matches that entry", "test_say_gvn_investigation")
+add_test("SAY I accuse you! (but don't have all the clues)", "test_premature_accusation")
+add_test("SAY I accuse you! (the first time)", "test_first_accusation")
+add_test("SAY I accuse you! (subsequent times)", "test_subsequent_accusation")
 add_test("SAY goodbye matches the goodbye entry", "test_say_gvn_goodbye")
 add_test("SAY something nonsensical falls back to the wildcard", "test_say_gvn_wildcard_fallback")
 
@@ -108,14 +111,24 @@ run_tests()
 End
 
 Sub setup_test()
-  con_output$ = ""
-  state.reset()
   r = 1
+  state.reset()
+End Sub
+
+Sub reset_flags(flag1$, flag2$, flag3$, flag4$)
+  LongString Clear flags%()
+  LongString Append flags%(), "|"
+  If Len(flag1$) Then state.set_flag(flag1$)
+  If Len(flag2$) Then state.set_flag(flag2$)
+  If Len(flag3$) Then state.set_flag(flag3$)
+  If Len(flag4$) Then state.set_flag(flag4$)
 End Sub
 
 ' Runs "say <cmd$>" against the template suspect and asserts the printed
 ' response body matches expected$ exactly.
 Sub assert_say_response(cmd$, expected$)
+  con_output$ = ""
+
   Local result% = parse_common("say " + cmd$)
   assert_int_equals(0, result%)
 
@@ -260,7 +273,11 @@ Sub test_say_gvn_motive()
 End Sub
 
 Sub test_say_gvn_who_did_it()
-  assert_say_response("who do you think did it", "who did it response")
+  assert_say_response("who do you think did it?", "who did it response")
+  assert_say_response("who is the murderer?", "who did it response")
+  assert_say_response("who is the killer?", "who did it response")
+  assert_say_response("who would you accuse?", "who did it response")
+  assert_say_response("who do you think murdered colonel darnley?", "who did it response")
 End Sub
 
 Sub test_say_gvn_marriage()
@@ -288,28 +305,90 @@ End Sub
 ' Once both gating flags are set, the more specific entry wins (it
 ' appears first in the file and is now eligible)
 Sub test_say_gvn_affair_unlocked()
-  state.set_flag("handkerchief")
-  state.set_flag("cigarettes")
+  reset_flags("handkerchief", "cigarettes")
   assert_say_response("ask about the affair", "affair response given handkerchief and cigarettes")
 End Sub
 
 ' With no "newspaper" flag set, falls to the unconditional finance entry
 Sub test_say_gvn_finance_blocked()
   assert_say_response("tell me about the colonel's finances", "finance response")
-  con_output$ = ""
   assert_say_response("tell me about redvers' debts", "finance response")
 End Sub
 
 ' Once "newspaper" is set, the gated entry wins
 Sub test_say_gvn_finance_unlocked()
-  state.set_flag("newspaper")
+  reset_flags("newspaper")
   assert_say_response("tell me about redvers' debts", "finance response given newspaper and redvers")
-  con_output$ = ""
+
+  reset_flags("newspaper")
   assert_say_response("tell me about slingsby' debts", "finance response given newspaper and redvers")
 End Sub
 
 Sub test_say_gvn_investigation()
   assert_say_response("what do you think of the police investigation", "investigation response")
+End Sub
+
+Sub test_premature_accusation()
+  assert_say_response("accuse", "premature accusation response")
+  assert_say_response("I accuse you!", "premature accusation response")
+  assert_say_response("You did it", "premature accusation response")
+  assert_say_response("You are the murderer", "premature accusation response")
+  assert_say_response("You are the killer", "premature accusation response")
+  assert_say_response("You killed the colonel", "premature accusation response")
+  assert_say_response("You murdered the colonel", "premature accusation response")
+  assert_say_response("J'accuse!", "premature accusation response")
+End Sub
+
+Sub test_first_accusation()
+  reset_flags("all_clues")
+  assert_say_response("accuse", "first accusation response")
+
+  reset_flags("all_clues")
+  assert_say_response("I accuse you!", "first accusation response")
+
+  reset_flags("all_clues")
+  assert_say_response("You did it", "first accusation response")
+
+  reset_flags("all_clues")
+  assert_say_response("You are the murderer", "first accusation response")
+
+  reset_flags("all_clues")
+  assert_say_response("You are the killer", "first accusation response")
+
+  reset_flags("all_clues")
+  assert_say_response("You killed the colonel", "first accusation response")
+
+  reset_flags("all_clues")
+  assert_say_response("You murdered the colonel", "first accusation response")
+
+  reset_flags("all_clues")
+  assert_say_response("J'accuse!", "first accusation response")
+End Sub
+
+Sub test_subsequent_accusation()
+  reset_flags("all_clues", "accuse_b4_tag")
+  assert_say_response("accuse", "subsequent accusation response")
+
+  reset_flags("all_clues", "accuse_b4_tag")
+  assert_say_response("I accuse you!", "subsequent accusation response")
+
+  reset_flags("all_clues", "accuse_b4_tag")
+  assert_say_response("You did it", "subsequent accusation response")
+
+  reset_flags("all_clues", "accuse_b4_tag")
+  assert_say_response("You are the murderer", "subsequent accusation response")
+
+  reset_flags("all_clues", "accuse_b4_tag")
+  assert_say_response("You are the killer", "subsequent accusation response")
+
+  reset_flags("all_clues", "accuse_b4_tag")
+  assert_say_response("You killed the colonel", "subsequent accusation response")
+
+  reset_flags("all_clues", "accuse_b4_tag")
+  assert_say_response("You murdered the colonel", "subsequent accusation response")
+
+  reset_flags("all_clues", "accuse_b4_tag")
+  assert_say_response("J'accuse!", "subsequent accusation response")
 End Sub
 
 Sub test_say_gvn_goodbye()

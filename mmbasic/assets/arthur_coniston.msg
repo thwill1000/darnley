@@ -146,12 +146,12 @@ cheroot in the pond
 and I went outside. Maybe I did throw it in the pond. Does it
 matter?"
 
-motive reason why think murder kill
+motive reason why think murder
 "Haven't the foggiest, old boy. Darnley wasn't an easy man, but
 plenty of people find their relatives difficult without shooting
 them. Money's always worth a look, though - isn't it always?"
 
-murder murderer think believe guilty who did it comitted kill
+murder murderer think believe guilty who did it comitted
 "Good Lord, I haven't the faintest. Between you and me I'd watch
 Slingsby - man had the look of someone with troubles on his mind
 last night. But don't quote me, old boy."
@@ -203,7 +203,7 @@ police investigation scotland yard inspector detective think of me
 honest. This house needs answers, and quickly, before everyone's
 nerves give out entirely."
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_arthur
 !provides new_accuse accuse_arthur
 Coniston spreads his hands, the picture of wounded innocence.@
@@ -211,7 +211,7 @@ Coniston spreads his hands, the picture of wounded innocence.@
 "Again? Really, this is becoming tiresome. Have your say, then - let's
 have done with it."
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !requires all_clues
 !provides new_accuse accuse_arthur accuse_b4_arthur
 Coniston's easy charm falters for just a moment - the faintest tightening
@@ -220,7 +220,7 @@ around the eyes - before he recovers himself entirely.@
 "My dear fellow, that's a serious thing to say to a man. I think you had
 better be very sure of your facts before you say it again."
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !provides new_accuse accuse_arthur
 "Steady on! You can't go about making accusations without a shred of proof
 to back them up."

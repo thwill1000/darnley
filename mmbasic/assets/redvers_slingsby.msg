@@ -101,12 +101,12 @@ cheroot in the pond
 "A cheroot? Not me, old man! I'm one for Havanas if I'm not smoking
 the old pipe."
 
-motive reason why think murder kill
+motive reason why think murder
 "Damned if I know. Man had his share of enemies in business, I
 shouldn't wonder - he gave tips that didn't always pan out, and
 some fellows take that sort of thing badly."
 
-murder murderer think believe guilty who did it comitted kill
+murder murderer think believe guilty who did it comitted
 "Damned if I know. If you want my honest opinion, servants notice a
 great deal more than they let on - I shouldn't rule out that butler
 of his, watchful sort of fellow. But that's guesswork, mind."
@@ -162,7 +162,7 @@ police investigation scotland yard inspector detective think of me
 affairs picked over, but I'd rather have it done properly than not
 at all. Get on with it, man."
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_redvers
 !provides new_accuse accuse_redvers
 He glares at you with undisguised fury, though there is something else
@@ -171,7 +171,7 @@ beneath it now - a flicker of unease.@
 "You said your piece once already, and I gave you my answer. Don't try
 my patience further."
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !requires all_clues
 !provides new_accuse accuse_redvers accuse_b4_redvers
 Slingsby's face darkens to an alarming shade of puce, his moustache
@@ -180,7 +180,7 @@ fairly bristling with outrage.@
 "By God, sir! I've a good mind to horsewhip you for that. I left Darnley
 alive and well, and I'll thank you to remember it!"
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !provides new_accuse accuse_redvers
 "Confound it, man, you can't fling accusations about like that! Get your
 facts straight first."

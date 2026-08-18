@@ -102,12 +102,12 @@ womens shoe prints
 cheroot in the pond
 "I don't know anything about it."
 
-motive reason why think murder kill
+motive reason why think murder
 "Not my place to guess. The Colonel wasn't an easy man to work for,
 but that's true of most gentlemen. I don't see it's my business to
 speculate further."
 
-murder murderer think believe guilty who did it comitted kill
+murder murderer think believe guilty who did it comitted
 "Not my business to guess. But if you're asking, I'd look closer to
 home than the grounds - that fine young gentleman's a sight too
 pleased with himself for my liking."
@@ -156,7 +156,7 @@ police investigation scotland yard inspector detective think of me
 what you're asking. But get on with your job. I've nothing to hide
 from you or anyone else."
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_ronald
 !provides new_accuse accuse_ronald
 He doesn't so much as blink.@
@@ -164,7 +164,7 @@ He doesn't so much as blink.@
 "Already told you once. Nothing's changed, and I'm not about to start
 singing a different tune just to please you."
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !requires all_clues
 !provides new_accuse accuse_ronald accuse_b4_ronald
 Mellors doesn't flinch. He looks back at you with the same flat,
@@ -174,7 +174,7 @@ his eyes has sharpened.@
 "Say that again and see what it gets you. I never touched him. Been
 saying so all along, and I'll keep saying it."
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !provides new_accuse accuse_ronald
 "You'd best have something to back that up before you go saying it
 again."

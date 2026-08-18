@@ -106,10 +106,10 @@ womens shoe prints
 cheroot in the pond
 "cheroot in the pond response"
 
-motive reason why think murder kill
+motive reason why think murder
 "motive response"
 
-murder murderer think believe guilty who did it comitted kill
+murder murderer think believe guilty who did it comitted
 "who did it response"
 
 marriage colonel sarah wife husband happy
@@ -141,17 +141,17 @@ money mining peru ruin redvers slingsby colonel darnley
 police investigation scotland yard inspector detective think of me
 "investigation response"
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_tag
 !provides new_accuse accuse_tag
-"repeat accusation response"
+"subsequent accusation response"
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !requires all_clues
 !provides new_accuse accuse_tag accuse_b4_tag
-"first accusation given all clues response"
+"first accusation response"
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !provides new_accuse accuse_tag
 "premature accusation response"
 
