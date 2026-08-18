@@ -295,13 +295,17 @@ End Sub
 
 ' With no "newspaper" flag set, falls to the unconditional finance entry
 Sub test_say_gvn_finance_blocked()
-  assert_say_response("ask about the mining shares", "finance response")
+  assert_say_response("tell me about the colonel's finances", "finance response")
+  con_output$ = ""
+  assert_say_response("tell me about redvers' debts", "finance response")
 End Sub
 
 ' Once "newspaper" is set, the gated entry wins
 Sub test_say_gvn_finance_unlocked()
   state.set_flag("newspaper")
-  assert_say_response("ask about the mining shares", "finance response given newspaper")
+  assert_say_response("tell me about redvers' debts", "finance response given newspaper and redvers")
+  con_output$ = ""
+  assert_say_response("tell me about slingsby' debts", "finance response given newspaper and redvers")
 End Sub
 
 Sub test_say_gvn_investigation()

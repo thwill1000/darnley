@@ -187,14 +187,14 @@ lately. Best not read too much into that, though."
 affair mellors ronald sarah summer house summerhouse together secret lovers
 "Can't say that's ever occurred to me, old boy. Should it have?"
 
-money mining peru ruin
+money mining peru ruin +redvers | money mining peru ruin +slingsby
 !requires newspaper
 "Ah - so you've found that, have you. Darnley did mention old
 Slingsby had come a cropper over some mining shares. Seemed rather
 keen to keep it quiet, if I'm honest, which I suppose is
 understandable."
 
-money mining peru ruin
+money mining peru ruin redvers slingsby colonel darnley
 "Couldn't tell you. Money troubles aren't really the sort of thing
 a fellow discusses over billiards."
 

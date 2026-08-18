@@ -164,14 +164,14 @@ affair mellors ronald sarah summer house summerhouse together secret lovers
 "Goodness, what a thing to ask. I don't know anything about that,
 and I'm not sure I want to."
 
-money mining peru ruin
+money mining peru ruin +redvers | money mining peru ruin +slingsby
 !requires newspaper
 "Oh - is that what it was about? Daddy did mention something about
 Sir Redvers wanting money. I didn't think much of it at the time -
 gentlemen are always fussing over investments."
 
-money mining peru ruin
-"I really don't know anything about finances. That's
+money mining peru ruin redvers slingsby colonel darnley
+"I really don't know anything about finance. That's
 not the sort of thing anyone discusses with me."
 
 police investigation scotland yard inspector detective think of me

@@ -149,13 +149,13 @@ affair mellors ronald sarah summer house summerhouse together secret lovers
 "Now that's not a question I've an answer to, dear, nor one I'd
 care to guess at."
 
-money mining peru ruin
+money mining peru ruin +redvers | money mining peru ruin +slingsby
 !requires newspaper
 "I don't know the ins and outs of it, dear, but there was a queer
 tension in the house since Sir Redvers arrived. Mr. B. said the two
 of them were shut up in the study a good while, talking business."
 
-money mining peru ruin
+money mining peru ruin redvers slingsby colonel darnley
 "That's gentlemen's business, dear, not something they'd tell the
 cook."
 

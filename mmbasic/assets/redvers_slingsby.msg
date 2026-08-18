@@ -142,7 +142,7 @@ right quite so literally, though."
 affair mellors ronald sarah summer house summerhouse together secret lovers
 "Can't say I've given it any thought. Why, should I have?"
 
-money mining peru ruin
+money mining peru ruin +redvers | money mining peru ruin +slingsby
 !requires newspaper
 He goes rather grey about the gills.@
 @
@@ -153,7 +153,7 @@ him for a loan to cover it. We argued about it, I'll not deny that
 - but I left him alive and breathing, and that's the truth whatever
 you make of it."
 
-money mining peru ruin
+money mining peru ruin redvers slingsby colonel darnley
 "My business affairs are my own concern, and none of yours unless
 you can show otherwise."
 
