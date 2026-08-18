@@ -130,12 +130,12 @@ footprints."
 cheroot in the pond
 "I don't know anything about it."
 
-motive reason why think murder kill
+motive reason why think murder
 "I've asked myself that a hundred times since last night and I
 still can't answer it. Sebastian had his difficult side, but I
 never thought anyone hated him enough for this."
 
-murder murderer think believe guilty who did it comitted kill
+murder murderer think believe guilty who did it comitted
 "I can't bear to think it was any of them, truly. If you insist I
 name someone - Sir Redvers seemed dreadfully agitated all evening. I
 don't like to say more than that."
@@ -185,7 +185,7 @@ police investigation scotland yard inspector detective think of me
 perhaps. Ask whatever you must. I only hope it's over soon, for all
 our sakes."
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_sarah
 !provides new_accuse accuse_sarah
 She looks at you steadily now, some of the shock worn off, replaced by
@@ -194,7 +194,7 @@ something harder to read.@
 "You said that once already. I have nothing further to add, except that
 you are quite wrong."
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !requires all_clues
 !provides new_accuse accuse_sarah accuse_b4_sarah
 Sarah's hand goes to her throat, the colour draining from her face.@
@@ -202,7 +202,7 @@ Sarah's hand goes to her throat, the colour draining from her face.@
 "Me? You cannot be serious. I - I don't know what to say to such a
 thing."
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !provides new_accuse accuse_sarah
 "You mustn't say such things without evidence - it isn't fair, not to
 anyone."

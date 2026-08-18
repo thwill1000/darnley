@@ -123,12 +123,12 @@ womens shoe prints
 "I might recognise my own shoes, but I couldn't tell you whose prints these are
 from looking at them in the snow."
 
-motive reason why think murder kill
+motive reason why think murder
 "I can't imagine why anyone would want to. Money, I suppose, is
 usually why people do dreadful things. Daddy could be difficult
 about money."
 
-murder murderer think believe guilty who did it comitted kill
+murder murderer think believe guilty who did it comitted
 "I try not to think about it - it makes me feel rather sick. If I'm
 honest, Mellors has always given me an uneasy feeling. But that isn't
 proof, is it? Just a feeling."
@@ -179,7 +179,7 @@ police investigation scotland yard inspector detective think of me
 horrid feeling, being looked at that way in one's own home. But I
 want whoever did this caught, so ask what you must."
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_millicent
 !provides new_accuse accuse_millicent
 Her jaw sets and she regards you with cold, level eyes.@
@@ -187,7 +187,7 @@ Her jaw sets and she regards you with cold, level eyes.@
 "I heard you the first time. I did not do it then, and I do not do it
 now, however many times you care to repeat yourself."
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !requires all_clues
 !provides new_accuse accuse_millicent accuse_b4_millicent
 Millicent's composure cracks for the first time since you met her - her
@@ -196,7 +196,7 @@ eyes bright with sudden anger, or something close to it.@
 "How dare you. My own father, and you accuse me? You had better be
 absolutely certain, because I will not forgive this lightly."
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !provides new_accuse accuse_millicent
 "That is a wicked thing to say without proof. I hope you have better
 reasons than mere suspicion."

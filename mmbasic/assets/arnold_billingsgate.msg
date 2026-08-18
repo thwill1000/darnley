@@ -138,12 +138,12 @@ cheroot in the pond
 "As far as I'm aware only the Colonel smoked cheroots. But he was a
 most particular man and would never throw a butt into the pond."
 
-motive reason why think murder kill
+motive reason why think murder
 "I couldn't begin to guess, sir. The Colonel was not universally
 loved, if I am honest, but I know of no one with cause enough to
 do... this."
 
-murder murderer think believe guilty who did it comitted kill
+murder murderer think believe guilty who did it comitted
 "That is not a question I am equipped to answer, sir. I will say
 only that a house such as this holds more secrets than its servants
 are ever told, above stairs or below."
@@ -193,7 +193,7 @@ police investigation scotland yard inspector detective think of me
 household will give you whatever assistance it can - you have my
 word on that, at least."
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_arnold
 !provides new_accuse accuse_arnold
 The butler's composure has returned, though something guarded remains
@@ -202,7 +202,7 @@ in his manner.@
 "You have already put that question to me, sir, and my answer has not
 changed in the meantime."
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !requires all_clues
 !provides new_accuse accuse_arnold accuse_b4_arnold
 Billingsgate draws himself up, visibly wounded, though he masters
@@ -212,7 +212,7 @@ himself with the discipline of long service.@
 sir. I should hope my conduct speaks for itself, whatever you may
 suspect."
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !provides new_accuse accuse_arnold
 "Begging your pardon, but that is a very grave thing to suggest without
 proper cause."

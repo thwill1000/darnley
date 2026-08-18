@@ -109,12 +109,12 @@ mens shoe prints
 womens shoe prints
 "I don't know whose these are."
 
-motive reason why think murder kill
+motive reason why think murder
 "I couldn't say, dear. Folk don't usually tell the cook their
 darkest secrets. Though there's been a queer atmosphere in this
 house since Sir Redvers arrived, if you want my honest opinion."
 
-murder murderer think believe guilty who did it comitted kill
+murder murderer think believe guilty who did it comitted
 "I try not to speculate, it's not my place. Though I'll say Sir
 Redvers had an almighty row with the Colonel that evening - words
 were raised. Make of that what you will."
@@ -164,7 +164,7 @@ police investigation scotland yard inspector detective think of me
 you need to, dear, I've nothing to hide. Can't say the same for
 everyone in this house, mind."
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_mildred
 !provides new_accuse accuse_mildred
 She fixes you with a look that could curdle milk.@
@@ -172,7 +172,7 @@ She fixes you with a look that could curdle milk.@
 "You asked me that already, and my answer's the same as it was then. I
 didn't do it, and that's flat."
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !requires all_clues
 !provides new_accuse accuse_mildred accuse_b4_mildred
 Mrs. Goodbody plants her floury hands on her hips, drawing herself up
@@ -181,7 +181,7 @@ to her full and considerable height.@
 "Well I never! Me, murder the Colonel? I've cooked this family's dinners
 for five years and never so much as raised my voice, let alone a gun!"
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !provides new_accuse accuse_mildred
 "Now that's a dreadful thing to say to a body, and no proof to back it
 up neither."

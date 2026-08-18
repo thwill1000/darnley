@@ -79,11 +79,11 @@ don't know what more you'd want me to say about myself."
 ronald mellors gamekeeper
 "A rough man. A womanizer by all accounts."
 
-motive reason why think murder kill
+motive reason why think murder
 "I don't know, sir, I really don't. The Colonel could be sharp with
 people. Maybe someone had a grudge, but I couldn't tell you who."
 
-murder murderer think believe guilty who did it comitted kill
+murder murderer think believe guilty who did it comitted
 "Oh, I couldn't say, sir, it frightens me even to think it. Miss
 Millicent seemed ever so calm about it all, calmer than I'd have
 been. I don't mean nothing by that, mind."
@@ -130,7 +130,7 @@ police investigation scotland yard inspector detective think of me
 house. I haven't done anything wrong, sir, honest I haven't - I just
 get nervous with all the questions."
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_norah
 !provides new_accuse accuse_norah
 She sniffs, dabbing at her eyes with her sleeve, though there is a
@@ -139,7 +139,7 @@ flicker of something more wary beneath the tears now.@
 "You asked me that before, sir. I told you I never done it, and I
 haven't changed my mind."
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !requires all_clues
 !provides new_accuse accuse_norah accuse_b4_norah
 Norah's eyes go wide and her lip trembles - she looks for all the world
@@ -148,7 +148,7 @@ as though she might burst into tears on the spot.@
 "Me, sir? Oh, please, I never - I wouldn't know how to fire a gun if you
 paid me! I only been here six months, sir, honest!"
 
-+accuse
+-who accuse you did it jaccuse murder murderer
 !provides new_accuse accuse_norah
 "Oh! You mustn't say that, not without you're sure - it isn't right."
 
