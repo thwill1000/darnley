@@ -5,13 +5,6 @@ weather cold snow
 "Cold. Bad for the game, snow like this - drives 'em to ground.
 Nothing else to say about it."
 
-events yesterday murder last night
-"I have worked for Colonel Darnley for five years. He was strict but
-fair. I have no complaints. Last night I did my last rounds at 8:00
-pm. I saw nothing suspicious. I spent the rest of the evening at
-home and went to bed at 10:00. I didn't hear any strange noises. It
-wasn't the weather for poachers."
-
 alibi
 "I was in my cottage alone all evening and I don't give a tinker's
 curse if you believe me or not. If you look for my tracks to the big
@@ -45,7 +38,7 @@ piano
 ladys shoes
 "Do I look like I wear lady's shoes?"
 
-newspaper
++newspaper read
 "I only ever read the racing pages."
 
 letter
@@ -54,7 +47,7 @@ letter
 handkerchief
 "Do I look like I use lady's hankies?"
 
-colonel darnley
+colonel darnley sebastian
 "Strict but fair. I've said all I'm goin to say about him."
 
 sarah
@@ -102,15 +95,17 @@ womens shoe prints
 cheroot in the pond
 "I don't know anything about it."
 
+events yesterday murder last happened
+"I have worked for Colonel Darnley for five years. He was strict but
+fair. I have no complaints. Last night I did my last rounds at 8:00
+pm. I saw nothing suspicious. I spent the rest of the evening at
+home and went to bed at 10:00. I didn't hear any strange noises. It
+wasn't the weather for poachers."
+
 motive reason why think murder
 "Not my place to guess. The Colonel wasn't an easy man to work for,
 but that's true of most gentlemen. I don't see it's my business to
 speculate further."
-
-murder murderer think believe guilty who did it comitted
-"Not my business to guess. But if you're asking, I'd look closer to
-home than the grounds - that fine young gentleman's a sight too
-pleased with himself for my liking."
 
 marriage colonel sarah wife husband happy
 "None of my business what goes on in the big house between man and
@@ -119,6 +114,11 @@ wife. I keep to my own affairs."
 engagement marriage millicent arthur coniston
 "Didn't hear about it till it was all round the house. Don't know
 the young gentleman well enough to say more than that."
+
+murder murderer think believe guilty who did it comitted
+"Not my business to guess. But if you're asking, I'd look closer to
+home than the grounds - that fine young gentleman's a sight too
+pleased with himself for my liking."
 
 locked sealed study door window how
 "Nothing to do with me. I don't go near the house of an evening
@@ -156,6 +156,9 @@ police investigation scotland yard inspector detective think of me
 what you're asking. But get on with your job. I've nothing to hide
 from you or anyone else."
 
+goodbye bye farewell thanks thank
+"Aye. Off with you, then."
+
 -who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_ronald
 !provides new_accuse accuse_ronald
@@ -178,9 +181,6 @@ saying so all along, and I'll keep saying it."
 !provides new_accuse accuse_ronald
 "You'd best have something to back that up before you go saying it
 again."
-
-goodbye bye farewell thanks thank
-"Aye. Off with you, then."
 
 *
 "Do I look like I'd know anything about that?"

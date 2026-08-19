@@ -6,18 +6,6 @@ weather cold snow
 "Cold enough to freeze the milk, dear. Still, keeps the larder fresh
 at least. Silver linings, as they say."
 
-events yesterday murder last night
-"I have worked here for five years. Last night I cooked and washed up
-with Norah. At about 10:30 I heard a loud bang, it gave me quite a
-shock. Not long after we went to bed; me and Norah behind the curtain
-and Mr. B. on the other side. We had to muck in with Mr. B. because
-Sir Redvers had turned up unexpectedly and taken our room.@
-@
-I was woken up by a shot at 11:20 (according to my clock); the others
-were still asleep. I didn't bother 'cos I thought it was poachers. A few
-minutes later Mr. Coniston turned up in his dressing gown and slippers
-and woke up Mr. B., but I couldn't hear what it was about."
-
 alibi
 "We was all three together, me, Norah and Mr. B. in Mr. B.'s pantry
 at 10:30 and 11:30. Of course we was asleep at 11:30 so I suppose
@@ -53,14 +41,14 @@ morning room."
 ladys shoes
 "I'm not sure. They may be Mrs. Sarah's or Miss Millicent's."
 
-newspaper
++newspaper read
 "I don't have time to read the paper."
 
 handkerchief
 "Mrs. Sarah and Miss Millicent both have handkerchiefs like this one.
 I can't say whose it is."
 
-colonel darnley
+colonel darnley sebastian
 "A hard man both in his business dealings and with his family."
 
 sarah
@@ -109,15 +97,22 @@ mens shoe prints
 womens shoe prints
 "I don't know whose these are."
 
+events yesterday murder last happened
+"I have worked here for five years. Last night I cooked and washed up
+with Norah. At about 10:30 I heard a loud bang, it gave me quite a
+shock. Not long after we went to bed; me and Norah behind the curtain
+and Mr. B. on the other side. We had to muck in with Mr. B. because
+Sir Redvers had turned up unexpectedly and taken our room.@
+@
+I was woken up by a shot at 11:20 (according to my clock); the others
+were still asleep. I didn't bother 'cos I thought it was poachers. A few
+minutes later Mr. Coniston turned up in his dressing gown and slippers
+and woke up Mr. B., but I couldn't hear what it was about."
+
 motive reason why think murder
 "I couldn't say, dear. Folk don't usually tell the cook their
 darkest secrets. Though there's been a queer atmosphere in this
 house since Sir Redvers arrived, if you want my honest opinion."
-
-murder murderer think believe guilty who did it comitted
-"I try not to speculate, it's not my place. Though I'll say Sir
-Redvers had an almighty row with the Colonel that evening - words
-were raised. Make of that what you will."
 
 marriage colonel sarah wife husband happy
 "Not for me to say, dear, but I don't think either of them was
@@ -127,6 +122,11 @@ mine."
 engagement marriage millicent arthur coniston
 "Oh, Miss Millicent was thrilled when it was agreed yesterday. She
 came straight down to the kitchen to tell me, bless her."
+
+murder murderer think believe guilty who did it comitted
+"I try not to speculate, it's not my place. Though I'll say Sir
+Redvers had an almighty row with the Colonel that evening - words
+were raised. Make of that what you will."
 
 locked sealed study door window how
 "I don't understand it at all, dear. Locked doors, broken windows -
@@ -164,6 +164,10 @@ police investigation scotland yard inspector detective think of me
 you need to, dear, I've nothing to hide. Can't say the same for
 everyone in this house, mind."
 
+goodbye bye farewell thanks thank
+"Off you go then, dear. Mind you eat something - you look like you
+could use it."
+
 -who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_mildred
 !provides new_accuse accuse_mildred
@@ -185,10 +189,6 @@ for five years and never so much as raised my voice, let alone a gun!"
 !provides new_accuse accuse_mildred
 "Now that's a dreadful thing to say to a body, and no proof to back it
 up neither."
-
-goodbye bye farewell thanks thank
-"Off you go then, dear. Mind you eat something - you look like you
-could use it."
 
 *
 "I'm afraid you're asking the wrong person, dear."

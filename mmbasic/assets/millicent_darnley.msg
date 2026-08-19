@@ -6,32 +6,6 @@ weather cold snow
 "Isn't it awful? Though I suppose all this snow means every
 footstep shows. Small mercies, given everything else."
 
-events yesterday murder last night
-"Father was a difficult man to live with but I never expected - this!
-Last night we all ate together until coffee which Sarah and I took
-together in the lounge. The men joined us later for half an hour,
-then Arthur and I went into the music room where we talked for a
-while and played duets on the piano.@
-@
-At about 10:30 I decided to go to bed. I know the time because I
-looked at my watch when there was a loud noise — probably a poacher
-somewhere. Arthur stayed in the music room and I went upstairs. I
-think I saw Sir Redvers disappearing into his bedroom, but I was
-distracted by Sarah who was on the landing. She said she was
-intending to play the piano in the morning room and hoped it
-wouldn't disturb me. I went to my room and stayed there. I heard
-Sarah playing the piano and then drifted off to sleep.@
-@
-I woke up at about 11:20 by the bedside clock and heard Sarah still
-playing a Chopin nocturne. She seemed to be having difficulty since
-the same part was being repeated over and over again. I went back to
-sleep for a few minutes when there was a bang — a door slamming, I
-thought.@
-@
-Then at about midnight there was a racket of people everywhere. I
-went into Sarah's room and found her undressing there. We went into
-the morning room and found Billingsgate waking Sir Redvers."
-
 alibi
 "I was with Arthur in the music room at 10.30 and, naturally, I was
 alone in bed at 11:30."
@@ -62,7 +36,7 @@ repeated the same piece again and again."
 ladys shoes
 "They aren't my shoes."
 
-newspaper
++newspaper read
 "I don't often read the newspaper."
 
 handkerchief
@@ -70,7 +44,7 @@ handkerchief
 don't remember when I lose them. I certainly wasn't in the summer
 house yesterday. Is it important?"
 
-colonel darnley
+colonel darnley sebastian
 "Daddy was a tyrant but always kind to me. He was always fearful that
 Sarah would leave him for a younger man."
 
@@ -123,15 +97,36 @@ womens shoe prints
 "I might recognise my own shoes, but I couldn't tell you whose prints these are
 from looking at them in the snow."
 
+events yesterday murder last happened
+"Father was a difficult man to live with but I never expected - this!
+Last night we all ate together until coffee which Sarah and I took
+together in the lounge. The men joined us later for half an hour,
+then Arthur and I went into the music room where we talked for a
+while and played duets on the piano.@
+@
+At about 10:30 I decided to go to bed. I know the time because I
+looked at my watch when there was a loud noise — probably a poacher
+somewhere. Arthur stayed in the music room and I went upstairs. I
+think I saw Sir Redvers disappearing into his bedroom, but I was
+distracted by Sarah who was on the landing. She said she was
+intending to play the piano in the morning room and hoped it
+wouldn't disturb me. I went to my room and stayed there. I heard
+Sarah playing the piano and then drifted off to sleep.@
+@
+I woke up at about 11:20 by the bedside clock and heard Sarah still
+playing a Chopin nocturne. She seemed to be having difficulty since
+the same part was being repeated over and over again. I went back to
+sleep for a few minutes when there was a bang — a door slamming, I
+thought.@
+@
+Then at about midnight there was a racket of people everywhere. I
+went into Sarah's room and found her undressing there. We went into
+the morning room and found Billingsgate waking Sir Redvers."
+
 motive reason why think murder
 "I can't imagine why anyone would want to. Money, I suppose, is
 usually why people do dreadful things. Daddy could be difficult
 about money."
-
-murder murderer think believe guilty who did it comitted
-"I try not to think about it - it makes me feel rather sick. If I'm
-honest, Mellors has always given me an uneasy feeling. But that isn't
-proof, is it? Just a feeling."
 
 marriage colonel sarah wife husband happy
 "Daddy was twenty years older than Sarah and never quite trusted
@@ -142,6 +137,11 @@ engagement marriage millicent arthur coniston
 "I'm the last person to ask objectively! Daddy agreed only
 yesterday - I still can hardly believe it. I'd waited so long for
 him to say yes."
+
+murder murderer think believe guilty who did it comitted
+"I try not to think about it - it makes me feel rather sick. If I'm
+honest, Mellors has always given me an uneasy feeling. But that isn't
+proof, is it? Just a feeling."
 
 locked sealed study door window how
 "It doesn't make sense, does it? Both doors locked, the window
@@ -179,6 +179,9 @@ police investigation scotland yard inspector detective think of me
 horrid feeling, being looked at that way in one's own home. But I
 want whoever did this caught, so ask what you must."
 
+goodbye bye farewell thanks thank
+"Goodbye, Inspector. I do hope you find whoever did this."
+
 -who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_millicent
 !provides new_accuse accuse_millicent
@@ -200,9 +203,6 @@ absolutely certain, because I will not forgive this lightly."
 !provides new_accuse accuse_millicent
 "That is a wicked thing to say without proof. I hope you have better
 reasons than mere suspicion."
-
-goodbye bye farewell thanks thank
-"Goodbye, Inspector. I do hope you find whoever did this."
 
 *
 "I'm afraid that is rather outside my knowledge.

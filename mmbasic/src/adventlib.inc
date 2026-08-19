@@ -276,26 +276,32 @@ End Function
 Function verb_say()
   verb_say = 1
 
-  Local comma_idx% = word.find_first%(words$(), ",")
-  Local obj_idx%
+  ' Extract target of the conversation.
+  Local subject_idx% = word.find_first%(words$(), ",") + 1
+  Local obj_idx% = 0
+  If subject_idx% Then
+    obj_idx% = resolve_say_target%(2, subject_idx% - 2)
+    If obj_idx% = -1 Then Exit Function
+  EndIf
 
-  If comma_idx% > 2 Then
-    obj_idx% = resolve_say_target%(comma_idx%)
-    If Not obj_idx% Then Exit Function
-  Else
-    ' No "," separator, or no person named before it (e.g. ",topic")
-    ' - assume all remaining words are the topic and direct the speech at the
-    ' first person present in the current location.
+  ' If no target then direct conversation to first person in the current location.
+  If obj_idx% = 0 Then
     obj_idx% = find_person_in_room%(r)
     If Not obj_idx% Then
       con.print_fail("There is no-one here to speak to.")
       Exit Function
     EndIf
-    comma_idx% = 1
+    subject_idx% = 1
   EndIf
 
+  ' Extract subject of the conversation
   Local subject_words$(MAX_WORDS) Length MAX_WORD_LENGTH
-  extract_subject_words(comma_idx%, subject_words$())
+  Local i%, j% = Bound(subject_words$(), 0)
+  For i% = subject_idx% To Bound(words$(), 1)
+    If words$(i%) = "" Then Exit For
+    subject_words$(j%) = words$(i%)
+    Inc j%
+  Next
 
   Const filename$ = LCase$(Mid$(Field$(objects$(obj_idx%), 1, "|"), 3)) + ".msg"
   Const match_line% = find_response%(filename$, subject_words$())
@@ -305,13 +311,10 @@ End Function
 ' Resolves the direct object of ("target name, subject words) printing
 ' failure message and returning 0 if it can't be found, isn't present,
 ' or isn't a person.
-Function resolve_say_target%(comma_idx%)
+Function resolve_say_target%(first%, last%)
   ' The target must exist (person/object)
-  resolve_say_target% = find_obj%(words$(), 1, comma_idx% - 1)
-  If Not resolve_say_target% Then
-    con.print_fail("You don't know that person.")
-    Exit Function
-  EndIf
+  resolve_say_target% = find_obj%(words$(), first%, last%)
+  If Not resolve_say_target% Then Exit Function
 
   ' Unless "cheating" the target must be in the current location
   If Not state.cheat% And obj_loc%(resolve_say_target%) <> r Then
@@ -319,7 +322,7 @@ Function resolve_say_target%(comma_idx%)
     If Not obj_is_person%(resolve_say_target%) Then msg$ = "The " + LCase$(msg$)
     Cat msg$, Choice(Right$(msg$, 1) = "s", " are", " is") + " not here."
     con.print_fail(msg$)
-    resolve_say_target% = 0
+    resolve_say_target% = -1
     Exit Function
   EndIf
 
@@ -328,7 +331,8 @@ Function resolve_say_target%(comma_idx%)
     Local msg$ = "The " + LCase$(sanitize_name$(obj_name$(resolve_say_target%)))
     Cat msg$, Choice(Right$(msg$, 1) = "s", " do", " does") + " not answer."
     con.print_fail(msg$)
-    resolve_say_target% = 0
+    resolve_say_target% = -1
+    Exit Function
   EndIf
 End Function
 
@@ -356,14 +360,6 @@ Function sanitize_name$(name$)
   EndIf
   sanitize_name$ = str.trim$(sanitize_name$)
 End Function
-
-' Populates subject_words$() with the words following "," in words$().
-Sub extract_subject_words(comma_idx%, subject_words$())
-  Local i%
-  For i% = Bound(words$(), 0) To Bound(words$(), 1) - comma_idx%
-    subject_words$(i%) = words$(i% + comma_idx%)
-  Next
-End Sub
 
 ' Scans filename$ for the response whose pattern best matches
 ' subject_words$(), respecting !requires eligibility. Returns the best

@@ -158,7 +158,7 @@ Sub test_say_no_comma_one_word()
   assert_string_equals(expected$, con_output$)
 End Sub
 
-' Direct object does not match any known object/person.
+' Direct object does not match any known object/person so treat as part of the subject.
 Sub test_say_gvn_no_target()
   Local result% = parse_common("say nonexistent thing, gramophone")
   assert_int_equals(0, result%)
@@ -166,7 +166,7 @@ Sub test_say_gvn_no_target()
   result% = verb_say()
 
   assert_int_equals(1, result%)
-  Const expected$ = "[[red:You don't know that person.]]" + sys.CRLF$
+  Const expected$ = "<cyan>" + str.quote$("line B - unconditional, grants clue") + "<reset>" + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub
 

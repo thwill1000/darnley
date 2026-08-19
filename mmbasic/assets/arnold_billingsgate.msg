@@ -7,35 +7,6 @@ weather cold snow
 outdoor staff, though I dare say it has been of some use to you in
 tracking footprints."
 
-events yesterday murder last night
-"I have worked for the Darnley family since I was a boy. Colonel Darnley
-was a very honest, decent gentleman. Last night I waited on the guests
-at dinner. There was the family, Sir Redvers and Mr. Coniston. The
-atmosphere at dinner, I am bound to say, was not entirely comfortable.
-Afterwards I served port to the gentlemen in the billiard room and
-withdrew at a little after nine.@
-@
-I had my own dinner at 9:30 with the other servants, then cleaned boots.
-I was disturbed by a loud bang at 10:30 - a door slamming, I assumed,
-given the tempers that evening - and did nothing about it. Shortly
-afterwards I went to bed in the butler's pantry.@
-@
-I was woken by Mr. Coniston at 11:30. He said that he had not been able
-to sleep and had gone to the lounge to smoke. He saw a light under the
-study doors and was concerned because the doors were locked and Colonel
-Darnley would not answer. I offered to get my own keys but Mr. Coniston
-said it was too urgent. As far as the study is concerned the Colonel
-kept the keys on his person and I keep mine hidden - I won't say where
-- but you can be sure no-one can get their hand on them either. We left
-through the kitchen door and I walked round to the French windows;
-Mr. Coniston ran and was there a couple of seconds before me. He threw
-a stone through the window and one of us - I think myself - put a hand
-through the hole to open the lock. I can confirm that the window was
-locked. We both went into the room and saw the Colonel's body with a
-bullet through the chest. The body was on the floor and you couldn't
-tell where the shot had come from. The Colonel's keys were in the locks
-of the two doors."
-
 alibi
 "I was with Mrs. Goodbody and young Norah in my pantry at both 10:30
 and 11:30."
@@ -79,7 +50,7 @@ morning room."
 ladys shoes
 "I'm not sure. They may be Mrs. Sarah's or Miss Millicent's."
 
-newspaper
++newspaper read
 "I'm afraid I don't recognise it."
 
 letter
@@ -88,7 +59,7 @@ letter
 handkerchief
 "I don't know anything about it."
 
-colonel darnley
+colonel darnley sebastian
 "The master was extremely good to his family."
 
 sarah
@@ -138,15 +109,39 @@ cheroot in the pond
 "As far as I'm aware only the Colonel smoked cheroots. But he was a
 most particular man and would never throw a butt into the pond."
 
+events yesterday murder last happened
+"I have worked for the Darnley family since I was a boy. Colonel Darnley
+was a very honest, decent gentleman. Last night I waited on the guests
+at dinner. There was the family, Sir Redvers and Mr. Coniston. The
+atmosphere at dinner, I am bound to say, was not entirely comfortable.
+Afterwards I served port to the gentlemen in the billiard room and
+withdrew at a little after nine.@
+@
+I had my own dinner at 9:30 with the other servants, then cleaned boots.
+I was disturbed by a loud bang at 10:30 - a door slamming, I assumed,
+given the tempers that evening - and did nothing about it. Shortly
+afterwards I went to bed in the butler's pantry.@
+@
+I was woken by Mr. Coniston at 11:30. He said that he had not been able
+to sleep and had gone to the lounge to smoke. He saw a light under the
+study doors and was concerned because the doors were locked and Colonel
+Darnley would not answer. I offered to get my own keys but Mr. Coniston
+said it was too urgent. As far as the study is concerned the Colonel
+kept the keys on his person and I keep mine hidden - I won't say where
+- but you can be sure no-one can get their hand on them either. We left
+through the kitchen door and I walked round to the French windows;
+Mr. Coniston ran and was there a couple of seconds before me. He threw
+a stone through the window and one of us - I think myself - put a hand
+through the hole to open the lock. I can confirm that the window was
+locked. We both went into the room and saw the Colonel's body with a
+bullet through the chest. The body was on the floor and you couldn't
+tell where the shot had come from. The Colonel's keys were in the locks
+of the two doors."
+
 motive reason why think murder
 "I couldn't begin to guess, sir. The Colonel was not universally
 loved, if I am honest, but I know of no one with cause enough to
 do... this."
-
-murder murderer think believe guilty who did it comitted
-"That is not a question I am equipped to answer, sir. I will say
-only that a house such as this holds more secrets than its servants
-are ever told, above stairs or below."
 
 marriage colonel sarah wife husband happy
 "It is not my place to comment on the master's marriage, sir. I
@@ -156,6 +151,11 @@ said of him."
 engagement marriage millicent arthur coniston
 "The Colonel gave his consent only yesterday afternoon, as I
 understand it. Miss Millicent seemed very happy about it indeed."
+
+murder murderer think believe guilty who did it comitted
+"That is not a question I am equipped to answer, sir. I will say
+only that a house such as this holds more secrets than its servants
+are ever told, above stairs or below."
 
 locked sealed study door window how
 "I have turned it over in my mind and I confess I cannot account
@@ -193,6 +193,10 @@ police investigation scotland yard inspector detective think of me
 household will give you whatever assistance it can - you have my
 word on that, at least."
 
+goodbye bye farewell thanks thank
+"Very good, sir. I shall be about the house if you need anything
+further."
+
 -who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_arnold
 !provides new_accuse accuse_arnold
@@ -216,10 +220,6 @@ suspect."
 !provides new_accuse accuse_arnold
 "Begging your pardon, but that is a very grave thing to suggest without
 proper cause."
-
-goodbye bye farewell thanks thank
-"Very good, sir. I shall be about the house if you need anything
-further."
 
 *
 "I don't believe that falls within my knowledge, I'm afraid."
