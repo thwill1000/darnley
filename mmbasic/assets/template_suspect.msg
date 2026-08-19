@@ -20,9 +20,6 @@ hello hi morning afternoon evening greetings
 weather cold snow
 "weather response"
 
-events yesterday murder last night
-"events response"
-
 alibi
 "alibi response"
 
@@ -53,7 +50,7 @@ piano
 ladys shoes
 "ladys shoes response"
 
-newspaper
++newspaper read
 "newspaper response"
 
 letter
@@ -62,7 +59,7 @@ letter
 handkerchief
 "handkerchief response"
 
-colonel darnley
+colonel darnley sebastian
 "colonel darnley response"
 
 sarah
@@ -107,17 +104,20 @@ womens shoe prints
 cheroot in the pond
 "cheroot in the pond response"
 
+events yesterday murder last happened
+"events response"
+
 motive reason why think murder
 "motive response"
-
-murder murderer think believe guilty who did it comitted
-"who did it response"
 
 marriage colonel sarah wife husband happy
 "colonel's marriage response"
 
 engagement marriage millicent arthur coniston
 "millicent's engagement response"
+
+murder murderer think believe guilty who did it comitted
+"who did it response"
 
 locked sealed study door window how
 "locked study response"
@@ -142,6 +142,9 @@ money mining peru ruin redvers slingsby colonel darnley
 police investigation scotland yard inspector detective think of me
 "investigation response"
 
+goodbye bye farewell thanks thank
+"goodbye response"
+
 -who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_tag
 !provides new_accuse accuse_tag
@@ -155,9 +158,6 @@ police investigation scotland yard inspector detective think of me
 -who accuse you did it jaccuse murder murderer
 !provides new_accuse accuse_tag
 "premature accusation response"
-
-goodbye bye farewell thanks thank
-"goodbye response"
 
 *
 "wildcard response"

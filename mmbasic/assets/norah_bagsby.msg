@@ -6,19 +6,6 @@ weather cold snow
 "Ever so cold, sir. My hands are chapped something dreadful from all
 the extra fires we've had to lay."
 
-events yesterday murder last night
-"I have worked here for six months and I don't like it. Last night I
-helped Mrs. Goodbody to prepare dinner and afterwards I served coffee
-in the lounge to Mrs. Sarah and Miss Millicent. Then I helped Mrs. G.
-to wash up whilst Mr. Billingsgate cleaned the boots. Just before we
-went to bed there was a loud bang. I thought it was a shot but Mrs. G.
-said it was a door banging. Then we went to bed. Mrs. G. and I had to
-sleep behind a curtain in the butler's pantry 'cos Sir Redvers had
-come unexpectedly and taken our room.@
-@
-Last thing was I woke when Mr. Coniston woke Mr. B., but I stayed
-where I was."
-
 alibi
 "I'm not good where times are concerned. I s'pose I was with Mr. B.
 and Mrs. G. in Mr. B.'s room."
@@ -49,7 +36,7 @@ handkerchief
 "Both the ladies have this sort of hanky. Sometimes Mrs. G. is given
 the older ones."
 
-colonel darnley
+colonel darnley sebastian
 "Very strict. I didn't like him."
 
 sarah
@@ -79,14 +66,22 @@ don't know what more you'd want me to say about myself."
 ronald mellors gamekeeper
 "A rough man. A womanizer by all accounts."
 
+events yesterday murder last happened
+"I have worked here for six months and I don't like it. Last night I
+helped Mrs. Goodbody to prepare dinner and afterwards I served coffee
+in the lounge to Mrs. Sarah and Miss Millicent. Then I helped Mrs. G.
+to wash up whilst Mr. Billingsgate cleaned the boots. Just before we
+went to bed there was a loud bang. I thought it was a shot but Mrs. G.
+said it was a door banging. Then we went to bed. Mrs. G. and I had to
+sleep behind a curtain in the butler's pantry 'cos Sir Redvers had
+come unexpectedly and taken our room.@
+@
+Last thing was I woke when Mr. Coniston woke Mr. B., but I stayed
+where I was."
+
 motive reason why think murder
 "I don't know, sir, I really don't. The Colonel could be sharp with
 people. Maybe someone had a grudge, but I couldn't tell you who."
-
-murder murderer think believe guilty who did it comitted
-"Oh, I couldn't say, sir, it frightens me even to think it. Miss
-Millicent seemed ever so calm about it all, calmer than I'd have
-been. I don't mean nothing by that, mind."
 
 marriage colonel sarah wife husband happy
 "I don't like to gossip about my betters, sir. Mrs. Sarah always
@@ -96,6 +91,11 @@ engagement marriage millicent arthur coniston
 "Miss Millicent was over the moon, sir, when the Colonel said yes
 yesterday. First happy thing to happen in this house in a while, I
 should think."
+
+murder murderer think believe guilty who did it comitted
+"Oh, I couldn't say, sir, it frightens me even to think it. Miss
+Millicent seemed ever so calm about it all, calmer than I'd have
+been. I don't mean nothing by that, mind."
 
 locked sealed study door window how
 "It frightens me something dreadful, sir, thinking about it. A
@@ -130,6 +130,10 @@ police investigation scotland yard inspector detective think of me
 house. I haven't done anything wrong, sir, honest I haven't - I just
 get nervous with all the questions."
 
+goodbye bye farewell thanks thank
+"Goodbye, sir. I hope you don't need me again - not because I mind,
+just, well, you know."
+
 -who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_norah
 !provides new_accuse accuse_norah
@@ -151,10 +155,6 @@ paid me! I only been here six months, sir, honest!"
 -who accuse you did it jaccuse murder murderer
 !provides new_accuse accuse_norah
 "Oh! You mustn't say that, not without you're sure - it isn't right."
-
-goodbye bye farewell thanks thank
-"Goodbye, sir. I hope you don't need me again - not because I mind,
-just, well, you know."
 
 *
 "I wouldn't know about that. Nobody tells me anything."

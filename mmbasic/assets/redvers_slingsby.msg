@@ -6,23 +6,6 @@ weather cold snow
 "Damnable. Roads were a nightmare getting here yesterday, and it's
 only got worse since. Not that it's foremost in my mind at present."
 
-events yesterday murder last night
-"I have known Darnley for about 20 years. It was some confidential
-business dealings that brought me here urgently yesterday. Last
-night I had dinner with the family and young Coniston. Afterwards
-- at about 9:00 - we gentlemen had a game and some port in the
-billiard room, then we joined the ladies in the lounge for half
-an hour.@
-@
-Darnley and I left the others at 10:00 and chatted about our
-business for a while. The discussion was very friendly and I left
-Darnley alive at 10:30.@
-@
-I was sleeping in the servants' quarters and went to bed straight
-away. Having had a bit to drink I slept very soundly and heard
-nothing until Billingsgate woke me at midnight to tell me about
-this terrible business."
-
 alibi
 "I left Darnley alive at 10:30 and it's damn nonsense to suggest I
 shot him with all the house awake and then waited to see what would
@@ -50,7 +33,7 @@ piano
 "The Darnley's have two pianos, one in the music room and one in the
 morning room."
 
-newspaper
++newspaper read
 "I was reading it on the train coming here. Some of my friends lost
 money in the collapse."
 
@@ -58,7 +41,7 @@ letter
 "The letter certainly wasn't addressed to me. Darnley would have
 called me by name, not 'Dear Sir' - after all we were friends."
 
-colonel darnley
+colonel darnley sebastian
 "A hard man but very fair. Once I had explained my business problem
 he agreed to help me out."
 
@@ -101,15 +84,27 @@ cheroot in the pond
 "A cheroot? Not me, old man! I'm one for Havanas if I'm not smoking
 the old pipe."
 
+events yesterday murder last happened
+"I have known Darnley for about 20 years. It was some confidential
+business dealings that brought me here urgently yesterday. Last
+night I had dinner with the family and young Coniston. Afterwards
+- at about 9:00 - we gentlemen had a game and some port in the
+billiard room, then we joined the ladies in the lounge for half
+an hour.@
+@
+Darnley and I left the others at 10:00 and chatted about our
+business for a while. The discussion was very friendly and I left
+Darnley alive at 10:30.@
+@
+I was sleeping in the servants' quarters and went to bed straight
+away. Having had a bit to drink I slept very soundly and heard
+nothing until Billingsgate woke me at midnight to tell me about
+this terrible business."
+
 motive reason why think murder
 "Damned if I know. Man had his share of enemies in business, I
 shouldn't wonder - he gave tips that didn't always pan out, and
 some fellows take that sort of thing badly."
-
-murder murderer think believe guilty who did it comitted
-"Damned if I know. If you want my honest opinion, servants notice a
-great deal more than they let on - I shouldn't rule out that butler
-of his, watchful sort of fellow. But that's guesswork, mind."
 
 marriage colonel sarah wife husband happy
 "I told Darnley he was a damned fool to marry a woman half his age,
@@ -119,6 +114,11 @@ engagement marriage millicent arthur coniston
 "News to me until last night. I gather the Colonel only agreed to
 it yesterday. Can't say I know the fellow well enough to judge the
 match."
+
+murder murderer think believe guilty who did it comitted
+"Damned if I know. If you want my honest opinion, servants notice a
+great deal more than they let on - I shouldn't rule out that butler
+of his, watchful sort of fellow. But that's guesswork, mind."
 
 locked sealed study door window how
 "I left by the hall door at 10:30 and heard it slam behind me -
@@ -142,7 +142,7 @@ right quite so literally, though."
 affair mellors ronald sarah summer house summerhouse together secret lovers
 "Can't say I've given it any thought. Why, should I have?"
 
-money mining peru ruin +redvers | money mining peru ruin +slingsby
+money mining peru ruin +redvers | money mining peru ruin +slingsby | money mining peru ruin +you
 !requires newspaper
 He goes rather grey about the gills.@
 @
@@ -161,6 +161,9 @@ police investigation scotland yard inspector detective think of me
 "About time too. Damned unpleasant business, having one's private
 affairs picked over, but I'd rather have it done properly than not
 at all. Get on with it, man."
+
+goodbye bye farewell thanks thank
+"Yes, yes. Get on with it, then."
 
 -who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_redvers
@@ -184,9 +187,6 @@ alive and well, and I'll thank you to remember it!"
 !provides new_accuse accuse_redvers
 "Confound it, man, you can't fling accusations about like that! Get your
 facts straight first."
-
-goodbye bye farewell thanks thank
-"Yes, yes. Get on with it, then."
 
 *
 "No idea whatsoever. Can we stick to the point?"

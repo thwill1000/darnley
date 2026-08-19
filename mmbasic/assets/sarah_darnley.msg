@@ -6,32 +6,6 @@ weather cold snow
 "Dreadfully cold. Though I confess the weather is the last thing on
 my mind just now, Inspector."
 
-events yesterday murder last night
-"I married Sebastian two years ago. I am more than twenty years
-younger than he - really not much older than Millicent. We have
-been very happy together. Last night we all had dinner together.
-Afterwards the men played billiards while Millicent and I had
-coffee in the lounge.@
-@
-At about 9:30 the men joined us for half an hour then Arthur and
-Millicent said that they were going to the music room. Sebastian
-and Sir Redvers had business to talk about so they went into the
-study. I heard them quarrelling but couldn't tell what about.
-Next there was a loud noise which I took to be Sir Redvers leaving
-the study by the door to the hall and banging the door. I stayed
-in the lounge for ten minutes and then went upstairs where I ran
-into Millicent on the landing. She said that she had left Arthur
-in the music room and was going to bed.@
-@
-I went into the morning room and played some Chopin nocturnes on
-the piano there until about 11:30 when I heard a noise like a shot
-which I thought was poachers. Looking at my watch I decided it was
-time to go to bed.@
-@
-I was getting changed when I heard Billingsgate rush upstairs to
-wake Sir Redvers. Millicent heard the racket and came into my room
-from hers. And the rest you know."
-
 alibi
 "At 10:30 I was reading and drinking coffee in the lounge - on my
 own, I'm afraid. At 11:30 I was playing the piano in the morning
@@ -60,7 +34,7 @@ ladys shoes
 have no idea why they should be damp - possibly I had them on
 earlier yesterday."
 
-newspaper
++newspaper read
 "I believe that Sebastian advised one or two people to invest in
 Peruvian shares."
 
@@ -74,7 +48,7 @@ I'm at a loss about the letter."
 handkerchief
 "You found it in the summer house? I'm absolutely sure it isn't mine."
 
-colonel darnley
+colonel darnley sebastian
 "He was somewhat strict and suspicious by nature, but we were happy
 enough."
 
@@ -130,15 +104,36 @@ footprints."
 cheroot in the pond
 "I don't know anything about it."
 
+events yesterday murder last happened
+"I married Sebastian two years ago. I am more than twenty years
+younger than he - really not much older than Millicent. We have
+been very happy together. Last night we all had dinner together.
+Afterwards the men played billiards while Millicent and I had
+coffee in the lounge.@
+@
+At about 9:30 the men joined us for half an hour then Arthur and
+Millicent said that they were going to the music room. Sebastian
+and Sir Redvers had business to talk about so they went into the
+study. I heard them quarrelling but couldn't tell what about.
+Next there was a loud noise which I took to be Sir Redvers leaving
+the study by the door to the hall and banging the door. I stayed
+in the lounge for ten minutes and then went upstairs where I ran
+into Millicent on the landing. She said that she had left Arthur
+in the music room and was going to bed.@
+@
+I went into the morning room and played some Chopin nocturnes on
+the piano there until about 11:30 when I heard a noise like a shot
+which I thought was poachers. Looking at my watch I decided it was
+time to go to bed.@
+@
+I was getting changed when I heard Billingsgate rush upstairs to
+wake Sir Redvers. Millicent heard the racket and came into my room
+from hers. And the rest you know."
+
 motive reason why think murder
 "I've asked myself that a hundred times since last night and I
 still can't answer it. Sebastian had his difficult side, but I
 never thought anyone hated him enough for this."
-
-murder murderer think believe guilty who did it comitted
-"I can't bear to think it was any of them, truly. If you insist I
-name someone - Sir Redvers seemed dreadfully agitated all evening. I
-don't like to say more than that."
 
 marriage colonel sarah wife husband happy
 "We were happy enough, in our own way. He was strict, and older
@@ -149,6 +144,11 @@ engagement marriage millicent arthur coniston
 "Sebastian only agreed to it yesterday afternoon. Millicent was
 positively glowing when she told me. I'm glad she'll have that
 happiness, whatever else has happened."
+
+murder murderer think believe guilty who did it comitted
+"I can't bear to think it was any of them, truly. If you insist I
+name someone - Sir Redvers seemed dreadfully agitated all evening. I
+don't like to say more than that."
 
 locked sealed study door window how
 "I still can't make sense of it. Both doors locked with his own
@@ -185,6 +185,10 @@ police investigation scotland yard inspector detective think of me
 perhaps. Ask whatever you must. I only hope it's over soon, for all
 our sakes."
 
+goodbye bye farewell thanks thank
+"Goodbye, Inspector. Thank you for your discretion in all of
+this."
+
 -who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_sarah
 !provides new_accuse accuse_sarah
@@ -206,10 +210,6 @@ thing."
 !provides new_accuse accuse_sarah
 "You mustn't say such things without evidence - it isn't fair, not to
 anyone."
-
-goodbye bye farewell thanks thank
-"Goodbye, Inspector. Thank you for your discretion in all of
-this."
 
 *
 "I'm afraid I really couldn't say. This has all been such a terrible shock."

@@ -6,37 +6,6 @@ weather cold snow
 "Beastly cold, isn't it. Not that anyone's thinking much about the
 weather today, present company excepted."
 
-events yesterday murder last night
-"I was down for the weekend. It was no secret that I was going to ask
-Colonel Darnley for permission to marry Millicent. I popped the question
-to the old boy in the afternoon and he agreed. Last night we all had
-dinner together and afterwards we fellows played a little billiards
-before joining the ladies for coffee. At about 10:00 Sir Redvers broke
-up the party by asking Darnley to go into the study with him. I asked
-Millicent to come with me to the music room where we played duets for
-half an hour.@
-@
-There was a noise. Millicent thought it was a poacher and hoped that
-Mellors would catch him. She decided to go to bed. I stayed on to smoke
-a cigar and didn't go up until 11:00. I noticed nothing odd except that
-to get to my bedroom I had to go through the morning room where the
-gramophone was playing a Chopin nocturne but there was no-one there.@
-@
-I undressed and went to bed but couldn't sleep. At about 11:30 I heard
-a noise - a door banging, so I thought at the time. I decided to go
-downstairs and smoke another cigar in the lounge. I noticed a light
-under the study door and knocked on it to see who was there. I got
-worried when it was locked and no-one answered so I got Billingsgate
-and together we went outside and round to the French window. It was
-locked too, so I picked a stone up and broke the glass. Billingsgate
-stuck his hand through the hole and tried the lock. He told me it was
-locked on the inside, and - damn me! - he was right. We both went
-inside and found Darnley on the floor, shot and dead. When we checked
-the doors to the hall and lounge we found the Colonel's keys in the
-locks, so it would have been impossible to open them from the outside.
-I had noticed some bootprints outside, so I went out and followed them.
-They led around the house to the kitchen door. I followed in my slippers."
-
 alibi
 "Millicent and I were together in the music room at 10:30. I don't
 know how anyone can be expected to have an alibi for 11:30.
@@ -79,7 +48,7 @@ no-one there, just a gramophone playing."
 ladys shoes
 "I don't know whose shoes these are."
 
-newspaper
++newspaper read
 "I heard that old Slingsby had plunged into mining shares and needed
 money urgently. Colonel Darnley mentioned it to me during our
 conversation."
@@ -93,7 +62,7 @@ that I could marry Millicent."
 handkerchief
 "I don't know whose handkerchief it is."
 
-colonel darnley
+colonel darnley sebastian
 "A decent old buffer. When I asked his permission to marry Millicent
 he agreed straight away. I was surprised, I admit it!"
 
@@ -146,15 +115,41 @@ cheroot in the pond
 and I went outside. Maybe I did throw it in the pond. Does it
 matter?"
 
+events yesterday murder last happened
+"I was down for the weekend. It was no secret that I was going to ask
+Colonel Darnley for permission to marry Millicent. I popped the question
+to the old boy in the afternoon and he agreed. Last night we all had
+dinner together and afterwards we fellows played a little billiards
+before joining the ladies for coffee. At about 10:00 Sir Redvers broke
+up the party by asking Darnley to go into the study with him. I asked
+Millicent to come with me to the music room where we played duets for
+half an hour.@
+@
+There was a noise. Millicent thought it was a poacher and hoped that
+Mellors would catch him. She decided to go to bed. I stayed on to smoke
+a cigar and didn't go up until 11:00. I noticed nothing odd except that
+to get to my bedroom I had to go through the morning room where the
+gramophone was playing a Chopin nocturne but there was no-one there.@
+@
+I undressed and went to bed but couldn't sleep. At about 11:30 I heard
+a noise - a door banging, so I thought at the time. I decided to go
+downstairs and smoke another cigar in the lounge. I noticed a light
+under the study door and knocked on it to see who was there. I got
+worried when it was locked and no-one answered so I got Billingsgate
+and together we went outside and round to the French window. It was
+locked too, so I picked a stone up and broke the glass. Billingsgate
+stuck his hand through the hole and tried the lock. He told me it was
+locked on the inside, and - damn me! - he was right. We both went
+inside and found Darnley on the floor, shot and dead. When we checked
+the doors to the hall and lounge we found the Colonel's keys in the
+locks, so it would have been impossible to open them from the outside.
+I had noticed some bootprints outside, so I went out and followed them.
+They led around the house to the kitchen door. I followed in my slippers."
+
 motive reason why think murder
 "Haven't the foggiest, old boy. Darnley wasn't an easy man, but
 plenty of people find their relatives difficult without shooting
 them. Money's always worth a look, though - isn't it always?"
-
-murder murderer think believe guilty who did it comitted
-"Good Lord, I haven't the faintest. Between you and me I'd watch
-Slingsby - man had the look of someone with troubles on his mind
-last night. But don't quote me, old boy."
 
 marriage colonel sarah wife husband happy
 "Not really my place to say. Darnley seemed fond enough of her, in
@@ -164,6 +159,11 @@ imagine the gossip."
 engagement marriage millicent arthur coniston
 "Happiest news of my life, old boy! The Colonel gave his blessing
 yesterday afternoon. I still can't quite believe my luck."
+
+murder murderer think believe guilty who did it comitted
+"Good Lord, I haven't the faintest. Between you and me I'd watch
+Slingsby - man had the look of someone with troubles on his mind
+last night. But don't quote me, old boy."
 
 locked sealed study door window how
 "Damned peculiar business. Billingsgate and I found both doors
@@ -203,6 +203,10 @@ police investigation scotland yard inspector detective think of me
 honest. This house needs answers, and quickly, before everyone's
 nerves give out entirely."
 
+goodbye bye farewell thanks thank
+"Righto. Do let me know if there's anything else I can help with,
+won't you?"
+
 -who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_arthur
 !provides new_accuse accuse_arthur
@@ -224,10 +228,6 @@ better be very sure of your facts before you say it again."
 !provides new_accuse accuse_arthur
 "Steady on! You can't go about making accusations without a shred of proof
 to back them up."
-
-goodbye bye farewell thanks thank
-"Righto. Do let me know if there's anything else I can help with,
-won't you?"
 
 *
 "Can't say I know anything about that. Sorry, old boy."
