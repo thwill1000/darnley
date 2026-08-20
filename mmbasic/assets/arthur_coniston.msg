@@ -110,10 +110,16 @@ mens shoe prints
 womens shoe prints
 "I don't know whose these are."
 
-cheroot in the pond
+cheroot pond
 "I suppose it could be mine. I fancy I was smoking when Billingsgate
 and I went outside. Maybe I did throw it in the pond. Does it
 matter?"
+
+suit
+"Ah, that suit will be Slingsby's. I gather he descended on the house
+without warning and there wasn't a bed to be had except with the
+servants - I'd already bagged the guest room, you see. Beastly luck
+for the poor chap, showing up a day late for the good rooms."
 
 events yesterday murder last happened
 "I was down for the weekend. It was no secret that I was going to ask

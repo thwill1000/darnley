@@ -101,8 +101,11 @@ mens shoe prints
 womens shoe prints
 "womens shoe prints response"
 
-cheroot in the pond
+cheroot pond
 "cheroot in the pond response"
+
+suit
+"suit response"
 
 events yesterday murder last happened
 "events response"

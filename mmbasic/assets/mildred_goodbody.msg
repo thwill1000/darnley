@@ -97,6 +97,12 @@ mens shoe prints
 womens shoe prints
 "I don't know whose these are."
 
+suit
+"That suit's Sir Redvers', dear. He came without warning and Mr. Coniston
+had already the guest room, so he ended up put in with me and Norah's
+things instead - poor man, having his good tweeds hung next to our
+aprons. We managed, though."
+
 events yesterday murder last happened
 "I have worked here for five years. Last night I cooked and washed up
 with Norah. At about 10:30 I heard a loud bang, it gave me quite a

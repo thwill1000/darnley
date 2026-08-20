@@ -80,9 +80,16 @@ flatfooted bootprints
 "The bootprints around the house look like mine, but I didn't make
 them. I'm not flat-footed."
 
-cheroot in the pond
+cheroot pond
 "A cheroot? Not me, old man! I'm one for Havanas if I'm not smoking
 the old pipe."
+
+suit
+"My suit, obviously. I turned up unannounced and Darnley's staff put me
+up in the servants' quarters rather than turf out young Coniston from
+the guest room. A man can't be expected to live out of a single case
+for two days, so I hung what I wasn't wearing wherever there was
+room."
 
 events yesterday murder last happened
 "I have known Darnley for about 20 years. It was some confidential

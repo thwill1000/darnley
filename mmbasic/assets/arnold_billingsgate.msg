@@ -105,9 +105,16 @@ mens shoe prints
 womens shoe prints
 "I don't know whose these are."
 
-cheroot in the pond
+cheroot pond
 "As far as I'm aware only the Colonel smoked cheroots. But he was a
 most particular man and would never throw a butt into the pond."
+
+suit
+"That suit belongs to Sir Redvers, sir. He arrived unexpectedly and, Mr.
+Coniston already being accommodated in the guest room, there was
+nowhere suitable to put him but the servants' quarters. I saw to it
+that his things were hung as tidily as the room allowed, though it is
+scarcely what a gentleman of his standing is accustomed to."
 
 events yesterday murder last happened
 "I have worked for the Darnley family since I was a boy. Colonel Darnley
