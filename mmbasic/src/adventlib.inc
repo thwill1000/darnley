@@ -374,6 +374,8 @@ Function find_response%(filename$, subject_words$())
 
   find_response% = -1
 
+  Const match_in$ = make_match_input$(subject_words$())
+
   Do
     Line Input #1, s$
     If Eof(#1) Then Exit Do
@@ -402,7 +404,7 @@ Function find_response%(filename$, subject_words$())
 
       eligible% = state.has_flags%(requires$())
       If eligible% Then
-        num_matches% = find_matches%(s$, subject_words$())
+        num_matches% = find_matches%(s$, match_in$)
         If num_matches% > best_num_matches% Then
           best_num_matches% = num_matches%
           find_response% = line_num% - lines_consumed%
@@ -464,12 +466,14 @@ Function find_exit_match%(words$())
 
   find_exit_match% = -1
 
+  Const match_in$ = make_match_input$(words$(), 2)
+
   Const num_exits% = Val(Field$(rooms$(r), 4, "|"))
   For i% = 1 To num_exits%
     loc_tag$ = Field$(rooms$(r), 4 + i%, "|")
     loc% = find_loc%(loc_tag$)
     loc_pattern$ = Field$(rooms$(loc%), 3, "|")
-    num_matches% = find_matches%(loc_pattern$, words$(), 2)
+    num_matches% = find_matches%(loc_pattern$, match_in$)
     If num_matches% > best_num_matches% Then
       best_num_matches% = num_matches%
       find_exit_match% = loc%
@@ -491,8 +495,10 @@ End Function
 Function find_obj%(words$(), first%, last%)
   Local i%, match_loc%, max_num_matches%, num_matches%, oloc%
 
+  Const match_in$ = make_match_input$(words$(), first%, last%)
+
   For i% = Bound(objects$(), 0) To Bound(objects$(), 1)
-    num_matches% = find_matches%(obj_pattern$(i%), words$(), first%, last%)
+    num_matches% = find_matches%(obj_pattern$(i%), match_in$)
     If Not num_matches% Then Continue For
     oloc% = obj_loc%(i%)
     If num_matches% > max_num_matches% Then
@@ -541,61 +547,55 @@ Function verb_examine()
   EndIf
 End Function
 
-' Counts how many words in needles$() appear as words of pattern$, case-insensitively.
+' TODO: comment this
+Function make_match_input$(w$(), first%, last%)
+  Local i%, s$ = "|"
+  apply_synonyms(w$())
+  For i% = Choice(first%, first%, Bound(w$(), 0)) To Choice(last%, last%, Bound(w$(), 1))
+    If w$(i%) = "" Then Exit For
+    Cat s$, w$(i%) + "|"
+  Next
+  make_match_input$ = LCase$(s$)
+End Function
+
+' Counts how many words in match_in$ appear as words of pattern$.
 '
 ' pattern$ is a space-separated list of words, optionally '+'/'-' prefixed
-' (see below), each compared in turn against every needle in needles$().
+' (see below), each compared in turn against every word in match_in$.
 '
 ' pattern$ may also contain multiple '|'-separated alternatives, each
-' scored independently against needles$() - including its own '+'/'-'
+' scored independently against match_in$ - including its own '+'/'-'
 ' enforcement - and the highest-scoring alternative's match count is
 ' returned. A pattern$ with no '|' is scored as a single alternative.
 '
 ' Each word of pattern$ (or of one of its '|'-separated alternatives) may
-' only be matched once; duplicate needles cannot both match the same word.
+' only be matched once; duplicate words in match_in$ are ignored/redundant.
 '
 ' A word of pattern$ may carry a '+' or '-' prefix (not part of the word
 ' for matching purposes, stripped before comparison), evaluated
 ' independently within each alternative:
-'   '+' - the word is MANDATORY: if it is not matched by any needle then
+'   '+' - the word is MANDATORY: if it is not matched by any word then
 '         that alternative's match count is 0, regardless of other matches
 '         found within it. A matched '+' word still counts towards the total.
-'   '-' - the word is FORBIDDEN: if it IS matched by any needle then that
+'   '-' - the word is FORBIDDEN: if it IS matched by any word then that
 '         alternative's match count is 0, regardless of other matches found
 '         within it.
-'
-' NOTE: needles$() is mutated in place - each element is lower-cased as a
-' side effect of matching. Callers that need to preserve the original casing
-' of needles$() across repeated calls should pass a copy.
 '
 ' @param pattern$    A space-separated pattern to match, or several such
 '                    patterns separated by '|', each treated as an
 '                    alternative. Any word may be prefixed with '+'
-'                    (mandatory) or '-' (forbidden).
-' @param needles$()  The array of words to match.
-' @param n_first%    Index of first needle to consider (default 0 = start from base).
-' @param n_last%     Index of last needle to consider (default 0 = use full range).
-' @return            The highest number of needles matched by any single
+'                    (mandatory) or '-' (forbidden). All the words in the
+'                    pattern will be compared as if lower-case.
+' @param match_in$   The words to match, in lower-case separated by pipes,
+'                    e.g. |bird|cat|dog|
+' @return            The highest number of words matched by any single
 '                    alternative in pattern$, or 0 if every alternative
 '                    either matched nothing, left a '+' word unmatched, or
 '                    matched a '-' word.
-Function find_matches%(pattern$, needles$(), n_first%, n_last%)
+Function find_matches%(pattern$, match_in$)
   Local haystack$(MAX_WORDS) Length MAX_WORD_LENGTH
   Const h_first% = Bound(haystack$(), 0), h_last% = Bound(haystack$(), 1)
   Local h$, i%, num_matches%, pattern_idx%, sub_pattern$
-
-  If n_first% = 0 Then n_first% = Bound(needles$(), 0)
-  If n_last% = 0 Then n_last% = Bound(needles$(), 1)
-
-  ' TODO: Bail early if needles$() is empty
-
-  apply_synonyms(needles$())
-  Local inp$ = "|"
-  For i% = n_first% To n_last%
-    If needles$(i%) = "" Then Exit For
-    Cat inp$, needles$(i%) + "|"
-  Next
-  inp$ = LCase$(inp$)
 
   Do
     ' Process next sub-pattern, separated by "|"
@@ -610,16 +610,16 @@ Function find_matches%(pattern$, needles$(), n_first%, n_last%)
       If h$ = "" Then Exit For
       Select Case Left$(h$, 1)
         Case "+"
-          If InStr(inp$, "|" + Mid$(h$, 2) + "|") Then
+          If InStr(match_in$, "|" + Mid$(h$, 2) + "|") Then
             Inc num_matches%
           Else
             num_matches% = 0
             Exit For
           EndIf
         Case "-"
-          If InStr(inp$, "|" + Mid$(h$, 2) + "|") Then num_matches% = 0 : Exit For
+          If InStr(match_in$, "|" + Mid$(h$, 2) + "|") Then num_matches% = 0 : Exit For
         Case Else
-          If InStr(inp$, "|" + h$ + "|") Then Inc num_matches%
+          If InStr(match_in$, "|" + h$ + "|") Then Inc num_matches%
       End Select
     Next
 
