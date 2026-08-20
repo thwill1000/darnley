@@ -4,12 +4,13 @@
 
 ' Implementation of script/walkthrough record and replay.
 
+'!if !defined(NO_INCLUDE_GUARDS)
 On Error Skip 1 : Dim sys.VERSION = -1
 If sys.VERSION = -1 Then Error "'system.inc' not included"
-' sys.requires("advent", "crypt", "console", "file")
 sys.requires("console", "file")
 sys.provides("script")
 If sys.err$ <> "" Then Error sys.err$
+'!endif
 
 Const script.DIR$ = file.get_canonical$(Mm.Info$(Path) + "../scripts")
 Const script.FD_IN% = 2

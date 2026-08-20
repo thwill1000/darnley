@@ -3,11 +3,13 @@
 
 ' Current game state with save and restore.
 
+'!if !defined(NO_INCLUDE_GUARDS)
 On Error Skip 1 : Dim sys.VERSION = -1
 If sys.VERSION = -1 Then Error "'system.inc' not included"
 sys.requires("advdata", "console", "file", "words")
 sys.provides("state")
 If sys.err$ <> "" Then Error sys.err$
+'!endif
 
 Const state.SAVE_DIR$ = file.get_canonical$(Mm.Info$(Path) + "../saves")
 Const state.FD% = 1
