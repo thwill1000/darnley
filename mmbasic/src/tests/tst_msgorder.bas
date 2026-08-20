@@ -26,9 +26,6 @@ sys.provides("console")
 #Include "../adventlib.inc"
 #Include "msgorder.inc"
 
-Const TEST_DATA_FILE$ = Mm.Info(Path) + "test_advent.dat"
-Const TEMPLATE_FILE$ = Mm.Info(Path) + "test_msgorder_template.msg"
-
 Dim con_output$
 
 Sub con.foreground(color$)
@@ -51,9 +48,11 @@ Sub con.print_fail(s$)
   con.println("[[red:" + s$ + "]]")
 End Sub
 
-adv.asset_dir$ = Mm.Info(Path)
-adv.msg_file$ = adv.asset_dir$ + "test.msg"
-advdata.init(TEST_DATA_FILE$)
+adv.asset_dir$ = Mm.Info(Path) + "test-assets/"
+adv.msg_file$ = adv.asset_dir$ + "messages.dat"
+advdata.init(adv.asset_dir$ + "advent.dat")
+
+Const TEMPLATE_FILE$ = adv.asset_dir$ + "test_msgorder_template.msg"
 
 add_test("build_alt_set$() with a single (no '|') alternative returns it lower-cased", "test_bas_gvn_single")
 add_test("build_alt_set$() sorts multiple alternatives regardless of source order", "test_bas_gvn_multi_sorted")
@@ -221,7 +220,7 @@ End Sub
 
 Sub test_re_gvn_empty()
   Local keys$(msgorder.MAX_ENTRIES%) Length 64, n%
-  msgorder.read_entries(Mm.Info(Path) + "test_msgorder_empty.msg", keys$(), n%)
+  msgorder.read_entries(adv.asset_dir$ + "test_msgorder_empty.msg", keys$(), n%)
   assert_int_equals(0, n%)
 End Sub
 
@@ -237,13 +236,13 @@ End Function
 
 Sub test_val_gvn_full_match()
   Local err$
-  assert_int_equals(1, read_and_validate%(Mm.Info(Path) + "test_msgorder_full_match.msg", err$))
+  assert_int_equals(1, read_and_validate%(adv.asset_dir$ + "test_msgorder_full_match.msg", err$))
   assert_string_equals("", err$)
 End Sub
 
 Sub test_val_gvn_subset()
   Local err$
-  assert_int_equals(1, read_and_validate%(Mm.Info(Path) + "test_msgorder_subset.msg", err$))
+  assert_int_equals(1, read_and_validate%(adv.asset_dir$ + "test_msgorder_subset.msg", err$))
   assert_string_equals("", err$)
 End Sub
 
@@ -252,7 +251,7 @@ End Sub
 ' alternatives are always permitted
 Sub test_val_gvn_extra_alt_ok()
   Local err$
-  assert_int_equals(1, read_and_validate%(Mm.Info(Path) + "test_msgorder_extra_alt_ok.msg", err$))
+  assert_int_equals(1, read_and_validate%(adv.asset_dir$ + "test_msgorder_extra_alt_ok.msg", err$))
   assert_string_equals("", err$)
 End Sub
 
@@ -260,30 +259,30 @@ End Sub
 ' "notsarah" entirely, rather than adding to it - this must be rejected
 Sub test_val_gvn_extra_alt_missing()
   Local err$
-  assert_int_equals(0, read_and_validate%(Mm.Info(Path) + "test_msgorder_extra_alt_missing.msg", err$))
+  assert_int_equals(0, read_and_validate%(adv.asset_dir$ + "test_msgorder_extra_alt_missing.msg", err$))
   assert_int_equals(1, Len(err$) > 0)
 End Sub
 
 Sub test_val_gvn_reordered()
   Local err$
-  assert_int_equals(0, read_and_validate%(Mm.Info(Path) + "test_msgorder_reordered.msg", err$))
+  assert_int_equals(0, read_and_validate%(adv.asset_dir$ + "test_msgorder_reordered.msg", err$))
   assert_int_equals(1, Len(err$) > 0)
 End Sub
 
 Sub test_val_gvn_unknown()
   Local err$
-  assert_int_equals(0, read_and_validate%(Mm.Info(Path) + "test_msgorder_unknown.msg", err$))
+  assert_int_equals(0, read_and_validate%(adv.asset_dir$ + "test_msgorder_unknown.msg", err$))
   assert_int_equals(1, InStr(err$, "zzz_unknown_entry") > 0)
 End Sub
 
 Sub test_val_gvn_no_wildcard()
   Local err$
-  assert_int_equals(0, read_and_validate%(Mm.Info(Path) + "test_msgorder_no_wildcard.msg", err$))
+  assert_int_equals(0, read_and_validate%(adv.asset_dir$ + "test_msgorder_no_wildcard.msg", err$))
   assert_int_equals(1, InStr(err$, "wildcard") > 0)
 End Sub
 
 Sub test_val_gvn_empty()
   Local err$
-  assert_int_equals(0, read_and_validate%(Mm.Info(Path) + "test_msgorder_empty.msg", err$))
+  assert_int_equals(0, read_and_validate%(adv.asset_dir$ + "test_msgorder_empty.msg", err$))
   assert_int_equals(1, InStr(err$, "empty") > 0)
 End Sub

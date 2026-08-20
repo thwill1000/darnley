@@ -25,8 +25,6 @@ sys.provides("console")
 #Include "../state.inc"
 #Include "../adventlib.inc"
 
-Const TEST_DATA_FILE$ = Mm.Info(Path) + "test_advent.dat"
-
 Dim con_output$
 
 Sub con.foreground(color$)
@@ -49,9 +47,9 @@ Sub con.print_fail(s$)
   con.println("[[red:" + s$ + "]]")
 End Sub
 
-adv.asset_dir$ = Mm.Info(Path)
-adv.msg_file$ = adv.asset_dir$ + "test.msg"
-advdata.init(TEST_DATA_FILE$)
+adv.asset_dir$ = Mm.Info(Path) + "test-assets/"
+adv.msg_file$ = adv.asset_dir$ + "messages.dat"
+advdata.init(adv.asset_dir$ + "advent.dat")
 
 add_test("verb_say() with no target says to first person in room about all words", "test_say_gvn_no_comma")
 add_test("verb_say() with no target and matching keyword gets a real answer", "test_say_gvn_no_comma_matches")

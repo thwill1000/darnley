@@ -25,8 +25,6 @@ sys.provides("console")
 #Include "../state.inc"
 #Include "../adventlib.inc"
 
-Const TEST_DATA_FILE$ = Mm.Info(Path) + "test_advent.dat"
-
 Dim con_output$
 
 Sub con.foreground(color$)
@@ -49,9 +47,9 @@ Sub con.print_fail(s$)
   con.println("[[red:" + s$ + "]]")
 End Sub
 
-adv.asset_dir$ = Mm.Info(Path)
-adv.msg_file$ = adv.asset_dir$ + "test.msg"
-advdata.init(TEST_DATA_FILE$)
+adv.asset_dir$ = Mm.Info(Path) + "test-assets/"
+adv.msg_file$ = adv.asset_dir$ + "messages.dat"
+advdata.init(adv.asset_dir$ + "advent.dat")
 
 add_test("verb_go() moves to a matching exit", "test_go_gvn_match")
 add_test("verb_go() moves to a different matching exit", "test_go_gvn_other_match")

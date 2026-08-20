@@ -17,11 +17,9 @@ sys.provides("console")
 
 #Include "../advdata.inc"
 
-Const TEST_DATA_FILE$ = Mm.Info(Path) + "test_advent.dat"
-
-adv.asset_dir$ = Mm.Info(Path)
-adv.msg_file$ = adv.asset_dir$ + "test.msg"
-advdata.init(TEST_DATA_FILE$)
+adv.asset_dir$ = Mm.Info(Path) + "test-assets/"
+adv.msg_file$ = adv.asset_dir$ + "messages.dat"
+advdata.init(adv.asset_dir$ + "advent.dat")
 
 add_test("test_find_loc_gvn_first")
 add_test("test_find_loc_gvn_last")
