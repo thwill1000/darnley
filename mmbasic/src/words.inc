@@ -1,10 +1,11 @@
 ' Copyright (c) 2025-2026 Thomas Hugo Williams
 
+'!if !defined(NO_INCLUDE_GUARDS)
 On Error Skip 1 : Dim sys.VERSION = -1
 If sys.VERSION = -1 Then Error "'system.inc' not included"
-' sys.requires("console", "script", "state", "string", "words")
 sys.provides("words")
 If sys.err$ <> "" Then Error sys.err$
+'!endif
 
 Const MAX_WORDS = 20
 Const MAX_WORD_LENGTH = 20

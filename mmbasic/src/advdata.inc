@@ -1,10 +1,12 @@
 ' Copyright (c) 2025-2026 Thomas Hugo Williams
 
+'!if !defined(NO_INCLUDE_GUARDS)
 On Error Skip 1 : Dim sys.VERSION = -1
 If sys.VERSION = -1 Then Error "'system.inc' not included"
 sys.requires("console")
 sys.provides("advdata")
 If sys.err$ <> "" Then Error sys.err$
+'!endif
 
 Dim adv.asset_dir$ = Mm.Info(Path) + "../assets/"
 Dim adv.msg_file$ = adv.asset_dir$ + "/messages.dat"
