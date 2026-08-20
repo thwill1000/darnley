@@ -572,8 +572,7 @@ End Function
 '                    patterns separated by '|', each treated as an
 '                    alternative. Any word may be prefixed with '+'
 '                    (mandatory) or '-' (forbidden).
-' @param needles$()  The array of words to match. Mutated in place: elements
-'                    are lower-cased as a side effect.
+' @param needles$()  The array of words to match.
 ' @param n_first%    Index of first needle to consider (default 0 = start from base).
 ' @param n_last%     Index of last needle to consider (default 0 = use full range).
 ' @return            The highest number of needles matched by any single
@@ -583,16 +582,20 @@ End Function
 Function find_matches%(pattern$, needles$(), n_first%, n_last%)
   Local haystack$(MAX_WORDS) Length MAX_WORD_LENGTH
   Const h_first% = Bound(haystack$(), 0), h_last% = Bound(haystack$(), 1)
-  Local h_word$, i%, j%, num_matches%, pattern_idx%, sub_pattern$, used%(h_last%)
+  Local h$, i%, num_matches%, pattern_idx%, sub_pattern$
 
   If n_first% = 0 Then n_first% = Bound(needles$(), 0)
   If n_last% = 0 Then n_last% = Bound(needles$(), 1)
 
-  ' TODO: needles$() should already be lower-case
-  For i% = n_first% To n_last%
-    needles$(i%) = LCase$(needles$(i%))
-  Next
+  ' TODO: Bail early if needles$() is empty
+
   apply_synonyms(needles$())
+  Local inp$ = "|"
+  For i% = n_first% To n_last%
+    If needles$(i%) = "" Then Exit For
+    Cat inp$, needles$(i%) + "|"
+  Next
+  inp$ = LCase$(inp$)
 
   Do
     ' Process next sub-pattern, separated by "|"
@@ -600,34 +603,23 @@ Function find_matches%(pattern$, needles$(), n_first%, n_last%)
     sub_pattern$ = Field$(pattern$, pattern_idx%, "|")
     If sub_pattern$ = "" Then Exit Do
     i% = split_words%(sub_pattern$, haystack$())
-    For i% = Bound(used%(), 0) To Bound(used%(), 1)
-      haystack$(i%) = LCase$(haystack$(i%)) ' TODO: should already be lower-case
-      used%(i%) = 0
-    Next
     num_matches% = 0
 
-    For i% = n_first% To n_last%
-      If needles$(i%) = "" Then Exit For
-      For j% = h_first% To h_last%
-        If haystack$(j%) = "" Then Exit For
-        h_word$ = haystack$(j%)
-        If InStr("+-", Left$(h_word$, 1)) Then h_word$ = Mid$(h_word$, 2)
-        If Not used%(j%) And needles$(i%) = h_word$ Then
-          Inc num_matches%
-          used%(j%) = 1
-          Exit For
-        EndIf
-      Next
-    Next
-
-    ' Enforce '+' (mandatory) and '-' (forbidden) prefixes.
-    For j% = h_first% To h_last%
-      If haystack$(j%) = "" Then Exit For
-      Select Case Left$(haystack$(j%), 1)
+    For i% = h_first% To h_last%
+      h$ = haystack$(i%)
+      If h$ = "" Then Exit For
+      Select Case Left$(h$, 1)
         Case "+"
-          If Not used%(j%) Then num_matches% = 0
+          If InStr(inp$, "|" + Mid$(h$, 2) + "|") Then
+            Inc num_matches%
+          Else
+            num_matches% = 0
+            Exit For
+          EndIf
         Case "-"
-          If used%(j%) Then num_matches% = 0
+          If InStr(inp$, "|" + Mid$(h$, 2) + "|") Then num_matches% = 0 : Exit For
+        Case Else
+          If InStr(inp$, "|" + h$ + "|") Then Inc num_matches%
       End Select
     Next
 
