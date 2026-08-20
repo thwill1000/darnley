@@ -5,6 +5,8 @@ Option Base 1
 Option Explicit On
 Option Default Integer
 
+Const ut.MAX_TESTS% = 150
+
 #Include "splib/system.inc"
 #Include "splib/array.inc"
 #Include "splib/bits.inc"
@@ -63,14 +65,9 @@ add_test("test_find_matches_gvn_one")
 add_test("test_find_matches_gvn_all")
 add_test("test_find_matches_gvn_partial")
 add_test("test_find_matches_gvn_case")
-add_test("test_find_matches_gvn_no_hay")
-add_test("test_find_matches_gvn_no_needles")
+add_test("test_find_matches_gvn_no_pat")
+add_test("test_find_matches_gvn_no_inp")
 add_test("test_find_matches_gvn_dupe")
-add_test("test_find_matches_gvn_first")
-add_test("test_find_matches_gvn_last")
-add_test("test_find_matches_first_and_last")
-add_test("test_find_matches_first_gt_last")
-add_test("test_find_matches_empty_needle")
 add_test("test_find_matches_gvn_plus_miss")
 add_test("test_find_matches_gvn_plus_ok")
 add_test("test_find_matches_gvn_minus_ok")
@@ -153,6 +150,16 @@ add_test("apply_synonyms() is a no-op when synonyms$() is empty", "test_as_gvn_e
 add_test("apply_synonyms() stops processing on an empty word element", "test_as_gvn_empty_word")
 add_test("apply_synonyms() preserves word order and array positions", "test_as_gvn_preserves_order")
 add_test("apply_synonyms() handles a single-element words$() array", "test_as_gvn_single_word")
+add_test("make_match_input$() with default bounds builds pipe-delimited string from full array", "test_mmi_gvn_default_bounds")
+add_test("make_match_input$() stops at the first empty element", "test_mmi_gvn_stops_at_empty")
+add_test("make_match_input$() lower-cases all words", "test_mmi_gvn_lowercase")
+add_test("make_match_input$() applies synonyms before building the string", "test_mmi_gvn_applies_synonyms")
+add_test("make_match_input$() mutates w$() in place via synonym substitution", "test_mmi_gvn_mutates_array")
+add_test("make_match_input$() restricts output to a given first%/last% range", "test_mmi_gvn_first_last")
+add_test("make_match_input$() with only first% given defaults last% to the array's upper bound", "test_mmi_gvn_first_only")
+add_test("make_match_input$() with only last% given defaults first% to the array's lower bound", "test_mmi_gvn_last_only")
+add_test("make_match_input$() on a fully empty array returns just the leading pipe", "test_mmi_gvn_empty_array")
+add_test("make_match_input$() with a single word", "test_mmi_gvn_single_word")
 
 run_tests()
 End
@@ -161,6 +168,8 @@ Sub setup_test()
   con_output$ = ""
   state.reset()
 End Sub
+
+' count_data%() -----------------------------------------------------------
 
 ' Empty data block returns zero
 Sub test_count_data_gvn_empty()
@@ -204,6 +213,8 @@ tcd_two_b:
 Data "alpha"
 Data "beta"
 Data "" ' End
+
+' parse_common() ----------------------------------------------------------
 
 ' Returns 0 on successful parse
 Sub test_parse_common_rtns_success()
@@ -332,6 +343,8 @@ Sub test_parse_common_split_errors()
   assert_string_equals("[[red:Word too long.]]" + sys.CRLF$, con_output$)
 End Sub
 
+' read_directives() -------------------------------------------------------
+
 ' No directives — first line read is treated as the response immediately
 Sub test_read_directives_gvn_none()
   Local requires$(4), provides$(4), first_line$, lines_consumed%, s$
@@ -441,6 +454,8 @@ Sub test_read_directives_empty_rsp()
   assert_int_equals(1, lines_consumed%)
 End Sub
 
+' print_body() ------------------------------------------------------------
+
 ' A single-line body is printed as-is, with no trailing newline added
 Sub test_print_body_gvn_single_line()
   Local s$
@@ -471,6 +486,8 @@ Sub test_print_body_gvn_empty()
   print_body("")
   assert_string_equals("", con_output$)
 End Sub
+
+' print_message_lines() ---------------------------------------------------
 
 ' Reads directives and prints the body for an entry with no directives
 Sub test_pml_gvn_plain()
@@ -525,226 +542,193 @@ Sub test_pml_ignores_requires()
   assert_string_equals(str.quote$("both directives"), con_output$)
 End Sub
 
+' find_matches%() ---------------------------------------------------------
+
 ' No matches found in haystack
 Sub test_find_matches_gvn_none()
   Const pattern$ = "cat dog bird"
-  Local needles$(4) = ("fish", "frog", "", "")
-  assert_int_equals(0, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|fish|frog|"
+  assert_int_equals(0, find_matches%(pattern$, match_in$))
 End Sub
 
 ' One needle matches one haystack word
 Sub test_find_matches_gvn_one()
   Const pattern$ = "cat dog bird"
-  Local needles$(4) = ("dog", "", "", "")
-  assert_int_equals(1, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|dog|"
+  assert_int_equals(1, find_matches%(pattern$, match_in$))
 End Sub
 
 ' All needles match haystack words
 Sub test_find_matches_gvn_all()
   Const pattern$ = "cat dog bird"
-  Local needles$(4) = ("cat", "dog", "bird", "")
-  assert_int_equals(3, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|cat|dog|bird|"
+  assert_int_equals(3, find_matches%(pattern$, match_in$))
 End Sub
 
 ' Some needles match, some do not
 Sub test_find_matches_gvn_partial()
   Const pattern$ = "cat dog bird"
-  Local needles$(4) = ("cat", "fish", "bird", "")
-  assert_int_equals(2, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|cat|fish|bird|"
+  assert_int_equals(2, find_matches%(pattern$, match_in$))
 End Sub
 
 ' Matching is case-insensitive
 Sub test_find_matches_gvn_case()
   Const pattern$ = "Cat DOG Bird"
-  Local needles$(4) = ("cat", "dog", "bird", "")
-  assert_int_equals(3, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|cat|dog|bird|"
+  assert_int_equals(3, find_matches%(pattern$, match_in$))
 End Sub
 
 ' Empty haystack returns zero
-Sub test_find_matches_gvn_no_hay()
+Sub test_find_matches_gvn_no_pat()
   Const pattern$ = ""
-  Local needles$(4) = ("cat", "dog", "", "")
-  assert_int_equals(0, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|cat|dog|"
+  assert_int_equals(0, find_matches%(pattern$, match_in$))
 End Sub
 
 ' Empty needles array returns zero
-Sub test_find_matches_gvn_no_needles()
+Sub test_find_matches_gvn_no_inp()
   Const pattern$ = "cat dog bird"
-  Local needles$(4)
-  assert_int_equals(0, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|"
+  assert_int_equals(0, find_matches%(pattern$, match_in$))
 End Sub
 
 ' Duplicate needle 'cat' is only matched once
 Sub test_find_matches_gvn_dupe()
   Const pattern$ = "cat dog"
-  Local needles$(4) = ("cat", "cat", "", "")
-  assert_int_equals(1, find_matches%(pattern$, needles$(), 0, 0))
-End Sub
-
-' first% skips earlier needles
-Sub test_find_matches_gvn_first()
-  Const pattern$ = "cat dog"
-  Local needles$(4) = ("cat", "dog", "", "")
-  assert_int_equals(1, find_matches%(pattern$, needles$(), 2, 0))
-End Sub
-
-' last% ignores later needles
-Sub test_find_matches_gvn_last()
-  Const pattern$ = "cat dog"
-  Local needles$(4) = ("cat", "dog", "", "")
-  assert_int_equals(1, find_matches%(pattern$, needles$(), 0, 1))
-End Sub
-
-' first% and last% restrict to a single needle
-Sub test_find_matches_first_and_last()
-  Const pattern$  = "cat dog bird"
-  Local needles$(4) = ("cat", "dog", "bird", "")
-  assert_int_equals(1, find_matches%(pattern$, needles$(), 2, 2))
-End Sub
-
-' first% beyond last% matches nothing
-Sub test_find_matches_first_gt_last()
-  Const pattern$ = "cat dog"
-  Local needles$(4) = ("cat", "dog", "", "")
-  assert_int_equals(0, find_matches%(pattern$, needles$(), 3, 2))
-End Sub
-
-' Empty needle element stops iteration early
-Sub test_find_matches_empty_needle()
-  Const pattern$ = "cat dog bird"
-  Local needles$(4) = ("cat", "", "bird", "")
-  assert_int_equals(1, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|cat|cat|"
+  assert_int_equals(1, find_matches%(pattern$, match_in$))
 End Sub
 
 ' A '+' haystack word not matched by any needle forces 0, even though
 ' another (non-prefixed) word did match.
 Sub test_find_matches_gvn_plus_miss()
   Const pattern$ = "+cat dog"
-  Local needles$(4) Length MAX_WORD_LENGTH = ("dog", "", "", "")
-  assert_int_equals(0, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|dog|"
+  assert_int_equals(0, find_matches%(pattern$, match_in$))
 End Sub
 
 ' A '+' haystack word that IS matched counts towards the total, same as a
 ' plain word would; the prefix is stripped before comparison.
 Sub test_find_matches_gvn_plus_ok()
   Const pattern$ = "+cat dog"
-  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "dog", "", "")
-  assert_int_equals(2, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|cat|dog|"
+  assert_int_equals(2, find_matches%(pattern$, match_in$))
 End Sub
 
 ' A '-' haystack word that is NOT matched has no effect - normal matches
 ' still count.
 Sub test_find_matches_gvn_minus_ok()
   Const pattern$ = "cat -dog"
-  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "", "", "")
-  assert_int_equals(1, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|cat|"
+  assert_int_equals(1, find_matches%(pattern$, match_in$))
 End Sub
 
 ' A '-' haystack word that IS matched forces 0, even though other words
 ' also matched.
 Sub test_find_matches_gvn_minus_bad()
   Const pattern$ = "cat -dog"
-  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "dog", "", "")
-  assert_int_equals(0, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|cat|dog|"
+  assert_int_equals(0, find_matches%(pattern$, match_in$))
 End Sub
 
 ' Combination: mandatory word matched, forbidden word not matched -
 ' succeeds, and the '+' match contributes to the count.
 Sub test_find_matches_gvn_both_ok()
   Const pattern$ = "+cat -dog bird"
-  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "bird", "", "")
-  assert_int_equals(2, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|cat|bird|"
+  assert_int_equals(2, find_matches%(pattern$, match_in$))
 End Sub
 
 ' Combination: mandatory word left unmatched - fails even though the
 ' forbidden word was correctly avoided.
 Sub test_find_matches_gvn_plus_fail()
   Const pattern$ = "+cat -dog bird"
-  Local needles$(4) Length MAX_WORD_LENGTH = ("bird", "", "", "")
-  assert_int_equals(0, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|bird|"
+  assert_int_equals(0, find_matches%(pattern$, match_in$))
 End Sub
 
 ' Combination: forbidden word matched - fails even though the mandatory
 ' word was also matched.
 Sub test_find_matches_gvn_minus_fail()
   Const pattern$ = "+cat -dog bird"
-  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "dog", "", "")
-  assert_int_equals(0, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|cat|dog|"
+  assert_int_equals(0, find_matches%(pattern$, match_in$))
 End Sub
 
 ' Multiple '+' words - if even one of several mandatory words is missing,
 ' the whole match fails.
 Sub test_find_matches_gvn_multi_plus()
   Const pattern$ = "+cat +dog bird"
-  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "bird", "", "")
-  assert_int_equals(0, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|cat|bird|"
+  assert_int_equals(0, find_matches%(pattern$, match_in$))
 End Sub
 
 ' Matching against a '+' word (after stripping the prefix) is still
 ' case-insensitive.
 Sub test_find_matches_gvn_plus_case()
   Const pattern$ = "+CAT"
-  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "", "", "")
-  assert_int_equals(1, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|cat|"
+  assert_int_equals(1, find_matches%(pattern$, match_in$))
 End Sub
 
 ' Matching against a '-' word (after stripping the prefix) is still
 ' case-insensitive when checking whether it was forbiddenly matched.
 Sub test_find_matches_gvn_minus_case()
   Const pattern$ = "-CAT"
-  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "", "", "")
-  assert_int_equals(0, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|cat|"
+  assert_int_equals(0, find_matches%(pattern$, match_in$))
 End Sub
 
 ' First alternative matches, second is irrelevant
 Sub test_fm_gvn_or_first()
   Const pattern$ = "cat dog|bird fish"
-  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "dog", "", "")
-  assert_int_equals(2, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|cat|dog|"
+  assert_int_equals(2, find_matches%(pattern$, match_in$))
 End Sub
 
 ' Only the second alternative matches
 Sub test_fm_gvn_or_second()
   Const pattern$ = "cat dog|bird fish"
-  Local needles$(4) Length MAX_WORD_LENGTH = ("bird", "fish", "", "")
-  assert_int_equals(2, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|bird|fish|"
+  assert_int_equals(2, find_matches%(pattern$, match_in$))
 End Sub
 
 ' Neither alternative matches
 Sub test_fm_gvn_or_none()
   Const pattern$ = "cat dog|bird fish"
-  Local needles$(4) Length MAX_WORD_LENGTH = ("snake", "", "", "")
-  assert_int_equals(0, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|snake|"
+  assert_int_equals(0, find_matches%(pattern$, match_in$))
 End Sub
 
 ' Both alternatives match, but by differing amounts - the higher score wins
 Sub test_fm_gvn_or_max()
   Const pattern$ = "cat|cat dog bird"
-  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "dog", "bird", "")
-  assert_int_equals(3, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|cat|dog|bird|"
+  assert_int_equals(3, find_matches%(pattern$, match_in$))
 End Sub
 
 ' More than two alternatives are all considered
 Sub test_fm_gvn_or_3way()
   Const pattern$ = "cat|dog|bird"
-  Local needles$(4) Length MAX_WORD_LENGTH = ("bird", "", "", "")
-  assert_int_equals(1, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|bird|"
+  assert_int_equals(1, find_matches%(pattern$, match_in$))
 End Sub
 
 ' A '+' word in one alternative that fails does not disqualify a later
 ' alternative where it is satisfied
 Sub test_fm_gvn_or_plus()
   Const pattern$ = "+cat dog|+bird fish"
-  Local needles$(4) Length MAX_WORD_LENGTH = ("bird", "fish", "", "")
-  assert_int_equals(2, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|bird|fish|"
+  assert_int_equals(2, find_matches%(pattern$, match_in$))
 End Sub
 
 ' A '-' word matched in one alternative zeroes only that alternative, not
 ' a later one where the forbidden word is absent
 Sub test_fm_gvn_or_minus()
   Const pattern$ = "cat -dog|cat -bird"
-  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "dog", "", "")
-  assert_int_equals(1, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|cat|dog|"
+  assert_int_equals(1, find_matches%(pattern$, match_in$))
 End Sub
 
 ' A trailing/empty sub-pattern (e.g. "cat|") stops processing at that
@@ -752,9 +736,11 @@ End Sub
 ' nonexistent field
 Sub test_fm_gvn_or_empty_sub()
   Const pattern$ = "cat|"
-  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "", "", "")
-  assert_int_equals(1, find_matches%(pattern$, needles$(), 0, 0))
+  Const match_in$ = "|cat|"
+  assert_int_equals(1, find_matches%(pattern$, match_in$))
 End Sub
+
+' find_exit_match%() ------------------------------------------------------
 
 ' r=LOC001; "two" matches the exit "Room Two" (LOC002)
 Sub test_fem_gvn_match()
@@ -792,6 +778,8 @@ Sub test_fem_gvn_case()
   assert_int_equals(2, find_exit_match%(words$()))
 End Sub
 
+' find_obj%() -------------------------------------------------------------
+
 Sub test_find_obj_gvn_current()
   ' Object 3 (Red Gem) is in room 1, current room is 1 - only "gem" matches OBJ003
   r = 1
@@ -825,6 +813,8 @@ Sub test_find_obj_rtns_best()
   Local words$(4) Length MAX_WORD_LENGTH = ("curious", "key", "red", "")
   assert_int_equals(4, find_obj%(words$()))
 End Sub
+
+' print_message() ---------------------------------------------------------
 
 ' Plain entry with no directives prints successfully
 Sub test_pm_gvn_plain()
@@ -906,6 +896,8 @@ Sub test_pm_comment_b4_entry()
   assert_string_equals(str.quote$("response after comment") + sys.CRLF$, con_output$)
 End Sub
 
+' print_message_or_fail() -------------------------------------------------
+
 ' print_message_or_fail() does not raise when an eligible entry is found
 Sub test_pmf_gvn_success()
   print_message_or_fail("PLAIN_MSG")
@@ -924,32 +916,7 @@ Sub test_pmf_gvn_all_blocked()
   assert_string_equals("[[red:ERROR: message ALL_BLOCKED_MSG not found.]]" + sys.CRLF$, con_output$)
 End Sub
 
-' find_about%() finds "about" when present and no comma
-Sub test_find_about_gvn_about()
-  Local words$(4) Length MAX_WORD_LENGTH = ("ask", "sarah", "about", "murder")
-  assert_int_equals(3, find_about%(words$()))
-End Sub
-
-' find_about%() finds "," when present and no "about"
-Sub test_find_about_gvn_comma()
-  Local words$(4) Length MAX_WORD_LENGTH = ("sarah", ",", "murder", "")
-  assert_int_equals(2, find_about%(words$()))
-End Sub
-
-' find_about%() prefers whichever separator comes first
-Sub test_find_about_gvn_both()
-  Local words$(5) Length MAX_WORD_LENGTH = ("sarah", ",", "about", "murder", "")
-  assert_int_equals(2, find_about%(words$()))
-
-  Local words2$(5) Length MAX_WORD_LENGTH = ("sarah", "about", ",", "murder", "")
-  assert_int_equals(2, find_about%(words2$()))
-End Sub
-
-' find_about%() returns 0 when neither separator is present
-Sub test_find_about_gvn_neither()
-  Local words$(3) Length MAX_WORD_LENGTH = ("sarah", "murder", "")
-  assert_int_equals(0, find_about%(words$()))
-End Sub
+' apply_synonyms() --------------------------------------------------------
 
 ' A word with no matching entry anywhere in synonyms$() is left unchanged
 Sub test_as_gvn_no_match()
@@ -1071,4 +1038,69 @@ Sub test_as_gvn_single_word()
   Local words$(2) Length MAX_WORD_LENGTH = ("sara", "")
   apply_synonyms(words$())
   assert_string_equals("sarah", words$(1))
+End Sub
+
+' make_match_input$() -----------------------------------------------------
+
+' With first%/last% = 0 (defaults), the full array bounds are used
+Sub test_mmi_gvn_default_bounds()
+  Local w$(4) Length MAX_WORD_LENGTH = ("cat", "dog", "bird", "")
+  assert_string_equals("|cat|dog|bird|", make_match_input$(w$(), 0, 0))
+End Sub
+
+' Scanning stops at the first empty element within the range
+Sub test_mmi_gvn_stops_at_empty()
+  Local w$(4) Length MAX_WORD_LENGTH = ("cat", "", "bird", "")
+  assert_string_equals("|cat|", make_match_input$(w$(), 0, 0))
+End Sub
+
+' All words are lower-cased in the output, regardless of input case
+Sub test_mmi_gvn_lowercase()
+  Local w$(4) Length MAX_WORD_LENGTH = ("CAT", "Dog", "", "")
+  assert_string_equals("|cat|dog|", make_match_input$(w$(), 0, 0))
+End Sub
+
+' Synonyms (from the loaded advent.dat synonym table) are applied before
+' the match string is built
+Sub test_mmi_gvn_applies_synonyms()
+  Local w$(4) Length MAX_WORD_LENGTH = ("milicent", "gramaphone", "", "")
+  assert_string_equals("|millicent|gramophone|", make_match_input$(w$(), 0, 0))
+End Sub
+
+' apply_synonyms() mutates w$() directly, so the caller's array is left
+' holding the canonical form after the call, not just the returned string
+Sub test_mmi_gvn_mutates_array()
+  Local w$(4) Length MAX_WORD_LENGTH = ("milicent", "", "", "")
+  Local unused$ = make_match_input$(w$(), 0, 0)
+  assert_string_equals("millicent", w$(1))
+End Sub
+
+' Explicit first%/last% restricts which words are included
+Sub test_mmi_gvn_first_last()
+  Local w$(4) Length MAX_WORD_LENGTH = ("say", "sarah", "about", "murder")
+  assert_string_equals("|sarah|about|", make_match_input$(w$(), 2, 3))
+End Sub
+
+' first% given, last%=0 defaults to the array's upper bound
+Sub test_mmi_gvn_first_only()
+  Local w$(4) Length MAX_WORD_LENGTH = ("say", "sarah", "about", "murder")
+  assert_string_equals("|sarah|about|murder|", make_match_input$(w$(), 2, 0))
+End Sub
+
+' first%=0 defaults to the array's lower bound, last% restricts the end
+Sub test_mmi_gvn_last_only()
+  Local w$(4) Length MAX_WORD_LENGTH = ("say", "sarah", "about", "murder")
+  assert_string_equals("|say|sarah|", make_match_input$(w$(), 0, 2))
+End Sub
+
+' A fully empty array yields just the leading pipe
+Sub test_mmi_gvn_empty_array()
+  Local w$(4) Length MAX_WORD_LENGTH
+  assert_string_equals("|", make_match_input$(w$(), 0, 0))
+End Sub
+
+' A single-element array, including its synonym substitution
+Sub test_mmi_gvn_single_word()
+  Local w$(2) Length MAX_WORD_LENGTH = ("gramaphon", "")
+  assert_string_equals("|gramophone|", make_match_input$(w$(), 0, 0))
 End Sub
