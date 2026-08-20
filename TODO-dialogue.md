@@ -17,6 +17,8 @@ arrangements, not a clue pointing at Redvers.
 
 ## Prompt 1 — Fix suit / sleeping arrangements inconsistency
 
+**DONE**
+
 > Sir Redvers's suit (OBJ221) is in the servants' quarters because Redvers
 > himself is staying there — not because it's stolen or suspicious. Arthur
 > has the guest room; Arnold, Mildred, and Norah are bunking together in the

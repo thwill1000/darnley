@@ -101,8 +101,14 @@ womens shoe prints
 "I couldn't say whose they are. I'm really not in a fit state to be asked about
 footprints."
 
-cheroot in the pond
+cheroot pond
 "I don't know anything about it."
+
+suit
+"That would be Sir Redvers' suit. He arrived without notice, I'm afraid,
+and there was nowhere else to put him but the servants' quarters -
+Mr. Coniston already had the guest room. I don't imagine Sir Redvers
+much cared for the arrangement, but there it is."
 
 events yesterday murder last happened
 "I married Sebastian two years ago. I am more than twenty years

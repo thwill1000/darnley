@@ -92,7 +92,7 @@ mens shoe prints
 womens shoe prints
 "Do I look like I wear women's shoes?"
 
-cheroot in the pond
+cheroot pond
 "I don't know anything about it."
 
 events yesterday murder last happened

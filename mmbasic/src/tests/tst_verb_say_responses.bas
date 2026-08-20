@@ -92,6 +92,7 @@ add_test("SAY about slipper prints matches that entry", "test_say_gvn_slipper_pr
 add_test("SAY about men's shoe prints matches that entry", "test_say_gvn_mens_shoe_prints")
 add_test("SAY about women's shoe prints matches that entry", "test_say_gvn_womens_shoe_prints")
 add_test("SAY about the cheroot in the pond matches that entry", "test_say_gvn_cheroot_pond")
+add_test("SAY Tell me about the suit in the servant's quarters", "test_say_suit")
 add_test("SAY about motive matches the motive entry", "test_say_gvn_motive")
 add_test("SAY Who do you think did it?", "test_say_gvn_who_did_it")
 add_test("SAY about the Colonel's marriage matches that entry", "test_say_gvn_marriage")
@@ -394,6 +395,13 @@ Sub test_say_gvn_cheroot_pond()
   assert_say_response("ask about the cheroot in the pond", "cheroot in the pond response")
   assert_say_response("what about the cigar end found in the pond", "cheroot in the pond response")
   assert_say_response("tell me about the cheroot found in the pond", "cheroot in the pond response")
+End Sub
+
+Sub test_say_suit()
+  assert_say_response("suit", "suit response")
+  assert_say_response("ask about the suit in the servant's quarters", "suit response")
+  assert_say_response("what about the suit I found in the servant's quarters", "suit response")
+  assert_say_response("tell me about the suit found in the servant's quarters", "suit response")
 End Sub
 
 Sub test_say_gvn_motive()

@@ -97,6 +97,12 @@ womens shoe prints
 "I might recognise my own shoes, but I couldn't tell you whose prints these are
 from looking at them in the snow."
 
+suit
+"Sir Redvers' suit I should think. He arrived out of the blue and there
+was nowhere left for him but the servants' quarters, what with Arthur
+already installed in the guest room. Rather awkward for a man of his
+standing, I imagine, though he didn't complain - much."
+
 events yesterday murder last happened
 "Father was a difficult man to live with but I never expected - this!
 Last night we all ate together until coffee which Sarah and I took

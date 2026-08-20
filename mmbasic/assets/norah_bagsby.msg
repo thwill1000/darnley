@@ -66,6 +66,12 @@ don't know what more you'd want me to say about myself."
 ronald mellors gamekeeper
 "A rough man. A womanizer by all accounts."
 
+suit
+"Oh, that's Sir Redvers' suit, sir. He came ever so sudden and there was
+nowhere for him but our room, on account of Mr. Coniston having the
+guest room already. I felt right embarrassed hanging a gentleman's
+suit up next to my own things, but Mrs. G. said not to make a fuss."
+
 events yesterday murder last happened
 "I have worked here for six months and I don't like it. Last night I
 helped Mrs. Goodbody to prepare dinner and afterwards I served coffee
