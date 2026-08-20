@@ -52,11 +52,13 @@ Sub con.print_fail(s$)
   con.println("[[red:" + s$ + "]]")
 End Sub
 
-' We need to load the synonyms from the real "advent.dat"
+' Use the real assets.
 adv.asset_dir$ = Mm.Info(Path) + "../../assets/"
 adv.msg_file$ = adv.asset_dir$ + "messages.dat"
 advdata.init(adv.asset_dir$ + "advent.dat")
-objects$(1) = "P_TEMPLATE_SUSPECT|Template Suspect|template suspect|LOC001_BATHROOM|2|100"
+
+' Replace object 9, the pond, with our template suspect.
+objects$(9) = "P_TEMPLATE_SUSPECT|Template Suspect|template suspect|LOC001_BATHROOM|2|100"
 
 add_test("SAY 'hello' matches the greeting entry", "test_say_gvn_greeting")
 add_test("SAY about the weather matches the weather entry", "test_say_gvn_weather")

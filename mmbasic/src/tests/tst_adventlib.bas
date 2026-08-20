@@ -27,9 +27,6 @@ sys.provides("console")
 #Include "../state.inc"
 #Include "../adventlib.inc"
 
-Const TEST_DATA_FILE$ = Mm.Info(Path) + "test_advent.dat"
-Const TEST_DIRECTIVES_FILE$ = Mm.Info(Path) + "test_directives.msg"
-
 Dim con_output$
 
 Sub con.foreground(color$)
@@ -52,9 +49,11 @@ Sub con.print_fail(s$)
   con.println("[[red:" + s$ + "]]")
 End Sub
 
-adv.asset_dir$ = Mm.Info(Path)
-adv.msg_file$ = adv.asset_dir$ + "test.msg"
-advdata.init(TEST_DATA_FILE$)
+adv.asset_dir$ = Mm.Info(Path) + "test-assets/"
+adv.msg_file$ = adv.asset_dir$ + "messages.dat"
+advdata.init(adv.asset_dir$ + "advent.dat")
+
+Const TEST_DIRECTIVES_FILE$ = adv.asset_dir$ + "test_directives.msg"
 
 add_test("test_count_data_gvn_empty")
 add_test("test_count_data_gvn_one")
