@@ -273,6 +273,7 @@ Function parse_common(cmd$)
 End Function
 
 ' Handles the SAY verb
+'!dynamic_call verb_say
 Function verb_say()
   verb_say = 1
 
@@ -448,6 +449,7 @@ Sub print_response(filename$, line%)
 End Sub
 
 ' Handles the DROP verb
+'!dynamic_call verb_drop
 Function verb_drop()
   verb_drop = 1
   Local msg$ = "This game does not require you to TAKE, DROP or otherwise "
@@ -516,6 +518,7 @@ Function find_obj%(words$(), first%, last%)
 End Function
 
 ' Handles the EXAMINE verb
+'!dynamic_call verb_examine
 Function verb_examine()
   verb_examine = 1
 
@@ -640,6 +643,7 @@ End Function
 ' function returns. It is not updated by any other verb handler.
 '
 ' @return  1 always (indicating the verb was handled).
+'!dynamic_call verb_go
 Function verb_go()
   Const r_new% = find_exit_match%(words$())
   If r_new% > -1 Then r = r_new% Else con.print_fail("You can't go there.")
@@ -647,11 +651,13 @@ Function verb_go()
 End Function
 
 ' Handles the INVENTORY verb
+'!dynamic_call verb_inventory
 Function verb_inventory()
   verb_inventory = verb_drop()
 End Function
 
 ' Handles the TAKE verb
+'!dynamic_call verb_take
 Function verb_take()
   verb_take = verb_drop()
 
@@ -699,6 +705,7 @@ Function verb_take()
 End Function
 
 ' Handles the QUIT verb
+'!dynamic_call verb_quit
 Function verb_quit()
   verb_quit = 1
   con.foreground("yellow")
@@ -806,6 +813,7 @@ Sub print_body(s$)
 End Sub
 
 ' Handles the DUMP verb
+'!dynamic_call verb_dump
 Function verb_dump()
   verb_dump = 1
   con.println("ROOM      = " + Str$(r))
@@ -826,6 +834,7 @@ Function verb_dump()
 End Function
 
 ' Handles the FONT verb
+'!dynamic_call verb_font
 Function verb_font()
   If count_words%(words$()) <> 2 Then words$(2) = ""
 
@@ -850,18 +859,21 @@ Function verb_font()
 End Function
 
 ' Handles the HELP verb
+'!dynamic_call verb_help
 Function verb_help()
   verb_help = 1
   show_help()
 End Function
 
 ' Handles the RECAP verb
+'!dynamic_call verb_recap
 Function verb_recap()
   verb_recap = 1
   show_intro()
 End Function
 
 ' Handles the RECORD verb
+'!dynamic_call verb_record
 Function verb_record()
   verb_record = 1
   Select Case words$(2)
@@ -875,6 +887,7 @@ Function verb_record()
 End Function
 
 ' Handles the REPLAY verb
+'!dynamic_call verb_replay
 Function verb_replay()
   verb_replay = 1
   Select Case words$(2)
@@ -888,6 +901,7 @@ Function verb_replay()
 End Function
 
 ' Handles the RESTORE verb
+'!dynamic_call verb_restore
 Function verb_restore()
   verb_restore = 1
   Const ok% = state.restore%()
@@ -895,6 +909,7 @@ Function verb_restore()
 End Function
 
 ' Handles the SAVE verb
+'!dynamic_call verb_save
 Function verb_save()
   verb_save = 1
   Const dummy% = state.save%()

@@ -226,6 +226,7 @@ Sub print_accuse_reply()
 End Sub
 
 ' Handles the CHEAT verb
+'!dynamic_call verb_cheat
 Function verb_cheat()
   verb_cheat = 1
   print_message_or_fail("CHEAT_TEXT")

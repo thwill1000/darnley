@@ -182,6 +182,7 @@ End Sub
 '
 ' @param  s$   Plain text segment to print (no markup).
 ' @param  fg$  Colour name, or empty string for unstyled text.
+'!dynamic_call con.print_segment_cb
 Sub con.print_segment_cb(s$, fg$)
   Local c$, i%, old_fg$
 
