@@ -2,10 +2,6 @@ hello hi morning afternoon evening greetings
 "Hello, Inspector. I suppose there's nothing 'good' about this
 morning, but you're welcome all the same."
 
-weather cold snow
-"Isn't it awful? Though I suppose all this snow means every
-footstep shows. Small mercies, given everything else."
-
 alibi
 "I was with Arthur in the music room at 10.30 and, naturally, I was
 alone in bed at 11:30."
@@ -79,23 +75,27 @@ ronald mellors gamekeeper
 "Furtive. I don't like the way he looks at my step-mother. I advised
 Daddy to get rid of him."
 
-flatfooted bootprints
++flatfooted bootprints boot prints | +flat +footed bootprints boot prints | +odd bootprints boot prints
 "I'm afraid I paid no attention to footprints. Really, is that the sort of thing
 one is expected to notice?"
 
-hobnailed bootprints
++hobnailed bootprints boot prints
 "I couldn't tell you. I don't make a habit of studying people's footwear."
 
-slipper prints
++slipper prints
 "I really couldn't say. I don't see how I could be expected to recognise a
 slipper print."
 
-mens shoe prints
++mens shoeprints shoe prints
 "That is rather beyond me I'm afraid. Aren't you the detective?"
 
-womens shoe prints
++womens shoeprints shoe prints
 "I might recognise my own shoes, but I couldn't tell you whose prints these are
 from looking at them in the snow."
+
+footprints | +prints foot | shoeprints | +shoe + prints | bootprints | +boot +prints
+"There seem to be prints absolutely everywhere. I really couldn't
+tell you which are significant."
 
 suit
 "Sir Redvers' suit I should think. He arrived out of the blue and there
@@ -144,7 +144,7 @@ engagement marriage millicent arthur coniston
 yesterday - I still can hardly believe it. I'd waited so long for
 him to say yes."
 
-murder murderer think believe guilty who did it comitted
+murder murderer think believe guilty who did comitted
 "I try not to think about it - it makes me feel rather sick. If I'm
 honest, Mellors has always given me an uneasy feeling. But that isn't
 proof, is it? Just a feeling."
@@ -184,6 +184,10 @@ police investigation scotland yard inspector detective think of me
 "I suppose you have to suspect all of us equally, don't you? It's a
 horrid feeling, being looked at that way in one's own home. But I
 want whoever did this caught, so ask what you must."
+
+weather cold snow
+"Isn't it awful? Though I suppose all this snow means every
+footstep shows. Small mercies, given everything else."
 
 goodbye bye farewell thanks thank
 "Goodbye, Inspector. I do hope you find whoever did this."

@@ -46,12 +46,12 @@ OBJ201_POND|Pond|pond|LOC005_ORNAMENTAL_POND|0|100
 OBJ202_SUNKEN_STATUE|Sunken statue|sunken statue|LOC005_ORNAMENTAL_POND|0|100
 OBJ203_REVOLVER|Revolver|revolver gun|LOC005_ORNAMENTAL_POND|1|1
 OBJ204_STATUES|Marble statues|statue statues|LOC005_ORNAMENTAL_POND|0|100
-OBJ205_FOOTPRINTS_POND|Footprints|footprints|LOC005_ORNAMENTAL_POND|0|100
+OBJ205_FOOTPRINTS_POND|Footprints|footprints bootprints shoeprints prints|LOC005_ORNAMENTAL_POND|0|100
 OBJ206_SLIPPERS|Slippers|slippers|LOC029_GUEST_ROOM|1|1
 OBJ207_CIGARETTES|Cigarettes|cigarette|LOC029_GUEST_ROOM|1|1
 OBJ208_KNIFE|Knife|knife|LOC009_KITCHEN|1|1
 OBJ209_BOOTS|Boots|boots|LOC009_KITCHEN|1|1
-OBJ212_FOOTPRINTS_KG|Footprints|footprints|LOC003_KITCHEN_GARDEN|0|100
+OBJ212_FOOTPRINTS_KG|Footprints|shoeprints|LOC003_KITCHEN_GARDEN|0|100
 OBJ213_BED_MASTER|Bed|bed|LOC027_MASTER_BEDROOM|0|100
 OBJ214_WARDROBE|Wardrobe|wardrobe|LOC027_MASTER_BEDROOM|0|100
 OBJ215_CIGARS|Cigars|cigar|LOC027_MASTER_BEDROOM|1|1
@@ -64,7 +64,7 @@ OBJ222_NEWSPAPER|Newspaper|newspaper|LOC026_SERVANTS_QUARTERS|1|1
 OBJ223_PIPE|Pipe|pipe|LOC026_SERVANTS_QUARTERS|1|1
 OBJ224_BOOKSHELF|Bookshelf|bookshelf books|LOC010_BUTLERS_PANTRY|0|100
 OBJ225_FRENCH_WINDOW_TERRACE|French Window|french window|LOC006_TERRACE|0|100
-OBJ226_FOOTPRINTS_TERRACE|Footprints|footprints|LOC006_TERRACE|0|100
+OBJ226_FOOTPRINTS_TERRACE|Footprints|footprints bootprints shoeprints prints|LOC006_TERRACE|0|100
 P_THE_BODY|Colonel Darnley's body|colonel darnley body|LOC007_COLONELS_STUDY|2|100
 OBJ228_PORT_GLASS|Port glass|port glass|LOC007_COLONELS_STUDY|1|1
 OBJ229_TANTALUS|Tantalus of port|tantalus port|LOC007_COLONELS_STUDY|1|1
@@ -75,18 +75,18 @@ OBJ233_SHATTERED_GLASS|Shattered glass|shattered glass|LOC007_COLONELS_STUDY|0|1
 OBJ234_GRAMOPHONE|Gramophone|gramophone|LOC028_MORNING_ROOM|0|100
 OBJ235_PIANO_MORNING|Piano|piano|LOC028_MORNING_ROOM|0|100
 OBJ236_DISPLAY_CASE|Display case|display case|LOC008_HALL|0|100
-OBJ237_FOOTPRINTS_WW|Footprints|footprints|LOC012_WEST_WALK|0|100
+OBJ237_FOOTPRINTS_WW|Footprints|footprints bootprints shoeprints prints|LOC012_WEST_WALK|0|100
 OBJ238_CIGAR_STUB|Cigar stub|cigar stub|LOC015_MUSIC_ROOM|1|1
 OBJ239_PIANO_MUSIC|Piano|piano|LOC015_MUSIC_ROOM|0|100
 OBJ240_WINE_GLASSES|Wine glasses|wine glass glasses|LOC016_BILLIARD_ROOM|0|1
 OBJ241_ASHTRAY|Ashtray|ashtray|LOC016_BILLIARD_ROOM|1|1
-OBJ243_FOOTPRINTS_DRIVE|Footprints|footprints|LOC017_DRIVE|0|0
-OBJ244_FOOTPRINTS_EW|Footprints|footprints|LOC018_EAST_WALK|0|0
+OBJ243_FOOTPRINTS_DRIVE|Footprints|footprints bootprints shoeprints prints|LOC017_DRIVE|0|0
+OBJ244_FOOTPRINTS_EW|Footprints|footprints bootprints shoeprints prints|LOC018_EAST_WALK|0|0
 OBJ245_CIGARETTE_ENDS_SH|Cigarette ends|cigarette end ends|LOC019_SUMMER_HOUSE|1|1
 OBJ246_HANDKERCHIEF|Handkerchief|handkerchief|LOC019_SUMMER_HOUSE|1|1
-OBJ247_FOOTPRINTS_WL|Footprints|footprints|LOC020_WEST_LAWN|0|0
-OBJ248_FOOTPRINTS_ST|Footprints|footprints|LOC021_STABLES|0|0
-OBJ249_FOOTPRINTS_EL|Footprints|footprints|LOC022_EAST_LAWN|0|0
+OBJ247_FOOTPRINTS_WL|Footprints|footprints bootprints shoeprints prints|LOC020_WEST_LAWN|0|0
+OBJ248_FOOTPRINTS_ST|Footprints|footprints bootprints shoeprints prints|LOC021_STABLES|0|0
+OBJ249_FOOTPRINTS_EL|Footprints|footprints bootprints shoeprints prints|LOC022_EAST_LAWN|0|0
 OBJ250_CIGARETTE_ENDS_GC|Cigarette ends|cigarette end ends|LOC023_GAMEKEEPERS_COTTAGE|1|1
 OBJ251_ARMOUR|Armour|armour|LOC008_HALL|0|100
 OBJ252_DOOR_MAT|Door mat|door mat doormat|LOC008_HALL|0|1
@@ -96,6 +96,7 @@ OBJ255_ROOK|Rook|bird crow rook|LOC022_EAST_LAWN|0|100
 OBJ256_SHOTGUNS|Shotguns|guns shotgun shotguns|LOC023_GAMEKEEPERS_COTTAGE|1|1
 
 !synonyms
+bootprints|boot-prints
 butler|butlers
 cigar|cigars
 cigarette|cigarettes
@@ -103,18 +104,23 @@ cheroot|cheroots
 colonel|colonels
 darnley|darnleys
 engagement|engaged
+flatfooted|flat-footed
+footprints|foot-prints
 gamekeeper|gamekeepers
 gramophone|gramaphone
 handkerchief|handkerchiefs|hankerchief|hankerchiefs|hanky|hankys
+hobnailed|hob-nailed
 maid|housemaid
 marriage|marry|married|marrying
 millicent|milicent|millicents|milicents
 money|finance|finances|financial|business|shares|debt|debts
 murder|murdered|kill|killed
 murderer|killer
+prints|marks|tracks
 redvers|redverss
 revolver|pistol
 sarah|sara
+shoeprints|shoe-prints
 
 !questions
 # id | result matches...

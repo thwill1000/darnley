@@ -2,11 +2,6 @@ hello hi morning afternoon evening greetings
 "Good day to you, sir. I only wish it were under happier
 circumstances."
 
-weather cold snow
-"Bitter, sir, quite bitter. The snow has been a trial for the
-outdoor staff, though I dare say it has been of some use to you in
-tracking footprints."
-
 alibi
 "I was with Mrs. Goodbody and young Norah in my pantry at both 10:30
 and 11:30."
@@ -89,21 +84,25 @@ norah bagsby maid
 ronald mellors gamekeeper
 "He's the gamekeeper. He seems honest enough."
 
-flatfooted bootprints
++flatfooted bootprints boot prints | +flat +footed bootprints boot prints | +odd bootprints boot prints
 "I've studied all the people here and none of them are flat-footed.
 It's a mystery to me why the bootprints should be flat-footed."
 
-hobnailed bootprints
++hobnailed bootprints boot prints
 "I don't know whose these are."
 
-slipper prints
++slipper prints
 "I believe the slipper prints are Mr. Coniston's."
 
-mens shoe prints
++mens shoeprints shoe prints
 "The shoe prints are mine."
 
-womens shoe prints
++womens shoeprints shoe prints
 "I don't know whose these are."
+
+footprints | +prints foot | shoeprints | +shoe + prints | bootprints | +boot +prints
+"There are prints all over the place, sir - boots, slippers, shoes.
+I couldn't begin to say which matter and which don't."
 
 cheroot pond
 "As far as I'm aware only the Colonel smoked cheroots. But he was a
@@ -159,7 +158,7 @@ engagement marriage millicent arthur coniston
 "The Colonel gave his consent only yesterday afternoon, as I
 understand it. Miss Millicent seemed very happy about it indeed."
 
-murder murderer think believe guilty who did it comitted
+murder murderer think believe guilty who did comitted
 "That is not a question I am equipped to answer, sir. I will say
 only that a house such as this holds more secrets than its servants
 are ever told, above stairs or below."
@@ -199,6 +198,11 @@ police investigation scotland yard inspector detective think of me
 "I have every confidence you will get to the bottom of it, sir. The
 household will give you whatever assistance it can - you have my
 word on that, at least."
+
+weather cold snow
+"Bitter, sir, quite bitter. The snow has been a trial for the
+outdoor staff, though I dare say it has been of some use to you in
+tracking footprints."
 
 goodbye bye farewell thanks thank
 "Very good, sir. I shall be about the house if you need anything

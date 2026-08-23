@@ -2,10 +2,6 @@ hello hi morning afternoon evening greetings
 "Oh - good morning, sir. Sorry, I'm all of a fluster still, what
 with everything that's happened."
 
-weather cold snow
-"Ever so cold, sir. My hands are chapped something dreadful from all
-the extra fires we've had to lay."
-
 alibi
 "I'm not good where times are concerned. I s'pose I was with Mr. B.
 and Mrs. G. in Mr. B.'s room."
@@ -66,6 +62,28 @@ don't know what more you'd want me to say about myself."
 ronald mellors gamekeeper
 "A rough man. A womanizer by all accounts."
 
++flatfooted bootprints boot prints | +flat +footed bootprints boot prints | +odd bootprints boot prints
+"Oh, I couldn't say, sir. I don't look at people's feet, it isn't my place."
+
++hobnailed bootprints boot prints
+"I wouldn't know one bootprint from another, sir, honest I wouldn't."
+
++slipper prints
+"I couldn't tell you, sir. I'm too busy with my work to go noticing
+things like that."
+
++mens shoeprints shoe prints
+"I only know Mr. Billingsgate keeps his shoes ever so clean, sir - but
+I couldn't say if these are his."
+
++womens shoeprints shoe prints
+"I wouldn't like to guess, sir. A lady's shoe print's a lady's shoe
+print to me."
+
+footprints | +prints foot | shoeprints | +shoe + prints | bootprints | +boot +prints
+"There's ever so many prints about the place, sir. I wouldn't know
+which ones you mean."
+
 suit
 "Oh, that's Sir Redvers' suit, sir. He came ever so sudden and there was
 nowhere for him but our room, on account of Mr. Coniston having the
@@ -98,7 +116,7 @@ engagement marriage millicent arthur coniston
 yesterday. First happy thing to happen in this house in a while, I
 should think."
 
-murder murderer think believe guilty who did it comitted
+murder murderer think believe guilty who did comitted
 "Oh, I couldn't say, sir, it frightens me even to think it. Miss
 Millicent seemed ever so calm about it all, calmer than I'd have
 been. I don't mean nothing by that, mind."
@@ -135,6 +153,10 @@ police investigation scotland yard inspector detective think of me
 "Oh, it does put the wind up me, having a proper detective in the
 house. I haven't done anything wrong, sir, honest I haven't - I just
 get nervous with all the questions."
+
+weather cold snow
+"Ever so cold, sir. My hands are chapped something dreadful from all
+the extra fires we've had to lay."
 
 goodbye bye farewell thanks thank
 "Goodbye, sir. I hope you don't need me again - not because I mind,

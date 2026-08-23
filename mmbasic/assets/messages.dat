@@ -45,7 +45,7 @@ south.
 LOC004_OUTHOUSES
 A cluster of outbuildings occupies this corner: a laundry, a
 coal store, and a timber pigeon-coop. The smell of coal smoke and damp
-brick hangs in the air. Boot marks cross the snow between the buildings
+brick hangs in the air. Footprints cross the snow between the buildings
 without settling into any clear pattern. The [[green:Kitchen garden]]
 lies west, the [[green:Maze]] to the south.
 
@@ -334,7 +334,7 @@ one.
 
 OBJ205_FOOTPRINTS_POND
 Only one set of footprints can be made out in the snow. They are of
-flat footed bootprints coming to and from the terrace.
+[[green:flat-footed bootprints]] coming to and from the terrace.
 
 OBJ206_SLIPPERS
 The slippers are slightly damp and stained with mud. The mud appears fresh
@@ -363,8 +363,8 @@ OBJ209_BOOTS
 All these boots are polished clean except for a large mud stained pair.
 
 OBJ212_FOOTPRINTS_KG
-Both flat footed boot prints and slipper prints can be seen going
-between the kitchen and the outhouses.
+Both [[green:flat-footed bootprints]] and [[green:slipper prints]] can be seen
+going to and from the kitchen and the outhouses.
 
 OBJ213_BED_MASTER
 The Colonel's bed is large and ornate with heavy mahogany posts. The linen sheets
@@ -449,7 +449,8 @@ mechanism is internal. The wooden frame shows no signs of tampering or forcing
 - the glass has simply been broken from outside, the lock then opened from within.
 
 OBJ226_FOOTPRINTS_TERRACE
-A mess of footprints including boots, slippers and some shoe prints.
+A mess of footprints including [[green:flat-footed bootprints]],
+[[green:slipper prints]] and some [[green:men's shoeprints]].
 
 P_THE_BODY
 The body is dressed in a smoking jacket open at the chest. There is a
@@ -518,8 +519,9 @@ arranged on black velvet, lie hand-axes, arrowheads, and ancient pottery fragmen
 - the Colonel apparently had an interest in the history beneath his own land.
 
 OBJ237_FOOTPRINTS_WW
-There are slipper prints, flat-footed boot prints and some shoe prints
-heading to and from the terrace and the front of the house.
+There are [[green:slipper prints]], [[green:flat-footed bootprints]] and some
+[[green:men's shoeprints]] heading to and from the terrace and the front of the
+house.
 
 OBJ238_CIGAR_STUB
 A cheroot stub sits in the brass ashtray on the music room piano - a straight
@@ -545,16 +547,15 @@ yet it has been stubbed out half-smoked. One of the cheroots is charred and blac
 as if it burned intensely before being discarded.
 
 OBJ243_FOOTPRINTS_DRIVE
-The prints from flat footed boots go east and west along the gravel
-path in front of the house. Slipper prints come from the house and
-head east and west along the path. Prints from men's shoes come
-from the house and go west. Prints from lady's shoes head to and
+[[green:Flat-footed bootprints]] go east and west along the gravel
+path in front of the house. [[green:Slipper prints]] come from the house and
+head east and west along the path. [[green:Men's shoeprints]] come
+from the house and go west. [[green:Lady's shoeprints]] head to and
 from the front door and the west lawn. At the gate end of the drive
-the prints from men's hobnailed boots go between the west lawn and
-the stables.
+[[green:Hobnailed bootprints]] go between the west lawn and the stables.
 
 OBJ244_FOOTPRINTS_EW
-The prints from flat footed boots and men's slippers are visible in the
+[[green:Flat-footed bootprints]] and [[green:slipper prints]] are visible in the
 snow heading around the corner of the house, to and from the maze
 and avenue of statues.
 
@@ -575,15 +576,15 @@ and bears traces of dirt on one corner, as if it has been clutched in a nervous
 hand. The perfume is distinctive - not common, and quite costly.
 
 OBJ247_FOOTPRINTS_WL
-Prints from lady's shoes and men's hob-nailed boots can be seen in the
-snow going to and from the drive and the summer house.
+[[green:Lady's shoeprints]] and [[green:hobnailed bootprints]] can be seen in
+the snow going to and from the drive and the summer house.
 
 OBJ248_FOOTPRINTS_ST
-The prints from hob-nailed boots can be seen in the snow going
-to and from the drive and the east lawn.
+[[green:Hobnailed bootprints]] can be seen in the snow going to and from the
+drive and the east lawn.
 
 OBJ249_FOOTPRINTS_EL
-Deep and purposeful, the prints from hob-nailed boots can be seen in the snow
+Deep and purposeful, [[green:hobnailed bootprints]] can be seen in the snow
 going to and from the stables and the cottage.
 
 OBJ250_CIGARETTE_ENDS_GC

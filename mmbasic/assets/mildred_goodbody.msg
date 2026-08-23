@@ -2,10 +2,6 @@ hello hi morning afternoon evening greetings
 "Good morning, dear. Can't say it's been much of one, what with
 everything, but sit yourself down if you need anything."
 
-weather cold snow
-"Cold enough to freeze the milk, dear. Still, keeps the larder fresh
-at least. Silver linings, as they say."
-
 alibi
 "We was all three together, me, Norah and Mr. B. in Mr. B.'s pantry
 at 10:30 and 11:30. Of course we was asleep at 11:30 so I suppose
@@ -80,22 +76,26 @@ ronald mellors gamekeeper
 "Not a nice man. Not to be trusted. Colonel Darnley talked of giving
 him his notice; he'd already given him a warning letter."
 
-flatfooted bootprints
++flatfooted bootprints boot prints | +flat +footed bootprints boot prints | +odd bootprints boot prints
 "I remember the gardener's child playing around wearing grown-up's
 boots. They made flat-footed prints because they were too big for
 her."
 
-hobnailed bootprints
++hobnailed bootprints boot prints
 "I don't know whose these are."
 
-slipper prints
++slipper prints
 "I don't know whose these are."
 
-mens shoe prints
++mens shoeprints shoe prints
 "I don't know whose these are."
 
-womens shoe prints
++womens shoeprints shoe prints
 "I don't know whose these are."
+
+footprints | +prints foot | shoeprints | +shoe + prints | bootprints | +boot +prints
+"There's prints all over the snow, dear. Can't say I paid them any
+mind beyond keeping the kitchen floor clean."
 
 suit
 "That suit's Sir Redvers', dear. He came without warning and Mr. Coniston
@@ -129,7 +129,7 @@ engagement marriage millicent arthur coniston
 "Oh, Miss Millicent was thrilled when it was agreed yesterday. She
 came straight down to the kitchen to tell me, bless her."
 
-murder murderer think believe guilty who did it comitted
+murder murderer think believe guilty who did comitted
 "I try not to speculate, it's not my place. Though I'll say Sir
 Redvers had an almighty row with the Colonel that evening - words
 were raised. Make of that what you will."
@@ -169,6 +169,10 @@ police investigation scotland yard inspector detective think of me
 "Well, someone's got to sort this out, haven't they? You ask what
 you need to, dear, I've nothing to hide. Can't say the same for
 everyone in this house, mind."
+
+weather cold snow
+"Cold enough to freeze the milk, dear. Still, keeps the larder fresh
+at least. Silver linings, as they say."
 
 goodbye bye farewell thanks thank
 "Off you go then, dear. Mind you eat something - you look like you

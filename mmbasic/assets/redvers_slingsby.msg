@@ -2,10 +2,6 @@ hello hi morning afternoon evening greetings
 "Morning. Damned unpleasant way to start a day, having policemen
 tramping about the place, but I suppose it can't be helped."
 
-weather cold snow
-"Damnable. Roads were a nightmare getting here yesterday, and it's
-only got worse since. Not that it's foremost in my mind at present."
-
 alibi
 "I left Darnley alive at 10:30 and it's damn nonsense to suggest I
 shot him with all the house awake and then waited to see what would
@@ -76,9 +72,13 @@ norah bagsby maid
 ronald mellors gamekeeper
 "I don't know the man."
 
-flatfooted bootprints
++flatfooted bootprints boot prints | +flat +footed bootprints boot prints | +odd bootprints boot prints
 "The bootprints around the house look like mine, but I didn't make
 them. I'm not flat-footed."
+
+footprints | +prints foot | shoeprints | +shoe + prints | bootprints | +boot +prints
+"Prints all over the blasted grounds, so I'm told. Couldn't tell
+you one from another."
 
 cheroot pond
 "A cheroot? Not me, old man! I'm one for Havanas if I'm not smoking
@@ -122,7 +122,7 @@ engagement marriage millicent arthur coniston
 it yesterday. Can't say I know the fellow well enough to judge the
 match."
 
-murder murderer think believe guilty who did it comitted
+murder murderer think believe guilty who did comitted
 "Damned if I know. If you want my honest opinion, servants notice a
 great deal more than they let on - I shouldn't rule out that butler
 of his, watchful sort of fellow. But that's guesswork, mind."
@@ -168,6 +168,10 @@ police investigation scotland yard inspector detective think of me
 "About time too. Damned unpleasant business, having one's private
 affairs picked over, but I'd rather have it done properly than not
 at all. Get on with it, man."
+
+weather cold snow
+"Damnable. Roads were a nightmare getting here yesterday, and it's
+only got worse since. Not that it's foremost in my mind at present."
 
 goodbye bye farewell thanks thank
 "Yes, yes. Get on with it, then."

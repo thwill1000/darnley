@@ -535,11 +535,8 @@ Function verb_examine()
   Const oloc% = Choice(obj%, obj_loc%(obj%), 0)
   Local ok% = 0
 
-  If oloc% = r Then
-    ' Object exists and is present
-    con.foreground("cyan")
+  If oloc% = r Then ' Object exists and is present
     ok% = print_message%(obj_id$(obj%)) = 0
-    con.foreground("reset")
   EndIf
 
   If Not ok% Then
