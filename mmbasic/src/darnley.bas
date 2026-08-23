@@ -151,7 +151,7 @@ Sub handle_new_accusation()
   con.println()
   print_message_or_fail("ACCUSE_TEXT")
 
-  Local answer$, correct%, response$, response_words$(MAX_WORDS), result%, msg$, q%
+  Local answer$, correct%, pattern$, num_matches%, msg$, q%
 
   Const num_questions% = Bound(questions$(), 1)
   For q% = Bound(questions$(), 0) To num_questions%
@@ -177,13 +177,10 @@ Sub handle_new_accusation()
     ' Compare the answer to the expected responses
     i% = 2
     Do
-      response$ = Field$(questions$(q%), i%, "|")
-      If response$ = "" Then Exit Do
-      result% = split_words%(response$, response_words$())
-      If FAILED(result%) Then Error "split_words%() failed: " + Str$(result%)
-      result% = find_matches%(response_words$(), words$())
-      If result% = count_words%(response_words$()) Then
-        ' The player's response included all the response_words$()
+      pattern$ = Field$(questions$(q%), i%, "|")
+      If pattern$ = "" Then Exit Do
+      num_matches% = find_matches%(pattern$, words$())
+      If num_matches% Then
         Inc correct%
         Exit Do
       EndIf
@@ -191,9 +188,9 @@ Sub handle_new_accusation()
     Loop
 
     ' Uncomment for debugging
-    ' If response$ = "" Then response$ = "incorrect"
+    ' If pattern$ = "" Then pattern$ = "incorrect"
 
-    If response$ = "incorrect" Then
+    If pattern$ = "incorrect" Then
       con.print_fail("Incorrect.")
     Else If q% <> num_questions% Then
       print_accuse_reply()

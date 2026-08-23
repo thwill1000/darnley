@@ -506,173 +506,173 @@ End Sub
 
 ' No matches found in haystack
 Sub test_find_matches_gvn_none()
-  Local haystack$(4) = ("cat", "dog", "bird", "")
+  Const pattern$ = "cat dog bird"
   Local needles$(4) = ("fish", "frog", "", "")
-  assert_int_equals(0, find_matches%(haystack$(), needles$(), 0, 0))
+  assert_int_equals(0, find_matches%(pattern$, needles$(), 0, 0))
 End Sub
 
 ' One needle matches one haystack word
 Sub test_find_matches_gvn_one()
-  Local haystack$(4) = ("cat", "dog", "bird", "")
+  Const pattern$ = "cat dog bird"
   Local needles$(4) = ("dog", "", "", "")
-  assert_int_equals(1, find_matches%(haystack$(), needles$(), 0, 0))
+  assert_int_equals(1, find_matches%(pattern$, needles$(), 0, 0))
 End Sub
 
 ' All needles match haystack words
 Sub test_find_matches_gvn_all()
-  Local haystack$(4) = ("cat", "dog", "bird", "")
+  Const pattern$ = "cat dog bird"
   Local needles$(4) = ("cat", "dog", "bird", "")
-  assert_int_equals(3, find_matches%(haystack$(), needles$(), 0, 0))
+  assert_int_equals(3, find_matches%(pattern$, needles$(), 0, 0))
 End Sub
 
 ' Some needles match, some do not
 Sub test_find_matches_gvn_partial()
-  Local haystack$(4) = ("cat", "dog", "bird", "")
+  Const pattern$ = "cat dog bird"
   Local needles$(4) = ("cat", "fish", "bird", "")
-  assert_int_equals(2, find_matches%(haystack$(), needles$(), 0, 0))
+  assert_int_equals(2, find_matches%(pattern$, needles$(), 0, 0))
 End Sub
 
 ' Matching is case-insensitive
 Sub test_find_matches_gvn_case()
-  Local haystack$(4) = ("Cat", "DOG", "Bird", "")
+  Const pattern$ = "Cat DOG Bird"
   Local needles$(4) = ("cat", "dog", "bird", "")
-  assert_int_equals(3, find_matches%(haystack$(), needles$(), 0, 0))
+  assert_int_equals(3, find_matches%(pattern$, needles$(), 0, 0))
 End Sub
 
 ' Empty haystack returns zero
 Sub test_find_matches_gvn_no_hay()
-  Local haystack$(4)
+  Const pattern$ = ""
   Local needles$(4) = ("cat", "dog", "", "")
-  assert_int_equals(0, find_matches%(haystack$(), needles$(), 0, 0))
+  assert_int_equals(0, find_matches%(pattern$, needles$(), 0, 0))
 End Sub
 
 ' Empty needles array returns zero
 Sub test_find_matches_gvn_no_needles()
-  Local haystack$(4) = ("cat", "dog", "bird", "")
+  Const pattern$ = "cat dog bird"
   Local needles$(4)
-  assert_int_equals(0, find_matches%(haystack$(), needles$(), 0, 0))
+  assert_int_equals(0, find_matches%(pattern$, needles$(), 0, 0))
 End Sub
 
 ' Duplicate needle 'cat' is only matched once
 Sub test_find_matches_gvn_dupe()
-  Local haystack$(4) = ("cat", "dog", "", "")
+  Const pattern$ = "cat dog"
   Local needles$(4) = ("cat", "cat", "", "")
-  assert_int_equals(1, find_matches%(haystack$(), needles$(), 0, 0))
+  assert_int_equals(1, find_matches%(pattern$, needles$(), 0, 0))
 End Sub
 
 ' first% skips earlier needles
 Sub test_find_matches_gvn_first()
-  Local haystack$(4) = ("cat", "dog", "", "")
+  Const pattern$ = "cat dog"
   Local needles$(4) = ("cat", "dog", "", "")
-  assert_int_equals(1, find_matches%(haystack$(), needles$(), 2, 0))
+  assert_int_equals(1, find_matches%(pattern$, needles$(), 2, 0))
 End Sub
 
 ' last% ignores later needles
 Sub test_find_matches_gvn_last()
-  Local haystack$(4) = ("cat", "dog", "", "")
+  Const pattern$ = "cat dog"
   Local needles$(4) = ("cat", "dog", "", "")
-  assert_int_equals(1, find_matches%(haystack$(), needles$(), 0, 1))
+  assert_int_equals(1, find_matches%(pattern$, needles$(), 0, 1))
 End Sub
 
 ' first% and last% restrict to a single needle
 Sub test_find_matches_first_and_last()
-  Local haystack$(4) = ("cat", "dog", "bird", "")
+  Const pattern$  = "cat dog bird"
   Local needles$(4) = ("cat", "dog", "bird", "")
-  assert_int_equals(1, find_matches%(haystack$(), needles$(), 2, 2))
+  assert_int_equals(1, find_matches%(pattern$, needles$(), 2, 2))
 End Sub
 
 ' first% beyond last% matches nothing
 Sub test_find_matches_first_gt_last()
-  Local haystack$(4) = ("cat", "dog", "", "")
+  Const pattern$ = "cat dog"
   Local needles$(4) = ("cat", "dog", "", "")
-  assert_int_equals(0, find_matches%(haystack$(), needles$(), 3, 2))
+  assert_int_equals(0, find_matches%(pattern$, needles$(), 3, 2))
 End Sub
 
 ' Empty needle element stops iteration early
 Sub test_find_matches_empty_needle()
-  Local haystack$(4) = ("cat", "dog", "bird", "")
+  Const pattern$ = "cat dog bird"
   Local needles$(4) = ("cat", "", "bird", "")
-  assert_int_equals(1, find_matches%(haystack$(), needles$(), 0, 0))
+  assert_int_equals(1, find_matches%(pattern$, needles$(), 0, 0))
 End Sub
 
 ' A '+' haystack word not matched by any needle forces 0, even though
 ' another (non-prefixed) word did match.
 Sub test_find_matches_gvn_plus_miss()
-  Local haystack$(4) Length MAX_WORD_LENGTH = ("+cat", "dog", "", "")
+  Const pattern$ = "+cat dog"
   Local needles$(4) Length MAX_WORD_LENGTH = ("dog", "", "", "")
-  assert_int_equals(0, find_matches%(haystack$(), needles$(), 0, 0))
+  assert_int_equals(0, find_matches%(pattern$, needles$(), 0, 0))
 End Sub
 
 ' A '+' haystack word that IS matched counts towards the total, same as a
 ' plain word would; the prefix is stripped before comparison.
 Sub test_find_matches_gvn_plus_ok()
-  Local haystack$(4) Length MAX_WORD_LENGTH = ("+cat", "dog", "", "")
+  Const pattern$ = "+cat dog"
   Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "dog", "", "")
-  assert_int_equals(2, find_matches%(haystack$(), needles$(), 0, 0))
+  assert_int_equals(2, find_matches%(pattern$, needles$(), 0, 0))
 End Sub
 
 ' A '-' haystack word that is NOT matched has no effect - normal matches
 ' still count.
 Sub test_find_matches_gvn_minus_ok()
-  Local haystack$(4) Length MAX_WORD_LENGTH = ("cat", "-dog", "", "")
+  Const pattern$ = "cat -dog"
   Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "", "", "")
-  assert_int_equals(1, find_matches%(haystack$(), needles$(), 0, 0))
+  assert_int_equals(1, find_matches%(pattern$, needles$(), 0, 0))
 End Sub
 
 ' A '-' haystack word that IS matched forces 0, even though other words
 ' also matched.
 Sub test_find_matches_gvn_minus_bad()
-  Local haystack$(4) Length MAX_WORD_LENGTH = ("cat", "-dog", "", "")
+  Const pattern$ = "cat -dog"
   Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "dog", "", "")
-  assert_int_equals(0, find_matches%(haystack$(), needles$(), 0, 0))
+  assert_int_equals(0, find_matches%(pattern$, needles$(), 0, 0))
 End Sub
 
 ' Combination: mandatory word matched, forbidden word not matched -
 ' succeeds, and the '+' match contributes to the count.
 Sub test_find_matches_gvn_both_ok()
-  Local haystack$(4) Length MAX_WORD_LENGTH = ("+cat", "-dog", "bird", "")
+  Const pattern$ = "+cat -dog bird"
   Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "bird", "", "")
-  assert_int_equals(2, find_matches%(haystack$(), needles$(), 0, 0))
+  assert_int_equals(2, find_matches%(pattern$, needles$(), 0, 0))
 End Sub
 
 ' Combination: mandatory word left unmatched - fails even though the
 ' forbidden word was correctly avoided.
 Sub test_find_matches_gvn_plus_fail()
-  Local haystack$(4) Length MAX_WORD_LENGTH = ("+cat", "-dog", "bird", "")
+  Const pattern$ = "+cat -dog bird"
   Local needles$(4) Length MAX_WORD_LENGTH = ("bird", "", "", "")
-  assert_int_equals(0, find_matches%(haystack$(), needles$(), 0, 0))
+  assert_int_equals(0, find_matches%(pattern$, needles$(), 0, 0))
 End Sub
 
 ' Combination: forbidden word matched - fails even though the mandatory
 ' word was also matched.
 Sub test_find_matches_gvn_minus_fail()
-  Local haystack$(4) Length MAX_WORD_LENGTH = ("+cat", "-dog", "bird", "")
+  Const pattern$ = "+cat -dog bird"
   Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "dog", "", "")
-  assert_int_equals(0, find_matches%(haystack$(), needles$(), 0, 0))
+  assert_int_equals(0, find_matches%(pattern$, needles$(), 0, 0))
 End Sub
 
 ' Multiple '+' words - if even one of several mandatory words is missing,
 ' the whole match fails.
 Sub test_find_matches_gvn_multi_plus()
-  Local haystack$(4) Length MAX_WORD_LENGTH = ("+cat", "+dog", "bird", "")
+  Const pattern$ = "+cat +dog bird"
   Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "bird", "", "")
-  assert_int_equals(0, find_matches%(haystack$(), needles$(), 0, 0))
+  assert_int_equals(0, find_matches%(pattern$, needles$(), 0, 0))
 End Sub
 
 ' Matching against a '+' word (after stripping the prefix) is still
 ' case-insensitive.
 Sub test_find_matches_gvn_plus_case()
-  Local haystack$(4) Length MAX_WORD_LENGTH = ("+CAT", "", "", "")
+  Const pattern$ = "+CAT"
   Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "", "", "")
-  assert_int_equals(1, find_matches%(haystack$(), needles$(), 0, 0))
+  assert_int_equals(1, find_matches%(pattern$, needles$(), 0, 0))
 End Sub
 
 ' Matching against a '-' word (after stripping the prefix) is still
 ' case-insensitive when checking whether it was forbiddenly matched.
 Sub test_find_matches_gvn_minus_case()
-  Local haystack$(4) Length MAX_WORD_LENGTH = ("-CAT", "", "", "")
+  Const pattern$ = "-CAT"
   Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "", "", "")
-  assert_int_equals(0, find_matches%(haystack$(), needles$(), 0, 0))
+  assert_int_equals(0, find_matches%(pattern$, needles$(), 0, 0))
 End Sub
 
 ' r=LOC001; "two" matches the exit "Room Two" (LOC002)

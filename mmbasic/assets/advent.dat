@@ -97,19 +97,19 @@ OBJ256_SHOTGUNS|Shotguns # shotgun|LOC023_GAMEKEEPERS_COTTAGE|1|1
 
 !questions
 # id | result matches...
-Q_1|ronald|mellors
-Q_2|sarah
+Q_1|ronald|mellors|gamekeeper
+Q_2|sarah|sara
 Q_3|gramaphone|gramophone|record
 Q_4|pond
 Q_5|c
-Q_6|garden
+Q_6|garden|outside|exterior
 Q_7|big|large
-Q_8|door|slam
+Q_8|door|slam|slamming
 Q_9|terrace
 Q_10|stone|rock
 Q_11|arthur|coniston
 Q_12|redvers|slingsby
-Q_13|marry millicent|marry milicent
+Q_13|+marry +millicent|+marry +milicent|+marriage +millicent|+marriage +milicent
 
 !clues
 cigarettes
