@@ -74,44 +74,68 @@ End Function
 '                 1 if the word count exceeds the array bounds, or
 '                 2 if any single word exceeds the element length limit.
 '                 On error the array may be partially populated.
+' Splits a command string into individual words at space boundaries.
 Function split_words%(cmd$, words$())
-  Local i%
-  For i% = Bound(words$(), 0) To Bound(words$(), 1)
+  Local i%, p%, c%, w$, wLen%
+
+  Const maxIdx% = Bound(words$(), 1)
+
+  ' Clear output array
+  For i% = Bound(words$(), 0) To maxIdx%
     words$(i%) = ""
   Next
 
-  Local ch$, p%
+  cmd$ = LCase$(cmd$)
+  Const cmdLen% = Len(cmd$)
+  If cmdLen% = 0 Then split_words% = 0: Exit Function
+
+  Const cmdAddr% = Peek(VarAddr cmd$) + 1
   i% = Bound(words$(), 0)
-  For p% = 1 To Len(cmd$)
-    ch$ = LCase$(Mid$(cmd$, p%, 1))
-    Select Case ch$
-      Case "'", "?", "!"
-        ' Removed from word
-      Case " "
-        If Len(words$(i%)) > 0 Then Inc i%
-      Case Chr$(34), ","
-        ' A double-quote or comma is always its own word, even mid-token
-        If Len(words$(i%)) > 0 Then Inc i%
-        If i% > Bound(words$(), 1) Then
-          split_words% = 1 ' Too many words
-          Exit Function
-        EndIf
-        words$(i%) = ch$
-        Inc i%
-      Case Else
-        If i% > Bound(words$(), 1) Then
-          split_words% = 1 ' Too many words
-          Exit Function
+  w$ = ""
+  wLen% = 0
+
+  For p% = 0 To cmdLen% - 1
+    c% = Peek(Byte cmdAddr% + p%)
+
+    Select Case c%
+      Case 32 ' Space
+        If wLen% > 0 Then
+          words$(i%) = w$
+          w$ = ""
+          wLen% = 0
+          Inc i%
         EndIf
 
-        If Len(words$(i%)) = MAX_WORD_LENGTH Then
-          split_words% = 2 ' Word too long
-          Exit Function
+      Case 34, 44 ' Double Quote (") or Comma (,)
+        If wLen% > 0 Then
+          words$(i%) = w$
+          w$ = ""
+          wLen% = 0
+          Inc i%
         EndIf
-        Cat words$(i%), ch$
-      EndIf
+        If i% > maxIdx% Then split_words% = 1: Exit Function
+        words$(i%) = Chr$(c%)
+        Inc i%
+
+      Case 39, 33, 63 ' Apostrophe ('), !, ?
+        ' Stripped - silently skip
+
+      Case Else ' Normal character
+        If i% > maxIdx% Then split_words% = 1: Exit Function
+        If wLen% = MAX_WORD_LENGTH Then split_words% = 2: Exit Function
+
+        Cat w$, Chr$(c%)
+        Inc wLen%
     End Select
   Next
+
+  ' Commit trailing word buffer
+  If wLen% > 0 Then
+    If i% > maxIdx% Then split_words% = 1: Exit Function
+    words$(i%) = w$
+  EndIf
+
+  split_words% = 0
 End Function
 
 ' Finds the index of the first occurrence of needle$ in haystack$(),
