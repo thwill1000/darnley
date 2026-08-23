@@ -41,6 +41,14 @@ add_test("test_markup_gvn_unclosed_bracket")
 add_test("test_markup_gvn_missing_colon")
 add_test("test_markup_colon_after_close")
 add_test("test_markup_gvn_empty_string")
+add_test("markup with span split across two con.print() calls", "test_mrk_split_span")
+add_test("markup where '[[colour:' is complete but body+']]' are split", "test_mrk_split_colon")
+add_test("markup span left open across three or more calls", "test_mrk_split_3calls")
+add_test("plain text after a split span's close resumes correctly", "test_mrk_split_then_plain")
+add_test("a self-contained span after a resumed split span's close", "test_mrk_split_then_adj")
+add_test("resuming a split span where ']]' is the very first thing", "test_mrk_split_empty_lead")
+add_test("con.clear() abandons a span left open by a previous call", "test_mrk_split_clear_rst")
+add_test("a word split mid-span across calls is not flushed prematurely", "test_mrk_split_word_wrap")
 
 run_tests()
 End
@@ -119,4 +127,71 @@ End Sub
 Sub test_markup_gvn_empty_string()
   con.parse_markup("", "stub_markup_cb")
   assert_string_equals("", markup_log$)
+End Sub
+
+' A span's open and close arrive in separate calls - text is split across
+' them, with the callback firing once per parse_markup() call as usual
+Sub test_mrk_split_span()
+  con.parse_markup("The [[red:knife", "stub_markup_cb")
+  con.parse_markup(" lies here]] on the table", "stub_markup_cb")
+  assert_string_equals("The <red:knife><red: lies here> on the table", markup_log$)
+End Sub
+
+' The "[[colour:" delimiter itself is complete in the first call (per the
+' stated assumption); only the body text and "]]" are split off
+Sub test_mrk_split_colon()
+  con.parse_markup("[[cyan:", "stub_markup_cb")
+  con.parse_markup("note]]", "stub_markup_cb")
+  assert_string_equals("<cyan:note>", markup_log$)
+End Sub
+
+' A span can remain open across more than two calls
+Sub test_mrk_split_3calls()
+  con.parse_markup("[[yellow:one", "stub_markup_cb")
+  con.parse_markup(" two", "stub_markup_cb")
+  con.parse_markup(" three]]", "stub_markup_cb")
+  assert_string_equals("<yellow:one><yellow: two><yellow: three>", markup_log$)
+End Sub
+
+' Plain text following a closed, previously-split span in the SAME call as
+' the close is handled correctly
+Sub test_mrk_split_then_plain()
+  con.parse_markup("[[green:Warning", "stub_markup_cb")
+  con.parse_markup("]] - do not enter", "stub_markup_cb")
+  assert_string_equals("<green:Warning> - do not enter", markup_log$)
+End Sub
+
+' A second, self-contained span appearing in the same call that closes the
+' first (split) span is parsed correctly afterwards
+Sub test_mrk_split_then_adj()
+  con.parse_markup("[[red:blood", "stub_markup_cb")
+  con.parse_markup("]][[cyan:stain]]", "stub_markup_cb")
+  assert_string_equals("<red:blood><cyan:stain>", markup_log$)
+End Sub
+
+' If the closing "]]" is the very first thing in the resuming call, no empty
+' segment should be emitted for the (zero-length) leading part
+Sub test_mrk_split_empty_lead()
+  con.parse_markup("[[red:", "stub_markup_cb")
+  con.parse_markup("]]rest", "stub_markup_cb")
+  assert_string_equals("<red:>rest", markup_log$)
+End Sub
+
+' con.clear() abandons any span left open by a previous call, so a later
+' call starts fresh rather than resuming stale markup state
+Sub test_mrk_split_clear_rst()
+  con.parse_markup("[[red:abandoned", "stub_markup_cb")
+  con.clear(1)
+  markup_log$ = ""
+  con.parse_markup("plain text", "stub_markup_cb")
+  assert_string_equals("plain text", markup_log$)
+End Sub
+
+' A span split mid-word across two con.print() calls must not cause the
+' word to be flushed/wrapped prematurely - con.buf$ persists across calls
+' exactly as it would within a single call.
+Sub test_mrk_split_word_wrap()
+  con.parse_markup("[[red:kni", "stub_markup_cb")
+  con.parse_markup("fe]] lies here", "stub_markup_cb")
+  assert_string_equals("<red:kni><red:fe> lies here", markup_log$)
 End Sub

@@ -176,8 +176,8 @@ ask. I trust you to make sense of it better than any of us could."
 
 affair mellors ronald sarah summer house summerhouse together secret lovers
 !requires handkerchief cigarettes
-Billingsgate's composure does not slip, but there is a long pause
-before he answers.@
+[[reset:Billingsgate's composure does not slip, but there is a long pause
+before he answers.]]@
 @
 "It is not my place to speculate about the private conduct of the
 family, sir. I have nothing further to say on the matter."
@@ -207,8 +207,8 @@ further."
 -who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_arnold
 !provides new_accuse accuse_arnold
-The butler's composure has returned, though something guarded remains
-in his manner.@
+[[reset:The butler's composure has returned, though something guarded remains
+in his manner.]]@
 @
 "You have already put that question to me, sir, and my answer has not
 changed in the meantime."
@@ -216,8 +216,8 @@ changed in the meantime."
 -who accuse you did it jaccuse murder murderer
 !requires all_clues
 !provides new_accuse accuse_arnold accuse_b4_arnold
-Billingsgate draws himself up, visibly wounded, though he masters
-himself with the discipline of long service.@
+[[reset:Billingsgate draws himself up, visibly wounded, though he masters
+himself with the discipline of long service.]]@
 @
 "I have served this family faithfully for the whole of my working life,
 sir. I should hope my conduct speaks for itself, whatever you may

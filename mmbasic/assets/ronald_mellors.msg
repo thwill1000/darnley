@@ -131,7 +131,7 @@ Rest's up to you."
 
 affair mellors ronald sarah summer house summerhouse together secret lovers
 !requires handkerchief cigarettes
-His jaw tightens and, for the first time, he looks away from you.@
+[[reset:His jaw tightens and, for the first time, he looks away from you.]]@
 @
 "I don't know what you're getting at, and I'll thank you not to say
 such things about Mrs. Darnley. She's a fine woman. That's all
@@ -162,7 +162,7 @@ goodbye bye farewell thanks thank
 -who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_ronald
 !provides new_accuse accuse_ronald
-He doesn't so much as blink.@
+[[reset:He doesn't so much as blink.]]@
 @
 "Already told you once. Nothing's changed, and I'm not about to start
 singing a different tune just to please you."
@@ -170,9 +170,9 @@ singing a different tune just to please you."
 -who accuse you did it jaccuse murder murderer
 !requires all_clues
 !provides new_accuse accuse_ronald accuse_b4_ronald
-Mellors doesn't flinch. He looks back at you with the same flat,
+[[reset:Mellors doesn't flinch. He looks back at you with the same flat,
 unreadable hostility he's shown from the start, though something behind
-his eyes has sharpened.@
+his eyes has sharpened.]]@
 @
 "Say that again and see what it gets you. I never touched him. Been
 saying so all along, and I'll keep saying it."

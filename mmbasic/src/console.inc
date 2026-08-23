@@ -31,6 +31,15 @@ Dim con.spin_shown      ' is the progress spinner currently displayed ?
 Dim con.disable_flush%  ' set 1 to temporarily disable flushing the console write buffer, buf$.
 Dim con.fg$ = "reset"   ' current foreground colour
 Dim con.prompt_colour$ = "reset"  ' prompt colour
+Dim con.markup_colour$  ' colour of a span left open across con.print() calls,
+                        ' "" if no span is currently open
+Dim con.markup_pending_empty% ' 1 if a span is open and nothing has been emitted for
+                               ' it yet (i.e. every call so far contributed zero
+                               ' characters of body text) - used so a totally empty
+                               ' split span still emits exactly one empty callback,
+                               ' matching self-contained "[[colour:]]" behaviour,
+                               ' without also emitting a spurious empty callback for
+                               ' a span that already emitted real content earlier.
 
 Sub con.init(width%, height%, spin_enabled%)
   con.WIDTH = width%
@@ -44,14 +53,16 @@ Sub con.init(width%, height%, spin_enabled%)
   EndIf
 End Sub
 
-Sub con.clear()
-  Cls
+Sub con.clear(no_cls%)
+  If Not no_cls% Then Cls
   con.buf$ = ""
   con.buf_runs$ = ""
   con.space = 0
   con.count = 0
   con.lines = 0
   con.x = 1
+  con.markup_colour$ = ""
+  con.markup_pending_empty% = 0
 End Sub
 
 ' @param  p$  prompt
@@ -134,6 +145,27 @@ Sub con.parse_markup(s$, callback$)
   Local chunk$, fg$, p_close%, p_colon%, p_open%, remainder$
 
   remainder$ = s$
+
+  ' Resume a span left open by a previous call.
+  If con.markup_colour$ <> "" Then
+    p_close% = InStr(remainder$, "]]")
+    If Not p_close% Then
+      If Len(remainder$) > 0 Then
+        Call callback$, remainder$, con.markup_colour$
+        con.markup_pending_empty% = 0
+      EndIf
+      Exit Sub
+    EndIf
+    If p_close% > 1 Then
+      Call callback$, Left$(remainder$, p_close% - 1), con.markup_colour$
+    ElseIf con.markup_pending_empty% Then
+      Call callback$, "", con.markup_colour$
+    EndIf
+    remainder$ = Mid$(remainder$, p_close% + 2)
+    con.markup_colour$ = ""
+    con.markup_pending_empty% = 0
+  EndIf
+
   Do While Len(remainder$) > 0
     p_open% = InStr(remainder$, "[[")
 
@@ -149,17 +181,29 @@ Sub con.parse_markup(s$, callback$)
     p_colon% = InStr(p_open%, remainder$, ":")
     p_close% = InStr(p_open%, remainder$, "]]")
 
-    ' Handle malformed markup by just emitting text literally:
-    ' No colon at all, no colon within closing brackets, no closing-brackets, colon but no colour
-    If Not p_colon% Or p_colon% > p_close% Or Not p_close% Or p_colon% = p_open% + 2 Then
+    ' Handle malformed markup by just emitting text literally.
+    If Not p_colon% Or p_colon% = p_open% + 2 Or (p_close% And p_colon% > p_close%) Then
       Call callback$, "[[", ""
       remainder$ = Mid$(remainder$, p_open% + 2)
       Continue Do
     EndIf
 
     fg$ = Mid$(remainder$, p_open% + 2, p_colon% - p_open% - 2)
-    chunk$  = Mid$(remainder$, p_colon% + 1, p_close% - p_colon% - 1)
 
+    If Not p_close% Then
+      ' Span opens here but its "]]" has not arrived within this call.
+      chunk$ = Mid$(remainder$, p_colon% + 1)
+      If Len(chunk$) > 0 Then
+        Call callback$, chunk$, fg$
+        con.markup_pending_empty% = 0
+      Else
+        con.markup_pending_empty% = 1
+      EndIf
+      con.markup_colour$ = fg$
+      Exit Sub
+    EndIf
+
+    chunk$ = Mid$(remainder$, p_colon% + 1, p_close% - p_colon% - 1)
     Call callback$, chunk$, fg$
 
     remainder$ = Mid$(remainder$, p_close% + 2)
