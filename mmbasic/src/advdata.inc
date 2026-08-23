@@ -25,25 +25,31 @@ Sub read_rooms(f$)
   For i% = Bound(rooms$(), 0) To num_rooms%
     loc_tag$ = Field$(rooms$(i%), 1, "|")
 
-    ' Check no room has an invalid exit
-    num_exits% = Val(Field$(rooms$(i%), 3, "|"))
+    ' Check location has exits
+    num_exits% = Val(Field$(rooms$(i%), 4, "|"))
+    If num_exits% = 0 Then
+      con.println("Location " + loc_tag$ + " has 0 exits")
+      Inc error_count%
+    EndIf
+
+    ' Check all exits are valid
     For j% = 1 To num_exits%
-      exit_tag$ = Field$(rooms$(i%), 3 + j%, "|")
+      exit_tag$ = Field$(rooms$(i%), 4 + j%, "|")
       If Not find_loc%(exit_tag$, 1) Then
-        con.println("Room " + loc_tag$ + " has invalid exit: " + exit_tag$)
+        con.println("Location " + loc_tag$ + " has invalid exit: " + exit_tag$)
         Inc error_count%
       EndIf
     Next
 
     ' Check room has a message entry (for LOOK verb)
     If Not message_exists%(loc_tag$) Then
-      con.println("Room " + loc_tag$ + " has no message file entry")
+      con.println("Location " + loc_tag$ + " has no message file entry")
       Inc error_count%
     EndIf
   Next
 
   If error_count% Then
-    con.println(Str$(error_count%) + " room data errors found!")
+    con.println(Str$(error_count%) + " location data errors found!")
     End
   EndIf
 End Sub

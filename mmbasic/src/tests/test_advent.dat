@@ -1,8 +1,8 @@
 !locations
-LOC001|Room One|2|LOC002|LOC003
-LOC002|Room Two|2|LOC001|LOC003
-LOC003|Room Three|2|LOC001|LOC002
-LOC004|Room Four|0
+LOC001|Room One|room one|2|LOC002|LOC003
+LOC002|Room Two|room two|2|LOC001|LOC003
+LOC003|Room Three|room three|3|LOC001|LOC002|LOC004
+LOC004|Room Four|room four|1|LOC003
 
 !objects
 OBJ001|Green Door|LOC001|0|100

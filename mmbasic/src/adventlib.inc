@@ -147,12 +147,12 @@ Sub describe_loc()
 
   ' ' Iterate through exits for the current location
   ' con.print("Exits: ")
-  ' Const num_exits% = Val(Field$(rooms$(r), 3, "|"))
+  ' Const num_exits% = Val(Field$(rooms$(r), 4, "|"))
   ' count% = 0
   ' Local exit_label$
   ' For i% = 1 To num_exits%
   '   If count% > 0 Then con.print(", ")
-  '   exit_label$ = Field$(rooms$(r), 3 + i%, "|")
+  '   exit_label$ = Field$(rooms$(r), 4 + i%, "|")
   '   con.print(Field$(rooms$(find_loc%(exit_label$)), 2, "|"))
   '   Inc count%
   ' Next
@@ -460,16 +460,16 @@ End Function
 ' @param words$()  Array of words to match against exit location names.
 ' @return          Index into rooms$() of the best matching exit, or -1 if none.
 Function find_exit_match%(words$())
-  Local best_num_matches%, i%, loc%, loc_tag$, loc_name$, num_matches%
+  Local best_num_matches%, i%, loc%, loc_pattern$, loc_tag$, num_matches%
 
   find_exit_match% = -1
 
-  Const num_exits% = Val(Field$(rooms$(r), 3, "|"))
+  Const num_exits% = Val(Field$(rooms$(r), 4, "|"))
   For i% = 1 To num_exits%
-    loc_tag$ = Field$(rooms$(r), 3 + i%, "|")
+    loc_tag$ = Field$(rooms$(r), 4 + i%, "|")
     loc% = find_loc%(loc_tag$)
-    loc_name$ = Field$(rooms$(loc%), 2, "|")
-    num_matches% = find_matches%(loc_name$, words$(), 2)
+    loc_pattern$ = Field$(rooms$(loc%), 3, "|")
+    num_matches% = find_matches%(loc_pattern$, words$(), 2)
     If num_matches% > best_num_matches% Then
       best_num_matches% = num_matches%
       find_exit_match% = loc%
