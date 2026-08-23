@@ -55,25 +55,30 @@ adv.asset_dir$ = Mm.Info(Path)
 adv.msg_file$ = adv.asset_dir$ + "test.msg"
 advdata.init(TEST_DATA_FILE$)
 
-add_test("normalize_keyword$() is case-insensitive for self-description", "test_nk_gvn_self_desc_case")
-add_test("normalize_keyword$() leaves a literal roster name unchanged (lower-cased)", "test_nk_gvn_roster_name")
-add_test("normalize_keyword$() trims a self-desc line with no extra wording", "test_nk_gvn_self_desc_exact")
-add_test("normalize_keyword$() retains a role-word when trimming a self-desc line", "test_nk_gvn_self_desc_role_word")
-add_test("normalize_keyword$() retains an alias when trimming a self-desc line", "test_nk_gvn_self_desc_alias")
-add_test("normalize_keyword$() trims any ` yourself who` suffix, not just known names", "test_nk_gvn_self_desc_unrecog")
-add_test("normalize_keyword$() leaves a plain keyword unchanged (lower-cased)", "test_nk_gvn_plain")
-add_test("normalize_keyword$() does not trim ` who` without `yourself`", "test_nk_gvn_who_no_yourself")
+add_test("build_alt_set$() with a single (no '|') alternative returns it lower-cased", "test_bas_gvn_single")
+add_test("build_alt_set$() sorts multiple alternatives regardless of source order", "test_bas_gvn_multi_sorted")
+add_test("build_alt_set$() trims whitespace and lower-cases each alternative", "test_bas_gvn_trims_lowercases")
 add_test("normalize_token$() collapses accuse_b4_<tag>", "test_nt_gvn_accuse_b4")
 add_test("normalize_token$() leaves other tokens unchanged", "test_nt_gvn_plain")
 add_test("build_key$() with no requires tokens", "test_bk_gvn_no_requires")
 add_test("build_key$() sorts normalized requires tokens", "test_bk_gvn_sorted")
 add_test("build_key$() leaves a literal roster keyword unchanged", "test_bk_gvn_roster")
-add_test("build_key$() trims a self-desc keyword to match its opinion-of-them counterpart", "test_bk_gvn_self_desc")
+add_test("build_key$() combines a multi-alternative keyword with its requires suffix", "test_bk_gvn_alt_set")
+add_test("split_key() separates the alt-set part from a requires suffix", "test_sk_gvn_with_requires")
+add_test("split_key() returns an empty requires part when there is none", "test_sk_gvn_no_requires")
+add_test("entry_matches%() accepts identical single-alternative keys", "test_em_gvn_exact_match")
+add_test("entry_matches%() accepts a candidate that adds an extra alternative", "test_em_gvn_extra_alt_allowed")
+add_test("entry_matches%() rejects a candidate missing the template's mandatory alternative", "test_em_gvn_missing_alt")
+add_test("entry_matches%() rejects a mismatched requires suffix even with matching alternatives", "test_em_gvn_requires_mismatch")
+add_test("entry_matches%() accepts an extra alternative alongside a matching requires suffix", "test_em_gvn_req_match_extra_alt")
+add_test("entry_matches%() treats the wildcard '*' as requiring an exact match", "test_em_gvn_wildcard_exact")
 add_test("read_entries() reads all keys from the template, skipping comments", "test_re_gvn_template")
 add_test("read_entries() records the wildcard as a literal key", "test_re_gvn_wildcard")
 add_test("read_entries() on an empty file returns zero entries", "test_re_gvn_empty")
 add_test("validate%() accepts a file with the same order as the template", "test_val_gvn_full_match")
 add_test("validate%() accepts a file that omits entries but preserves order", "test_val_gvn_subset")
+add_test("validate%() accepts a file that adds an extra '|' alternative to an entry", "test_val_gvn_extra_alt_ok")
+add_test("validate%() rejects a file whose entry is missing the template's mandatory alternative", "test_val_gvn_extra_alt_missing")
 add_test("validate%() rejects a reordered entry", "test_val_gvn_reordered")
 add_test("validate%() rejects an entry not present in the template", "test_val_gvn_unknown")
 add_test("validate%() rejects a file not ending in the wildcard", "test_val_gvn_no_wildcard")
@@ -86,50 +91,20 @@ Sub setup_test()
   con_output$ = ""
 End Sub
 
-' normalize_keyword$() -----------------------------------------------------
+' build_alt_set$() -----------------------------------------------------
 
-Sub test_nk_gvn_self_desc_case()
-  assert_string_equals("ronald mellors gamekeeper", msgorder.normalize_keyword$("Ronald Mellors Gamekeeper Yourself Who"))
+Sub test_bas_gvn_single()
+  assert_string_equals("gramophone", msgorder.build_alt_set$("Gramophone"))
 End Sub
 
-Sub test_nk_gvn_roster_name()
-  assert_string_equals("sarah", msgorder.normalize_keyword$("Sarah"))
-  assert_string_equals("colonel darnley", msgorder.normalize_keyword$("colonel darnley"))
+' Alternatives are sorted alphabetically regardless of the order they
+' appear in the source keyword line
+Sub test_bas_gvn_multi_sorted()
+  assert_string_equals("millicent~yourself", msgorder.build_alt_set$("yourself | millicent"))
 End Sub
 
-' A self-description line with no extra wording before "yourself who"
-Sub test_nk_gvn_self_desc_exact()
-  assert_string_equals("arthur coniston", msgorder.normalize_keyword$("arthur coniston yourself who"))
-End Sub
-
-' A self-description line with an extra role-word before "yourself who" -
-' the role word is retained, matching the text used in every other
-' suspect's "opinion of them" entry
-Sub test_nk_gvn_self_desc_role_word()
-  assert_string_equals("arnold billingsgate butler", msgorder.normalize_keyword$("Arnold Billingsgate Butler Yourself Who"))
-  assert_string_equals("mildred goodbody cook", msgorder.normalize_keyword$("mildred goodbody cook yourself who"))
-End Sub
-
-' A self-description line with an alias/misspelling before "yourself who" -
-' the alias is retained, matching the text used elsewhere for this suspect
-Sub test_nk_gvn_self_desc_alias()
-  assert_string_equals("millicent milicent", msgorder.normalize_keyword$("millicent milicent yourself who"))
-End Sub
-
-' The suffix trim is purely textual - it applies to any line ending
-' " yourself who", not just known roster names, and there is no
-' fallback/lookup involved
-Sub test_nk_gvn_self_desc_unrecog()
-  assert_string_equals("nobody in particular", msgorder.normalize_keyword$("nobody in particular yourself who"))
-End Sub
-
-Sub test_nk_gvn_plain()
-  assert_string_equals("gramophone", msgorder.normalize_keyword$("Gramophone"))
-End Sub
-
-' Ends " who" but does not contain "yourself" - must not be collapsed
-Sub test_nk_gvn_who_no_yourself()
-  assert_string_equals("guess who", msgorder.normalize_keyword$("guess who"))
+Sub test_bas_gvn_trims_lowercases()
+  assert_string_equals("arthur coniston~yourself", msgorder.build_alt_set$("  Arthur Coniston  |  YOURSELF "))
 End Sub
 
 ' normalize_token$() --------------------------------------------------------
@@ -155,7 +130,7 @@ Sub test_bk_gvn_sorted()
   Local requires_b$(4) = ("accuse_b4_carol", "all_clues", "", "")
   Const key_a$ = msgorder.build_key$("+accuse", requires_a$())
   Const key_b$ = msgorder.build_key$("+accuse", requires_b$())
-  assert_string_equals("+accuse|accuse_b4_tag|all_clues", key_a$)
+  assert_string_equals("+accuse@accuse_b4_tag@all_clues", key_a$)
   assert_string_equals(key_a$, key_b$)
 End Sub
 
@@ -164,11 +139,60 @@ Sub test_bk_gvn_roster()
   assert_string_equals("millicent", msgorder.build_key$("Millicent", requires$()))
 End Sub
 
-' A self-description keyword collapses to the same key as the literal
-' "opinion of them" keyword it replaces would (role word/alias retained)
-Sub test_bk_gvn_self_desc()
+' A keyword with a "|"-separated extra alternative (e.g. a suspect's own
+' self-description entry) combines the sorted alt-set with the requires
+' suffix, exactly as a single-alternative keyword would
+Sub test_bk_gvn_alt_set()
   Local requires$(4)
-  assert_string_equals("millicent milicent", msgorder.build_key$("millicent milicent yourself who", requires$()))
+  assert_string_equals("millicent~yourself", msgorder.build_key$("millicent | yourself", requires$()))
+End Sub
+
+' split_key() ------------------------------------------------------------
+
+Sub test_sk_gvn_with_requires()
+  Local alt$, req$
+  msgorder.split_key("millicent~yourself@all_clues@newspaper", alt$, req$)
+  assert_string_equals("millicent~yourself", alt$)
+  assert_string_equals("@all_clues@newspaper", req$)
+End Sub
+
+Sub test_sk_gvn_no_requires()
+  Local alt$, req$
+  msgorder.split_key("gramophone", alt$, req$)
+  assert_string_equals("gramophone", alt$)
+  assert_string_equals("", req$)
+End Sub
+
+' entry_matches%() ------------------------------------------------------
+
+Sub test_em_gvn_exact_match()
+  assert_int_equals(1, msgorder.entry_matches%("gramophone", "gramophone"))
+End Sub
+
+' The template's mandatory alternative ("millicent") is present among the
+' candidate's alternatives, which also includes an extra one ("yourself")
+Sub test_em_gvn_extra_alt_allowed()
+  assert_int_equals(1, msgorder.entry_matches%("millicent", "millicent~yourself"))
+End Sub
+
+' The candidate's only alternative is "yourself" - the template's
+' mandatory "millicent" alternative is absent, so this must be rejected
+Sub test_em_gvn_missing_alt()
+  assert_int_equals(0, msgorder.entry_matches%("millicent", "yourself"))
+End Sub
+
+Sub test_em_gvn_requires_mismatch()
+  assert_int_equals(0, msgorder.entry_matches%("gramophone@token_x", "gramophone"))
+End Sub
+
+Sub test_em_gvn_req_match_extra_alt()
+  assert_int_equals(1, msgorder.entry_matches%("beta@token_x", "beta~extra@token_x"))
+End Sub
+
+' The wildcard has no "|" alternatives to begin with, so an "extra
+' alternative" reduces to requiring an exact match
+Sub test_em_gvn_wildcard_exact()
+  assert_int_equals(1, msgorder.entry_matches%("*", "*"))
 End Sub
 
 ' read_entries() -------------------------------------------------------------
@@ -179,12 +203,12 @@ Sub test_re_gvn_template()
 
   assert_int_equals(9, n%)
   assert_string_equals("alpha", keys$(1))
-  assert_string_equals("beta|token_x", keys$(2))
-  assert_string_equals("gamma|token_x", keys$(3))
+  assert_string_equals("beta@token_x", keys$(2))
+  assert_string_equals("gamma@token_x", keys$(3))
   assert_string_equals("sarah", keys$(4))
   assert_string_equals("millicent", keys$(5))
-  assert_string_equals("+accuse|accuse_b4_tag|all_clues", keys$(6))
-  assert_string_equals("+accuse|all_clues", keys$(7))
+  assert_string_equals("+accuse@accuse_b4_tag@all_clues", keys$(6))
+  assert_string_equals("+accuse@all_clues", keys$(7))
   assert_string_equals("+accuse", keys$(8))
   assert_string_equals("*", keys$(9))
 End Sub
@@ -221,6 +245,23 @@ Sub test_val_gvn_subset()
   Local err$
   assert_int_equals(1, read_and_validate%(Mm.Info(Path) + "test_msgorder_subset.msg", err$))
   assert_string_equals("", err$)
+End Sub
+
+' Candidate's "sarah" entry adds an extra "| extra" alternative not
+' present in the template - this must still be accepted, since extra
+' alternatives are always permitted
+Sub test_val_gvn_extra_alt_ok()
+  Local err$
+  assert_int_equals(1, read_and_validate%(Mm.Info(Path) + "test_msgorder_extra_alt_ok.msg", err$))
+  assert_string_equals("", err$)
+End Sub
+
+' Candidate replaces the template's mandatory "sarah" alternative with
+' "notsarah" entirely, rather than adding to it - this must be rejected
+Sub test_val_gvn_extra_alt_missing()
+  Local err$
+  assert_int_equals(0, read_and_validate%(Mm.Info(Path) + "test_msgorder_extra_alt_missing.msg", err$))
+  assert_int_equals(1, Len(err$) > 0)
 End Sub
 
 Sub test_val_gvn_reordered()

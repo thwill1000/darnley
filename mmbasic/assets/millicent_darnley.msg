@@ -80,7 +80,7 @@ who is almost the same age. I thought she would leave daddy some day
 as soon as she found a lover. But, of course, she would need Daddy's
 money."
 
-millicent yourself who
+millicent | yourself
 "I don't know what there is to say about me. I loved my father,
 whatever anyone supposes, and I mean to see whoever did this
 brought to justice - however long it takes."

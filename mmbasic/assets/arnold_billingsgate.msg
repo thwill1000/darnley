@@ -103,7 +103,7 @@ arthur coniston
 redvers slingsby
 "I've met the gentleman once or twice. A very hot-tempered man."
 
-arnold billingsgate butler yourself who
+arnold billingsgate butler | yourself
 "I have been butler here since I was a young footman, more years
 ago than I care to count. I hope I have always given satisfaction.
 It is my place to see the household run smoothly and to be of

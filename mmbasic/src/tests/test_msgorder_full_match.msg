@@ -10,7 +10,7 @@ gamma
 !provides token_y
 "g"
 
-sarah yourself who
+sarah | yourself
 "self"
 
 millicent

@@ -78,7 +78,7 @@ colonel darnley
 "He was somewhat strict and suspicious by nature, but we were happy
 enough."
 
-sarah yourself who
+sarah | yourself
 "I know what's said of me - too young for my husband, too fond of
 admiration. I loved Sebastian in my own way, whatever anyone
 thinks. I don't expect you to understand a marriage from outside

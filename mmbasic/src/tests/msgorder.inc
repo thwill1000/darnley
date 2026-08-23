@@ -12,19 +12,23 @@
 ' reordered relative to one another. The final entry in every file
 ' (including the template) must be the wildcard "*".
 '
-' Some entries are necessarily suspect-specific in their exact text even
-' though they play the same structural role in every file:
-'   - the nine-entry "opinion of each suspect" block, where a suspect's
-'     own slot is replaced in place by a self-description entry, e.g.
-'     "arthur coniston yourself who" instead of an opinion of himself.
-'     Every suspect's role word or alias (e.g. "butler", "milicent") is
-'     kept consistent between their self-description and every other
-'     suspect's opinion-of-them entry, so trimming the fixed suffix
-'     " yourself who" recovers identical text to compare against (see
-'     msgorder.normalize_keyword$()).
-'   - the three "+accuse" entries' "!requires" tokens, one of which
-'     ("accuse_b4_<tag>") is parameterised by the suspect's tag, and is
-'     normalised the same way (see msgorder.normalize_token$()).
+' A keyword line may list several "|"-separated alternative phrasings.
+' The template lists only the MANDATORY alternatives for a given entry -
+' a suspect file's version of that entry is always free to add further
+' "|" alternatives of its own without being treated as reordered or
+' unknown; comparison checks that the template's alternatives are a
+' SUBSET of the suspect's, not that the two are identical (see
+' msgorder.entry_matches%()). This is what allows, for example, a
+' suspect's own "opinion of them" entry to add "| yourself" as an extra
+' alternative in their own file (e.g. "arthur coniston | yourself"),
+' where the template only requires the plain "arthur coniston" form; and
+' likewise for Sir Redvers' own extra "| ... +you" alternative on the
+' finance entry, letting the topic be raised with him directly.
+'
+' The three "+accuse" entries' "!requires" tokens are parameterised by the
+' suspect's tag (one token is "accuse_b4_<tag>") - a VALUE substitution
+' rather than an extra alternative - and are normalized to a common
+' placeholder for comparison (see msgorder.normalize_token$()).
 
 On Error Skip 1 : Dim sys.VERSION = -1
 If sys.VERSION = -1 Then Error "'system.inc' not included"
@@ -48,36 +52,41 @@ Function msgorder.normalize_token$(token$)
   EndIf
 End Function
 
-' Normalizes a keyword line for identity comparison.
+' Builds a canonical, order-independent representation of a keyword
+' line's set of "|"-separated alternatives: each alternative is trimmed
+' and lower-cased, the alternatives are sorted, and the results joined
+' with "~". A keyword with no "|" simply returns its single (trimmed,
+' lower-cased) form.
 '
-' Every suspect file contains a block of nine "opinion of" entries, one
-' per suspect (including themselves), always in the same relative order.
-' Rather than an "opinion of myself" entry, each suspect's own slot in
-' that block is replaced IN PLACE by a self-description entry - the same
-' wording used everywhere else this suspect is referenced (including any
-' role word or alias, e.g. "arnold billingsgate butler", "millicent
-' milicent"), with the fixed suffix " yourself who" appended, e.g.
-' "arnold billingsgate butler yourself who". Trimming that suffix is
-' therefore sufficient to recover the identical text used elsewhere,
-' restoring full order-checking within the roster block rather than
-' treating it as one opaque unit.
+' This never produces a string containing "@", which msgorder.split_key()
+' relies on to separate this part of a combined identity key from the
+' "!requires" token-suffix appended by msgorder.build_key$().
 '
-' @param  keyword$  The entry's keyword line, as read from the file.
-' @return           The normalized (lower-cased) keyword.
-Function msgorder.normalize_keyword$(keyword$)
-  Const lc$ = LCase$(keyword$)
-  Const suffix$ = " yourself who"
+' @param  keyword$  The entry's keyword line (e.g. "gramophone",
+'                   "arthur coniston | yourself").
+' @return           The canonical alternative-set string.
+Function msgorder.build_alt_set$(keyword$)
+  Local alts$(MAX_WORDS) Length 128, n%, i%, a$, idx% = 1
+  Do
+    a$ = str.trim$(Field$(keyword$, idx%, "|"))
+    If a$ = "" Then Exit Do
+    Inc n%
+    alts$(n%) = LCase$(a$)
+    Inc idx%
+  Loop
 
-  If Right$(lc$, Len(suffix$)) = suffix$ Then
-    msgorder.normalize_keyword$ = Left$(lc$, Len(lc$) - Len(suffix$))
-  Else
-    msgorder.normalize_keyword$ = lc$
-  EndIf
+  If n% > 1 Then Sort alts$(), , , 1, n%
+
+  For i% = 1 To n%
+    If i% > 1 Then Cat msgorder.build_alt_set$, "~"
+    Cat msgorder.build_alt_set$, alts$(i%)
+  Next
 End Function
 
 ' Builds a normalized identity key for a single .msg entry, combining its
-' normalized keyword with its normalized, sorted !requires tokens. Token
-' order within a single "!requires" line does not affect the key.
+' canonical alternative-set (see msgorder.build_alt_set$()) with its
+' normalized, sorted !requires tokens. Token order within a single
+' "!requires" line does not affect the key.
 '
 ' @param  keyword$     The entry's keyword line (e.g. "gramophone", "+accuse").
 ' @param  requires$()  Tokens from the entry's "!requires" directive, in
@@ -97,10 +106,59 @@ Function msgorder.build_key$(keyword$, requires$())
 
   If n% > base% Then Sort tokens$(), , , base%, n% - base% + 1
 
-  msgorder.build_key$ = msgorder.normalize_keyword$(keyword$)
+  msgorder.build_key$ = msgorder.build_alt_set$(keyword$)
   For i% = base% To n%
-    Cat msgorder.build_key$, "|" + tokens$(i%)
+    Cat msgorder.build_key$, "@" + tokens$(i%)
   Next
+End Function
+
+' Splits a combined identity key (as produced by msgorder.build_key$())
+' back into its alternative-set part and its "!requires" token-suffix
+' part (the latter including its leading "@" markers, or "" if there were
+' no requires tokens). The alternative-set part never itself contains
+' "@", so locating the first "@" splits the two parts unambiguously.
+'
+' @param       key$       A combined identity key.
+' @param[out]  alt_part$  The alternative-set part.
+' @param[out]  req_part$  The "!requires" token-suffix part, or "".
+Sub msgorder.split_key(key$, alt_part$, req_part$)
+  Local p% = InStr(key$, "@")
+  If p% = 0 Then
+    alt_part$ = key$
+    req_part$ = ""
+  Else
+    alt_part$ = Left$(key$, p% - 1)
+    req_part$ = Mid$(key$, p%)
+  EndIf
+End Sub
+
+' Does a template entry match a candidate suspect-file entry?
+'
+' The "!requires" token-suffix must match exactly. The template's
+' alternative-set only needs to be a SUBSET of the suspect's - the
+' suspect may always add extra "|" alternatives beyond the template's
+' own; the template lists only the mandatory ones (see msgorder.inc's
+' file-level comment).
+'
+' @param  t_key$  The template entry's identity key.
+' @param  f_key$  The candidate suspect-file entry's identity key.
+' @return         1 if the entries match, otherwise 0.
+Function msgorder.entry_matches%(t_key$, f_key$)
+  Local t_alt$, t_req$, f_alt$, f_req$
+  msgorder.split_key(t_key$, t_alt$, t_req$)
+  msgorder.split_key(f_key$, f_alt$, f_req$)
+  If t_req$ <> f_req$ Then Exit Function
+
+  Const f_padded$ = "~" + f_alt$ + "~"
+  Local idx% = 1, tok$
+  Do
+    tok$ = Field$(t_alt$, idx%, "~")
+    If tok$ = "" Then Exit Do
+    If InStr(f_padded$, "~" + tok$ + "~") = 0 Then Exit Function
+    Inc idx%
+  Loop
+
+  msgorder.entry_matches% = 1
 End Function
 
 ' Reads all entry identity-keys from a .msg file, in file order.
@@ -158,7 +216,9 @@ End Sub
 ' Checks that a suspect file's entries (given as an already-read array of
 ' identity keys) form a subsequence of the template's entries - i.e.
 ' entries may be omitted but never reordered relative to one another -
-' and that the file's final entry is the wildcard ("*").
+' and that the file's final entry is the wildcard ("*"). A suspect entry
+' may carry extra "|" alternatives beyond the corresponding template
+' entry's own (see msgorder.entry_matches%()).
 '
 ' @param  t_keys$()  Template identity keys, in file order.
 ' @param  t_n%       Number of valid elements in t_keys$().
@@ -187,7 +247,7 @@ Function msgorder.validate%(t_keys$(), t_n%, f_keys$(), f_n%, label$, err$)
   Local ti% = t_base%, fi%
 
   For fi% = f_base% To f_n%
-    Do While ti% <= t_n% And t_keys$(ti%) <> f_keys$(fi%)
+    Do While ti% <= t_n% And Not msgorder.entry_matches%(t_keys$(ti%), f_keys$(fi%))
       Inc ti%
     Loop
     If ti% > t_n% Then
