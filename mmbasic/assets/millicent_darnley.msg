@@ -16,7 +16,7 @@ slippers
 boots
 "I don't know anything about these boots."
 
-cigarettes
+cigarette
 "I don't smoke. My father smoked cigars."
 
 missing statue

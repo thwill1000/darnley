@@ -133,10 +133,10 @@ Sub describe_loc()
   ' con.print("You can see: ")
   ' Local count%, i%, oloc%
   ' For i% = Bound(objects$(), 0) To Bound(objects$(), 1)
-  '   oloc% = find_loc%(Field$(objects$(i%), 3, "|"), 1)
+  '   oloc% = find_loc%(obj_loc%(i%), 1)
   '   If oloc% = r Then
   '     If count% > 0 Then con.print(", ")
-  '     con.print(Field$(objects$(i%), 2, "|"))
+  '     con.print(obj_name$(i%))
   '     If DEBUG Then con.print(" (" + Str$(i%) + ")")
   '     Inc count%
   '   EndIf
@@ -303,7 +303,7 @@ Function verb_say()
     Inc j%
   Next
 
-  Const filename$ = LCase$(Mid$(Field$(objects$(obj_idx%), 1, "|"), 3)) + ".msg"
+  Const filename$ = LCase$(Mid$(obj_id$(obj_idx%), 3)) + ".msg"
   Const match_line% = find_response%(filename$, subject_words$())
   print_response(filename$, match_line%)
 End Function
@@ -489,15 +489,12 @@ End Function
 ' @param last%     Index of last word to consider (default 0 = use full range).
 ' @return          Index into objects$() of the best match, or 0 if not found.
 Function find_obj%(words$(), first%, last%)
-  Local i%, match_loc%, max_num_matches%, num_matches%
-  Local oloc%, obj_loc_tag$, oname$
+  Local i%, match_loc%, max_num_matches%, num_matches%, oloc%
 
   For i% = Bound(objects$(), 0) To Bound(objects$(), 1)
-    obj_loc_tag$ = Field$(objects$(i%), 3, "|")
-    oname$ = Field$(objects$(i%), 2, "|")
-    num_matches% = find_matches%(oname$, words$(), first%, last%)
+    num_matches% = find_matches%(obj_pattern$(i%), words$(), first%, last%)
     If Not num_matches% Then Continue For
-    oloc% = find_loc%(obj_loc_tag$)
+    oloc% = obj_loc%(i%)
     If num_matches% > max_num_matches% Then
       ' Prefer best match
       find_obj% = i%
@@ -530,7 +527,7 @@ Function verb_examine()
   If oloc% = r Then
     ' Object exists and is present
     con.foreground("cyan")
-    ok% = print_message%(Field$(objects$(obj%), 1, "|")) = 0
+    ok% = print_message%(obj_id$(obj%)) = 0
     con.foreground("reset")
   EndIf
 

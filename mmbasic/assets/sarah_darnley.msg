@@ -11,7 +11,7 @@ alibi
 own, I'm afraid. At 11:30 I was playing the piano in the morning
 room - also alone, alas! I don't suppose it looks to good?"
 
-cigarettes
+cigarette
 "I can't imagine why you are asking me this question. Arthur
 Coniston smokes cigarettes."
 

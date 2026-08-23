@@ -24,7 +24,7 @@ country."
 knife
 "I used that knife to skin a hare, which explains the blood."
 
-cigarettes
+cigarette
 "I don't smoke. Colonel Darnley smoked cigars."
 
 missing statue

@@ -19,7 +19,7 @@ them after dinner and can't explain who may have. I suppose that, if
 the staff were asleep, someone could have sneaked into the kitchen
 and taken them."
 
-cigarettes
+cigarette
 "I smoke a pipe and the occasional Havana cigar. My pipe is in my
 room."
 

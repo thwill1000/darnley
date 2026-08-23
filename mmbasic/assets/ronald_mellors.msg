@@ -19,7 +19,7 @@ boots
 knife
 "I don't know anything about any bloody knife!"
 
-cigarettes
+cigarette
 "I smoke cheap cigarettes. What of it? There's no law against it."
 
 revolver

@@ -27,7 +27,7 @@ outside door, what on earth was he wearing on his feet?"
 knife
 "I don't know anything about the knife."
 
-cigarettes
+cigarette
 "I don't smoke. Colonel Darnley smoked cigars."
 
 revolver
