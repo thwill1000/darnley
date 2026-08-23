@@ -299,10 +299,10 @@ Function verb_say()
 
   Const filename$ = LCase$(Mid$(Field$(objects$(obj_idx%), 1, "|"), 3)) + ".msg"
 
-  Local best_match_count%, best_match_line%
-  scan_say_responses(filename$, subject_words$(), best_match_count%, best_match_line%)
+  Local best_num_matches%, best_match_line%
+  scan_say_responses(filename$, subject_words$(), best_num_matches%, best_match_line%)
 
-  print_say_response(filename$, best_match_count%, best_match_line%)
+  print_say_response(filename$, best_num_matches%, best_match_line%)
 End Function
 
 ' Resolves the direct object of ("target name, subject words) printing
@@ -370,17 +370,16 @@ End Sub
 
 ' Scans filename$ for the response whose keyword line best matches
 ' subject_words$(), respecting !requires eligibility. Returns the winning
-' match count/line via best_match_count%/best_match_line% (0/0 if none).
-Sub scan_say_responses(filename$, subject_words$(), best_match_count%, best_match_line%)
+' match count/line via best_num_matches%/best_match_line% (0/0 if none).
+Sub scan_say_responses(filename$, subject_words$(), best_num_matches%, best_match_line%)
   Open adv.asset_dir$ + filename$ For Input As #1
 
-  Local file_word_count%, file_words$(MAX_WORDS) Length 20, match_count%, s$
-  Local line_num%
+  Local line_num%, num_matches%, s$
   Local requires$(MAX_WORDS) Length MAX_WORD_LENGTH
   Local provides$(MAX_WORDS) Length MAX_WORD_LENGTH
   Local first_line$, lines_consumed%, eligible%, result%
 
-  best_match_count% = 0
+  best_num_matches% = 0
   best_match_line% = 0
 
   Do
@@ -401,8 +400,8 @@ Sub scan_say_responses(filename$, subject_words$(), best_match_count%, best_matc
     EndIf
 
     If s$ = "*" Then
-      If best_match_count% = 0 Then
-        best_match_count% = WILDCARD_MATCH
+      If best_num_matches% = 0 Then
+        best_num_matches% = WILDCARD_MATCH
         best_match_line% = line_num%
       EndIf
     Else
@@ -411,10 +410,9 @@ Sub scan_say_responses(filename$, subject_words$(), best_match_count%, best_matc
 
       eligible% = state.has_flags%(requires$())
       If eligible% Then
-        file_word_count% = split_words%(s$, file_words$())
-        match_count% = find_matches%(file_words$(), subject_words$())
-        If match_count% > best_match_count% Then
-          best_match_count% = match_count%
+        num_matches% = find_matches%(s$, subject_words$())
+        If num_matches% > best_num_matches% Then
+          best_num_matches% = num_matches%
           best_match_line% = line_num% - lines_consumed%
         EndIf
       EndIf
@@ -432,11 +430,11 @@ Sub scan_say_responses(filename$, subject_words$(), best_match_count%, best_matc
 End Sub
 
 ' Prints the winning response from scan_say_responses(), or a generic
-' fallback if best_match_count% is 0.
-Sub print_say_response(filename$, best_match_count%, best_match_line%)
+' fallback if best_num_matches% is 0.
+Sub print_say_response(filename$, best_num_matches%, best_match_line%)
   Local s$, line_num%
 
-  If best_match_count% = 0 Then
+  If best_num_matches% = 0 Then
     con.print_fail("I don't know what you are talking about.")
   Else
     con.foreground("cyan")
@@ -470,8 +468,7 @@ End Function
 ' @param words$()  Array of words to match against exit location names.
 ' @return          Index into rooms$() of the best matching exit, or -1 if none.
 Function find_exit_match%(words$())
-  Local loc_words$(10) Length 20
-  Local best_match%, i%, loc%, loc_tag$, loc_name$, match%, result%
+  Local best_num_matches%, i%, loc%, loc_tag$, loc_name$, num_matches%
 
   find_exit_match% = -1
 
@@ -480,10 +477,9 @@ Function find_exit_match%(words$())
     loc_tag$ = Field$(rooms$(r), 3 + i%, "|")
     loc% = find_loc%(loc_tag$)
     loc_name$ = Field$(rooms$(loc%), 2, "|")
-    result% = split_words%(loc_name$, loc_words$())
-    match% = find_matches%(loc_words$(), words$(), 2)
-    If match% > best_match% Then
-      best_match% = match%
+    num_matches% = find_matches%(loc_name$, words$(), 2)
+    If num_matches% > best_num_matches% Then
+      best_num_matches% = num_matches%
       find_exit_match% = loc%
     EndIf
   Next
@@ -502,15 +498,13 @@ End Function
 ' @return          Index into objects$() of the best match, or 0 if not found.
 Function find_obj%(words$(), first%, last%)
   Local i%, match_loc%, max_num_matches%, num_matches%
-  Local oloc%, obj_loc_tag$, oname$, obj_words$(MAX_WORDS) Length MAX_WORD_LENGTH
-  Local obj_word_count%
+  Local oloc%, obj_loc_tag$, oname$
 
   For i% = Bound(objects$(), 0) To Bound(objects$(), 1)
     obj_loc_tag$ = Field$(objects$(i%), 3, "|")
     oname$ = Field$(objects$(i%), 2, "|")
-    obj_word_count% = split_words%(oname$, obj_words$())
-    num_matches% = find_matches%(obj_words$(), words$(), first%, last%)
-    If Not num_matches Then Continue For
+    num_matches% = find_matches%(oname$, words$(), first%, last%)
+    If Not num_matches% Then Continue For
     oloc% = find_loc%(obj_loc_tag$)
     If num_matches% > max_num_matches% Then
       ' Prefer best match
@@ -579,7 +573,10 @@ End Function
 ' @param n_last%      Index of last needle to consider (default 0 = use full range).
 ' @return             The number of needles that matched a distinct haystack word,
 '                     or 0 if a '+' word was left unmatched or a '-' word was matched.
-Function find_matches%(haystack$(), needles$(), n_first%, n_last%)
+Function find_matches%(pattern$, needles$(), n_first%, n_last%)
+  Local haystack$(MAX_WORDS) Length MAX_WORD_LENGTH
+  Const dummy% = split_words%(pattern$, haystack$())
+
   Const h_first% = Bound(haystack$(), 0), h_last% = Bound(haystack$(), 1)
   Local h_word$, i%, j%, prefix$, s$, used%(h_last%)
 
