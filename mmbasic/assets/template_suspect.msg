@@ -17,9 +17,6 @@
 hello hi morning afternoon evening greetings
 "greeting response"
 
-weather cold snow
-"weather response"
-
 alibi
 "alibi response"
 
@@ -86,20 +83,23 @@ norah bagsby maid
 ronald mellors gamekeeper
 "mellors response"
 
-flatfooted bootprints
++flatfooted bootprints boot prints | +flat +footed bootprints boot prints | +odd bootprints boot prints
 "flatfooted bootprints response"
 
-hobnailed bootprints
++hobnailed bootprints boot prints
 "hobnailed bootprints response"
 
-slipper prints
++slipper prints
 "slipper prints response"
 
-mens shoe prints
-"mens shoe prints response"
++mens shoeprints shoe prints
+"mens shoeprints response"
 
-womens shoe prints
-"womens shoe prints response"
++womens shoeprints shoe prints
+"womens shoeprints response"
+
+footprints | +prints foot | shoeprints | +shoe + prints | bootprints | +boot +prints
+"footprints response"
 
 cheroot pond
 "cheroot in the pond response"
@@ -119,7 +119,7 @@ marriage colonel sarah wife husband happy
 engagement marriage millicent arthur coniston
 "millicent's engagement response"
 
-murder murderer think believe guilty who did it comitted
+murder murderer think believe guilty who did comitted
 "who did it response"
 
 locked sealed study door window how
@@ -144,6 +144,9 @@ money mining peru ruin redvers slingsby colonel darnley
 
 police investigation scotland yard inspector detective think of me
 "investigation response"
+
+weather cold snow
+"weather response"
 
 goodbye bye farewell thanks thank
 "goodbye response"

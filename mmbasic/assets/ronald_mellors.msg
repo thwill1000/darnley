@@ -1,10 +1,6 @@
 hello hi morning afternoon evening greetings
 "Morning. Get on with your questions, then, if you've got some."
 
-weather cold snow
-"Cold. Bad for the game, snow like this - drives 'em to ground.
-Nothing else to say about it."
-
 alibi
 "I was in my cottage alone all evening and I don't give a tinker's
 curse if you believe me or not. If you look for my tracks to the big
@@ -77,20 +73,24 @@ ronald mellors gamekeeper | yourself
 Five years I've worked for the Colonel and done it well. I don't
 see as I owe anyone an account of myself."
 
-flatfooted bootprints
++flatfooted bootprints boot prints | +flat +footed bootprints boot prints | +odd bootprints boot prints
 "Clear off! I'm not showing anyone my boots."
 
-hobnailed bootprints
++hobnailed bootprints boot prints
 "Clear off! I'm not showing anyone my boots."
 
-slipper prints
++slipper prints
 "I don't know whose they are."
 
-mens shoe prints
++mens shoeprints shoe prints
 "I don't know whose these are."
 
-womens shoe prints
++womens shoeprints shoe prints
 "Do I look like I wear women's shoes?"
+
+footprints | +prints foot | shoeprints | +shoe + prints | bootprints | +boot +prints
+"There's prints all over the estate this time of year. Don't mean
+nothing on their own."
 
 cheroot pond
 "I don't know anything about it."
@@ -115,7 +115,7 @@ engagement marriage millicent arthur coniston
 "Didn't hear about it till it was all round the house. Don't know
 the young gentleman well enough to say more than that."
 
-murder murderer think believe guilty who did it comitted
+murder murderer think believe guilty who did comitted
 "Not my business to guess. But if you're asking, I'd look closer to
 home than the grounds - that fine young gentleman's a sight too
 pleased with himself for my liking."
@@ -155,6 +155,10 @@ police investigation scotland yard inspector detective think of me
 "Don't much care for coppers poking round my cottage, if that's
 what you're asking. But get on with your job. I've nothing to hide
 from you or anyone else."
+
+weather cold snow
+"Cold. Bad for the game, snow like this - drives 'em to ground.
+Nothing else to say about it."
 
 goodbye bye farewell thanks thank
 "Aye. Off with you, then."

@@ -86,11 +86,12 @@ add_test("SAY opinion of Arnold matches that entry", "test_say_gvn_opinion_arnol
 add_test("SAY opinion of Mildred matches that entry", "test_say_gvn_opinion_mildred")
 add_test("SAY opinion of Norah matches that entry", "test_say_gvn_opinion_norah")
 add_test("SAY opinion of Ronald matches that entry", "test_say_gvn_opinion_ronald")
-add_test("SAY about flatfooted bootprints matches that entry", "test_say_gvn_flatfooted")
-add_test("SAY about hobnailed bootprints matches that entry", "test_say_gvn_hobnailed")
-add_test("SAY about slipper prints matches that entry", "test_say_gvn_slipper_prints")
-add_test("SAY about men's shoe prints matches that entry", "test_say_gvn_mens_shoe_prints")
-add_test("SAY about women's shoe prints matches that entry", "test_say_gvn_womens_shoe_prints")
+add_test("SAY Tell me about the flatfooted bootprints", "test_say_gvn_flatfooted")
+add_test("SAY Tell me about the hobnailed bootprints", "test_say_gvn_hobnailed")
+add_test("SAY Tell me about the slipper prints", "test_say_gvn_slipper_prints")
+add_test("SAY Tell me about the men's shoeprints", "test_say_gvn_mens_shoeprints")
+add_test("SAY Tell me about the women's shoeprints", "test_say_gvn_womens_shoeprints")
+add_test("SAY Tell me about the footprints", "test_footprints")
 add_test("SAY about the cheroot in the pond matches that entry", "test_say_gvn_cheroot_pond")
 add_test("SAY Tell me about the suit in the servant's quarters", "test_say_suit")
 add_test("SAY about motive matches the motive entry", "test_say_gvn_motive")
@@ -363,7 +364,8 @@ End Sub
 
 Sub test_say_gvn_flatfooted()
   assert_say_response("ask about flatfooted bootprints", "flatfooted bootprints response")
-  assert_say_response("tell me about the flatfooted marks", "flatfooted bootprints response")
+  assert_say_response("tell me about the flat-footed marks", "flatfooted bootprints response")
+  assert_say_response("tell me about the flat footed prints", "flatfooted bootprints response")
   assert_say_response("what about those odd bootprints", "flatfooted bootprints response")
 End Sub
 
@@ -379,16 +381,32 @@ Sub test_say_gvn_slipper_prints()
   assert_say_response("tell me about those slipper marks", "slipper prints response")
 End Sub
 
-Sub test_say_gvn_mens_shoe_prints()
-  assert_say_response("ask about mens shoe prints", "mens shoe prints response")
-  assert_say_response("what about the men's shoe tracks", "mens shoe prints response")
-  assert_say_response("whose shoe prints are these", "mens shoe prints response")
+Sub test_say_gvn_mens_shoeprints()
+  assert_say_response("ask about mens shoe prints", "mens shoeprints response")
+  assert_say_response("what about the men's shoe tracks", "mens shoeprints response")
+  assert_say_response("whose men's shoe prints are these", "mens shoeprints response")
 End Sub
 
-Sub test_say_gvn_womens_shoe_prints()
-  assert_say_response("ask about womens shoe prints", "womens shoe prints response")
-  assert_say_response("what about the women's shoe tracks", "womens shoe prints response")
-  assert_say_response("whose women's footprints are these", "womens shoe prints response")
+Sub test_say_gvn_womens_shoeprints()
+  assert_say_response("ask about womens shoe prints", "womens shoeprints response")
+  assert_say_response("what about the women's shoe tracks", "womens shoeprints response")
+  assert_say_response("whose women's footprints are these", "womens shoeprints response")
+End Sub
+
+Sub test_footprints()
+  assert_say_response("Tell me about the footprints", "footprints response")
+  assert_say_response("Tell me about the foot prints", "footprints response")
+  assert_say_response("Tell me about the footprints in the snow", "footprints response")
+  assert_say_response("Tell me about the foot prints in the snow", "footprints response")
+  assert_say_response("Tell me about the prints", "footprints response")
+  assert_say_response("Tell me about the prints in the snow", "footprints response")
+  assert_say_response("Tell me about the bootprints", "footprints response")
+  assert_say_response("What about the bootprints?", "footprints response")
+  assert_say_response("What about the boot tracks?", "footprints response")
+  assert_say_response("Tell me about the shoeprints", "footprints response")
+  assert_say_response("Tell me about the shoe prints", "footprints response")
+  assert_say_response("What about the shoeprints?", "footprints response")
+  assert_say_response("What about the shoe tracks?", "footprints response")
 End Sub
 
 Sub test_say_gvn_cheroot_pond()

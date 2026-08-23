@@ -2,10 +2,6 @@ hello hi morning afternoon evening greetings
 "Ah, hello there. Ghastly business, all this - still, glad to have
 someone competent looking into it."
 
-weather cold snow
-"Beastly cold, isn't it. Not that anyone's thinking much about the
-weather today, present company excepted."
-
 alibi
 "Millicent and I were together in the music room at 10:30. I don't
 know how anyone can be expected to have an alibi for 11:30.
@@ -95,20 +91,24 @@ norah bagsby maid
 ronald mellors gamekeeper
 "I don't know the chap."
 
-flatfooted bootprints
++flatfooted bootprints boot prints | +flat +footed bootprints boot prints | +odd bootprints boot prints
 "I followed the bootprints from the terrace around to the kitchen."
 
-hobnailed bootprints
++hobnailed bootprints boot prints
 "I don't know whose they are."
 
-slipper prints
++slipper prints
 "The prints from the slippers are mine."
 
-mens shoe prints
++mens shoeprints shoe prints
 "I think they are probably Billingsgate's."
 
-womens shoe prints
++womens shoeprints shoe prints
 "I don't know whose these are."
+
+footprints | +prints foot | shoeprints | +shoe + prints | bootprints | +boot +prints
+"Prints everywhere, old boy. I shouldn't like to guess which ones
+signify anything."
 
 cheroot pond
 "I suppose it could be mine. I fancy I was smoking when Billingsgate
@@ -166,7 +166,7 @@ engagement marriage millicent arthur coniston
 "Happiest news of my life, old boy! The Colonel gave his blessing
 yesterday afternoon. I still can't quite believe my luck."
 
-murder murderer think believe guilty who did it comitted
+murder murderer think believe guilty who did comitted
 "Good Lord, I haven't the faintest. Between you and me I'd watch
 Slingsby - man had the look of someone with troubles on his mind
 last night. But don't quote me, old boy."
@@ -208,6 +208,10 @@ police investigation scotland yard inspector detective think of me
 "Rather glad they sent someone who knows what he's doing, if I'm
 honest. This house needs answers, and quickly, before everyone's
 nerves give out entirely."
+
+weather cold snow
+"Beastly cold, isn't it. Not that anyone's thinking much about the
+weather today, present company excepted."
 
 goodbye bye farewell thanks thank
 "Righto. Do let me know if there's anything else I can help with,

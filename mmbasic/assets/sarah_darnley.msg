@@ -2,10 +2,6 @@ hello hi morning afternoon evening greetings
 "Good morning, Inspector. Forgive me if I don't manage much of a
 smile today."
 
-weather cold snow
-"Dreadfully cold. Though I confess the weather is the last thing on
-my mind just now, Inspector."
-
 alibi
 "At 10:30 I was reading and drinking coffee in the lounge - on my
 own, I'm afraid. At 11:30 I was playing the piano in the morning
@@ -84,22 +80,26 @@ norah bagsby maid
 ronald mellors gamekeeper
 "A very loyal gamekeeper."
 
-flatfooted bootprints
++flatfooted bootprints boot prints | +flat +footed bootprints boot prints | +odd bootprints boot prints
 "I'm too distressed to think clearly about bootprints, I'm afraid."
 
-hobnailed bootprints
++hobnailed bootprints boot prints
 "I really couldn't say. I wasn't paying attention to people's boots."
 
-slipper prints
++slipper prints
 "I don't know whose slippers those would be. I'm sorry, this is all rather too
 much."
 
-mens shoe prints
++mens shoeprints shoe prints
 "I'm afraid I don't notice that sort of thing at the best of times."
 
-womens shoe prints
++womens shoeprints shoe prints
 "I couldn't say whose they are. I'm really not in a fit state to be asked about
 footprints."
+
+footprints | +prints foot | shoeprints | +shoe + prints | bootprints | +boot +prints
+"I understand there are prints all over the grounds. I'm afraid I
+haven't the faintest idea which ones matter."
 
 cheroot pond
 "I don't know anything about it."
@@ -151,7 +151,7 @@ engagement marriage millicent arthur coniston
 positively glowing when she told me. I'm glad she'll have that
 happiness, whatever else has happened."
 
-murder murderer think believe guilty who did it comitted
+murder murderer think believe guilty who did comitted
 "I can't bear to think it was any of them, truly. If you insist I
 name someone - Sir Redvers seemed dreadfully agitated all evening. I
 don't like to say more than that."
@@ -190,6 +190,10 @@ police investigation scotland yard inspector detective think of me
 "I want to know who did this as much as anyone, Inspector - more,
 perhaps. Ask whatever you must. I only hope it's over soon, for all
 our sakes."
+
+weather cold snow
+"Dreadfully cold. Though I confess the weather is the last thing on
+my mind just now, Inspector."
 
 goodbye bye farewell thanks thank
 "Goodbye, Inspector. Thank you for your discretion in all of
