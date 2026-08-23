@@ -548,63 +548,97 @@ Function verb_examine()
   EndIf
 End Function
 
-' Counts how many words in needles$() have a match in haystack$(), case-insensitively.
+' Counts how many words in needles$() appear as words of pattern$, case-insensitively.
 '
-' Each haystack element may only be matched once; duplicate needles cannot
-' both match the same haystack word.
+' pattern$ is a space-separated list of words, optionally '+'/'-' prefixed
+' (see below), each compared in turn against every needle in needles$().
 '
-' A haystack word may carry a '+' or '-' prefix (not part of the word for
-' matching purposes, stripped before comparison):
+' pattern$ may also contain multiple '|'-separated alternatives, each
+' scored independently against needles$() - including its own '+'/'-'
+' enforcement - and the highest-scoring alternative's match count is
+' returned. A pattern$ with no '|' is scored as a single alternative.
+'
+' Each word of pattern$ (or of one of its '|'-separated alternatives) may
+' only be matched once; duplicate needles cannot both match the same word.
+'
+' A word of pattern$ may carry a '+' or '-' prefix (not part of the word
+' for matching purposes, stripped before comparison), evaluated
+' independently within each alternative:
 '   '+' - the word is MANDATORY: if it is not matched by any needle then
-'         the whole function returns 0, regardless of other matches found.
-'         A matched '+' word still counts towards the returned total.
-'   '-' - the word is FORBIDDEN: if it IS matched by any needle then the
-'         whole function returns 0, regardless of other matches found.
+'         that alternative's match count is 0, regardless of other matches
+'         found within it. A matched '+' word still counts towards the total.
+'   '-' - the word is FORBIDDEN: if it IS matched by any needle then that
+'         alternative's match count is 0, regardless of other matches found
+'         within it.
 '
-' @param haystack$()  The array of words to search.
-'                     Elements may be prefixed with '+' (mandatory) or '-'
-'                     (forbidden); the prefix is stripped before comparison.
-' @param needles$()   The array of words to match.
-' @param n_first%     Index of first needle to consider (default 0 = start from base).
-' @param n_last%      Index of last needle to consider (default 0 = use full range).
-' @return             The number of needles that matched a distinct haystack word,
-'                     or 0 if a '+' word was left unmatched or a '-' word was matched.
+' NOTE: needles$() is mutated in place - each element is lower-cased as a
+' side effect of matching. Callers that need to preserve the original casing
+' of needles$() across repeated calls should pass a copy.
+'
+' @param pattern$    A space-separated pattern to match, or several such
+'                    patterns separated by '|', each treated as an
+'                    alternative. Any word may be prefixed with '+'
+'                    (mandatory) or '-' (forbidden).
+' @param needles$()  The array of words to match. Mutated in place: elements
+'                    are lower-cased as a side effect.
+' @param n_first%    Index of first needle to consider (default 0 = start from base).
+' @param n_last%     Index of last needle to consider (default 0 = use full range).
+' @return            The highest number of needles matched by any single
+'                    alternative in pattern$, or 0 if every alternative
+'                    either matched nothing, left a '+' word unmatched, or
+'                    matched a '-' word.
 Function find_matches%(pattern$, needles$(), n_first%, n_last%)
   Local haystack$(MAX_WORDS) Length MAX_WORD_LENGTH
-  Const dummy% = split_words%(pattern$, haystack$())
-
   Const h_first% = Bound(haystack$(), 0), h_last% = Bound(haystack$(), 1)
-  Local h_word$, i%, j%, prefix$, s$, used%(h_last%)
+  Local h_word$, i%, j%, num_matches%, pattern_idx%, sub_pattern$, used%(h_last%)
 
   If n_first% = 0 Then n_first% = Bound(needles$(), 0)
   If n_last% = 0 Then n_last% = Bound(needles$(), 1)
 
+  ' TODO: needles$() should already be lower-case
   For i% = n_first% To n_last%
-    s$ = LCase$(needles$(i%)) ' TODO: needles$() should already be lower-case
-    If s$ = "" Then Exit For
-    For j% = h_first% To h_last%
-      If haystack$(j%) = "" Then Exit For
-      h_word$ = LCase$(haystack$(j%)) ' TODO: haystack$() should already be lower-case
-      prefix$ = Left$(h_word$, 1)
-      If prefix$ = "+" Or prefix$ = "-" Then h_word$ = Mid$(h_word$, 2)
-      If Not used%(j%) And s$ = h_word$ Then
-        Inc find_matches%
-        used%(j%) = 1
-        Exit For
-      EndIf
-    Next
+    needles$(i%) = LCase$(needles$(i%))
   Next
 
-  ' Enforce '+' (mandatory) and '-' (forbidden) prefixes.
-  For j% = h_first% To h_last%
-    If haystack$(j%) = "" Then Exit For
-    prefix$ = Left$(haystack$(j%), 1)
-    If prefix$ = "+" Then
-      If Not used%(j%) Then find_matches% = 0 : Exit Function
-    ElseIf prefix$ = "-" Then
-      If used%(j%) Then find_matches% = 0 : Exit Function
-    EndIf
-  Next
+  Do
+    ' Process next sub-pattern, separated by "|"
+    Inc pattern_idx%
+    sub_pattern$ = Field$(pattern$, pattern_idx%, "|")
+    If sub_pattern$ = "" Then Exit Do
+    i% = split_words%(sub_pattern$, haystack$())
+    For i% = Bound(used%(), 0) To Bound(used%(), 1)
+      haystack$(i%) = LCase$(haystack$(i%)) ' TODO: should already be lower-case
+      used%(i%) = 0
+    Next
+    num_matches% = 0
+
+    For i% = n_first% To n_last%
+      If needles$(i%) = "" Then Exit For
+      For j% = h_first% To h_last%
+        If haystack$(j%) = "" Then Exit For
+        h_word$ = haystack$(j%)
+        If InStr("+-", Left$(h_word$, 1)) Then h_word$ = Mid$(h_word$, 2)
+        If Not used%(j%) And needles$(i%) = h_word$ Then
+          Inc num_matches%
+          used%(j%) = 1
+          Exit For
+        EndIf
+      Next
+    Next
+
+    ' Enforce '+' (mandatory) and '-' (forbidden) prefixes.
+    For j% = h_first% To h_last%
+      If haystack$(j%) = "" Then Exit For
+      Select Case Left$(haystack$(j%), 1)
+        Case "+"
+          If Not used%(j%) Then num_matches% = 0
+        Case "-"
+          If used%(j%) Then num_matches% = 0
+      End Select
+    Next
+
+    find_matches% = Max(find_matches%, num_matches%)
+  Loop
 End Function
 
 ' Handles the GO verb, setting `r` to the best matching exit location.
@@ -879,3 +913,14 @@ Function verb_save()
   verb_save = 1
   Const dummy% = state.save%()
 End Function
+
+Sub apply_synonyms(words$())
+  Local i%, j%
+  For i% = Bound(words$(), 0) To Bound(words$(), 1)
+    For j% = Bound(synonyms$(), 0) To Bound(synonyms$(), 1)
+      If InStr(synonyms$(j%), "|" + words$(i%) + "|") Then
+        words$(i%) = Field$(synonyms$(j%), 2, "|")
+      EndIf
+    Next
+  Next
+End Sub

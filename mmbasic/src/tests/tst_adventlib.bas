@@ -81,6 +81,14 @@ add_test("test_find_matches_gvn_minus_fail")
 add_test("test_find_matches_gvn_multi_plus")
 add_test("test_find_matches_gvn_plus_case")
 add_test("test_find_matches_gvn_minus_case")
+add_test("find_matches() takes the first '|' alternative when it matches", "test_fm_gvn_or_first")
+add_test("find_matches() takes the second '|' alternative when only it matches", "test_fm_gvn_or_second")
+add_test("find_matches() returns 0 when no '|' alternative matches", "test_fm_gvn_or_none")
+add_test("find_matches() returns the higher score when both '|' alternatives match", "test_fm_gvn_or_max")
+add_test("find_matches() considers all of three or more '|' alternatives", "test_fm_gvn_or_3way")
+add_test("find_matches() enforces '+' mandatory words independently per '|' alternative", "test_fm_gvn_or_plus")
+add_test("find_matches() enforces '-' forbidden words independently per '|' alternative", "test_fm_gvn_or_minus")
+add_test("find_matches() stops cleanly at a trailing empty '|' alternative", "test_fm_gvn_or_empty_sub")
 add_test("test_parse_common_rtns_success")
 add_test("test_parse_common_sets_verb")
 add_test("test_parse_common_sets_noun")
@@ -673,6 +681,66 @@ Sub test_find_matches_gvn_minus_case()
   Const pattern$ = "-CAT"
   Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "", "", "")
   assert_int_equals(0, find_matches%(pattern$, needles$(), 0, 0))
+End Sub
+
+' First alternative matches, second is irrelevant
+Sub test_fm_gvn_or_first()
+  Const pattern$ = "cat dog|bird fish"
+  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "dog", "", "")
+  assert_int_equals(2, find_matches%(pattern$, needles$(), 0, 0))
+End Sub
+
+' Only the second alternative matches
+Sub test_fm_gvn_or_second()
+  Const pattern$ = "cat dog|bird fish"
+  Local needles$(4) Length MAX_WORD_LENGTH = ("bird", "fish", "", "")
+  assert_int_equals(2, find_matches%(pattern$, needles$(), 0, 0))
+End Sub
+
+' Neither alternative matches
+Sub test_fm_gvn_or_none()
+  Const pattern$ = "cat dog|bird fish"
+  Local needles$(4) Length MAX_WORD_LENGTH = ("snake", "", "", "")
+  assert_int_equals(0, find_matches%(pattern$, needles$(), 0, 0))
+End Sub
+
+' Both alternatives match, but by differing amounts - the higher score wins
+Sub test_fm_gvn_or_max()
+  Const pattern$ = "cat|cat dog bird"
+  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "dog", "bird", "")
+  assert_int_equals(3, find_matches%(pattern$, needles$(), 0, 0))
+End Sub
+
+' More than two alternatives are all considered
+Sub test_fm_gvn_or_3way()
+  Const pattern$ = "cat|dog|bird"
+  Local needles$(4) Length MAX_WORD_LENGTH = ("bird", "", "", "")
+  assert_int_equals(1, find_matches%(pattern$, needles$(), 0, 0))
+End Sub
+
+' A '+' word in one alternative that fails does not disqualify a later
+' alternative where it is satisfied
+Sub test_fm_gvn_or_plus()
+  Const pattern$ = "+cat dog|+bird fish"
+  Local needles$(4) Length MAX_WORD_LENGTH = ("bird", "fish", "", "")
+  assert_int_equals(2, find_matches%(pattern$, needles$(), 0, 0))
+End Sub
+
+' A '-' word matched in one alternative zeroes only that alternative, not
+' a later one where the forbidden word is absent
+Sub test_fm_gvn_or_minus()
+  Const pattern$ = "cat -dog|cat -bird"
+  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "dog", "", "")
+  assert_int_equals(1, find_matches%(pattern$, needles$(), 0, 0))
+End Sub
+
+' A trailing/empty sub-pattern (e.g. "cat|") stops processing at that
+' point rather than erroring, same as Field$() returning "" for a
+' nonexistent field
+Sub test_fm_gvn_or_empty_sub()
+  Const pattern$ = "cat|"
+  Local needles$(4) Length MAX_WORD_LENGTH = ("cat", "", "", "")
+  assert_int_equals(1, find_matches%(pattern$, needles$(), 0, 0))
 End Sub
 
 ' r=LOC001; "two" matches the exit "Room Two" (LOC002)
