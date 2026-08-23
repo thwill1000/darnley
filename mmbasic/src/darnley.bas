@@ -52,7 +52,7 @@ r_old% = r
 
 show_splash()
 show_intro(1)
-show_help(0)
+show_help(1)
 
 Do
   If state.restart% Then Goto game_start
