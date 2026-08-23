@@ -7,6 +7,9 @@ Description of room 2
 LOC003
 Description of room 3
 
+LOC004
+Description of room 4
+
 OBJ001
 Description of object 1
 
@@ -33,6 +36,10 @@ Another test suspect.
 
 P_NO_WILDCARD
 A test suspect with no wildcard fallback in their dedicated .msg file.
+
+P_TEMPLATE_SUSPECT
+A test suspect whose dialogue file mirrors the canonical
+template_suspect.msg entry ordering.
 
 PLAIN_MSG
 "plain message body"

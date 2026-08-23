@@ -387,6 +387,13 @@ Sub scan_say_responses(filename$, subject_words$(), best_match_count%, best_matc
     Line Input #1, s$
     If Eof(#1) Then Exit Do
 
+    ' Ignore blank lines outside of an entry (e.g. before the first entry,
+    ' between leading comments and the first keyword)
+    If s$ = "" Then
+      Inc line_num%
+      Continue Do
+    EndIf
+
     ' Ignore comment lines between entries
     If Left$(s$, 1) = "#" Then
       Inc line_num%
