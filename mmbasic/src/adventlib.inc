@@ -298,11 +298,8 @@ Function verb_say()
   extract_subject_words(comma_idx%, subject_words$())
 
   Const filename$ = LCase$(Mid$(Field$(objects$(obj_idx%), 1, "|"), 3)) + ".msg"
-
-  Local best_num_matches%, best_match_line%
-  scan_say_responses(filename$, subject_words$(), best_num_matches%, best_match_line%)
-
-  print_say_response(filename$, best_num_matches%, best_match_line%)
+  Const match_line% = find_response%(filename$, subject_words$())
+  print_response(filename$, match_line%)
 End Function
 
 ' Resolves the direct object of ("target name, subject words) printing
@@ -368,19 +365,18 @@ Sub extract_subject_words(comma_idx%, subject_words$())
   Next
 End Sub
 
-' Scans filename$ for the response whose keyword line best matches
-' subject_words$(), respecting !requires eligibility. Returns the winning
-' match count/line via best_num_matches%/best_match_line% (0/0 if none).
-Sub scan_say_responses(filename$, subject_words$(), best_num_matches%, best_match_line%)
+' Scans filename$ for the response whose pattern best matches
+' subject_words$(), respecting !requires eligibility. Returns the best
+' matching line number, or -1 if none.
+Function find_response%(filename$, subject_words$())
   Open adv.asset_dir$ + filename$ For Input As #1
 
-  Local line_num%, num_matches%, s$
+  Local best_num_matches%, line_num%, num_matches%, s$
   Local requires$(MAX_WORDS) Length MAX_WORD_LENGTH
   Local provides$(MAX_WORDS) Length MAX_WORD_LENGTH
   Local first_line$, lines_consumed%, eligible%, result%
 
-  best_num_matches% = 0
-  best_match_line% = 0
+  find_response% = -1
 
   Do
     Line Input #1, s$
@@ -402,7 +398,7 @@ Sub scan_say_responses(filename$, subject_words$(), best_num_matches%, best_matc
     If s$ = "*" Then
       If best_num_matches% = 0 Then
         best_num_matches% = WILDCARD_MATCH
-        best_match_line% = line_num%
+        find_response% = line_num%
       EndIf
     Else
       read_directives(1, requires$(), provides$(), first_line$, lines_consumed%)
@@ -413,7 +409,7 @@ Sub scan_say_responses(filename$, subject_words$(), best_num_matches%, best_matc
         num_matches% = find_matches%(s$, subject_words$())
         If num_matches% > best_num_matches% Then
           best_num_matches% = num_matches%
-          best_match_line% = line_num% - lines_consumed%
+          find_response% = line_num% - lines_consumed%
         EndIf
       EndIf
 
@@ -427,38 +423,38 @@ Sub scan_say_responses(filename$, subject_words$(), best_num_matches%, best_matc
     Inc line_num%
   Loop
   Close #1
-End Sub
+End Function
 
-' Prints the winning response from scan_say_responses(), or a generic
-' fallback if best_num_matches% is 0.
-Sub print_say_response(filename$, best_num_matches%, best_match_line%)
-  Local s$, line_num%
-
-  If best_num_matches% = 0 Then
+' Prints the winning response from find_response%(),
+' or a generic fallback if line% = -1.
+Sub print_response(filename$, line%)
+  If line% = -1 Then
     con.print_fail("I don't know what you are talking about.")
-  Else
-    con.foreground("cyan")
-    Open adv.asset_dir$ + "/" + filename$ For Input As #1
-    Do
-      Line Input #1, s$
-      If line_num% = best_match_line% Then
-        print_message_lines()
-        Exit Do
-      EndIf
-      Inc line_num%
-    Loop
-    Close #1
-    con.foreground("reset")
-    con.println()
+    Exit Sub
   EndIf
+
+  Open adv.asset_dir$ + "/" + filename$ For Input As #1
+  Local i%, s$
+  Do
+    Line Input #1, s$
+    If i% = line% Then
+      con.foreground("cyan")
+      print_message_lines()
+      con.foreground("reset")
+      con.println()
+      Exit Do
+    EndIf
+    Inc i%
+  Loop
+  Close #1
 End Sub
 
 ' Handles the DROP verb
 Function verb_drop()
   verb_drop = 1
-  Local msg$ = "This game does not require you to TAKE, DROP or otherwise manipulate objects. Just "
-  Cat msg$, "explore your surroundings, search for and EXAMINE the clues and ASK questions of the "
-  Cat msg$, "suspects."
+  Local msg$ = "This game does not require you to TAKE, DROP or otherwise "
+  Cat msg$, "manipulate objects. Just explore your surroundings, search for "
+  Cat msg$, "and EXAMINE the clues and talk to the suspects."
   con.print_fail(msg$)
 End Function
 

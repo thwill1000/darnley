@@ -276,7 +276,7 @@ Sub test_say_gvn_all_blocked()
   assert_string_equals(expected$, con_output$)
 End Sub
 
-' scan_say_responses() picks the entry whose keyword line has the highest
+' find_response%() picks the entry whose keyword line has the highest
 ' number of matching subject words, not just the first match found.
 ' "gramophone" alone matches lines A/B/C (subject to !requires gating);
 ' with no flags set, "line B" (unconditional, single-word match) wins over
