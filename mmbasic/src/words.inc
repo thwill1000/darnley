@@ -88,7 +88,6 @@ Function split_words%(cmd$, words$())
       Case "'", "?", "!"
         ' Removed from word
       Case " "
-        If words$(i%) = "#" Then words$(i%) = ""
         If Len(words$(i%)) > 0 Then Inc i%
       Case Chr$(34), ","
         ' A double-quote or comma is always its own word, even mid-token
@@ -113,10 +112,6 @@ Function split_words%(cmd$, words$())
       EndIf
     End Select
   Next
-
-  If i% < Bound(words$(), 1) Then
-    If words$(i%) = "#" Then words$(i%) = ""
-  EndIf
 End Function
 
 ' Finds the index of the first occurrence of needle$ in haystack$(),
