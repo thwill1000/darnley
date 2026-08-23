@@ -105,7 +105,7 @@ End Function
 
 ' Reads all entry identity-keys from a .msg file, in file order.
 '
-' Mirrors the file-walking approach used by scan_ask_responses(): comment
+' Mirrors the file-walking approach used by find_response%(): comment
 ' lines ("#...") between entries are skipped, the wildcard "*" entry is
 ' recorded as the literal key "*", and other entries have their keyword
 ' plus normalized !requires tokens combined via msgorder.build_key$().
@@ -145,7 +145,7 @@ Sub msgorder.read_entries(f$, keys$(), n%)
     ' Skip past the remainder of this entry's body (regardless of branch
     ' taken above, s$ is non-empty here unless the body itself was empty)
     ' until the blank line that terminates the entry - mirrors
-    ' scan_ask_responses()'s equivalent skip loop, with an added Eof()
+    ' find_response%()'s equivalent skip loop, with an added Eof()
     ' guard so a final entry lacking a trailing blank line doesn't attempt
     ' to read past the end of the file.
     Do While s$ <> "" And Not Eof(#1)
