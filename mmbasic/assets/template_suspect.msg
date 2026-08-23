@@ -32,7 +32,7 @@ boots
 knife
 "knife response"
 
-cigarettes
+cigarette
 "cigarettes response"
 
 revolver

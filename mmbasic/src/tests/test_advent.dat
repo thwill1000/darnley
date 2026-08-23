@@ -5,16 +5,16 @@ LOC003|Room Three|room three|3|LOC001|LOC002|LOC004
 LOC004|Room Four|room four|1|LOC003
 
 !objects
-OBJ001|Green Door|LOC001|0|100
-OBJ002|Red Key|LOC002|1|1
-OBJ003|Red Gem|LOC001|1|1
-OBJ004|Red Curious Key|LOC002|1|1
-OBJ005|+Secret Panel|LOC001|0|100
-OBJ006|Old Statue -broken|LOC001|0|100
-P_TEST_SUSPECT|Test Suspect|LOC001|2|100
-P_OTHER_SUSPECT|Other Suspect|LOC002|2|100
-P_NO_WILDCARD|No Wildcard|LOC001|2|100
-P_TEMPLATE_SUSPECT|Template Suspect|LOC004|2|100
+OBJ001|Green Door|green door|LOC001|0|100
+OBJ002|Red Key|red key|LOC002|1|1
+OBJ003|Red Gem|red gem|LOC001|1|1
+OBJ004|Red Curious Key|red curious key|LOC002|1|1
+OBJ005|Secret Panel|+secret panel|LOC001|0|100
+OBJ006|Old Statue|old statue -broken|LOC001|0|100
+P_TEST_SUSPECT|Test Suspect|test suspect|LOC001|2|100
+P_OTHER_SUSPECT|Other Suspect|other suspect|LOC002|2|100
+P_NO_WILDCARD|No Wildcard|no wildcard|LOC001|2|100
+P_TEMPLATE_SUSPECT|Template Suspect|template suspect|LOC004|2|100
 
 !synonyms
 millicent|milicent

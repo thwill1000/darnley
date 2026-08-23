@@ -124,7 +124,7 @@ Sub read_objects(f$)
   Local error_count%, loc_tag$, obj_tag$, i%
   For i% = Bound(objects$(), 0) To num_objects%
     obj_tag$ = Field$(objects$(i%), 1, "|")
-    loc_tag$ = Field$(objects$(i%), 3, "|")
+    loc_tag$ = Field$(objects$(i%), 4, "|")
 
     ' Check object is in a valid location
     If Not find_loc%(loc_tag$, 1) Then
@@ -185,22 +185,30 @@ Sub read_synonyms(f$)
   Next
 End Sub
 
-Function obj_is_person%(obj_idx%)
-  obj_is_person% = Field$(objects$(obj_idx%), 4, "|") = "2"
-End Function
-
-Function obj_loc%(obj_idx%)
-  obj_loc% = find_loc%(Field$(objects$(obj_idx%), 3, "|"))
+Function obj_id$(obj_idx%)
+  obj_id$ = Field$(objects$(obj_idx%), 1, "|")
 End Function
 
 Function obj_name$(obj_idx%)
   obj_name$ = Field$(objects$(obj_idx%), 2, "|")
 End Function
 
-Function obj_weight%(obj_idx%)
-  obj_weight% = Val(Field$(objects$(obj_idx%), 5, "|"))
+Function obj_pattern$(obj_idx%)
+  obj_pattern$ = Field$(objects$(obj_idx%), 3, "|")
+End Function
+
+Function obj_loc%(obj_idx%)
+  obj_loc% = find_loc%(Field$(objects$(obj_idx%), 4, "|"))
 End Function
 
 Function obj_is_takeable%(obj_idx%)
-  obj_is_takeable% = Field$(objects$(obj_idx%), 4, "|") = "1"
+  obj_is_takeable% = Field$(objects$(obj_idx%), 5, "|") = "1"
+End Function
+
+Function obj_is_person%(obj_idx%)
+  obj_is_person% = Field$(objects$(obj_idx%), 5, "|") = "2"
+End Function
+
+Function obj_weight%(obj_idx%)
+  obj_weight% = Val(Field$(objects$(obj_idx%), 6, "|"))
 End Function

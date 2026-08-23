@@ -16,7 +16,7 @@ slippers
 boots
 "Mr. B. cleaned boots after dinner."
 
-cigarettes
+cigarette
 "I don't smoke. Colonel Darnley smoked cigars."
 
 missing statue

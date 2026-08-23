@@ -22,7 +22,7 @@ boots
 knife
 "I don't know anything about the knife."
 
-cigarettes
+cigarette
 "I smoke an expensive cigarette made by Fribourg & Treyer in London
 - those and cigars after dinner, Cheroots same as old Darnley. I
 would never smoke cheap cigarettes."
