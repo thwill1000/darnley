@@ -71,7 +71,7 @@ arnold billingsgate butler
 mildred goodbody cook
 "Very kind to me."
 
-norah bagsby maid yourself who
+norah bagsby maid | yourself
 "I'm only the maid, sir. I've been here six months. I try to do my
 work proper, though I know Mrs. G. thinks I'm lazy sometimes. I
 don't know what more you'd want me to say about myself."

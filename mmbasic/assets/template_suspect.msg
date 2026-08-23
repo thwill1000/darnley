@@ -1,17 +1,18 @@
 # Canonical entry order for per-suspect .msg files, validated against by
-# msgorder.validate_all(). Real suspect files may omit entries listed here
+# 'tst_msgorder.bas'. Real suspect files may omit entries listed here
 # but must not reorder the ones they do include, and must end with the
 # wildcard "*" entry. Bodies below are placeholders only - this file is
 # not loaded by the game itself.
 #
 # The nine-entry "opinion of each suspect" block below (colonel darnley
 # .. ronald mellors) has each suspect's own slot replaced IN PLACE by a
-# self-description entry (e.g. "arthur coniston yourself who") in their
-# own file. msgorder.inc collapses all nine roster keywords plus any
-# self-description line to a single placeholder, so the block is checked
-# as a whole rather than entry-by-entry. The three "+accuse" entries'
-# !requires tokens are likewise suspect-specific (accuse_b4_<tag>) and
-# are normalized the same way.
+# self-description entry (e.g. "arthur coniston | yourself") in their
+# own file. This is validated the same way as any other entry: the
+# template's alternative-set ("arthur coniston") only has to be a subset
+# of the file's ("arthur coniston | yourself"), per msgorder.entry_matches%().
+# The three "+accuse" entries' !requires tokens are likewise
+# suspect-specific (accuse_b4_<tag>) and are normalized to a common
+# placeholder for comparison (see msgorder.normalize_token$()).
 
 hello hi morning afternoon evening greetings
 "greeting response"
