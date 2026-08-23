@@ -139,7 +139,7 @@ before you go accusing anyone."
 
 affair mellors ronald sarah summer house summerhouse together secret lovers
 !requires handkerchief cigarettes
-He gives a short, humourless laugh.@
+[[reset:He gives a short, humourless laugh.]]@
 @
 "Wouldn't surprise me in the least, if I'm honest. Told Darnley his
 wife would go looking for warmth elsewhere - man was thirty years
@@ -151,7 +151,7 @@ affair mellors ronald sarah summer house summerhouse together secret lovers
 
 money mining peru ruin +redvers | money mining peru ruin +slingsby | money mining peru ruin +you
 !requires newspaper
-He goes rather grey about the gills.@
+[[reset:He goes rather grey about the gills.]]@
 @
 "Very well, since you've clearly found the wretched newspaper. Yes
 - I'd put a considerable sum into Peruvian silver on Darnley's own
@@ -175,8 +175,8 @@ goodbye bye farewell thanks thank
 -who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_redvers
 !provides new_accuse accuse_redvers
-He glares at you with undisguised fury, though there is something else
-beneath it now - a flicker of unease.@
+[[reset:He glares at you with undisguised fury, though there is something else
+beneath it now - a flicker of unease.]]@
 @
 "You said your piece once already, and I gave you my answer. Don't try
 my patience further."
@@ -184,8 +184,8 @@ my patience further."
 -who accuse you did it jaccuse murder murderer
 !requires all_clues
 !provides new_accuse accuse_redvers accuse_b4_redvers
-Slingsby's face darkens to an alarming shade of puce, his moustache
-fairly bristling with outrage.@
+[[reset:Slingsby's face darkens to an alarming shade of puce, his moustache
+fairly bristling with outrage.]]@
 @
 "By God, sir! I've a good mind to horsewhip you for that. I left Darnley
 alive and well, and I'll thank you to remember it!"

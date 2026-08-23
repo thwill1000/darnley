@@ -160,7 +160,7 @@ please be certain, whatever you conclude. It matters rather a lot."
 
 affair mellors ronald sarah summer house summerhouse together secret lovers
 !requires handkerchief cigarettes
-She goes quite still, and for a moment says nothing at all.@
+[[reset:She goes quite still, and for a moment says nothing at all.]]@
 @
 "I - I don't know what you're suggesting. Sarah was in the morning
 room, I heard her playing all evening. I really don't think you
@@ -191,7 +191,7 @@ goodbye bye farewell thanks thank
 -who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_millicent
 !provides new_accuse accuse_millicent
-Her jaw sets and she regards you with cold, level eyes.@
+[[reset:Her jaw sets and she regards you with cold, level eyes.]]@
 @
 "I heard you the first time. I did not do it then, and I do not do it
 now, however many times you care to repeat yourself."
@@ -199,8 +199,8 @@ now, however many times you care to repeat yourself."
 -who accuse you did it jaccuse murder murderer
 !requires all_clues
 !provides new_accuse accuse_millicent accuse_b4_millicent
-Millicent's composure cracks for the first time since you met her - her
-eyes bright with sudden anger, or something close to it.@
+[[reset:Millicent's composure cracks for the first time since you met her - her
+eyes bright with sudden anger, or something close to it.]]@
 @
 "How dare you. My own father, and you accuse me? You had better be
 absolutely certain, because I will not forgive this lightly."

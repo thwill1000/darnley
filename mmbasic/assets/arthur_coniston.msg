@@ -184,7 +184,7 @@ make a fool of myself."
 
 affair mellors ronald sarah summer house summerhouse together secret lovers
 !requires handkerchief cigarettes
-Coniston's easy manner falters, just slightly.@
+[[reset:Coniston's easy manner falters, just slightly.]]@
 @
 "I say, that's rather a suggestion to make. I really couldn't tell
 you - though now you mention it, Sarah did seem rather distracted
@@ -216,7 +216,7 @@ won't you?"
 -who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_arthur
 !provides new_accuse accuse_arthur
-Coniston spreads his hands, the picture of wounded innocence.@
+[[reset:Coniston spreads his hands, the picture of wounded innocence.]]@
 @
 "Again? Really, this is becoming tiresome. Have your say, then - let's
 have done with it."
@@ -224,8 +224,8 @@ have done with it."
 -who accuse you did it jaccuse murder murderer
 !requires all_clues
 !provides new_accuse accuse_arthur accuse_b4_arthur
-Coniston's easy charm falters for just a moment - the faintest tightening
-around the eyes - before he recovers himself entirely.@
+[[reset:Coniston's easy charm falters for just a moment - the faintest tightening
+around the eyes - before he recovers himself entirely.]]@
 @
 "My dear fellow, that's a serious thing to say to a man. I think you had
 better be very sure of your facts before you say it again."

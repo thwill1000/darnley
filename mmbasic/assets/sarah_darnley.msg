@@ -167,7 +167,7 @@ almost afraid to ask. Just be sure, whatever you decide."
 
 affair mellors ronald sarah summer house summerhouse together secret lovers
 !requires handkerchief cigarettes
-Her face goes very pale, then very still.@
+[[reset:Her face goes very pale, then very still.]]@
 @
 "I don't know what you think you've found, Inspector, but you are
 quite mistaken. I was in the morning room all evening, playing the
@@ -198,8 +198,8 @@ this."
 -who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_sarah
 !provides new_accuse accuse_sarah
-She looks at you steadily now, some of the shock worn off, replaced by
-something harder to read.@
+[[reset:She looks at you steadily now, some of the shock worn off, replaced by
+something harder to read.]]@
 @
 "You said that once already. I have nothing further to add, except that
 you are quite wrong."
@@ -207,7 +207,7 @@ you are quite wrong."
 -who accuse you did it jaccuse murder murderer
 !requires all_clues
 !provides new_accuse accuse_sarah accuse_b4_sarah
-Sarah's hand goes to her throat, the colour draining from her face.@
+[[reset:Sarah's hand goes to her throat, the colour draining from her face.]]@
 @
 "Me? You cannot be serious. I - I don't know what to say to such a
 thing."

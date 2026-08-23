@@ -145,7 +145,7 @@ sat in my soup. You get on with your job."
 
 affair mellors ronald sarah summer house summerhouse together secret lovers
 !requires handkerchief cigarettes
-She goes quiet for a moment, wiping her hands slowly on her apron.@
+[[reset:She goes quiet for a moment, wiping her hands slowly on her apron.]]@
 @
 "I don't like to gossip, dear, truly I don't. But I've wondered,
 watching her these past months. Mrs. Sarah always did seem lonelier
@@ -177,7 +177,7 @@ could use it."
 -who accuse you did it jaccuse murder murderer
 !requires all_clues accuse_b4_mildred
 !provides new_accuse accuse_mildred
-She fixes you with a look that could curdle milk.@
+[[reset:She fixes you with a look that could curdle milk.]]@
 @
 "You asked me that already, and my answer's the same as it was then. I
 didn't do it, and that's flat."
@@ -185,8 +185,8 @@ didn't do it, and that's flat."
 -who accuse you did it jaccuse murder murderer
 !requires all_clues
 !provides new_accuse accuse_mildred accuse_b4_mildred
-Mrs. Goodbody plants her floury hands on her hips, drawing herself up
-to her full and considerable height.@
+[[reset:Mrs. Goodbody plants her floury hands on her hips, drawing herself up
+to her full and considerable height.]]@
 @
 "Well I never! Me, murder the Colonel? I've cooked this family's dinners
 for five years and never so much as raised my voice, let alone a gun!"
