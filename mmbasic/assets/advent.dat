@@ -42,6 +42,8 @@ P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|arnold billingsgate butler|LOC010_BUTL
 P_MILDRED_GOODBODY|Mildred Goodbody|mildred goodbody cook|LOC009_KITCHEN|2|100
 P_NORAH_BAGSBY|Norah Bagsby|norah bagsby maid|LOC026_SERVANTS_QUARTERS|2|100
 P_RONALD_MELLORS|Ronald Mellors|ronald mellors gamekeeper|LOC023_GAMEKEEPERS_COTTAGE|2|100
+P_CHESTER_CAT|Cat|cat ginger chester|LOC021_STABLES|2|100
+P_THE_BODY|Colonel Darnley's body|colonel darnley body|LOC007_COLONELS_STUDY|2|100
 OBJ201_POND|Pond|pond|LOC005_ORNAMENTAL_POND|0|100
 OBJ202_SUNKEN_STATUE|Sunken statue|sunken statue|LOC005_ORNAMENTAL_POND|0|100
 OBJ203_REVOLVER|Revolver|revolver gun|LOC005_ORNAMENTAL_POND|1|1
@@ -65,7 +67,6 @@ OBJ223_PIPE|Pipe|pipe|LOC026_SERVANTS_QUARTERS|1|1
 OBJ224_BOOKSHELF|Bookshelf|bookshelf books|LOC010_BUTLERS_PANTRY|0|100
 OBJ225_FRENCH_WINDOW_TERRACE|French Window|french window|LOC006_TERRACE|0|100
 OBJ226_FOOTPRINTS_TERRACE|Footprints|footprints bootprints shoeprints prints|LOC006_TERRACE|0|100
-P_THE_BODY|Colonel Darnley's body|colonel darnley body|LOC007_COLONELS_STUDY|2|100
 OBJ228_PORT_GLASS|Port glass|port glass|LOC007_COLONELS_STUDY|1|1
 OBJ229_TANTALUS|Tantalus of port|tantalus port|LOC007_COLONELS_STUDY|1|1
 OBJ230_LETTER|Letter|letter|LOC007_COLONELS_STUDY|1|1

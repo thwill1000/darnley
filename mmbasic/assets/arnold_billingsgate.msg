@@ -84,6 +84,11 @@ norah bagsby maid
 ronald mellors gamekeeper
 "He's the gamekeeper. He seems honest enough."
 
+cat chester ginger
+"That would be Chester, sir - the Colonel's cat. He keeps mostly to the
+stables and is, if I may say so, better behaved than most of the
+house."
+
 +flatfooted bootprints boot prints | +flat +footed bootprints boot prints | +odd bootprints boot prints
 "I've studied all the people here and none of them are flat-footed.
 It's a mystery to me why the bootprints should be flat-footed."

@@ -172,11 +172,14 @@ slates on the roof, paint flaking from the doors, but the horses
 inside well-tended enough. One loose box houses Colonel Darnley's bay
 hunter, its breath steaming in the cold air. The other half of the
 building has been converted to garage a large Daimler, incongruous
-beneath a coating of road dust and a worn tarpaulin. The yard between
-the buildings is crossed by [[green:footprints]] and littered with
-straw and the dark stains of engine oil. The tack room off the yard
-holds saddle and gear for the horse. Access to the [[green:Main drive]],
-[[green:East walk]], and [[green:East lawn]] lies beyond the yard gate.
+beneath a coating of road dust and a worn tarpaulin, small dark oil
+stains dotting the snow beside it. Tucked into a sheltered doorway, a
+large [[green:ginger cat]] sits watchfully in the straw, tracking
+your approach with unhurried interest. The yard between the buildings
+is crossed by [[green:footprints]] and littered with straw. The tack
+room off the yard holds saddle and gear for the horse. Access to the
+[[green:Main drive]], [[green:East walk]], and [[green:East lawn]]
+lies beyond the yard gate.
 
 LOC022_EAST_LAWN
 An open lawn lies between the [[green:Stables]] and the
@@ -300,6 +303,12 @@ hob-nailed boots and regards you with an expression of settled hostility that
 suggests this is simply his default manner rather than evidence of a guilty
 conscience - though of course it need not be one or the other. He will not, it
 is already clear, be volunteering anything.
+
+P_CHESTER_CAT
+A large ginger cat, broader through the shoulders than most, sits
+watchfully in the straw of the doorway. He tracks your movements with
+an unhurried, faintly proprietary interest, as though the stables -
+and quite possibly you - are his to keep an eye on.
 
 OBJ201_POND
 !provides x_pond

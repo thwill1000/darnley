@@ -70,8 +70,12 @@ norah bagsby maid
 
 ronald mellors gamekeeper | yourself
 "What about me? I keep the game and see to the traps and the guns.
-Five years I've worked for the Colonel and done it well. I don't
+Seven years I've worked for the Colonel and done it well. I don't
 see as I owe anyone an account of myself."
+
+cat chester ginger
+"Chester. Good ratter, keeps the stables clear of vermin. I feed him
+same as the horses - he earns his keep, unlike some."
 
 +flatfooted bootprints boot prints | +flat +footed bootprints boot prints | +odd bootprints boot prints
 "Clear off! I'm not showing anyone my boots."
@@ -96,7 +100,7 @@ cheroot pond
 "I don't know anything about it."
 
 events yesterday murder last happened
-"I have worked for Colonel Darnley for five years. He was strict but
+"I have worked for Colonel Darnley for seven years. He was strict but
 fair. I have no complaints. Last night I did my last rounds at 8:00
 pm. I saw nothing suspicious. I spent the rest of the evening at
 home and went to bed at 10:00. I didn't hear any strange noises. It

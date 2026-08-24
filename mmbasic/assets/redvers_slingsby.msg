@@ -72,6 +72,11 @@ norah bagsby maid
 ronald mellors gamekeeper
 "I don't know the man."
 
+cat chester ginger
+"The cat? Chester, I believe they call him. Never had much use for
+the creatures myself, but Darnley was rather fond of him, as I
+recall."
+
 +flatfooted bootprints boot prints | +flat +footed bootprints boot prints | +odd bootprints boot prints
 "The bootprints around the house look like mine, but I didn't make
 them. I'm not flat-footed."

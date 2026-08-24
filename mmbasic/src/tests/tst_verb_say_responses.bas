@@ -86,6 +86,7 @@ add_test("SAY opinion of Arnold matches that entry", "test_say_gvn_opinion_arnol
 add_test("SAY opinion of Mildred matches that entry", "test_say_gvn_opinion_mildred")
 add_test("SAY opinion of Norah matches that entry", "test_say_gvn_opinion_norah")
 add_test("SAY opinion of Ronald matches that entry", "test_say_gvn_opinion_ronald")
+add_test("SAY Tell me about the ginger cat", "test_say_ginger_cat")
 add_test("SAY Tell me about the flatfooted bootprints", "test_say_gvn_flatfooted")
 add_test("SAY Tell me about the hobnailed bootprints", "test_say_gvn_hobnailed")
 add_test("SAY Tell me about the slipper prints", "test_say_gvn_slipper_prints")
@@ -360,6 +361,11 @@ Sub test_say_gvn_opinion_ronald()
   assert_say_response("what's ronald mellors like", "mellors response")
   assert_say_response("your impression of ronald mellors", "mellors response")
   assert_say_response("how do you get on with ronald mellors", "mellors response")
+End Sub
+
+Sub test_say_ginger_cat()
+  assert_say_response("cat", "chester cat response")
+  assert_say_response("Tell me about the ginger cat", "chester cat response")
 End Sub
 
 Sub test_say_gvn_flatfooted()

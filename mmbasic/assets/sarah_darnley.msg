@@ -80,6 +80,11 @@ norah bagsby maid
 ronald mellors gamekeeper
 "A very loyal gamekeeper."
 
+cat chester ginger
+"Chester? He was Sebastian's cat, really - a great ginger creature.
+I'm afraid I've never had much to do with him. He lives down at the
+stables, as I understand it."
+
 +flatfooted bootprints boot prints | +flat +footed bootprints boot prints | +odd bootprints boot prints
 "I'm too distressed to think clearly about bootprints, I'm afraid."
 
