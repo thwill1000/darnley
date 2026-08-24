@@ -62,6 +62,10 @@ don't know what more you'd want me to say about myself."
 ronald mellors gamekeeper
 "A rough man. A womanizer by all accounts."
 
+cat chester ginger
+"Oh, that's Chester, sir. He's ever so sweet, though he does shed
+something dreadful on my apron when he jumps up."
+
 +flatfooted bootprints boot prints | +flat +footed bootprints boot prints | +odd bootprints boot prints
 "Oh, I couldn't say, sir. I don't look at people's feet, it isn't my place."
 

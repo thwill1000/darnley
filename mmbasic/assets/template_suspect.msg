@@ -83,6 +83,9 @@ norah bagsby maid
 ronald mellors gamekeeper
 "mellors response"
 
+cat chester ginger
+"chester cat response"
+
 +flatfooted bootprints boot prints | +flat +footed bootprints boot prints | +odd bootprints boot prints
 "flatfooted bootprints response"
 

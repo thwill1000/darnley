@@ -76,6 +76,11 @@ ronald mellors gamekeeper
 "Not a nice man. Not to be trusted. Colonel Darnley talked of giving
 him his notice; he'd already given him a warning letter."
 
+cat chester ginger
+"Chester, you mean? Cheeky old thing - always down at my kitchen door
+the moment he smells anything worth having. I've a soft spot for him,
+truth be told."
+
 +flatfooted bootprints boot prints | +flat +footed bootprints boot prints | +odd bootprints boot prints
 "I remember the gardener's child playing around wearing grown-up's
 boots. They made flat-footed prints because they were too big for

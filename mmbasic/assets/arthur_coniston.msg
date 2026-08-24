@@ -91,6 +91,11 @@ norah bagsby maid
 ronald mellors gamekeeper
 "I don't know the chap."
 
+cat chester ginger
+"Ah, Chester - the old boy's cat. Lives down at the stables, I
+believe. Can't say I've had much to do with him myself - not much of
+a cat man."
+
 +flatfooted bootprints boot prints | +flat +footed bootprints boot prints | +odd bootprints boot prints
 "I followed the bootprints from the terrace around to the kitchen."
 

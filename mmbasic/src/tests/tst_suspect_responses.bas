@@ -70,6 +70,7 @@ add_test("Norah Bagsby's .msg file matches template entry order", "test_msg_orde
 add_test("Redvers Slingsby's .msg file matches template entry order", "test_msg_order_redvers")
 add_test("Ronald Mellors's .msg file matches template entry order", "test_msg_order_ronald")
 add_test("Sarah Darnley's .msg file matches template entry order", "test_msg_order_sarah")
+add_test("Chester Cat's .msg file matches template entry order", "test_msg_order_chester")
 
 run_tests()
 End
@@ -120,4 +121,8 @@ End Sub
 
 Sub test_msg_order_sarah()
   assert_msg_order("sarah_darnley.msg")
+End Sub
+
+Sub test_msg_order_chester()
+  assert_msg_order("chester_cat.msg")
 End Sub

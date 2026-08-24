@@ -75,6 +75,11 @@ ronald mellors gamekeeper
 "Furtive. I don't like the way he looks at my step-mother. I advised
 Daddy to get rid of him."
 
+cat chester ginger
+"Oh, Chester! Daddy's cat - he dotes on him, or did. He's usually
+down at the stables bothering Mellors. I've always found him rather
+standoffish, myself."
+
 +flatfooted bootprints boot prints | +flat +footed bootprints boot prints | +odd bootprints boot prints
 "I'm afraid I paid no attention to footprints. Really, is that the sort of thing
 one is expected to notice?"
