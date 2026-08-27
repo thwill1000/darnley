@@ -37,14 +37,14 @@ LOC030_SECOND_GUEST_ROOM|Second guest room|second guest|1|LOC028_MORNING_ROOM
 # flag = 2 -> person
 P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC028_MORNING_ROOM|2|100
 P_MILLICENT_DARNLEY|Millicent Darnley|millicent|LOC013_LOUNGE|2|100
-P_ARTHUR_CONISTON|Arthur Coniston|arthur coniston|LOC015_MUSIC_ROOM|2|100
-P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC016_BILLIARD_ROOM|2|100
-P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|arnold billingsgate butler|LOC010_BUTLERS_PANTRY|2|100
-P_MILDRED_GOODBODY|Mildred Goodbody|mildred goodbody cook|LOC009_KITCHEN|2|100
-P_NORAH_BAGSBY|Norah Bagsby|norah bagsby maid|LOC026_SERVANTS_QUARTERS|2|100
-P_RONALD_MELLORS|Ronald Mellors|ronald mellors gamekeeper|LOC023_GAMEKEEPERS_COTTAGE|2|100
+P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC015_MUSIC_ROOM|2|100
+P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers|LOC016_BILLIARD_ROOM|2|100
+P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|billingsgate butler|LOC010_BUTLERS_PANTRY|2|100
+P_MILDRED_GOODBODY|Mildred Goodbody|goodbody cook|LOC009_KITCHEN|2|100
+P_NORAH_BAGSBY|Norah Bagsby|bagsby maid|LOC026_SERVANTS_QUARTERS|2|100
+P_RONALD_MELLORS|Ronald Mellors|mellors gamekeeper|LOC023_GAMEKEEPERS_COTTAGE|2|100
 P_CHESTER_CAT|Cat|cat ginger chester|LOC021_STABLES|2|100
-P_THE_BODY|Colonel Darnley's body|colonel darnley body|LOC007_COLONELS_STUDY|2|100
+P_THE_BODY|Colonel Darnley's body|colonel body|LOC007_COLONELS_STUDY|2|100
 OBJ201_POND|Pond|pond|LOC005_ORNAMENTAL_POND|0|100
 OBJ202_SUNKEN_STATUE|Sunken statue|sunken statue|LOC005_ORNAMENTAL_POND|0|100
 OBJ203_REVOLVER|Revolver|revolver gun|LOC005_ORNAMENTAL_POND|1|1
@@ -99,35 +99,44 @@ OBJ256_SHOTGUNS|Shotguns|guns shotgun shotguns|LOC023_GAMEKEEPERS_COTTAGE|1|1
 OBJ257_STACKED_FURNITURE|Stacked furniture|stacked furniture|LOC008_HALL|0|100
 
 !synonyms
+arthur|coniston|arthurs|conistons
+bagsby|bagsbys|norah|norahs
+billingsgate|billingsgates|arnold|arnolds
 bootprints|boot-prints
 butler|butlers
 cigar|cigars
 cigarette|cigarettes
 cheroot|cheroots
-colonel|colonels
-darnley|darnleys
+corroborate|coroborate
+colonel|colonels|darnley|darnleys|sebastian|sebastians
+dismissal|dismissed|notice|fired|sacked|sack
 engagement|engaged
 flatfooted|flat-footed
 footprints|foot-prints
 gamekeeper|gamekeepers
+goodbody|goodbodys|mildred|mildreds
 gramophone|gramaphone
 handkerchief|handkerchiefs|hankerchief|hankerchiefs|hanky|hankys
 hobnailed|hob-nailed
 maid|housemaid
 marriage|marry|married|marrying
+mellors|mellorss|ronald|ronalds
 millicent|milicent|millicents|milicents
 money|finance|finances|financial|business|shares|debt|debts
 murder|murdered|kill|killed
 murderer|killer
 prints|marks|tracks
-redvers|redverss
+redvers|redverss|slingsby|slingsbys
 revolver|pistol
-sarah|sara
+sarah|sara|sarahs|saras
+servant|servants
 shoeprints|shoe-prints
+womens|ladys|womans
+yourself|your
 
 !questions
 # id | result matches...
-Q_1|ronald|mellors|gamekeeper
+Q_1|mellors|gamekeeper
 Q_2|sarah
 Q_3|gramophone|record
 Q_4|pond
@@ -137,9 +146,9 @@ Q_7|big|large
 Q_8|door|slam|slamming
 Q_9|terrace
 Q_10|stone|rock
-Q_11|arthur|coniston
-Q_12|redvers|slingsby
-Q_13|+marriage +millicent|+engagement +millicent
+Q_11|arthur
+Q_12|redvers
+Q_13|+millicent +(marriage/engagement)
 
 !clues
 cigarettes

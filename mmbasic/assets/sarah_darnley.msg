@@ -2,16 +2,28 @@ hello hi morning afternoon evening greetings
 "Good morning, Inspector. Forgive me if I don't manage much of a
 smile today."
 
-alibi
-"At 10:30 I was reading and drinking coffee in the lounge - on my
-own, I'm afraid. At 11:30 I was playing the piano in the morning
-room - also alone, alas! I don't suppose it looks to good?"
+slippers
+"Not mine - I wear proper shoes, or slippers with rather more
+embroidery than that, if it comes to it."
 
-cigarette
+boots
+"Certainly not. I have never worn a man's boot in my life, Inspector."
+
+knife
+"A knife? I'm afraid I wouldn't know anything about it. I don't
+concern myself with kitchen matters."
+
+cigarette cigar cheroot smoking smoked smokes
 "I can't imagine why you are asking me this question. Arthur
 Coniston smokes cigarettes."
 
-missing statue
+revolver
+"Sebastian kept a pair of revolvers in the study, in that gun cabinet of his - I
+couldn't tell you one from the other, they all look alike to me. If
+you're asking whether I recognise this particular one, I'm afraid I
+don't."
+
++statue missing
 "I believe a rather nasty tramp, who called two days ago threw it
 into the pond."
 
@@ -25,7 +37,7 @@ piano
 10:40 until I heard the bang at 11:30. I was on my own throughout
 and no-one else came into the room."
 
-ladys shoes
++womens shoes
 "Yes, those are my shoes, but I don't recall when I last wore them. I
 have no idea why they should be damp - possibly I had them on
 earlier yesterday."
@@ -44,72 +56,90 @@ I'm at a loss about the letter."
 handkerchief
 "You found it in the summer house? I'm absolutely sure it isn't mine."
 
-colonel darnley sebastian
++colonel (get/think) with
 "He was somewhat strict and suspicious by nature, but we were happy
 enough."
 
-sarah | yourself
++sarah (get/think) with | yourself
 "I know what's said of me - too young for my husband, too fond of
 admiration. I loved Sebastian in my own way, whatever anyone
 thinks. I don't expect you to understand a marriage from outside
 looking in."
 
-millicent
++millicent (get/think) with
 "Her father spoiled her so she got used to having her own way.
 Sebastian probably agreed to Arthur Coniston's proposal for fear of
 what Millicent would do if he refused. I can't see him crossing
 Millicent on a matter like that."
 
-arthur coniston
++arthur (get/think) with
 "A charmer. I was suspicious of his motives for marrying Millicent, but
 Arthur said that when he asked Sebastian my husband agreed, so I am
 probably mistaken."
 
-redvers slingsby
++redvers (get/think) with
 "I felt he had some sort of grudge against Sebastian."
 
-arnold billingsgate butler
++(billingsgate/butler) (get/think) with
 "Very honest and loyal."
 
-mildred goodbody cook
++(goodbody/cook) (get/think) with
 "A gossip."
 
-norah bagsby maid
++(bagsby/maid) (get/think) with
 "Lazy."
 
-ronald mellors gamekeeper
++(mellors/gamekeeper) (get/think) with
 "A very loyal gamekeeper."
 
-cat chester ginger
++(cat/chester/ginger) (get/think) with
 "Chester? He was Sebastian's cat, really - a great ginger creature.
 I'm afraid I've never had much to do with him. He lives down at the
 stables, as I understand it."
 
-+flatfooted bootprints boot prints | +flat +footed bootprints boot prints | +odd bootprints boot prints
++(flatfooted/flat/odd) (bootprints/footprints/prints/marks)
 "I'm too distressed to think clearly about bootprints, I'm afraid."
 
-+hobnailed bootprints boot prints
++hobnailed +(bootprints/prints/marks) boot
 "I really couldn't say. I wasn't paying attention to people's boots."
 
-+slipper prints
++slipper +(footprints/prints/marks)
 "I don't know whose slippers those would be. I'm sorry, this is all rather too
 much."
 
-+mens shoeprints shoe prints
++mens +(shoeprints/footprints/prints/marks) shoe
 "I'm afraid I don't notice that sort of thing at the best of times."
 
-+womens shoeprints shoe prints
++womens +(shoeprints/footprints/prints/marks) shoe
 "I couldn't say whose they are. I'm really not in a fit state to be asked about
 footprints."
 
-footprints | +prints foot | shoeprints | +shoe + prints | bootprints | +boot +prints
++(footprints/shoeprints/bootprints/prints/marks) foot boot shoe
 "I understand there are prints all over the grounds. I'm afraid I
 haven't the faintest idea which ones matter."
 
-cheroot pond
+pond
+"The ornamental pond? It's rather pretty in summer, though I
+imagine it's frozen solid just now. I haven't been down there in
+weeks."
+
+pipe
+"I don't smoke a pipe myself, obviously. I couldn't tell you whose it
+is - I imagine it belongs to Sir Redvers who's has been put up in the servants'
+quarters.
+
+bookshelf books
+"I'm afraid I couldn't say. I don't spend a great deal of time in the
+servants' rooms, as you might imagine."
+
+correspondence photographs letters servants
+"Not mine. I really shouldn't like to speculate whose they are - it
+seems rather an intrusion to go asking after other people's letters."
+
++(cheroot/cigar) +pond
 "I don't know anything about it."
 
-suit
++suit servants
 "Sir Redvers' suit I should think. He arrived out of the blue and there
 was nowhere left for him but the servants' quarters, what with Arthur
 already installed in the guest room, and the other guest room being
@@ -121,12 +151,12 @@ stacked furniture
 order myself, weeks ago, before any of us knew Sir Redvers would be
 descending on us. Rather inconvenient timing, as it turns out."
 
-second guest spare room
++(guest/spare) second room
 "I arranged to have it done up weeks ago - new paper, mostly. I'd no idea at
 the time it would leave us short a room when Sir Redvers turned up
 without warning. Rather bad timing, as these things go."
 
-+blocked door | +passage kitchen
++(blocked/passage) door kitchen
 "Oh, that's just where the furniture from the second guest room
 ended up - there was nowhere else to put it in a hurry. I'm told
 it's rather in the way.
@@ -157,27 +187,87 @@ I was getting changed when I heard Billingsgate rush upstairs to
 wake Sir Redvers. Millicent heard the racket and came into my room
 from hers. And the rest you know."
 
-motive reason why think murder
++(bang/bangs/shot/shots) (time/what/when) (hear/heard)
+"There was a loud noise while I was still downstairs - about 10:30,
+I should think - which I took for Sir Redvers leaving the study none
+too gently. Then later, around 11:30, I heard something else while I
+was in the morning room - more like a shot, if I'm honest, though at
+the time I told myself it was poachers. I don't know why you keep
+asking me to separate the two. Isn't it obvious enough?"
+
++(confirm/corroborate/vouch/alibi/with) +arthur you
+"I really couldn't say what Arthur got up to. I had gone upstairs
+long before either of the noises you keep asking me about."
+
++(confirm/corroborate/vouch/alibi/with) +millicent you
+"I saw Millicent only briefly, on the landing, before I went to the
+morning room. After that I couldn't tell you."
+
++(confirm/corroborate/vouch/alibi/with) +sarah you
+"Vouch for myself? I was quite alone the whole evening, Inspector, so
+I'm afraid there's no-one but me to ask."
+
++(confirm/corroborate/vouch/alibi/with) +redvers you
+"I've no idea what Sir Redvers did after he left the study. I didn't
+see him again until Billingsgate woke him."
+
++(confirm/corroborate/vouch/alibi/with) +(servant/bagsby/billingsgate/goodbody/butler/cook/maid) you
+"I really couldn't say. I imagine they were about their duties, but I
+wasn't paying attention to the servants that evening."
+
++(confirm/corroborate/vouch/alibi/with) +(mellors/gamekeeper) you
+"I don't see why you should ask me about Mellors' evening, Inspector.
+I'm sure I couldn't tell you."
+
+-thanks alibi | -thanks +time murder
+"At 10:30 I was reading and drinking coffee in the lounge - on my
+own, I'm afraid. At 11:30 I was playing the piano in the morning
+room - also alone, alas! I don't suppose it looks to good?"
+
+-thanks alone (confirm/confirmed) corroborate witness anyone time
+"No - I was quite alone in the morning room the entire time. I
+don't suppose the piano can testify on my behalf, more's the
+pity."
+
+motive reason why think murder want
 "I've asked myself that a hundred times since last night and I
 still can't answer it. Sebastian had his difficult side, but I
 never thought anyone hated him enough for this."
 
-marriage colonel sarah wife husband happy
+(inheritance/inherit) will estate money (left/leave)
+"I really don't think this is the moment, Inspector. Sebastian never
+discussed his affairs with me in any detail - I assume I'm provided
+for, as any husband would provide for his wife, but I couldn't tell
+you the terms of it."
+
++mellors dismissal warning letter job position colonel
+"I heard nothing of any letter. Sebastian didn't discuss the running
+of the estate with me, and Mellors has always struck me as
+perfectly loyal - I can't think what would have prompted it."
+
+-again marriage colonel sarah wife husband happy get with
 "We were happy enough, in our own way. He was strict, and older
 than me, and people will talk regardless of what's true. I loved
 him, whatever anyone supposes."
 
-engagement marriage millicent arthur coniston
+remarriage remarry remarrying marry again
+[[reset:Her expression cools noticeably.]]@
+@
+"I can't imagine why you would ask me that, today of all days. I
+haven't the smallest intention of discussing my future, Inspector -
+not while my husband isn't yet in the ground."
+
+engagement marriage millicent arthur when
 "Sebastian only agreed to it yesterday afternoon. Millicent was
 positively glowing when she told me. I'm glad she'll have that
 happiness, whatever else has happened."
 
-murder murderer think believe guilty who did comitted
+(murder/murderer) think believe guilty who did comitted want
 "I can't bear to think it was any of them, truly. If you insist I
 name someone - Sir Redvers seemed dreadfully agitated all evening. I
 don't like to say more than that."
 
-locked sealed study door window how
++study (locked/sealed) door window how
 "I still can't make sense of it. Both doors locked with his own
 keys, and that broken window - it's as though no one could possibly
 have got to him. And yet someone did."
@@ -186,7 +276,7 @@ clues evidence found discovered proof
 "I don't know what you've discovered, Inspector, and I find I'm
 almost afraid to ask. Just be sure, whatever you decide."
 
-affair mellors ronald sarah summer house summerhouse together secret lovers
+affair mellors sarah (summerhouse/summer) together secret lovers
 !requires handkerchief cigarettes
 [[reset:Her face goes very pale, then very still.]]@
 @
@@ -194,17 +284,17 @@ affair mellors ronald sarah summer house summerhouse together secret lovers
 quite mistaken. I was in the morning room all evening, playing the
 piano. Ask Millicent, she heard me."
 
-affair mellors ronald sarah summer house summerhouse together secret lovers
+affair mellors sarah (summerhouse/summer) together secret lovers
 "I'm sorry - I don't understand the question. Mellors is our
 gamekeeper. I don't see what he has to do with anything."
 
-money mining peru ruin +redvers | money mining peru ruin +slingsby
++redvers money mining peru ruin
 !requires newspaper
 "Sebastian did mention Sir Redvers needed to talk business
 urgently. I assumed it was the usual sort of thing - I didn't
 realise it was quite so serious until now."
 
-money mining peru ruin redvers slingsby colonel darnley
+money mining peru ruin redvers colonel
 "I really couldn't say. Sebastian didn't discuss financial business with me."
 
 police investigation scotland yard inspector detective think of me
@@ -220,7 +310,7 @@ goodbye bye farewell thanks thank
 "Goodbye, Inspector. Thank you for your discretion in all of
 this."
 
--who accuse you did it jaccuse murder murderer
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues accuse_b4_sarah
 !provides new_accuse accuse_sarah
 [[reset:She looks at you steadily now, some of the shock worn off, replaced by
@@ -229,7 +319,7 @@ something harder to read.]]@
 "You said that once already. I have nothing further to add, except that
 you are quite wrong."
 
--who accuse you did it jaccuse murder murderer
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues
 !provides new_accuse accuse_sarah accuse_b4_sarah
 [[reset:Sarah's hand goes to her throat, the colour draining from her face.]]@
@@ -237,7 +327,7 @@ you are quite wrong."
 "Me? You cannot be serious. I - I don't know what to say to such a
 thing."
 
--who accuse you did it jaccuse murder murderer
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !provides new_accuse accuse_sarah
 "You mustn't say such things without evidence - it isn't fair, not to
 anyone."

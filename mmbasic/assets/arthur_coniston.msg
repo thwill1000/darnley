@@ -2,23 +2,17 @@ hello hi morning afternoon evening greetings
 "Ah, hello there. Ghastly business, all this - still, glad to have
 someone competent looking into it."
 
-alibi
-"Millicent and I were together in the music room at 10:30. I don't
-know how anyone can be expected to have an alibi for 11:30.
-Certainly a single gentleman could never admit to one, if you follow
-my meaning."
-
 slippers
 "These are my slippers. I was wearing them when Billingsgate and I
 broke into the study."
 
 boots
-"I don't know anything about the boots."
+"Boots aren't really my department, old boy."
 
 knife
-"I don't know anything about the knife."
+"Haven't the foggiest - kitchen's not somewhere I go poking about."
 
-cigarette
+cigarette cigar cheroot smoking smoked smokes
 "I smoke an expensive cigarette made by Fribourg & Treyer in London
 - those and cigars after dinner, Cheroots same as old Darnley. I
 would never smoke cheap cigarettes."
@@ -26,7 +20,7 @@ would never smoke cheap cigarettes."
 revolver
 "I don't recognise it."
 
-missing statue
++statue missing
 "I don't know what you're talking about."
 
 gramophone
@@ -41,7 +35,7 @@ room. Ah - now that I remember, there is also a piano in the morning
 room, but on the couple of occasions I went into the room there was
 no-one there, just a gramophone playing."
 
-ladys shoes
++womens shoes
 "I don't know whose shoes these are."
 
 +newspaper read
@@ -58,69 +52,87 @@ that I could marry Millicent."
 handkerchief
 "I don't know whose handkerchief it is."
 
-colonel darnley sebastian
++colonel (get/think) with
 "A decent old buffer. When I asked his permission to marry Millicent
 he agreed straight away. I was surprised, I admit it!"
 
-sarah
++sarah (get/think) with
 "Very lively. I couldn't see old Darnley hanging on to her."
 
-millicent
++millicent (get/think) with
 "Be a gentleman, old fellow! Don't ask me to criticise my future
 wife."
 
-arthur coniston | yourself
++arthur (get/think) with | yourself
 "Ha! What can I tell you about myself that you haven't already
 gathered? An ordinary sort of fellow, lucky enough to win
 Millicent's affection and, eventually, her father's blessing too."
 
-redvers slingsby
++redvers (get/think) with
 "I scarcely know him but he seemed very angry with Darnley about
 something. I got the feeling he had money troubles. A dangerous
 fellow I should think."
 
-arnold billingsgate butler
++(billingsgate/butler) (get/think) with
 "I barely know the chap."
 
-mildred goodbody cook
-"I don't know the woman."
++(goodbody/cook) (get/think) with
+"Don't know the woman - never had cause to."
 
-norah bagsby maid
-"I don't know the girl."
++(bagsby/maid) (get/think) with
+"Don't know the girl at all."
 
-ronald mellors gamekeeper
-"I don't know the chap."
++(mellors/gamekeeper) (get/think) with
+"Don't know the chap - never crossed paths."
 
-cat chester ginger
++(cat/chester/ginger) (get/think) with
 "Ah, Chester - the old boy's cat. Lives down at the stables, I
 believe. Can't say I've had much to do with him myself - not much of
 a cat man."
 
-+flatfooted bootprints boot prints | +flat +footed bootprints boot prints | +odd bootprints boot prints
++(flatfooted/flat/odd) (bootprints/footprints/prints/marks)
 "I followed the bootprints from the terrace around to the kitchen."
 
-+hobnailed bootprints boot prints
++hobnailed +(bootprints/prints/marks) boot
 "I don't know whose they are."
 
-+slipper prints
++slipper +(footprints/prints/marks)
 "The prints from the slippers are mine."
 
-+mens shoeprints shoe prints
++mens +(shoeprints/footprints/prints/marks) shoe
 "I think they are probably Billingsgate's."
 
-+womens shoeprints shoe prints
++womens +(shoeprints/footprints/prints/marks) shoe
 "I don't know whose these are."
 
-footprints | +prints foot | shoeprints | +shoe + prints | bootprints | +boot +prints
++(footprints/shoeprints/bootprints/prints/marks) foot boot shoe
 "Prints everywhere, old boy. I shouldn't like to guess which ones
 signify anything."
 
-cheroot pond
+pond
+"The pond? Frozen stiff, poor thing. Not much fun for anything in
+this weather, I'm afraid - can't say it's occupied my thoughts."
+
+pipe
+"Haven't the foggiest, old boy. Not my sort of thing - I stick to
+cigarettes and the odd cigar. Ask Slingsby, he's been billeted in the
+servants' quarters, I should think it's his."
+
+bookshelf books
+"Couldn't tell you, old boy. Never been much of a one for books
+myself - Millicent's the reader in this business, not me."
+
+correspondence photographs letters servants
+"No idea whose those are. Not the sort of thing I'd go poking through
+even if I did know, old boy - a fellow's letters are his own
+business."
+
++(cheroot/cigar) +pond
 "I suppose it could be mine. I fancy I was smoking when Billingsgate
 and I went outside. Maybe I did throw it in the pond. Does it
 matter?"
 
-suit
++suit servants
 "Ah, that suit will be Slingsby's. I gather he descended on the house
 without warning and there wasn't a bed to be had except with the
 servants - I'd already bagged the guest room, and the other one's
@@ -131,12 +143,12 @@ stacked furniture
 "Haven't the foggiest, old boy. Some household business, I
 shouldn't wonder."
 
-second guest spare room
++(guest/spare) second room
 "Couldn't tell you, old boy. Didn't know there was a second one
 until I heard someone mention it - just glad I got the room that
 was actually habitable."
 
-+blocked door | +passage kitchen
++(blocked/passage) door kitchen
 "Is there a blocked door? Can't say I've had occasion to go
 wandering about the kitchen passages, old boy."
 
@@ -171,26 +183,77 @@ locks, so it would have been impossible to open them from the outside.
 I had noticed some bootprints outside, so I went out and followed them.
 They led around the house to the kitchen door. I followed in my slippers."
 
-motive reason why think murder
++(bang/bangs/shot/shots) (time/what/when) (hear/heard)
+"Funny you should press on that. There was a bang at about 10:30 -
+door slamming, I assumed - and then another, later, closer to 11:30,
+when I was downstairs again. Can't say I thought much of it at the
+time. Two bangs, one house full of nerves - hardly conclusive, is it?"
+
++(confirm/corroborate/vouch/alibi/with) +arthur you
+"Myself? Ha - I don't suppose I'm much of a witness to my own doings,
+old boy. You'll have to take my word for it, same as I gave it."
+
++(confirm/corroborate/vouch/alibi/with) +millicent you
+"Absolutely - we were together in the music room from 10:00 until 10:30,
+playing duets. I'd stake my life on that much."
+
++(confirm/corroborate/vouch/alibi/with) +sarah you
+"Couldn't tell you, I'm afraid. I only passed through the morning room
+on my way up and didn't linger to watch her play."
+
++(confirm/corroborate/vouch/alibi/with) +redvers you
+"Haven't the foggiest, old boy. Last I saw of him he was storming out
+of the study - after that he's a closed book to me."
+
++(confirm/corroborate/vouch/alibi/with) +(servant/bagsby/billingsgate/goodbody/butler/cook/maid) you
+"No idea, old boy. Not the sort of thing I'd have any occasion to
+notice - servants keep rather different hours to the rest of us."
+
++(confirm/corroborate/vouch/alibi/with) +(mellors/gamekeeper) you
+"Never even laid eyes on the fellow, far as I recall. Couldn't tell
+you a thing about his evening."
+
+-thanks alibi | -thanks +time murder
+"Millicent and I were together in the music room at 10:30. I don't
+know how anyone can be expected to have an alibi for 11:30.
+Certainly a single gentleman could never admit to one, if you follow
+my meaning."
+
+-thanks alone (confirm/confirmed) corroborate witness anyone time
+"Afraid not, old boy - a chap's alone in his room at that hour, by
+definition. Can't very well produce a witness for that without
+raising rather more awkward questions than I'd care to answer."
+
+motive reason why think murder want
 "Haven't the foggiest, old boy. Darnley wasn't an easy man, but
 plenty of people find their relatives difficult without shooting
 them. Money's always worth a look, though - isn't it always?"
 
-marriage colonel sarah wife husband happy
+(inheritance/inherit) will estate money (left/leave)
+"I say, that's a bit much, isn't it? I'm marrying Millicent because I'm
+fond of her, not for whatever the old boy's left behind. Couldn't tell
+you the first thing about his will, and frankly I'd rather not guess."
+
++mellors dismissal warning letter job position colonel
+"First I've heard of it, old boy. Darnley never mentioned the
+gamekeeper to me at all, warning letter or otherwise. Can't say I'm
+surprised, mind - fellow's got a face like a wet Sunday."
+
+-again marriage colonel sarah wife husband happy get with
 "Not really my place to say. Darnley seemed fond enough of her, in
 his gruff way, but a young wife and an old husband - well, you can
 imagine the gossip."
 
-engagement marriage millicent arthur coniston
+engagement marriage millicent arthur when
 "Happiest news of my life, old boy! The Colonel gave his blessing
 yesterday afternoon. I still can't quite believe my luck."
 
-murder murderer think believe guilty who did comitted
+(murder/murderer) think believe guilty who did comitted want
 "Good Lord, I haven't the faintest. Between you and me I'd watch
 Slingsby - man had the look of someone with troubles on his mind
 last night. But don't quote me, old boy."
 
-locked sealed study door window how
++study (locked/sealed) door window how
 "Damned peculiar business. Billingsgate and I found both doors
 locked from the inside with the Colonel's own keys still in them.
 I broke the window pane myself to get us in - can't see how anyone
@@ -201,7 +264,7 @@ clues evidence found discovered proof
 not curious. I'll wait for you to tell me, rather than guess and
 make a fool of myself."
 
-affair mellors ronald sarah summer house summerhouse together secret lovers
+affair mellors sarah (summerhouse/summer) together secret lovers
 !requires handkerchief cigarettes
 [[reset:Coniston's easy manner falters, just slightly.]]@
 @
@@ -209,17 +272,17 @@ affair mellors ronald sarah summer house summerhouse together secret lovers
 you - though now you mention it, Sarah did seem rather distracted
 lately. Best not read too much into that, though."
 
-affair mellors ronald sarah summer house summerhouse together secret lovers
+affair mellors sarah (summerhouse/summer) together secret lovers
 "Can't say that's ever occurred to me, old boy. Should it have?"
 
-money mining peru ruin +redvers | money mining peru ruin +slingsby
++redvers money mining peru ruin
 !requires newspaper
 "Ah - so you've found that, have you. Darnley did mention old
 Slingsby had come a cropper over some mining shares. Seemed rather
 keen to keep it quiet, if I'm honest, which I suppose is
 understandable."
 
-money mining peru ruin redvers slingsby colonel darnley
+money mining peru ruin redvers colonel
 "Couldn't tell you. Money troubles aren't really the sort of thing
 a fellow discusses over billiards."
 
@@ -236,7 +299,7 @@ goodbye bye farewell thanks thank
 "Righto. Do let me know if there's anything else I can help with,
 won't you?"
 
--who accuse you did it jaccuse murder murderer
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues accuse_b4_arthur
 !provides new_accuse accuse_arthur
 [[reset:Coniston spreads his hands, the picture of wounded innocence.]]@
@@ -244,7 +307,7 @@ won't you?"
 "Again? Really, this is becoming tiresome. Have your say, then - let's
 have done with it."
 
--who accuse you did it jaccuse murder murderer
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues
 !provides new_accuse accuse_arthur accuse_b4_arthur
 [[reset:Coniston's easy charm falters for just a moment - the faintest tightening
@@ -253,7 +316,7 @@ around the eyes - before he recovers himself entirely.]]@
 "My dear fellow, that's a serious thing to say to a man. I think you had
 better be very sure of your facts before you say it again."
 
--who accuse you did it jaccuse murder murderer
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !provides new_accuse accuse_arthur
 "Steady on! You can't go about making accusations without a shred of proof
 to back them up."

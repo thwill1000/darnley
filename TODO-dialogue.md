@@ -35,6 +35,8 @@ arrangements, not a clue pointing at Redvers.
 
 ## Prompt 2 — Norah's missing footprint topics
 
+**DONE**
+
 > Norah Bagsby's `.msg` file is missing all five footprint-related topics
 > that appear in `template_suspect.msg` (flatfooted bootprints, hobnailed
 > bootprints, slipper prints, mens shoe prints, womens shoe prints), plus
@@ -50,6 +52,8 @@ arrangements, not a clue pointing at Redvers.
 
 ## Prompt 3 — Redvers's missing handkerchief entry (blocks a gated branch)
 
+**DONE**
+
 > Redvers Slingsby's `.msg` file has a gated "affair" entry requiring
 > `!requires handkerchief cigarettes`, but his file has no `handkerchief`
 > keyword entry of its own, meaning the `handkerchief` clue flag can never
@@ -61,6 +65,8 @@ arrangements, not a clue pointing at Redvers.
 ---
 
 ## Prompt 4 — Missing revolver / letter / cheroot-in-pond topics for Mildred, Millicent, Sarah
+
+**DONE**
 
 > Cross-referencing all eight suspect `.msg` files against
 > `template_suspect.msg` shows these gaps:
@@ -77,6 +83,8 @@ arrangements, not a clue pointing at Redvers.
 ---
 
 ## Prompt 5 — Objects with no dialogue tie-in at all
+
+**DONE**
 
 > None of the eight suspects have a keyword entry for these room objects,
 > even though they're prominent enough that a player might reasonably try to
@@ -95,6 +103,8 @@ arrangements, not a clue pointing at Redvers.
 
 ## Prompt 6 — Cross-corroboration questions ("where was X at time Y")
 
+**DONE**
+
 > None of the suspects can currently be asked to corroborate or contradict
 > another suspect's account — e.g. asking Mildred "was Norah with you at
 > 11:30?" or asking Millicent whether she actually saw Coniston in the music
@@ -110,6 +120,8 @@ arrangements, not a clue pointing at Redvers.
 ---
 
 ## Prompt 7 — Two-bangs / precise timeline questions
+
+**DONE**
 
 > The true solution involves two distinct bangs that night: the door slam
 > when Redvers storms out of the study at 10:30, and the actual gunshot
@@ -140,6 +152,8 @@ arrangements, not a clue pointing at Redvers.
 
 ## Prompt 9 — Inheritance / will motive question
 
+**DONE**
+
 > No suspect file currently addresses inheritance or the contents of the
 > Colonel's will, despite this being a classic motive question in the
 > mystery genre and directly relevant to Millicent's position in the
@@ -152,6 +166,8 @@ arrangements, not a clue pointing at Redvers.
 ---
 
 ## Prompt 10 — Household dismissal / notice-of-service questions
+
+**DONE**
 
 > Mildred's dialogue mentions in passing that "Colonel Darnley talked of
 > giving [Mellors] his notice; he'd already given him a warning letter," but

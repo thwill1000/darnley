@@ -2,11 +2,10 @@ hello hi morning afternoon evening greetings
 "Morning. Damned unpleasant way to start a day, having policemen
 tramping about the place, but I suppose it can't be helped."
 
-alibi
-"I left Darnley alive at 10:30 and it's damn nonsense to suggest I
-shot him with all the house awake and then waited to see what would
-happen. At 11:30 I was asleep like a good Christian, and the Devil
-take you if a fellow needs an alibi!"
+slippers
+"Didn't pack the things. A man doesn't take slippers when he's called
+away on business at a moment's notice - boots'll do for getting about
+a house, however draughty."
 
 boots
 "Those are certainly my boots. I last wore them yesterday afternoon
@@ -15,12 +14,20 @@ them after dinner and can't explain who may have. I suppose that, if
 the staff were asleep, someone could have sneaked into the kitchen
 and taken them."
 
-cigarette
+knife
+"Never seen it before in my life. What the devil would I want with a
+kitchen knife?"
+
+cigarette cigar cheroot smoking smoked smokes
 "I smoke a pipe and the occasional Havana cigar. My pipe is in my
 room."
 
 revolver
-"I don't recognise it."
+"Never seen it before - I keep to my own guns, back home."
+
++statue missing
+"No idea whatsoever. Something about a tramp, so I'm told - servants'
+gossip, not really my concern."
 
 gramophone
 "The Darnley's have a gramophone in the morning room."
@@ -28,6 +35,10 @@ gramophone
 piano
 "The Darnley's have two pianos, one in the music room and one in the
 morning room."
+
++womens shoes
+"Don't ask me, old man. I couldn't tell one woman's shoe from another
+if my life depended on it."
 
 +newspaper read
 "I was reading it on the train coming here. Some of my friends lost
@@ -37,59 +48,97 @@ letter
 "The letter certainly wasn't addressed to me. Darnley would have
 called me by name, not 'Dear Sir' - after all we were friends."
 
-colonel darnley sebastian
+handkerchief
+"Not mine, obviously. I don't go about with lace and scent, man."
+
++colonel (get/think) with
 "A hard man but very fair. Once I had explained my business problem
 he agreed to help me out."
 
-sarah
++sarah (get/think) with
 "Darnley should never have married her. I told him so at the time but he wouldn't
 hear of it. She's half his age and twice as clever. A man in Darnley's position
 needs a wife who knows her place, not one who is always looking for something
 better. I shouldn't wonder if she had her eye on someone else entirely."
 
-millicent
++millicent (get/think) with
 "A charming young lady. Spoiled by her father. Personally I
 shouldn't like to get on her wrong side."
 
-arthur coniston
++arthur (get/think) with
 "Last night was the first time I met him but he seemed a decent
 fellow."
 
-redvers slingsby | yourself
++redvers (get/think) with | yourself
 "Myself? An old friend of Darnley's, that's the whole of it. A
 plain-spoken man, and I don't intend to start mincing words on
 your account now."
 
-arnold billingsgate butler
++(billingsgate/butler) (get/think) with
 "I barely know the man."
 
-mildred goodbody cook
-"I don't know the woman."
++(goodbody/cook) (get/think) with
+"Don't know the woman, and no reason I should."
 
-norah bagsby maid
-"I don't know the girl."
++(bagsby/maid) (get/think) with
+"Don't know the girl. Below stairs isn't my concern."
 
-ronald mellors gamekeeper
-"I don't know the man."
++(mellors/gamekeeper) (get/think) with
+"Don't know the man. Gamekeepers keep to themselves, as they should."
 
-cat chester ginger
++(cat/chester/ginger) (get/think) with
 "The cat? Chester, I believe they call him. Never had much use for
 the creatures myself, but Darnley was rather fond of him, as I
 recall."
 
-+flatfooted bootprints boot prints | +flat +footed bootprints boot prints | +odd bootprints boot prints
++(flatfooted/flat/odd) (bootprints/footprints/prints/marks)
 "The bootprints around the house look like mine, but I didn't make
 them. I'm not flat-footed."
 
-footprints | +prints foot | shoeprints | +shoe + prints | bootprints | +boot +prints
++hobnailed +(bootprints/prints/marks) boot
+"Hobnailed, flat-footed, whatever you like to call it - can't tell one
+from another out there in the snow, and don't propose to try."
+
++slipper +(footprints/prints/marks)
+"Slipper prints? Damned if I know, and damned if I care whose they
+are."
+
++mens +(shoeprints/footprints/prints/marks) shoe
+"Couldn't say. Ask the butler - that's rather more his line than
+mine."
+
++womens +(shoeprints/footprints/prints/marks) shoe
+"Haven't the foggiest. A woman's shoe is a woman's shoe as far as I'm
+concerned, old man."
+
++(footprints/shoeprints/bootprints/prints/marks) foot boot shoe
 "Prints all over the blasted grounds, so I'm told. Couldn't tell
 you one from another."
 
-cheroot pond
+pond
+"The pond? Blasted eyesore if you ask me, frozen solid like
+everything else in this wretched weather. Can't say it interests me
+in the slightest."
+
+pipe
+"Yes, that's mine. I told you - pipe and the occasional Havana, that's
+my habit. Nothing sinister in a man smoking his own pipe in his own
+room."
+
+bookshelf books
+"Whose books? I couldn't tell you, and I can't say I've had occasion to browse
+them. Not much of a reader myself, old man - give me a good paper and I'm
+satisfied."
+
+correspondence photographs letters servants
+"Not mine, and none of my business either. A person's letters are their
+own affair - I shouldn't care for anyone pawing through mine."
+
++(cheroot/cigar) +pond
 "A cheroot? Not me, old man! I'm one for Havanas if I'm not smoking
 the old pipe."
 
-suit
++suit servants
 "My suit, obviously. I turned up unannounced and Darnley's staff put me
 up in the servants' quarters rather than turf out young Coniston from
 the guest room - the other guest room is apparently all torn
@@ -100,12 +149,12 @@ room."
 stacked furniture
 "No idea, and can't say I care. Ask the servants."
 
-second guest spare room
++(guest/spare) second room
 "No notion, and no great interest either. Wherever it is, it
 clearly wasn't fit for me, which is how I ended up bunking in the
-servant's quarters."
+servants' quarters."
 
-+blocked door | +passage kitchen
++(blocked/passage) door kitchen
 "Haven't the faintest idea what you're talking about. I don't
 concern myself with the service side of the house."
 
@@ -126,26 +175,77 @@ away. Having had a bit to drink I slept very soundly and heard
 nothing until Billingsgate woke me at midnight to tell me about
 this terrible business."
 
-motive reason why think murder
++(bang/bangs/shot/shots) (time/what/when) (hear/heard)
+"There was only the one bang so far as I heard, and I'll tell you
+plainly what caused it - I left Darnley's study at 10:30 and slammed
+the door behind me, hard, being in no mood for delicacy. If someone
+heard a second noise later, it's news to me. I was asleep by 11:00."
+
++(confirm/corroborate/vouch/alibi/with) +arthur you
+"Couldn't tell you. I turned in myself well before 12:00 and took
+no notice of the young pup's comings and goings."
+
++(confirm/corroborate/vouch/alibi/with) +millicent you
+"No idea whatsoever. I don't keep track of the young lady's
+movements."
+
++(confirm/corroborate/vouch/alibi/with) +sarah you
+"Haven't the foggiest. I was asleep myself by 11:00, or near enough."
+
++(confirm/corroborate/vouch/alibi/with) +redvers you
+"Vouch for myself? Damned if I know how you expect that to work, man.
+You've already had my account - take it or leave it."
+
++(confirm/corroborate/vouch/alibi/with) +(servant/bagsby/billingsgate/goodbody/butler/cook/maid) you
+"Can't help you there. I've no notion what the staff get up to of an
+evening, nor any particular wish to."
+
++(confirm/corroborate/vouch/alibi/with) +(mellors/gamekeeper) you
+"Never laid eyes on the fellow last night. Don't even know where his
+cottage is, come to that."
+
+-thanks alibi | -thanks +time murder
+"I left Darnley alive at 10:30 and it's damn nonsense to suggest I
+shot him with all the house awake and then waited to see what would
+happen. At 11:30 I was asleep like a good Christian, and the Devil
+take you if a fellow needs an alibi!"
+
+-thanks alone (confirm/confirmed) corroborate witness anyone time
+"Corroborate? I'm a grown man, not a schoolboy who needs an
+alibi signed and witnessed. I was asleep, damn it, and that's the
+end of the matter."
+
+motive reason why think murder want
 "Damned if I know. Man had his share of enemies in business, I
 shouldn't wonder - he gave tips that didn't always pan out, and
 some fellows take that sort of thing badly."
 
-marriage colonel sarah wife husband happy
+(inheritance/inherit) will estate money (left/leave)
+"Damned if I know, and it's none of my affair either. Darnley never
+discussed his testamentary arrangements with me, and I never asked -
+a gentleman doesn't."
+
++mellors dismissal warning letter job position colonel
+"News to me. Darnley and I had rather more pressing matters to
+discuss than the conduct of his gamekeeper. Can't say the fellow
+struck me as the sort to take a dismissal quietly, if that's what
+you're driving at."
+
+-again marriage colonel sarah wife husband happy get with
 "I told Darnley he was a damned fool to marry a woman half his age,
 and I'll say it again now he's gone. She never suited him."
 
-engagement marriage millicent arthur coniston
+engagement marriage millicent arthur when
 "News to me until last night. I gather the Colonel only agreed to
 it yesterday. Can't say I know the fellow well enough to judge the
 match."
 
-murder murderer think believe guilty who did comitted
+(murder/murderer) think believe guilty who did comitted want
 "Damned if I know. If you want my honest opinion, servants notice a
 great deal more than they let on - I shouldn't rule out that butler
 of his, watchful sort of fellow. But that's guesswork, mind."
 
-locked sealed study door window how
++study (locked/sealed) door window how
 "I left by the hall door at 10:30 and heard it slam behind me -
 I certainly didn't lock it. If it was locked afterwards, someone
 did that after I'd gone, and I couldn't tell you who or how."
@@ -155,7 +255,7 @@ clues evidence found discovered proof
 speculate. Just make sure whatever you've got actually holds water
 before you go accusing anyone."
 
-affair mellors ronald sarah summer house summerhouse together secret lovers
+affair mellors sarah (summerhouse/summer) together secret lovers
 !requires handkerchief cigarettes
 [[reset:He gives a short, humourless laugh.]]@
 @
@@ -164,10 +264,10 @@ wife would go looking for warmth elsewhere - man was thirty years
 her senior and colder than the weather. Didn't think I'd be proved
 right quite so literally, though."
 
-affair mellors ronald sarah summer house summerhouse together secret lovers
+affair mellors sarah (summerhouse/summer) together secret lovers
 "Can't say I've given it any thought. Why, should I have?"
 
-money mining peru ruin +redvers | money mining peru ruin +slingsby | money mining peru ruin +you
++redvers money mining peru ruin | +you money mining peru ruin
 !requires newspaper
 [[reset:He goes rather grey about the gills.]]@
 @
@@ -178,7 +278,7 @@ him for a loan to cover it. We argued about it, I'll not deny that
 - but I left him alive and breathing, and that's the truth whatever
 you make of it."
 
-money mining peru ruin redvers slingsby colonel darnley
+money mining peru ruin redvers colonel
 "My business affairs are my own concern, and none of yours unless
 you can show otherwise."
 
@@ -194,7 +294,7 @@ only got worse since. Not that it's foremost in my mind at present."
 goodbye bye farewell thanks thank
 "Yes, yes. Get on with it, then."
 
--who accuse you did it jaccuse murder murderer
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues accuse_b4_redvers
 !provides new_accuse accuse_redvers
 [[reset:He glares at you with undisguised fury, though there is something else
@@ -203,7 +303,7 @@ beneath it now - a flicker of unease.]]@
 "You said your piece once already, and I gave you my answer. Don't try
 my patience further."
 
--who accuse you did it jaccuse murder murderer
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues
 !provides new_accuse accuse_redvers accuse_b4_redvers
 [[reset:Slingsby's face darkens to an alarming shade of puce, his moustache
@@ -212,7 +312,7 @@ fairly bristling with outrage.]]@
 "By God, sir! I've a good mind to horsewhip you for that. I left Darnley
 alive and well, and I'll thank you to remember it!"
 
--who accuse you did it jaccuse murder murderer
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !provides new_accuse accuse_redvers
 "Confound it, man, you can't fling accusations about like that! Get your
 facts straight first."
