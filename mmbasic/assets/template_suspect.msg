@@ -17,9 +17,6 @@
 hello hi morning afternoon evening greetings
 "greeting response"
 
-alibi
-"alibi response"
-
 slippers
 "slippers response"
 
@@ -29,13 +26,13 @@ boots
 knife
 "knife response"
 
-cigarette
-"cigarettes response"
+cigarette cigar cheroot smoking smoked smokes
+"smoking response"
 
 revolver
 "revolver response"
 
-missing statue
++statue missing
 "missing statue response"
 
 gramophone
@@ -44,7 +41,7 @@ gramophone
 piano
 "piano response"
 
-ladys shoes
++womens shoes
 "ladys shoes response"
 
 +newspaper read
@@ -56,102 +53,154 @@ letter
 handkerchief
 "handkerchief response"
 
-colonel darnley sebastian
++colonel (get/think) with
 "colonel darnley response"
 
-sarah
++sarah (get/think) with
 "sarah response"
 
-millicent
++millicent (get/think) with
 "millicent response"
 
-arthur coniston
++arthur (get/think) with
 "arthur response"
 
-redvers slingsby
++redvers (get/think) with
 "redvers response"
 
-arnold billingsgate butler
++(billingsgate/butler) (get/think) with
 "arnold response"
 
-mildred goodbody cook
++(goodbody/cook) (get/think) with
 "mildred response"
 
-norah bagsby maid
++(bagsby/maid) (get/think) with
 "norah response"
 
-ronald mellors gamekeeper
++(mellors/gamekeeper) (get/think) with
 "mellors response"
 
-cat chester ginger
++(cat/chester/ginger) (get/think) with
 "chester cat response"
 
-+flatfooted bootprints boot prints | +flat +footed bootprints boot prints | +odd bootprints boot prints
++(flatfooted/flat/odd) (bootprints/footprints/prints/marks)
 "flatfooted bootprints response"
 
-+hobnailed bootprints boot prints
++hobnailed +(bootprints/prints/marks) boot
 "hobnailed bootprints response"
 
-+slipper prints
++slipper +(footprints/prints/marks)
 "slipper prints response"
 
-+mens shoeprints shoe prints
++mens +(shoeprints/footprints/prints/marks) shoe
 "mens shoeprints response"
 
-+womens shoeprints shoe prints
++womens +(shoeprints/footprints/prints/marks) shoe
 "womens shoeprints response"
 
-footprints | +prints foot | shoeprints | +shoe + prints | bootprints | +boot +prints
++(footprints/shoeprints/bootprints/prints/marks) foot boot shoe
 "footprints response"
 
-cheroot pond
+pond
+"pond response"
+
+pipe
+"pipe response"
+
+bookshelf books
+"bookshelf response"
+
+correspondence photographs letters servants
+"correspondence response"
+
++(cheroot/cigar) +pond
 "cheroot in the pond response"
 
-suit
++suit servants
 "suit response"
 
 stacked furniture
 "stacked furniture response"
 
-second guest spare room
++(guest/spare) second room
 "second guest room response"
 
-+blocked door | +passage kitchen
++(blocked/passage) door kitchen
 "kitchen passage response"
 
 events yesterday murder last happened
 "events response"
 
-motive reason why think murder
++(bang/bangs/shot/shots) (time/what/when) (hear/heard)
+"bang/shot timeline response"
+
++(confirm/corroborate/vouch/alibi/with) +arthur you
+"vouch for arthur response"
+
++(confirm/corroborate/vouch/alibi/with) +millicent you
+"vouch for millicent response"
+
++(confirm/corroborate/vouch/alibi/with) +sarah you
+!requires handkerchief cigarettes
+"vouch for sarah given hanky + cigs response"
+
++(confirm/corroborate/vouch/alibi/with) +sarah you
+"vouch for sarah response"
+
++(confirm/corroborate/vouch/alibi/with) +redvers you
+"vouch for redvers response"
+
++(confirm/corroborate/vouch/alibi/with) +(servant/bagsby/billingsgate/goodbody/butler/cook/maid) you
+"vouch for servants response"
+
++(confirm/corroborate/vouch/alibi/with) +(mellors/gamekeeper) you
+"vouch for mellors response"
+
+-thanks alibi | -thanks +time murder
+"alibi response"
+
+-thanks alone (confirm/confirmed) corroborate witness anyone time
+"alibi confirm response"
+
+motive reason why think murder want
 "motive response"
 
-marriage colonel sarah wife husband happy
+(inheritance/inherit) will estate money (left/leave)
+"inheritance response"
+
++mellors dismissal warning letter job position colonel
+"mellors' dismissal response"
+
+-again marriage colonel sarah wife husband happy get with
 "colonel's marriage response"
 
-engagement marriage millicent arthur coniston
+remarriage remarry remarrying marry again
+"sarah's remarriage response"
+
+engagement marriage millicent arthur when
 "millicent's engagement response"
 
-murder murderer think believe guilty who did comitted
+(murder/murderer) think believe guilty who did comitted want
 "who did it response"
 
-locked sealed study door window how
++study (locked/sealed) door window how
 "locked study response"
 
 clues evidence found discovered proof
 "evidence response"
 
-affair mellors ronald sarah summer house summerhouse together secret lovers
+affair mellors sarah (summerhouse/summer) together secret lovers
 !requires handkerchief cigarettes
 "affair response given handkerchief and cigarettes"
 
-affair mellors ronald sarah summer house summerhouse together secret lovers
+affair mellors sarah (summerhouse/summer) together secret lovers
 "affair response"
 
-money mining peru ruin +redvers | money mining peru ruin +slingsby
++redvers money mining peru ruin
 !requires newspaper
 "finance response given newspaper and redvers"
 
-money mining peru ruin redvers slingsby colonel darnley
+money mining peru ruin redvers colonel
 "finance response"
 
 police investigation scotland yard inspector detective think of me
@@ -163,17 +212,17 @@ weather cold snow
 goodbye bye farewell thanks thank
 "goodbye response"
 
--who accuse you did it jaccuse murder murderer
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues accuse_b4_tag
 !provides new_accuse accuse_tag
 "subsequent accusation response"
 
--who accuse you did it jaccuse murder murderer
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues
 !provides new_accuse accuse_tag accuse_b4_tag
 "first accusation response"
 
--who accuse you did it jaccuse murder murderer
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !provides new_accuse accuse_tag
 "premature accusation response"
 

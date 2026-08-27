@@ -36,7 +36,7 @@ sys.requires("advent", "console")
 sys.provides("msgorder")
 If sys.err$ <> "" Then Error sys.err$
 
-Const msgorder.MAX_ENTRIES% = 64
+Const msgorder.MAX_ENTRIES% = 128
 
 ' Normalizes a single (already lower-cased) !requires token for identity
 ' comparison, collapsing the suspect-specific "accuse_b4_<tag>" gating

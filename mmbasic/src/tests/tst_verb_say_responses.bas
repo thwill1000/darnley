@@ -57,17 +57,15 @@ adv.asset_dir$ = Mm.Info(Path) + "../../assets/"
 adv.msg_file$ = adv.asset_dir$ + "messages.dat"
 advdata.init(adv.asset_dir$ + "advent.dat")
 
-' Replace object 9, the pond, with our template suspect.
-objects$(9) = "P_TEMPLATE_SUSPECT|Template Suspect|template suspect|LOC001_BATHROOM|2|100"
-
 add_test("SAY 'hello' matches the greeting entry", "test_say_gvn_greeting")
 add_test("SAY about the weather matches the weather entry", "test_say_gvn_weather")
 add_test("SAY about last night matches the events entry", "test_say_gvn_events")
-add_test("SAY about an alibi matches the alibi entry", "test_say_gvn_alibi")
+add_test("SAY What were you doing at the time of the murder?", "test_say_alibi")
+add_test("SAY Can anyone confirm your alibi?", "test_say_alibi_confirm")
 add_test("SAY about slippers matches the slippers entry", "test_say_gvn_slippers")
 add_test("SAY about boots matches the boots entry", "test_say_gvn_boots")
 add_test("SAY about the knife matches the knife entry", "test_say_gvn_knife")
-add_test("SAY about cigarettes matches the cigarettes entry", "test_say_gvn_cigarettes")
+add_test("SAY Who smokes cigarettes?", "test_say_smoking")
 add_test("SAY about the revolver matches the revolver entry", "test_say_gvn_revolver")
 add_test("SAY about the missing statue matches that entry", "test_say_gvn_missing_statue")
 add_test("SAY about the gramophone matches the gramophone entry", "test_say_gvn_gramophone")
@@ -93,21 +91,34 @@ add_test("SAY Tell me about the slipper prints", "test_say_gvn_slipper_prints")
 add_test("SAY Tell me about the men's shoeprints", "test_say_gvn_mens_shoeprints")
 add_test("SAY Tell me about the women's shoeprints", "test_say_gvn_womens_shoeprints")
 add_test("SAY Tell me about the footprints", "test_footprints")
-add_test("SAY about the cheroot in the pond matches that entry", "test_say_gvn_cheroot_pond")
+add_test("SAY Tell me about the pond", "test_say_pond")
+add_test("SAY Tell me about the pipe in the servant's quarters", "test_say_pipe")
+add_test("SAY Tell me about the bookshelf in the butler's pantry", "test_say_bookshelf")
+add_test("SAY Tell me about the correspondence and photographs", "test_say_correspondence")
+add_test("SAY Tell me about the cheroot in the pond", "test_say_gvn_cheroot_pond")
 add_test("SAY Tell me about the suit in the servant's quarters", "test_say_suit")
 add_test("SAY Tell me about the stacked furniture in the hall", "test_say_stacked_furniture")
 add_test("SAY Tell me about the kitchen passage", "test_say_kitchen_passage")
 add_test("SAY Tell me about the second guest room", "test_say_2nd_guest_room")
-add_test("SAY about motive matches the motive entry", "test_say_gvn_motive")
+add_test("SAY Can you confirm Arthur's alibi?", "test_say_confirm_arthur")
+add_test("SAY Can you confirm Millicent's alibi?", "test_say_confirm_millicent")
+add_test("SAY Can you confirm Sarah's alibi?", "test_confirm_sarah")
+add_test("SAY Can you confirm Redvers' alibi?", "test_say_confirm_redvers")
+add_test("SAY Can you confirm the servants' alibi?", "test_say_confirm_servants")
+add_test("SAY Can you confirm Mellors' alibi?", "test_say_confirm_mellors")
+add_test("SAY Who had a motive?", "test_say_motive")
+add_test("SAY Who stands to inherit?", "test_say_inheritance")
+add_test("SAY Tell me about Mellors' dismissal letter", "test_say_dismissal")
 add_test("SAY Who do you think did it?", "test_say_gvn_who_did_it")
-add_test("SAY about the Colonel's marriage matches that entry", "test_say_gvn_marriage")
+add_test("Tell me about the Colonel's marriage", "test_say_marriage")
+add_test("Have you considered remarrying?", "test_say_remarriage")
 add_test("SAY about the engagement matches that entry", "test_say_gvn_engagement")
 add_test("SAY about the locked study matches that entry", "test_say_gvn_locked_study")
 add_test("SAY about clues/evidence matches that entry", "test_say_gvn_evidence")
 add_test("SAY about the affair falls to the unconditional entry when ungated", "test_say_gvn_affair_blocked")
 add_test("SAY about the affair matches the gated entry once unlocked", "test_say_gvn_affair_unlocked")
 add_test("SAY about money falls to the unconditional entry when ungated", "test_say_gvn_money_blocked")
-add_test("SAY about money matches the gated entry once unlocked", "test_say_gvn_money_unlocked")
+add_test("SAY What about the bang?", "test_say_bang")
 add_test("SAY about the police investigation matches that entry", "test_say_gvn_investigation")
 add_test("SAY I accuse you! (but don't have all the clues)", "test_premature_accusation")
 add_test("SAY I accuse you! (the first time)", "test_first_accusation")
@@ -121,6 +132,9 @@ End
 Sub setup_test()
   r = 1
   state.reset()
+
+  ' Replace object 9, the pond, with our template suspect.
+  objects$(9) = "P_TEMPLATE_SUSPECT|Template Suspect|template suspect|LOC001_BATHROOM|2|100"
 End Sub
 
 Sub reset_flags(flag1$, flag2$, flag3$, flag4$)
@@ -177,11 +191,25 @@ Sub test_say_gvn_events()
   assert_say_response("run me through the events of the murder", "events response")
 End Sub
 
-Sub test_say_gvn_alibi()
-  assert_say_response("what's your alibi", "alibi response")
-  assert_say_response("give me your alibi", "alibi response")
-  assert_say_response("do you have an alibi", "alibi response")
-  assert_say_response("what alibi can you give me", "alibi response")
+Sub test_say_alibi()
+  assert_say_response("alibi", "alibi response")
+  assert_say_response("What's your alibi?", "alibi response")
+  assert_say_response("Give me your alibi", "alibi response")
+  assert_say_response("Do you have an alibi?", "alibi response")
+  assert_say_response("What alibi can you give me?", "alibi response")
+  assert_say_response("What were you doing at the time of the murder?", "alibi response")
+  assert_say_response("Where were you at the time of the murder?", "alibi response")
+
+  objects$(9) = "P_MILDRED_GOODBODY|Mildred Goodbody|mildred goodbody cook|LOC001_BATHROOM|2|100"
+  assert_say_response("Mildred, where were you at the time of the murder?", "We was all three together", 1)
+End Sub
+
+Sub test_say_alibi_confirm()
+  assert_say_response("Can anyone confirm your alibi?", "alibi confirm response")
+  assert_say_response("Did anyone see you at 11:30?", "alibi confirm response")
+  assert_say_response("Can anyone corroborate that?", "alibi confirm response")
+  assert_say_response("Is there a witness to confirm it?", "alibi confirm response")
+  assert_say_response("Were you alone the whole time?", "alibi confirm response")
 End Sub
 
 Sub test_say_gvn_slippers()
@@ -205,11 +233,17 @@ Sub test_say_gvn_knife()
   assert_say_response("whose knife is this", "knife response")
 End Sub
 
-Sub test_say_gvn_cigarettes()
-  assert_say_response("ask about cigarettes", "cigarettes response")
-  assert_say_response("do you smoke cigarettes", "cigarettes response")
-  assert_say_response("what about your cigarettes", "cigarettes response")
-  assert_say_response("whose cigarettes are these", "cigarettes response")
+Sub test_say_smoking()
+  assert_say_response("cheroot", "smoking response")
+  assert_say_response("cigar", "smoking response")
+  assert_say_response("cigarette", "smoking response")
+  assert_say_response("smoking", "smoking response")
+  assert_say_response("smokes", "smoking response")
+  assert_say_response("Do you smoke cigarettes?", "smoking response")
+  assert_say_response("Did you see anyone smoking by the pond?", "smoking response")
+  assert_say_response("Who smokes a cigar?", "smoking response")
+  assert_say_response("Who smokes cheroots?", "smoking response")
+  assert_say_response("Who in the family smoked?", "smoking response")
 End Sub
 
 Sub test_say_gvn_revolver()
@@ -250,7 +284,7 @@ End Sub
 
 Sub test_say_gvn_ladys_shoes()
   assert_say_response("ask about the ladys shoes", "ladys shoes response")
-  assert_say_response("whose shoes are these", "ladys shoes response")
+  assert_say_response("whose womens shoes are these", "ladys shoes response")
   assert_say_response("tell me about the woman's shoes", "ladys shoes response")
   assert_say_response("who owns these lady's shoes", "ladys shoes response")
 End Sub
@@ -325,9 +359,8 @@ Sub test_say_gvn_opinion_redvers()
 
   ' Ask Millicent about Redvers.
   ' - the presence of "you" in the input will cause "millicent" to be added to the subject words
-  state.cheat% = 1
-  assert_say_response("millicent, what do you think about sir redvers?", "I didn't know him before last night.")
-  state.cheat% = 0
+  objects$(9) = "P_MILLICENT_DARNLEY|Millicent Darnley|millicent|LOC001_BATHROOM|2|100"
+  assert_say_response("Millicent, what do you think about sir redvers?", "I didn't know him before last night.")
 End Sub
 
 Sub test_say_gvn_opinion_arnold()
@@ -418,10 +451,37 @@ Sub test_footprints()
   assert_say_response("What about the shoe tracks?", "footprints response")
 End Sub
 
+Sub test_say_pond()
+  assert_say_response("pond", "pond response")
+  assert_say_response("Tell me about the ornamental pond", "pond response")
+  assert_say_response("What about the pond?", "pond response")
+End Sub
+
 Sub test_say_gvn_cheroot_pond()
   assert_say_response("ask about the cheroot in the pond", "cheroot in the pond response")
   assert_say_response("what about the cigar end found in the pond", "cheroot in the pond response")
   assert_say_response("tell me about the cheroot found in the pond", "cheroot in the pond response")
+End Sub
+
+Sub test_say_pipe()
+  assert_say_response("pipe", "pipe response")
+  assert_say_response("ask about the pipe", "pipe response")
+  assert_say_response("whose pipe is this", "pipe response")
+  assert_say_response("tell me about the pipe in the servants' quarters", "pipe response")
+End Sub
+
+Sub test_say_bookshelf()
+  assert_say_response("bookshelf", "bookshelf response")
+  assert_say_response("books", "bookshelf response")
+  assert_say_response("Tell me about the bookshelf", "bookshelf response")
+  assert_say_response("Whose books are these?", "bookshelf response")
+End Sub
+
+Sub test_say_correspondence()
+  assert_say_response("correspondence", "correspondence response")
+  assert_say_response("photographs", "correspondence response")
+  assert_say_response("Tell me about the correspondence and photographs", "correspondence response")
+  assert_say_response("Whose letters are these that I found in the servant's quarters?", "correspondence response")
 End Sub
 
 Sub test_say_suit()
@@ -449,11 +509,89 @@ Sub test_say_2nd_guest_room()
   assert_say_response("Why is Sir Redvers not staying in the second guest room?", "second guest room response")
 End Sub
 
-Sub test_say_gvn_motive()
+Sub test_say_confirm_arthur()
+  assert_say_response("confirm arthur", "vouch for arthur response")
+  assert_say_response("Can you corroborate Arthur's alibi?", "vouch for arthur response")
+  assert_say_response("Was Arthur with you?", "vouch for arthur response")
+  assert_say_response("Can you vouch for Coniston?", "vouch for arthur response")
+End Sub
+
+Sub test_say_confirm_millicent()
+  assert_say_response("confirm millicent", "vouch for millicent response")
+  assert_say_response("Can you corroborate Millicent's alibi?", "vouch for millicent response")
+  assert_say_response("Was Millicent with you?", "vouch for millicent response")
+  assert_say_response("Can you vouch for Millicent?", "vouch for millicent response")
+End Sub
+
+Sub test_confirm_sarah()
+  assert_say_response("confirm sarah", "vouch for sarah response")
+  assert_say_response("Can you corroborate Sarah's alibi?", "vouch for sarah response")
+  assert_say_response("Was Sarah with you?", "vouch for sarah response")
+  assert_say_response("Can you vouch for Sarah?", "vouch for sarah response")
+
+  ' With no flags set, Mellors' corroboration of Sarah falls to the unconditional entry
+  objects$(9) = "P_RONALD_MELLORS|Ronald Mellors|ronald_mellors gamekeeper|LOC001_BATHROOM|2|100"
+  assert_say_response("confirm sarah", "Not my place to say", 1)
+
+  ' Once both gating flags are set, the more specific (still evasive) entry wins
+  objects$(9) = "P_RONALD_MELLORS|Ronald Mellors|ronald_mellors gamekeeper|LOC001_BATHROOM|2|100"
+  reset_flags("handkerchief", "cigarettes")
+  assert_say_response("confirm sarah", "flickers behind", 1)
+End Sub
+
+Sub test_say_confirm_redvers()
+  assert_say_response("confirm redvers", "vouch for redvers response")
+  assert_say_response("Can you corroborate Redvers' alibi?", "vouch for redvers response")
+  assert_say_response("Was Redvers with you?", "vouch for redvers response")
+  assert_say_response("Can you vouch for Slingsby?", "vouch for redvers response")
+End Sub
+
+Sub test_say_confirm_servants()
+  assert_say_response("confirm servants", "vouch for servants response")
+  assert_say_response("Can you corroborate the Servants' alibi?", "vouch for servants response")
+  assert_say_response("Was Billingsgate with you?", "vouch for servants response")
+  assert_say_response("Can you vouch for Norah?", "vouch for servants response")
+End Sub
+
+Sub test_say_confirm_mellors()
+  assert_say_response("confirm mellors", "vouch for mellors response")
+  assert_say_response("Can you corroborate Mellors' alibi?", "vouch for mellors response")
+  assert_say_response("Was Ronald with you?", "vouch for mellors response")
+  assert_say_response("Can you vouch for the Gamekeeper?", "vouch for mellors response")
+End Sub
+
+Sub test_say_motive()
+  assert_say_response("motive", "motive response")
+  assert_say_response("Who had a motive?", "motive response")
   assert_say_response("why would someone murder him", "motive response")
   assert_say_response("why would anyone want him dead", "motive response")
   assert_say_response("what reason would someone have", "motive response")
   assert_say_response("what would be the motive", "motive response")
+End Sub
+
+Sub test_say_inheritance()
+  assert_say_response("inheritance", "inheritance response")
+  assert_say_response("Who stands to inherit?", "inheritance response")
+  assert_say_response("What happens to the inheritance?", "inheritance response")
+  assert_say_response("Who inherits the estate?", "inheritance response")
+  assert_say_response("What did he leave in his will?", "inheritance response")
+  assert_say_response("Tell me about the will?", "inheritance response")
+  assert_say_response("Who gets his money?", "inheritance response")
+End Sub
+
+Sub test_say_dismissal()
+  assert_say_response("Was Mellors about to be dismissed?", "mellors' dismissal response")
+  assert_say_response("Tell me about Mellors warning letter", "mellors' dismissal response")
+  assert_say_response("Was Mellors given notice", "mellors' dismissal response")
+  assert_say_response("Was Mellors going to be fired", "mellors' dismissal response")
+  assert_say_response("Was Mellors going to be sacked", "mellors' dismissal response")
+  assert_say_response("Was Mellors job in danger", "mellors' dismissal response")
+  assert_say_response("Was Mellors position at risk", "mellors' dismissal response")
+  assert_say_response("Did the colonel give Mellors notice", "mellors' dismissal response")
+
+  ' Ask Mellors about dismissal
+  objects$(9) = "P_RONALD_MELLORS|Ronald Mellors|ronald mellors gamekeeper|LOC001_BATHROOM|2|100"
+  assert_say_response("Mellors, did the Colonel threaten your position?", "Who told you that? ...", 1)
 End Sub
 
 Sub test_say_gvn_who_did_it()
@@ -468,11 +606,19 @@ Sub test_say_gvn_who_did_it()
   assert_say_response("who would want to kill him", "who did it response")
 End Sub
 
-Sub test_say_gvn_marriage()
+Sub test_say_marriage()
   assert_say_response("were the colonel and sarah happy", "colonel's marriage response")
   assert_say_response("were they a happy couple", "colonel's marriage response")
   assert_say_response("how was the marriage", "colonel's marriage response")
   assert_say_response("did sarah and the colonel get on", "colonel's marriage response")
+End Sub
+
+Sub test_say_remarriage()
+  assert_say_response("remarriage", "sarah's remarriage response")
+  assert_say_response("remarry", "sarah's remarriage response")
+  assert_say_response("remarrying", "sarah's remarriage response")
+  assert_say_response("marry again", "sarah's remarriage response")
+  assert_say_response("Have you considered remarrying?", "sarah's remarriage response")
 End Sub
 
 Sub test_say_gvn_engagement()
@@ -484,9 +630,9 @@ End Sub
 
 Sub test_say_gvn_locked_study()
   assert_say_response("how was the study locked", "locked study response")
-  assert_say_response("how was the room sealed", "locked study response")
+  assert_say_response("how was the study sealed", "locked study response")
   assert_say_response("how could someone have gotten into the study", "locked study response")
-  assert_say_response("explain the locked door", "locked study response")
+  assert_say_response("explain the locked door on the study", "locked study response")
 End Sub
 
 Sub test_say_gvn_evidence()
@@ -545,10 +691,26 @@ Sub test_say_gvn_money_unlocked()
   assert_say_response("what about slingsby' debts", "finance response given newspaper and redvers")
 
   ' Ask Redvers directly without referencing him by name in the subject.
-  state.cheat% = 1
+  objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
   reset_flags("newspaper")
-  assert_say_response("redvers, did you have money troubles?", "He goes rather grey about the gills.", 1)
-  state.cheat% = 0
+  assert_say_response("Redvers, did you have money troubles?", "He goes rather grey about the gills.", 1)
+End Sub
+
+Sub test_say_bang()
+  assert_say_response("bang", "bang/shot timeline response")
+  assert_say_response("shot", "bang/shot timeline response")
+  assert_say_response("What about the bang?", "bang/shot timeline response")
+  assert_say_response("What about the shot?", "bang/shot timeline response")
+  assert_say_response("What time was the bang?", "bang/shot timeline response")
+  assert_say_response("What time was the shot?", "bang/shot timeline response")
+  assert_say_response("What time did you hear the bang?", "bang/shot timeline response")
+  assert_say_response("What time did you hear the shot?", "bang/shot timeline response")
+  assert_say_response("When did you hear the bang?", "bang/shot timeline response")
+  assert_say_response("When did you hear the shot?", "bang/shot timeline response")
+  assert_say_response("Tell me about the bang?", "bang/shot timeline response")
+  assert_say_response("Tell me about the shot?", "bang/shot timeline response")
+  assert_say_response("Did you hear a bang?", "bang/shot timeline response")
+  assert_say_response("What time exactly did you hear the shot?", "bang/shot timeline response")
 End Sub
 
 Sub test_say_gvn_investigation()

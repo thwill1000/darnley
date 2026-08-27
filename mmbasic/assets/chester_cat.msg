@@ -3,12 +3,6 @@ hello hi morning afternoon evening greetings
 @
 "Mrow."
 
-alibi
-[[reset:The cat blinks at you slowly, which you choose to interpret as either
-total innocence or total guilt. It is impossible to tell.]]@
-@
-"Meow?"
-
 slippers
 [[reset:He shows no interest whatsoever in slippers, being some distance
 from where they were found.]]@
@@ -27,7 +21,7 @@ regardless at the word.]]@
 @
 "Mew?"
 
-cigarette | cigar | cheroot
+cigarette cigar cheroot smoking smoked smokes
 [[reset:The cat wrinkles his nose at a stray drift of tobacco smoke from
 somewhere and turns pointedly away.]]@
 @
@@ -67,67 +61,67 @@ violence.]]@
 @
 "Hetchoo!"
 
-colonel darnley sebastian
++colonel (get/think) with
 [[reset:The cat's ears go back at the mention of his late master, and for a
 moment he seems almost solemn. Almost.]]@
 @
 "Mrow..."
 
-sarah
++sarah (get/think) with
 [[reset:He offers a single unbothered blink at the name and nothing further.]]@
 @
 "Mew."
 
-millicent
++millicent (get/think) with
 [[reset:The cat tolerates the name being spoken in his presence, barely.]]@
 @
 "Prrt."
 
-arthur coniston
++arthur (get/think) with
 [[reset:He hisses, quite suddenly, at nothing in particular, then resumes
 grooming as though nothing happened.]]@
 @
 "HSSST. ...mrrp."
 
-redvers slingsby
++redvers (get/think) with
 [[reset:The cat gives a long, unblinking stare of pure feline contempt in
 the general direction of the house.]]@
 @
 "Mrrrow."
 
-arnold billingsgate butler
++(billingsgate/butler) (get/think) with
 [[reset:He perks up hopefully - Billingsgate is known to bring scraps down
 to the stables from time to time.]]@
 @
 "Meow. Meow. MEOW."
 
-mildred goodbody cook
++(goodbody/cook) (get/think) with
 [[reset:The cat's whole demeanour brightens at once, and he begins to purr
 before you've finished the sentence.]]@
 @
 "PURRRRR."
 
-norah bagsby maid
++(bagsby/maid) (get/think) with
 [[reset:He allows the name to pass without particular comment, though his
 tail twitches once, fondly.]]@
 @
 "Mrrrp."
 
-ronald mellors gamekeeper
++(mellors/gamekeeper) (get/think) with
 [[reset:The cat sits up properly at this - Mellors feeds the stable cats and
 is, as far as the cat is concerned, the only person in the household
 who matters.]]@
 @
 "Mrrow!"
 
-cat chester ginger | yourself
++(cat/chester/ginger) (get/think) with | yourself
 [[reset:He simply stares back at you, entirely unbothered by the question,
 and begins washing a paw as if to demonstrate that self-reflection is
 beneath him.]]@
 @
 "Mrow."
 
-suit
++suit servants
 [[reset:He has, at some point, clearly slept on someone's good tweeds - there
 is a dusting of ginger fur that suggests as much, though not here in
 the stables.]]@
@@ -141,12 +135,24 @@ the stables the whole night, as usual.]]@
 @
 "Meow."
 
-motive reason why think murder
++(bang/bangs/shot/shots) (time/what/when) (hear/heard)
+[[reset:The cat's ear flicks once at the word "bang," but he shows no
+other sign of comprehension.]]@
+@
+"Mrp?"
+
+-thanks alibi | -thanks +time murder
+[[reset:The cat blinks at you slowly, which you choose to interpret as either
+total innocence or total guilt. It is impossible to tell.]]@
+@
+"Meow?"
+
+motive reason why think murder want
 [[reset:He begins washing a paw with total, infuriating unconcern.]]@
 @
 "Mrrp."
 
-murder murderer think believe guilty who did comitted
+(murder/murderer) think believe guilty who did comitted want
 [[reset:The cat fixes you with a long, unreadable stare, as if he knows
 perfectly well and simply isn't telling.]]@
 @
@@ -169,7 +175,7 @@ goodbye bye farewell thanks thank
 @
 "..."
 
--who accuse you did it jaccuse murder murderer
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 [[reset:The cat regards your accusation with the withering scorn of a
 creature who has never answered to anyone in his life.]]@
 @
