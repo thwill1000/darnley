@@ -19,7 +19,7 @@ Const MAX_TAKEABLE_WEIGHT = 99
 Const WILDCARD_MATCH = 100
 
 Dim DEBUG = 0
-Dim words$(MAX_WORDS) Length 20
+Dim words$(MAX_WORDS) Length MAX_WORD_LENGTH
 Dim noun$, verb$
 
 Function FAILED(i%) As Integer
@@ -560,16 +560,6 @@ Function make_match_input$(w$(), first%, last%)
   make_match_input$ = LCase$(s$)
 End Function
 
-' Counts how many words in match_in$ appear as words of pattern$.
-'
-' pattern$ is a space-separated list of words, optionally '+'/'-' prefixed
-' (see below), each compared in turn against every word in match_in$.
-'
-' pattern$ may also contain multiple '|'-separated alternatives, each
-' scored independently against match_in$ - including its own '+'/'-'
-' enforcement - and the highest-scoring alternative's match count is
-' returned. A pattern$ with no '|' is scored as a single alternative.
-'
 ' Each word of pattern$ (or of one of its '|'-separated alternatives) may
 ' only be matched once; duplicate words in match_in$ are ignored/redundant.
 '
@@ -583,21 +573,34 @@ End Function
 '         alternative's match count is 0, regardless of other matches found
 '         within it.
 '
+' A word of pattern$ may instead be a '/'-separated OR-group, written as
+' "(word1/word2/.../wordN)". This matches if ANY one of the inner words is
+' present in match_in$; however many of them are present, the group still
+' contributes at most 1 to that alternative's match count, same as a single
+' plain word would. An OR-group may itself carry a '+' or '-' prefix, with
+' the same MANDATORY/FORBIDDEN semantics as for a plain word - e.g.
+' "+(a/b)" requires at least one of "a" or "b" to be present, and
+' "-(a/b)" forbids both. OR-groups do not nest and may not themselves
+' contain '|', since that would collide with the outer alternative
+' separator.
+'
 ' @param pattern$    A space-separated pattern to match, or several such
 '                    patterns separated by '|', each treated as an
 '                    alternative. Any word may be prefixed with '+'
-'                    (mandatory) or '-' (forbidden). All the words in the
+'                    (mandatory) or '-' (forbidden), and may instead be an
+'                    OR-group "(word1/word2/...)" (itself optionally
+'                    prefixed with '+' or '-'). All the words in the
 '                    pattern will be compared as if lower-case.
 ' @param match_in$   The words to match, in lower-case separated by pipes,
 '                    e.g. |bird|cat|dog|
 ' @return            The highest number of words matched by any single
 '                    alternative in pattern$, or 0 if every alternative
-'                    either matched nothing, left a '+' word unmatched, or
-'                    matched a '-' word.
+'                    either matched nothing, left a '+' word/group
+'                    unmatched, or matched a '-' word/group.
 Function find_matches%(pattern$, match_in$)
   Local haystack$(MAX_WORDS) Length MAX_WORD_LENGTH
   Const h_first% = Bound(haystack$(), 0), h_last% = Bound(haystack$(), 1)
-  Local h$, i%, num_matches%, pattern_idx%, sub_pattern$
+  Local h$, i%, matched%, num_matches%, pattern_idx%, prefix$, sub_pattern$
 
   Do
     ' Process next sub-pattern, separated by "|"
@@ -610,22 +613,54 @@ Function find_matches%(pattern$, match_in$)
     For i% = h_first% To h_last%
       h$ = haystack$(i%)
       If h$ = "" Then Exit For
+
+      prefix$ = ""
       Select Case Left$(h$, 1)
+        Case "+", "-"
+          prefix$ = Left$(h$, 1)
+          h$ = Mid$(h$, 2)
+      End Select
+
+      If Left$(h$, 1) = "(" And Right$(h$, 1) = ")" Then
+        matched% = group_matches%(Mid$(h$, 2, Len(h$) - 2), match_in$)
+      Else
+        matched% = (InStr(match_in$, "|" + h$ + "|") <> 0)
+      EndIf
+
+      Select Case prefix$
         Case "+"
-          If InStr(match_in$, "|" + Mid$(h$, 2) + "|") Then
+          If matched% Then
             Inc num_matches%
           Else
             num_matches% = 0
             Exit For
           EndIf
         Case "-"
-          If InStr(match_in$, "|" + Mid$(h$, 2) + "|") Then num_matches% = 0 : Exit For
+          If matched% Then num_matches% = 0 : Exit For
         Case Else
-          If InStr(match_in$, "|" + h$ + "|") Then Inc num_matches%
+          If matched% Then Inc num_matches%
       End Select
     Next
 
     find_matches% = Max(find_matches%, num_matches%)
+  Loop
+End Function
+
+' Checks whether any '/'-separated word in group$ is present in match_in$.
+' Used by find_matches%() to evaluate an OR-group "(word1/word2/...)".
+'
+' @param  group$     The words inside an OR-group, separated by '/'
+'                    (parens already stripped by the caller).
+' @param  match_in$  The words to match, in lower-case separated by pipes.
+' @return            1 if any word in group$ is present in match_in$,
+'                    otherwise 0.
+Function group_matches%(group$, match_in$)
+  Local idx% = 1, w$
+  Do
+    w$ = Field$(group$, idx%, "/")
+    If w$ = "" Then Exit Do
+    If InStr(match_in$, "|" + w$ + "|") Then group_matches% = 1 : Exit Function
+    Inc idx%
   Loop
 End Function
 

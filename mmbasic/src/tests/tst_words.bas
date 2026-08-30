@@ -353,14 +353,14 @@ End Sub
 
 Sub test_split_words_gvn_max_length()
   Local words$(4) Length MAX_WORD_LENGTH
-  assert_int_equals(0, split_words%("10-letters", words$()))
-  assert_string_equals("10-letters", words$(1))
+  assert_int_equals(0, split_words%(String$(MAX_WORD_LENGTH, "x"), words$()))
+  assert_string_equals(String$(MAX_WORD_LENGTH, "x"), words$(1))
   assert_string_equals("", words$(2))
 End Sub
 
 Sub test_split_words_gvn_too_long()
   Local words$(4) Length MAX_WORD_LENGTH
-  assert_int_equals(2, split_words%("21-letters12345678901", words$()))
+  assert_int_equals(2, split_words%(String$(MAX_WORD_LENGTH + 1, "x"), words$()))
 End Sub
 
 Sub test_split_words_gvn_upper_case()
