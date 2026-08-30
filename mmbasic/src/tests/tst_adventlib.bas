@@ -85,6 +85,14 @@ add_test("find_matches() considers all of three or more '|' alternatives", "test
 add_test("find_matches() enforces '+' mandatory words independently per '|' alternative", "test_fm_gvn_or_plus")
 add_test("find_matches() enforces '-' forbidden words independently per '|' alternative", "test_fm_gvn_or_minus")
 add_test("find_matches() stops cleanly at a trailing empty '|' alternative", "test_fm_gvn_or_empty_sub")
+add_test("find_matches() OR-group '(a/b)' matches when one alternative is present", "test_fm_gvn_group_one")
+add_test("find_matches() OR-group counts as 1 even when multiple alternatives are present", "test_fm_gvn_group_multi_alt")
+add_test("find_matches() OR-group contributes 0 when no alternative is present", "test_fm_gvn_group_none")
+add_test("find_matches() mandatory OR-group '+(a/b)' fails when neither alternative is present", "test_fm_gvn_group_plus_fail")
+add_test("find_matches() mandatory OR-group '+(a/b)' succeeds when one alternative is present", "test_fm_gvn_group_plus_ok")
+add_test("find_matches() forbidden OR-group '-(a/b)' zeroes the match when an alternative is present", "test_fm_gvn_group_minus_fail")
+add_test("find_matches() forbidden OR-group '-(a/b)' has no effect when neither alternative is present", "test_fm_gvn_group_minus_ok")
+add_test("find_matches() OR-group combines correctly with a plain word in the same alternative", "test_fm_gvn_group_with_plain")
 add_test("test_parse_common_rtns_success")
 add_test("test_parse_common_sets_verb")
 add_test("test_parse_common_sets_noun")
@@ -338,7 +346,7 @@ Sub test_parse_common_split_errors()
   assert_string_equals("[[red:Too many words.]]" + sys.CRLF$, con_output$)
 
   con_output$ = ""
-  assert_int_equals(1, parse_common("abcdefghijklmnopqrstuv"))
+  assert_int_equals(1, parse_common(String$(MAX_WORD_LENGTH + 1, "x")))
   assert_string_equals("[[red:Word too long.]]" + sys.CRLF$, con_output$)
 End Sub
 
@@ -737,6 +745,69 @@ Sub test_fm_gvn_or_empty_sub()
   Const pattern$ = "cat|"
   Const match_in$ = "|cat|"
   assert_int_equals(1, find_matches%(pattern$, match_in$))
+End Sub
+
+' An OR-group matches when one of its inner alternatives is present
+Sub test_fm_gvn_group_one()
+  Const pattern$ = "(cat/dog)"
+  Const match_in$ = "|dog|"
+  assert_int_equals(1, find_matches%(pattern$, match_in$))
+End Sub
+
+' Even when several of the group's alternatives are present, the group
+' still contributes only 1 to the match count, not one per alternative
+Sub test_fm_gvn_group_multi_alt()
+  Const pattern$ = "(cat/dog/bird)"
+  Const match_in$ = "|cat|dog|bird|"
+  assert_int_equals(1, find_matches%(pattern$, match_in$))
+End Sub
+
+' None of the group's alternatives are present - contributes 0, and does
+' not zero out other matches in the same sub-pattern
+Sub test_fm_gvn_group_none()
+  Const pattern$ = "fish (cat/dog)"
+  Const match_in$ = "|fish|"
+  assert_int_equals(1, find_matches%(pattern$, match_in$))
+End Sub
+
+' A mandatory OR-group "+(a/b)" with neither alternative present zeroes
+' the whole sub-pattern's match count
+Sub test_fm_gvn_group_plus_fail()
+  Const pattern$ = "fish +(cat/dog)"
+  Const match_in$ = "|fish|"
+  assert_int_equals(0, find_matches%(pattern$, match_in$))
+End Sub
+
+' A mandatory OR-group "+(a/b)" succeeds once one alternative is present,
+' and counts towards the total the same as a matched '+' word would
+Sub test_fm_gvn_group_plus_ok()
+  Const pattern$ = "fish +(cat/dog)"
+  Const match_in$ = "|fish|dog|"
+  assert_int_equals(2, find_matches%(pattern$, match_in$))
+End Sub
+
+' A forbidden OR-group "-(a/b)" zeroes the whole sub-pattern's match count
+' when one of its alternatives is present
+Sub test_fm_gvn_group_minus_fail()
+  Const pattern$ = "fish -(cat/dog)"
+  Const match_in$ = "|fish|cat|"
+  assert_int_equals(0, find_matches%(pattern$, match_in$))
+End Sub
+
+' A forbidden OR-group "-(a/b)" has no effect when neither alternative is
+' present - other matches in the sub-pattern still count
+Sub test_fm_gvn_group_minus_ok()
+  Const pattern$ = "fish -(cat/dog)"
+  Const match_in$ = "|fish|"
+  assert_int_equals(1, find_matches%(pattern$, match_in$))
+End Sub
+
+' An OR-group combines correctly with a plain word in the same
+' sub-pattern, each contributing independently to the match count
+Sub test_fm_gvn_group_with_plain()
+  Const pattern$ = "fish (cat/dog)"
+  Const match_in$ = "|fish|dog|"
+  assert_int_equals(2, find_matches%(pattern$, match_in$))
 End Sub
 
 ' find_exit_match%() ------------------------------------------------------

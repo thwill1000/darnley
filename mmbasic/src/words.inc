@@ -8,7 +8,7 @@ If sys.err$ <> "" Then Error sys.err$
 '!endif
 
 Const MAX_WORDS = 20
-Const MAX_WORD_LENGTH = 20
+Const MAX_WORD_LENGTH = 64
 
 Function cat_words$(words$(), si%, ei%)
   Local first% = 1, i%
