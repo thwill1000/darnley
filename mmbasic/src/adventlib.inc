@@ -560,6 +560,9 @@ Function make_match_input$(w$(), first%, last%)
   make_match_input$ = LCase$(s$)
 End Function
 
+' Matches user-input (in lower-case and delimited by | rather than space)
+' against a pattern.
+'
 ' Each word of pattern$ (or of one of its '|'-separated alternatives) may
 ' only be matched once; duplicate words in match_in$ are ignored/redundant.
 '
@@ -598,21 +601,25 @@ End Function
 '                    either matched nothing, left a '+' word/group
 '                    unmatched, or matched a '-' word/group.
 Function find_matches%(pattern$, match_in$)
-  Local haystack$(MAX_WORDS) Length MAX_WORD_LENGTH
-  Const h_first% = Bound(haystack$(), 0), h_last% = Bound(haystack$(), 1)
-  Local h$, i%, matched%, num_matches%, pattern_idx%, prefix$, sub_pattern$
+  Local h$, matched%, num_matches%, p%, padded$, pattern_idx%, prefix$, sp%, sub_pattern$
 
   Do
     ' Process next sub-pattern, separated by "|"
     Inc pattern_idx%
     sub_pattern$ = Field$(pattern$, pattern_idx%, "|")
     If sub_pattern$ = "" Then Exit Do
-    i% = split_words%(sub_pattern$, haystack$())
     num_matches% = 0
 
-    For i% = h_first% To h_last%
-      h$ = haystack$(i%)
-      If h$ = "" Then Exit For
+    ' Trailing space guarantees the final word is always terminated by a
+    ' found InStr() match, so no separate "last word" case is needed.
+    padded$ = LCase$(sub_pattern$ + " ")
+    p% = 1
+    Do
+      sp% = InStr(p%, padded$, " ")
+      If sp% = 0 Then Exit Do
+      h$ = Mid$(padded$, p%, sp% - p%)
+      p% = sp% + 1
+      If h$ = "" Then Continue Do ' collapse any repeated spaces
 
       prefix$ = ""
       Select Case Left$(h$, 1)
@@ -633,14 +640,14 @@ Function find_matches%(pattern$, match_in$)
             Inc num_matches%
           Else
             num_matches% = 0
-            Exit For
+            Exit Do
           EndIf
         Case "-"
-          If matched% Then num_matches% = 0 : Exit For
+          If matched% Then num_matches% = 0 : Exit Do
         Case Else
           If matched% Then Inc num_matches%
       End Select
-    Next
+    Loop
 
     find_matches% = Max(find_matches%, num_matches%)
   Loop
