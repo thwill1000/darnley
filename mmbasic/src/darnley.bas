@@ -80,6 +80,22 @@ Do
     con.print_fail("That doesn't seem to work.")
   EndIf
 
+  ' Kitchen -> Hall is a real exit in the data (needed so GO HALL resolves),
+  ' but the passage is stacked with furniture on the hall side. Mrs Goodbody,
+  ' always in the kitchen, heads the player off before they open the door.
+  If r = find_loc%("LOC008_HALL", 1) And r_old% = find_loc%("LOC009_KITCHEN", 1) Then
+    print_message_or_fail("KITCHEN_TO_HALL")
+    r = r_old%
+  EndIf
+
+  ' Landing -> Second guest room is likewise a real exit only so GO resolves;
+  ' the room isn't otherwise modelled, so revert after describing why there's
+  ' nothing to be gained by entering.
+  If r = find_loc%("LOC030_SECOND_GUEST_ROOM", 1) And r_old% = find_loc%("LOC028_MORNING_ROOM", 1) Then
+    print_message_or_fail("MORNING_ROOM_TO_GUEST_ROOM")
+    r = r_old%
+  EndIf
+
   ' Special handling
   If state.has_flag%("new_clue") Then handle_new_clue()
   If state.has_flag%("new_accuse") Then handle_new_accusation()

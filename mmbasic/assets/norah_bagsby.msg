@@ -91,8 +91,24 @@ which ones you mean."
 suit
 "Oh, that's Sir Redvers' suit, sir. He came ever so sudden and there was
 nowhere for him but our room, on account of Mr. Coniston having the
-guest room already. I felt right embarrassed hanging a gentleman's
+guest room already, and the other guest room being all in a state with
+the redecorating. I felt right embarrassed hanging a gentleman's
 suit up next to my own things, but Mrs. G. said not to make a fuss."
+
+stacked furniture
+"That's the second guest room's furniture, sir - it's having new
+paper hung, so I've not been in to do it these past two weeks.
+Mrs. Darnley gave the order herself, I believe."
+
+second guest spare room
+"I heard it's having new paper hung, sir. I don't go in there
+myself - not my part of the house to clean at present, on account
+of the work."
+
++blocked door | +passage kitchen
+"Mrs. G. won't let anyone near that door, sir - says it's blocked
+up with furniture and not safe. I go round by the pantry same as
+everybody else."
 
 events yesterday murder last happened
 "I have worked here for six months and I don't like it. Last night I

@@ -99,6 +99,17 @@ nothing on their own."
 cheroot pond
 "I don't know anything about it."
 
+stacked furniture
+"Don't know and don't much care. That's house business, not mine."
+
+second guest spare room
+"Never been inside the big house past the kitchen, let alone
+upstairs. Couldn't tell you the first thing about it."
+
++blocked door | +passage kitchen
+"Don't know anything about doors and passages inside the house. I keep to the
+grounds."
+
 events yesterday murder last happened
 "I have worked for Colonel Darnley for seven years. He was strict but
 fair. I have no complaints. Last night I did my last rounds at 8:00

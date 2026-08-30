@@ -110,6 +110,15 @@ cheroot pond
 suit
 "suit response"
 
+stacked furniture
+"stacked furniture response"
+
+second guest spare room
+"second guest room response"
+
++blocked door | +passage kitchen
+"kitchen passage response"
+
 events yesterday murder last happened
 "events response"
 

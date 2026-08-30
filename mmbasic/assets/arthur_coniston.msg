@@ -123,8 +123,22 @@ matter?"
 suit
 "Ah, that suit will be Slingsby's. I gather he descended on the house
 without warning and there wasn't a bed to be had except with the
-servants - I'd already bagged the guest room, you see. Beastly luck
+servants - I'd already bagged the guest room, and the other one's
+knee-deep in dust sheets for redecorating, you see. Beastly luck
 for the poor chap, showing up a day late for the good rooms."
+
+stacked furniture
+"Haven't the foggiest, old boy. Some household business, I
+shouldn't wonder."
+
+second guest spare room
+"Couldn't tell you, old boy. Didn't know there was a second one
+until I heard someone mention it - just glad I got the room that
+was actually habitable."
+
++blocked door | +passage kitchen
+"Is there a blocked door? Can't say I've had occasion to go
+wandering about the kitchen passages, old boy."
 
 events yesterday murder last happened
 "I was down for the weekend. It was no secret that I was going to ask

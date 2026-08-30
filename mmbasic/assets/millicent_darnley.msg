@@ -108,6 +108,20 @@ was nowhere left for him but the servants' quarters, what with Arthur
 already installed in the guest room. Rather awkward for a man of his
 standing, I imagine, though he didn't complain - much."
 
+stacked furniture
+"I believe that's something to do with one of the spare rooms being
+redecorated. I haven't paid it much attention, I'm afraid."
+
+second guest spare room
+"I believe it's being redecorated - I haven't been in there myself
+for weeks. Mother's doing, I should think, though I couldn't tell
+you why now of all times."
+
++blocked door | +passage kitchen
+"I gather there's furniture piled up somewhere down that way,
+something to do with the redecorating. I don't go through the
+kitchen passage myself, so I couldn't say more."
+
 events yesterday murder last happened
 "Father was a difficult man to live with but I never expected - this!
 Last night we all ate together until coffee which Sarah and I took

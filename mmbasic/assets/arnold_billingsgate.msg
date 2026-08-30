@@ -116,9 +116,29 @@ most particular man and would never throw a butt into the pond."
 suit
 "That suit belongs to Sir Redvers, sir. He arrived unexpectedly and, Mr.
 Coniston already being accommodated in the guest room, there was
-nowhere suitable to put him but the servants' quarters. I saw to it
+nowhere suitable to put him but the servants' quarters - the second
+guest room being presently unfit, on account of the redecoration. I saw to it
 that his things were hung as tidily as the room allowed, though it is
 scarcely what a gentleman of his standing is accustomed to."
+
+stacked furniture
+"Those are the effects of the second guest room, sir. It is being
+redecorated - the paper was in a sorry state, and Mrs. Darnley
+thought it high time it was seen to. Awkward timing, given
+everything else, but there it is."
+
+second guest spare room
+"It's being redecorated, sir - the paper had grown quite shabby, and
+Mrs. Darnley gave the order some weeks back. I'm afraid it wasn't
+fit for a guest, which is why Sir Redvers ended up in the servants'
+quarters instead, and the rest of us squeezed into my pantry for
+the duration."
+
++blocked door | +passage kitchen
+"That would be the door between the hall and the kitchen passage,
+sir. It's quite blocked with furniture from the second guest room -
+I've asked Mrs. Goodbody to see that no-one tries it until it's
+cleared, for fear of an accident in the dark."
 
 events yesterday murder last happened
 "I have worked for the Darnley family since I was a boy. Colonel Darnley
