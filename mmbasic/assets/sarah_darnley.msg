@@ -110,10 +110,26 @@ cheroot pond
 "I don't know anything about it."
 
 suit
-"That would be Sir Redvers' suit. He arrived without notice, I'm afraid,
-and there was nowhere else to put him but the servants' quarters -
-Mr. Coniston already had the guest room. I don't imagine Sir Redvers
-much cared for the arrangement, but there it is."
+"Sir Redvers' suit I should think. He arrived out of the blue and there
+was nowhere left for him but the servants' quarters, what with Arthur
+already installed in the guest room, and the other guest room being
+turned out for redecoration besides. Rather awkward for a man of his
+standing, I imagine, though he didn't complain - much.
+
+stacked furniture
+"Oh, that's just from the second guest room being done up - I gave the
+order myself, weeks ago, before any of us knew Sir Redvers would be
+descending on us. Rather inconvenient timing, as it turns out."
+
+second guest spare room
+"I arranged to have it done up weeks ago - new paper, mostly. I'd no idea at
+the time it would leave us short a room when Sir Redvers turned up
+without warning. Rather bad timing, as these things go."
+
++blocked door | +passage kitchen
+"Oh, that's just where the furniture from the second guest room
+ended up - there was nowhere else to put it in a hurry. I'm told
+it's rather in the way.
 
 events yesterday murder last happened
 "I married Sebastian two years ago. I am more than twenty years

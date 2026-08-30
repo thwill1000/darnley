@@ -82,14 +82,16 @@ glass [[green:display case]] mounted on the wall holds flints and pottery
 shards collected from the estate grounds. Doors lead to the
 [[green:Dining room]], [[green:Music room]], [[green:Colonel's Study]], and
 [[green:Lounge]], or the staircase climbs to the [[green:Upstairs landing]].
+A door that would otherwise lead through to the kitchen passage stands
+blocked by [[green:stacked furniture]].
 
 LOC009_KITCHEN
 Game birds hang from the ceiling of this kitchen. On the sink's
 draining-board lies a [[green:knife]]. By the outside door stands a
 line of [[green:boots]] and cleaning brushes. The cook,
 [[green:Mildred Goodbody]] oversees the work here. Doors lead to the
-[[green:Kitchen garden]], [[green:Butler's pantry]], and
-[[green:Dining room]].
+[[green:Kitchen garden]], [[green:Butler's pantry]] and through a
+passageway to the [[green:Hall]].
 
 LOC010_BUTLERS_PANTRY
 A small sitting room with a bed behind a curtain, two temporary
@@ -120,8 +122,8 @@ LOC014_DINING_ROOM
 A fine oak table with William and Mary chairs fills the centre. A glass case
 holds Delft pottery; a sideboard holds a silver wine cooler and Sevres urns.
 The marble fireplace's walls carry Italian landscapes. Doors lead to the
-[[green:Hall]], [[green:Kitchen]], [[green:Butler's pantry]],
-[[green:Music room]], and [[green:Billiard room]].
+[[green:Hall]], [[green:Butler's pantry]], [[green:Music room]],
+and [[green:Billiard room]].
 
 LOC015_MUSIC_ROOM
 A [[green:piano]] occupies the centre with a [[green:brass ashtray]] on top.
@@ -207,8 +209,8 @@ LOC025_LANDING
 The landing walls hold fine antlers and animal heads alongside poor portraits
 of the Darnley ancestors. Doors lead to the [[green:Bathroom]],
 [[green:Millicent's bedroom]], [[green:Morning room]],
-[[green:Servants' quarters]], or you could take the stairs down into the
-[[green:Hall]].
+[[green:Servants' quarters]], [[green:Guest room]] or you could take the stairs
+down into the [[green:Hall]].
 
 LOC026_SERVANTS_QUARTERS
 A single room with two single beds, a rail for clothes behind a curtain, a wash
@@ -230,13 +232,19 @@ A chintz sofa and occasional table with magazines and books furnish this room.
 A [[green:piano]] stands against one wall, whilst a [[green:gramophone]] sits on
 a table, surrounded by watercolour bird pictures. [[green:Sarah Darnley]] rests
 here. Doors lead to the [[green:Upstairs landing]], [[green:Master bedroom]], and
-the [[green:Guest room]].
+a [[green:Second guest room]].
 
 LOC029_GUEST_ROOM
 A guest-room decorated in blue with wardrobe, bed, washstand, and writing-table.
 By the bed lies a pair of men's [[green:slippers]], slightly damp and mud-stained.
 On the writing table sits a pack of [[green:cigarettes]] - an expensive brand - along
-with stationary and pens. The only door leads back into the [[green:Morning room]].
+with stationary and pens. The only door leads back onto the [[green:Landing]].
+
+LOC030_SECOND_GUEST_ROOM
+The door opens into a second guest room, currently in a state of
+mid-decoration disarray - dust sheets, bare boards, and furniture
+stacked every which way. Plainly no one has slept here in some time.
+You withdraw and pull the door to.
 
 PER101_COLONEL_DARNLEY
 Aged 60. The Colonel served in the South African War and
@@ -650,6 +658,12 @@ and smell faintly of gun oil rather than powder - if they have been
 fired recently, they have since been thoroughly cleaned. A box of
 cartridges sits nearby on a shelf, a handful missing.
 
+OBJ257_STACKED_FURNITURE
+A stack of furniture and effects from the second guest room, temporarily
+stored here while that room is redecorated. Too heavy and too numerous to
+move alone, they block what would otherwise be a passage through to
+the kitchen.
+
 WHAT_REALLY_HAPPENED
 [[green:What really happened at Darnley Park?]]@
 @
@@ -919,3 +933,15 @@ its proper place - but you have named the wrong culprit. Sarah Darnley
 was elsewhere that night, and no amount of careful reasoning will make
 her fit a crime she did not commit. Go back over the evidence and look
 again at who was truly where.
+
+KITCHEN_TO_HALL
+Mrs. Goodbody stops you.@
+@
+[[cyan:"Now don't go that way, dear - that door leads through to the hall, but
+the other side is blocked with furniture from the second guest room. Go round
+through the pantry, if you don't mind."]]
+
+MORNING_ROOM_TO_GUEST_ROOM
+The door opens into a second guest room, currently in a state of mid-decoration
+disarray - dust sheets, bare boards, and furniture stacked every which way.
+Plainly no one has slept here in some time. You withdraw and pull the door to.

@@ -95,6 +95,9 @@ add_test("SAY Tell me about the women's shoeprints", "test_say_gvn_womens_shoepr
 add_test("SAY Tell me about the footprints", "test_footprints")
 add_test("SAY about the cheroot in the pond matches that entry", "test_say_gvn_cheroot_pond")
 add_test("SAY Tell me about the suit in the servant's quarters", "test_say_suit")
+add_test("SAY Tell me about the stacked furniture in the hall", "test_say_stacked_furniture")
+add_test("SAY Tell me about the kitchen passage", "test_say_kitchen_passage")
+add_test("SAY Tell me about the second guest room", "test_say_2nd_guest_room")
 add_test("SAY about motive matches the motive entry", "test_say_gvn_motive")
 add_test("SAY Who do you think did it?", "test_say_gvn_who_did_it")
 add_test("SAY about the Colonel's marriage matches that entry", "test_say_gvn_marriage")
@@ -426,6 +429,24 @@ Sub test_say_suit()
   assert_say_response("ask about the suit in the servant's quarters", "suit response")
   assert_say_response("what about the suit I found in the servant's quarters", "suit response")
   assert_say_response("tell me about the suit found in the servant's quarters", "suit response")
+End Sub
+
+Sub test_say_stacked_furniture()
+  assert_say_response("stacked furniture", "stacked furniture response")
+  assert_say_response("Tell me about the stacked furtniture in the hall", "stacked furniture response")
+  assert_say_response("Why is their furniture stacked in the hall?", "stacked furniture response")
+End Sub
+
+Sub test_say_kitchen_passage()
+  assert_say_response("kitchen passage", "kitchen passage response")
+  assert_say_response("blocked door", "kitchen passage response")
+  assert_say_response("Why is the kitchen passage blocked?", "kitchen passage response")
+End Sub
+
+Sub test_say_2nd_guest_room()
+  assert_say_response("second guest room", "second guest room response")
+  assert_say_response("spare room", "second guest room response")
+  assert_say_response("Why is Sir Redvers not staying in the second guest room?", "second guest room response")
 End Sub
 
 Sub test_say_gvn_motive()

@@ -96,7 +96,7 @@ Sub test_ex_gvn_found_present()
   Local ret% = verb_examine()
 
   assert_int_equals(1, ret%)
-  assert_string_equals("<cyan>Description of object 1" + sys.CRLF$ + "<reset>", con_output$)
+  assert_string_equals("Description of object 1" + sys.CRLF$, con_output$)
 End Sub
 
 ' Object exists but is in a different room - EXAMINE fails
@@ -182,7 +182,7 @@ Sub test_ex_gvn_plus_present()
   Local ret% = verb_examine()
 
   assert_int_equals(1, ret%)
-  assert_string_equals("<cyan>Description of secret panel" + sys.CRLF$ + "<reset>", con_output$)
+  assert_string_equals("Description of secret panel" + sys.CRLF$, con_output$)
 End Sub
 
 ' OBJ006 "Old Statue -broken" matches "statue" alone, since the forbidden
@@ -194,7 +194,7 @@ Sub test_ex_gvn_minus_absent()
   Local ret% = verb_examine()
 
   assert_int_equals(1, ret%)
-  assert_string_equals("<cyan>Description of statue" + sys.CRLF$ + "<reset>", con_output$)
+  assert_string_equals("Description of statue" + sys.CRLF$, con_output$)
 End Sub
 
 ' Including the forbidden word "broken" alongside "statue" prevents OBJ006

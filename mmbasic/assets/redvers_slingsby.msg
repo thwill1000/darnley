@@ -92,9 +92,22 @@ the old pipe."
 suit
 "My suit, obviously. I turned up unannounced and Darnley's staff put me
 up in the servants' quarters rather than turf out young Coniston from
-the guest room. A man can't be expected to live out of a single case
+the guest room - the other guest room is apparently all torn
+up for redecoration. A man can't be expected to live out of a single case
 for two days, so I hung what I wasn't wearing wherever there was
 room."
+
+stacked furniture
+"No idea, and can't say I care. Ask the servants."
+
+second guest spare room
+"No notion, and no great interest either. Wherever it is, it
+clearly wasn't fit for me, which is how I ended up bunking in the
+servant's quarters."
+
++blocked door | +passage kitchen
+"Haven't the faintest idea what you're talking about. I don't
+concern myself with the service side of the house."
 
 events yesterday murder last happened
 "I have known Darnley for about 20 years. It was some confidential
