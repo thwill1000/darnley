@@ -323,24 +323,24 @@ facts straight first."
 # Response after accusation questions have been answered correctly
 accuse_succeed
 !requires accuse_succeed
-[[reset:Your account of the murder itself is sound, Inspector, every detail
-in its proper place - but you have named the wrong man. Slingsby's
-face darkens to an alarming shade of puce, his moustache fairly
-bristling with outrage.]]@
+[[reset:The colour drains from Slingsby's face, and for once his fury seems to
+have deserted him entirely.]]@
 @
-"By God, sir! I've a good mind to horsewhip you for that. I left Darnley
-alive and well, and I'll thank you to remember it!"@
+"Damn it all, you argue it well enough - I'll grant you that much. But
+you've argued yourself to the wrong door, sir, and no amount of clever
+reasoning changes where I was last night."@
 @
 [[reset:Go back over the evidence and look again at who was truly where.]]
 
 # Response after accusation questions have been answered incorrectly
 accuse_fail
 !requires accuse_fail
-[[reset:No. Somewhere in your account the facts do not add up. Slingsby's
-outrage curdles into something closer to satisfaction.]]@
+[[reset:Slingsby's outrage gives way, unexpectedly, to something almost like
+contempt.]]@
 @
-"Confound it, man, you can't fling accusations about like that! Get your
-facts straight first."@
+"Good God, man, is that the best you can manage? Half of what you've
+just told me doesn't square with itself, let alone with what actually
+happened. Try again, and try harder."@
 @
 [[reset:Go back over your questioning and look again.]]
 

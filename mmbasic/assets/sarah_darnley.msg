@@ -338,12 +338,13 @@ anyone."
 # Response after accusation questions have been answered correctly
 accuse_succeed
 !requires accuse_succeed
-[[reset:Your account of the murder itself is sound, Inspector, every detail
-in its proper place - but you have named the wrong culprit. Sarah's
-hand goes to her throat, the colour draining from her face.]]@
+[[reset:Sarah's hand goes to her throat, though there is something almost
+puzzled beneath the shock, as though she is following your reasoning and can
+find no flaw in it - only the conclusion.]]@
 @
-"Me? You cannot be serious. I - I don't know what to say to such a
-thing."@
+"You have clearly thought this through very carefully, Inspector. Every
+detail... and yet I promise you, on my husband's memory, that you have
+the wrong person."@
 @
 [[reset:She was elsewhere that night, and no amount of careful reasoning
 will make her fit a crime she did not commit. Go back over the
@@ -352,12 +353,14 @@ evidence and look again at who was truly where.]]
 # Response after accusation questions have been answered incorrectly
 accuse_fail
 !requires accuse_fail
-[[reset:No. Somewhere in your account the facts do not add up. Sarah Darnley
-stands very still.]]@
+[[reset:Sarah listens with the faint, careful attention of someone checking
+each sentence against what she knows to be true - and finding it wanting.]]@
 @
-"You mustn't say such things without evidence - it isn't fair, not to anyone."@
+"That isn't how it happened, Inspector. I don't say that to defend
+myself - I say it because you have got some part of it wrong, and I
+think you know it too."@
 @
-[[reset:And it does not hold. Go back over your questioning and look again.]]
+[[reset:Go back over your questioning and look again.]]
 
 *
 "I'm afraid I really couldn't say. This has all been such a terrible shock."

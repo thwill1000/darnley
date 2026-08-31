@@ -337,12 +337,13 @@ proper cause."
 # Response after accusation questions have been answered correctly
 accuse_succeed
 !requires accuse_succeed
-[[reset:Your account of the murder itself is sound, Inspector, every detail
-in its proper place - but you have named the wrong man.
-Billingsgate's composure does not slip.]]@
+[[reset:Billingsgate's composure does not slip, though something in his
+expression suggests genuine respect for the reasoning, if not the
+conclusion.]]@
 @
-[[cyan:"I have served this family faithfully for the whole of my working life,
-sir. I should hope my conduct speaks for itself, whatever you may suspect."]]@
+[[cyan:"You have set it out very thoroughly, sir, and I do not doubt you
+believe every word of it. But I was not the one who did this thing,
+whatever the facts may seem to say."]]@
 @
 [[reset:He had no hand in the Colonel's death, whatever your reasoning suggests.
 Go back over the evidence and look again at who was truly where.]]
@@ -350,14 +351,14 @@ Go back over the evidence and look again at who was truly where.]]
 # Response after accusation questions have been answered incorrectly
 accuse_fail
 !requires accuse_fail
-[[reset:No. Somewhere in your account the facts do not add up. Billingsgate
-inclines his head gravely,]]@
+[[reset:Billingsgate inclines his head gravely, choosing his words with evident
+care.]]@
 @
-[[cyan:"I'm afraid that doesn't fall within the facts as I understand them,
-sir,"]]@
+[[cyan:"If I may say so, sir, there is a gap somewhere in what you have just
+told me - a detail that does not sit right beside the others. I would
+not wish to see you act on it as it stands."]]@
 @
-[[reset:betraying nothing further as your explanation comes apart at the seams.
-Go back over your questioning and look again.]]
+[[reset:Go back over your questioning and look again.]]
 
 *
 "I don't believe that falls within my knowledge, I'm afraid."
