@@ -266,6 +266,7 @@ goodbye bye farewell thanks thank
 "Goodbye, sir. I hope you don't need me again - not because I mind,
 just, well, you know."
 
+# Response when accused of the murder for a second (or subsequent) time
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues accuse_b4_bagsby
 !provides new_accuse accuse_bagsby
@@ -275,6 +276,7 @@ flicker of something more wary beneath the tears now.]]@
 "You asked me that before, sir. I told you I never done it, and I
 haven't changed my mind."
 
+# Response when accused of the murder
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues
 !provides new_accuse accuse_bagsby accuse_b4_bagsby
@@ -284,9 +286,35 @@ as though she might burst into tears on the spot.]]@
 "Me, sir? Oh, please, I never - I wouldn't know how to fire a gun if you
 paid me! I only been here six months, sir, honest!"
 
+# Response when accused when insufficient clues have been gathered
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !provides new_accuse accuse_bagsby
 "Oh! You mustn't say that, not without you're sure - it isn't right."
+
+# Response after accusation questions have been answered correctly
+accuse_succeed
+!requires accuse_succeed
+[[reset:Your account of the murder itself is sound, Inspector, every detail
+in its proper place - but you have named the wrong culprit. Norah's
+eyes go wide and her lip trembles, as though she might burst into
+tears on the spot.]]@
+@
+"Me, sir? Oh, please, I never - I wouldn't know how to fire a gun if you
+paid me! I only been here six months, sir, honest!"@
+@
+[[reset:Young Norah Bagsby is guilty of nothing more than nerves. Go back over the
+evidence and look again at who was truly where.]]
+
+# Response after accusation questions have been answered incorrectly
+accuse_fail
+!requires accuse_fail
+[[reset:No. Somewhere in your account the facts do not add up. Norah looks
+more frightened than relieved, dabbing at her eyes.]]@
+@
+"Oh! You mustn't say that, sir, not without you're sure - it isn't right."@
+@
+[[reset:She is not yet convinced her ordeal is over. Go back over your questioning and
+look again.]]
 
 *
 "I wouldn't know about that. Nobody tells me anything."

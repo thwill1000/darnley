@@ -294,6 +294,7 @@ only got worse since. Not that it's foremost in my mind at present."
 goodbye bye farewell thanks thank
 "Yes, yes. Get on with it, then."
 
+# Response when accused of the murder for a second (or subsequent) time
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues accuse_b4_redvers
 !provides new_accuse accuse_redvers
@@ -303,6 +304,7 @@ beneath it now - a flicker of unease.]]@
 "You said your piece once already, and I gave you my answer. Don't try
 my patience further."
 
+# Response when accused of the murder
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues
 !provides new_accuse accuse_redvers accuse_b4_redvers
@@ -312,10 +314,35 @@ fairly bristling with outrage.]]@
 "By God, sir! I've a good mind to horsewhip you for that. I left Darnley
 alive and well, and I'll thank you to remember it!"
 
+# Response when accused when insufficient clues have been gathered
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !provides new_accuse accuse_redvers
 "Confound it, man, you can't fling accusations about like that! Get your
 facts straight first."
+
+# Response after accusation questions have been answered correctly
+accuse_succeed
+!requires accuse_succeed
+[[reset:Your account of the murder itself is sound, Inspector, every detail
+in its proper place - but you have named the wrong man. Slingsby's
+face darkens to an alarming shade of puce, his moustache fairly
+bristling with outrage.]]@
+@
+"By God, sir! I've a good mind to horsewhip you for that. I left Darnley
+alive and well, and I'll thank you to remember it!"@
+@
+[[reset:Go back over the evidence and look again at who was truly where.]]
+
+# Response after accusation questions have been answered incorrectly
+accuse_fail
+!requires accuse_fail
+[[reset:No. Somewhere in your account the facts do not add up. Slingsby's
+outrage curdles into something closer to satisfaction.]]@
+@
+"Confound it, man, you can't fling accusations about like that! Get your
+facts straight first."@
+@
+[[reset:Go back over your questioning and look again.]]
 
 *
 "No idea whatsoever. Can we stick to the point?"

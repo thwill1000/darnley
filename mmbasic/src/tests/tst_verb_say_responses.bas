@@ -124,6 +124,8 @@ add_test("SAY I accuse you! (but don't have all the clues)", "test_premature_acc
 add_test("SAY I accuse you! (the first time)", "test_first_accusation")
 add_test("SAY I accuse you! (subsequent times)", "test_subsequent_accusation")
 add_test("SAY goodbye matches the goodbye entry", "test_say_gvn_goodbye")
+add_test("INTERNAL: Test successful accusation response", "test_accuse_success")
+add_test("INTERNAL: Test failed accusation response", "test_accuse_fail")
 add_test("SAY something nonsensical falls back to the wildcard", "test_say_gvn_wildcard_fallback")
 
 run_tests()
@@ -802,6 +804,24 @@ Sub test_say_gvn_goodbye()
   assert_say_response("well, goodbye then", "goodbye response")
   assert_say_response("thanks for your time", "goodbye response")
   assert_say_response("thank you very much", "goodbye response")
+End Sub
+
+Sub test_accuse_success()
+  ' With flag unset fallsback to wildcard response
+  assert_say_response("accuse_succeed", "wildcard response")
+
+  ' But with flag set writes the response
+  state.set_flag("accuse_succeed")
+  assert_say_response("accuse_succeed", "successful accusation response")
+End Sub
+
+Sub test_accuse_fail()
+  ' With flag unset fallsback to wildcard response
+  assert_say_response("accuse_fail", "wildcard response")
+
+  ' But with flag set writes the response
+  state.set_flag("accuse_fail")
+  assert_say_response("accuse_fail", "failed accusation response")
 End Sub
 
 ' No keyword line matches - falls through to "*"

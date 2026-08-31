@@ -307,6 +307,7 @@ goodbye bye farewell thanks thank
 "Very good, sir. I shall be about the house if you need anything
 further."
 
+# Response when accused of the murder for a second (or subsequent) time
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues accuse_b4_billingsgate
 !provides new_accuse accuse_billingsgate
@@ -316,6 +317,7 @@ in his manner.]]@
 "You have already put that question to me, sir, and my answer has not
 changed in the meantime."
 
+# Response when accused of the murder
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues
 !provides new_accuse accuse_billingsgate accuse_b4_billingsgate
@@ -326,10 +328,36 @@ himself with the discipline of long service.]]@
 sir. I should hope my conduct speaks for itself, whatever you may
 suspect."
 
+# Response when accused when insufficient clues have been gathered
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !provides new_accuse accuse_billingsgate
 "Begging your pardon, but that is a very grave thing to suggest without
 proper cause."
+
+# Response after accusation questions have been answered correctly
+accuse_succeed
+!requires accuse_succeed
+[[reset:Your account of the murder itself is sound, Inspector, every detail
+in its proper place - but you have named the wrong man.
+Billingsgate's composure does not slip.]]@
+@
+[[cyan:"I have served this family faithfully for the whole of my working life,
+sir. I should hope my conduct speaks for itself, whatever you may suspect."]]@
+@
+[[reset:He had no hand in the Colonel's death, whatever your reasoning suggests.
+Go back over the evidence and look again at who was truly where.]]
+
+# Response after accusation questions have been answered incorrectly
+accuse_fail
+!requires accuse_fail
+[[reset:No. Somewhere in your account the facts do not add up. Billingsgate
+inclines his head gravely,]]@
+@
+[[cyan:"I'm afraid that doesn't fall within the facts as I understand them,
+sir,"]]@
+@
+[[reset:betraying nothing further as your explanation comes apart at the seams.
+Go back over your questioning and look again.]]
 
 *
 "I don't believe that falls within my knowledge, I'm afraid."
