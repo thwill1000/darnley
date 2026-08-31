@@ -146,11 +146,11 @@ Sub handle_new_accusation()
 
   ' Determine the accused
   Local suspects$(8) Length 20 = ("arthur","bagsby","billingsgate","goodbody","mellors","millicent","redvers","sarah")
-  Local accused$ = "", i%, s$
+  Local accused$ = "", flag$, i%
   For i% = Bound(suspects$(), 0) To Bound(suspects$(), 1)
-    s$ = "accuse_" + suspects$(i%)
-    If state.has_flag%(s$) Then
-      state.clear_flag(s$)
+    flag$ = "accuse_" + suspects$(i%)
+    If state.has_flag%(flag$) Then
+      state.clear_flag(flag$)
       accused$ = suspects$(i%)
       Exit For
     EndIf
@@ -214,11 +214,21 @@ Sub handle_new_accusation()
   Next
 
   Local win% = 0
+  flag$ = "accuse_fail"
   If correct% = num_questions% Then
-    print_message_or_fail("CORRECT_" + UCase$(accused$))
+    flag$ = "accuse_succeed"
     win% = (accused$ = Field$(questions$(11), 2, "|"))
-  Else
-    print_message_or_fail("INCORRECT_" + UCase$(accused$))
+  EndIf
+
+  ' Use the handling for the SAY verb to show the response
+  state.set_flag(flag$)
+  Local result% = parse(Chr$(34) + accused$ + ", " + flag$)
+  If FAILED(result%) Then Error "Unexcepted parse() result: " + result%
+  result% = verb_say()
+  If result% <> 1 Then Error "Unexcepted verb_say() result: " + result%
+  state.clear_flag(flag$)
+
+  If correct% <> num_questions% Then
     con.println()
     msg$ = "You answered " + Str$(correct%) + " of " + Str$(num_questions%)
     Cat msg$, " questions correctly."

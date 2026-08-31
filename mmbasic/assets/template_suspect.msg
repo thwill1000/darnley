@@ -212,19 +212,32 @@ weather cold snow
 goodbye bye farewell thanks thank
 "goodbye response"
 
+# Response when accused of the murder for a second (or subsequent) time
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues accuse_b4_tag
 !provides new_accuse accuse_tag
 "subsequent accusation response"
 
+# Response when accused of the murder
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues
 !provides new_accuse accuse_tag accuse_b4_tag
 "first accusation response"
 
+# Response after accusation questions have been answered correctly
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !provides new_accuse accuse_tag
 "premature accusation response"
+
+# Response after accusation questions have been answered correctly
+accuse_succeed
+!requires accuse_succeed
+"successful accusation response"
+
+# Response after accusation questions have been answered incorrectly
+accuse_fail
+!requires accuse_fail
+"failed accusation response"
 
 *
 "wildcard response"

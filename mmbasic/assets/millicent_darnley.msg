@@ -297,6 +297,7 @@ footstep shows. Small mercies, given everything else."
 goodbye bye farewell thanks thank
 "Goodbye, Inspector. I do hope you find whoever did this."
 
+# Response when accused of the murder for a second (or subsequent) time
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues accuse_b4_millicent
 !provides new_accuse accuse_millicent
@@ -305,19 +306,46 @@ goodbye bye farewell thanks thank
 "I heard you the first time. I did not do it then, and I do not do it
 now, however many times you care to repeat yourself."
 
+# Response when accused of the murder
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues
 !provides new_accuse accuse_millicent accuse_b4_millicent
-[[reset:Millicent's composure cracks for the first time since you met her - her
-eyes bright with sudden anger, or something close to it.]]@
+[[reset:Millicent's composure cracks for the first time since you met her
+- her eyes bright with sudden anger, or something close to it.]]@
 @
 "How dare you. My own father, and you accuse me? You had better be
 absolutely certain, because I will not forgive this lightly."
 
+# Response when accused when insufficient clues have been gathered
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !provides new_accuse accuse_millicent
 "That is a wicked thing to say without proof. I hope you have better
 reasons than mere suspicion."
+
+# Response after accusation questions have been answered correctly
+accuse_succeed
+!requires accuse_succeed
+[[reset:Your account of the murder itself is sound, Inspector, every detail
+in its proper place - but you have named the wrong culprit.
+Millicent's composure cracks for the first time since you met her,
+her eyes bright with sudden anger.]]@
+@
+"How dare you. My own father, and you accuse me? You had better be
+absolutely certain, because I will not forgive this lightly."@
+@
+[[reset:She cannot have done this, whatever your reasoning suggests about the
+method. Go back over the evidence and look again at who was truly where.]]
+
+# Response after accusation questions have been answered incorrectly
+accuse_fail
+!requires accuse_fail
+[[reset:No. Somewhere in your account the facts do not add up. Millicent
+regards you with cold, watchful eyes.]]@
+@
+"That is a wicked thing to say without proof. I hope you have better
+reasons than mere suspicion."@
+@
+[[reset:Go back over your questioning and look again.]]
 
 *
 "I'm afraid that is rather outside my knowledge.

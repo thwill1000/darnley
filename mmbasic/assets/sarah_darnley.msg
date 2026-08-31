@@ -310,6 +310,7 @@ goodbye bye farewell thanks thank
 "Goodbye, Inspector. Thank you for your discretion in all of
 this."
 
+# Response when accused of the murder for a second (or subsequent) time
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues accuse_b4_sarah
 !provides new_accuse accuse_sarah
@@ -319,6 +320,7 @@ something harder to read.]]@
 "You said that once already. I have nothing further to add, except that
 you are quite wrong."
 
+# Response when accused of the murder
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues
 !provides new_accuse accuse_sarah accuse_b4_sarah
@@ -327,10 +329,35 @@ you are quite wrong."
 "Me? You cannot be serious. I - I don't know what to say to such a
 thing."
 
+# Response when accused when insufficient clues have been gathered
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !provides new_accuse accuse_sarah
 "You mustn't say such things without evidence - it isn't fair, not to
 anyone."
+
+# Response after accusation questions have been answered correctly
+accuse_succeed
+!requires accuse_succeed
+[[reset:Your account of the murder itself is sound, Inspector, every detail
+in its proper place - but you have named the wrong culprit. Sarah's
+hand goes to her throat, the colour draining from her face.]]@
+@
+"Me? You cannot be serious. I - I don't know what to say to such a
+thing."@
+@
+[[reset:She was elsewhere that night, and no amount of careful reasoning
+will make her fit a crime she did not commit. Go back over the
+evidence and look again at who was truly where.]]
+
+# Response after accusation questions have been answered incorrectly
+accuse_fail
+!requires accuse_fail
+[[reset:No. Somewhere in your account the facts do not add up. Sarah Darnley
+stands very still.]]@
+@
+"You mustn't say such things without evidence - it isn't fair, not to anyone."@
+@
+[[reset:And it does not hold. Go back over your questioning and look again.]]
 
 *
 "I'm afraid I really couldn't say. This has all been such a terrible shock."

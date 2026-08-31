@@ -280,6 +280,7 @@ goodbye bye farewell thanks thank
 "Off you go then, dear. Mind you eat something - you look like you
 could use it."
 
+# Response when accused of the murder for a second (or subsequent) time
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues accuse_b4_goodbody
 !provides new_accuse accuse_goodbody
@@ -288,6 +289,7 @@ could use it."
 "You asked me that already, and my answer's the same as it was then. I
 didn't do it, and that's flat."
 
+# Response when accused of the murder
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues
 !provides new_accuse accuse_goodbody accuse_b4_goodbody
@@ -297,10 +299,35 @@ to her full and considerable height.]]@
 "Well I never! Me, murder the Colonel? I've cooked this family's dinners
 for five years and never so much as raised my voice, let alone a gun!"
 
+# Response when accused when insufficient clues have been gathered
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !provides new_accuse accuse_goodbody
 "Now that's a dreadful thing to say to a body, and no proof to back it
 up neither."
+
+# Response after accusation questions have been answered correctly
+accuse_succeed
+!requires accuse_succeed
+[[reset:Your account of the murder itself is sound, Inspector, every detail
+in its proper place - but you've named the wrong body, dear. Mrs.
+Goodbody plants her floury hands on her hips.]]@
+@
+"Well I never! Me, murder the Colonel? I've cooked this family's dinners
+for five years and never so much as raised my voice, let alone a gun!"@
+@
+[[reset:She was asleep in the butler's pantry that night, not committing murder. Go
+back over the evidence and look again at who was truly where.]]
+
+# Response after accusation questions have been answered incorrectly
+accuse_fail
+!requires accuse_fail
+[[reset:No. Somewhere in your account the facts do not add up. Mrs. Goodbody
+folds her arms and waits, entirely unmoved.]]@
+@
+"Now that's a dreadful thing to say to a body, dear, and no proof to back
+it up neither."@
+@
+[[reset:Go back over your questioning and look again.]]
 
 *
 "I'm afraid you're asking the wrong person, dear."

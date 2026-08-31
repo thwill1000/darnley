@@ -299,6 +299,7 @@ goodbye bye farewell thanks thank
 "Righto. Do let me know if there's anything else I can help with,
 won't you?"
 
+# Response when accused of the murder for a second (or subsequent) time
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues accuse_b4_arthur
 !provides new_accuse accuse_arthur
@@ -307,6 +308,7 @@ won't you?"
 "Again? Really, this is becoming tiresome. Have your say, then - let's
 have done with it."
 
+# Response when accused of the murder
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues
 !provides new_accuse accuse_arthur accuse_b4_arthur
@@ -316,10 +318,46 @@ around the eyes - before he recovers himself entirely.]]@
 "My dear fellow, that's a serious thing to say to a man. I think you had
 better be very sure of your facts before you say it again."
 
+# Response when accused when insufficient clues have been gathered
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !provides new_accuse accuse_arthur
 "Steady on! You can't go about making accusations without a shred of proof
 to back them up."
+
+# Response after accusation questions have been answered correctly
+accuse_succeed
+!requires accuse_succeed
+[[reset:For a long moment Coniston says nothing at all. Then something in
+his face gives way - the easy charm gone, all at once, like a light
+switched off.]]@
+@
+"Well," [[reset:he says quietly.]] "I did wonder how long it would take you."@
+@
+[[reset:He looks almost relieved.]]@
+@
+"I don't suppose there's much point in denying it now, is there.
+Millicent will hate me - or perhaps she won't, which would be
+worse. I loved her, you know. That part wasn't a lie, whatever else
+was." [[reset:A short, humourless laugh.]] "Funny thing, murder. Seemed awfully
+clever at the time."@
+@
+[[green:With your evidence Arthur Coniston is arrested, tried and found
+guilty of the murder of Colonel Sebastian Darnley. He is sentenced
+to 30 years of imprisonment at Her Majesty's pleasure.]]
+
+# Response after accusation questions have been answered incorrectly
+accuse_fail
+!requires accuse_fail
+[[reset:No. Somewhere in your account of events the facts do not add up.]]@
+@
+"Steady on," [[reset:Coniston says, watching you flounder with the ghost of
+a smile playing about his lips.]]@
+@
+"You can't go about making accusations without a shred of proof to back
+them up."@
+@
+[[reset:It's plausible you have the right man, Inspector, but not yet the right
+explanation. Go back over your questioning and look again.]]
 
 *
 "Can't say I know anything about that. Sorry, old boy."

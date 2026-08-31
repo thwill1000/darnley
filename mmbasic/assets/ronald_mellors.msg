@@ -247,6 +247,7 @@ Nothing else to say about it."
 goodbye bye farewell thanks thank
 "Aye. Off with you, then."
 
+# Response when accused of the murder for a second (or subsequent) time
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues accuse_b4_mellors
 !provides new_accuse accuse_mellors
@@ -255,6 +256,7 @@ goodbye bye farewell thanks thank
 "Already told you once. Nothing's changed, and I'm not about to start
 singing a different tune just to please you."
 
+# Response when accused of the murder
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues
 !provides new_accuse accuse_mellors accuse_b4_mellors
@@ -265,10 +267,36 @@ his eyes has sharpened.]]@
 "Say that again and see what it gets you. I never touched him. Been
 saying so all along, and I'll keep saying it."
 
+# Response when accused when insufficient clues have been gathered
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !provides new_accuse accuse_mellors
 "You'd best have something to back that up before you go saying it
 again."
+
+# Response after accusation questions have been answered correctly
+accuse_succeed
+!requires accuse_succeed
+[[reset:Your account of the murder itself is sound, Inspector, every detail
+in its proper place - but you have named the wrong culprit. Mellors
+doesn't flinch, though something behind his eyes has sharpened.]]@
+@
+"Say that again and see what it gets you. I never touched him. Been
+saying so all along, and I'll keep saying it."@
+@
+[[reset:He may be surly and close-mouthed, but he did not fire the shot that
+killed Colonel Darnley. Go back over the evidence and look again at who was
+truly where.]]
+
+# Response after accusation questions have been answered incorrectly
+accuse_fail
+!requires accuse_fail
+[[reset:No. Somewhere in your account the facts do not add up. Mellors' flat
+stare does not waver.]]@
+@
+"You'd best have something to back that up before you go saying it
+again."@
+@
+[[reset:Go back over your questioning and look again.]]
 
 *
 "Do I look like I'd know anything about that?"
