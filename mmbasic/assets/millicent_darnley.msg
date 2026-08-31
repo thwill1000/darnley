@@ -325,13 +325,12 @@ reasons than mere suspicion."
 # Response after accusation questions have been answered correctly
 accuse_succeed
 !requires accuse_succeed
-[[reset:Your account of the murder itself is sound, Inspector, every detail
-in its proper place - but you have named the wrong culprit.
-Millicent's composure cracks for the first time since you met her,
-her eyes bright with sudden anger.]]@
+[[reset:Millicent's composure cracks, not into anger this time, but into
+something closer to bewilderment.]]@
 @
-"How dare you. My own father, and you accuse me? You had better be
-absolutely certain, because I will not forgive this lightly."@
+"You have got the how of it right, I think - I can see that in the way
+you tell it. But you have got the who quite wrong, and I would rather
+you admitted that than dressed it up as certainty."@
 @
 [[reset:She cannot have done this, whatever your reasoning suggests about the
 method. Go back over the evidence and look again at who was truly where.]]
@@ -339,11 +338,12 @@ method. Go back over the evidence and look again at who was truly where.]]
 # Response after accusation questions have been answered incorrectly
 accuse_fail
 !requires accuse_fail
-[[reset:No. Somewhere in your account the facts do not add up. Millicent
-regards you with cold, watchful eyes.]]@
+[[reset:Millicent's eyes narrow slightly, watching you the way one watches
+someone building an argument on sand.]]@
 @
-"That is a wicked thing to say without proof. I hope you have better
-reasons than mere suspicion."@
+"You have missed something, Inspector - I could hear it. I do not know
+what, precisely, but I know when a story does not hang together, and
+this one does not."@
 @
 [[reset:Go back over your questioning and look again.]]
 

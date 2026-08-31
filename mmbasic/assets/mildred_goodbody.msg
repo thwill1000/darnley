@@ -308,24 +308,25 @@ up neither."
 # Response after accusation questions have been answered correctly
 accuse_succeed
 !requires accuse_succeed
-[[reset:Your account of the murder itself is sound, Inspector, every detail
-in its proper place - but you've named the wrong body, dear. Mrs.
-Goodbody plants her floury hands on her hips.]]@
+[[reset:Mrs. Goodbody's hands come off her hips, and for a moment she just
+looks tired.]]@
 @
-"Well I never! Me, murder the Colonel? I've cooked this family's dinners
-for five years and never so much as raised my voice, let alone a gun!"@
+"You've puzzled it out clever enough, I'll say that - but you've
+puzzled your way to the wrong one of us, dear, and that's the truth
+of it whatever the rest adds up to."@
 @
-[[reset:She was asleep in the butler's pantry that night, not committing murder. Go
-back over the evidence and look again at who was truly where.]]
+[[reset:She was asleep in the butler's pantry that night, not committing murder.
+Go back over the evidence and look again at who was truly where.]]
 
 # Response after accusation questions have been answered incorrectly
 accuse_fail
 !requires accuse_fail
-[[reset:No. Somewhere in your account the facts do not add up. Mrs. Goodbody
-folds her arms and waits, entirely unmoved.]]@
+[[reset:Mrs. Goodbody folds her arms, entirely unmoved, and looks at you the way
+she'd look at a badly-risen loaf.]]@
 @
-"Now that's a dreadful thing to say to a body, dear, and no proof to back
-it up neither."@
+"That's not how it went, dear, and you know it same as I do. Something
+in what you've just told me doesn't hold together - go and have
+another think."@
 @
 [[reset:Go back over your questioning and look again.]]
 

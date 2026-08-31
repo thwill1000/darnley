@@ -294,27 +294,26 @@ paid me! I only been here six months, sir, honest!"
 # Response after accusation questions have been answered correctly
 accuse_succeed
 !requires accuse_succeed
-[[reset:Your account of the murder itself is sound, Inspector, every detail
-in its proper place - but you have named the wrong culprit. Norah's
-eyes go wide and her lip trembles, as though she might burst into
-tears on the spot.]]@
+[[reset:Norah's eyes go wide, but this time it's confusion more than fear.]]@
 @
-"Me, sir? Oh, please, I never - I wouldn't know how to fire a gun if you
-paid me! I only been here six months, sir, honest!"@
+"But sir - that's not - I mean, you've explained it ever so clear, but
+it wasn't me what did it, sir, honest it wasn't. You must have the
+wrong one of us."@
 @
-[[reset:Young Norah Bagsby is guilty of nothing more than nerves. Go back over the
-evidence and look again at who was truly where.]]
+[[reset:Young Norah Bagsby is guilty of nothing more than nerves. Go back over
+the evidence and look again at who was truly where.]]
 
 # Response after accusation questions have been answered incorrectly
 accuse_fail
 !requires accuse_fail
-[[reset:No. Somewhere in your account the facts do not add up. Norah looks
-more frightened than relieved, dabbing at her eyes.]]@
+[[reset:Norah looks at you uncertainly, twisting her apron between her
+fingers.]]@
 @
-"Oh! You mustn't say that, sir, not without you're sure - it isn't right."@
+"I don't like to say, sir, only - that doesn't sound quite right to me,
+what you just said. I can't rightly explain why, but it doesn't."@
 @
-[[reset:She is not yet convinced her ordeal is over. Go back over your questioning and
-look again.]]
+[[reset:She is not yet convinced her ordeal is over. Go back over your
+questioning and look again.]]
 
 *
 "I wouldn't know about that. Nobody tells me anything."

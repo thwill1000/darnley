@@ -276,12 +276,11 @@ again."
 # Response after accusation questions have been answered correctly
 accuse_succeed
 !requires accuse_succeed
-[[reset:Your account of the murder itself is sound, Inspector, every detail
-in its proper place - but you have named the wrong culprit. Mellors
-doesn't flinch, though something behind his eyes has sharpened.]]@
+[[reset:Mellors doesn't flinch, though something behind his eyes has sharpened
+- not anger this time, something closer to grudging attention.]]@
 @
-"Say that again and see what it gets you. I never touched him. Been
-saying so all along, and I'll keep saying it."@
+"You've worked it out proper, I'll give you that. Worked it out wrong,
+mind. Wasn't me. You'd best go back and find the one it was."@
 @
 [[reset:He may be surly and close-mouthed, but he did not fire the shot that
 killed Colonel Darnley. Go back over the evidence and look again at who was
@@ -290,11 +289,11 @@ truly where.]]
 # Response after accusation questions have been answered incorrectly
 accuse_fail
 !requires accuse_fail
-[[reset:No. Somewhere in your account the facts do not add up. Mellors' flat
-stare does not waver.]]@
+[[reset:Mellors' flat stare does not waver, though there's the ghost of
+something like scorn in it now.]]@
 @
-"You'd best have something to back that up before you go saying it
-again."@
+"That's not it. Don't ask me how I know, I just know - something in
+what you said don't sit right. Go and look again."@
 @
 [[reset:Go back over your questioning and look again.]]
 
