@@ -159,7 +159,8 @@ Sub assert_response(cmd$, expected$, partial%)
   assert_int_equals(1, result%)
 
   If partial% Then
-    assert_int_neq(0, InStr(con_output$, expected$))
+    Const wanted$ = "<cyan>" + Choice(Left$(expected$, 1) = "[", "" , Chr$(34)) + expected$
+    assert_string_equals(wanted$, Left$(con_output$, Len(wanted$)))
   Else
     Const wanted$ = "<cyan>" + str.quote$(expected$) + "<reset>" + sys.CRLF$
     assert_string_equals(wanted$, con_output$)
@@ -530,12 +531,12 @@ Sub test_confirm_sarah()
 
   ' With no flags set, Mellors' corroboration of Sarah falls to the unconditional entry
   objects$(9) = "P_RONALD_MELLORS|Ronald Mellors|ronald_mellors gamekeeper|LOC001_BATHROOM|2|100"
-  assert_response("confirm sarah", "Not my place to say", 1)
+  assert_response("confirm sarah", "Don't know anything about Mrs. Darnley's evening.", 1)
 
   ' Once both gating flags are set, the more specific (still evasive) entry wins
   objects$(9) = "P_RONALD_MELLORS|Ronald Mellors|ronald_mellors gamekeeper|LOC001_BATHROOM|2|100"
   reset_flags("handkerchief", "cigarettes")
-  assert_response("confirm sarah", "flickers behind", 1)
+  assert_response("confirm sarah", "[[reset:Something flickers behind his flat stare.]]", 1)
 End Sub
 
 Sub test_confirm_redvers()
