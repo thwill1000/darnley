@@ -97,6 +97,7 @@ OBJ254_MUSIC_ROOM_ASHTRAY|Brass ashtray|brass ashtray|LOC015_MUSIC_ROOM|1|1
 OBJ255_ROOK|Rook|bird crow rook|LOC022_EAST_LAWN|0|100
 OBJ256_SHOTGUNS|Shotguns|guns shotgun shotguns|LOC023_GAMEKEEPERS_COTTAGE|1|1
 OBJ257_STACKED_FURNITURE|Stacked furniture|stacked furniture|LOC008_HALL|0|100
+OBJ258_BRANCH|Broken branch|branch|LOC005_ORNAMENTAL_POND|1|1
 
 !synonyms
 arthur|coniston|arthurs|conistons
