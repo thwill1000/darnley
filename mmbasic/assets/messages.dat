@@ -321,8 +321,8 @@ and quite possibly you - are his to keep an eye on.
 OBJ201_POND
 !provides x_pond
 Near the empty pedestal the ice is thinner as if it has frozen again after
-having been broken. A stout broken branch lies discarded on the ice nearby, its
-end scuffed and split. Beneath the ice you can see the missing marble
+having been broken. A stout [[green:broken branch]] lies discarded on the ice
+nearby. Beneath the ice you can see the missing marble
 [[green:statue]] and a [[green:revolver]].
 
 OBJ202_SUNKEN_STATUE
@@ -664,6 +664,10 @@ A stack of furniture and effects from the second guest room, temporarily
 stored here while that room is redecorated. Too heavy and too numerous to
 move alone, they block what would otherwise be a passage through to
 the kitchen.
+
+OBJ258_BRANCH
+A fallen branch, about the length of a walking stick and no thicker than a
+wrist - light enough to wield with one hand. One end is scuffed and split.
 
 WHAT_REALLY_HAPPENED
 [[green:What really happened at Darnley Park?]]@
