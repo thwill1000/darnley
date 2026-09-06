@@ -542,7 +542,7 @@ Function verb_examine()
   If Not ok% Then
     Const exit_loc% = find_exit_match%(words$())
     If exit_loc% > -1 Then
-      con.print_fail("Try `GO " + UCase$(cat_words$(words$(), 2)) + "`.").
+      con.print_fail("Try `GO " + UCase$(cat_words$(words$(), 2)) + "`.")
     Else
       con.print_fail("That is not here, cannot be examined or is unremarkable.")
     EndIf
