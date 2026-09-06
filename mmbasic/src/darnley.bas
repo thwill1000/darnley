@@ -57,10 +57,11 @@ show_help(1)
 Do
   If state.restart% Then Goto game_start
 
-  ' If the player's location has changed then set flag to describe their new location
-  If r_old% <> r Then describe% = 1 : r_old% = r
+  ' If the player's location has changed or a re-describe has been requested
+  If (r_old% <> r) Or (describe% <> 0) Then describe_loc()
 
-  If describe% Then describe_loc()
+  ' Store old location so we can detect the player moving
+  r_old% = r
 
   ' Prompt for command
   con.println()
@@ -80,20 +81,22 @@ Do
     con.print_fail("That doesn't seem to work.")
   EndIf
 
-  ' Kitchen -> Hall is a real exit in the data (needed so GO HALL resolves),
-  ' but the passage is stacked with furniture on the hall side. Mrs Goodbody,
-  ' always in the kitchen, heads the player off before they open the door.
-  If r = find_loc%("LOC008_HALL", 1) And r_old% = find_loc%("LOC009_KITCHEN", 1) Then
-    print_message_or_fail("KITCHEN_TO_HALL")
-    r = r_old%
-  EndIf
+  If r <> r_old% Then
+    ' Kitchen -> Hall is a real exit in the data (needed so GO HALL resolves),
+    ' but the passage is stacked with furniture on the hall side. Mrs Goodbody,
+    ' always in the kitchen, heads the player off before they open the door.
+    If r = find_loc%("LOC008_HALL", 1) And r_old% = find_loc%("LOC009_KITCHEN", 1) Then
+      print_message_or_fail("KITCHEN_TO_HALL")
+      r = r_old%
+    EndIf
 
-  ' Landing -> Second guest room is likewise a real exit only so GO resolves;
-  ' the room isn't otherwise modelled, so revert after describing why there's
-  ' nothing to be gained by entering.
-  If r = find_loc%("LOC030_SECOND_GUEST_ROOM", 1) And r_old% = find_loc%("LOC028_MORNING_ROOM", 1) Then
-    print_message_or_fail("MORNING_ROOM_TO_GUEST_ROOM")
-    r = r_old%
+    ' Landing -> Second guest room is likewise a real exit only so GO resolves;
+    ' the room isn't otherwise modelled, so revert after describing why there's
+    ' nothing to be gained by entering.
+    If r = find_loc%("LOC030_SECOND_GUEST_ROOM", 1) And r_old% = find_loc%("LOC028_MORNING_ROOM", 1) Then
+      print_message_or_fail("MORNING_ROOM_TO_GUEST_ROOM")
+      r = r_old%
+    EndIf
   EndIf
 
   ' Special handling
