@@ -145,7 +145,7 @@ Sub handle_new_accusation()
   state.clear_flag("new_accuse")
 
   ' Determine the accused
-  Local suspects$(8) Length 20 = ("arnold","arthur","mildred","millicent","norah","redvers","ronald","sarah")
+  Local suspects$(8) Length 20 = ("arthur","bagsby","billingsgate","goodbody","mellors","millicent","redvers","sarah")
   Local accused$ = "", i%, s$
   For i% = Bound(suspects$(), 0) To Bound(suspects$(), 1)
     s$ = "accuse_" + suspects$(i%)

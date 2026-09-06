@@ -62,13 +62,13 @@ advdata.init(adv.asset_dir$ + "advent.dat")
 Dim t_keys$(msgorder.MAX_ENTRIES%) Length 128, t_n%
 msgorder.read_entries(adv.asset_dir$ + "template_suspect.msg", t_keys$(), t_n%)
 
-add_test("Arnold Billingsgate's .msg file matches template entry order", "test_msg_order_arnold")
+add_test("Arnold Billingsgate's .msg file matches template entry order", "test_msg_order_billingsgate")
 add_test("Arthur Coniston's .msg file matches template entry order", "test_msg_order_arthur")
-add_test("Mildred Goodbody's .msg file matches template entry order", "test_msg_order_mildred")
+add_test("Mildred Goodbody's .msg file matches template entry order", "test_msg_order_goodbody")
 add_test("Millicent Darnley's .msg file matches template entry order", "test_msg_order_millicent")
-add_test("Norah Bagsby's .msg file matches template entry order", "test_msg_order_norah")
+add_test("Norah Bagsby's .msg file matches template entry order", "test_msg_order_bagsby")
 add_test("Redvers Slingsby's .msg file matches template entry order", "test_msg_order_redvers")
-add_test("Ronald Mellors's .msg file matches template entry order", "test_msg_order_ronald")
+add_test("Ronald Mellors's .msg file matches template entry order", "test_msg_order_mellors")
 add_test("Sarah Darnley's .msg file matches template entry order", "test_msg_order_sarah")
 add_test("Chester Cat's .msg file matches template entry order", "test_msg_order_chester")
 
@@ -91,7 +91,7 @@ Sub assert_msg_order(filename$)
   assert_string_equals("", err$)
 End Sub
 
-Sub test_msg_order_arnold()
+Sub test_msg_order_billingsgate()
   assert_msg_order("arnold_billingsgate.msg")
 End Sub
 
@@ -99,7 +99,7 @@ Sub test_msg_order_arthur()
   assert_msg_order("arthur_coniston.msg")
 End Sub
 
-Sub test_msg_order_mildred()
+Sub test_msg_order_goodbody()
   assert_msg_order("mildred_goodbody.msg")
 End Sub
 
@@ -107,7 +107,7 @@ Sub test_msg_order_millicent()
   assert_msg_order("millicent_darnley.msg")
 End Sub
 
-Sub test_msg_order_norah()
+Sub test_msg_order_bagsby()
   assert_msg_order("norah_bagsby.msg")
 End Sub
 
@@ -115,7 +115,7 @@ Sub test_msg_order_redvers()
   assert_msg_order("redvers_slingsby.msg")
 End Sub
 
-Sub test_msg_order_ronald()
+Sub test_msg_order_mellors()
   assert_msg_order("ronald_mellors.msg")
 End Sub
 
