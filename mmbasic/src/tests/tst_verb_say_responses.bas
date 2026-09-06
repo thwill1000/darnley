@@ -90,6 +90,8 @@ add_test("What do you know about the slipper prints?", "test_slipper_prints")
 add_test("What do you know about the men's shoe prints?", "test_mens_shoeprints")
 add_test("What do you know about the women's shoe prints?", "test_womens_shoeprints")
 add_test("Tell me about the footprints.", "test_footprints")
+add_test("What do you know about the tyre tracks by the car?", "test_car_tracks")
+add_test("How long have you been on duty at the gate?", "test_gate_duty")
 add_test("What do you know about the pond?", "test_pond")
 add_test("Tell me about the pipe in the servants' quarters.", "test_pipe")
 add_test("Whose books are these?", "test_bookshelf")
@@ -449,6 +451,26 @@ Sub test_footprints()
   assert_response("Tell me about the shoe prints", "footprints response")
   assert_response("What about the shoeprints?", "footprints response")
   assert_response("What about the shoe tracks?", "footprints response")
+End Sub
+
+Sub test_car_tracks()
+  assert_response("car tracks", "car tracks response")
+
+  ' Only meaningful for the Police Constable - swap in his real .msg file
+  objects$(9) = "P_POLICE_CONSTABLE|Police Constable|police constable policeman bobby|LOC001_BATHROOM|2|100"
+  assert_response("Tell me about the tyre tracks", "Tyre-tracks run the length of the drive", 1)
+  assert_response("What about the tracks by the car?", "Tyre-tracks run the length of the drive", 1)
+  assert_response("What about the daimler's tyres?", "Tyre-tracks run the length of the drive", 1)
+End Sub
+
+Sub test_gate_duty()
+  assert_response("gate duty", "gate duty response")
+
+  ' Only meaningful for the Police Constable - swap in his real .msg file
+  objects$(9) = "P_POLICE_CONSTABLE|Police Constable|police constable policeman bobby|LOC001_BATHROOM|2|100"
+  assert_response("How long have you been on duty here?", "Sent up from the station first thing", 1)
+  assert_response("Were you posted here at the gate?", "Sent up from the station first thing", 1)
+  assert_response("What are your orders at the drive?", "Sent up from the station first thing", 1)
 End Sub
 
 Sub test_pond()
