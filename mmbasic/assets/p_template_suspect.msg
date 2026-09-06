@@ -101,6 +101,12 @@ handkerchief
 +(footprints/shoeprints/bootprints/prints/marks) foot boot shoe
 "footprints response"
 
+(car/motor/daimler/saloon) prints tyre tyres
+"car tracks response"
+
++(gate/gates/drive/duty) posted
+"gate duty response"
+
 pond
 "pond response"
 

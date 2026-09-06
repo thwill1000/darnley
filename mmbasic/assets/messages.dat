@@ -140,14 +140,15 @@ recent game. Shelves hold magazines and novels by Conan Doyle and Buchan. Three
 and [[green:Music room]].
 
 LOC017_DRIVE
-From wrought-iron gates, the drive sweeps northward toward a small red-brick
-Georgian manor, its weathered facade and plain symmetrical proportions
-speaking of an earlier, more restrained age, stone lions flanking
-steps that climb to the [[green:Hall]] door. Paths branch away: clockwise around
-the house along snow-covered gravel toward the [[green:West walk]] and
-[[green:West lawn]], or anti-clockwise through an avenue of statues along the
-[[green:East walk]] towards the [[green:Stables]]. The snow reveals a confused
-tangle of [[green:footprints]] criss-crossing in all directions.
+From wrought-iron gates, the drive sweeps northward toward a small red-brick Georgian
+manor, its weathered facade and plain symmetrical proportions speaking of an
+earlier, more restrained age, stone lions flanking steps that climb to the
+[[green:Hall]] door. Paths branch away: clockwise around the house along
+snow-covered gravel toward the [[green:West walk]] and [[green:West lawn]],
+or anti-clockwise through an avenue of statues along the [[green:East walk]]
+towards the [[green:Stables]]. A [[green:police constable]] stands watchfully
+by one of the gate-piers whilst the snow reveals a confused tangle of
+[[green:footprints]] criss-crossing in all directions.
 
 LOC018_EAST_WALK
 This gravel path runs east-west across the front of the house, flanked by an
@@ -317,6 +318,14 @@ A large ginger cat, broader through the shoulders than most, sits
 watchfully in the straw of the doorway. He tracks your movements with
 an unhurried, faintly proprietary interest, as though the stables -
 and quite possibly you - are his to keep an eye on.
+
+P_POLICE_CONSTABLE
+A solidly built young constable stands watch by the gate, hands clasped
+behind his back beneath a dark blue tunic buttoned to the collar. His
+domed helmet bears a small badge at the front, and a stout leather belt
+is cinched at his waist. He observes the comings and goings at the drive
+with the patient, unhurried attention of a man told to stand somewhere
+and mind it.
 
 OBJ201_POND
 !provides x_pond
