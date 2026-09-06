@@ -283,15 +283,11 @@ family, sir. I have nothing further to say on the matter."
 affair mellors sarah (summerhouse/summer) together secret lovers
 "That is not a subject on which I would presume to comment, sir."
 
-+redvers money mining peru ruin
-!requires newspaper
+money mining peru ruin redvers colonel
 "I could not say what passed between the Colonel and Sir Redvers,
 sir - it is not my place to listen at doors. I will say Sir Redvers
 arrived rather suddenly yesterday, without prior arrangement, which
 struck me as unusual for a gentleman of his standing."
-
-money mining peru ruin redvers colonel
-"That is not a matter I would have any knowledge of, sir."
 
 police investigation scotland yard inspector detective think of me
 "I have every confidence you will get to the bottom of it, sir. The
