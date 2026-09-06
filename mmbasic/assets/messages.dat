@@ -835,7 +835,7 @@ The game accepts the following commands:@
 ACCUSE_TEXT
 There are questions you must answer to press your accusation:
 
-INCORRECT_ARNOLD
+INCORRECT_BILLINGSGATE
 No. Somewhere in your account the facts do not add up. Billingsgate
 inclines his head gravely,@
 @
@@ -859,7 +859,7 @@ them up."]]@
 It's plausible you have the right man, Inspector, but not yet the right
 explanation. Go back over your questioning and look again.
 
-INCORRECT_MILDRED
+INCORRECT_GOODBODY
 No. Somewhere in your account the facts do not add up. Mrs. Goodbody
 folds her arms and waits, entirely unmoved.@
 @
@@ -877,7 +877,7 @@ reasons than mere suspicion."]]@
 @
 Go back over your questioning and look again.
 
-INCORRECT_NORAH
+INCORRECT_BAGSBY
 No. Somewhere in your account the facts do not add up. Norah looks
 more frightened than relieved, dabbing at her eyes.@
 @
@@ -896,7 +896,7 @@ facts straight first."]]@
 @
 Go back over your questioning and look again.
 
-INCORRECT_RONALD
+INCORRECT_MELLORS
 No. Somewhere in your account the facts do not add up. Mellors' flat
 stare does not waver.@
 @
@@ -914,7 +914,7 @@ anyone.]]"@
 @
 And it does not hold. Go back over your questioning and look again.
 
-CORRECT_ARNOLD
+CORRECT_BILLINGSGATE
 Your account of the murder itself is sound, Inspector, every detail
 in its proper place - but you have named the wrong man.
 Billingsgate's composure does not slip.@
@@ -944,7 +944,7 @@ clever at the time."]]@
 guilty of the murder of Colonel Sebastian Darnley. He is sentenced
 to 30 years of imprisonment at Her Majesty's pleasure.]]
 
-CORRECT_MILDRED
+CORRECT_GOODBODY
 Your account of the murder itself is sound, Inspector, every detail
 in its proper place - but you've named the wrong body, dear. Mrs.
 Goodbody plants her floury hands on her hips.@
@@ -967,7 +967,7 @@ absolutely certain, because I will not forgive this lightly."]]@
 She cannot have done this, whatever your reasoning suggests about the method.
 Go back over the evidence and look again at who was truly where.
 
-CORRECT_NORAH
+CORRECT_BAGSBY
 Your account of the murder itself is sound, Inspector, every detail
 in its proper place - but you have named the wrong culprit. Norah's
 eyes go wide and her lip trembles, as though she might burst into
@@ -990,7 +990,7 @@ alive and well, and I'll thank you to remember it!"]]@
 @
 Go back over the evidence and look again at who was truly where.
 
-CORRECT_RONALD
+CORRECT_MELLORS
 Your account of the murder itself is sound, Inspector, every detail
 in its proper place - but you have named the wrong culprit. Mellors
 doesn't flinch, though something behind his eyes has sharpened.@

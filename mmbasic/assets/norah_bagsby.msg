@@ -267,8 +267,8 @@ goodbye bye farewell thanks thank
 just, well, you know."
 
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
-!requires all_clues accuse_b4_norah
-!provides new_accuse accuse_norah
+!requires all_clues accuse_b4_bagsby
+!provides new_accuse accuse_bagsby
 [[reset:She sniffs, dabbing at her eyes with her sleeve, though there is a
 flicker of something more wary beneath the tears now.]]@
 @
@@ -277,7 +277,7 @@ haven't changed my mind."
 
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues
-!provides new_accuse accuse_norah accuse_b4_norah
+!provides new_accuse accuse_bagsby accuse_b4_bagsby
 [[reset:Norah's eyes go wide and her lip trembles - she looks for all the world
 as though she might burst into tears on the spot.]]@
 @
@@ -285,7 +285,7 @@ as though she might burst into tears on the spot.]]@
 paid me! I only been here six months, sir, honest!"
 
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
-!provides new_accuse accuse_norah
+!provides new_accuse accuse_bagsby
 "Oh! You mustn't say that, not without you're sure - it isn't right."
 
 *

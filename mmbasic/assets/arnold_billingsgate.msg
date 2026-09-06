@@ -308,8 +308,8 @@ goodbye bye farewell thanks thank
 further."
 
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
-!requires all_clues accuse_b4_arnold
-!provides new_accuse accuse_arnold
+!requires all_clues accuse_b4_billingsgate
+!provides new_accuse accuse_billingsgate
 [[reset:The butler's composure has returned, though something guarded remains
 in his manner.]]@
 @
@@ -318,7 +318,7 @@ changed in the meantime."
 
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues
-!provides new_accuse accuse_arnold accuse_b4_arnold
+!provides new_accuse accuse_billingsgate accuse_b4_billingsgate
 [[reset:Billingsgate draws himself up, visibly wounded, though he masters
 himself with the discipline of long service.]]@
 @
@@ -327,7 +327,7 @@ sir. I should hope my conduct speaks for itself, whatever you may
 suspect."
 
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
-!provides new_accuse accuse_arnold
+!provides new_accuse accuse_billingsgate
 "Begging your pardon, but that is a very grave thing to suggest without
 proper cause."
 

@@ -281,8 +281,8 @@ goodbye bye farewell thanks thank
 could use it."
 
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
-!requires all_clues accuse_b4_mildred
-!provides new_accuse accuse_mildred
+!requires all_clues accuse_b4_goodbody
+!provides new_accuse accuse_goodbody
 [[reset:She fixes you with a look that could curdle milk.]]@
 @
 "You asked me that already, and my answer's the same as it was then. I
@@ -290,7 +290,7 @@ didn't do it, and that's flat."
 
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues
-!provides new_accuse accuse_mildred accuse_b4_mildred
+!provides new_accuse accuse_goodbody accuse_b4_goodbody
 [[reset:Mrs. Goodbody plants her floury hands on her hips, drawing herself up
 to her full and considerable height.]]@
 @
@@ -298,7 +298,7 @@ to her full and considerable height.]]@
 for five years and never so much as raised my voice, let alone a gun!"
 
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
-!provides new_accuse accuse_mildred
+!provides new_accuse accuse_goodbody
 "Now that's a dreadful thing to say to a body, and no proof to back it
 up neither."
 

@@ -248,8 +248,8 @@ goodbye bye farewell thanks thank
 "Aye. Off with you, then."
 
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
-!requires all_clues accuse_b4_ronald
-!provides new_accuse accuse_ronald
+!requires all_clues accuse_b4_mellors
+!provides new_accuse accuse_mellors
 [[reset:He doesn't so much as blink.]]@
 @
 "Already told you once. Nothing's changed, and I'm not about to start
@@ -257,7 +257,7 @@ singing a different tune just to please you."
 
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
 !requires all_clues
-!provides new_accuse accuse_ronald accuse_b4_ronald
+!provides new_accuse accuse_mellors accuse_b4_mellors
 [[reset:Mellors doesn't flinch. He looks back at you with the same flat,
 unreadable hostility he's shown from the start, though something behind
 his eyes has sharpened.]]@
@@ -266,7 +266,7 @@ his eyes has sharpened.]]@
 saying so all along, and I'll keep saying it."
 
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
-!provides new_accuse accuse_ronald
+!provides new_accuse accuse_mellors
 "You'd best have something to back that up before you go saying it
 again."
 
