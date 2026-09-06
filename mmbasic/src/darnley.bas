@@ -169,7 +169,7 @@ Sub handle_new_accusation()
   con.println()
   print_message_or_fail("ACCUSE_TEXT")
 
-  Local answer$, correct%, pattern$, num_matches%, msg$, q%
+  Local answer$, correct%, pattern$, match_in$, msg$, num_matches%, q%
 
   Const num_questions% = Bound(questions$(), 1)
   For q% = Bound(questions$(), 0) To num_questions%
@@ -194,7 +194,8 @@ Sub handle_new_accusation()
 
     ' Compare the answer to the expected response pattern
     pattern$ = Mid$(questions$(q%), InStr(questions$(q%), "|") + 1)
-    num_matches% = find_matches%(pattern$, words$())
+    match_in$ = make_match_input$(words$())
+    num_matches% = find_matches%(pattern$, match_in$)
     If num_matches% Then Inc correct%
 
     ' Uncomment for debugging
