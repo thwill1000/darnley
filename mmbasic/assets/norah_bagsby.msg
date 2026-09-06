@@ -244,14 +244,10 @@ that, honest I don't." (She does not meet your eye as she says it.)
 affair mellors sarah (summerhouse/summer) together secret lovers
 "I don't know anything about that, sir, honest."
 
-+redvers money mining peru ruin
-!requires newspaper
+money mining peru ruin redvers colonel
 "I don't know much, sir, only that Sir Redvers seemed ever so cross
 when he arrived. Mrs. G. said it was money troubles, but I don't
 know more than that."
-
-money mining peru ruin redvers colonel
-"I wouldn't know about that, sir. Nobody tells me anything."
 
 police investigation scotland yard inspector detective think of me
 "Oh, it does put the wind up me, having a proper detective in the
