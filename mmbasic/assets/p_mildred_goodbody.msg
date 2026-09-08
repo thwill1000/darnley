@@ -151,6 +151,10 @@ second guest room, and I'll not have anyone trying to squeeze past
 it and bringing the lot down on themselves. Round through the
 pantry, same as always."
 
+horse | +bay +hunter
+"That's Mr. Mellors' department, dear, not mine. I stick to the kitchen and
+leave the horses to him."
+
 events yesterday murder last happened
 "Last night I cooked and washed up with Norah. At about 10:30 I heard a loud
 bang, it gave me quite a shock. Not long after we went to bed; me and Norah

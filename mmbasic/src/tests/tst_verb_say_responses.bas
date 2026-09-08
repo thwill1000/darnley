@@ -84,6 +84,7 @@ add_test("What do you think of Mildred Goodbody?", "test_opinion_goodbody")
 add_test("What do you think of Norah Bagsby?", "test_opinion_bagsby")
 add_test("What do you think of Ronald Mellors?", "test_opinion_mellors")
 add_test("Tell me about the ginger cat.", "test_ginger_cat")
+add_test("What do you know about the horse?", "test_horse")
 add_test("What do you know about the flat-footed bootprints?", "test_flatfooted")
 add_test("What do you know about the hobnailed bootprints?", "test_hobnailed")
 add_test("What do you know about the slipper prints?", "test_slipper_prints")
@@ -404,6 +405,14 @@ End Sub
 Sub test_ginger_cat()
   assert_response("cat", "chester cat response")
   assert_response("Tell me about the ginger cat", "chester cat response")
+End Sub
+
+Sub test_horse()
+  assert_response("horse", "horse response")
+  assert_response("bay hunter", "horse response")
+  assert_response("Tell me about the horse", "horse response")
+  assert_response("What do you know about the horse?", "horse response")
+  assert_response("Ask about the Colonel's bay hunter", "horse response")
 End Sub
 
 Sub test_flatfooted()

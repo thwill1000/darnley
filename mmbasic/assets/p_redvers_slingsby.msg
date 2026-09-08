@@ -158,6 +158,10 @@ servants' quarters."
 "Haven't the faintest idea what you're talking about. I don't
 concern myself with the service side of the house."
 
+horse | +bay +hunter
+"Decent-looking animal. Darnley always did keep a good stable, whatever else 
+you say about him."
+
 events yesterday murder last happened
 "I have known Darnley for about 20 years. It was some confidential
 business dealings that brought me here urgently yesterday. Last

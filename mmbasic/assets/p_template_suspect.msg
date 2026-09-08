@@ -134,6 +134,9 @@ stacked furniture
 +(blocked/passage) door kitchen
 "kitchen passage response"
 
+horse | +bay +hunter
+"horse response"
+
 events yesterday murder last happened
 "events response"
 

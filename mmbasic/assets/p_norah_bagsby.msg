@@ -146,6 +146,9 @@ of the work."
 up with furniture and not safe. I go round by the pantry same as
 everybody else."
 
+horse | +bay +hunter
+"I don't go near the stables, sir - horses make me nervous, if I'm honest."
+
 events yesterday murder last happened
 "Last night I helped Mrs. Goodbody to prepare dinner and afterwards I served
 coffee in the lounge to Mrs. Sarah and Miss Millicent. Then I helped Mrs. G.
