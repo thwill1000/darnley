@@ -299,7 +299,7 @@ Function verb_say()
 
   ' Identify the .msg file containing the target's dialogue.
   ' If it doesn't exist then use a fixed response from 'messages.dat'.
-  Const filename$ = LCase$(Mid$(obj_id$(obj_idx%), 3)) + ".msg"
+  Const filename$ = LCase$(obj_id$(obj_idx%)) + ".msg"
   If Not Mm.Info(Exists File adv.asset_dir$ + "/" + filename$) Then
     print_message_or_fail(UCase$(obj_id$(obj_idx%)) + "_SAY_RESPONSE")
     Exit Function
