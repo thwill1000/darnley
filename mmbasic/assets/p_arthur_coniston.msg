@@ -152,6 +152,10 @@ was actually habitable."
 "Is there a blocked door? Can't say I've had occasion to go
 wandering about the kitchen passages, old boy."
 
+horse | +bay +hunter
+"The Colonel's hunter? Fine-looking animal, though not my department, old boy -
+horses and I have an understanding: I stay off them."
+
 events yesterday murder last happened
 "I was down for the weekend. It was no secret that I was going to ask
 Colonel Darnley for permission to marry Millicent. I popped the question

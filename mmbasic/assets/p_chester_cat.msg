@@ -128,6 +128,12 @@ the stables.]]@
 @
 "Mrow?"
 
+horse | +bay +hunter
+[[reset:He offers the horse a single dismissive glance through the stable door
+and returns to more important business.]]@
+@
+"Mrrp."
+
 events yesterday murder last happened
 [[reset:The cat stares at you with enormous, unblinking green eyes, offering
 absolutely nothing by way of testimony. He was, after all, asleep in

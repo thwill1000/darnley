@@ -158,6 +158,10 @@ sir. It's quite blocked with furniture from the second guest room -
 I've asked Mrs. Goodbody to see that no-one tries it until it's
 cleared, for fear of an accident in the dark."
 
+horse | +bay +hunter
+"The Colonel's hunter, sir. Mellors sees to him - I've no cause to go near the
+stables myself."
+
 events yesterday murder last happened
 "Last night I waited on the guests at dinner. There was the family, Sir Redvers
 and Mr. Coniston. The atmosphere at dinner, I am bound to say, was not entirely
