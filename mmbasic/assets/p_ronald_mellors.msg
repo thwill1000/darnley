@@ -125,6 +125,10 @@ upstairs. Couldn't tell you the first thing about it."
 "Don't know anything about doors and passages inside the house. I keep to the
 grounds."
 
+horse | +bay +hunter
+"That's my horse to worry about, not yours. He's no complaints, which is more
+than I can say for some."
+
 events yesterday murder last happened
 "Last night I did my last rounds at 8:00. I saw nothing suspicious. I spent the
 rest of the evening at home and went to bed at 10:00. I didn't hear any strange

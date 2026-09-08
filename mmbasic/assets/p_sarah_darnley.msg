@@ -161,6 +161,9 @@ without warning. Rather bad timing, as these things go."
 ended up - there was nowhere else to put it in a hurry. I'm told
 it's rather in the way.
 
+horse | +bay +hunter
+"Sebastian's hunter. He was fonder of that horse than he let on, I think."
+
 events yesterday murder last happened
 "I married Sebastian two years ago. I am more than twenty years
 younger than he - really not much older than Millicent. We have

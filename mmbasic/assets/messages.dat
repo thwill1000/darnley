@@ -172,8 +172,8 @@ by [[green:footprints]] in two or three directions. The
 LOC021_STABLES
 The stable block is a handsome structure going gently to seed: loose
 slates on the roof, paint flaking from the doors, but the horses
-inside well-tended enough. One loose box houses Colonel Darnley's bay
-hunter, its breath steaming in the cold air. The other half of the
+inside well-tended enough. One loose box houses Colonel Darnley's [[green:bay
+hunter]], its breath steaming in the cold air. The other half of the
 building has been converted to garage a large Daimler, incongruous
 beneath a coating of road dust and a worn tarpaulin, small dark oil
 stains dotting the snow beside it. Tucked into a sheltered doorway, a
@@ -678,6 +678,11 @@ OBJ258_BRANCH
 A fallen branch, about the length of a walking stick and no thicker than a
 wrist - light enough to wield with one hand. One end is scuffed and split.
 
+OBJ259_HORSE
+Colonel Darnley's bay hunter stands in its loose box, breath steaming in the
+cold air, watching you with the mild curiosity of an animal that has seen
+stranger visitors than you at this hour.
+
 WHAT_REALLY_HAPPENED
 [[green:What really happened at Darnley Park?]]@
 @
@@ -869,3 +874,13 @@ P_THE_BODY_SAY_RESPONSE
 The body stares at you glassy eyed and you think to yourself,
 [[cyan:"One of the advantages of being dead is not having to answer impertinent
 questions!"]]
+
+OBJ259_HORSE_SAY_RESPONSE
+!requires horse_talked
+The horse has apparently said all it has to say. It chews its hay and ignores you.
+
+OBJ259_HORSE_SAY_RESPONSE
+!provides horse_talked
+The horse eyes you with weary tolerance.@
+@
+[[cyan:"Don't tell me your troubles, I've got my own!"]]
