@@ -60,7 +60,7 @@ advdata.init(adv.asset_dir$ + "advent.dat")
 
 ' Template is read once, at file scope, rather than per-test.
 Dim t_keys$(msgorder.MAX_ENTRIES%) Length 128, t_n%
-msgorder.read_entries(adv.asset_dir$ + "template_suspect.msg", t_keys$(), t_n%)
+msgorder.read_entries(adv.asset_dir$ + "p_template_suspect.msg", t_keys$(), t_n%)
 
 add_test("Arnold Billingsgate's .msg file matches template entry order", "test_msg_order_billingsgate")
 add_test("Arthur Coniston's .msg file matches template entry order", "test_msg_order_arthur")
@@ -92,37 +92,37 @@ Sub assert_msg_order(filename$)
 End Sub
 
 Sub test_msg_order_billingsgate()
-  assert_msg_order("arnold_billingsgate.msg")
+  assert_msg_order("p_arnold_billingsgate.msg")
 End Sub
 
 Sub test_msg_order_arthur()
-  assert_msg_order("arthur_coniston.msg")
+  assert_msg_order("p_arthur_coniston.msg")
 End Sub
 
 Sub test_msg_order_goodbody()
-  assert_msg_order("mildred_goodbody.msg")
+  assert_msg_order("p_mildred_goodbody.msg")
 End Sub
 
 Sub test_msg_order_millicent()
-  assert_msg_order("millicent_darnley.msg")
+  assert_msg_order("p_millicent_darnley.msg")
 End Sub
 
 Sub test_msg_order_bagsby()
-  assert_msg_order("norah_bagsby.msg")
+  assert_msg_order("p_norah_bagsby.msg")
 End Sub
 
 Sub test_msg_order_redvers()
-  assert_msg_order("redvers_slingsby.msg")
+  assert_msg_order("p_redvers_slingsby.msg")
 End Sub
 
 Sub test_msg_order_mellors()
-  assert_msg_order("ronald_mellors.msg")
+  assert_msg_order("p_ronald_mellors.msg")
 End Sub
 
 Sub test_msg_order_sarah()
-  assert_msg_order("sarah_darnley.msg")
+  assert_msg_order("p_sarah_darnley.msg")
 End Sub
 
 Sub test_msg_order_chester()
-  assert_msg_order("chester_cat.msg")
+  assert_msg_order("p_chester_cat.msg")
 End Sub
