@@ -166,6 +166,10 @@ daimler car motor saloon garage
 "Fine machine, from what I can see of it under that sheet. Not that I've had
 cause to examine it, old man."
 
++police +(car/saloon)
+"Damned conspicuous thing, sitting there on the drive. Still, better you came
+than nobody at all, I suppose."
+
 events yesterday murder last happened
 "I have known Darnley for about 20 years. It was some confidential
 business dealings that brought me here urgently yesterday. Last

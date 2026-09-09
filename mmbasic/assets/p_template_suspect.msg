@@ -140,6 +140,9 @@ horse | +bay +hunter
 daimler car motor saloon garage
 "daimler response"
 
++police +(car/saloon)
+"police car response"
+
 events yesterday murder last happened
 "events response"
 

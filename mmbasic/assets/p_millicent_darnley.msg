@@ -162,6 +162,10 @@ the least bit troubled by any of this."
 daimler car motor saloon garage
 "Daddy's motor car. I don't think it's been out since the autumn, actually."
 
++police +(car/saloon)
+"Rather grim, seeing a police car parked on our own drive. I try not to look
+at it when I pass the window."
+
 events yesterday murder last happened
 "Father was a difficult man to live with but I never expected - this!
 Last night we all ate together until coffee which Sarah and I took
