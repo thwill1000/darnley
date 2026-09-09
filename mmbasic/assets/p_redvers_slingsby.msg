@@ -162,6 +162,10 @@ horse | +bay +hunter
 "Decent-looking animal. Darnley always did keep a good stable, whatever else 
 you say about him."
 
+daimler car motor saloon garage
+"Fine machine, from what I can see of it under that sheet. Not that I've had
+cause to examine it, old man."
+
 events yesterday murder last happened
 "I have known Darnley for about 20 years. It was some confidential
 business dealings that brought me here urgently yesterday. Last

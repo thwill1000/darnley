@@ -173,12 +173,11 @@ LOC021_STABLES
 The stable block is a handsome structure going gently to seed: loose
 slates on the roof, paint flaking from the doors, but the horses
 inside well-tended enough. One loose box houses Colonel Darnley's [[green:bay
-hunter]], its breath steaming in the cold air. The other half of the
-building has been converted to garage a large Daimler, incongruous
-beneath a coating of road dust and a worn tarpaulin, small dark oil
-stains dotting the snow beside it. Tucked into a sheltered doorway, a
-large [[green:ginger cat]] sits watchfully in the straw, tracking
-your approach with unhurried interest. The yard between the buildings
+hunter]], its breath steaming in the cold air. ...the other half of the building
+has been converted to garage a large Daimler beneath a coating of road dust and
+a worn tarpaulin, small dark oil stains dotting the snow beside it. Tucked into
+a sheltered doorway, a large [[green:ginger cat]] sits watchfully in the straw,
+tracking your approach with unhurried interest. The yard between the buildings
 is crossed by [[green:footprints]] and littered with straw. The tack
 room off the yard holds saddle and gear for the horse. Access to the
 [[green:Main drive]], [[green:East walk]], and [[green:East lawn]]
@@ -682,6 +681,12 @@ OBJ259_HORSE
 Colonel Darnley's bay hunter stands in its loose box, breath steaming in the
 cold air, watching you with the mild curiosity of an animal that has seen
 stranger visitors than you at this hour.
+
+OBJ260_DAIMLER
+A large Daimler stands beneath a worn tarpaulin, its wheels and running
+boards just visible where the covering has slipped. A film of road dust
+coats what can be seen of the coachwork. Small dark oil stains mark the
+snow beside it.
 
 WHAT_REALLY_HAPPENED
 [[green:What really happened at Darnley Park?]]@

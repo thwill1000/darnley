@@ -41,16 +41,16 @@ had cause to speak to him."
 "Seen him about the stables, sir. Big ginger fellow. No trouble to
 anyone that I've noticed."
 
-+(footprints/shoeprints/bootprints/prints/marks) foot boot shoe
-"A proper tangle of them, sir, criss-crossing all directions. I've
-kept everyone off the drive since I arrived, for whatever good that
-will do you now."
-
-(car/motor/daimler/saloon) prints tyre tyres
++prints +(car/motor/saloon) | +(tyre/tyres)
 "Tyre-tracks run the length of the drive up to the parked car, sir,
 crossed every which way by footprints. I couldn't tell you how many
 comings and goings, there's been too much traffic across this snow
 to make sense of it."
+
++(footprints/shoeprints/bootprints/prints/marks) foot boot shoe
+"A proper tangle of them, sir, criss-crossing all directions. I've
+kept everyone off the drive since I arrived, for whatever good that
+will do you now."
 
 +(gate/gates/drive/duty) posted
 "Sent up from the station first thing, sir, soon as word came
@@ -60,6 +60,10 @@ through without leave. I've been here since."
 horse | +bay +hunter
 "Fine-looking animal, sir. Kept well, from what I can see - not that horses are
 much in my line."
+
+daimler car motor saloon garage
+"The family's Daimler, sir, under its cover the whole time I've been here -
+hasn't stirred an inch."
 
 events yesterday murder last happened
 "Can't help you there, sir. I only came on duty this morning when the
