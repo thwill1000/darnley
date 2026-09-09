@@ -149,6 +149,9 @@ everybody else."
 horse | +bay +hunter
 "I don't go near the stables, sir - horses make me nervous, if I'm honest."
 
+daimler car motor saloon garage
+"That's the big car, sir. I've never so much as sat in it, let alone driven it."
+
 events yesterday murder last happened
 "Last night I helped Mrs. Goodbody to prepare dinner and afterwards I served
 coffee in the lounge to Mrs. Sarah and Miss Millicent. Then I helped Mrs. G.

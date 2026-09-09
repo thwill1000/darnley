@@ -98,11 +98,11 @@ handkerchief
 +womens +(shoeprints/footprints/prints/marks) shoe
 "womens shoeprints response"
 
++prints +(car/motor/saloon) | +(tyre/tyres)
+"car tracks response"
+
 +(footprints/shoeprints/bootprints/prints/marks) foot boot shoe
 "footprints response"
-
-(car/motor/daimler/saloon) prints tyre tyres
-"car tracks response"
 
 +(gate/gates/drive/duty) posted
 "gate duty response"
@@ -136,6 +136,9 @@ stacked furniture
 
 horse | +bay +hunter
 "horse response"
+
+daimler car motor saloon garage
+"daimler response"
 
 events yesterday murder last happened
 "events response"

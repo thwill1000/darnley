@@ -85,6 +85,7 @@ add_test("What do you think of Norah Bagsby?", "test_opinion_bagsby")
 add_test("What do you think of Ronald Mellors?", "test_opinion_mellors")
 add_test("Tell me about the ginger cat.", "test_ginger_cat")
 add_test("What do you know about the horse?", "test_horse")
+add_test("Tell me about the Daimler.", "test_daimler")
 add_test("What do you know about the flat-footed bootprints?", "test_flatfooted")
 add_test("What do you know about the hobnailed bootprints?", "test_hobnailed")
 add_test("What do you know about the slipper prints?", "test_slipper_prints")
@@ -407,6 +408,14 @@ Sub test_ginger_cat()
   assert_response("Tell me about the ginger cat", "chester cat response")
 End Sub
 
+Sub test_daimler()
+  assert_response("daimler", "daimler response")
+  assert_response("motor car", "daimler response")
+  assert_response("Tell me about the daimler", "daimler response")
+  assert_response("What do you know about the family car?", "daimler response")
+  assert_response("What about the saloon in the garage?", "daimler response")
+End Sub
+
 Sub test_horse()
   assert_response("horse", "horse response")
   assert_response("bay hunter", "horse response")
@@ -464,12 +473,9 @@ End Sub
 
 Sub test_car_tracks()
   assert_response("car tracks", "car tracks response")
-
-  ' Only meaningful for the Police Constable - swap in his real .msg file
-  objects$(9) = "P_POLICE_CONSTABLE|Police Constable|police constable policeman bobby|LOC001_BATHROOM|2|100"
-  assert_response("Tell me about the tyre tracks", "Tyre-tracks run the length of the drive", 1)
-  assert_response("What about the tracks by the car?", "Tyre-tracks run the length of the drive", 1)
-  assert_response("What about the daimler's tyres?", "Tyre-tracks run the length of the drive", 1)
+  assert_response("Tell me about the tyre tracks", "car tracks response")
+  assert_response("What about the tracks by the car?", "car tracks response")
+  assert_response("What about the daimler's tyres?", "car tracks response")
 End Sub
 
 Sub test_gate_duty()

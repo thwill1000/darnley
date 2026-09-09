@@ -162,6 +162,10 @@ horse | +bay +hunter
 "The Colonel's hunter, sir. Mellors sees to him - I've no cause to go near the
 stables myself."
 
+daimler car motor saloon garage
+"The family motor, sir. It hasn't been out in weeks - the Colonel preferred the
+trap for short journeys. Mellors would know more about its upkeep than I do."
+
 events yesterday murder last happened
 "Last night I waited on the guests at dinner. There was the family, Sir Redvers
 and Mr. Coniston. The atmosphere at dinner, I am bound to say, was not entirely

@@ -134,6 +134,12 @@ and returns to more important business.]]@
 @
 "Mrrp."
 
+daimler car motor saloon garage
+[[reset:He gives the tarpaulin one disdainful sniff and moves on,
+unimpressed.]]@
+@
+"Mrp."
+
 events yesterday murder last happened
 [[reset:The cat stares at you with enormous, unblinking green eyes, offering
 absolutely nothing by way of testimony. He was, after all, asleep in

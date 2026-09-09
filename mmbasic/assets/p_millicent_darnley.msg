@@ -159,6 +159,9 @@ horse | +bay +hunter
 "Oh, the horse is fine, thank you for asking - probably the only one of us not
 the least bit troubled by any of this."
 
+daimler car motor saloon garage
+"Daddy's motor car. I don't think it's been out since the autumn, actually."
+
 events yesterday murder last happened
 "Father was a difficult man to live with but I never expected - this!
 Last night we all ate together until coffee which Sarah and I took

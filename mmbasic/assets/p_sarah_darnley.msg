@@ -164,6 +164,10 @@ it's rather in the way.
 horse | +bay +hunter
 "Sebastian's hunter. He was fonder of that horse than he let on, I think."
 
+daimler car motor saloon garage
+"Sebastian's Daimler. He was fonder of the horse, if I'm honest - the car mostly
+sits idle out there."
+
 events yesterday murder last happened
 "I married Sebastian two years ago. I am more than twenty years
 younger than he - really not much older than Millicent. We have

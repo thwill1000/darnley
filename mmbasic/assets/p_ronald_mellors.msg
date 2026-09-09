@@ -129,6 +129,10 @@ horse | +bay +hunter
 "That's my horse to worry about, not yours. He's no complaints, which is more
 than I can say for some."
 
+daimler car motor saloon garage
+"Daimler's under its sheet where it always is. Hasn't moved in weeks - dust an
+inch thick on that tarpaulin, if you care to look."
+
 events yesterday murder last happened
 "Last night I did my last rounds at 8:00. I saw nothing suspicious. I spent the
 rest of the evening at home and went to bed at 10:00. I didn't hear any strange
