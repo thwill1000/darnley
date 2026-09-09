@@ -65,6 +65,10 @@ daimler car motor saloon garage
 "The family's Daimler, sir, under its cover the whole time I've been here -
 hasn't stirred an inch."
 
++police +(car/saloon)
+"That's yours, sir, isn't it? I came up from the village on my bicycle -
+left it propped up behind the wall sir."
+
 events yesterday murder last happened
 "Can't help you there, sir. I only came on duty this morning when the
 call came in - whatever happened last night, it happened before my

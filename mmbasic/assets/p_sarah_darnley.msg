@@ -168,6 +168,10 @@ daimler car motor saloon garage
 "Sebastian's Daimler. He was fonder of the horse, if I'm honest - the car mostly
 sits idle out there."
 
++police +(car/saloon)
+"It seems dreadfully out of place doesn't it. I suppose it had to come,
+but I wish it hadn't."
+
 events yesterday murder last happened
 "I married Sebastian two years ago. I am more than twenty years
 younger than he - really not much older than Millicent. We have

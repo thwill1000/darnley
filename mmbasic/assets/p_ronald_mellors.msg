@@ -133,6 +133,10 @@ daimler car motor saloon garage
 "Daimler's under its sheet where it always is. Hasn't moved in weeks - dust an
 inch thick on that tarpaulin, if you care to look."
 
++police +(car/saloon)
+"Saw it come up the drive this morning. Nothing to do with me - I don't go
+poking about other people's motors."
+
 events yesterday murder last happened
 "Last night I did my last rounds at 8:00. I saw nothing suspicious. I spent the
 rest of the evening at home and went to bed at 10:00. I didn't hear any strange
