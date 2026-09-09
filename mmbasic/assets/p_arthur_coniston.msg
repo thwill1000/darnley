@@ -160,6 +160,10 @@ daimler car motor saloon garage
 "The Daimler? Handsome old thing under that tarpaulin, though I couldn't tell
 you the last time anyone took it out."
 
++police +(car/saloon)
+"Can't say I've paid it much attention, old boy. Rather glad it's there,
+though, given the circumstances."
+
 events yesterday murder last happened
 "I was down for the weekend. It was no secret that I was going to ask
 Colonel Darnley for permission to marry Millicent. I popped the question

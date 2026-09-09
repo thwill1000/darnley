@@ -166,6 +166,11 @@ daimler car motor saloon garage
 "The family motor, sir. It hasn't been out in weeks - the Colonel preferred the
 trap for short journeys. Mellors would know more about its upkeep than I do."
 
++police +(car/saloon)
+"I saw it arrive this morning, sir. I confess I have not had occasion to
+examine it closely - my attention has been rather taken up with other
+matters."
+
 events yesterday murder last happened
 "Last night I waited on the guests at dinner. There was the family, Sir Redvers
 and Mr. Coniston. The atmosphere at dinner, I am bound to say, was not entirely

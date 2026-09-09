@@ -159,6 +159,10 @@ daimler car motor saloon garage
 "That's the Colonel's Daimler, dear, tucked up under its sheet same as always.
 Not something that concerns the kitchen."
 
++police +(car/saloon)
+"That's your motor, dear, isn't it? Can't say I've been out to look at it -
+too much to see to in the kitchen this morning."
+
 events yesterday murder last happened
 "Last night I cooked and washed up with Norah. At about 10:30 I heard a loud
 bang, it gave me quite a shock. Not long after we went to bed; me and Norah

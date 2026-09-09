@@ -86,6 +86,7 @@ add_test("What do you think of Ronald Mellors?", "test_opinion_mellors")
 add_test("Tell me about the ginger cat.", "test_ginger_cat")
 add_test("What do you know about the horse?", "test_horse")
 add_test("Tell me about the Daimler.", "test_daimler")
+add_test("Tell me about the police car.", "test_police_car")
 add_test("What do you know about the flat-footed bootprints?", "test_flatfooted")
 add_test("What do you know about the hobnailed bootprints?", "test_hobnailed")
 add_test("What do you know about the slipper prints?", "test_slipper_prints")
@@ -414,6 +415,18 @@ Sub test_daimler()
   assert_response("Tell me about the daimler", "daimler response")
   assert_response("What do you know about the family car?", "daimler response")
   assert_response("What about the saloon in the garage?", "daimler response")
+End Sub
+
+Sub test_police_car()
+  assert_response("police car", "police car response")
+  assert_response("Tell me about the police car", "police car response")
+  assert_response("What is that police saloon doing on the drive?", "police car response")
+  assert_response("Whose police car is that?", "police car response")
+
+  ' Ask the Police Constable directly - his own file confirms it's the
+  ' detective's car, not a station vehicle, and that he arrived by bicycle
+  objects$(9) = "P_POLICE_CONSTABLE|Police Constable|police constable policeman bobby|LOC001_BATHROOM|2|100"
+  assert_response("Is this your police car?", "That's yours, sir", 1)
 End Sub
 
 Sub test_horse()

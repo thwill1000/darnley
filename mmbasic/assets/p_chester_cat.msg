@@ -140,6 +140,12 @@ unimpressed.]]@
 @
 "Mrp."
 
++police +(car/saloon)
+[[reset:He gives the unfamiliar vehicle a single wary glance from a safe
+distance, then decides it isn't worth further investigation.]]@
+@
+"Mrp."
+
 events yesterday murder last happened
 [[reset:The cat stares at you with enormous, unblinking green eyes, offering
 absolutely nothing by way of testimony. He was, after all, asleep in

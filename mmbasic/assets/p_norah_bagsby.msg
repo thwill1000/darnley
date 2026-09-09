@@ -152,6 +152,10 @@ horse | +bay +hunter
 daimler car motor saloon garage
 "That's the big car, sir. I've never so much as sat in it, let alone driven it."
 
++police +(car/saloon)
+"Oh, I saw it from the landing window, sir. Gave me quite a start, seeing a
+motor car sat there on our own drive first thing."
+
 events yesterday murder last happened
 "Last night I helped Mrs. Goodbody to prepare dinner and afterwards I served
 coffee in the lounge to Mrs. Sarah and Miss Millicent. Then I helped Mrs. G.
