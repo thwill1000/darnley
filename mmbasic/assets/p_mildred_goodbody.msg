@@ -155,6 +155,10 @@ horse | +bay +hunter
 "That's Mr. Mellors' department, dear, not mine. I stick to the kitchen and
 leave the horses to him."
 
+daimler car motor saloon garage
+"That's the Colonel's Daimler, dear, tucked up under its sheet same as always.
+Not something that concerns the kitchen."
+
 events yesterday murder last happened
 "Last night I cooked and washed up with Norah. At about 10:30 I heard a loud
 bang, it gave me quite a shock. Not long after we went to bed; me and Norah

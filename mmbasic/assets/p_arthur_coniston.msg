@@ -156,6 +156,10 @@ horse | +bay +hunter
 "The Colonel's hunter? Fine-looking animal, though not my department, old boy -
 horses and I have an understanding: I stay off them."
 
+daimler car motor saloon garage
+"The Daimler? Handsome old thing under that tarpaulin, though I couldn't tell
+you the last time anyone took it out."
+
 events yesterday murder last happened
 "I was down for the weekend. It was no secret that I was going to ask
 Colonel Darnley for permission to marry Millicent. I popped the question
