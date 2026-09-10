@@ -41,6 +41,11 @@ had cause to speak to him."
 "Seen him about the stables, sir. Big ginger fellow. No trouble to
 anyone that I've noticed."
 
++(officer/constable/police/policeman/bobby) (get/think) with | yourself | order | posted | duty
+"Me, sir? Not much to tell - come up from the station this morning when the
+call came in, and I've been minding the gate since. I'll do my duty here as
+long as you need me to."
+
 +prints +(car/motor/saloon) | +(tyre/tyres)
 "Tyre-tracks run the length of the drive up to the parked car, sir,
 crossed every which way by footprints. I couldn't tell you how many
@@ -51,11 +56,6 @@ to make sense of it."
 "A proper tangle of them, sir, criss-crossing all directions. I've
 kept everyone off the drive since I arrived, for whatever good that
 will do you now."
-
-+(gate/gates/drive/duty) posted
-"Sent up from the station first thing, sir, soon as word came
-through. My orders are to keep the drive clear and let no-one
-through without leave. I've been here since."
 
 horse | +bay +hunter
 "Fine-looking animal, sir. Kept well, from what I can see - not that horses are
@@ -86,7 +86,7 @@ gate."
 "That's your department, sir, not mine. I wouldn't like to hazard a
 guess."
 
-police investigation scotland yard inspector detective think of me
+police investigation scotland yard inspector detective think here of me
 "Glad to have you here, sir. I'll keep the drive clear and pass
 along anyone who needs to come through."
 

@@ -84,6 +84,10 @@ him his notice; he'd already given him a warning letter."
 the moment he smells anything worth having. I've a soft spot for him,
 truth be told."
 
++(officer/constable/police/policeman/bobby) (get/think) with
+"Nice enough young man, dear. I took him out a cup of tea earlier - standing
+out there in this cold, someone had to."
+
 +(flatfooted/flat/odd) (bootprints/footprints/prints/marks)
 "I remember the gardener's child playing around wearing grown-up's
 boots. They made flat-footed prints because they were too big for
@@ -274,7 +278,7 @@ money mining peru ruin redvers colonel
 tension in the house since Sir Redvers arrived. Mr. B. said the two
 of them were shut up in the study a good while, talking business."
 
-police investigation scotland yard inspector detective think of me
+police investigation scotland yard inspector detective think here of me
 "Well, someone's got to sort this out, haven't they? You ask what
 you need to, dear, I've nothing to hide. Can't say the same for
 everyone in this house, mind."

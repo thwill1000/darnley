@@ -83,6 +83,9 @@ handkerchief
 +(cat/chester/ginger) (get/think) with
 "chester cat response"
 
++(officer/constable/police/policeman/bobby) (get/think) with
+"police constable response"
+
 +(flatfooted/flat/odd) (bootprints/footprints/prints/marks)
 "flatfooted bootprints response"
 
@@ -103,9 +106,6 @@ handkerchief
 
 +(footprints/shoeprints/bootprints/prints/marks) foot boot shoe
 "footprints response"
-
-+(gate/gates/drive/duty) posted
-"gate duty response"
 
 pond
 "pond response"
@@ -218,7 +218,7 @@ affair mellors sarah (summerhouse/summer) together secret lovers
 money mining peru ruin redvers colonel
 "finance response"
 
-police investigation scotland yard inspector detective think of me
+police investigation scotland yard inspector detective think here of me
 "investigation response"
 
 weather cold snow

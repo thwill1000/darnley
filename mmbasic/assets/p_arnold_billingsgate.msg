@@ -85,6 +85,10 @@ service to the family, in their hour of need as in any other."
 stables and is, if I may say so, better behaved than most of the
 house."
 
++(officer/constable/police/policeman/bobby) (get/think) with
+"A most correct young man, sir. He has kept good order at the gate since he
+arrived, and troubled none of us in the house."
+
 +(flatfooted/flat/odd) (bootprints/footprints/prints/marks)
 "I've studied all the people here and none of them are flat-footed.
 It's a mystery to me why the bootprints should be flat-footed."
@@ -302,7 +306,7 @@ sir - it is not my place to listen at doors. I will say Sir Redvers
 arrived rather suddenly yesterday, without prior arrangement, which
 struck me as unusual for a gentleman of his standing."
 
-police investigation scotland yard inspector detective think of me
+police investigation scotland yard inspector detective think here of me
 "I have every confidence you will get to the bottom of it, sir. The
 household will give you whatever assistance it can - you have my
 word on that, at least."
