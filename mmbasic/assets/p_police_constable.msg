@@ -19,9 +19,9 @@ crossing the drive since I was posted here."
 a time or two this morning, sir, nothing more I can tell you."
 
 +redvers (get/think) with
-"A tall gentleman, very put out about something, sir. Arrived by car
-yesterday afternoon if the tyre-tracks are anything to go by. That's
-as much as I can tell you."
+"A tall gentleman, very put out about something, sir. Arrived by cab from
+the station yesterday afternoon, so I'm told. That's as much as I can tell
+you."
 
 +(billingsgate/butler) (get/think) with
 "The butler, sir? Answered the door to the station when we were sent
