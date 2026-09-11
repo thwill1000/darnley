@@ -28,7 +28,9 @@ as much as I can tell you."
 for. Seemed a steady sort."
 
 +(goodbody/cook) (get/think) with
-"Couldn't say, sir. Not been introduced to the staff."
+"Couldn't rightly say, sir - though there was a woman from the kitchen
+brought me out a cup of tea earlier. Very welcome it was too. Didn't
+catch her name."
 
 +(bagsby/maid) (get/think) with
 "Couldn't say, sir. Not been introduced to the staff."
