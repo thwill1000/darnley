@@ -63,7 +63,8 @@ handkerchief
 "I scarcely know the gentleman."
 
 +redvers (get/think) with
-"I've met the gentleman once or twice. A very hot-tempered man."
+"I've met the gentleman once or twice. A very hot-tempered man. He arrived
+by cab from the station yesterday afternoon, quite unannounced."
 
 +(billingsgate/butler) (get/think) with | yourself
 "I have been butler here since I was a young footman, more years

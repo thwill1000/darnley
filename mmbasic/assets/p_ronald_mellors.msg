@@ -51,8 +51,8 @@ handkerchief
 "I didn't like the look of him. Too smooth by half."
 
 +redvers (get/think) with
-"Bad-tempered old so-and-so. Came roaring up the drive yesterday afternoon like
-he owned the place."
+"Bad-tempered old so-and-so. Turned up yesterday afternoon like he owned
+the place."
 
 +(billingsgate/butler) (get/think) with
 "Nosy old devil. Always watching."
