@@ -1,7 +1,5 @@
-' The Sealed Room Murder
-' Copyright (c) 1987-2026 Tom & Jim Williams, All Rights Reserved
-
-'!define NO_INCLUDE_GUARDS
+'_The Sealed Room Murder
+'_Copyright (c) 1987-2026 Tom & Jim Williams, All Rights Reserved
 
 Option Base 1
 Option Default Integer
