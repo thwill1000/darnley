@@ -47,9 +47,8 @@ Sub con.print_fail(s$)
   con.println("[[red:" + s$ + "]]")
 End Sub
 
-adv.asset_dir$ = Mm.Info(Path) + "test-assets/"
-adv.msg_file$ = adv.asset_dir$ + "messages.dat"
-advdata.init(adv.asset_dir$ + "advent.dat")
+advdata.set_root(Mm.Info(Path))
+advdata.init()
 
 add_test("verb_go() moves to a matching exit", "test_go_gvn_match")
 add_test("verb_go() moves to a different matching exit", "test_go_gvn_other_match")

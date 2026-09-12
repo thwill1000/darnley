@@ -49,11 +49,11 @@ Sub con.print_fail(s$)
   con.println("[[red:" + s$ + "]]")
 End Sub
 
-adv.asset_dir$ = Mm.Info(Path) + "test-assets/"
-adv.msg_file$ = adv.asset_dir$ + "messages.dat"
-advdata.init(adv.asset_dir$ + "advent.dat")
+advdata.set_root(Mm.Info(Path))
+advdata.init()
 
-Const TEST_DIRECTIVES_FILE$ = adv.asset_dir$ + "test_directives.msg"
+Const DATA_DIR$ = adv.game_root$ + "data/"
+Const TEST_DIRECTIVES_FILE$ = DATA_DIR$ + "test_directives.msg"
 
 add_test("test_count_data_gvn_empty")
 add_test("test_count_data_gvn_one")

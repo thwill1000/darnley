@@ -8,14 +8,19 @@ sys.provides("advdata")
 If sys.err$ <> "" Then Error sys.err$
 '!endif
 
-Dim adv.game_root$ = Mm.Info(Path) + "../"
-Dim adv.asset_dir$ = Mm.Info(Path) + "../assets/"
-Dim adv.msg_file$ = adv.asset_dir$ + "/messages.dat"
+Dim adv.game_root$
+
+advdata.set_root(Mm.Info(Path) + "../")
+
+Sub advdata.set_root(game_root$)
+  adv.game_root$ = game_root$
+End Sub
 
 Sub advdata.init(f$)
-  read_rooms(f$)
-  read_objects(f$)
-  read_synonyms(f$)
+  Local f_$ = Choice(f$ = "", adv.game_root$ + "data/advent.dat", f$)
+  read_rooms(f_$)
+  read_objects(f_$)
+  read_synonyms(f_$)
 End Sub
 
 ' Read the room data
@@ -164,7 +169,7 @@ End Function
 ' Checks that a given message exists in the message file
 Function message_exists%(tag$)
   Local s$
-  Open adv.msg_file$ For Input As #1
+  Open adv.game_root$ + "data/messages.dat" For Input As #1
   Do While Not Eof(#1)
     Input #1, s$
     If Field$(s$, 1, "|") = tag$ Then

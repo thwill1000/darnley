@@ -39,9 +39,9 @@ On Error Skip ' Ignore failure to set Mode on PicoCalc
 Mode Choice(InStr(Mm.Device$, "PicoMite"), 2, 7)
 Font 7
 
-init_advent(adv.asset_dir$ + "/advent.dat")
-read_questions(adv.asset_dir$ + "/advent.dat")
-read_clues(adv.asset_dir$ + "/advent.dat")
+init_advent(adv.game_root$ + "data/advent.dat")
+read_questions(adv.game_root$ + "data/advent.dat")
+read_clues(adv.game_root$ + "data/advent.dat")
 read_accuse_replies()
 
 game_start:
