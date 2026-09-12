@@ -3,17 +3,23 @@
 '!if !defined(NO_INCLUDE_GUARDS)
 On Error Skip 1 : Dim sys.VERSION = -1
 If sys.VERSION = -1 Then Error "'system.inc' not included"
-sys.requires("console")
+sys.requires("console", "file")
 sys.provides("advdata")
 If sys.err$ <> "" Then Error sys.err$
 '!endif
 
 Dim adv.game_root$
 
-advdata.set_root(Mm.Info(Path) + "../")
+advdata.set_root(Mm.Info(Path))
 
-Sub advdata.set_root(game_root$)
-  adv.game_root$ = game_root$
+Sub advdata.set_root(d$)
+  Local d_$ = d$
+  If Right$(d_$, 1) = "/" Or Right$(d_$, 1) = "\" Then d$ = Left$(d_$, Len(d_$) - 1)
+  Do While Not file.exists%(d_$ + "/data", "dir")
+    d_$ = file.get_parent$(d_$)
+    If d_$ = "" Then Error "'data' directory not found"
+  Loop
+  adv.game_root$ = d_$ + "/"
 End Sub
 
 Sub advdata.init(f$)
