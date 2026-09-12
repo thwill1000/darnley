@@ -44,7 +44,7 @@ handkerchief
 "Both the ladies have this sort of hanky. Sometimes Mrs. G. is given
 the older ones."
 
-+colonel (get/think) with
++colonel -who (get/think) with
 "Very strict. I didn't like him."
 
 +sarah (get/think) with
@@ -234,7 +234,7 @@ engagement marriage millicent arthur when
 yesterday. First happy thing to happen in this house in a while, I
 should think."
 
-(murder/murderer) think believe guilty who did comitted want
++(think/believe/want) (guilty/comitted) who did | who (think/believe/want) (murder/murderer)
 "Oh, I couldn't say, sir, it frightens me even to think it. Miss
 Millicent seemed ever so calm about it all, calmer than I'd have
 been. I don't mean nothing by that, mind."
@@ -277,7 +277,7 @@ goodbye bye farewell thanks thank
 just, well, you know."
 
 # Response when accused of the murder for a second (or subsequent) time
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_bagsby
 !provides new_accuse accuse_bagsby
 [[reset:She sniffs, dabbing at her eyes with her sleeve, though there is a
@@ -287,7 +287,7 @@ flicker of something more wary beneath the tears now.]]@
 haven't changed my mind."
 
 # Response when accused of the murder
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_bagsby accuse_b4_bagsby
 [[reset:Norah's eyes go wide and her lip trembles - she looks for all the world
@@ -297,7 +297,7 @@ as though she might burst into tears on the spot.]]@
 paid me! I only been here six months, sir, honest!"
 
 # Response when accused when insufficient clues have been gathered
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !provides new_accuse accuse_bagsby
 "Oh! You mustn't say that, not without you're sure - it isn't right."
 

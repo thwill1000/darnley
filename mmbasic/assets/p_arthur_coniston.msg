@@ -52,7 +52,7 @@ that I could marry Millicent."
 handkerchief
 "I don't know whose handkerchief it is."
 
-+colonel (get/think) with
++colonel -who (get/think) with
 "A decent old buffer. When I asked his permission to marry Millicent
 he agreed straight away. I was surprised, I admit it!"
 
@@ -264,7 +264,7 @@ engagement marriage millicent arthur when
 "Happiest news of my life, old boy! The Colonel gave his blessing
 yesterday afternoon. I still can't quite believe my luck."
 
-(murder/murderer) think believe guilty who did comitted want
++(think/believe/want) (guilty/comitted) who did | who (think/believe/want) (murder/murderer)
 "Good Lord, I haven't the faintest. Between you and me I'd watch
 Slingsby - man had the look of someone with troubles on his mind
 last night. But don't quote me, old boy."
@@ -316,7 +316,7 @@ goodbye bye farewell thanks thank
 won't you?"
 
 # Response when accused of the murder for a second (or subsequent) time
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_arthur
 !provides new_accuse accuse_arthur
 [[reset:Coniston spreads his hands, the picture of wounded innocence.]]@
@@ -325,7 +325,7 @@ won't you?"
 have done with it."
 
 # Response when accused of the murder
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_arthur accuse_b4_arthur
 [[reset:Coniston's easy charm falters for just a moment - the faintest tightening
@@ -335,7 +335,7 @@ around the eyes - before he recovers himself entirely.]]@
 better be very sure of your facts before you say it again."
 
 # Response when accused when insufficient clues have been gathered
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !provides new_accuse accuse_arthur
 "Steady on! You can't go about making accusations without a shred of proof
 to back them up."

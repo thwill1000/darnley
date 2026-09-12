@@ -53,7 +53,7 @@ letter
 handkerchief
 "handkerchief response"
 
-+colonel (get/think) with
++colonel -who (get/think) with
 "colonel darnley response"
 
 +sarah (get/think) with
@@ -195,7 +195,7 @@ remarriage remarry remarrying marry again
 engagement marriage millicent arthur when
 "millicent's engagement response"
 
-(murder/murderer) think believe guilty who did comitted want
++(think/believe/want) (guilty/comitted) who did | who (think/believe/want) (murder/murderer)
 "who did it response"
 
 +study (locked/sealed) door window how
@@ -228,19 +228,19 @@ goodbye bye farewell thanks thank
 "goodbye response"
 
 # Response when accused of the murder for a second (or subsequent) time
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_tag
 !provides new_accuse accuse_tag
 "subsequent accusation response"
 
 # Response when accused of the murder
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_tag accuse_b4_tag
 "first accusation response"
 
 # Response after accusation questions have been answered correctly
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !provides new_accuse accuse_tag
 "premature accusation response"
 
