@@ -53,9 +53,8 @@ Sub con.print_fail(s$)
 End Sub
 
 ' Use the real assets.
-adv.asset_dir$ = Mm.Info(Path) + "../../assets/"
-adv.msg_file$ = adv.asset_dir$ + "messages.dat"
-advdata.init(adv.asset_dir$ + "advent.dat")
+advdata.set_root(Mm.Info(Path) + "../../")
+advdata.init()
 
 add_test("Good morning.", "test_greeting")
 add_test("Bit cold isn't it?", "test_weather")

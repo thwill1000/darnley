@@ -19,9 +19,10 @@ sys.provides("console")
 #Include "../advdata.inc"
 #Include "../state.inc"
 
-adv.asset_dir$ = Mm.Info(Path) + "test-assets/"
-adv.msg_file$ = adv.asset_dir$ + "messages.dat"
-advdata.init(adv.asset_dir$ + "advent.dat")
+advdata.set_root(Mm.Info(Path))
+advdata.init()
+
+Const DATA_DIR$ = adv.game_root$ + "data/"
 
 add_test("test_has_flag_gvn_absent")
 add_test("test_has_flag_gvn_present")

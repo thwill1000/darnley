@@ -300,7 +300,7 @@ Function verb_say()
   ' Identify the .msg file containing the target's dialogue.
   ' If it doesn't exist then use a fixed response from 'messages.dat'.
   Const filename$ = LCase$(obj_id$(obj_idx%)) + ".msg"
-  If Not Mm.Info(Exists File adv.asset_dir$ + "/" + filename$) Then
+  If Not Mm.Info(Exists File adv.game_root$ + "data/" + filename$) Then
     print_message_or_fail(UCase$(obj_id$(obj_idx%)) + "_SAY_RESPONSE")
     Exit Function
   EndIf
@@ -375,7 +375,7 @@ End Function
 ' subject_words$(), respecting !requires eligibility. Returns the best
 ' matching line number, or -1 if none.
 Function find_response%(filename$, subject_words$())
-  Open adv.asset_dir$ + filename$ For Input As #1
+  Open adv.game_root$ + "data/" + filename$ For Input As #1
 
   Local best_num_matches%, line_num%, num_matches%, s$
   Local requires$(MAX_WORDS) Length MAX_WORD_LENGTH
@@ -441,7 +441,7 @@ Sub print_response(filename$, line%)
     Exit Sub
   EndIf
 
-  Open adv.asset_dir$ + "/" + filename$ For Input As #1
+  Open adv.game_root$ + "data/" + filename$ For Input As #1
   Local i%, s$
   Do
     Line Input #1, s$
@@ -792,7 +792,7 @@ Function print_message%(tag$, no_eol%)
 
   print_message% = 1
 
-  Open adv.msg_file$ For Input As #1
+  Open adv.game_root$ + "data/messages.dat" For Input As #1
   Do While Not Eof(fnbr%)
     Line Input #fnbr%, s$
     If s$ = tag$ Then

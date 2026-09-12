@@ -47,9 +47,8 @@ Sub con.print_fail(s$)
   con.println("[[red:" + s$ + "]]")
 End Sub
 
-adv.asset_dir$ = Mm.Info(Path) + "test-assets/"
-adv.msg_file$ = adv.asset_dir$ + "messages.dat"
-advdata.init(adv.asset_dir$ + "advent.dat")
+advdata.set_root(Mm.Info(Path))
+advdata.init()
 
 add_test("verb_examine() with no noun re-describes the location", "test_ex_gvn_no_noun")
 add_test("verb_examine() finds an object present in the current room", "test_ex_gvn_found_present")

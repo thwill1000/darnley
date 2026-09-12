@@ -54,13 +54,14 @@ Sub con.print_fail(s$)
 End Sub
 
 ' Use the real assets.
-adv.asset_dir$ = Mm.Info(Path) + "../../assets/"
-adv.msg_file$ = adv.asset_dir$ + "messages.dat"
-advdata.init(adv.asset_dir$ + "advent.dat")
+advdata.set_root(Mm.Info(Path) + "../../")
+advdata.init()
+
+Const DATA_DIR$ = adv.game_root$ + "data/"
 
 ' Template is read once, at file scope, rather than per-test.
 Dim t_keys$(msgorder.MAX_ENTRIES%) Length 128, t_n%
-msgorder.read_entries(adv.asset_dir$ + "p_template_suspect.msg", t_keys$(), t_n%)
+msgorder.read_entries(DATA_DIR$ + "p_template_suspect.msg", t_keys$(), t_n%)
 
 add_test("Arnold Billingsgate's .msg file matches template entry order", "test_msg_order_billingsgate")
 add_test("Arthur Coniston's .msg file matches template entry order", "test_msg_order_arthur")
@@ -84,7 +85,7 @@ End Sub
 ' order is a valid subsequence of the (already-loaded) template's order.
 Sub assert_msg_order(filename$)
   Local f_keys$(msgorder.MAX_ENTRIES%) Length 128, f_n%, err$
-  msgorder.read_entries(adv.asset_dir$ + filename$, f_keys$(), f_n%)
+  msgorder.read_entries(DATA_DIR$ + filename$, f_keys$(), f_n%)
 
   Local ok% = msgorder.validate%(t_keys$(), t_n%, f_keys$(), f_n%, filename$, err$)
 
