@@ -8,6 +8,7 @@ sys.provides("advdata")
 If sys.err$ <> "" Then Error sys.err$
 '!endif
 
+Dim adv.game_root$ = Mm.Info(Path) + "../"
 Dim adv.asset_dir$ = Mm.Info(Path) + "../assets/"
 Dim adv.msg_file$ = adv.asset_dir$ + "/messages.dat"
 
