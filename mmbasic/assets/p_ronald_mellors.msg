@@ -38,7 +38,7 @@ letter
 handkerchief
 "Do I look like I use lady's hankies?"
 
-+colonel (get/think) with
++colonel -who (get/think) with
 "Strict but fair. I've said all I'm goin to say about him."
 
 +sarah (get/think) with
@@ -215,7 +215,7 @@ engagement marriage millicent arthur when
 "Didn't hear about it till it was all round the house. Don't know
 the young gentleman well enough to say more than that."
 
-(murder/murderer) think believe guilty who did comitted want
++(think/believe/want) (guilty/comitted) who did | who (think/believe/want) (murder/murderer)
 "Not my business to guess. But if you're asking, I'd look closer to
 home than the grounds - that fine young gentleman's a sight too
 pleased with himself for my liking."
@@ -259,7 +259,7 @@ goodbye bye farewell thanks thank
 "Aye. Off with you, then."
 
 # Response when accused of the murder for a second (or subsequent) time
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_mellors
 !provides new_accuse accuse_mellors
 [[reset:He doesn't so much as blink.]]@
@@ -268,7 +268,7 @@ goodbye bye farewell thanks thank
 singing a different tune just to please you."
 
 # Response when accused of the murder
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_mellors accuse_b4_mellors
 [[reset:Mellors doesn't flinch. He looks back at you with the same flat,
@@ -279,7 +279,7 @@ his eyes has sharpened.]]@
 saying so all along, and I'll keep saying it."
 
 # Response when accused when insufficient clues have been gathered
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !provides new_accuse accuse_mellors
 "You'd best have something to back that up before you go saying it
 again."

@@ -51,7 +51,7 @@ called me by name, not 'Dear Sir' - after all we were friends."
 handkerchief
 "Not mine, obviously. I don't go about with lace and scent, man."
 
-+colonel (get/think) with
++colonel -who (get/think) with
 "A hard man but very fair. Once I had explained my business problem
 he agreed to help me out."
 
@@ -256,7 +256,7 @@ engagement marriage millicent arthur when
 it yesterday. Can't say I know the fellow well enough to judge the
 match."
 
-(murder/murderer) think believe guilty who did comitted want
++(think/believe/want) (guilty/comitted) who did | who (think/believe/want) (murder/murderer)
 "Damned if I know. If you want my honest opinion, servants notice a
 great deal more than they let on - I shouldn't rule out that butler
 of his, watchful sort of fellow. But that's guesswork, mind."
@@ -311,7 +311,7 @@ goodbye bye farewell thanks thank
 "Yes, yes. Get on with it, then."
 
 # Response when accused of the murder for a second (or subsequent) time
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_redvers
 !provides new_accuse accuse_redvers
 [[reset:He glares at you with undisguised fury, though there is something else
@@ -321,7 +321,7 @@ beneath it now - a flicker of unease.]]@
 my patience further."
 
 # Response when accused of the murder
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_redvers accuse_b4_redvers
 [[reset:Slingsby's face darkens to an alarming shade of puce, his moustache
@@ -331,7 +331,7 @@ fairly bristling with outrage.]]@
 alive and well, and I'll thank you to remember it!"
 
 # Response when accused when insufficient clues have been gathered
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !provides new_accuse accuse_redvers
 "Confound it, man, you can't fling accusations about like that! Get your
 facts straight first."

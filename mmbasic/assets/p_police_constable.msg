@@ -2,7 +2,7 @@ hello hi morning afternoon evening greetings
 "Morning, sir. Constable on duty at the gate - nothing gets past me,
 for what that's worth."
 
-+colonel (get/think) with
++colonel -who (get/think) with
 "Never met the gentleman myself, sir. I'm only posted here since the
 alarm was raised this morning."
 
@@ -84,7 +84,7 @@ motive reason why think murder want
 "Not my place to guess at that sort of thing, sir. I just mind the
 gate."
 
-(murder/murderer) think believe guilty who did comitted want
++(think/believe/want) (guilty/comitted) who did | who (think/believe/want) (murder/murderer)
 "That's your department, sir, not mine. I wouldn't like to hazard a
 guess."
 

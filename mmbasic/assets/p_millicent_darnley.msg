@@ -49,7 +49,7 @@ handkerchief
 don't remember when I lose them. I certainly wasn't in the summer
 house yesterday. Is it important?"
 
-+colonel (get/think) with
++colonel -who (get/think) with
 "Daddy was a tyrant but always kind to me. He was always fearful that
 Sarah would leave him for a younger man."
 
@@ -264,7 +264,7 @@ engagement marriage millicent arthur when
 yesterday - I still can hardly believe it. I'd waited so long for
 him to say yes."
 
-(murder/murderer) think believe guilty who did comitted want
++(think/believe/want) (guilty/comitted) who did | who (think/believe/want) (murder/murderer)
 "I try not to think about it - it makes me feel rather sick. If I'm
 honest, Mellors has always given me an uneasy feeling. But that isn't
 proof, is it? Just a feeling."
@@ -313,7 +313,7 @@ goodbye bye farewell thanks thank
 "Goodbye, Inspector. I do hope you find whoever did this."
 
 # Response when accused of the murder for a second (or subsequent) time
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_millicent
 !provides new_accuse accuse_millicent
 [[reset:Her jaw sets and she regards you with cold, level eyes.]]@
@@ -322,7 +322,7 @@ goodbye bye farewell thanks thank
 now, however many times you care to repeat yourself."
 
 # Response when accused of the murder
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_millicent accuse_b4_millicent
 [[reset:Millicent's composure cracks for the first time since you met her
@@ -332,7 +332,7 @@ now, however many times you care to repeat yourself."
 absolutely certain, because I will not forgive this lightly."
 
 # Response when accused when insufficient clues have been gathered
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !provides new_accuse accuse_millicent
 "That is a wicked thing to say without proof. I hope you have better
 reasons than mere suspicion."

@@ -777,6 +777,7 @@ End Sub
 
 Sub test_premature_accusation()
   assert_response("accuse", "premature accusation response")
+  assert_response("guilty", "premature accusation response")
   assert_response("I accuse you!", "premature accusation response")
   assert_response("You did it", "premature accusation response")
   assert_response("You are the murderer", "premature accusation response")
@@ -786,11 +787,15 @@ Sub test_premature_accusation()
   assert_response("J'accuse!", "premature accusation response")
   assert_response("I accuse you of murder", "premature accusation response")
   assert_response("I accuse you, confess!", "premature accusation response")
+  assert_response("You are guilty!", "premature accusation response")
 End Sub
 
 Sub test_first_accusation()
   reset_flags("all_clues")
   assert_response("accuse", "first accusation response")
+
+  reset_flags("all_clues")
+  assert_response("guilty", "first accusation response")
 
   reset_flags("all_clues")
   assert_response("I accuse you!", "first accusation response")
@@ -818,11 +823,17 @@ Sub test_first_accusation()
 
   reset_flags("all_clues")
   assert_response("I accuse you, confess!", "first accusation response")
+
+  reset_flags("all_clues")
+  assert_response("You are guilty!", "first accusation response")
 End Sub
 
 Sub test_subsequent_accusation()
   reset_flags("all_clues", "accuse_b4_tag")
   assert_response("accuse", "subsequent accusation response")
+
+  reset_flags("all_clues", "accuse_b4_tag")
+  assert_response("guilty", "subsequent accusation response")
 
   reset_flags("all_clues", "accuse_b4_tag")
   assert_response("I accuse you!", "subsequent accusation response")
@@ -850,6 +861,9 @@ Sub test_subsequent_accusation()
 
   reset_flags("all_clues", "accuse_b4_tag")
   assert_response("I accuse you, confess!", "subsequent accusation response")
+
+  reset_flags("all_clues", "accuse_b4_tag")
+  assert_response("You are guilty!", "subsequent accusation response")
 End Sub
 
 Sub test_goodbye()

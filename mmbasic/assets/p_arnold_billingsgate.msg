@@ -50,7 +50,7 @@ letter
 handkerchief
 "I don't know anything about it."
 
-+colonel (get/think) with
++colonel -who (get/think) with
 "The master was a very honest, decent gentleman, and extremely good to his family."
 
 +sarah (get/think) with
@@ -275,7 +275,7 @@ engagement marriage millicent arthur when
 "The Colonel gave his consent only yesterday afternoon, as I
 understand it. Miss Millicent seemed very happy about it indeed."
 
-(murder/murderer) think believe guilty who did comitted want
++(think/believe/want) (guilty/comitted) who did | who (think/believe/want) (murder/murderer)
 "That is not a question I am equipped to answer, sir. I will say
 only that a house such as this holds more secrets than its servants
 are ever told, above stairs or below."
@@ -322,7 +322,7 @@ goodbye bye farewell thanks thank
 further."
 
 # Response when accused of the murder for a second (or subsequent) time
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_billingsgate
 !provides new_accuse accuse_billingsgate
 [[reset:The butler's composure has returned, though something guarded remains
@@ -332,7 +332,7 @@ in his manner.]]@
 changed in the meantime."
 
 # Response when accused of the murder
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_billingsgate accuse_b4_billingsgate
 [[reset:Billingsgate draws himself up, visibly wounded, though he masters
@@ -343,7 +343,7 @@ sir. I should hope my conduct speaks for itself, whatever you may
 suspect."
 
 # Response when accused when insufficient clues have been gathered
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !provides new_accuse accuse_billingsgate
 "Begging your pardon, but that is a very grave thing to suggest without
 proper cause."

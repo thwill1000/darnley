@@ -47,7 +47,7 @@ handkerchief
 "Mrs. Sarah and Miss Millicent both have handkerchiefs like this one.
 I can't say whose it is."
 
-+colonel (get/think) with
++colonel -who (get/think) with
 "A hard man both in his business dealings and with his family."
 
 +sarah (get/think) with
@@ -247,7 +247,7 @@ engagement marriage millicent arthur when
 "Oh, Miss Millicent was thrilled when it was agreed yesterday. She
 came straight down to the kitchen to tell me, bless her."
 
-(murder/murderer) think believe guilty who did comitted want
++(think/believe/want) (guilty/comitted) who did | who (think/believe/want) (murder/murderer)
 "I try not to speculate, it's not my place. Though I'll say Sir
 Redvers had an almighty row with the Colonel that evening - words
 were raised. Make of that what you will."
@@ -292,7 +292,7 @@ goodbye bye farewell thanks thank
 could use it."
 
 # Response when accused of the murder for a second (or subsequent) time
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_goodbody
 !provides new_accuse accuse_goodbody
 [[reset:She fixes you with a look that could curdle milk.]]@
@@ -301,7 +301,7 @@ could use it."
 didn't do it, and that's flat."
 
 # Response when accused of the murder
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_goodbody accuse_b4_goodbody
 [[reset:Mrs. Goodbody plants her floury hands on her hips, drawing herself up
@@ -311,7 +311,7 @@ to her full and considerable height.]]@
 for five years and never so much as raised my voice, let alone a gun!"
 
 # Response when accused when insufficient clues have been gathered
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !provides new_accuse accuse_goodbody
 "Now that's a dreadful thing to say to a body, and no proof to back it
 up neither."

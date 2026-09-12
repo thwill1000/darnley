@@ -61,7 +61,7 @@ violence.]]@
 @
 "Hetchoo!"
 
-+colonel (get/think) with
++colonel -who (get/think) with
 [[reset:The cat's ears go back at the mention of his late master, and for a
 moment he seems almost solemn. Almost.]]@
 @
@@ -176,7 +176,7 @@ motive reason why think murder want
 @
 "Mrrp."
 
-(murder/murderer) think believe guilty who did comitted want
++(think/believe/want) (guilty/comitted) who did | who (think/believe/want) (murder/murderer)
 [[reset:The cat fixes you with a long, unreadable stare, as if he knows
 perfectly well and simply isn't telling.]]@
 @
@@ -199,7 +199,7 @@ goodbye bye farewell thanks thank
 @
 "..."
 
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 [[reset:The cat regards your accusation with the withering scorn of a
 creature who has never answered to anyone in his life.]]@
 @
