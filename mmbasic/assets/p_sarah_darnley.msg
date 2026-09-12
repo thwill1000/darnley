@@ -56,7 +56,7 @@ I'm at a loss about the letter."
 handkerchief
 "You found it in the summer house? I'm absolutely sure it isn't mine."
 
-+colonel (get/think) with
++colonel -who (get/think) with
 "He was somewhat strict and suspicious by nature, but we were happy
 enough."
 
@@ -277,7 +277,7 @@ engagement marriage millicent arthur when
 positively glowing when she told me. I'm glad she'll have that
 happiness, whatever else has happened."
 
-(murder/murderer) think believe guilty who did comitted want
++(think/believe/want) (guilty/comitted) who did | who (think/believe/want) (murder/murderer)
 "I can't bear to think it was any of them, truly. If you insist I
 name someone - Sir Redvers seemed dreadfully agitated all evening. I
 don't like to say more than that."
@@ -326,7 +326,7 @@ goodbye bye farewell thanks thank
 this."
 
 # Response when accused of the murder for a second (or subsequent) time
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_sarah
 !provides new_accuse accuse_sarah
 [[reset:She looks at you steadily now, some of the shock worn off, replaced by
@@ -336,7 +336,7 @@ something harder to read.]]@
 you are quite wrong."
 
 # Response when accused of the murder
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_sarah accuse_b4_sarah
 [[reset:Sarah's hand goes to her throat, the colour draining from her face.]]@
@@ -345,7 +345,7 @@ you are quite wrong."
 thing."
 
 # Response when accused when insufficient clues have been gathered
--who (accuse/jaccuse) you (murder/murderer) | -who +you +did +it
+-who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !provides new_accuse accuse_sarah
 "You mustn't say such things without evidence - it isn't fair, not to
 anyone."
