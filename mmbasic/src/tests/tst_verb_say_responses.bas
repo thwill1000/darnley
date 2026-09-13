@@ -83,7 +83,8 @@ add_test("What do you think of Arnold Billingsgate?", "test_opinion_billingsgate
 add_test("What do you think of Mildred Goodbody?", "test_opinion_goodbody")
 add_test("What do you think of Norah Bagsby?", "test_opinion_bagsby")
 add_test("What do you think of Ronald Mellors?", "test_opinion_mellors")
-add_test("Tell me about the ginger cat.", "test_ginger_cat")
+add_test("Tell me about the ginger cat.", "test_opinion_ginger_cat")
+add_test("What do you think of the Police Constable?", "test_opinion_constable")
 add_test("What do you know about the horse?", "test_horse")
 add_test("Tell me about the Daimler.", "test_daimler")
 add_test("Tell me about the police car.", "test_police_car")
@@ -94,7 +95,6 @@ add_test("What do you know about the men's shoe prints?", "test_mens_shoeprints"
 add_test("What do you know about the women's shoe prints?", "test_womens_shoeprints")
 add_test("Tell me about the footprints.", "test_footprints")
 add_test("What do you know about the tyre tracks by the car?", "test_car_tracks")
-add_test("How long have you been on duty at the gate?", "test_gate_duty")
 add_test("What do you know about the pond?", "test_pond")
 add_test("Tell me about the pipe in the servants' quarters.", "test_pipe")
 add_test("Whose books are these?", "test_bookshelf")
@@ -404,9 +404,25 @@ Sub test_opinion_mellors()
   assert_response("how do you get on with ronald mellors", "mellors response")
 End Sub
 
-Sub test_ginger_cat()
+Sub test_opinion_ginger_cat()
   assert_response("cat", "chester cat response")
   assert_response("Tell me about the ginger cat", "chester cat response")
+End Sub
+
+Sub test_opinion_constable()
+  assert_response("What do you think of the police constable?", "police constable response")
+  assert_response("What do you make of the officer at the gate?", "police constable response")
+  assert_response("Tell me about the constable.", "police constable response")
+  assert_response("What's the policeman like?", "police constable response")
+  assert_response("Your impression of the officer.", "police constable response")
+  assert_response("How do you get on with the constable?", "police constable response")
+
+  ' Ask the Police Constable about himself directly
+  objects$(9) = "P_POLICE_CONSTABLE|Police Constable|police constable policeman bobby|LOC001_BATHROOM|2|100"
+  assert_response("What do you make of yourself, constable?", "Me, sir? Not much to tell", 1)
+  assert_response("How long have you been on duty here?", "Me, sir? Not much to tell", 1)
+  assert_response("Were you posted here at the gate?", "Me, sir? Not much to tell", 1)
+  assert_response("What are your orders at the drive?", "Me, sir? Not much to tell", 1)
 End Sub
 
 Sub test_daimler()
@@ -489,16 +505,6 @@ Sub test_car_tracks()
   assert_response("Tell me about the tyre tracks", "car tracks response")
   assert_response("What about the tracks by the car?", "car tracks response")
   assert_response("What about the daimler's tyres?", "car tracks response")
-End Sub
-
-Sub test_gate_duty()
-  assert_response("gate duty", "gate duty response")
-
-  ' Only meaningful for the Police Constable - swap in his real .msg file
-  objects$(9) = "P_POLICE_CONSTABLE|Police Constable|police constable policeman bobby|LOC001_BATHROOM|2|100"
-  assert_response("How long have you been on duty here?", "Sent up from the station first thing", 1)
-  assert_response("Were you posted here at the gate?", "Sent up from the station first thing", 1)
-  assert_response("What are your orders at the drive?", "Sent up from the station first thing", 1)
 End Sub
 
 Sub test_pond()

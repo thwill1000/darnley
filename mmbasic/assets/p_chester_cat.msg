@@ -10,7 +10,7 @@ from where they were found.]]@
 "..."
 
 boots
-[[reset:Chester eyes your boots with sudden, worrying interest and takes an
+[[reset:The cat eyes your boots with sudden, worrying interest and takes an
 experimental swipe at the laces.]]@
 @
 "Prrp."
@@ -121,6 +121,12 @@ beneath him.]]@
 @
 "Mrow."
 
++(officer/constable/police/policeman/bobby) (get/think) with
+[[reset:The cat regards the mention of a uniformed stranger with complete
+indifference and returns to washing a paw.]]@
+@
+"Mrp."
+
 +suit servants
 [[reset:He has, at some point, clearly slept on someone's good tweeds - there
 is a dusting of ginger fur that suggests as much, though not here in
@@ -176,7 +182,7 @@ perfectly well and simply isn't telling.]]@
 @
 "Mrrrrow."
 
-police investigation scotland yard inspector detective think of me
+police investigation scotland yard inspector detective think here of me
 [[reset:He sniffs your trouser leg, decides you'll do, and headbutts your
 shin companionably.]]@
 @

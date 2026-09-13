@@ -90,6 +90,10 @@ fellow I should think."
 believe. Can't say I've had much to do with him myself - not much of
 a cat man."
 
++(officer/constable/police/policeman/bobby) (get/think) with
+"Decent enough chap, I should think, old boy - can't say I've exchanged more
+than a nod with him on my way past the gate."
+
 +(flatfooted/flat/odd) (bootprints/footprints/prints/marks)
 "I followed the bootprints from the terrace around to the kitchen."
 
@@ -298,7 +302,7 @@ money mining peru ruin redvers colonel
 "Couldn't tell you. Money troubles aren't really the sort of thing
 a fellow discusses over billiards."
 
-police investigation scotland yard inspector detective think of me
+police investigation scotland yard inspector detective think here of me
 "Rather glad they sent someone who knows what he's doing, if I'm
 honest. This house needs answers, and quickly, before everyone's
 nerves give out entirely."
