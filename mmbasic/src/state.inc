@@ -11,7 +11,6 @@ sys.provides("state")
 If sys.err$ <> "" Then Error sys.err$
 '!endif
 
-Const state.SAVE_DIR$ = file.get_canonical$(Mm.Info$(Path) + "../saves")
 Const state.FD% = 1
 
 Dim r              ' Current room
@@ -174,7 +173,7 @@ End Function
 ' Gets the path to the file corresponding to saved game slot 'i'.
 Function state.save_file$(i)
   If i < 1 Or i > 10 Then Error "Invalid saved game number"
-  state.save_file$ = state.SAVE_DIR$ + "/"
+  state.save_file$ = adv.game_root$ + "saves/"
   Local parent_name$ = file.get_name$(file.get_parent$(advent.file$))
   If Right$(parent_name$, 1) = ":" Then
     parent_name$ = Left$(parent_name$, Len(parent_name$) - 1) + "-drive"
