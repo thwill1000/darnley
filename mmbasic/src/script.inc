@@ -12,7 +12,6 @@ sys.provides("script")
 If sys.err$ <> "" Then Error sys.err$
 '!endif
 
-Const script.DIR$ = file.get_canonical$(Mm.Info$(Path) + "../scripts")
 Const script.FD_IN% = 2
 Const script.FD_OUT% = 3
 
@@ -85,7 +84,7 @@ End Function
 ' Gets the path to the file corresponding to script slot 'i'.
 Function script.script_file$(i)
   If i < 1 Or i > 10 Then Error "Invalid script number"
-  script.script_file$ = script.DIR$ + "/"
+  script.script_file$ = adv.game_root$ + "scripts/"
   Local parent_name$ = file.get_name$(file.get_parent$(advent.file$))
   If Right$(parent_name$, 1) = ":" Then
     parent_name$ = Left$(parent_name$, Len(parent_name$) - 1) + "-drive"
