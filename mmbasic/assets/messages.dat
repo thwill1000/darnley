@@ -850,3 +850,13 @@ MORNING_ROOM_TO_GUEST_ROOM
 The door opens into a second guest room, currently in a state of mid-decoration
 disarray - dust sheets, bare boards, and furniture stacked every which way.
 Plainly no one has slept here in some time. You withdraw and pull the door to.
+
+OBJ255_ROOK_SAY_RESPONSE
+The rook looks at you quizzically.@
+@
+[[cyan:Caw?]]
+
+P_THE_BODY_SAY_RESPONSE
+The body stares at you glassy eyed and you think to yourself,
+[[cyan:"One of the advantages of being dead is not having to answer impertinent
+questions!"]]

@@ -297,6 +297,14 @@ Function verb_say()
     subject_idx% = 1
   EndIf
 
+  ' Identify the .msg file containing the target's dialogue.
+  ' If it doesn't exist then use a fixed response from 'messages.dat'.
+  Const filename$ = LCase$(Mid$(obj_id$(obj_idx%), 3)) + ".msg"
+  If Not Mm.Info(Exists File adv.asset_dir$ + "/" + filename$) Then
+    print_message_or_fail(UCase$(obj_id$(obj_idx%)) + "_SAY_RESPONSE")
+    Exit Function
+  EndIf
+
   ' Extract subject of the conversation
   Local subject_words$(MAX_WORDS) Length MAX_WORD_LENGTH
   Local i%, j% = Bound(subject_words$(), 0)
@@ -306,7 +314,6 @@ Function verb_say()
     Inc j%
   Next
 
-  Const filename$ = LCase$(Mid$(obj_id$(obj_idx%), 3)) + ".msg"
   Const match_line% = find_response%(filename$, subject_words$())
   print_response(filename$, match_line%)
 End Function
