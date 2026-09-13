@@ -72,6 +72,10 @@ see as I owe anyone an account of myself."
 "Chester. Good ratter, keeps the stables clear of vermin. I feed him
 same as the horses - he earns his keep, unlike some."
 
++(officer/constable/police/policeman/bobby) (get/think) with
+"Seen him stood at the gate. Doesn't concern me - I keep to the grounds,
+he keeps to the drive."
+
 +(flatfooted/flat/odd) (bootprints/footprints/prints/marks)
 "Clear off! I'm not showing anyone my boots."
 
@@ -242,7 +246,7 @@ money mining peru ruin redvers colonel
 know is Sir Redvers came up the drive in a black temper yesterday
 afternoon."
 
-police investigation scotland yard inspector detective think of me
+police investigation scotland yard inspector detective think here of me
 "Don't much care for coppers poking round my cottage, if that's
 what you're asking. But get on with your job. I've nothing to hide
 from you or anyone else."

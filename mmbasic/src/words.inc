@@ -118,7 +118,7 @@ Function split_words%(cmd$, words$())
         words$(i%) = Chr$(c%)
         Inc i%
 
-      Case 39, 33, 63 ' Apostrophe ('), !, ?
+      Case 39, 33, 46, 63 ' Apostrophe ('), !, full-stop (.), ?
         ' Stripped - silently skip
 
       Case Else ' Normal character

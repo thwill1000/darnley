@@ -91,6 +91,10 @@ your account now."
 the creatures myself, but Darnley was rather fond of him, as I
 recall."
 
++(officer/constable/police/policeman/bobby) (get/think) with
+"Seems steady enough for a village bobby. Can't say I've had cause to
+exchange more than two words with the fellow."
+
 +(flatfooted/flat/odd) (bootprints/footprints/prints/marks)
 "The bootprints around the house look like mine, but I didn't make
 them. I'm not flat-footed."
@@ -294,7 +298,7 @@ money mining peru ruin redvers colonel
 "My business affairs are my own concern, and none of yours unless
 you can show otherwise."
 
-police investigation scotland yard inspector detective think of me
+police investigation scotland yard inspector detective think here of me
 "About time too. Damned unpleasant business, having one's private
 affairs picked over, but I'd rather have it done properly than not
 at all. Get on with it, man."

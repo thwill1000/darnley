@@ -89,6 +89,10 @@ Daddy to get rid of him."
 down at the stables bothering Mellors. I've always found him rather
 standoffish, myself."
 
++(officer/constable/police/policeman/bobby) (get/think) with
+"I've only seen him through the window, stood out there in the cold. Rather
+a thankless job, I should think, on a morning like this."
+
 +(flatfooted/flat/odd) (bootprints/footprints/prints/marks)
 "I'm afraid I paid no attention to footprints. Really, is that the sort of thing
 one is expected to notice?"
@@ -296,7 +300,7 @@ money mining peru ruin redvers colonel
 "I really don't know anything about finance. That's
 not the sort of thing anyone discusses with me."
 
-police investigation scotland yard inspector detective think of me
+police investigation scotland yard inspector detective think here of me
 "I suppose you have to suspect all of us equally, don't you? It's a
 horrid feeling, being looked at that way in one's own home. But I
 want whoever did this caught, so ask what you must."

@@ -97,6 +97,10 @@ probably mistaken."
 I'm afraid I've never had much to do with him. He lives down at the
 stables, as I understand it."
 
++(officer/constable/police/policeman/bobby) (get/think) with
+"I haven't really spoken to him. He seems very young to be standing guard
+over something so dreadful."
+
 +(flatfooted/flat/odd) (bootprints/footprints/prints/marks)
 "I'm too distressed to think clearly about bootprints, I'm afraid."
 
@@ -308,7 +312,7 @@ realise it was quite so serious until now."
 money mining peru ruin redvers colonel
 "I really couldn't say. Sebastian didn't discuss financial business with me."
 
-police investigation scotland yard inspector detective think of me
+police investigation scotland yard inspector detective think here of me
 "I want to know who did this as much as anyone, Inspector - more,
 perhaps. Ask whatever you must. I only hope it's over soon, for all
 our sakes."

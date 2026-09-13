@@ -78,6 +78,10 @@ don't know what more you'd want me to say about myself."
 "Oh, that's Chester, sir. He's ever so sweet, though he does shed
 something dreadful on my apron when he jumps up."
 
++(officer/constable/police/policeman/bobby) (get/think) with
+"He gave me quite a fright when I saw him from the landing window, sir. I
+expect he's only doing his job, same as anyone."
+
 +(flatfooted/flat/odd) (bootprints/footprints/prints/marks)
 "Oh, I couldn't say, sir. I don't look at people's feet, it isn't my place."
 
@@ -259,7 +263,7 @@ money mining peru ruin redvers colonel
 when he arrived. Mrs. G. said it was money troubles, but I don't
 know more than that."
 
-police investigation scotland yard inspector detective think of me
+police investigation scotland yard inspector detective think here of me
 "Oh, it does put the wind up me, having a proper detective in the
 house. I haven't done anything wrong, sir, honest I haven't - I just
 get nervous with all the questions."
