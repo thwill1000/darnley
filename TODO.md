@@ -4,7 +4,6 @@
 - Support ENTER as synonym of GO
 - Support HOUSE as synonym for INSIDE
 - Support GAME KEEPER as two words, or hyphenated?
-- DIALOGUE: Add dialogue for: "WHERE IS THE BODY?"
 - DIALOGUE: Support different dialogue fallback for questions vs. non-questions
 - DIALOGUE: Asking Mellors about "Millicent Darnley" gives you the response for asking about "Colonel Darnley"
 - GFX: fix ornamental pond image

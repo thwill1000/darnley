@@ -118,6 +118,7 @@ add_test("Have you considered remarrying?", "test_remarriage")
 add_test("When did Arthur and Millicent get engaged?", "test_engagement")
 add_test("How was the study locked?", "test_locked_study")
 add_test("What clues have you found?", "test_evidence")
+add_test("Where is the body?", "test_body")
 add_test("Was there something going on between Sarah and Mellors?", "test_affair_blocked")
 add_test("Was there something going on between Sarah and Mellors? (once handkerchief and cigarettes are found)", "test_affair_unlocked")
 add_test("Tell me about the Colonel's finances.", "test_money_blocked")
@@ -688,6 +689,13 @@ Sub test_locked_study()
   assert_response("how was the study sealed", "locked study response")
   assert_response("how could someone have gotten into the study", "locked study response")
   assert_response("explain the locked door on the study", "locked study response")
+End Sub
+
+Sub test_body()
+  assert_response("Where is the body?", "body location response")
+  assert_response("Where's the body?", "body location response")
+  assert_response("Where did you find the body?", "body location response")
+  assert_response("Where was the colonel found?", "body location response")
 End Sub
 
 Sub test_evidence()

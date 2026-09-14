@@ -287,6 +287,10 @@ don't like to say more than that."
 keys, and that broken window - it's as though no one could possibly
 have got to him. And yet someone did."
 
++(body/colonel) where
+"In his study, I'm told - I haven't gone in there myself, and I don't
+think I could bear to."
+
 clues evidence found discovered proof
 "I don't know what you've discovered, Inspector, and I find I'm
 almost afraid to ask. Just be sure, whatever you decide."

@@ -244,6 +244,10 @@ been. I don't mean nothing by that, mind."
 locked room and nobody able to get in or out - it doesn't seem
 natural."
 
++(body/colonel) where
+"In the study, sir. I haven't been in - I don't think I could look, if
+I'm honest."
+
 clues evidence found discovered proof
 "I don't know anything about that, sir. I hope you find whatever
 you need to. I just want this all to be over."

@@ -201,6 +201,9 @@ engagement marriage millicent arthur when
 +study (locked/sealed) door window how
 "locked study response"
 
++(body/colonel) where
+"body location response"
+
 clues evidence found discovered proof
 "evidence response"
 
