@@ -61,7 +61,7 @@ violence.]]@
 @
 "Hetchoo!"
 
-+colonel -who (get/think) with
++colonel -(millicent/sarah/who) (get/think) with
 [[reset:The cat's ears go back at the mention of his late master, and for a
 moment he seems almost solemn. Almost.]]@
 @

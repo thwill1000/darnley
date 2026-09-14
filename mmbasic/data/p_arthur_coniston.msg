@@ -52,7 +52,7 @@ that I could marry Millicent."
 handkerchief
 "I don't know whose handkerchief it is."
 
-+colonel -who (get/think) with
++colonel -(millicent/sarah/who) (get/think) with
 "A decent old buffer. When I asked his permission to marry Millicent
 he agreed straight away. I was surprised, I admit it!"
 

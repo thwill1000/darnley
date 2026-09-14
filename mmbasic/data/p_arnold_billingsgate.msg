@@ -50,7 +50,7 @@ letter
 handkerchief
 "I don't know anything about it."
 
-+colonel -who (get/think) with
++colonel -(millicent/sarah/who) (get/think) with
 "The master was a very honest, decent gentleman, and extremely good to his family."
 
 +sarah (get/think) with

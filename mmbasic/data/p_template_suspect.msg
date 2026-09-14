@@ -53,7 +53,7 @@ letter
 handkerchief
 "handkerchief response"
 
-+colonel -who (get/think) with
++colonel -(millicent/sarah/who) (get/think) with
 "colonel darnley response"
 
 +sarah (get/think) with
