@@ -38,7 +38,7 @@ letter
 handkerchief
 "Do I look like I use lady's hankies?"
 
-+colonel -who (get/think) with
++colonel -(millicent/sarah/who) (get/think) with
 "Strict but fair. I've said all I'm goin to say about him."
 
 +sarah (get/think) with

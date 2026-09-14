@@ -44,7 +44,7 @@ handkerchief
 "Both the ladies have this sort of hanky. Sometimes Mrs. G. is given
 the older ones."
 
-+colonel -who (get/think) with
++colonel -(millicent/sarah/who) (get/think) with
 "Very strict. I didn't like him."
 
 +sarah (get/think) with

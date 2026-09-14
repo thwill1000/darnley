@@ -49,7 +49,7 @@ handkerchief
 don't remember when I lose them. I certainly wasn't in the summer
 house yesterday. Is it important?"
 
-+colonel -who (get/think) with
++colonel -(millicent/sarah/who) (get/think) with
 "Daddy was a tyrant but always kind to me. He was always fearful that
 Sarah would leave him for a younger man."
 

@@ -47,7 +47,7 @@ handkerchief
 "Mrs. Sarah and Miss Millicent both have handkerchiefs like this one.
 I can't say whose it is."
 
-+colonel -who (get/think) with
++colonel -(millicent/sarah/who) (get/think) with
 "A hard man both in his business dealings and with his family."
 
 +sarah (get/think) with
