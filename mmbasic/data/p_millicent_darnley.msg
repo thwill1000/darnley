@@ -274,6 +274,10 @@ proof, is it? Just a feeling."
 broken from outside - I heard people saying it's impossible. I
 suppose that's why they needed a proper detective."
 
++(body/colonel) where
+"In the study, on that dreadful rug. I haven't seen it - I don't want
+to, if I can help it."
+
 clues evidence found discovered proof
 "I don't know what you've found and I'm not sure I want to. Just -
 please be certain, whatever you conclude. It matters rather a lot."

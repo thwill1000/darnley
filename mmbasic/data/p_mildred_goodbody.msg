@@ -257,6 +257,10 @@ were raised. Make of that what you will."
 sounds like something out of a novel, not something that happens in
 a respectable house."
 
++(body/colonel) where
+"In the study, dear, so they tell me. I've not set foot in there myself,
+and don't intend to."
+
 clues evidence found discovered proof
 "That's your business, dear, not mine. I wouldn't know a clue if it
 sat in my soup. You get on with your job."

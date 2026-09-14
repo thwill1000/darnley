@@ -275,6 +275,10 @@ locked from the inside with the Colonel's own keys still in them.
 I broke the window pane myself to get us in - can't see how anyone
 managed it, honestly."
 
++(body/colonel) where
+"Still in the study, old boy, last I saw - on the carpet, more or less
+where he fell. Billingsgate and I found him there."
+
 clues evidence found discovered proof
 "No idea what you've turned up, old boy, and I shan't pretend I'm
 not curious. I'll wait for you to tell me, rather than guess and
