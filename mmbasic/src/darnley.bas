@@ -21,7 +21,7 @@ If Mm.Device$ = "MMB4L" Then Option Simulate PicoMiteVGA
 #Include "adventlib.inc"
 #Include "microserif6x8.inc"
 
-Const VERSION = 9301 ' 0.9.1
+Const VERSION = 9302 ' 0.9.2
 Const NUM_ACCUSE_REPLIES = count_data%("accuse_reply_data")
 
 Const advent.file$ = "darnley" ' Required by 'script.inc'
