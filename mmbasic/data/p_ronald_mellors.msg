@@ -225,6 +225,10 @@ pleased with himself for my liking."
 unless I'm sent for. Whatever went on with locked doors, you'll not
 get an answer from me."
 
++(body/colonel) where
+"In the house somewhere, I'd expect. Nothing to do with me - I keep to
+the grounds."
+
 clues evidence found discovered proof
 "Not my concern what you've found. I've told you what I know.
 Rest's up to you."

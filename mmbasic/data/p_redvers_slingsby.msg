@@ -266,6 +266,10 @@ of his, watchful sort of fellow. But that's guesswork, mind."
 I certainly didn't lock it. If it was locked afterwards, someone
 did that after I'd gone, and I couldn't tell you who or how."
 
++(body/colonel) where
+"In the study, so I'm told. I haven't been in to look, and I can't say
+I've any wish to."
+
 clues evidence found discovered proof
 "Haven't the faintest what you've dug up, and I don't much care to
 speculate. Just make sure whatever you've got actually holds water

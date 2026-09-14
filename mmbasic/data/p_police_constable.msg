@@ -88,6 +88,10 @@ gate."
 "That's your department, sir, not mine. I wouldn't like to hazard a
 guess."
 
++(body/colonel) where
+"In the study, sir, same as when it was found. Nobody's to go in or move
+anything until you say so."
+
 police investigation scotland yard inspector detective think here of me
 "Glad to have you here, sir. I'll keep the drive clear and pass
 along anyone who needs to come through."

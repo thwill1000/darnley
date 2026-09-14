@@ -286,6 +286,10 @@ for it, sir. I keep my own key hidden, as I told you, and the
 Colonel's was on his person. I do not see how anyone could have got
 in or out."
 
++(body/colonel) where
+"In the study, sir, upon the rug - just as Mr. Coniston and I found him.
+I understand nothing has been moved since."
+
 clues evidence found discovered proof
 "I couldn't say what you have found, sir, nor would I presume to
 ask. I trust you to make sense of it better than any of us could."
