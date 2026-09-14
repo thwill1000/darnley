@@ -51,7 +51,7 @@ called me by name, not 'Dear Sir' - after all we were friends."
 handkerchief
 "Not mine, obviously. I don't go about with lace and scent, man."
 
-+colonel -who (get/think) with
++colonel -(millicent/sarah/who) (get/think) with
 "A hard man but very fair. Once I had explained my business problem
 he agreed to help me out."
 

@@ -334,6 +334,7 @@ Sub test_opinion_sarah()
   assert_response("what's sarah like", "sarah response")
   assert_response("your impression of sarah", "sarah response")
   assert_response("how do you get on with sarah", "sarah response")
+  assert_response("What do you think of Sarah Darnley?", "sarah response")
 End Sub
 
 Sub test_opinion_millicent()
@@ -343,6 +344,7 @@ Sub test_opinion_millicent()
   assert_response("what's millicent like", "millicent response")
   assert_response("your impression of millicent", "millicent response")
   assert_response("how do you get on with millicent", "millicent response")
+  assert_response("What do you think of Millicent Darnley?", "millicent response")
 End Sub
 
 Sub test_opinion_arthur()

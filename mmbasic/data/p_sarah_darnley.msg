@@ -56,7 +56,7 @@ I'm at a loss about the letter."
 handkerchief
 "You found it in the summer house? I'm absolutely sure it isn't mine."
 
-+colonel -who (get/think) with
++colonel -(millicent/sarah/who) (get/think) with
 "He was somewhat strict and suspicious by nature, but we were happy
 enough."
 
