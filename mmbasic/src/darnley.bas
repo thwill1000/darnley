@@ -135,8 +135,16 @@ End Function
 
 Sub handle_new_clue()
   state.clear_flag("new_clue")
-  Const found% = state.count_set_flags%(clues$())
-  If found% = Bound(clues$(), 1) Then state.set_flag("all_clues")
+  Const count% = state.count_set_flags%(clues$())
+  Const num_clues% = Bound(clues$(), 1)
+  If count% = num_clues% Then state.set_flag("all_clues")
+  If count% > state.counters%(1) Then
+    con.println()
+    con.foreground("green")
+    con.println("* You have found " + Str$(count%) + " of " + Str$(num_clues%) + " clues! *")
+    con.foreground("reset")
+    state.counters%(1) = count%
+  EndIf
 End Sub
 
 Sub handle_new_accusation()

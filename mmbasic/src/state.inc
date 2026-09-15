@@ -15,6 +15,7 @@ Const state.FD% = 1
 
 Dim r              ' Current room
 Dim flags%(128)    ' LongString of "|TOKEN|TOKEN|..." flags, 1KB capacity
+Dim state.counters%(10) ' Counters
 Dim visited$       ' Characters in string are "1" if corresponding room visited,
                    ' otherwise "0".
 
@@ -26,6 +27,10 @@ Sub state.reset()
   r = 1
   LongString Clear flags%()
   LongString Append flags%(), "|"
+  Local i%
+  For i% = Bound(state.counters%(), 0) To Bound(state.counters%(), 1)
+    state.counters%(i%) = 0
+  Next
   visited$ = String$(Bound(rooms$(), 1), "0")
   describe% = 1
   state.cheat% = 0
@@ -122,7 +127,7 @@ End Function
 '
 ' @return 1 on success, otherwise 0.
 Function state.save%()
-  Local f$, s$
+  Local f$, i%, s$
 
   con.println("Select saved game:")
   con.println()
@@ -165,6 +170,12 @@ Function state.save%()
   Print #fd%, visited$             ' rooms visited
   Print #fd%, Str$(LLen(flags%())) ' flags 
   If LLen(flags%()) > 0 Then LongString Print #fd%, flags%()
+
+  ' Write counters
+  Print #fd%, Str$(Bound(state.counters%(), 1))
+  For i% = Bound(state.counters%(), 0) To Bound(state.counters%(), 1)
+    Print #fd%, Str$(state.counters%(i%))
+  Next
 
   Close #fd%
   state.save% = 1
@@ -213,6 +224,7 @@ Function state.restore%()
   con.println()
 
   Local err$, rr%, vv$, ff%(Bound(flags%(), 1))
+  Local i%, cc%(Bound(state.counters%(), 1)), nc%
 
   Line Input #fd%, s$
   rr% = Val(s$)
@@ -229,6 +241,25 @@ Function state.restore%()
     EndIf
   EndIf
 
+  ' Read counters
+  If err$ = "" Then
+    If Eof(#fd%) Then
+      err$ = "missing counters data."
+    Else
+      Line Input #fd%, s$
+      nc% = Val(s$)
+      If nc% <> Bound(state.counters%(), 1) Then
+        err$ = "counters count mismatch."
+      Else
+        For i% = Bound(cc%(), 0) To Bound(cc%(), 1)
+          If Eof(#fd%) Then err$ = "missing counters data." : Exit For
+          Line Input #fd%, s$
+          cc%(i%) = Val(s$)
+        Next
+      EndIf
+    EndIf
+  EndIf
+
   If err$ = "" And Not Eof(#fd%) Then err$ = "unexpected data."
 
   If err$ = "" Then
@@ -236,6 +267,9 @@ Function state.restore%()
     r = rr%
     visited$ = vv$
     LongString Copy flags%(), ff%()
+    For i% = Bound(state.counters%(), 0) To Bound(state.counters%(), 1)
+      state.counters%(i%) = cc%(i%)
+    Next
   Else
     con.print_fail("ERROR: " + err$)
   EndIf
