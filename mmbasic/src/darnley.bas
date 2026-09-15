@@ -273,6 +273,16 @@ Function verb_cheat()
   state.cheat% = 1
 End Function
 
+Function verb_list()
+  If words$(2) = "suspects" Then
+    verb_list = verb_suspects()
+  EndIf
+End Function
+
+Function verb_suspects()
+  verb_suspects = verb_recap()
+End Function
+
 accuse_reply_data:
 Data "Indeed.", "Go on.", "So you say.", "I see.", "Quite.", "Noted."
 Data "Is that so?", "Very well.", "Hm. Continue.", "I shall bear that in mind."
