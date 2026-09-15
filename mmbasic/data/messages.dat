@@ -843,11 +843,11 @@ The game accepts the following commands:@
     - get additional detail about an object@
   [[green:LOOK]]@
     - redescribe current location@
-  [[green:"]][[cyan:topic]]@
-    - interrogate suspect in current location@
-      about the given topic, e.g. [[green:"alibi]]@
-  [[green:"accuse]]@
-    - accuse a suspect in current location@
+  [[green:"]][[cyan:suspect, topic]]@
+    - talk to suspect, e.g.@
+        [[green:"millicent, what happened?]]@
+        [[green:"norah, you did it!]]@
+        [[green:"cat, hello puss]]@
   [[green:FONT]] [[cyan:DEFAULT]]|[[cyan:SERIF]]|[[cyan:SMALL]]@
     - change the font@
   [[green:HELP]]@
