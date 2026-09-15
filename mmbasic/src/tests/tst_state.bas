@@ -48,6 +48,7 @@ add_test("test_has_flags_gvn_all_present")
 add_test("test_has_flags_gvn_one_missing")
 add_test("test_has_flags_gvn_empty_tokens")
 add_test("test_has_flags_gvn_no_partial")
+add_test("state.reset() zeroes all counters", "test_reset_zeroes_counters")
 
 run_tests()
 End
@@ -244,4 +245,12 @@ Sub test_has_flags_gvn_no_partial()
 
   Local check$(2) = ("FOO", "")
   assert_int_equals(0, state.has_flags%(check$()))
+End Sub
+
+Sub test_reset_zeroes_counters()
+  state.counters%(1) = 5
+  state.counters%(10) = 7
+  state.reset()
+  assert_int_equals(0, state.counters%(1))
+  assert_int_equals(0, state.counters%(10))
 End Sub
