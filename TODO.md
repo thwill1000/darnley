@@ -1,6 +1,5 @@
 # TODO: The Sealed Room Murder (MMBasic)
 
-- Support SUSPECTS and LIST SUSPECTS
 - Support HOUSE as synonym for INSIDE
 - DIALOGUE: Support different dialogue fallback for questions vs. non-questions
 - GFX: fix ornamental pond image
