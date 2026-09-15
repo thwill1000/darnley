@@ -44,7 +44,7 @@ P_MILDRED_GOODBODY|Mildred Goodbody|goodbody cook|LOC009_KITCHEN|2|100
 P_NORAH_BAGSBY|Norah Bagsby|bagsby maid|LOC026_SERVANTS_QUARTERS|2|100
 P_RONALD_MELLORS|Ronald Mellors|mellors gamekeeper|LOC023_GAMEKEEPERS_COTTAGE|2|100
 P_CHESTER_CAT|Cat|cat ginger chester|LOC021_STABLES|2|100
-P_THE_BODY|Colonel Darnley's body|colonel body|LOC007_COLONELS_STUDY|2|100
+P_THE_BODY|Colonel Darnley's body|colonel darnley body|LOC007_COLONELS_STUDY|2|100
 P_POLICE_CONSTABLE|Police Constable|police constable policeman bobby|LOC017_DRIVE|2|100
 OBJ201_POND|Pond|pond|LOC005_ORNAMENTAL_POND|0|100
 OBJ202_SUNKEN_STATUE|Sunken statue|sunken statue|LOC005_ORNAMENTAL_POND|0|100
@@ -113,7 +113,8 @@ cigar|cigars
 cigarette|cigarettes
 cheroot|cheroots
 corroborate|coroborate
-colonel|colonels|darnley|darnleys|sebastian|sebastians
+colonel|colonels|sebastian|sebastians
+darnley|darnleys
 dismissal|dismissed|notice|fired|sacked|sack
 engagement|engaged
 flatfooted|flat-footed
