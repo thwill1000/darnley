@@ -530,8 +530,8 @@ perhaps more deliberate - possibly even repeated strikes against the pane.
 
 OBJ234_GRAMOPHONE
 !provides gramophone new_clue
-It has a device for playing several records in sequence. All the
-records are Chopin.
+It has a device for playing several records in sequence. All the records
+currently loaded into the device are Chopin.
 
 OBJ235_PIANO_MORNING
 There are several sheets of Schubert Lied music on the piano's music
