@@ -5,7 +5,6 @@
 - GFX: neither decanter empty in study image
 - GFX: remove knife from kitchen table, should only be knife on draining board
 - Footprints missing from summerhouse
-- Empty input strings do not get recorded in script files
 - Inform player when a clue has been found
 - "Fix" intrusive [MORE] prompts
 - Encrypt data and messages
