@@ -446,8 +446,11 @@ End Sub
 Sub test_split_words_question()
   Local words$(10) Length MAX_WORD_LENGTH
   assert_int_equals(0, split_words%("?hello? ?", words$()))
-  assert_string_equals("hello", words$(1))
-  assert_string_equals("", words$(2))
+  assert_string_equals("?", words$(1))
+  assert_string_equals("hello", words$(2))
+  assert_string_equals("?", words$(3))
+  assert_string_equals("?", words$(4))
+  assert_string_equals("", words$(5))
 End Sub
 
 ' Exclamation marks are ignored

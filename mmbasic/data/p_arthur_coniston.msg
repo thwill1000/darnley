@@ -240,7 +240,7 @@ my meaning."
 definition. Can't very well produce a witness for that without
 raising rather more awkward questions than I'd care to answer."
 
-motive reason why think murder want
++(motive/reason/would) why murder
 "Haven't the foggiest, old boy. Darnley wasn't an easy man, but
 plenty of people find their relatives difficult without shooting
 them. Money's always worth a look, though - isn't it always?"
@@ -260,11 +260,11 @@ surprised, mind - fellow's got a face like a wet Sunday."
 his gruff way, but a young wife and an old husband - well, you can
 imagine the gossip."
 
-engagement marriage millicent arthur when
++(engagement/marriage/propose) millicent arthur when
 "Happiest news of my life, old boy! The Colonel gave his blessing
 yesterday afternoon. I still can't quite believe my luck."
 
-+(think/believe/want) (guilty/comitted) who did | who (think/believe/want) (murder/murderer)
++who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
 "Good Lord, I haven't the faintest. Between you and me I'd watch
 Slingsby - man had the look of someone with troubles on his mind
 last night. But don't quote me, old boy."
@@ -379,5 +379,8 @@ them up."@
 [[reset:It's plausible you have the right man, Inspector, but not yet the right
 explanation. Go back over your questioning and look again.]]
 
-*
+(who/whose/whom/why/what/where/when/how/which/?)
 "Can't say I know anything about that. Sorry, old boy."
+
+*
+"Can't say that means a great deal to me, old boy, but there it is."

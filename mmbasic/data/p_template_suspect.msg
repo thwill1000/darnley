@@ -177,7 +177,7 @@ events yesterday murder last happened
 -thanks alone (confirm/confirmed) corroborate witness anyone time
 "alibi confirm response"
 
-motive reason why think murder want
++(motive/reason/would) why murder
 "motive response"
 
 (inheritance/inherit) will estate money (left/leave)
@@ -192,10 +192,10 @@ motive reason why think murder want
 remarriage remarry remarrying marry again
 "sarah's remarriage response"
 
-engagement marriage millicent arthur when
++(engagement/marriage/propose) millicent arthur when
 "millicent's engagement response"
 
-+(think/believe/want) (guilty/comitted) who did | who (think/believe/want) (murder/murderer)
++who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
 "who did it response"
 
 +study (locked/sealed) door window how
@@ -256,6 +256,9 @@ accuse_succeed
 accuse_fail
 !requires accuse_fail
 "failed accusation response"
+
+(who/whose/whom/why/what/where/when/how/which/?)
+"unhandled question response"
 
 *
 "wildcard response"
