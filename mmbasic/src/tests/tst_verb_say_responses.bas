@@ -328,6 +328,8 @@ Sub test_opinion_colonel()
 End Sub
 
 Sub test_opinion_sarah()
+  assert_response("sarah", "sarah response")
+  assert_response("sarah darnley", "sarah response")
   assert_response("what do you think of sarah", "sarah response")
   assert_response("what do you make of sarah", "sarah response")
   assert_response("tell me about sarah", "sarah response")
@@ -338,6 +340,8 @@ Sub test_opinion_sarah()
 End Sub
 
 Sub test_opinion_millicent()
+  assert_response("millicent", "millicent response")
+  assert_response("millicent darnley", "millicent response")
   assert_response("what do you think of millicent", "millicent response")
   assert_response("what do you make of millicent", "millicent response")
   assert_response("tell me about millicent", "millicent response")
