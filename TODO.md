@@ -2,7 +2,6 @@
 
 - Support SUSPECTS and LIST SUSPECTS
 - Support HOUSE as synonym for INSIDE
-- Support GAME KEEPER as two words, or hyphenated?
 - DIALOGUE: Support different dialogue fallback for questions vs. non-questions
 - GFX: fix ornamental pond image
 - GFX: neither decanter empty in study image

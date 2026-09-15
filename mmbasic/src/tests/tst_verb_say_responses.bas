@@ -620,6 +620,8 @@ Sub test_confirm_mellors()
   assert_response("Can you corroborate Mellors' alibi?", "vouch for mellors response")
   assert_response("Was Ronald with you?", "vouch for mellors response")
   assert_response("Can you vouch for the Gamekeeper?", "vouch for mellors response")
+  assert_response("Can you vouch for the Game keeper?", "vouch for mellors response")
+  assert_response("Can you vouch for the Game-keeper?", "vouch for mellors response")
 End Sub
 
 Sub test_motive()
