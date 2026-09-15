@@ -879,6 +879,12 @@ Function verb_dump()
     Loop
   EndIf
   con.println("NUM FLAGS = " + Str$(num_flags%))
+  con.print("COUNTERS  =")
+  Local i%
+  For i% = Bound(state.counters%(), 0) To Bound(state.counters%(), 1)
+    con.print(" " + Str$(state.counters%(i%)))
+  Next
+  con.println()
 End Function
 
 ' Handles the FONT verb
