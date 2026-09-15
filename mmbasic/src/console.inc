@@ -99,9 +99,7 @@ Function con.in$(p$, echo)
   con.x = 1
 
   If echo Then
-    If con.fd_out Then
-      If s$ <> "" Then Print #con.fd_out, s$
-    EndIf
+    If con.fd_out Then Print #con.fd_out, s$
   EndIf
 
   con.foreground(old_fg$)
