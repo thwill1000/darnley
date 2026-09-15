@@ -57,6 +57,7 @@ Sub con.clear(no_cls%)
   If Not no_cls% Then Cls
   con.buf$ = ""
   con.buf_runs$ = ""
+  con.fg$ = "reset"
   con.space = 0
   con.count = 0
   con.lines = 0
@@ -228,35 +229,57 @@ End Sub
 ' @param  fg$  Colour name, or empty string for unstyled text.
 '!dynamic_call con.print_segment_cb
 Sub con.print_segment_cb(s$, fg$)
-  Local c$, i%, old_fg$
+  Local c$, i%, marked%, old_fg$, append$, do_mark%
 
-  If fg$ <> "" Then
-    old_fg$ = con.fg$
-    If fg$ <> con.fg$ Then Cat con.buf_runs$, Str$(Len(con.buf$) + 1) + ":" + fg$ + "|"
-    con.fg$ = fg$
-  EndIf
+  ' Note: the colour marker for fg$ is NOT recorded here. It is recorded
+  ' lazily, immediately before the first character is actually appended to
+  ' con.buf$ below - and re-recorded after every con.flush() that happens
+  ' within this segment (each of which clears con.buf$/con.buf_runs$). This
+  ' matters because a flush can be triggered by the very first character of
+  ' this segment (e.g. a pending space forcing a line-wrap); marking before
+  ' the loop would then have its record silently discarded by that flush
+  ' before the coloured text it describes was ever appended, leaving the
+  ' physical terminal colour stale - e.g. a word losing its colour because
+  ' it happened to start a new line. See tst_console.bas for a regression
+  ' test of this scenario.
+  If fg$ <> "" Then old_fg$ = con.fg$
 
   For i% = 1 To Len(s$)
     c$ = Mid$(s$, i%, 1)
+    do_mark% = 0
     Select Case c$
       Case Chr$(13)
         ' CR — ignore
       Case Chr$(10)
         con.endl()
         con.space = 0
+        marked% = 0
       Case " "
-        If Not con.space Then con.flush() : con.space = 1
-        Cat con.buf$, " "
-        con.count = 0
+        If Not con.space Then con.flush() : con.space = 1 : marked% = 0
+        do_mark% = 1
+        append$ = " "
       Case "`"
-        If con.space Then con.flush() : con.space = 0
-        Cat con.buf$, Chr$(34)
-        con.count = 0
+        If con.space Then con.flush() : con.space = 0 : marked% = 0
+        do_mark% = 1
+        append$ = Chr$(34)
       Case Else
-        If con.space Then con.flush() : con.space = 0
-        Cat con.buf$, c$
-        con.count = 0
+        If con.space Then con.flush() : con.space = 0 : marked% = 0
+        do_mark% = 1
+        append$ = c$
     End Select
+
+    ' The colour marker must be recorded before the character is appended
+    ' below, since it uses Len(con.buf$) + 1 as the position at which the
+    ' colour takes effect.
+    If do_mark% Then
+      If fg$ <> "" And Not marked% Then
+        Cat con.buf_runs$, Str$(Len(con.buf$) + 1) + ":" + fg$ + "|"
+        con.fg$ = fg$
+        marked% = 1
+      EndIf
+      Cat con.buf$, append$
+      con.count = 0
+    EndIf
   Next
 
   If fg$ <> "" Then
