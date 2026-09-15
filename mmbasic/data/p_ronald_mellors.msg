@@ -192,7 +192,7 @@ me of an evening and I don't invite company. If you're waiting for
 someone to vouch for me, you'll be waiting a good while - that's
 how I live, not how I killed anybody."
 
-motive reason why think murder want
++(motive/reason/would) why murder
 "Not my place to guess. The Colonel wasn't an easy man to work for,
 but that's true of most gentlemen. I don't see it's my business to
 speculate further."
@@ -211,11 +211,11 @@ of one bad word from a man who'd had too much port."
 "None of my business what goes on in the big house between man and
 wife. I keep to my own affairs."
 
-engagement marriage millicent arthur when
++(engagement/marriage/propose) millicent arthur when
 "Didn't hear about it till it was all round the house. Don't know
 the young gentleman well enough to say more than that."
 
-+(think/believe/want) (guilty/comitted) who did | who (think/believe/want) (murder/murderer)
++who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
 "Not my business to guess. But if you're asking, I'd look closer to
 home than the grounds - that fine young gentleman's a sight too
 pleased with himself for my liking."
@@ -312,5 +312,8 @@ what you said don't sit right. Go and look again."@
 @
 [[reset:Go back over your questioning and look again.]]
 
-*
+(who/whose/whom/why/what/where/when/how/which/?)
 "Do I look like I'd know anything about that?"
+
+*
+"Don't know what you want me to say to that."

@@ -130,7 +130,8 @@ add_test("I accuse you! (subsequent times)", "test_subsequent_accusation")
 add_test("Goodbye.", "test_goodbye")
 add_test("INTERNAL: Test successful accusation response", "test_accuse_success")
 add_test("INTERNAL: Test failed accusation response", "test_accuse_fail")
-add_test("Something nonsensical falls back to the wildcard", "test_wildcard_fallback")
+add_test("Unhandled question falls back to the question wildcard", "test_question_fallback")
+add_test("Something nonsensical falls back to the non-question wildcard", "test_wildcard_fallback")
 
 run_tests()
 End
@@ -905,6 +906,19 @@ Sub test_accuse_fail()
   ' But with flag set writes the response
   state.set_flag("accuse_fail")
   assert_response("accuse_fail", "failed accusation response")
+End Sub
+
+Sub test_question_fallback()
+  assert_response("?", "unhandled question response")
+  assert_response("who", "unhandled question response")
+  assert_response("whose", "unhandled question response")
+  assert_response("whom", "unhandled question response")
+  assert_response("why", "unhandled question response")
+  assert_response("what", "unhandled question response")
+  assert_response("where", "unhandled question response")
+  assert_response("when", "unhandled question response")
+  assert_response("how", "unhandled question response")
+  assert_response("which", "unhandled question response")
 End Sub
 
 ' No keyword line matches - falls through to "*"

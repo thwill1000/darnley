@@ -107,7 +107,7 @@ Function split_words%(cmd$, words$())
           Inc i%
         EndIf
 
-      Case 34, 44 ' Double Quote (") or Comma (,)
+      Case 34, 44, 63 ' Double quote (") or comma (,) or question mark (?)
         If wLen% > 0 Then
           words$(i%) = w$
           w$ = ""
@@ -118,7 +118,7 @@ Function split_words%(cmd$, words$())
         words$(i%) = Chr$(c%)
         Inc i%
 
-      Case 39, 33, 46, 63 ' Apostrophe ('), !, full-stop (.), ?
+      Case 39, 33, 46 ' Apostrophe ('), ! or full-stop (.)
         ' Stripped - silently skip
 
       Case Else ' Normal character

@@ -238,7 +238,7 @@ alone in bed at 11:30."
 bed, Inspector. I'm not sure what kind of witness you're expecting
 me to produce."
 
-motive reason why think murder want
++(motive/reason/would) why murder
 "I can't imagine why anyone would want to. Money, I suppose, is
 usually why people do dreadful things. Daddy could be difficult
 about money."
@@ -259,12 +259,12 @@ me. But I shouldn't be surprised."
 that she'd stay. I don't think either of them was truly happy,
 if I'm honest. But that's marriage for you, isn't it?"
 
-engagement marriage millicent arthur when
++(engagement/marriage/propose) millicent arthur when
 "I'm the last person to ask objectively! Daddy agreed only
 yesterday - I still can hardly believe it. I'd waited so long for
 him to say yes."
 
-+(think/believe/want) (guilty/comitted) who did | who (think/believe/want) (murder/murderer)
++who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
 "I try not to think about it - it makes me feel rather sick. If I'm
 honest, Mellors has always given me an uneasy feeling. But that isn't
 proof, is it? Just a feeling."
@@ -366,6 +366,9 @@ this one does not."@
 @
 [[reset:Go back over your questioning and look again.]]
 
-*
+(who/whose/whom/why/what/where/when/how/which/?)
 "I'm afraid that is rather outside my knowledge.
 Have you tried asking the servants?"
+
+*
+"I'm not sure what you'd have me say to that, Inspector."
