@@ -231,7 +231,7 @@ take you if a fellow needs an alibi!"
 alibi signed and witnessed. I was asleep, damn it, and that's the
 end of the matter."
 
-motive reason why think murder want
++(motive/reason/would) why murder
 "Damned if I know. Man had his share of enemies in business, I
 shouldn't wonder - he gave tips that didn't always pan out, and
 some fellows take that sort of thing badly."
@@ -251,12 +251,12 @@ you're driving at."
 "I told Darnley he was a damned fool to marry a woman half his age,
 and I'll say it again now he's gone. She never suited him."
 
-engagement marriage millicent arthur when
++(engagement/marriage/propose) millicent arthur when
 "News to me until last night. I gather the Colonel only agreed to
 it yesterday. Can't say I know the fellow well enough to judge the
 match."
 
-+(think/believe/want) (guilty/comitted) who did | who (think/believe/want) (murder/murderer)
++who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
 "Damned if I know. If you want my honest opinion, servants notice a
 great deal more than they let on - I shouldn't rule out that butler
 of his, watchful sort of fellow. But that's guesswork, mind."
@@ -364,5 +364,8 @@ happened. Try again, and try harder."@
 @
 [[reset:Go back over your questioning and look again.]]
 
-*
+(who/whose/whom/why/what/where/when/how/which/?)
 "No idea whatsoever. Can we stick to the point?"
+
+*
+"Don't know what you expect me to make of that, man."
