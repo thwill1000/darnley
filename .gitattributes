@@ -1,3 +1,4 @@
 # Actually they are MMBasic, but close enough.
 *.bas linguist-language=BASIC
 *.inc linguist-language=BASIC
+tads3/*.t linguist-language=TADS3
