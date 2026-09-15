@@ -244,7 +244,7 @@ room - also alone, alas! I don't suppose it looks to good?"
 don't suppose the piano can testify on my behalf, more's the
 pity."
 
-motive reason why think murder want
++(motive/reason/would) why murder
 "I've asked myself that a hundred times since last night and I
 still can't answer it. Sebastian had his difficult side, but I
 never thought anyone hated him enough for this."
@@ -272,12 +272,12 @@ remarriage remarry remarrying marry again
 haven't the smallest intention of discussing my future, Inspector -
 not while my husband isn't yet in the ground."
 
-engagement marriage millicent arthur when
++(engagement/marriage/propose) millicent arthur when
 "Sebastian only agreed to it yesterday afternoon. Millicent was
 positively glowing when she told me. I'm glad she'll have that
 happiness, whatever else has happened."
 
-+(think/believe/want) (guilty/comitted) who did | who (think/believe/want) (murder/murderer)
++who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
 "I can't bear to think it was any of them, truly. If you insist I
 name someone - Sir Redvers seemed dreadfully agitated all evening. I
 don't like to say more than that."
@@ -381,5 +381,8 @@ think you know it too."@
 @
 [[reset:Go back over your questioning and look again.]]
 
-*
+(who/whose/whom/why/what/where/when/how/which/?)
 "I'm afraid I really couldn't say. This has all been such a terrible shock."
+
+*
+"I'm not sure what you'd have me say to that, Inspector."

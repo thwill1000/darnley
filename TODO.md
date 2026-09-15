@@ -1,7 +1,6 @@
 # TODO: The Sealed Room Murder (MMBasic)
 
 - Support HOUSE as synonym for INSIDE
-- DIALOGUE: Support different dialogue fallback for questions vs. non-questions
 - GFX: fix ornamental pond image
 - GFX: neither decanter empty in study image
 - GFX: remove knife from kitchen table, should only be knife on draining board

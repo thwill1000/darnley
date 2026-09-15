@@ -245,7 +245,7 @@ and 11:30."
 could vouch for that much. Once we had all fallen asleep, however, I
 could not swear to anyone's whereabouts - my own included."
 
-motive reason why think murder want
++(motive/reason/would) why murder
 "I couldn't begin to guess, sir. The Colonel was not universally
 loved, if I am honest, but I know of no one with cause enough to
 do... this."
@@ -271,11 +271,11 @@ letter was ever delivered, only that the master intended it."
 will say the Colonel was a generous husband, whatever else might be
 said of him."
 
-engagement marriage millicent arthur when
++(engagement/marriage/propose) millicent arthur when
 "The Colonel gave his consent only yesterday afternoon, as I
 understand it. Miss Millicent seemed very happy about it indeed."
 
-+(think/believe/want) (guilty/comitted) who did | who (think/believe/want) (murder/murderer)
++who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
 "That is not a question I am equipped to answer, sir. I will say
 only that a house such as this holds more secrets than its servants
 are ever told, above stairs or below."
@@ -378,5 +378,8 @@ not wish to see you act on it as it stands."]]@
 @
 [[reset:Go back over your questioning and look again.]]
 
-*
+(who/whose/whom/why/what/where/when/how/which/?)
 "I don't believe that falls within my knowledge, I'm afraid."
+
+*
+"I'm not sure what response you'd be expecting to that, sir."

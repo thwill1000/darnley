@@ -222,7 +222,7 @@ suppose we can vouch for each other up to a point - but once we
 were all asleep, I couldn't tell you who might've slipped out
 without the rest of us noticing."
 
-motive reason why think murder want
++(motive/reason/would) why murder
 "I couldn't say, dear. Folk don't usually tell the cook their
 darkest secrets. Though there's been a queer atmosphere in this
 house since Sir Redvers arrived, if you want my honest opinion."
@@ -243,11 +243,11 @@ with his position."
 what you'd call content. Still, that's their business and none of
 mine."
 
-engagement marriage millicent arthur when
++(engagement/marriage/propose) millicent arthur when
 "Oh, Miss Millicent was thrilled when it was agreed yesterday. She
 came straight down to the kitchen to tell me, bless her."
 
-+(think/believe/want) (guilty/comitted) who did | who (think/believe/want) (murder/murderer)
++who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
 "I try not to speculate, it's not my place. Though I'll say Sir
 Redvers had an almighty row with the Colonel that evening - words
 were raised. Make of that what you will."
@@ -345,5 +345,8 @@ another think."@
 @
 [[reset:Go back over your questioning and look again.]]
 
-*
+(who/whose/whom/why/what/where/when/how/which/?)
 "I'm afraid you're asking the wrong person, dear."
+
+*
+"I don't rightly know what to make of that, dear."

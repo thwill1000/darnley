@@ -80,11 +80,11 @@ time."
 "Wasn't here last night, sir, so I couldn't say. You'd want someone
 who was in the house."
 
-motive reason why think murder want
++(motive/reason/would) why murder
 "Not my place to guess at that sort of thing, sir. I just mind the
 gate."
 
-+(think/believe/want) (guilty/comitted) who did | who (think/believe/want) (murder/murderer)
++who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
 "That's your department, sir, not mine. I wouldn't like to hazard a
 guess."
 
@@ -103,5 +103,8 @@ my feet, if I'm honest."
 goodbye bye farewell thanks thank
 "Very good, sir. I'll stay at my post."
 
-*
+(who/whose/whom/why/what/where/when/how/which/?)
 "Can't help you there, sir - I'm only posted at the gate."
+
+*
+"Not much I can say to that, sir - I just mind the gate."

@@ -171,12 +171,12 @@ total innocence or total guilt. It is impossible to tell.]]@
 @
 "Meow?"
 
-motive reason why think murder want
++(motive/reason/would) why murder
 [[reset:He begins washing a paw with total, infuriating unconcern.]]@
 @
 "Mrrp."
 
-+(think/believe/want) (guilty/comitted) who did | who (think/believe/want) (murder/murderer)
++who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
 [[reset:The cat fixes you with a long, unreadable stare, as if he knows
 perfectly well and simply isn't telling.]]@
 @
@@ -204,6 +204,11 @@ goodbye bye farewell thanks thank
 creature who has never answered to anyone in his life.]]@
 @
 "MRAOW!"
+
+(who/whose/whom/why/what/where/when/how/which/?)
+[[reset:The cat regards the question with total indifference.]]@
+@
+"Mrow."
 
 *
 [[reset:Being a cat, he offers no comment.]]@

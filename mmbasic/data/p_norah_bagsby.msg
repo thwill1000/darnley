@@ -212,7 +212,7 @@ and Mrs. G. in Mr. B.'s room."
 "I s'pose Mrs. G. and Mr. B. could say the same as me, sir, but
 once we was all asleep I couldn't swear to any of us, not really."
 
-motive reason why think murder want
++(motive/reason/would) why murder
 "I don't know, sir, I really don't. The Colonel could be sharp with
 people. Maybe someone had a grudge, but I couldn't tell you who."
 
@@ -229,12 +229,12 @@ that, honest I don't."
 "I don't like to gossip about my betters, sir. Mrs. Sarah always
 seemed a bit lonely to me, if you want my honest opinion."
 
-engagement marriage millicent arthur when
++(engagement/marriage/propose) millicent arthur when
 "Miss Millicent was over the moon, sir, when the Colonel said yes
 yesterday. First happy thing to happen in this house in a while, I
 should think."
 
-+(think/believe/want) (guilty/comitted) who did | who (think/believe/want) (murder/murderer)
++who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
 "Oh, I couldn't say, sir, it frightens me even to think it. Miss
 Millicent seemed ever so calm about it all, calmer than I'd have
 been. I don't mean nothing by that, mind."
@@ -329,5 +329,8 @@ what you just said. I can't rightly explain why, but it doesn't."@
 [[reset:She is not yet convinced her ordeal is over. Go back over your
 questioning and look again.]]
 
-*
+(who/whose/whom/why/what/where/when/how/which/?)
 "I wouldn't know about that. Nobody tells me anything."
+
+*
+"Oh - I don't rightly know what to say to that, sir."
