@@ -92,7 +92,7 @@ OBJ248_FOOTPRINTS_ST|Footprints|footprints bootprints shoeprints prints|LOC021_S
 OBJ249_FOOTPRINTS_EL|Footprints|footprints bootprints shoeprints prints|LOC022_EAST_LAWN|0|0
 OBJ250_CIGARETTE_ENDS_GC|Cigarette ends|cigarette end ends|LOC023_GAMEKEEPERS_COTTAGE|1|1
 OBJ251_ARMOUR|Armour|armour|LOC008_HALL|0|100
-OBJ252_DOOR_MAT|Door mat|door mat doormat|LOC008_HALL|0|1
+OBJ252_DOORMAT|Doormat|doormat door mat|LOC008_HALL|0|1
 OBJ253_CHEROOT_BUTT|Cheroot butt|cheroot cigar butt|LOC005_ORNAMENTAL_POND|1|1
 OBJ254_MUSIC_ROOM_ASHTRAY|Brass ashtray|brass ashtray|LOC015_MUSIC_ROOM|1|1
 OBJ255_ROOK|Rook|bird crow rook|LOC022_EAST_LAWN|2|100
@@ -116,6 +116,7 @@ corroborate|coroborate
 colonel|colonels|sebastian|sebastians
 darnley|darnleys
 dismissal|dismissed|notice|fired|sacked|sack
+doormat|door-mat
 engagement|engaged
 flatfooted|flat-footed
 footprints|foot-prints
