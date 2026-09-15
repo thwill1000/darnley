@@ -251,7 +251,7 @@ Function parse_common(cmd$)
       verb$ = "quit"
     Case "check", "look", "search", "x"
       verb$ = "examine"
-    Case "g", "walk"
+    Case "enter", "g", "walk"
       verb$ = "go"
     Case "grab", "get", "pick"
       verb$ = "take"
