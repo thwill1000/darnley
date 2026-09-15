@@ -1,7 +1,6 @@
 # TODO: The Sealed Room Murder (MMBasic)
 
 - Support SUSPECTS and LIST SUSPECTS
-- Support ENTER as synonym of GO
 - Support HOUSE as synonym for INSIDE
 - Support GAME KEEPER as two words, or hyphenated?
 - DIALOGUE: Support different dialogue fallback for questions vs. non-questions
