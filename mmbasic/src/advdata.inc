@@ -17,7 +17,7 @@ Sub advdata.set_root(d$)
   If Right$(d_$, 1) = "/" Or Right$(d_$, 1) = "\" Then d$ = Left$(d_$, Len(d_$) - 1)
   Do While Not file.exists%(d_$ + "/data", "dir")
     d_$ = file.get_parent$(d_$)
-    If d_$ = "" Then Error "'data' directory not found"
+    If d_$ = "" Then Error "Failed to set game root: " + d$
   Loop
   adv.game_root$ = d_$ + "/"
 End Sub
@@ -131,7 +131,7 @@ Function read_advent_section%(f$, section$, dout$())
     If Left$(s$, 1) = "!" Then Exit Do
     If s$ = "" Or Left$(s$, 1) = "#" Then Continue Do
     Inc read_advent_section%
-    If read_advent_section% > Bound(dout$(), 1) Then Error "Too many entries in " + section$
+    If read_advent_section% > Bound(dout$(), 1) Then Error "Section has too many entries: " + section$
     dout$(read_advent_section%) = s$
   Loop
 
