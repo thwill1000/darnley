@@ -25,6 +25,7 @@ End Sub
 Sub advdata.init(f$)
   Local f_$ = Choice(f$ = "", adv.game_root$ + "data/advent.dat", f$)
   read_rooms(f_$)
+  read_additional_exits(f_$)
   read_objects(f_$)
   read_synonyms(f_$)
 End Sub
@@ -74,8 +75,10 @@ End Sub
 '
 ' @param  f$        Path to the file.
 ' @param  section$  Section header to find, e.g. "!locations".
+' @param  optional% If 0 (default) then Error if the section is not found.
+'                   If 1 then return 0 if the section is not found.
 ' @return           Number of data lines found in the section.
-Function count_advent_section%(f$, section$)
+Function count_advent_section%(f$, section$, optional%)
   Local s$, found%
   Const fnbr% = 1
   Open f$ For Input As #fnbr%
@@ -84,7 +87,13 @@ Function count_advent_section%(f$, section$)
     Line Input #fnbr%, s$
     If s$ = section$ Then found% = 1 : Exit Do
   Loop
-  If Not found% Then Error "Section not found: " + section$
+
+  If Not found% Then
+    Close #fnbr%
+    If optional% Then Exit Function
+    Error "Section not found: " + section$
+    Exit Function
+  EndIf
 
   Do While Not Eof(fnbr%)
     Line Input #fnbr%, s$
@@ -128,6 +137,42 @@ Function read_advent_section%(f$, section$, dout$())
 
   Close #fnbr%
 End Function
+
+' Read the additional-exits data.
+'
+' Each entry is "pattern|from_loc_id|to_loc_id" and defines an extra way to
+' reach to_loc_id from from_loc_id, on top of that location's own listed
+' exits. The section is optional - if absent, additional_exits$() ends up
+' as an empty (zero-entry) array and find_exit_match%() simply has nothing
+' extra to scan.
+Sub read_additional_exits(f$)
+  Const num% = count_advent_section%(f$, "!additional_exits", 1)
+  Dim additional_exits$(Max(num%, 2)) Length 127
+  If num% = 0 Then Exit Sub
+
+  If read_advent_section%(f$, "!additional_exits", additional_exits$()) <> num% Then
+    Error "Additional exit data mismatch"
+  EndIf
+
+  Local error_count%, from_id$, i%, to_id$
+  For i% = Bound(additional_exits$(), 0) To num%
+    from_id$ = Field$(additional_exits$(i%), 1, "|")
+    to_id$   = Field$(additional_exits$(i%), 3, "|")
+    If Not find_loc%(from_id$, 1) Then
+      con.println("Additional exit has invalid from-location: " + from_id$)
+      Inc error_count%
+    EndIf
+    If Not find_loc%(to_id$, 1) Then
+      con.println("Additional exit has invalid to-location: " + to_id$)
+      Inc error_count%
+    EndIf
+  Next
+
+  If error_count% Then
+    con.println(Str$(error_count%) + " additional exit data errors found!")
+    End
+  EndIf
+End Sub
 
 ' Read the objects data
 Sub read_objects(f$)
