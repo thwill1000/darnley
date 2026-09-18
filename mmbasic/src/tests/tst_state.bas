@@ -23,6 +23,8 @@ advdata.set_root(Mm.Info(Path))
 advdata.init()
 
 Const DATA_DIR$ = adv.game_root$ + "data/"
+Const TMP_STATE_FILE$ = Mm.Info(Path) + "tmp_state_body.tmp"
+Const advent.file$ = "darnley-test"
 
 add_test("test_has_flag_gvn_absent")
 add_test("test_has_flag_gvn_present")
@@ -49,6 +51,13 @@ add_test("test_has_flags_gvn_one_missing")
 add_test("test_has_flags_gvn_empty_tokens")
 add_test("test_has_flags_gvn_no_partial")
 add_test("state.reset() zeroes all counters", "test_reset_zeroes_counters")
+add_test("write_body()/read_body%() round-trip preserves room, visited, flags and counters", "test_body_roundtrip")
+add_test("read_body%() rejects flags data shorter than declared length", "test_body_gvn_truncated_flags")
+add_test("read_body%() rejects flags data not terminated by CRLF", "test_body_gvn_bad_flags_crlf")
+add_test("read_body%() rejects a counters-count mismatch", "test_body_gvn_counters_mismatch")
+add_test("read_body%() rejects missing counters data", "test_body_gvn_missing_counters")
+add_test("read_body%() rejects trailing unexpected data", "test_body_gvn_trailing_data")
+add_test("read_body%() leaves state untouched on failure", "test_body_gvn_failure_no_mutate")
 
 run_tests()
 End
@@ -253,4 +262,89 @@ Sub test_reset_zeroes_counters()
   state.reset()
   assert_int_equals(0, state.counters%(1))
   assert_int_equals(0, state.counters%(10))
+End Sub
+
+' write_body()/read_body%() round-trip -------------------------------------
+
+Sub test_body_roundtrip()
+  Const f$ = TMP_STATE_FILE$
+  r = 7
+  visited$ = String$(Bound(rooms$(), 1), "0")
+  Mid$(visited$, 3, 1) = "1"
+  state.set_flag("FOO")
+  state.set_flag("BAR")
+  state.counters%(1) = 42
+  state.counters%(5) = 3
+
+  Open f$ For Output As #1
+  state.write_body(1, "test save")
+  Close #1
+
+  state.reset() ' So restore isn't trivially a no-op
+
+  Open f$ For Input As #1
+  Local s$
+  Line Input #1, s$ : Line Input #1, s$ : Line Input #1, s$ : Line Input #1, s$
+
+  Local err$
+  Const ok% = state.read_body%(1, err$)
+  Close #1
+  Kill f$
+
+  assert_int_equals(1, ok%)
+  assert_string_equals("", err$)
+  assert_int_equals(7, r)
+  assert_string_equals("1", Mid$(visited$, 3, 1))
+  assert_int_equals(1, state.has_flag%("FOO"))
+  assert_int_equals(1, state.has_flag%("BAR"))
+  assert_int_equals(42, state.counters%(1))
+  assert_int_equals(3, state.counters%(5))
+End Sub
+
+' read_body%() failure cases, against fixtures in data/ --------------------
+
+Sub assert_body_error(f$, expected_err_substr$)
+  Open f$ For Input As #1
+  Local s$
+  Line Input #1, s$ : Line Input #1, s$ : Line Input #1, s$ : Line Input #1, s$
+
+  Local err$
+  Const ok% = state.read_body%(1, err$)
+  Close #1
+
+  assert_int_equals(0, ok%)
+  assert_int_equals(1, InStr(err$, expected_err_substr$) > 0)
+End Sub
+
+Sub test_body_gvn_truncated_flags()
+  assert_body_error(DATA_DIR$ + "state_truncated_flags.sav", "missing data")
+End Sub
+
+Sub test_body_gvn_bad_flags_crlf()
+  assert_body_error(DATA_DIR$ + "state_bad_flags_crlf.sav", "missing CRLF")
+End Sub
+
+Sub test_body_gvn_counters_mismatch()
+  assert_body_error(DATA_DIR$ + "state_counters_mismatch.sav", "counters count mismatch")
+End Sub
+
+Sub test_body_gvn_missing_counters()
+  assert_body_error(DATA_DIR$ + "state_missing_counters.sav", "missing counters data")
+End Sub
+
+Sub test_body_gvn_trailing_data()
+  assert_body_error(DATA_DIR$ + "state_trailing_data.sav", "unexpected data")
+End Sub
+
+' On failure, state.read_body%() must not mutate any of the global state
+' it would otherwise set on success.
+Sub test_body_gvn_failure_no_mutate()
+  r = 99
+  visited$ = String$(Bound(rooms$(), 1), "0")
+  state.counters%(1) = 5
+
+  assert_body_error(DATA_DIR$ + "state_counters_mismatch.sav", "counters count mismatch")
+
+  assert_int_equals(99, r)
+  assert_int_equals(5, state.counters%(1))
 End Sub
