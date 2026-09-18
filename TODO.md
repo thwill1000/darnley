@@ -6,4 +6,3 @@
 - Footprints missing from summerhouse
 - Extract testable code from state.save%() amd state.restore%()
 - "Fix" intrusive [MORE] prompts
-- Encrypt data and messages
