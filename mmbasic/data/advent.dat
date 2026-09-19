@@ -113,6 +113,7 @@ OBJ258_BRANCH|Broken branch|branch|LOC005_ORNAMENTAL_POND|1|1
 OBJ259_HORSE|Horse|horse bay hunter|LOC021_STABLES|2|100
 OBJ260_DAIMLER|Daimler|daimler car motor saloon|LOC021_STABLES|0|100
 OBJ261_POLICE_CAR|Police Car|police car saloon|LOC017_DRIVE|0|100
+OBJ262_FOOTPRINTS_SH|Footprints|footprints bootprints shoeprints prints|LOC019_SUMMER_HOUSE|0|0
 
 !synonyms
 arthur|coniston|arthurs|conistons
