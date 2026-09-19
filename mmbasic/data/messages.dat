@@ -159,9 +159,10 @@ the [[green:Stables]] to the south, the [[green:East lawn]] and the
 [[green:Gamekeeper's cottage]] to the south-east.
 
 LOC019_SUMMER_HOUSE
-A wooden summer house stands on a patch of lawn. Inside are croquet mallets and
-hoops, several [[green:cigarette ends]], and a [[green:handkerchief]]. Exits lead
-to the [[green:West walk]] and [[green:West lawn]].
+A wooden summer house stands on a patch of lawn. [[green:Footprints]] lead
+to and from the entrance. Inside are croquet mallets and hoops, several
+[[green:cigarette ends]], and a [[green:handkerchief]]. Exits lead to the
+[[green:West walk]] and [[green:West lawn]].
 
 LOC020_WEST_LAWN
 A broad lawn stretches between the west walk and the drive, planted with
@@ -686,13 +687,18 @@ stranger visitors than you at this hour.
 OBJ260_DAIMLER
 A large Daimler stands beneath a worn tarpaulin, its wheels and running
 boards just visible where the covering has slipped. A film of road dust
-coats what can be seen of the coachwork. Small dark oil stains mark the
+coats what can be seen of the coachwork. Smallone left by heavier, dark oil stains mark the
 snow beside it.
 
 OBJ261_POLICE_CAR
 A pre-war black saloon, round headlamps and running boards, a spare wheel
 mounted at the rear. It is the car that brought you here this morning, left
 parked on the drive close to the house.
+
+OBJ262_FOOTPRINTS_SH
+Two distinct tracks lead to and from the entrance - the first heavy
+[[green:hobnailed bootprints]], the other smaller [[green:lady's shoeprints]].
+The rest of the snow around the summer house lies smooth and undisturbed.
 
 WHAT_REALLY_HAPPENED
 [[green:What really happened at Darnley Park?]]@
