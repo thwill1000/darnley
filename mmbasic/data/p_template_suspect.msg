@@ -45,6 +45,10 @@ piano
 "ladys shoes response"
 
 +newspaper read
+!requires newspaper
+"newspaper response given newspaper found"
+
++newspaper read
 "newspaper response"
 
 letter
