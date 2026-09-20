@@ -121,8 +121,8 @@ here. Doors lead to the [[green:Hall]] and the [[green:Colonel's Study]].
 LOC014_DINING_ROOM
 A fine oak table with William and Mary chairs fills the centre. A glass case
 holds Delft pottery; a sideboard holds a silver wine cooler and Sevres urns.
-The marble fireplace's walls carry Italian landscapes. Doors lead to the
-[[green:Hall]], [[green:Butler's pantry]], [[green:Music room]],
+The fireplace is of carved marble and the walls hold various Italian landscapes.
+Doors lead to the [[green:Hall]], [[green:Butler's pantry]], [[green:Music room]],
 and [[green:Billiard room]].
 
 LOC015_MUSIC_ROOM
@@ -379,12 +379,10 @@ pure white, tightly rolled, and of excellent quality. As a guest in the house,
 Arthur Coniston has left his personal supply in the guest room where he is staying.
 
 OBJ208_KNIFE
-This is a kitchen knife used for preparing game. The blade shows signs of recent
-use and is stained with blood - quite dry now, darkened
-to a dull rust colour. The knife is wickedly sharp and the wooden handle bears
-the initials "W.D." burnt into it - presumably a previous owner. It lies on the
-draining board amongst other kitchen utensils, seemingly unused since dinner
-preparation.
+This wickedly sharp knife lies on the draining board amongst the other
+kitchen utensils. The blade shows signs of recent use and is stained with
+blood - quite dry now, darkened to a dull rust colour. The wooden handle
+bears the initials "R.M." burnt into it.
 
 OBJ209_BOOTS
 !provides boots new_clue
@@ -687,7 +685,7 @@ stranger visitors than you at this hour.
 OBJ260_DAIMLER
 A large Daimler stands beneath a worn tarpaulin, its wheels and running
 boards just visible where the covering has slipped. A film of road dust
-coats what can be seen of the coachwork. Smallone left by heavier, dark oil stains mark the
+coats what can be seen of the coachwork. Small dark oil stains mark the
 snow beside it.
 
 OBJ261_POLICE_CAR
@@ -709,7 +707,7 @@ permission to marry his daughter. This conversation took place
 during the afternoon and Colonel Darnley refused the request.
 Although he found Coniston amusing, he felt that his visitor was
 after Millicent's inheritance. Coniston, now resolved upon murder,
-quietly informing the other members of the household that the
+quietly informed the other members of the household that the
 Colonel had agreed to the marriage. He was unaware that the Colonel
 had decided to write him a letter confirming his rejection. During the
 afternoon an unexpected visitor arrived, Sir Redvers Slingsby who

@@ -129,8 +129,8 @@ weeks."
 
 pipe
 "I don't smoke a pipe myself, obviously. I couldn't tell you whose it
-is - I imagine it belongs to Sir Redvers who's has been put up in the servants'
-quarters.
+is - I imagine it belongs to Sir Redvers who has been put up in the servants'
+quarters."
 
 bookshelf books
 "I'm afraid I couldn't say. I don't spend a great deal of time in the
@@ -148,7 +148,7 @@ seems rather an intrusion to go asking after other people's letters."
 was nowhere left for him but the servants' quarters, what with Arthur
 already installed in the guest room, and the other guest room being
 turned out for redecoration besides. Rather awkward for a man of his
-standing, I imagine, though he didn't complain - much.
+standing, I imagine, though he didn't complain - much."
 
 stacked furniture
 "Oh, that's just from the second guest room being done up - I gave the
@@ -163,7 +163,7 @@ without warning. Rather bad timing, as these things go."
 +(blocked/passage) door kitchen
 "Oh, that's just where the furniture from the second guest room
 ended up - there was nowhere else to put it in a hurry. I'm told
-it's rather in the way.
+it's rather in the way."
 
 horse | +bay +hunter
 "Sebastian's hunter. He was fonder of that horse than he let on, I think."
