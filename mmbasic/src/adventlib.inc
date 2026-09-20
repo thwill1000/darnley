@@ -65,7 +65,8 @@ Sub show_splash()
   If Not HAS_GFX Then Exit Sub
   con.clear()
   Local y% = Int((Mm.VRes - 240) / 2)
-  Load Jpg adv.game_root$ + "/images/SPLASH_SCREEN.jpg", 0, y%
+  Const mode% = Choice(InStr(Mm.Device$, "PicoMiteVGA"), 4, -1)
+  Load Jpg adv.game_root$ + "/images/SPLASH_SCREEN.jpg", 0, y%, mode%
   Const v$ = "v" + sys.format_version$(VERSION)
   y% = Mm.VRes - Mm.Info(FontHeight) - y%
   Text Mm.HRes - Len(v$) * Mm.Info(FontWidth),y%, v$
@@ -81,7 +82,8 @@ Sub show_end_screen()
   If Not HAS_GFX Then Exit Sub
   con.clear()
   Local y% = Int((Mm.VRes - 240) / 2)
-  Load Jpg adv.game_root$ + "/images/END_SCREEN.jpg", 0, y%
+  Const mode% = Choice(InStr(Mm.Device$, "PicoMiteVGA"), 4, -1)
+  Load Jpg adv.game_root$ + "/images/END_SCREEN.jpg", 0, y%, mode%
   Local tmp$ = con.wait_for_key$()
   con.clear()
 End Sub
@@ -123,7 +125,8 @@ Sub describe_loc()
 
   If show_gfx% Then
     Const y% = con.image_placeholder%(160 + Mm.Info(FontHeight))
-    Load Jpg adv.game_root$ + "/images/" + loc_tag$ + ".jpg", 40, y% + Mm.Info(FontHeight) / 2
+    Const mode% = Choice(InStr(Mm.Device$, "PicoMiteVGA"), 4, -1)
+    Load Jpg adv.game_root$ + "/images/" + loc_tag$ + ".jpg", 40, y% + Mm.Info(FontHeight) / 2, mode%
     Mid$(visited$, r, 1) = "1"
   Else
     con.println()
