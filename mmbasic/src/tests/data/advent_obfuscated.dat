@@ -1,0 +1,28 @@
+!locations
+$cORF334 Urrp#Rqh urrp#rqh 5 ORF335 ORF336
+$kWZN;;=(]zzx+_#z(}zzx+ #z(=(WZN;;<(WZN;;>
+$yeh\IIL6k))'9m",~~6,))'9.",~~6L6eh\IIJ6eh\IIK6eh\IIM
+$aMPD115}Sppn!Gpvs}sppn!gpvs}2}MPD114
+
+!additional_exits
+house|LOC001|LOC003
+three|LOC001|LOC002
+
+!objects
+OBJ001|Green Door|green door|LOC001|0|100
+OBJ002|Red Key|red key|LOC002|1|1
+OBJ003|Red Gem|red gem|LOC001|1|1
+OBJ004|Red Curious Key|red curious key|LOC002|1|1
+OBJ005|Secret Panel|+secret panel|LOC001|0|100
+OBJ006|Old Statue|old statue -broken|LOC001|0|100
+P_TEST_SUSPECT|Test Suspect|test suspect|LOC001|2|100
+P_OTHER_SUSPECT|Other Suspect|other suspect|LOC002|2|100
+P_NO_WILDCARD|No Wildcard|no wildcard|LOC001|2|100
+P_TEMPLATE_SUSPECT|Template Suspect|template suspect|LOC004|2|100
+
+!synonyms
+millicent|milicent
+gramophone|gramaphone|gramaphon|
+sarah|sara
+placeholder|placeholder
+placeholder|placeholder

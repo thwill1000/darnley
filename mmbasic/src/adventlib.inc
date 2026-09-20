@@ -188,6 +188,15 @@ End Function
 ' (directives plus the one message line), so callers tracking a running
 ' line count can stay in sync.
 '
+' Directive lines ("!requires "/"!provides ") are never obfuscated (see
+' advdata.decode_line$()'s doc comment), so the Left$(s$,10) prefix tests
+' below work correctly against the raw line with no decode needed.
+' first_line$, however, is returned to the caller and may hold an
+' obfuscated response-body line, so it is decoded on both paths that set
+' it (the non-directive branch below, and the final read after the
+' directive loop) - this is the single point at which read_directives()
+' hands a line's content on to callers such as print_body().
+'
 ' @param[in]  fnbr%             File number, already positioned after the
 '                               keyword line.
 ' @param[out]  requires$()      Tokens from "!requires", cleared first.
@@ -213,13 +222,14 @@ Sub read_directives(fnbr%, requires$(), provides$(), first_line$, lines_consumed
       result% = split_words%(Mid$(s$, 11), provides$())
       Inc directives_seen%
     Else
-      first_line$ = s$
+      first_line$ = advdata.decode_line$(s$)
       Exit Sub
     EndIf
   Loop
 
-  Line Input #fnbr%, first_line$
+  Line Input #fnbr%, s$
   Inc lines_consumed%
+  first_line$ = advdata.decode_line$(s$)
 End Sub
 
 ' Perform common parsing into verb$ and noun$
@@ -377,6 +387,16 @@ End Function
 ' Scans filename$ for the response whose pattern best matches
 ' subject_words$(), respecting !requires eligibility. Returns the best
 ' matching line number, or -1 if none.
+'
+' Keyword lines (and the "*" wildcard) are never obfuscated (see
+' advdata.decode_line$()'s doc comment), so the "s$ = "*"" and blank/"#"
+' checks below work correctly against the raw line with no decode
+' needed. read_directives() already decodes the one line it hands back
+' (first_line$) - here that value is only used to detect whether the
+' body was empty and to prime the "skip past this entry" loop, so no
+' further decode is required. The inner skip loop discards an
+' ineligible entry's body unread and must NOT decode - that content is
+' never used.
 Function find_response%(filename$, subject_words$())
   Open adv.game_root$ + "data/" + filename$ For Input As #1
 
@@ -438,6 +458,10 @@ End Function
 
 ' Prints the winning response from find_response%(),
 ' or a generic fallback if line% = -1.
+'
+' The Line Input here only counts lines to locate line%; no content is
+' consumed until print_message_lines() (via read_directives()) reads and
+' decodes it, so no decode is needed in this function.
 Sub print_response(filename$, line%)
   If line% = -1 Then
     con.print_fail("I don't know what you are talking about.")
@@ -799,6 +823,13 @@ End Function
 ' Entries matching tag$ but failing their !requires are skipped, and
 ' scanning continues for a later entry with the same tag.
 '
+' Tag/keyword lines are never obfuscated (see advdata.decode_line$()'s
+' doc comment), so the "s$ = tag$" comparison below works correctly
+' against the raw line - no decode needed. On a match, read_directives()
+' decodes first_line$ as it is produced, and that value flows straight
+' into print_body(). The ineligible-entry skip loop below discards a
+' body it will never print and must NOT decode that content.
+'
 ' @param tag$     The tag to search for in the message file.
 ' @param no_eol%  If not 0 then don't print EOL at end of message.
 ' @return         0 on success, 1 if no eligible entry was found.
@@ -864,6 +895,12 @@ End Sub
 ' s$ holding the first line of the body (which may be "" for an empty
 ' body). On return the file is positioned at the blank line terminating
 ' the entry (or EOF).
+'
+' s$ is the primary consumer of obfuscated body text: the first line
+' passed in has already been decoded by whichever read_directives()
+' caller produced it (so it is not double-decoded here), but every
+' subsequent line re-read via Line Input within this loop is decoded
+' immediately, since each is printed/used directly.
 Sub print_body(s$)
   Local first% = 1
   Do
@@ -876,6 +913,7 @@ Sub print_body(s$)
       con.print(s$)
     EndIf
     Line Input #1, s$
+    s$ = advdata.decode_line$(s$)
   Loop
 End Sub
 
