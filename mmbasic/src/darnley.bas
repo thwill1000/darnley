@@ -5,8 +5,6 @@ Option Base 1
 Option Default Integer
 Option Explicit On
 
-If InStr(Mm.Device$, "PicoMite") Then Print "Loading, please wait..."
-
 If Mm.Device$ = "MMB4L" Then Option Simulate PicoMiteVGA
 ' If Mm.Device$ = "MMB4L" Then Option Simulate PicoCalc
 
