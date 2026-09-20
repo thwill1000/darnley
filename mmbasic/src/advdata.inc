@@ -73,6 +73,11 @@ End Sub
 ' Blank lines and lines starting with "#" are skipped; the count stops at
 ' EOF or the next line starting with "!".
 '
+' Section-header and "#" comment lines are never obfuscated (see
+' advdata.decode_line$()'s doc comment), so the "!"/"#" prefix checks
+' below work correctly against the raw line - no decode call needed here,
+' since only the count (not the content) of each data line is kept.
+'
 ' @param  f$        Path to the file.
 ' @param  section$  Section header to find, e.g. "!locations".
 ' @param  optional% If 0 (default) then Error if the section is not found.
@@ -108,6 +113,12 @@ End Function
 ' into dout$(), starting at dout$(1). Blank lines and lines
 ' beginning "#" are skipped; reading stops at EOF or the next "!" line.
 '
+' Section-header lines and the "next section" check are matched against
+' the raw (unobfuscated - see advdata.decode_line$()) line, so no decode
+' is needed for those comparisons. Every actual data line that is kept is
+' decoded immediately before being stored into dout$(), since that is the
+' point at which its content becomes an output value.
+'
 ' @param  f$        Path to the file.
 ' @param  section$  Section header to find, e.g. "!locations".
 ' @param  dout$()   Output array, populated from index 1, cleared first.
@@ -132,7 +143,7 @@ Function read_advent_section%(f$, section$, dout$())
     If s$ = "" Or Left$(s$, 1) = "#" Then Continue Do
     Inc read_advent_section%
     If read_advent_section% > Bound(dout$(), 1) Then Error "Section has too many entries: " + section$
-    dout$(read_advent_section%) = s$
+    dout$(read_advent_section%) = advdata.decode_line$(s$)
   Loop
 
   Close #fnbr%
@@ -217,7 +228,12 @@ Function find_loc%(tag$, no_error%)
   EndIf
 End Function
 
-' Checks that a given message exists in the message file
+' Checks that a given message exists in the message file.
+'
+' Tag lines in messages.dat (e.g. "PLAIN_MSG") are never obfuscated (see
+' advdata.decode_line$()'s doc comment) so the Field$(s$, 1, "|")
+' comparison below works correctly against the raw line - no decode call
+' needed.
 Function message_exists%(tag$)
   Local s$
   Open adv.game_root$ + "data/messages.dat" For Input As #1
@@ -271,3 +287,51 @@ End Function
 Function obj_weight%(obj_idx%)
   obj_weight% = Val(Field$(objects$(obj_idx%), 6, "|"))
 End Function
+
+' Decodes a line read from a .dat/.msg file. Lines not beginning with "$" are
+' returned unchanged (passthrough) - this makes decoding safe to call
+' unconditionally on every line read from a file, regardless of whether that
+' particular line was obfuscated at build time.
+'
+' Obfuscation scheme: "$" + shift-byte + body, where the body has each character
+' of the original line Caesar-shifted forward by shift% positions over the
+' printable ASCII range 32..126 (95 values), wrapping (e.g. "~" + 1 -> space).
+' The shift-byte encodes shift% (1..25) as Chr$(Asc("a") + shift% - 1).
+'
+' This is NOT cryptographically strong - it's a casual "don't spoil it by
+' grepping the file" deterrent, applied at build time only.
+' See obfuscate_build.bas for the tool that obfuscates the files.
+'
+' @param  s$  The raw line as read from the file.
+' @return     The original plaintext line.
+Function advdata.decode_line$(s$)
+  If Left$(s$, 1) <> "$" Then advdata.decode_line$ = s$ : Exit Function
+  Local shift% = Asc(Mid$(s$, 2, 1)) - Asc("a") + 1
+  advdata.decode_line$ = Mid$(s$, 3)
+  Local i%, ch%
+  For i% = 1 To Len(advdata.decode_line$)
+    ch% = Peek(Var advdata.decode_line$, i%) - 32
+    ch% = (ch% - shift% + 950) Mod 95
+    Poke Var advdata.decode_line$, i%, ch% + 32
+  Next
+End Function
+
+' Encodes a single line for obfuscation. Used by the build-time obfuscation tool
+' (obfuscate_build.bas) and by tests; never called at normal game runtime.
+'
+' @param  s$      The plaintext line (must not already start with "$").
+' @param  shift%  Shift amount, 1..25.
+' @return         The obfuscated line ("$" + shift-byte + shifted body).
+Function advdata.encode_line$(s$, shift%)
+  If Left$(s$, 1) = "$" Then Error "Line starts with $"
+  If shift% < 1 Or shift% > 25 Then Error "Invalid shift"
+  advdata.encode_line$ = s$
+  Local i%, ch%
+  For i% = 1 To Len(advdata.encode_line$)
+    ch% = Peek(Var advdata.encode_line$, i%) - 32
+    ch% = (ch% + shift%) Mod 95
+    Poke Var advdata.encode_line$, i%, ch% + 32
+  Next
+  advdata.encode_line$ = "$" + Chr$(Asc("a") + shift% - 1) + advdata.encode_line$
+End Function
+
