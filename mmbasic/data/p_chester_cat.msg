@@ -182,6 +182,12 @@ perfectly well and simply isn't telling.]]@
 @
 "Mrrrrow."
 
++(window/glass/pane) +(french/broken/smashed/shattered)
+[[reset:The cat shows no interest whatsoever in broken glass, being some
+distance from where it happened.]]@
+@
+"Mrow?"
+
 police investigation scotland yard inspector detective think here of me
 [[reset:He sniffs your trouser leg, decides you'll do, and headbutts your
 shin companionably.]]@

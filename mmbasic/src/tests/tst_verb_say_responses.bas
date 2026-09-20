@@ -119,6 +119,7 @@ add_test("Were the Colonel and Sarah happy?", "test_marriage")
 add_test("Have you considered remarrying?", "test_remarriage")
 add_test("When did Arthur and Millicent get engaged?", "test_engagement")
 add_test("How was the study locked?", "test_locked_study")
+add_test("What do you know about the broken french window?", "test_broken_window")
 add_test("What clues have you found?", "test_evidence")
 add_test("Where is the body?", "test_body")
 add_test("Was there something going on between Sarah and Mellors?", "test_affair_blocked")
@@ -753,6 +754,22 @@ Sub test_locked_study()
   assert_response("how was the study sealed", "locked study response")
   assert_response("how could someone have gotten into the study", "locked study response")
   assert_response("explain the locked door on the study", "locked study response")
+End Sub
+
+Sub test_broken_window()
+  assert_response("what do you know about the broken window", "broken window response")
+  assert_response("tell me about the smashed glass", "broken window response")
+  assert_response("how was the french window broken", "broken window response")
+  assert_response("what about the shattered pane", "broken window response")
+  assert_response("tell me about the broken glass", "broken window response")
+
+  ' Billingsgate and Arthur were present at the break-in and give
+  ' first-person accounts.
+  objects$(9) = "P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|billingsgate butler|LOC001_BATHROOM|2|100"
+  assert_response("tell me about the broken window", "I broke it myself, sir", 1)
+
+  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  assert_response("tell me about the broken window", "That was me, old boy", 1)
 End Sub
 
 Sub test_body()
