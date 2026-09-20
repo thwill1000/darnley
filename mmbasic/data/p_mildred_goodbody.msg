@@ -13,7 +13,10 @@ door. All the outside doors are left open since we live in the
 country."
 
 knife
-"I used that knife to skin a hare, which explains the blood."
+"That's Mr. Mellors' knife, for the game - he brought it round with a
+brace before dinner and left it on the board. He's not the only one who's
+used it, mind. I skinned a hare with it myself the other day, which'd
+explain the blood as well as anything."
 
 cigarette cigar cheroot smoking smoked smokes
 "I don't smoke. Colonel Darnley smoked cigars."
