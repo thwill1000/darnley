@@ -206,6 +206,11 @@ away. Having had a bit to drink I slept very soundly and heard
 nothing until Billingsgate woke me at midnight to tell me about
 this terrible business."
 
++why +(here/visiting/visit) | +here what brings
+"Business. Damned inconvenient business, arriving without warning like
+this, but it couldn't wait. I'd rather not go into the particulars -
+suffice it to say Darnley and I had matters to discuss."
+
 +(bang/bangs/shot/shots) (time/what/when) (hear/heard)
 "There was only the one bang so far as I heard, and I'll tell you
 plainly what caused it - I left Darnley's study at 10:30 and slammed
