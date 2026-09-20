@@ -39,9 +39,14 @@ no-one there, just a gramophone playing."
 "I don't know whose shoes these are."
 
 +newspaper read
+!requires newspaper
 "I heard that old Slingsby had plunged into mining shares and needed
 money urgently. Colonel Darnley mentioned it to me during our
 conversation."
+
++newspaper read
+"Can't say I get much further than the sporting pages myself, old
+boy."
 
 letter
 "I have no idea who old Darnley was writing to. I suppose it could

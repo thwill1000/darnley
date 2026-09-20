@@ -43,8 +43,14 @@ have no idea why they should be damp - possibly I had them on
 earlier yesterday."
 
 +newspaper read
+!requires newspaper
+[[reset:She hesitates, choosing her words carefully.]]@
+@
 "I believe that Sebastian advised one or two people to invest in
 Peruvian shares."
+
++newspaper read
+"I really couldn't say - Sebastian read the paper over breakfast, not I."
 
 letter
 "My husband said something to me about having to write a letter. I
