@@ -83,7 +83,7 @@ End Function
 
 ' Gets the path to the file corresponding to script slot 'i'.
 Function script.script_file$(i)
-  If i < 1 Or i > 10 Then Error "Invalid script number"
+  If i < 1 Or i > 10 Then Error "Invalid script number: " + Str$(i)
   script.script_file$ = adv.game_root$ + "scripts/"
   Local parent_name$ = file.get_name$(file.get_parent$(advent.file$))
   If Right$(parent_name$, 1) = ":" Then
