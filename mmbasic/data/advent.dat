@@ -31,6 +31,17 @@ LOC028_MORNING_ROOM|Morning room|morning|3|LOC025_LANDING|LOC027_MASTER_BEDROOM|
 LOC029_GUEST_ROOM|Guest room|guest|1|LOC025_LANDING
 LOC030_SECOND_GUEST_ROOM|Second guest room|second guest|1|LOC028_MORNING_ROOM
 
+!additional_exits
+# from_loc_id | pattern | to_loc_id
+LOC017_DRIVE|hall house manor inside in|LOC008_HALL
+LOC008_HALL|outside out|LOC017_DRIVE
+LOC003_KITCHEN_GARDEN|hall house manor inside in|LOC009_KITCHEN
+LOC009_KITCHEN|outside out|LOC003_KITCHEN_GARDEN
+LOC006_TERRACE|hall house manor inside in window|LOC007_COLONELS_STUDY
+LOC007_COLONELS_STUDY|outside out window|LOC006_TERRACE
+LOC025_LANDING|down downstairs|LOC008_HALL
+LOC008_HALL|up upstairs|LOC025_LANDING
+
 !objects
 # id | name | pattern | location | flag | weight
 # flag = 1 -> takeable

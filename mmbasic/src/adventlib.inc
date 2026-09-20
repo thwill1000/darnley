@@ -473,7 +473,7 @@ End Function
 ' @param words$()  Array of words to match against exit location names.
 ' @return          Index into rooms$() of the best matching exit, or -1 if none.
 Function find_exit_match%(words$())
-  Local best_num_matches%, i%, loc%, loc_pattern$, loc_tag$, num_matches%
+  Local best_num_matches%, from_id$, i%, loc%, loc_pattern$, loc_id$, num_matches%, to_id$
 
   find_exit_match% = -1
 
@@ -481,13 +481,29 @@ Function find_exit_match%(words$())
 
   Const num_exits% = Val(Field$(rooms$(r), 4, "|"))
   For i% = 1 To num_exits%
-    loc_tag$ = Field$(rooms$(r), 4 + i%, "|")
-    loc% = find_loc%(loc_tag$)
+    to_id$ = Field$(rooms$(r), 4 + i%, "|")
+    loc% = find_loc%(to_id$)
     loc_pattern$ = Field$(rooms$(loc%), 3, "|")
     num_matches% = find_matches%(loc_pattern$, match_in$)
     If num_matches% > best_num_matches% Then
       best_num_matches% = num_matches%
       find_exit_match% = loc%
+    EndIf
+  Next
+
+  ' Additional exits scoped to the current room. Checked after real exits
+  ' above, so on a tied score a real exit always wins (strict '>' below).
+  loc_id$ = Field$(rooms$(r), 1, "|")
+  For i% = Bound(additional_exits$(), 0) To Bound(additional_exits$(), 1)
+    If additional_exits$(i%) = "" Then Exit For
+    from_id$ = Field$(additional_exits$(i%), 1, "|")
+    If from_id$ <> loc_id$ Then Continue For
+    loc_pattern$ = Field$(additional_exits$(i%), 2, "|")
+    num_matches% = find_matches%(loc_pattern$, match_in$)
+    If num_matches% > best_num_matches% Then
+      best_num_matches% = num_matches%
+      to_id$ = Field$(additional_exits$(i%), 3, "|")
+      find_exit_match% = find_loc%(to_id$)
     EndIf
   Next
 End Function
