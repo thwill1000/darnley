@@ -59,6 +59,7 @@ advdata.init()
 add_test("Good morning.", "test_greeting")
 add_test("Bit cold isn't it?", "test_weather")
 add_test("What happened last night?", "test_events")
+add_test("Why are you here?", "test_why_here")
 add_test("What were you doing at the time of the murder?", "test_alibi")
 add_test("Can anyone confirm your alibi?", "test_alibi_confirm")
 add_test("Tell me about these slippers.", "test_slippers")
@@ -199,6 +200,24 @@ Sub test_events()
   assert_response("describe what happened yesterday", "events response")
   assert_response("walk me through the events of that night", "events response")
   assert_response("run me through the events of the murder", "events response")
+End Sub
+
+Sub test_why_here()
+  assert_response("why are you here", "why here response")
+  assert_response("why are you visiting", "why here response")
+  assert_response("what brings you here", "why here response")
+
+  ' Ask Arthur directly - his own file gives his actual reason (the proposal)
+  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  assert_response("why are you here", "I was down for the weekend to ask the old boy", 1)
+
+  ' Ask Redvers directly - he stonewalls, whether or not the newspaper
+  ' clue has been found, since that's a separate gated topic
+  objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
+  assert_response("why are you here", "Business. Damned inconvenient business", 1)
+
+  reset_flags("newspaper")
+  assert_response("why are you here", "Business. Damned inconvenient business", 1)
 End Sub
 
 Sub test_alibi()

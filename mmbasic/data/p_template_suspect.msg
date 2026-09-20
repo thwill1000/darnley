@@ -153,6 +153,9 @@ daimler car motor saloon garage
 events yesterday murder last happened
 "events response"
 
++why +(here/visiting/visit) | +here what brings
+"why here response"
+
 +(bang/bangs/shot/shots) (time/what/when) (hear/heard)
 "bang/shot timeline response"
 

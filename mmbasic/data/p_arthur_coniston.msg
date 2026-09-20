@@ -204,6 +204,11 @@ locks, so it would have been impossible to open them from the outside.
 I had noticed some bootprints outside, so I went out and followed them.
 They led around the house to the kitchen door. I followed in my slippers."
 
++why +(here/visiting/visit) | +here what brings
+"I was down for the weekend to ask the old boy for Millicent's hand,
+actually. Worked up my nerve all afternoon before I finally asked him
+- and he said yes, would you believe it."
+
 +(bang/bangs/shot/shots) (time/what/when) (hear/heard)
 "Funny you should press on that. There was a bang at about 10:30 -
 door slamming, I assumed - and then another, later, closer to 11:30,
