@@ -8,7 +8,9 @@ boots
 "Piss off! I'm not showing anyone my boots."
 
 knife
-"I don't know anything about any bloody knife!"
+"That's my knife, for the game. Left it on the draining board after I
+brought a brace round before dinner - meant to collect it after, forgot.
+Doesn't mean I used it on anything but a hare, whatever you're thinking."
 
 cigarette cigar cheroot smoking smoked smokes
 "I smoke cheap cigarettes. What of it? There's no law against it."
@@ -80,7 +82,8 @@ he keeps to the drive."
 "Clear off! I'm not showing anyone my boots."
 
 +hobnailed +(bootprints/prints/marks) boot
-"Clear off! I'm not showing anyone my boots."
+"Hobnailed's what half the boots on this estate look like, mine included.
+Don't mean nothing."
 
 +slipper +(footprints/prints/marks)
 "I don't know whose they are."

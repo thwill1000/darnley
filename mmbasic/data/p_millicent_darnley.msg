@@ -151,7 +151,7 @@ redecorated. I haven't paid it much attention, I'm afraid."
 
 +(guest/spare) second room
 "I believe it's being redecorated - I haven't been in there myself
-for weeks. Mother's doing, I should think, though I couldn't tell
+for weeks. Sarah's doing, I should think, though I couldn't tell
 you why now of all times."
 
 +(blocked/passage) door kitchen

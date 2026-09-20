@@ -16,7 +16,7 @@ pantry. What puzzles me is : if a boot thief came in from the
 outside door, what on earth was he wearing on his feet?"
 
 knife
-I don't know anything about the knife, sir - that's not a kitchen matter I'd concern myself with."
+"I don't know anything about the knife, sir - that's not a kitchen matter I'd concern myself with."
 
 cigarette cigar cheroot smoking smoked smokes
 "I don't smoke. Colonel Darnley smoked cigars."
@@ -39,7 +39,8 @@ piano
 morning room."
 
 +womens shoes
-"I'm not sure. They may be Mrs. Sarah's or Miss Millicent's."
+"I really couldn't say, sir. A lady's shoe is not something I make a study of.
+Mrs. Darnley's or Miss Millicent's, I should imagine — you might ask young Norah."
 
 +newspaper read
 "I'm afraid I don't recognise it."
