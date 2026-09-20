@@ -51,6 +51,11 @@ letter
 handkerchief
 "I don't know anything about it."
 
++colonel +(argue/argument/row/quarrel/quarrelled/quarrelling)
+"It is not my place to comment on the family's private business, sir.
+I will say the atmosphere at dinner was not entirely comfortable, and
+I withdrew before the gentlemen retired to the billiard room."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "The master was a very honest, decent gentleman, and extremely good to his family."
 

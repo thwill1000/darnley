@@ -44,6 +44,10 @@ handkerchief
 "Both the ladies have this sort of hanky. Sometimes Mrs. G. is given
 the older ones."
 
++colonel +(argue/argument/row/quarrel/quarrelled/quarrelling)
+"I never heard anything like that, sir. I don't go where the gentlemen
+are of an evening, that's not my part of the house."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "Very strict. I didn't like him."
 
