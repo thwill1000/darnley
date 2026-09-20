@@ -71,7 +71,8 @@ add_test("What happened to the missing statue?", "test_missing_statue")
 add_test("Was anyone playing the gramophone?", "test_gramophone")
 add_test("Was the piano being played last night?", "test_piano")
 add_test("Who owns these lady's shoes?", "test_ladys_shoes")
-add_test("Did you read the newspaper?", "test_newspaper")
+add_test("Did you read the newspaper? (before the newspaper is found)", "test_newspaper_blocked")
+add_test("Did you read the newspaper? (after the newspaper is found)", "test_newspaper_unlocked")
 add_test("What do you know about the letter on the Colonel's desk?", "test_letter")
 add_test("Who dropped this handkerchief?", "test_handkerchief")
 add_test("What was the colonel like?", "test_opinion_colonel")
@@ -124,8 +125,8 @@ add_test("Was there something going on between Sarah and Mellors?", "test_affair
 add_test("Was there something going on between Sarah and Mellors? (once handkerchief and cigarettes are found)", "test_affair_unlocked")
 add_test("Tell me about the Colonel's finances.", "test_money_blocked")
 add_test("What do you know about the bangs last night?", "test_bang")
-add_test("Did you argue with the colonel?", "test_argument_blocked")
-add_test("Did you argue with the colonel? (once newspaper is found)", "test_argument_unlocked")
+add_test("Did you argue with the colonel? (before the newspaper is found)", "test_argument_blocked")
+add_test("Did you argue with the colonel? (after the newspaper is found)", "test_argument_unlocked")
 add_test("What do you think of the police investigation?", "test_investigation")
 add_test("I accuse you! (but don't have all the clues)", "test_premature_accusation")
 add_test("I accuse you! (the first time)", "test_first_accusation")
@@ -316,11 +317,44 @@ Sub test_ladys_shoes()
   assert_response("who owns these lady's shoes", "ladys shoes response")
 End Sub
 
-Sub test_newspaper()
+Sub test_newspaper_blocked()
   assert_response("ask about the newspaper", "newspaper response")
   assert_response("what about the newspaper", "newspaper response")
   assert_response("tell me about the newspaper", "newspaper response")
   assert_response("did you read the newspaper", "newspaper response")
+
+  ' With the "newspaper" flag unset, all three suspects who hold gated
+  ' knowledge of the mining-shares collapse must fall back to their
+  ' evasive, unconditional entry rather than leaking the collapse/motive
+  ' detail early.
+  objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
+  assert_response("did you read the newspaper", "Can't say I've had much leisure for reading", 1)
+
+  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  assert_response("did you read the newspaper", "Can't say I get much further than the sporting pages", 1)
+
+  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  assert_response("did you read the newspaper", "I really couldn't say - Sebastian read the paper over breakfast, not I.", 1)
+End Sub
+
+Sub test_newspaper_unlocked()
+  reset_flags("newspaper") ' Player has found and examined newspaper
+
+  assert_response("ask about the newspaper", "newspaper response given newspaper found")
+  assert_response("what about the newspaper", "newspaper response given newspaper found")
+  assert_response("tell me about the newspaper", "newspaper response given newspaper found")
+  assert_response("did you read the newspaper", "newspaper response given newspaper found")
+
+  ' Once the "newspaper" flag is set the same keywords against the same three
+  ' suspects should give the more revealing entry.
+  objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
+  assert_response("did you read the newspaper", "[[reset:He stiffens slightly", 1)
+
+  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  assert_response("did you read the newspaper", "I heard that old Slingsby had plunged into mining shares", 1)
+
+  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  assert_response("did you read the newspaper", "[[reset:She hesitates, choosing her words", 1)
 End Sub
 
 Sub test_letter()

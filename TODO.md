@@ -9,5 +9,4 @@
 - "Fix" intrusive [MORE] prompts
 - Implement (obfuscated) walkthrough
 - Allow use of "you" appropriately in answers to the accuse end-game
-- Finish work on newspaper response
 - Objects that currently have no associated dialogue

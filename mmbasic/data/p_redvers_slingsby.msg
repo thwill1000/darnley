@@ -41,8 +41,16 @@ morning room."
 if my life depended on it."
 
 +newspaper read
-"I was reading it on the train coming here. Some of my friends lost
-money in the collapse."
+!requires newspaper
+[[reset:He stiffens slightly at the mention of the newspaper.]]@
+@
+"I was reading it on the train coming here, if you must know. Some of
+my friends lost money in the collapse."
+
++newspaper read
+"Can't say I've had much leisure for reading, what with the journey
+and everything since. Ask one of the ladies, more their line than
+mine."
 
 letter
 "The letter certainly wasn't addressed to me. Darnley would have
