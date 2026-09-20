@@ -7,9 +7,5 @@
 - DIALOGUE: Support different dialogue fallback for questions vs. non-questions
 - GFX: fix ornamental pond image
 - GFX: neither decanter empty in study image
-- Why is "Upstairs landing" not highlighted in green when rendering LOC001_BATHROOM description?
-- Why is "Norah Bagsby" not highlighted in green when rendering LOC026_SERVANTS_QUARTERS?
-- Why is "West walk" not highlighted in green when rendering LOC019_SUMMER_HOUSE?
-- Support colour markup over multiple lines
 - "Fix" intrusive [MORE] prompts
 - Encrypt data and messages
