@@ -48,6 +48,7 @@ Sub init_console()
     Console Resize con.WIDTH, con.HEIGHT
   EndIf
   con.clear()
+  If InStr(Mm.Device$, "PicoMite") Then con.println("Loading, please wait...")
 End Sub
 
 ' Count the number of data entries
