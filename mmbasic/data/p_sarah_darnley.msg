@@ -56,6 +56,11 @@ I'm at a loss about the letter."
 handkerchief
 "You found it in the summer house? I'm absolutely sure it isn't mine."
 
++colonel +(argue/argument/row/quarrel/quarrelled/quarrelling)
+"I heard raised voices from the study, Sebastian and Sir Redvers, but
+I couldn't tell you what it was about. I didn't think anything of it
+at the time - gentlemen do quarrel over their business."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "He was somewhat strict and suspicious by nature, but we were happy
 enough."

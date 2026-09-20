@@ -50,6 +50,11 @@ handkerchief
 "Mrs. Sarah and Miss Millicent both have handkerchiefs like this one.
 I can't say whose it is."
 
++colonel +(argue/argument/row/quarrel/quarrelled/quarrelling)
+"Not that I saw, dear, I keep to my kitchen. But there's been a queer
+atmosphere in this house since Sir Redvers arrived, if you want my
+honest opinion."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "A hard man both in his business dealings and with his family."
 

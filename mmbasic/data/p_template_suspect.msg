@@ -53,8 +53,15 @@ letter
 handkerchief
 "handkerchief response"
 
++colonel +(argue/argument/row/quarrel/quarrelled/quarrelling)
+!requires newspaper
+"argument with colonel given newspaper response"
+
++colonel +(argue/argument/row/quarrel/quarrelled/quarrelling)
+"argument with colonel response"
+
 +colonel -(millicent/sarah/who) (get/think) with
-"colonel darnley response"
+"colonel darnley opinion response"
 
 +sarah (get/think) with
 "sarah response"
