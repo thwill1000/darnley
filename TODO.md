@@ -8,5 +8,4 @@
 - Extract testable code from state.save%() amd state.restore%()
 - "Fix" intrusive [MORE] prompts
 - Implement (obfuscated) walkthrough
-- Allow use of "you" appropriately in answers to the accuse end-game
 - Objects that currently have no associated dialogue

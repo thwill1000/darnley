@@ -199,6 +199,12 @@ Sub handle_new_accusation()
         Continue For
     End Select
 
+    ' Replace "you" with name of accused suspect
+    For i% = Bound(words$(), 0) To Bound(words$(), 1)
+      If words$(i%) = "" Then Exit For
+      If words$(i%) = "you" Then words$(i%) = accused$
+    Next
+
     ' Uncomment for debugging
     If words$(Bound(words$(), 0)) = "succeed" Or words$(Bound(words$(), 0)) = "fail" Then
       correct% = num_questions% * (words$(Bound(words$(), 0)) = "succeed")
