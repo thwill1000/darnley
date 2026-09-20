@@ -22,6 +22,7 @@ advdata.init()
 
 Const DATA_DIR$ = adv.game_root$ + "data/"
 
+add_test("advdata.init() succeeds when '!additional_exits' section is absent", "test_init_no_add_exits_section")
 add_test("test_find_loc_gvn_first")
 add_test("test_find_loc_gvn_last")
 add_test("test_find_loc_gvn_middle")
@@ -31,6 +32,14 @@ add_test("test_find_loc_gvn_error")
 
 run_tests()
 End
+
+Sub test_init_no_add_exits_section()
+  Erase rooms$(), additional_exits$(), objects$(), synonyms$()
+  advdata.init(DATA_DIR$ + "advent_no_additional_exits.dat")
+  ' No error raised is the assertion; additional_exits$() should be a
+  ' harmless empty (2-element, all "") array.
+  assert_string_equals("", additional_exits$(Bound(additional_exits$(), 0)))
+End Sub
 
 ' Returns index of first room
 Sub test_find_loc_gvn_first()

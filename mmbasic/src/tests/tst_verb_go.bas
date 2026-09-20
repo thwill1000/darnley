@@ -60,6 +60,10 @@ add_test("verb_go() matching is case-insensitive", "test_go_gvn_case_insensitive
 add_test("verb_go() works from a different starting room", "test_go_gvn_other_room")
 add_test("verb_go() always returns 1 (handled)", "test_go_always_returns_handled")
 add_test("verb_go() ignores words before the noun (the verb itself)", "test_go_gvn_ignores_verb_word")
+add_test("verb_go() matches an additional exit not in the location's own exit list", "test_go_gvn_additional_exit")
+add_test("verb_go() additional exit is scoped to its own from-location", "test_go_gvn_addexit_wrong_room")
+add_test("verb_go() a real exit wins a tie against an additional exit", "test_go_gvn_addexit_tie_real")
+add_test("verb_go() additional exit matching is case-insensitive", "test_go_gvn_addexit_case")
 
 run_tests()
 End
@@ -180,4 +184,53 @@ Sub test_go_gvn_ignores_verb_word()
   Local ret% = verb_go()
 
   assert_int_equals(2, r)
+End Sub
+
+' "house" only matches via the additional exit entry "house|LOC001|LOC003",
+' not any of LOC001's own listed exits (Room Two / Room Three)
+Sub test_go_gvn_additional_exit()
+  Local result% = parse_common("go house")
+  assert_int_equals(0, result%)
+
+  Local ret% = verb_go()
+
+  assert_int_equals(1, ret%)
+  assert_int_equals(3, r) ' LOC003
+End Sub
+
+' The additional exit "house|LOC001|LOC003" only applies FROM LOC001;
+' from LOC002 the same word must not match
+Sub test_go_gvn_addexit_wrong_room()
+  r = 2 ' LOC002
+  Local result% = parse_common("go house")
+  assert_int_equals(0, result%)
+
+  Local ret% = verb_go()
+
+  assert_int_equals(1, ret%)
+  assert_int_equals(2, r) ' unchanged - no match found
+End Sub
+
+' "three" matches both LOC001's real exit "Room Three" (LOC003) and the
+' fixture's additional exit "three|LOC001|LOC002" equally (1 matched word
+' each); real exits are scored first, so on a tied score the real exit's
+' destination wins
+Sub test_go_gvn_addexit_tie_real()
+  Local result% = parse_common("go three")
+  assert_int_equals(0, result%)
+
+  Local ret% = verb_go()
+
+  assert_int_equals(1, ret%)
+  assert_int_equals(3, r) ' LOC003, via the real exit, not LOC002
+End Sub
+
+Sub test_go_gvn_addexit_case()
+  Local result% = parse_common("go HOUSE")
+  assert_int_equals(0, result%)
+
+  Local ret% = verb_go()
+
+  assert_int_equals(1, ret%)
+  assert_int_equals(3, r)
 End Sub
