@@ -215,6 +215,9 @@ remarriage remarry remarrying marry again
 +study (locked/sealed) door window how
 "locked study response"
 
++(window/glass/pane) +(french/broken/smashed/shattered)
+"broken window response"
+
 +(body/colonel) where
 "body location response"
 

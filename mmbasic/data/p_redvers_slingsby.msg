@@ -294,6 +294,11 @@ of his, watchful sort of fellow. But that's guesswork, mind."
 I certainly didn't lock it. If it was locked afterwards, someone
 did that after I'd gone, and I couldn't tell you who or how."
 
++(window/glass/pane) +(french/broken/smashed/shattered)
+"Heard the young pup smashed a pane to get in, since the doors were
+locked. Sensible enough, I suppose, under the circumstances. Wasn't
+there myself, so you'll have to ask him or the butler for the details."
+
 +(body/colonel) where
 "In the study, so I'm told. I haven't been in to look, and I can't say
 I've any wish to."

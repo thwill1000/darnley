@@ -290,6 +290,11 @@ locked from the inside with the Colonel's own keys still in them.
 I broke the window pane myself to get us in - can't see how anyone
 managed it, honestly."
 
++(window/glass/pane) +(french/broken/smashed/shattered)
+"That was me, old boy - picked up a stone from the terrace and put it
+through the pane myself. Seemed the quickest way in, given the doors
+were locked and no-one was answering."
+
 +(body/colonel) where
 "Still in the study, old boy, last I saw - on the carpet, more or less
 where he fell. Billingsgate and I found him there."

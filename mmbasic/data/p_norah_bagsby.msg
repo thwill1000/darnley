@@ -248,6 +248,11 @@ been. I don't mean nothing by that, mind."
 locked room and nobody able to get in or out - it doesn't seem
 natural."
 
++(window/glass/pane) +(french/broken/smashed/shattered)
+"I heard Mr. Coniston broke the window, sir, to get in when the doors
+wouldn't open. I didn't see it happen myself - I was asleep till all the
+commotion started."
+
 +(body/colonel) where
 "In the study, sir. I haven't been in - I don't think I could look, if
 I'm honest."

@@ -279,6 +279,11 @@ proof, is it? Just a feeling."
 broken from outside - I heard people saying it's impossible. I
 suppose that's why they needed a proper detective."
 
++(window/glass/pane) +(french/broken/smashed/shattered)
+"I gather Arthur broke the window himself, to get the room open. Rather
+resourceful of him, though I don't suppose it was easy, breaking in to
+find - well. I wasn't there to see it."
+
 +(body/colonel) where
 "In the study, on that dreadful rug. I haven't seen it - I don't want
 to, if I can help it."

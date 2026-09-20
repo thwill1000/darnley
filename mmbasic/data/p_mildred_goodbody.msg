@@ -265,6 +265,11 @@ were raised. Make of that what you will."
 sounds like something out of a novel, not something that happens in
 a respectable house."
 
++(window/glass/pane) +(french/broken/smashed/shattered)
+"That'll be the study window, dear - Mr. Coniston broke it to get in,
+so I'm told, on account of the doors being locked fast. I heard all
+about it after, same as the rest of us."
+
 +(body/colonel) where
 "In the study, dear, so they tell me. I've not set foot in there myself,
 and don't intend to."

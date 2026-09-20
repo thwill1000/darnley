@@ -232,6 +232,10 @@ pleased with himself for my liking."
 unless I'm sent for. Whatever went on with locked doors, you'll not
 get an answer from me."
 
++(window/glass/pane) +(french/broken/smashed/shattered)
+"Heard something about a window getting smashed to get in. Nothing to
+do with me - I was in my cottage the whole time."
+
 +(body/colonel) where
 "In the house somewhere, I'd expect. Nothing to do with me - I keep to
 the grounds."
