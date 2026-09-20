@@ -123,6 +123,8 @@ add_test("Was there something going on between Sarah and Mellors?", "test_affair
 add_test("Was there something going on between Sarah and Mellors? (once handkerchief and cigarettes are found)", "test_affair_unlocked")
 add_test("Tell me about the Colonel's finances.", "test_money_blocked")
 add_test("What do you know about the bangs last night?", "test_bang")
+add_test("Did you argue with the colonel?", "test_argument_blocked")
+add_test("Did you argue with the colonel? (once newspaper is found)", "test_argument_unlocked")
 add_test("What do you think of the police investigation?", "test_investigation")
 add_test("I accuse you! (but don't have all the clues)", "test_premature_accusation")
 add_test("I accuse you! (the first time)", "test_first_accusation")
@@ -322,10 +324,10 @@ Sub test_handkerchief()
 End Sub
 
 Sub test_opinion_colonel()
-  assert_response("what did you think of colonel darnley", "colonel darnley response")
-  assert_response("what was the colonel like", "colonel darnley response")
-  assert_response("tell me about colonel darnley", "colonel darnley response")
-  assert_response("what did you make of sebastian darnley", "colonel darnley response")
+  assert_response("what did you think of colonel darnley", "colonel darnley opinion response")
+  assert_response("what was the colonel like", "colonel darnley opinion response")
+  assert_response("tell me about colonel darnley", "colonel darnley opinion response")
+  assert_response("what did you make of sebastian darnley", "colonel darnley opinion response")
 End Sub
 
 Sub test_opinion_sarah()
@@ -783,6 +785,34 @@ Sub test_bang()
   assert_response("Tell me about the shot?", "bang/shot timeline response")
   assert_response("Did you hear a bang?", "bang/shot timeline response")
   assert_response("What time exactly did you hear the shot?", "bang/shot timeline response")
+End Sub
+
+' With no "newspaper" flag set, Redvers falls to the unconditional,
+' vague argument entry - same as everyone else's generic response
+Sub test_argument_blocked()
+  assert_response("did you argue with the colonel", "argument with colonel response")
+  assert_response("did you have an argument with the colonel", "argument with colonel response")
+  assert_response("was there a row with the colonel", "argument with colonel response")
+  assert_response("did you quarrel with the colonel", "argument with colonel response")
+
+  ' Ask Redvers directly without the newspaper flag - he stonewalls
+  objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
+  assert_response("did you argue with the colonel", "Argued, yes - I'll not pretend otherwise", 1)
+  assert_response("did you have an argument with the colonel", "Argued, yes - I'll not pretend otherwise", 1)
+End Sub
+
+' Once "newspaper" is set, Redvers' gated entry wins and he admits the
+' substance of the argument (still stopping short of a confession)
+Sub test_argument_unlocked()
+  reset_flags("newspaper")
+  assert_response("did you argue with the colonel", "argument with colonel given newspaper response")
+  assert_response("did you have an argument with the colonel", "argument with colonel given newspaper response")
+  assert_response("was there a row with the colonel", "argument with colonel given newspaper response")
+  assert_response("did you quarrel with the colonel", "argument with colonel given newspaper response")
+
+  objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
+  assert_response("did you argue with the colonel", "[[reset:He exhales slowly, some of the bluster gone out of him.", 1)
+  assert_response("did you have an argument with the colonel", "[[reset:He exhales slowly, some of the bluster gone out of him.", 1)
 End Sub
 
 Sub test_investigation()

@@ -49,6 +49,11 @@ handkerchief
 don't remember when I lose them. I certainly wasn't in the summer
 house yesterday. Is it important?"
 
++colonel +(argue/argument/row/quarrel/quarrelled/quarrelling)
+"Not that I heard, but I was in the music room with Arthur most of
+the evening. Daddy could be sharp with people when he chose to be -
+I shouldn't be at all surprised if someone had crossed him."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "Daddy was a tyrant but always kind to me. He was always fearful that
 Sarah would leave him for a younger man."

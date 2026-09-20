@@ -40,6 +40,10 @@ letter
 handkerchief
 "Do I look like I use lady's hankies?"
 
++colonel +(argue/argument/row/quarrel/quarrelled/quarrelling)
+"Wasn't at the house of an evening, was I. Whatever went on between
+him and his guests is nothing to do with me."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "Strict but fair. I've said all I'm goin to say about him."
 
