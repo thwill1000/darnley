@@ -5,7 +5,6 @@
 - GFX: fix ornamental pond image
 - GFX: neither decanter empty in study image
 - GFX: remove knife from kitchen table, should only be knife on draining board
-- Extract testable code from state.save%() amd state.restore%()
 - "Fix" intrusive [MORE] prompts
 - Implement (obfuscated) walkthrough
 - Objects that currently have no associated dialogue

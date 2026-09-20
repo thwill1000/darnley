@@ -127,7 +127,7 @@ End Function
 '
 ' @return 1 on success, otherwise 0.
 Function state.save%()
-  Local f$, i%, s$
+  Local f$, s$
 
   con.println("Select saved game:")
   con.println()
@@ -157,29 +157,36 @@ Function state.save%()
 
   Const fd% = state.FD%
   Open f$ For Output As #fd%
-
-  ' Write file header
-  Const name$ = UCase$(file.trim_extension$(file.get_name$(advent.file$)))
-  Print #fd%, name$ + " save file"
-  Print #fd%, "1" ' file format version
-  Print #fd%, Date$ + " " + Time$
-  Print #fd%, s$
-
-  ' Write state
-  Print #fd%, Str$(r)              ' current room
-  Print #fd%, visited$             ' rooms visited
-  Print #fd%, Str$(LLen(flags%())) ' flags 
-  If LLen(flags%()) > 0 Then LongString Print #fd%, flags%()
-
-  ' Write counters
-  Print #fd%, Str$(Bound(state.counters%(), 1))
-  For i% = Bound(state.counters%(), 0) To Bound(state.counters%(), 1)
-    Print #fd%, Str$(state.counters%(i%))
-  Next
-
+  state.write_body(fd%, s$)
   Close #fd%
   state.save% = 1
 End Function
+
+' Writes the current game state (r, visited$, flags%(), state.counters%())
+' to an already-open output file, including the 4-line header. Callable
+' directly (e.g. by tests), without any slot selection or interactive
+' prompting.
+'
+' @param  fnbr%  File number, already Open ... For Output.
+' @param  name$  Free-text save name to record in the header.
+Sub state.write_body(fnbr%, name$)
+  Const hdr$ = UCase$(file.trim_extension$(file.get_name$(advent.file$)))
+  Print #fnbr%, hdr$ + " save file"
+  Print #fnbr%, "1" ' file format version
+  Print #fnbr%, Date$ + " " + Time$
+  Print #fnbr%, name$
+
+  Print #fnbr%, Str$(r)              ' current room
+  Print #fnbr%, visited$             ' rooms visited
+  Print #fnbr%, Str$(LLen(flags%())) ' flags
+  If LLen(flags%()) > 0 Then LongString Print #fnbr%, flags%()
+
+  Print #fnbr%, Str$(Bound(state.counters%(), 1))
+  Local i%
+  For i% = Bound(state.counters%(), 0) To Bound(state.counters%(), 1)
+    Print #fnbr%, Str$(state.counters%(i%))
+  Next
+End Sub
 
 ' Gets the path to the file corresponding to saved game slot 'i'.
 Function state.save_file$(i)
@@ -223,58 +230,76 @@ Function state.restore%()
   con.println("Restoring '" + f$ + "' ...")
   con.println()
 
-  Local err$, rr%, vv$, ff%(Bound(flags%(), 1))
+  Local err$
+  If state.read_body%(fd%, err$) Then
+    state.restore% = 1
+  Else
+    con.print_fail("ERROR: " + err$)
+  EndIf
+
+  Close #fd%
+End Function
+
+' Reads and validates the state body from an already-open input file,
+' positioned immediately after the 4 header lines. On success, sets the
+' game's global state (r, visited$, flags%(), state.counters%()). Callable
+' directly (e.g. by tests), without any slot selection or interactive
+' prompting.
+'
+' @param       fnbr%  File number, already Open ... For Input and
+'                     positioned past the 4-line header.
+' @param[out]  err$   Description of the first problem found, or "" on success.
+' @return             1 on success, otherwise 0.
+Function state.read_body%(fnbr%, err$)
+  err$ = ""
+  Local s$, rr%, vv$
+  Local ff%(Bound(flags%(), 1))
   Local i%, cc%(Bound(state.counters%(), 1)), nc%
 
-  Line Input #fd%, s$
+  Line Input #fnbr%, s$
   rr% = Val(s$)
-  Line Input #fd%, vv$
-  Line Input #fd%, s$
+  Line Input #fnbr%, vv$
+  Line Input #fnbr%, s$
   Const flags_sz% = Val(s$)
   If flags_sz% > 0 Then
-    Const bytes_read% = state.linput%(ff%(), fd%, flags_sz%)
+    Const bytes_read% = state.linput%(ff%(), fnbr%, flags_sz%)
     If bytes_read% <> flags_sz% Then
       err$ = "missing data - read " + Str$(bytes_read%) + " of " + Str$(flags_sz%) + " bytes."
     Else
-      s$ = Input$(2, #fd%)
+      s$ = Input$(2, #fnbr%)
       If s$ <> sys.CRLF$ Then err$ = "missing CRLF."
     EndIf
   EndIf
 
-  ' Read counters
   If err$ = "" Then
-    If Eof(#fd%) Then
+    If Eof(#fnbr%) Then
       err$ = "missing counters data."
     Else
-      Line Input #fd%, s$
+      Line Input #fnbr%, s$
       nc% = Val(s$)
       If nc% <> Bound(state.counters%(), 1) Then
         err$ = "counters count mismatch."
       Else
         For i% = Bound(cc%(), 0) To Bound(cc%(), 1)
-          If Eof(#fd%) Then err$ = "missing counters data." : Exit For
-          Line Input #fd%, s$
+          If Eof(#fnbr%) Then err$ = "missing counters data." : Exit For
+          Line Input #fnbr%, s$
           cc%(i%) = Val(s$)
         Next
       EndIf
     EndIf
   EndIf
 
-  If err$ = "" And Not Eof(#fd%) Then err$ = "unexpected data."
+  If err$ = "" And Not Eof(#fnbr%) Then err$ = "unexpected data."
 
-  If err$ = "" Then
-    state.restore% = 1
+  state.read_body% = (err$ = "")
+  If state.read_body% Then
     r = rr%
     visited$ = vv$
     LongString Copy flags%(), ff%()
     For i% = Bound(state.counters%(), 0) To Bound(state.counters%(), 1)
       state.counters%(i%) = cc%(i%)
     Next
-  Else
-    con.print_fail("ERROR: " + err$)
   EndIf
-
-  Close #fd%
 End Function
 
 ' Not all platforms have inbuilt LINPUT() function
