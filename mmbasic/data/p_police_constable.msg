@@ -88,6 +88,12 @@ gate."
 "That's your department, sir, not mine. I wouldn't like to hazard a
 guess."
 
++(window/glass/pane) +(french/broken/smashed/shattered)
+"I'm told the window was broken to gain entry, sir, on account of the
+doors being locked. I only came on duty this morning, so I couldn't
+speak to it firsthand - that'd be Mr. Coniston and Mr. Billingsgate's
+account, I believe."
+
 +(body/colonel) where
 "In the study, sir, same as when it was found. Nobody's to go in or move
 anything until you say so."

@@ -292,6 +292,11 @@ for it, sir. I keep my own key hidden, as I told you, and the
 Colonel's was on his person. I do not see how anyone could have got
 in or out."
 
++(window/glass/pane) +(french/broken/smashed/shattered)
+"I broke it myself, sir, or rather Mr. Coniston did the throwing and I put
+my hand through afterwards to test the lock. It was locked, I can tell
+you that for a certainty - I felt the catch myself before I turned it."
+
 +(body/colonel) where
 "In the study, sir, upon the rug - just as Mr. Coniston and I found him.
 I understand nothing has been moved since."

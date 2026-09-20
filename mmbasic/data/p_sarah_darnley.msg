@@ -298,6 +298,11 @@ don't like to say more than that."
 keys, and that broken window - it's as though no one could possibly
 have got to him. And yet someone did."
 
++(window/glass/pane) +(french/broken/smashed/shattered)
+"I'm told Arthur broke a pane to get in, since the doors wouldn't open.
+I wasn't there myself, of course - I only heard of it afterwards, same
+as everyone else."
+
 +(body/colonel) where
 "In his study, I'm told - I haven't gone in there myself, and I don't
 think I could bear to."
