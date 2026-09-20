@@ -701,6 +701,7 @@ Function con.readln$(initial$, max_len%, history%())
         EndIf
 
       Case 10, 13 ' Enter
+        con.cursor_forward(Len(con.readln$) - p% + 1)
         Print
         con.x = 1
         If con.readln$ <> "" Then con.history_put(history%(), con.readln$)
@@ -755,8 +756,8 @@ Function con.readln$(initial$, max_len%, history%())
         p% = 1
 
       Case 135 ' End
-        con.cursor_forward(Len(con.readln$))
-        Inc p, Len(con.readln$)
+        con.cursor_forward(Len(con.readln$) - p% + 1)
+        p% = Len(con.readln$) + 1
 
       Case < 32, > 126
         ' con.puts("<" + Str$(Asc(ch$)) + ">")
