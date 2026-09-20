@@ -183,7 +183,7 @@ End Function
 
 ' Gets the path to the file corresponding to saved game slot 'i'.
 Function state.save_file$(i)
-  If i < 1 Or i > 10 Then Error "Invalid saved game number"
+  If i < 1 Or i > 10 Then Error "Invalid saved game number " + Str$(i)
   state.save_file$ = adv.game_root$ + "saves/"
   Local parent_name$ = file.get_name$(file.get_parent$(advent.file$))
   If Right$(parent_name$, 1) = ":" Then

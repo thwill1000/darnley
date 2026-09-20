@@ -451,7 +451,7 @@ Sub con.println(s$, center)
 
   If Len(s$) > 0 Then
     If center Then
-      If con.x <> 1 Then Error "Cannot center text unless on a new line."
+      If con.x <> 1 Then Error "Cannot center text unless on a new line"
       If Len(s$) < con.WIDTH Then con.print(Space$((con.WIDTH - Len(s$)) \ 2) + s$)
     Else
       con.print(s$)
@@ -575,11 +575,12 @@ End Sub
 '  - serial console do: IF con.get_type%() AND con.SERIAL% THEN
 '  - screen console do: IF con.get_type%() AND con.SCREEN% THEN
 Function con.get_type%()
-  Select Case LCase$(Mm.Info(Option Console))
+  Const type$ = LCase$(Mm.Info$(Option Console))
+  Select Case type$
     Case "both"   : con.get_type% = con.SCREEN% Or con.SERIAL%
     Case "screen" : con.get_type% = con.SCREEN%
     Case "serial" : con.get_type% = con.SERIAL%
-    Case Else     : Error "Unknown console type"
+    Case Else     : Error "Unknown console type: " + type$
   End Select
 End Function
 
@@ -596,7 +597,7 @@ Sub con.set_type(type%)
       Option Console Serial
     Case &h03 : Option Console Both
     Case Else
-      Error "Unknown console type"
+      Error "Unknown console type: " + Str$(type%)
   End Select
 End Sub
 
@@ -607,7 +608,7 @@ End Sub
 '               idx% = 0 irrespective of OPTION BASE.
 ' @return       string element, or empty string if idx% >= number of elements.
 Function con.history_get$(h%(), idx%)
-  If idx% < 0 Then Error "index out of bounds: " + Str$(idx%)
+  If idx% < 0 Then Error "history_get() - index out of bounds: " + Str$(idx%)
 
   Local h_addr% = Peek(VarAddr h%())
   Local h_size% = (Bound(h%(), 1) - Bound(h%(), 0) + 1) * 8
@@ -632,7 +633,7 @@ Sub con.history_fill(h%(), items$())
 End Sub
 
 Function con.history_find%(h%(), needle$)
-  If needle$ = "" Then Error "invalid argument: needle$"
+  If needle$ = "" Then Error "history_find() - invalid argument: needle$"
 
   ' TODO: could be faster by not calling con.history_get()
   Local i% = -1, s$
@@ -645,7 +646,7 @@ Function con.history_find%(h%(), needle$)
 End Function
 
 Sub con.history_put(h%(), s$)
-  If s$ = "" Then Error "invalid empty string"
+  If s$ = "" Then Error "history_put() - invalid empty string"
 
   Local h_addr% = Peek(VarAddr h%())
   Local h_size% = (Bound(h%(), 1) - Bound(h%(), 0) + 1) * 8
@@ -899,7 +900,7 @@ Sub con.get_pos(x%, y%)
   con.flush()
   x% = Mm.Info(HPos) \ Mm.Info(FontWidth) + 1
   y% = Mm.Info(VPos) \ Mm.Info(FontHeight) + 1
-  If x% <> con.x Then Error "Mismatched x-values"
+  If x% <> con.x Then Error "get_pos() - mismatched x-values: " + Str$(x%) + " vs. " + Str$(con.x)
 End Sub
 
 ' Moves the text cursor to the given 1-indexed character cell, using the
