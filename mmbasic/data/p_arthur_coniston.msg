@@ -18,7 +18,22 @@ cigarette cigar cheroot smoking smoked smokes
 would never smoke cheap cigarettes."
 
 revolver
-"I don't recognise it."
+!requires x_revolver x_gunrack
+"So it's the missing one from the study rack, is it. I still don't recognise
+it, old boy - not the sort of thing I go poking through."
+
+revolver
+!requires x_revolver
+"Still don't recognise it, I'm afraid."
+
+revolver
+!requires x_gunrack
+"A revolver missing from the rack? First I've heard of it."
+
+(revolver/gun)
+"Darnley's has a gun cabinet in his study, revolvers and rifles and whatnot.
+I imagine the gamekeeper keeps a shotgun or two down at his cottage.
+Can't say I own a gun myself, old boy - never saw the appeal."
 
 +statue missing
 "I don't know what you're talking about."

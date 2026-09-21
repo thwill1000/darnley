@@ -66,7 +66,10 @@ add_test("Tell me about these slippers.", "test_slippers")
 add_test("Whose boots are these?", "test_boots")
 add_test("Whose knife is this?", "test_knife")
 add_test("Who smokes cigarettes?", "test_smoking")
-add_test("Do you recognise this revolver?", "test_revolver")
+add_test("What guns are there in the house?", "test_revolver")
+add_test("What do you know about this revolver I found in the pond?", "test_revolver_pond_found")
+add_test("What do you know about the missing revolver?", "test_revolver_gunrack_examined")
+add_test("What do you know about the revolver? (after revolver and gun rack examined)", "test_revolver_both_found")
 add_test("What happened to the missing statue?", "test_missing_statue")
 add_test("Was anyone playing the gramophone?", "test_gramophone")
 add_test("Was the piano being played last night?", "test_piano")
@@ -278,11 +281,59 @@ Sub test_smoking()
 End Sub
 
 Sub test_revolver()
-  assert_response("ask about the revolver", "revolver response")
-  assert_response("what about the revolver", "revolver response")
-  assert_response("tell me about the revolver", "revolver response")
-  assert_response("whose revolver is it", "revolver response")
-  assert_response("do you recognise this revolver", "revolver response")
+  assert_response("revolver", "guns in the house response")
+  assert_response("pistol", "guns in the house response")
+  assert_response("Tell me about the revolver", "guns in the house response")
+  assert_response("Whose revolver is this?", "guns in the house response")
+  assert_response("Do you recognise this revolver?", "guns in the house response")
+  assert_response("What guns are there in the house?", "guns in the house response")
+  assert_response("Does anyone own a shotgun?", "guns in the house response")
+  assert_response("Are there any rifles here?", "guns in the house response")
+End Sub
+
+' Once the pond revolver has been found (x_revolver), asking specifically
+' about "revolver" resolves to the more specific gated entry rather than
+' the generic fallback - but the broader gun/shotgun/rifle words still
+' fall through to the fallback, since only the gated entries' keyword
+' line is narrowed to "revolver" alone.
+Sub test_revolver_pond_found()
+  reset_flags("x_revolver")
+
+  ' Questions specifically about the revolver
+  assert_response("revolver", "revolver response given pond revolver")
+  assert_response("What do you know about this revolver I found in the pond?", "revolver response given pond revolver")
+
+  ' General gun questions
+  assert_response("What guns are there in the house?", "guns in the house response")
+End Sub
+
+' Once the gun rack has been examined (x_gunrack), asking specifically
+' about "revolver" resolves to that gated entry.
+Sub test_revolver_gunrack_examined()
+  reset_flags("x_gunrack")
+
+  ' Questions specifically about the revolver
+  assert_response("revolver", "revolver response given gun rack")
+  assert_response("What do you know about the missing revolver?", "revolver response given gun rack")
+
+  ' General gun questions
+  assert_response("What guns are there in the house?", "guns in the house response")
+End Sub
+
+' With both x_revolver and x_gunrack set, the most specific ("both") entry
+' wins over either single-flag entry, since it appears first in the file
+' and find_response%() favours the earliest eligible entry on a tie -
+' though here it isn't even a tie, since matching against the mandatory
+' entry-selection logic just needs it to be eligible and appear first.
+Sub test_revolver_both_found()
+  reset_flags("x_revolver", "x_gunrack")
+
+  assert_response("revolver", "revolver response given pond revolver and gun rack")
+  assert_response("What do you know about this revolver I found in the pond?", "revolver response given pond revolver and gun rack")
+  assert_response("What do you know about the missing revolver?", "revolver response given pond revolver and gun rack")
+
+  ' General gun questions
+  assert_response("What guns are there in the house?", "guns in the house response")
 End Sub
 
 Sub test_missing_statue()

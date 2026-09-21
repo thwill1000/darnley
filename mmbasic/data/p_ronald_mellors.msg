@@ -16,7 +16,23 @@ cigarette cigar cheroot smoking smoked smokes
 "I smoke cheap cigarettes. What of it? There's no law against it."
 
 revolver
-"I don't own a revolver, I use a shotgun."
+!requires x_revolver x_gunrack
+"So that's the Colonel's missing one, is it. Still don't own a revolver
+myself - I use a shotgun."
+
+revolver
+!requires x_revolver
+"Not mine. I use a shotgun."
+
+revolver
+!requires x_gunrack
+"One missing from the house? Nothing to do with me - I keep my own guns
+down here."
+
+(revolver/gun)
+"I keep a pair of shotguns for the vermin, same as any gamekeeper would.
+I believe there's revolvers and rifles up at the house too, in the Colonel's
+study, but that's nothing to do with me."
 
 +statue missing
 "Mrs. G. at the big house turned away a tramp. That'd be two days

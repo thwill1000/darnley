@@ -30,7 +30,19 @@ cigarette cigar cheroot smoking smoked smokes
 "smoking response"
 
 revolver
-"revolver response"
+!requires x_revolver x_gunrack
+"revolver response given pond revolver and gun rack"
+
+revolver
+!requires x_revolver
+"revolver response given pond revolver"
+
+revolver
+!requires x_gunrack
+"revolver response given gun rack"
+
+(revolver/gun)
+"guns in the house response"
 
 +statue missing
 "missing statue response"
