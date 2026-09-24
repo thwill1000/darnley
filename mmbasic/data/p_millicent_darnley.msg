@@ -293,7 +293,7 @@ clues evidence found discovered proof
 please be certain, whatever you conclude. It matters rather a lot."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
-!requires handkerchief cigarettes
+!requires x_handkerchief x_cigarettes
 [[reset:She goes quite still, and for a moment says nothing at all.]]@
 @
 "I - I don't know what you're suggesting. Sarah was in the morning
@@ -305,7 +305,7 @@ affair mellors sarah (summerhouse/summer) together secret lovers
 and I'm not sure I want to."
 
 +redvers money mining peru ruin
-!requires newspaper
+!requires x_newspaper
 "Oh - is that what it was about? Daddy did mention something about
 Sir Redvers wanting money. I didn't think much of it at the time -
 gentlemen are always fussing over investments."

@@ -41,7 +41,7 @@ morning room."
 if my life depended on it."
 
 +newspaper read
-!requires newspaper
+!requires x_newspaper
 [[reset:He stiffens slightly at the mention of the newspaper.]]@
 @
 "I was reading it on the train coming here, if you must know. Some of
@@ -60,7 +60,7 @@ handkerchief
 "Not mine, obviously. I don't go about with lace and scent, man."
 
 +colonel +(argue/argument/row/quarrel/quarrelled/quarrelling)
-!requires newspaper
+!requires x_newspaper
 [[reset:He exhales slowly, some of the bluster gone out of him.]]@
 @
 "Very well, since you've evidently seen that wretched newspaper. Yes,
@@ -309,7 +309,7 @@ speculate. Just make sure whatever you've got actually holds water
 before you go accusing anyone."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
-!requires handkerchief cigarettes
+!requires x_handkerchief x_cigarettes
 [[reset:He gives a short, humourless laugh.]]@
 @
 "Wouldn't surprise me in the least, if I'm honest. Told Darnley his
@@ -321,7 +321,7 @@ affair mellors sarah (summerhouse/summer) together secret lovers
 "Can't say I've given it any thought. Why, should I have?"
 
 +redvers money mining peru ruin | +you money mining peru ruin
-!requires newspaper
+!requires x_newspaper
 [[reset:He goes rather grey about the gills.]]@
 @
 "Very well, since you've clearly found the wretched newspaper. Yes
