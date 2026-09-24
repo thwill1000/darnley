@@ -1,0 +1,901 @@
+INTRO
+You have been summoned to Darnley Park one winter's day to
+investigate the murder of Colonel Sebastian Darnley at some time
+the previous evening.@
+@
+The suspects are:@
+@
+  [[green:Sarah Darnley]]        - the deceased's wife@
+  [[green:Millicent Darnley]]    - the deceased's daughter@
+  [[green:Arthur Coniston]]      - fiance of Millicent@
+  [[green:Sir Redvers Slingsby]] - friend of the deceased@
+  [[green:Arnold Billingsgate]]  - butler@
+  [[green:Mildred Goodbody]]     - cook@
+  [[green:Norah Bagsby]]         - housemaid@
+  [[green:Ronald Mellors]]       - gamekeeper@
+@
+You are free to search the house and grounds and to question the
+suspects. Examination of the scene and skillful interrogation will
+yield sufficient information to solve the mystery. And mystery it is!
+The body of Colonel Darnley was found in his study, the doors and
+window of which were all locked from the inside. The only keys were
+in the possession of the Colonel and his faithful butler.@
+@
+[[green:How could the sealed-room murder be committed?]]
+
+LOC001_BATHROOM
+The bathroom contains an enamelled cast iron bath with claw feet
+and a toilet bearing a brass tablet calling it 'The Imperial Avenger'.
+A washstand with a marble top and a pedestal washbowl complete
+the ensemble. A heavy mahogany door leads back out to the [[green:Upstairs landing]].
+
+LOC002_ORCHARD
+Bare apple trees stand in rows across the frozen orchard ground,
+branches black against a white sky. A park wall runs along the north
+boundary. Snow covers the grass between the trunks, disturbed,
+footprints unclear. A path east leads to the [[green:Kitchen garden]],
+whilst the south opens onto a [[green:Paved terrace]].
+
+LOC003_KITCHEN_GARDEN
+The kitchen garden lies frozen and barren under snow. [[green:Footprints]]
+criss-cross the frozen vegetables. The [[green:Orchard]] spreads to the north,
+the [[green:Outhouses]] to the east, and the [[green:Kitchen]] door to the
+south.
+
+LOC004_OUTHOUSES
+A cluster of outbuildings occupies this corner: a laundry, a
+coal store, and a timber pigeon-coop. The smell of coal smoke and damp
+brick hangs in the air. Footprints cross the snow between the buildings
+without settling into any clear pattern. The [[green:Kitchen garden]]
+lies west, the [[green:Maze]] to the south.
+
+LOC005_ORNAMENTAL_POND
+At the western end of a [[green:Paved terrace]] stands an ornamental
+[[green:pond]], its surface frozen and hard. Four stone pedestals around it once
+held [[green:marble statues]] - the Four Seasons - but one is missing.
+[[green:Footprints]] in the snow circle the pond's edge.
+
+LOC006_TERRACE
+This paved terrace extends from the house westward toward an
+[[green:Ornamental pond]]. The snow shows a profusion of [[green:footprints]] -
+many feet have crossed here. To the north lies the [[green:Orchard]], east
+a [[green:French window]] into the [[green:Colonel's Study]], and south the
+[[green:West walk]].
+
+LOC007_COLONELS_STUDY
+[[green:Colonel Darnley's body]] lies upon a turkish carpet, a [[green:port glass]]
+beside it. A [[green:tantalus]] of decanters stands on the table, and a [[green:letter]] rests upon
+the writing desk. A [[green:gun rack]] displays sporting
+pieces, one notably absent. A [[green:French window]] in the west wall bears
+a jagged hole; [[green:shattered glass]] litters the floor. A
+[[green:Paved terrace]] lies beyond the window, otherwise doors lead to the
+[[green:Hall]] and the [[green:Lounge]].
+
+LOC008_HALL
+A heavy oak front door with polished brass fittings stands at one end of
+the hall, opening onto the [[green:Main drive]], a [[green:doormat]] at its
+foot, damp with recent use. The marble floor extends the length of the
+room, reflecting what little winter light finds its way through the fanlight
+above the door. The walls carry swords and Civil War pikes, and two suits
+of fine [[green:armour]] stand sentinel either side of the staircase. A
+glass [[green:display case]] mounted on the wall holds flints and pottery
+shards collected from the estate grounds. Doors lead to the
+[[green:Dining room]], [[green:Music room]], [[green:Colonel's Study]], and
+[[green:Lounge]], or the staircase climbs to the [[green:Upstairs landing]].
+A door that would otherwise lead through to the kitchen passage stands
+blocked by [[green:stacked furniture]].
+
+LOC009_KITCHEN
+Game birds hang from the ceiling of this kitchen. On the sink's
+draining-board lies a [[green:knife]]. By the outside door stands a
+line of [[green:boots]] and cleaning brushes. The cook,
+[[green:Mildred Goodbody]] oversees the work here. Doors lead to the
+[[green:Kitchen garden]], [[green:Butler's pantry]] and through a
+passageway to the [[green:Hall]].
+
+LOC010_BUTLERS_PANTRY
+A small sitting room with a bed behind a curtain, two temporary
+beds have been made up. A small [[green:bookshelf]] holds various volumes.
+[[green:Arnold Billingsgate]] tends to his duties. Doors lead to the
+[[green:Kitchen]] and [[green:Dining room]].
+
+LOC011_MAZE
+Chest-height box hedges form the walls of this modest maze. They are
+dark and winter-dense, with a thin crust of snow along each flat top.
+The paths between them are scuffed and disturbed but yield no clear
+footprints. The [[green:Outhouses]] lie north, the [[green:East walk]]
+west, the [[green:East lawn]] south.
+
+LOC012_WEST_WALK
+A gravel path runs clockwise around the house between the snow-covered tennis court
+and a bed of withered flowers. [[green:Footprints]] are visible in the snow.
+The [[green:Main drive]] lies east, the [[green:Summer house]] south-west, the
+[[green:West lawn]] south, and a [[green:Paved terrace]] north.
+
+LOC013_LOUNGE
+A three-piece suite dominates this room on a Chinese carpet, scattered with
+magazines and novels. Recent family portraits hang on the walls. The fireplace
+is carved marble holding the remains of a fire. [[green:Millicent Darnley]] sits
+here. Doors lead to the [[green:Hall]] and the [[green:Colonel's Study]].
+
+LOC014_DINING_ROOM
+A fine oak table with William and Mary chairs fills the centre. A glass case
+holds Delft pottery; a sideboard holds a silver wine cooler and Sevres urns.
+The fireplace is of carved marble and the walls hold various Italian landscapes.
+Doors lead to the [[green:Hall]], [[green:Butler's pantry]], [[green:Music room]],
+and [[green:Billiard room]].
+
+LOC015_MUSIC_ROOM
+A [[green:piano]] occupies the centre with a [[green:brass ashtray]] on top.
+Several chairs, a music stand, and a large
+harp with broken strings complete the room. [[green:Arthur Coniston]] lingers
+here. Doors lead to the [[green:Hall]], [[green:Dining room]], and
+[[green:Billiard room]].
+
+LOC016_BILLIARD_ROOM
+A full-size billiard table commands the centre. A board on the wall records a
+recent game. Shelves hold magazines and novels by Conan Doyle and Buchan. Three
+[[green:wine glasses]] and an [[green:ashtray]] rest atop the bookcase. Sir
+[[green:Redvers Slingsby]] stands here. Doors lead to the [[green:Dining room]]
+and [[green:Music room]].
+
+LOC017_DRIVE
+From wrought-iron gates, the drive sweeps northward toward a small red-brick Georgian
+manor, its weathered facade and plain symmetrical proportions speaking of an
+earlier, more restrained age, stone lions flanking steps that climb to the
+[[green:Hall]] door. Paths branch away: clockwise around the house along
+snow-covered gravel toward the [[green:West walk]] and [[green:West lawn]],
+or anti-clockwise through an avenue of statues along the [[green:East walk]]
+towards the [[green:Stables]]. A [[green:police constable]] stands watchfully
+by one of the gate-piers, whilst a pre-war black [[green:police car]] is parked
+on the drive close to the house. The snow reveals a confused tangle of
+[[green:footprints]] criss-crossing in all directions.
+
+LOC018_EAST_WALK
+This gravel path runs east-west across the front of the house, flanked by an
+avenue of statues. [[green:Footprints]] mark the snow-covered gravel. The
+[[green:Main drive]] lies to the west, a box-hedge [[green:Maze]] to the east,
+the [[green:Stables]] to the south, the [[green:East lawn]] and the
+[[green:Gamekeeper's cottage]] to the south-east.
+
+LOC019_SUMMER_HOUSE
+A wooden summer house stands on a patch of lawn. [[green:Footprints]] lead
+to and from the entrance. Inside are croquet mallets and hoops, several
+[[green:cigarette ends]], and a [[green:handkerchief]]. Exits lead to the
+[[green:West walk]] and [[green:West lawn]].
+
+LOC020_WEST_LAWN
+A broad lawn stretches between the west walk and the drive, planted with
+young copper beeches, their bare winter branches fine as pen-strokes
+against the grey sky. The snow covering is largely intact but crossed
+by [[green:footprints]] in two or three directions. The
+[[green:Main drive]], [[green:West walk]], and [[green:Summer house]] are near.
+
+LOC021_STABLES
+The stable block is a handsome structure going gently to seed: loose
+slates on the roof, paint flaking from the doors, but the horses
+inside well-tended enough. One loose box houses Colonel Darnley's [[green:bay
+hunter]], its breath steaming in the cold air. ...the other half of the building
+has been converted to garage a large Daimler beneath a coating of road dust and
+a worn tarpaulin, small dark oil stains dotting the snow beside it. Tucked into
+a sheltered doorway, a large [[green:ginger cat]] sits watchfully in the straw,
+tracking your approach with unhurried interest. The yard between the buildings
+is crossed by [[green:footprints]] and littered with straw. The tack
+room off the yard holds saddle and gear for the horse. Access to the
+[[green:Main drive]], [[green:East walk]], and [[green:East lawn]]
+lies beyond the yard gate.
+
+LOC022_EAST_LAWN
+An open lawn lies between the [[green:Stables]] and the
+[[green:Gamekeeper's cottage]], sheltered to the north by the box-hedge
+[[green:Maze]]. The snow here is undisturbed at the margins but broken by
+[[green:footprints]] crossing between east and west. A [[green:rook]] picks
+at something in the middle distance.
+
+LOC023_GAMEKEEPERS_COTTAGE
+In the damp shade of chestnut trees stands a Gamekeeper's cottage tucked
+against the south-east corner of the manor grounds. The door stands open.
+Inside are game items, two [[green:shotguns]] on the wall, an oil-cloth table,
+an unmade bed, a slop-stone sink, and an open fire. [[green:Cigarette ends]]
+litter the dirty hearth amongst food scraps and newspapers.
+[[green:Ronald Mellors]] dwells here. Paths lead away from the cottage onto the
+[[green:East walk]] and [[green:East lawn]].
+
+LOC024_MILLICENT_BEDROOM
+Millicent Darnley's bedroom is decorated to a young lady's taste, with a bed,
+wardrobe, dressing table, and small writing table. The surfaces overflow with
+small dog ornaments and the walls display pictures of favourite pets. Doors
+lead out to the [[green:Upstairs landing]] and [[green:Master bedroom]].
+
+LOC025_LANDING
+The landing walls hold fine antlers and animal heads alongside poor portraits
+of the Darnley ancestors. Doors lead to the [[green:Bathroom]],
+[[green:Millicent's bedroom]], [[green:Morning room]],
+[[green:Servants' quarters]], [[green:Guest room]] or you could take the stairs
+down into the [[green:Hall]].
+
+LOC026_SERVANTS_QUARTERS
+A single room with two single beds, a rail for clothes behind a curtain, a wash
+stand and chest of drawers. On the chest rest a bundle of [[green:correspondence]]
+and framed [[green:photographs]]. A gentleman's country-[[green:suit]] with a [[green:newspaper]]
+in the pocket hangs among the dresses, and a [[green:pipe]] rests on the washstand.
+The maid, [[green:Norah Bagsby]], is tidying this cramped space. Only a door to the
+[[green:Upstairs landing]] provides egress.
+
+LOC027_MASTER_BEDROOM
+Colonel and Mrs. Darnley's bedroom is heavily panelled with sporting prints and
+a humidor of [[green:cigars]]. A [[green:double bed]], [[green:dressing table]],
+[[green:wardrobe]], and trouser press furnish the room. A small bathroom is attached.
+Doors lead to the [[green:Upstairs landing]], [[green:Millicent's bedroom]], and
+the [[green:Morning room]].
+
+LOC028_MORNING_ROOM
+A chintz sofa and occasional table with magazines and books furnish this room.
+A [[green:piano]] stands against one wall, whilst a [[green:gramophone]] sits on
+a table, surrounded by watercolour bird pictures. [[green:Sarah Darnley]] rests
+here. Doors lead to the [[green:Upstairs landing]], [[green:Master bedroom]], and
+a [[green:Second guest room]].
+
+LOC029_GUEST_ROOM
+A guest-room decorated in blue with wardrobe, bed, washstand, and writing-table.
+By the bed lies a pair of men's [[green:slippers]], slightly damp and mud-stained.
+On the writing table sits a pack of [[green:cigarettes]] - an expensive brand - along
+with stationary and pens. The only door leads back onto the [[green:Landing]].
+
+LOC030_SECOND_GUEST_ROOM
+The door opens into a second guest room, currently in a state of
+mid-decoration disarray - dust sheets, bare boards, and furniture
+stacked every which way. Plainly no one has slept here in some time.
+You withdraw and pull the door to.
+
+PER101_COLONEL_DARNLEY
+Aged 60. The Colonel served in the South African War and
+contracted enteric fever which left him feeling debilitated and short-
+tempered. He had only a small inheritance but made a fortune on the
+stock exchange. He was free with his tips on the market, but didn't
+always follow his own recommendations.
+
+P_SARAH_DARNLEY
+Colonel Darnley's wife. Aged 27. Fair-haired and beautiful, with the kind of
+effortless sophistication that comes from knowing one's own effect on a room.
+She wears a morning dress that manages to look elegant despite the
+circumstances, though her eyes are shadowed and her composure - whilst
+convincing - appears to require some maintenance. She is perhaps twenty years
+younger than her husband, and looks it.
+
+P_MILLICENT_DARNLEY
+Colonel Darnley's daughter. Aged 23. Well-dressed in a blouse and skirt, rather
+plain in feature but with a directness of gaze that more than compensates. There
+is a composed, watchful quality about her - she gives the impression of a woman
+who generally gets what she wants and has thought carefully about how to get it.
+Grief, if she feels it, is kept well in hand.
+
+P_ARTHUR_CONISTON
+Millicent Darnley's fiance. Aged 25. Average height, very good looking, and
+thoroughly aware of both facts. He dresses fashionably and wears black patent
+shoes that seem faintly incongruous in a house where a murder has just occurred.
+His manner is open and friendly in the way that practised charm always is - easy
+to like, harder to read.
+
+P_REDVERS_SLINGSBY
+Friend of the deceased. Aged 52. Very tall and angular, with side-whiskers and a
+complexion that suggests either robust outdoor health or a considerable
+acquaintance with the decanter. He wears country tweeds and boots and carries
+himself with the ill-tempered authority of a man accustomed to having his
+opinions treated as facts. He is not taking the present situation well.
+
+P_ARNOLD_BILLINGSGATE
+The butler. Aged about 60. Bald, thin, and immaculately turned out in a tail
+coat, with the gentlemanly manners and careful neutrality of expression that the
+position demands. He wears ordinary men's shoes polished to a mirror finish. Of
+all the people in the house he appears the most genuinely distressed by the
+Colonel's death, though he would consider any outward display of that distress
+to be unprofessional.
+
+P_MILDRED_GOODBODY
+The cook. Aged 55. A broad, pleasant-faced woman with cheerful eyes and flour on
+her apron, who gives the impression that very little in life has ever quite
+managed to get the better of her. She meets your gaze directly and answers
+questions without apparent calculation. In a household currently full of people
+choosing their words with great care, she is a refreshing exception.
+
+P_NORAH_BAGSBY
+The housemaid. Aged 19. A small, pale girl in a maid's uniform who sniffs
+occasionally and has the look of someone who would very much rather be somewhere
+else. She is not unintelligent, but she is young and nervous and the events of
+the night have clearly unsettled her more than she is letting on. She answers
+questions readily enough, though her eyes dart toward the door at intervals.
+
+P_RONALD_MELLORS
+The gamekeeper. Aged 35. Stocky and dark with black curly hair and the kind of
+good looks that owe nothing to grooming or effort. He wears working clothes and
+hob-nailed boots and regards you with an expression of settled hostility that
+suggests this is simply his default manner rather than evidence of a guilty
+conscience - though of course it need not be one or the other. He will not, it
+is already clear, be volunteering anything.
+
+P_CHESTER_CAT
+A large ginger cat, broader through the shoulders than most, sits
+watchfully in the straw of the doorway. He tracks your movements with
+an unhurried, faintly proprietary interest, as though the stables -
+and quite possibly you - are his to keep an eye on.
+
+P_POLICE_CONSTABLE
+A solidly built young constable stands watch by the gate, hands clasped
+behind his back beneath a dark blue tunic buttoned to the collar. His
+domed helmet bears a small badge at the front, and a stout leather belt
+is cinched at his waist. He observes the comings and goings at the drive
+with the patient, unhurried attention of a man told to stand somewhere
+and mind it.
+
+OBJ201_POND
+!provides x_pond
+Near the empty pedestal the ice is thinner as if it has frozen again after
+having been broken. A stout [[green:broken branch]] lies discarded on the ice
+nearby. Beneath the ice you can see the missing marble
+[[green:statue]] and a [[green:revolver]].
+
+OBJ202_SUNKEN_STATUE
+!requires x_pond
+!provides x_statue
+The statue that is beneath the ice is the same as those on the
+pedestals. Stuck in a crevice of the statue is the soaked butt of a
+[[green:cheroot]].
+
+OBJ202_SUNKEN_STATUE
+The statues form a set of four, representing the Four Seasons. They
+are of Italian marble and rest on their own weight rather than being
+cemented to their plinths. Some strength would be required to move
+one.
+
+OBJ203_REVOLVER
+!requires x_pond
+!provides x_revolver new_clue
+The revolver found in the pond is a fine quality weapon with decorative grips.
+One bullet has been discharged from it.
+
+OBJ204_STATUES
+The statues form a set of four, representing the Four Seasons. They
+are of Italian marble and rest on their own weight rather than being
+cemented to their plinths. Some strength would be required to move
+one.
+
+OBJ205_FOOTPRINTS_POND
+Only one set of footprints can be made out in the snow. They are of
+[[green:flat-footed bootprints]] coming to and from the terrace.
+
+OBJ206_SLIPPERS
+The slippers are slightly damp and stained with mud. The mud appears fresh
+and is concentrated around the heel and toe areas, as if the wearer had walked
+purposefully through wet ground. The slippers are well-made with silk lining,
+though the lining is now darkened and stained. They give off a faint smell of
+earth and something else - perhaps tobacco smoke.
+
+OBJ207_CIGARETTES
+These cigarettes are an expensive brand by Fribourg & Treyer, made in London.
+The packet is nearly full, with only a few cigarettes removed. The gold embossed
+lettering on the blue packet gleams in the light. The cigarettes themselves are
+pure white, tightly rolled, and of excellent quality. As a guest in the house,
+Arthur Coniston has left his personal supply in the guest room where he is staying.
+
+OBJ208_KNIFE
+This wickedly sharp knife lies on the draining board amongst the other
+kitchen utensils. The blade shows signs of recent use and is stained with
+blood - quite dry now, darkened to a dull rust colour. The wooden handle
+bears the initials "R.M." burnt into it.
+
+OBJ209_BOOTS
+!provides boots new_clue
+All these boots are polished clean except for a large mud stained pair.
+
+OBJ212_FOOTPRINTS_KG
+Both [[green:flat-footed bootprints]] and [[green:slipper prints]] can be seen
+going to and from the kitchen and the outhouses.
+
+OBJ213_BED_MASTER
+The Colonel's bed is large and ornate with heavy mahogany posts. The linen sheets
+and quilted coverlet on one side have been disturbed - slept in - whilst the other
+side remains pristine and undisturbed. Clearly Mrs. Darnley slept here, but the
+Colonel did not. A silk nightshirt is carefully folded and placed upon the Colonel's
+pillow. On the bedside table sits a small bottle of sleeping draught, the stopper
+removed and a spoon beside it, yet the bed itself remains untouched on his side.
+Whatever the Colonel was doing last night, sleep in his own bed was not his intention.
+
+OBJ214_WARDROBE
+!provides x_wardrobe
+As well as clothes the wardrobe contains a selection of men's and women's [[green:shoes]].
+The wardrobe is impressive - made of polished mahogany with ornate brass handles.
+Inside hang numerous dresses, petticoats, and undergarments in organised rows.
+The men's clothing includes smoking jackets, dinner suits, and country wear.
+
+OBJ215_CIGARS
+The humidor is mahogany with a glass front, bearing the inscription
+"S.D. - 1910" in silver lettering. It contains Burmah cheroots - straight, dark
+cylinders, unfashionable compared to the Havanas favoured by gentlemen of means,
+but evidently the Colonel's longstanding and unashamed preference. A military
+man's smoke: practical, strong, and unpretentious.
+
+OBJ216_DRESSING_TABLE
+The dressing table is of polished walnut with a triple mirror and a glass top
+beneath which family photographs have been arranged. The surface holds the usual
+feminine effects - powder, scent bottles, a hairbrush and comb in silver plate -
+all neatly ordered. One scent bottle has been knocked on its side and not
+righted, which seems at odds with the general tidiness of the room.
+
+OBJ217_SHOES
+!requires x_wardrobe
+This selection of men's and women's shoes ranges from formal evening wear to
+practical country footwear. The women's shoes include delicate satin evening
+slippers and sturdy walking boots. The men's collection is equally varied. Most
+are clean and well-maintained, but one pair of lady's shoes - soft kid leather
+with a slight heel - bears fresh, damp, muddy stains around the heel and sole.
+
+OBJ219_CORRESPONDENCE
+These letters are all from Mrs. Goodbody's nephew.
+
+OBJ220_PHOTOGRAPHS
+These photographs depict Mrs. Goodbody's various ugly relatives.
+
+OBJ221_SUIT
+This gentleman's country-suit apparently belongs to Sir Redvers. It is made
+of fine Scotch tweed in a dark green and brown pattern, well-tailored and evidently
+expensive. The suit has been carefully hung in the servants' quarters wardrobe,
+though this is an odd place for a visitor's good clothing. Why would Sir Redvers
+leave his suit here rather than in the guest room? Inside the jacket pocket,
+a label reads "Hawes & Curtis, Piccadilly."
+
+OBJ222_NEWSPAPER
+!provides newspaper new_clue
+One headline on the front page catches your eye -
+'Collapse of Rio Plata Mining Co. - Our co-respondent in Lima, Peru
+reports the collapse of several silver mining companies through the
+fraud of their directors. These frauds are expected to cause heavy
+loss to British investors.'
+
+OBJ223_PIPE
+The pipe is in the style called 'calabash' with a meerschaum bowl and amber
+mouthpiece - a gentleman's smoking pipe of considerable quality and expense. The
+bowl still bears the residue of tobacco, now darkened and hardened. The pipe sits
+on the servants' quarters washstand, suggesting it belonged to a visitor. The
+amber mouthpiece shows signs of much use and is polished smooth by years of
+handling.
+
+OBJ224_BOOKSHELF
+A modest shelf of books: volumes on household management, domestic accounts, and
+the improving literature favoured by the respectable working man. A Bible, much
+used. A copy of Smiles's Self-Help with a name written inside the front cover in
+careful copperplate - Arnold Billingsgate, 1889. The books tell you rather more
+about their owner than he may be willing to tell you himself.
+
+OBJ225_FRENCH_WINDOW_TERRACE
+One of the panes is smashed into jagged teeth of glass. There is, however, no
+glass on the terrace itself - it has all fallen inward into the study. The
+window lock shows that it cannot be locked or unlocked from outside; the
+mechanism is internal. The wooden frame shows no signs of tampering or forcing
+- the glass has simply been broken from outside, the lock then opened from within.
+
+OBJ226_FOOTPRINTS_TERRACE
+A mess of footprints including [[green:flat-footed bootprints]],
+[[green:slipper prints]] and some [[green:men's shoeprints]].
+
+P_THE_BODY
+The body is dressed in a smoking jacket open at the chest. There is a
+bloody bullet wound in the front of his dress-shirt. The bullet has not
+passed through the body. Evidently the Colonel had got out of his
+chair on hearing or seeing his murderer. The impact of the bullet had
+caused him to spin and fall and the furniture had got in the way,
+further deflecting the body. It is no longer possible to tell the
+direction of the shot.
+
+OBJ228_PORT_GLASS
+The port glass is one of a set engraved with the words 'Floreat
+Darnley'. A crust of dried liquid is at the bottom and lip marks on the
+rim though no trace of lipstick.
+
+OBJ229_TANTALUS
+The tantalus is made of cherrywood. It holds an empty decanter
+with a silver label marked 'Brandy' and a half full decanter marked
+'Port'. The decanters are normally inaccessible since they are held in
+place by a sort of 'lid' of wood which is fastened by a small lock. The
+key is in the lock.
+
+OBJ230_LETTER
+!provides letter new_clue
+The letter is an incomplete draft: "Dear Sir, I have considered your
+monstrous suggestion and find I cannot..."
+
+OBJ231_GUN_RACK
+This mahogany rack is mounted on the study wall and displays sporting rifles and
+revolvers. It is a fine piece of craftsmanship with brass fittings and glass
+panels. A pair of decorative revolvers with engraved grips should be present,
+but only one remains. The missing revolver has left a clear outline in the felt
+backing, showing exactly where it once rested.
+
+OBJ232_FRENCH_WINDOW_STUDY
+The French window bears a jagged hole where one pane has been
+smashed. The glass on the floor inside is sprinkled across the carpet and the sill.
+No glass lies on the terrace outside - it all fell inward. The hole is roughly
+hand-sized, large enough for someone to reach through and manipulate the lock.
+The frame is solid mahogany and bears no marks of forcing or violence beyond the
+broken pane itself.
+
+OBJ233_SHATTERED_GLASS
+This glass is apparently from the smashed French window pane. The shards are sharp
+and glittering, some as large as a man's hand, others fine as sand. The glass has
+a peculiar property - when examined closely, each shard seems to have fallen
+inward. Yet the pattern of breakage is odd; some pieces rest atop others in a
+way that suggests the breakage may not have been a single violent impact, but
+perhaps more deliberate - possibly even repeated strikes against the pane.
+
+OBJ234_GRAMOPHONE
+!provides gramophone new_clue
+It has a device for playing several records in sequence. All the records
+currently loaded into the device are Chopin.
+
+OBJ235_PIANO_MORNING
+There are several sheets of Schubert Lied music on the piano's music
+stand.
+
+OBJ236_DISPLAY_CASE
+This glass case is mounted on the hall wall and displays an interesting collection
+of archaeological finds. According to a label at the front, these flints and
+pottery shards were discovered in the grounds of the estate during excavations some
+years ago. The case is kept locked with a small brass key. Inside, carefully
+arranged on black velvet, lie hand-axes, arrowheads, and ancient pottery fragments
+- the Colonel apparently had an interest in the history beneath his own land.
+
+OBJ237_FOOTPRINTS_WW
+There are [[green:slipper prints]], [[green:flat-footed bootprints]] and some
+[[green:men's shoeprints]] heading to and from the terrace and the front of the
+house.
+
+OBJ238_CIGAR_STUB
+A cheroot stub sits in the brass ashtray on the music room piano - a straight
+dark cylinder, partially smoked and carefully stubbed out, the ash still faintly
+moist. Someone was in this room recently, smoking.
+
+OBJ239_PIANO_MUSIC
+The sheets of music on the piano are for duets.
+
+OBJ240_WINE_GLASSES
+The three wine glasses are all dirty, bearing the stains of red wine that has
+long since dried. They sit atop the bookcase in the billiard room, clearly forgotten
+after last night's game. The glasses are fine crystal, part of a set, with
+delicate stems. The wine residue in each glass suggests they were filled and then
+left standing - perhaps abandoned hastily?
+
+OBJ241_ASHTRAY
+This ashtray rests atop the billiard room bookcase and contains the remains of
+three cigars - one Havana and two cheroots. The ash is dark and densely packed,
+suggesting these cigars were smoked in succession without pause, and were clenched
+hard rather than smoked in a relaxed manner. The Havana is of the finest quality,
+yet it has been stubbed out half-smoked. One of the cheroots is charred and blackened
+as if it burned intensely before being discarded.
+
+OBJ243_FOOTPRINTS_DRIVE
+[[green:Flat-footed bootprints]] go east and west along the gravel
+path in front of the house. [[green:Slipper prints]] come from the house and
+head east and west along the path. [[green:Men's shoeprints]] come
+from the house and go west. [[green:Lady's shoeprints]] head to and
+from the front door and the west lawn. At the gate end of the drive
+[[green:Hobnailed bootprints]] go between the west lawn and the stables.
+
+OBJ244_FOOTPRINTS_EW
+[[green:Flat-footed bootprints]] and [[green:slipper prints]] are visible in the
+snow heading around the corner of the house, to and from the maze
+and avenue of statues.
+
+OBJ245_CIGARETTE_ENDS_SH
+!provides cigarettes new_clue
+These cigarette ends come from a cheap, mass produced brand. There are
+perhaps a dozen of them scattered about the summer house floor, some trodden into
+the dust, others carefully arranged. The tobacco inside is coarse and poor quality.
+They suggest prolonged occupation of the summer house by someone of modest means
+- or someone pretending to be.
+
+OBJ246_HANDKERCHIEF
+!provides handkerchief new_clue
+This is a lady's handkerchief of plain linen with delicate lace edging and a faint
+perfume - the scent is floral, sweet, and distinctly expensive. The handkerchief
+is initialled with an ornate "S" worked in pale silk thread. It is slightly damp
+and bears traces of dirt on one corner, as if it has been clutched in a nervous
+hand. The perfume is distinctive - not common, and quite costly.
+
+OBJ247_FOOTPRINTS_WL
+[[green:Lady's shoeprints]] and [[green:hobnailed bootprints]] can be seen in
+the snow going to and from the drive and the summer house.
+
+OBJ248_FOOTPRINTS_ST
+[[green:Hobnailed bootprints]] can be seen in the snow going to and from the
+drive and the east lawn.
+
+OBJ249_FOOTPRINTS_EL
+Deep and purposeful, [[green:hobnailed bootprints]] can be seen in the snow
+going to and from the stables and the cottage.
+
+OBJ250_CIGARETTE_ENDS_GC
+These cigarette ends come from a cheap, mass produced brand.
+There are perhaps twenty of them scattered about the cottage hearth amongst food
+scraps and newspapers. The tobacco is coarse and cheap. Ronald Mellors
+apparently smokes incessantly, and his choice of cigarette reflects his
+station.
+
+OBJ251_ARMOUR
+Two suits of Civil War three-quarter armour stand to either side of the
+staircase, their visors closed. The plate is old but well maintained, the metal
+dark and oiled. Someone has polished the breastplates recently - you can see
+your own reflection, distorted, staring back at you. They are the kind of thing
+that seems merely decorative in daylight and considerably less so after dark.
+
+OBJ252_DOORMAT
+The doormat is made of coarse coir and bears the word 'WELCOME' in faded letters.
+It is decidedly damp with recent use, the moisture having soaked on to the
+marble tiles beneath it. The dampness is concentrated at the edges and corners
+where water might drip from wet boots or shoes. There are distinct muddy footprints
+impressed into the coir - at least two sets, one noticeably smaller than the other.
+The mat has not yet dried, suggesting the wet footprints are fresh - from last night
+or early this morning.
+
+OBJ253_CHEROOT_BUTT
+!requires x_statue
+!provides butt new_clue
+This is the sodden butt of a Burmah cheroot, waterlogged from its time in
+the pond. Despite being soaked, you can still make out its straight dark
+cylinder shape, characteristic of a cheroot rather than a conventional
+cigarette. It was wedged in a crevice of the statue as if placed there
+deliberately or dropped in haste.
+
+OBJ254_MUSIC_ROOM_ASHTRAY
+This brass ashtray of considerable quality sits on the piano. It contains a single
+cigar stub - a cheroot by the appearance - partially smoked and carefully stubbed
+out. The cheroot bears the tooth marks of someone who smoked it clenched between their
+teeth.
+
+OBJ255_ROOK
+A rook picks at something in the snow, unconcerned by your approach. It
+flies off with a lazy flap of black wings as you draw nearer, revealing
+nothing beneath but a scrap of frozen turf. As you move on, you glance
+back to see it has already dropped down again to resume its picking,
+as if you had never been there at all.
+
+OBJ256_SHOTGUNS
+Two shotguns are mounted on the wall above the hearth - plain,
+serviceable working guns rather than anything a gentleman would take
+out for sport, kept clean and ready for the vermin and pest control
+that are part of a gamekeeper's daily work. Both barrels are spotless
+and smell faintly of gun oil rather than powder - if they have been
+fired recently, they have since been thoroughly cleaned. A box of
+cartridges sits nearby on a shelf, a handful missing.
+
+OBJ257_STACKED_FURNITURE
+A stack of furniture and effects from the second guest room, temporarily
+stored here while that room is redecorated. Too heavy and too numerous to
+move alone, they block what would otherwise be a passage through to
+the kitchen.
+
+OBJ258_BRANCH
+A fallen branch, about the length of a walking stick and no thicker than a
+wrist - light enough to wield with one hand. One end is scuffed and split.
+
+OBJ259_HORSE
+Colonel Darnley's bay hunter stands in its loose box, breath steaming in the
+cold air, watching you with the mild curiosity of an animal that has seen
+stranger visitors than you at this hour.
+
+OBJ260_DAIMLER
+A large Daimler stands beneath a worn tarpaulin, its wheels and running
+boards just visible where the covering has slipped. A film of road dust
+coats what can be seen of the coachwork. Small dark oil stains mark the
+snow beside it.
+
+OBJ261_POLICE_CAR
+A pre-war black saloon, round headlamps and running boards, a spare wheel
+mounted at the rear. It is the car that brought you here this morning, left
+parked on the drive close to the house.
+
+OBJ262_FOOTPRINTS_SH
+Two distinct tracks lead to and from the entrance - the first heavy
+[[green:hobnailed bootprints]], the other smaller [[green:lady's shoeprints]].
+The rest of the snow around the summer house lies smooth and undisturbed.
+
+WHAT_REALLY_HAPPENED
+[[green:What really happened at Darnley Park?]]@
+@
+On the morning of the murder Arthur Coniston, the boy-friend of
+Millicent Darnley, arrived by arrangement to ask Colonel Darnley for
+permission to marry his daughter. This conversation took place
+during the afternoon and Colonel Darnley refused the request.
+Although he found Coniston amusing, he felt that his visitor was
+after Millicent's inheritance. Coniston, now resolved upon murder,
+quietly informed the other members of the household that the
+Colonel had agreed to the marriage. He was unaware that the Colonel
+had decided to write him a letter confirming his rejection. During the
+afternoon an unexpected visitor arrived, Sir Redvers Slingsby who
+had invested in Peruvian mining shares on the advice of his friend
+Colonel Darnley. In the morning's papers was news of the collapse of
+these shares. Angry with his friend, Slingsby had rushed down to
+Darnley Park to ask the Colonel to lend him money to avoid ruin.@
+@
+Dinner that evening finished at 9:00. Millicent and Sarah retired
+to the lounge for coffee while the men drank port and played
+billiards. At 9:30 the gentlemen joined the ladies while the
+servants ate in the kitchen. The atmosphere was tense since
+Slingsby had not had opportunity to raise his problems. At 10:00 that
+night impatience got the better of him and he drew Darnley to the
+study whilst Coniston and Millicent went to the music room to sing
+duets. For half an hour Slingsby and the Colonel quarrelled (at this
+time Billingsgate was cleaning boots in the kitchen) and at 10:30
+Slingsby stormed out of the study by the hall door, slamming it
+furiously. This noise was interpreted by some as a shot. The
+slamming of the door underlined the generally tense atmosphere.
+The ladies went upstairs but Arthur Coniston stayed in the music
+room smoking a cheroot and considering his plan. He was unaware
+that Sarah had plans of her own.@
+@
+Sarah Darnley was unhappy with her husband and having an
+affair with Mellors, the gamekeeper. She had arranged to meet
+Mellors at the summer house at 10:45. Mellors was there, waiting and
+smoking cigarettes. Sarah took steps to keep the affair secret and to
+maintain to Millicent the pretence that she was in the house, she told
+her of her intention to play on the morning room piano. In truth she
+played a series of gramophone records which Millicent heard from her
+room. It was not necessary for her to take account of Colonel Darnley
+since experience had taught her that the Colonel would lock himself
+in his study and get drunk on such an occasion as this. Sarah next
+left the house and went down to the summer house where she met
+Mellors.@
+@
+Leaving the music room, Coniston tried the study door and finding it locked,
+guessed what was happening and devised his plan. He had stolen a gun from the
+study earlier in the day. He now changed into dressing gown and slippers and
+went outside the house and around to the kitchen door which was open. Reaching
+through the door he picked up Sir Redvers Slingsby's boots. Changing into them
+he walked around the house to the terrace. The boots being too large, they left
+flat-footed bootprints. From the terrace Coniston looked into the study where
+the Colonel was drinking. He tapped on the window, the Colonel stood up and saw
+him, Coniston fired the gun and the Colonel fell dead. He now had to act fast to
+dispose of the gun, conceal the bullet-hole in the window glass and return the
+boots. He made for the pond, where the ice over the spot the tramp had broken
+two days before had only thinly reformed. Using a fallen branch to break it
+again, he threw the gun in beside the statue. He then returned to the kitchen,
+changed the boots for the slippers and then entered the house by the front door.
+He did not notice Sarah who had heard the shot and rushed back before everyone
+was roused by the noise and she was discovered. In her haste Sarah dropped a
+handkerchief in the summer house.@
+@
+Coniston now came to the boldest part of his plot. He woke
+Billingsgate and persuaded him to break in by the French window
+instead of searching for his keys. Coniston took care to reach the
+patio before his companion and threw a stone through the same pane
+of glass that bore the bullet-hole from the fatal shot, thus
+obliterating the evidence of where the shooting took place. He
+then invited Billingsgate to open the window and confirm that it had
+been locked. He also told the Butler that he intended to follow the
+murderer's bootprints which were clear in the snow. The object of
+this move was to provide an explanation of the trail already left by
+his slippers when he first stole and returned the boots.@
+@
+Various minor clues led towards Coniston as the murderer, but one
+was fatal to him. It was evident that the murderer had worn the
+boots and returned them to the kitchen. How then had the murderer
+left the kitchen in his or her own footwear? There were only two
+possibilities : the murderer had left via the butler's pantry or the
+outside door. The former was impossible since three people were
+occupying the pantry of whom at least one (Mrs. Goodbody) had been
+wakened by the shot and would have heard any stranger entering the
+room. The second was possible but the murderer would leave the
+footprints of his ordinary footwear. Other than the boots, there were
+prints only from Arthur Coniston's slippers. Coniston's explanation
+that he had left these prints in following the murderers boot-trail
+would not hold water. The murderer had to leave footprints in two
+sets of footwear. Coniston's slippers were the only other set.
+
+Q_1
+Who smoked cigarettes in the summer house?
+
+Q_2
+Who dropped the handkerchief in the summer house?
+
+Q_3
+What was the source of the music from the morning room?
+
+Q_4
+Where did the murderer hide the gun?
+
+Q_5
+When did the murder occur: (type letter)@
+ a) 10:05 - 10:35 pm@
+ b) 10:35 - 11:05 pm@
+ c) 11:05 - 11:35 pm@
+ d) 11:35 - 12:05 am@
+ e) 12:05 - 12:35 am@
+?
+
+Q_6
+Which door did the murderer leave the kitchen by?
+
+Q_7
+Why were the murderer's bootprints flat-footed?
+
+Q_8
+What caused the first bang that was heard?
+
+Q_9
+Where was the murderer when the shot was fired?
+
+Q_10
+How did the murderer hide the bullet hole in the French window?
+
+Q_11
+Who was the letter written by Colonel Darnley for?
+
+Q_12
+Who had a pressing financial motive to quarrel with Colonel Darnley?
+
+Q_13
+What was the motive for the murder?
+
+CHEAT_TEXT
+[[cyan:You rotter - cheat mode enabled.]]
+
+HELP_TEXT
+The game accepts the following commands:@
+@
+  [[green:GO]] [[cyan:location]]@
+    - go to a visible location@
+  [[green:EXAMINE]] [[cyan:object]]@
+    - get additional detail about an object@
+  [[green:LOOK]]@
+    - redescribe current location@
+  [[green:"]][[cyan:suspect, topic]]@
+    - talk to suspect, e.g.@
+        [[green:"millicent, what happened?]]@
+        [[green:"norah, you did it!]]@
+        [[green:"cat, hello puss]]@
+  [[green:FONT]] [[cyan:DEFAULT]]|[[cyan:SERIF]]|[[cyan:SMALL]]@
+    - change the font@
+  [[green:HELP]]@
+    - show this text@
+  [[green:RECAP]]@
+    - show the game introduction@
+  [[green:RECORD]] [[cyan:ON]]|[[cyan:OFF]] and [[green:REPLAY]]@
+    - record or replay script of your inputs@
+  [[green:SAVE]] and [[green:RESTORE]]@
+    - save and restore game progress@
+  [[green:QUIT]]@
+    - restart or exit the game
+
+ACCUSE_TEXT
+There are questions you must answer to press your accusation:
+
+KITCHEN_TO_HALL
+Mrs. Goodbody stops you.@
+@
+[[cyan:"Now don't go that way, dear - that door leads through to the hall, but
+the other side is blocked with furniture from the second guest room. Go round
+through the pantry, if you don't mind."]]
+
+MORNING_ROOM_TO_GUEST_ROOM
+The door opens into a second guest room, currently in a state of mid-decoration
+disarray - dust sheets, bare boards, and furniture stacked every which way.
+Plainly no one has slept here in some time. You withdraw and pull the door to.
+
+OBJ255_ROOK_SAY_RESPONSE
+The rook looks at you quizzically.@
+@
+[[cyan:Caw?]]
+
+P_THE_BODY_SAY_RESPONSE
+The body stares at you glassy eyed and you think to yourself,
+[[cyan:"One of the advantages of being dead is not having to answer impertinent
+questions!"]]
+
+OBJ259_HORSE_SAY_RESPONSE
+!requires horse_talked
+The horse has apparently said all it has to say. It chews its hay and ignores you.
+
+OBJ259_HORSE_SAY_RESPONSE
+!provides horse_talked
+The horse eyes you with weary tolerance.@
+@
+[[cyan:"Don't tell me your troubles, I've got my own!"]]

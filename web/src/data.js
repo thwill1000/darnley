@@ -175,3 +175,99 @@ export function parseQuestions(text) {
 export function parseClues(text) {
   return extractSection(text, '!clues');
 }
+
+/**
+ * Parses messages.dat into a tag -> entries map.
+ *
+ * Each entry consists of: an optional "!requires "/"!provides " directive
+ * line (at most one of each, in either order - see read_directives() in
+ * mmbasic/src/adventlib.inc), followed by body lines, terminated by a
+ * blank line (or EOF). A tag may have more than one entry - the first
+ * entry whose !requires is satisfied wins at lookup time (that scanning
+ * logic belongs to the engine, added in a later step of the port plan;
+ * this function only parses structure).
+ *
+ * Blank lines and "#" comment lines between entries are skipped. Unlike
+ * the MMBasic original, obfuscated distribution copies of this file are
+ * not supported here - see "Skip the Caesar-shift obfuscation codec" in
+ * web/docs/2026-09-23-javascript-web-port-plan.md.
+ *
+ * @param {string} text Full contents of messages.dat.
+ * @returns {Map<string, {requires: string[], provides: string[], body: string[]}[]>}
+ */
+export function parseMessages(text) {
+  const lines = splitLines(text);
+  const messages = new Map();
+  let i = 0;
+
+  while (i < lines.length) {
+    // Skip blank lines and "#" comments between entries.
+    while (i < lines.length && (lines[i] === '' || lines[i].startsWith('#'))) {
+      i++;
+    }
+    if (i >= lines.length) break;
+
+    const tag = lines[i];
+    i++;
+
+    const requires = [];
+    const provides = [];
+    let directivesSeen = 0;
+    while (directivesSeen < 2 && i < lines.length) {
+      const line = lines[i];
+      if (line.startsWith('!requires ')) {
+        requires.push(...line.slice('!requires '.length).trim().split(/\s+/).filter(Boolean));
+        i++;
+        directivesSeen++;
+      } else if (line.startsWith('!provides ')) {
+        provides.push(...line.slice('!provides '.length).trim().split(/\s+/).filter(Boolean));
+        i++;
+        directivesSeen++;
+      } else {
+        break;
+      }
+    }
+
+    const body = [];
+    while (i < lines.length && lines[i] !== '') {
+      body.push(lines[i]);
+      i++;
+    }
+
+    if (!messages.has(tag)) messages.set(tag, []);
+    messages.get(tag).push({ requires, provides, body });
+  }
+
+  return messages;
+}
+
+/**
+ * Renders a message entry's body lines into display text, mirroring
+ * print_body() in mmbasic/src/adventlib.inc: consecutive lines are joined
+ * with a single space (word-wrapping is left to the UI layer), except that
+ * a line ending in "@" forces a hard line break at that point (the "@" is
+ * stripped and not itself rendered).
+ *
+ * @param {string[]} bodyLines
+ * @returns {string}
+ */
+export function renderBody(bodyLines) {
+  let output = '';
+  let paragraph = '';
+  let paragraphStarted = false;
+
+  for (const raw of bodyLines) {
+    const hasBreak = raw.endsWith('@');
+    const content = hasBreak ? raw.slice(0, -1) : raw;
+    paragraph = paragraphStarted ? paragraph + ' ' + content : content;
+    paragraphStarted = true;
+    if (hasBreak) {
+      output += paragraph + '\n';
+      paragraph = '';
+      paragraphStarted = false;
+    }
+  }
+
+  output += paragraph;
+  return output;
+}
