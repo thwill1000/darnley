@@ -306,7 +306,7 @@ clues evidence found discovered proof
 ask. I trust you to make sense of it better than any of us could."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
-!requires handkerchief cigarettes
+!requires x_handkerchief x_cigarettes
 [[reset:Billingsgate's composure does not slip, but there is a long pause
 before he answers.]]@
 @

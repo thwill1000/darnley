@@ -172,11 +172,11 @@ Q_12|redvers
 Q_13|+millicent +(marriage/engagement)
 
 !clues
-cigarettes
-handkerchief
-gramophone
-gun
-butt
-boots
-letter
-newspaper
+x_cigarettes
+x_handkerchief
+x_gramophone
+x_revolver
+x_cheroot_butt
+x_boots
+x_letter
+x_newspaper

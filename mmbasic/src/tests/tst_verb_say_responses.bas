@@ -218,7 +218,7 @@ Sub test_why_here()
   objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
   assert_response("why are you here", "Business. Damned inconvenient business", 1)
 
-  reset_flags("newspaper")
+  reset_flags("x_newspaper")
   assert_response("why are you here", "Business. Damned inconvenient business", 1)
 End Sub
 
@@ -324,7 +324,7 @@ Sub test_newspaper_blocked()
   assert_response("tell me about the newspaper", "newspaper response")
   assert_response("did you read the newspaper", "newspaper response")
 
-  ' With the "newspaper" flag unset, all three suspects who hold gated
+  ' With the "x_newspaper" flag unset, all three suspects who hold gated
   ' knowledge of the mining-shares collapse must fall back to their
   ' evasive, unconditional entry rather than leaking the collapse/motive
   ' detail early.
@@ -339,14 +339,14 @@ Sub test_newspaper_blocked()
 End Sub
 
 Sub test_newspaper_unlocked()
-  reset_flags("newspaper") ' Player has found and examined newspaper
+  reset_flags("x_newspaper") ' Player has found and examined newspaper
 
   assert_response("ask about the newspaper", "newspaper response given newspaper found")
   assert_response("what about the newspaper", "newspaper response given newspaper found")
   assert_response("tell me about the newspaper", "newspaper response given newspaper found")
   assert_response("did you read the newspaper", "newspaper response given newspaper found")
 
-  ' Once the "newspaper" flag is set the same keywords against the same three
+  ' Once the "x_newspaper" flag is set the same keywords against the same three
   ' suspects should give the more revealing entry.
   objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
   assert_response("did you read the newspaper", "[[reset:He stiffens slightly", 1)
@@ -654,7 +654,7 @@ Sub test_confirm_sarah()
 
   ' Once both gating flags are set, the more specific (still evasive) entry wins
   objects$(9) = "P_RONALD_MELLORS|Ronald Mellors|ronald_mellors gamekeeper|LOC001_BATHROOM|2|100"
-  reset_flags("handkerchief", "cigarettes")
+  reset_flags("x_handkerchief", "x_cigarettes")
   assert_response("confirm sarah", "[[reset:Something flickers behind his flat stare.]]", 1)
 End Sub
 
@@ -797,17 +797,17 @@ End Sub
 ' Once both gating flags are set, the more specific entry wins (it
 ' appears first in the file and is now eligible)
 Sub test_affair_unlocked()
-  reset_flags("handkerchief", "cigarettes")
+  reset_flags("x_handkerchief", "x_cigarettes")
   assert_response("ask about the affair", "affair response given handkerchief and cigarettes")
 
-  reset_flags("handkerchief", "cigarettes")
+  reset_flags("x_handkerchief", "x_cigarettes")
   assert_response("was there something going on between sarah and mellors", "affair response given handkerchief and cigarettes")
 
-  reset_flags("handkerchief", "cigarettes")
+  reset_flags("x_handkerchief", "x_cigarettes")
   assert_response("was sarah having a secret affair with the gamekeeper", "affair response given handkerchief and cigarettes")
 End Sub
 
-' With no "newspaper" flag set, falls to the unconditional finance entry
+' With no "x_newspaper" flag set, falls to the unconditional finance entry
 Sub test_money_blocked()
   assert_response("tell me about the colonel's finances", "finance response")
   assert_response("tell me about redvers' debts", "finance response")
@@ -817,26 +817,26 @@ Sub test_money_blocked()
   assert_response("did redvers lose money", "finance response")
 End Sub
 
-' Once "newspaper" is set, the gated entry wins
+' Once "x_newspaper" is set, the gated entry wins
 Sub test_money_unlocked()
-  reset_flags("newspaper")
+  reset_flags("x_newspaper")
   assert_response("tell me about redvers' debts", "finance response given newspaper and redvers")
 
-  reset_flags("newspaper")
+  reset_flags("x_newspaper")
   assert_response("tell me about slingsby' debts", "finance response given newspaper and redvers")
 
-  reset_flags("newspaper")
+  reset_flags("x_newspaper")
   assert_response("tell me about redvers' money troubles", "finance response given newspaper and redvers")
 
-  reset_flags("newspaper")
+  reset_flags("x_newspaper")
   assert_response("tell me about redvers's money troubles", "finance response given newspaper and redvers")
 
-  reset_flags("newspaper")
+  reset_flags("x_newspaper")
   assert_response("what about slingsby' debts", "finance response given newspaper and redvers")
 
   ' Ask Redvers directly without referencing him by name in the subject.
   objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
-  reset_flags("newspaper")
+  reset_flags("x_newspaper")
   assert_response("Redvers, did you have money troubles?", "He goes rather grey about the gills.", 1)
 End Sub
 
@@ -857,7 +857,7 @@ Sub test_bang()
   assert_response("What time exactly did you hear the shot?", "bang/shot timeline response")
 End Sub
 
-' With no "newspaper" flag set, Redvers falls to the unconditional,
+' With no "x_newspaper" flag set, Redvers falls to the unconditional,
 ' vague argument entry - same as everyone else's generic response
 Sub test_argument_blocked()
   assert_response("did you argue with the colonel", "argument with colonel response")
@@ -871,10 +871,10 @@ Sub test_argument_blocked()
   assert_response("did you have an argument with the colonel", "Argued, yes - I'll not pretend otherwise", 1)
 End Sub
 
-' Once "newspaper" is set, Redvers' gated entry wins and he admits the
+' Once "x_newspaper" is set, Redvers' gated entry wins and he admits the
 ' substance of the argument (still stopping short of a confession)
 Sub test_argument_unlocked()
-  reset_flags("newspaper")
+  reset_flags("x_newspaper")
   assert_response("did you argue with the colonel", "argument with colonel given newspaper response")
   assert_response("did you have an argument with the colonel", "argument with colonel given newspaper response")
   assert_response("was there a row with the colonel", "argument with colonel given newspaper response")
