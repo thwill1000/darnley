@@ -350,7 +350,7 @@ one.
 
 OBJ203_REVOLVER
 !requires x_pond
-!provides gun new_clue
+!provides x_revolver new_clue
 The revolver found in the pond is a fine quality weapon with decorative grips.
 One bullet has been discharged from it.
 
@@ -385,7 +385,7 @@ blood - quite dry now, darkened to a dull rust colour. The wooden handle
 bears the initials "R.M." burnt into it.
 
 OBJ209_BOOTS
-!provides boots new_clue
+!provides x_boots new_clue
 All these boots are polished clean except for a large mud stained pair.
 
 OBJ212_FOOTPRINTS_KG
@@ -445,7 +445,7 @@ leave his suit here rather than in the guest room? Inside the jacket pocket,
 a label reads "Hawes & Curtis, Piccadilly."
 
 OBJ222_NEWSPAPER
-!provides newspaper new_clue
+!provides x_newspaper new_clue
 One headline on the front page catches your eye -
 'Collapse of Rio Plata Mining Co. - Our co-respondent in Lima, Peru
 reports the collapse of several silver mining companies through the
@@ -500,7 +500,7 @@ place by a sort of 'lid' of wood which is fastened by a small lock. The
 key is in the lock.
 
 OBJ230_LETTER
-!provides letter new_clue
+!provides x_letter new_clue
 The letter is an incomplete draft: "Dear Sir, I have considered your
 monstrous suggestion and find I cannot..."
 
@@ -528,7 +528,7 @@ way that suggests the breakage may not have been a single violent impact, but
 perhaps more deliberate - possibly even repeated strikes against the pane.
 
 OBJ234_GRAMOPHONE
-!provides gramophone new_clue
+!provides x_gramophone new_clue
 It has a device for playing several records in sequence. All the records
 currently loaded into the device are Chopin.
 
@@ -586,7 +586,7 @@ snow heading around the corner of the house, to and from the maze
 and avenue of statues.
 
 OBJ245_CIGARETTE_ENDS_SH
-!provides cigarettes new_clue
+!provides x_cigarettes new_clue
 These cigarette ends come from a cheap, mass produced brand. There are
 perhaps a dozen of them scattered about the summer house floor, some trodden into
 the dust, others carefully arranged. The tobacco inside is coarse and poor quality.
@@ -594,7 +594,7 @@ They suggest prolonged occupation of the summer house by someone of modest means
 - or someone pretending to be.
 
 OBJ246_HANDKERCHIEF
-!provides handkerchief new_clue
+!provides x_handkerchief new_clue
 This is a lady's handkerchief of plain linen with delicate lace edging and a faint
 perfume - the scent is floral, sweet, and distinctly expensive. The handkerchief
 is initialled with an ornate "S" worked in pale silk thread. It is slightly damp
@@ -638,7 +638,7 @@ or early this morning.
 
 OBJ253_CHEROOT_BUTT
 !requires x_statue
-!provides butt new_clue
+!provides x_cheroot_butt new_clue
 This is the sodden butt of a Burmah cheroot, waterlogged from its time in
 the pond. Despite being soaked, you can still make out its straight dark
 cylinder shape, characteristic of a cheroot rather than a conventional

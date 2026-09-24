@@ -167,7 +167,7 @@ you."
 "Nothing to do with me. I was at home all evening."
 
 +(confirm/corroborate/vouch/alibi/with) +sarah you
-!requires handkerchief cigarettes
+!requires x_handkerchief x_cigarettes
 [[reset:Something flickers behind his flat stare.]]@
 @
 "Can't help you there. I was on my own all evening, same as I told
@@ -245,7 +245,7 @@ clues evidence found discovered proof
 Rest's up to you."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
-!requires handkerchief cigarettes
+!requires x_handkerchief x_cigarettes
 [[reset:His jaw tightens and, for the first time, he looks away from you.]]@
 @
 "I don't know what you're getting at, and I'll thank you not to say

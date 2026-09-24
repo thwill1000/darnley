@@ -45,7 +45,7 @@ piano
 "ladys shoes response"
 
 +newspaper read
-!requires newspaper
+!requires x_newspaper
 "newspaper response given newspaper found"
 
 +newspaper read
@@ -58,7 +58,7 @@ handkerchief
 "handkerchief response"
 
 +colonel +(argue/argument/row/quarrel/quarrelled/quarrelling)
-!requires newspaper
+!requires x_newspaper
 "argument with colonel given newspaper response"
 
 +colonel +(argue/argument/row/quarrel/quarrelled/quarrelling)
@@ -170,7 +170,7 @@ events yesterday murder last happened
 "vouch for millicent response"
 
 +(confirm/corroborate/vouch/alibi/with) +sarah you
-!requires handkerchief cigarettes
+!requires x_handkerchief x_cigarettes
 "vouch for sarah given hanky + cigs response"
 
 +(confirm/corroborate/vouch/alibi/with) +sarah you
@@ -225,14 +225,14 @@ clues evidence found discovered proof
 "evidence response"
 
 affair mellors sarah (summerhouse/summer) together secret lovers
-!requires handkerchief cigarettes
+!requires x_handkerchief x_cigarettes
 "affair response given handkerchief and cigarettes"
 
 affair mellors sarah (summerhouse/summer) together secret lovers
 "affair response"
 
 +redvers money mining peru ruin
-!requires newspaper
+!requires x_newspaper
 "finance response given newspaper and redvers"
 
 money mining peru ruin redvers colonel

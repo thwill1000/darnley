@@ -279,7 +279,7 @@ clues evidence found discovered proof
 sat in my soup. You get on with your job."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
-!requires handkerchief cigarettes
+!requires x_handkerchief x_cigarettes
 [[reset:She goes quiet for a moment, wiping her hands slowly on her apron.]]@
 @
 "I don't like to gossip, dear, truly I don't. But I've wondered,

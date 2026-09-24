@@ -262,7 +262,7 @@ clues evidence found discovered proof
 you need to. I just want this all to be over."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
-!requires handkerchief cigarettes
+!requires x_handkerchief x_cigarettes
 [[reset:Norah's eyes go wide and she glances toward the door.]]@
 @
 "Oh, I - I really shouldn't say, sir. I don't know nothing about

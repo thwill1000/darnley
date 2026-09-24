@@ -39,7 +39,7 @@ no-one there, just a gramophone playing."
 "I don't know whose shoes these are."
 
 +newspaper read
-!requires newspaper
+!requires x_newspaper
 "I heard that old Slingsby had plunged into mining shares and needed
 money urgently. Colonel Darnley mentioned it to me during our
 conversation."
@@ -305,7 +305,7 @@ not curious. I'll wait for you to tell me, rather than guess and
 make a fool of myself."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
-!requires handkerchief cigarettes
+!requires x_handkerchief x_cigarettes
 [[reset:Coniston's easy manner falters, just slightly.]]@
 @
 "I say, that's rather a suggestion to make. I really couldn't tell
@@ -316,7 +316,7 @@ affair mellors sarah (summerhouse/summer) together secret lovers
 "Can't say that's ever occurred to me, old boy. Should it have?"
 
 +redvers money mining peru ruin
-!requires newspaper
+!requires x_newspaper
 "Ah - so you've found that, have you. Darnley did mention old
 Slingsby had come a cropper over some mining shares. Seemed rather
 keen to keep it quiet, if I'm honest, which I suppose is

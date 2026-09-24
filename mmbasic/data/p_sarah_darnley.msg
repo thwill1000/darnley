@@ -43,7 +43,7 @@ have no idea why they should be damp - possibly I had them on
 earlier yesterday."
 
 +newspaper read
-!requires newspaper
+!requires x_newspaper
 [[reset:She hesitates, choosing her words carefully.]]@
 @
 "I believe that Sebastian advised one or two people to invest in
@@ -312,7 +312,7 @@ clues evidence found discovered proof
 almost afraid to ask. Just be sure, whatever you decide."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
-!requires handkerchief cigarettes
+!requires x_handkerchief x_cigarettes
 [[reset:Her face goes very pale, then very still.]]@
 @
 "I don't know what you think you've found, Inspector, but you are
@@ -324,7 +324,7 @@ affair mellors sarah (summerhouse/summer) together secret lovers
 gamekeeper. I don't see what he has to do with anything."
 
 +redvers money mining peru ruin
-!requires newspaper
+!requires x_newspaper
 "Sebastian did mention Sir Redvers needed to talk business
 urgently. I assumed it was the usual sort of thing - I didn't
 realise it was quite so serious until now."
