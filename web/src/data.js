@@ -271,3 +271,65 @@ export function renderBody(bodyLines) {
   output += paragraph;
   return output;
 }
+
+/**
+ * Parses a single .msg dialogue file into an ordered array of entries.
+ *
+ * Each entry is a keyword/pattern line (or the literal "*" wildcard),
+ * optionally followed by "!requires "/"!provides " directive lines (at
+ * most one of each, either order), then body lines up to a blank line.
+ * Unlike parseMessages() (keyed by tag, since messages.dat's tags are
+ * unique-ish lookup keys), .msg files are pattern-matched in file order
+ * against player input, and the same pattern (e.g. "gramophone") may
+ * legitimately repeat as separate gated/fallback entries - so this
+ * returns a flat, ordered array rather than a Map.
+ *
+ * "#" comment lines and blank lines between entries are skipped. Mirrors
+ * the file-walking in find_response%() in mmbasic/src/adventlib.inc.
+ *
+ * @param {string} text Full contents of a .msg file.
+ * @returns {{pattern: string, requires: string[], provides: string[], body: string[]}[]}
+ */
+export function parseMsgFile(text) {
+  const lines = splitLines(text);
+  const entries = [];
+  let i = 0;
+
+  while (i < lines.length) {
+    while (i < lines.length && (lines[i] === '' || lines[i].startsWith('#'))) {
+      i++;
+    }
+    if (i >= lines.length) break;
+
+    const pattern = lines[i];
+    i++;
+
+    const requires = [];
+    const provides = [];
+    let directivesSeen = 0;
+    while (directivesSeen < 2 && i < lines.length) {
+      const line = lines[i];
+      if (line.startsWith('!requires ')) {
+        requires.push(...line.slice('!requires '.length).trim().split(/\s+/).filter(Boolean));
+        i++;
+        directivesSeen++;
+      } else if (line.startsWith('!provides ')) {
+        provides.push(...line.slice('!provides '.length).trim().split(/\s+/).filter(Boolean));
+        i++;
+        directivesSeen++;
+      } else {
+        break;
+      }
+    }
+
+    const body = [];
+    while (i < lines.length && lines[i] !== '') {
+      body.push(lines[i]);
+      i++;
+    }
+
+    entries.push({ pattern, requires, provides, body });
+  }
+
+  return entries;
+}
