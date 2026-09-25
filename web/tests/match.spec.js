@@ -60,3 +60,53 @@ describe('findMatches() - "|"-separated alternatives (plain words only)', () => 
     expect(findMatches('cat|', '|cat|')).toBe(1);
   });
 });
+
+describe("findMatches() - '+' (mandatory) and '-' (forbidden) prefixes", () => {
+  it("a '+' word not matched by anything forces 0, even though another word matched", () => {
+    expect(findMatches('+cat dog', '|dog|')).toBe(0);
+  });
+
+  it("a matched '+' word counts towards the total, same as a plain word", () => {
+    expect(findMatches('+cat dog', '|cat|dog|')).toBe(2);
+  });
+
+  it("an unmatched '-' word has no effect - normal matches still count", () => {
+    expect(findMatches('cat -dog', '|cat|')).toBe(1);
+  });
+
+  it("a matched '-' word forces 0, even though other words matched", () => {
+    expect(findMatches('cat -dog', '|cat|dog|')).toBe(0);
+  });
+
+  it("mandatory matched + forbidden absent succeeds, and the '+' match counts", () => {
+    expect(findMatches('+cat -dog bird', '|cat|bird|')).toBe(2);
+  });
+
+  it("mandatory word left unmatched fails even though the forbidden word was avoided", () => {
+    expect(findMatches('+cat -dog bird', '|bird|')).toBe(0);
+  });
+
+  it("forbidden word matched fails even though the mandatory word also matched", () => {
+    expect(findMatches('+cat -dog bird', '|cat|dog|')).toBe(0);
+  });
+
+  it("multiple '+' words: even one missing mandatory word fails the whole alternative", () => {
+    expect(findMatches('+cat +dog bird', '|cat|bird|')).toBe(0);
+  });
+
+  it("matching a '+' word is still case-insensitive after stripping the prefix", () => {
+    expect(findMatches('+CAT', '|cat|')).toBe(1);
+  });
+
+  it("matching a '-' word is still case-insensitive after stripping the prefix", () => {
+    expect(findMatches('-CAT', '|cat|')).toBe(0);
+  });
+
+  it("a '+' word failing in one alternative does not disqualify a later alternative where it succeeds", () => {
+    expect(findMatches('+cat dog|+bird fish', '|bird|fish|')).toBe(2);
+  });
+
+  it("a '-' word matched in one alternative zeroes only that alternative, not a later one", () => {
+    expect(findMatches('cat -dog|cat -bird', '|cat|dog|')).toBe(1);
+  });
+});
