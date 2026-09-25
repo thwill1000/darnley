@@ -110,3 +110,37 @@ describe("findMatches() - '+' (mandatory) and '-' (forbidden) prefixes", () => {
     expect(findMatches('cat -dog|cat -bird', '|cat|dog|')).toBe(1);
   });
 });
+
+describe('findMatches() - "(a/b/c)" OR-groups', () => {
+  it('matches when one of the group alternatives is present', () => {
+    expect(findMatches('(cat/dog)', '|dog|')).toBe(1);
+  });
+
+  it("contributes only 1 even when several of the group's alternatives are present", () => {
+    expect(findMatches('(cat/dog/bird)', '|cat|dog|bird|')).toBe(1);
+  });
+
+  it("contributes 0 when none of the group's alternatives are present, without zeroing other matches", () => {
+    expect(findMatches('fish (cat/dog)', '|fish|')).toBe(1);
+  });
+
+  it("a mandatory OR-group '+(a/b)' with neither alternative present zeroes the whole sub-pattern", () => {
+    expect(findMatches('fish +(cat/dog)', '|fish|')).toBe(0);
+  });
+
+  it("a mandatory OR-group '+(a/b)' succeeds once one alternative is present, and counts towards the total", () => {
+    expect(findMatches('fish +(cat/dog)', '|fish|dog|')).toBe(2);
+  });
+
+  it("a forbidden OR-group '-(a/b)' zeroes the whole sub-pattern when one alternative is present", () => {
+    expect(findMatches('fish -(cat/dog)', '|fish|cat|')).toBe(0);
+  });
+
+  it("a forbidden OR-group '-(a/b)' has no effect when neither alternative is present", () => {
+    expect(findMatches('fish -(cat/dog)', '|fish|')).toBe(1);
+  });
+
+  it('combines correctly with a plain word in the same sub-pattern, each contributing independently', () => {
+    expect(findMatches('fish (cat/dog)', '|fish|dog|')).toBe(2);
+  });
+});
