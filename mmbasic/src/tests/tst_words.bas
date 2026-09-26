@@ -72,6 +72,19 @@ add_test("test_unique_words_gvn_dupe")
 add_test("test_unique_words_gvn_case")
 add_test("test_unique_words_gvn_mult_dupes")
 add_test("test_unique_words_gvn_adjacent")
+add_test("replace_words() leaves a word with no matching entry unchanged", "test_rw_gvn_no_match")
+add_test("replace_words() replaces an alias with its canonical form", "test_rw_gvn_alias_replaced")
+add_test("replace_words() leaves a word already in canonical form unchanged", "test_rw_gvn_canonical_stays")
+add_test("replace_words() matches a third alias token, not just the first", "test_rw_gvn_third_token")
+add_test("replace_words() only replaces the matching word among several", "test_rw_gvn_mixed_words")
+add_test("replace_words() replaces multiple words against different entries", "test_rw_gvn_multi_entries")
+add_test("replace_words() prefers the first matching entry when several match", "test_rw_gvn_first_wins")
+add_test("replace_words() matching is case-sensitive", "test_rw_gvn_case_sensitive")
+add_test("replace_words() does not match an unbounded substring", "test_rw_gvn_no_partial")
+add_test("replace_words() is a no-op when synonyms$() is empty", "test_rw_gvn_empty_synonyms")
+add_test("replace_words() stops processing on an empty word element", "test_rw_gvn_empty_word")
+add_test("replace_words() preserves word order and array positions", "test_rw_gvn_preserves_order")
+add_test("replace_words() handles a single-element words$() array", "test_rw_gvn_single_word")
 
 run_tests()
 End
@@ -516,4 +529,128 @@ Sub test_unique_words_gvn_adjacent()
   assert_string_equals("two", words$(2))
   assert_string_equals("", words$(3))
   assert_string_equals("", words$(4))
+End Sub
+
+' replace_words() --------------------------------------------------------
+
+' A word with no matching entry anywhere in replacements$() is left unchanged
+Sub test_rw_gvn_no_match()
+  Local words$(4) Length MAX_WORD_LENGTH = ("hello", "", "", "")
+  Local replacements$(2) = ("|apple|banana|pear|", "|car|bus|train|")
+  replace_words(words$(), replacements$())
+  assert_string_equals("hello", words$(1))
+End Sub
+
+' A word matching an alias token in an entry is replaced with the entry's
+' canonical (first real / second field) word
+Sub test_rw_gvn_alias_replaced()
+  Local words$(4) Length MAX_WORD_LENGTH = ("banana", "", "", "")
+  Local replacements$(2) = ("|apple|banana|pear|", "|car|bus|train|")
+  replace_words(words$(), replacements$())
+  assert_string_equals("apple", words$(1))
+End Sub
+
+' A word already equal to the canonical form still matches (it appears
+' bordered by pipes in the entry too) but ends up unchanged, since it is
+' replaced with itself
+Sub test_rw_gvn_canonical_stays()
+  Local words$(4) Length MAX_WORD_LENGTH = ("apple", "", "", "")
+  Local replacements$(2) = ("|apple|banana|pear|", "|car|bus|train|")
+  replace_words(words$(), replacements$())
+  assert_string_equals("apple", words$(1))
+End Sub
+
+' A word matching a THIRD (or later) alias token in an entry is still
+' converted to the entry's canonical (second) field, not left alone
+Sub test_rw_gvn_third_token()
+  Local words$(4) Length MAX_WORD_LENGTH = ("pear", "", "", "")
+  Local replacements$(2) = ("|apple|banana|pear|", "|car|bus|train|")
+  replace_words(words$(), replacements$())
+  assert_string_equals("apple", words$(1))
+End Sub
+
+' Only the word(s) that actually match an entry are changed; unrelated
+' words in the same array are left alone
+Sub test_rw_gvn_mixed_words()
+  Local words$(4) Length MAX_WORD_LENGTH = ("foo", "pear", "bar", "")
+  Local replacements$(2) = ("|apple|banana|pear|", "|car|bus|train|")
+  replace_words(words$(), replacements$())
+  assert_string_equals("foo", words$(1))
+  assert_string_equals("apple", words$(2))
+  assert_string_equals("bar", words$(3))
+End Sub
+
+' Different words in the array can each match a different synonym entry
+Sub test_rw_gvn_multi_entries()
+  Local words$(4) Length MAX_WORD_LENGTH = ("pear", "train", "dog", "")
+  Local replacements$(3) = ("|apple|banana|pear|", "|car|bus|train|", "|cat|dog|mouse|")
+  replace_words(words$(), replacements$())
+  assert_string_equals("apple", words$(1))
+  assert_string_equals("car", words$(2))
+  assert_string_equals("cat", words$(3))
+End Sub
+
+' If a word matches more than one entry, the FIRST matching entry (lowest
+' index in replacements$()) wins, since the inner loop exits early
+Sub test_rw_gvn_first_wins()
+  Local words$(4) Length MAX_WORD_LENGTH = ("banana", "", "", "")
+  Local replacements$(2) = ("|apple|banana|pear|", "|car|banana|train|")
+  replace_words(words$(), replacements$())
+  assert_string_equals("apple", words$(1))
+End Sub
+
+' Matching is case-sensitive - a differently-cased word is not recognised
+Sub test_rw_gvn_case_sensitive()
+  Local words$(4) Length MAX_WORD_LENGTH = ("BANANA", "", "", "")
+  Local replacements$(2) = ("|apple|banana|pear|", "|car|banana|train|")
+  replace_words(words$(), replacements$())
+  assert_string_equals("BANANA", words$(1))
+End Sub
+
+' A word that is only a substring of an replacement token (not the whole token,
+' bordered by pipes) must not match
+Sub test_rw_gvn_no_partial()
+  Local words$(4) Length MAX_WORD_LENGTH = ("ban", "", "", "")
+  Local replacements$(2) = ("|apple|banana|pear|", "|car|banana|train|")
+  replace_words(words$(), replacements$())
+  assert_string_equals("ban", words$(1))
+End Sub
+
+' With every replacements$() entry empty, replace_words() is a complete no-op
+Sub test_rw_gvn_empty_synonyms()
+  Local words$(4) Length MAX_WORD_LENGTH = ("banana", "train", "", "")
+  Local replacements$(4) = ("", "", "", "")
+  replace_words(words$(), replacements$())
+  assert_string_equals("banana", words$(1))
+  assert_string_equals("train", words$(2))
+End Sub
+
+' An empty element in words$() halt the synonym processing
+Sub test_rw_gvn_empty_word()
+  Local words$(4) Length MAX_WORD_LENGTH = ("banana", "", "train", "")
+  Local replacements$(2) = ("|apple|banana|pear|", "|car|banana|train|")
+  replace_words(words$(), replacements$())
+  assert_string_equals("apple", words$(1))
+  assert_string_equals("", words$(2))
+  assert_string_equals("train", words$(3)) ' Not changed
+End Sub
+
+' Word order and array positions are preserved - only values change in place
+Sub test_rw_gvn_preserves_order()
+  Local words$(5) Length MAX_WORD_LENGTH = ("train", "pear", "banana", "dog", "")
+  Local replacements$(3) = ("|apple|banana|pear|", "|car|bus|train|", "|cat|dog|mouse|")
+  replace_words(words$(), replacements$())
+  assert_string_equals("car", words$(1))
+  assert_string_equals("apple", words$(2))
+  assert_string_equals("apple", words$(3))
+  assert_string_equals("cat", words$(4))
+  assert_string_equals("", words$(5))
+End Sub
+
+' A words$() array with a single populated element still works correctly
+Sub test_rw_gvn_single_word()
+  Local words$(2) Length MAX_WORD_LENGTH = ("pear", "")
+  Local replacements$(2) = ("|apple|banana|pear|", "|car|banana|train|")
+  replace_words(words$(), replacements$())
+  assert_string_equals("apple", words$(1))
 End Sub
