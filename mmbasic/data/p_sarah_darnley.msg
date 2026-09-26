@@ -203,11 +203,8 @@ sits idle out there."
 but I wish it hadn't."
 
 events yesterday murder last happened
-"I married Sebastian two years ago. I am more than twenty years
-younger than he - really not much older than Millicent. We have
-been very happy together. Last night we all had dinner together.
-Afterwards the men played billiards while Millicent and I had
-coffee in the lounge.@
+"Last night we all had dinner together. Afterwards the men played billiards
+while Millicent and I had coffee in the lounge.@
 @
 At about 9:30 the men joined us for half an hour then Arthur and
 Millicent said that they were going to the music room. Sebastian
@@ -287,9 +284,10 @@ of the estate with me, and Mellors has always struck me as
 perfectly loyal - I can't think what would have prompted it."
 
 -again marriage colonel sarah wife husband happy get with
-"We were happy enough, in our own way. He was strict, and older
-than me, and people will talk regardless of what's true. I loved
-him, whatever anyone supposes."
+"We married two years ago - I'm more than twenty years his junior, not much
+older than Millicent, and people will talk regardless of what's true. We were
+happy enough, in our own way. He was strict, and older than me. I loved him,
+whatever anyone supposes."
 
 remarriage remarry remarrying marry again
 [[reset:Her expression cools noticeably.]]@
