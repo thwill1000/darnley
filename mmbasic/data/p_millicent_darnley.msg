@@ -196,7 +196,7 @@ then Arthur and I went into the music room where we talked for a
 while and played duets on the piano.@
 @
 At about 10:30 I decided to go to bed. I know the time because I
-looked at my watch when there was a loud noise — probably a poacher
+looked at my watch when there was a loud noise - probably a poacher
 somewhere. Arthur stayed in the music room and I went upstairs. I
 think I saw Sir Redvers disappearing into his bedroom, but I was
 distracted by Sarah who was on the landing. She said she was
@@ -207,7 +207,7 @@ Sarah playing the piano and then drifted off to sleep.@
 I woke up at about 11:20 by the bedside clock and heard Sarah still
 playing a Chopin nocturne. She seemed to be having difficulty since
 the same part was being repeated over and over again. I went back to
-sleep for a few minutes when there was a bang — a door slamming, I
+sleep for a few minutes when there was a bang - a door slamming, I
 thought.@
 @
 Then at about midnight there was a racket of people everywhere. I
