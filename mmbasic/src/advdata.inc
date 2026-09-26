@@ -250,13 +250,13 @@ End Function
 ' Read the synonyms data
 Sub read_synonyms(f$)
   Const num_synonyms% = count_advent_section%(f$, "!synonyms")
-  Dim synonyms$(Max(num_synonyms%, 2)) Length 127
-  If read_advent_section%(f$, "!synonyms", synonyms$()) <> num_synonyms% Then Error "Synonym data mismatch"
+  Dim adv.synonyms$(Max(num_synonyms%, 2)) Length 127
+  If read_advent_section%(f$, "!synonyms", adv.synonyms$()) <> num_synonyms% Then Error "Synonym data mismatch"
 
   ' Process to add a pipe to the front and end of each synonyms list
   Local i%
-  For i% = Bound(synonyms$(), 0) To Bound(synonyms$(), 1)
-    synonyms$(i%) = "|" + synonyms$(i%) + "|"
+  For i% = Bound(adv.synonyms$(), 0) To Bound(adv.synonyms$(), 1)
+    adv.synonyms$(i%) = "|" + adv.synonyms$(i%) + "|"
   Next
 End Sub
 

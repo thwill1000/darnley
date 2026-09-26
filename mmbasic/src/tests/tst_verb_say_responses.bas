@@ -29,6 +29,7 @@ sys.provides("console")
 #Include "../advdata.inc"
 #Include "../state.inc"
 #Include "../adventlib.inc"
+#Include "../darnley_xtra.inc"
 
 Dim con_output$
 
@@ -78,7 +79,7 @@ add_test("Did you read the newspaper? (before the newspaper is found)", "test_ne
 add_test("Did you read the newspaper? (after the newspaper is found)", "test_newspaper_unlocked")
 add_test("What do you know about the letter on the Colonel's desk?", "test_letter")
 add_test("Who dropped this handkerchief?", "test_handkerchief")
-add_test("What was the colonel like?", "test_opinion_colonel")
+add_test("What did you think of Colonel Darnley?", "test_opinion_colonel")
 add_test("What do you think of Sarah Darnley?", "test_opinion_sarah")
 add_test("What do you think of Millicent Darnley?", "test_opinion_millicent")
 add_test("What do you think of Arthur Coniston?", "test_opinion_arthur")
@@ -429,10 +430,20 @@ Sub test_handkerchief()
 End Sub
 
 Sub test_opinion_colonel()
-  assert_response("what did you think of colonel darnley", "colonel darnley opinion response")
-  assert_response("what was the colonel like", "colonel darnley opinion response")
-  assert_response("tell me about colonel darnley", "colonel darnley opinion response")
-  assert_response("what did you make of sebastian darnley", "colonel darnley opinion response")
+  assert_response("What did you think of Colonel Darnley?", "colonel darnley opinion response")
+  assert_response("What was the Colonel like", "colonel darnley opinion response")
+  assert_response("Tell me about Colonel Darnley", "colonel darnley opinion response")
+  assert_response("What did you make of Sebastian Darnley", "colonel darnley opinion response")
+
+  ' Ask Millicent about her father & mother.
+  objects$(9) = "P_MILLICENT_DARNLEY|Millicent Darnley|millicent|LOC001_BATHROOM|2|100"
+  assert_response("What did you think of your father?", "Daddy was a tyrant", 1)
+  assert_response("What did you think of your mother?", "We got on well enough", 1)
+
+  ' Ask Sarah about her husband & daughter.
+  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  assert_response("What did you think of your husband?", "He was somewhat strict", 1)
+  assert_response("What did you think of your daughter?", "Her father spoiled her", 1)
 End Sub
 
 Sub test_opinion_sarah()

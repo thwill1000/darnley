@@ -46,7 +46,7 @@ run_tests()
 End
 
 Sub test_init_no_add_exits_section()
-  Erase rooms$(), additional_exits$(), objects$(), synonyms$()
+  Erase rooms$(), additional_exits$(), objects$(), adv.synonyms$()
   advdata.init(DATA_DIR$ + "advent_no_additional_exits.dat")
   ' No error raised is the assertion; additional_exits$() should be a
   ' harmless empty (2-element, all "") array.
