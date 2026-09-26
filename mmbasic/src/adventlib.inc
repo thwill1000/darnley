@@ -329,8 +329,8 @@ Function verb_say()
     Inc j%
   Next
 
-  ' Apply any target specific word substitutions to the topic
-  apply_extra_synonyms(target$, topic_words$())
+  ' Apply any target specific word replacements to the topic
+  apply_extra_replacements(target$, topic_words$())
 
   Const match_line% = find_response%(filename$, topic_words$())
   print_response(filename$, match_line%)
@@ -607,7 +607,7 @@ End Function
 ' TODO: comment this
 Function make_match_input$(w$(), first%, last%)
   Local i%, s$ = "|"
-  apply_synonyms(w$(), adv.synonyms$())
+  replace_words(w$(), adv.synonyms$())
   For i% = Choice(first%, first%, Bound(w$(), 0)) To Choice(last%, last%, Bound(w$(), 1))
     If w$(i%) = "" Then Exit For
     Cat s$, w$(i%) + "|"
@@ -1030,16 +1030,3 @@ Function verb_save()
   verb_save = 1
   Const dummy% = state.save%()
 End Function
-
-Sub apply_synonyms(words$(), synonyms$())
-  Local i%, j%
-  For i% = Bound(words$(), 0) To Bound(words$(), 1)
-    If words$(i%) = "" Then Exit For
-    For j% = Bound(synonyms$(), 0) To Bound(synonyms$(), 1)
-      If InStr(synonyms$(j%), "|" + words$(i%) + "|") Then
-        words$(i%) = Field$(synonyms$(j%), 2, "|")
-        Exit For
-      EndIf
-    Next
-  Next
-End Sub

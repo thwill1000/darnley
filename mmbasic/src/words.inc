@@ -211,3 +211,31 @@ Sub print_words(words$())
   Next
   Print Str$(count%) + " words"
 End Sub
+
+' Replaces each word in words$() with the canonical form defined by an entry
+' in replacements$(), if it matches one of that entry's "|"-delimited tokens.
+'
+' Each element of replacements$() is a string of the form
+' "|canonical|alias1|alias2|...|". For each word in words$() (stopping at the
+' first empty element), replacements$() is scanned in order and the word is
+' replaced with the entry's canonical (second) field as soon as a
+' "|word|" match is found within that entry; if no entry matches, the word
+' is left unchanged. Matching is case-sensitive. If a word matches more
+' than one entry, the first matching entry (lowest index in replacements$())
+' wins. Word order and array positions in words$() are preserved - only
+' values are changed in place.
+'
+' @param  words$()         The array of words to modify in place.
+' @param  replacements$()  Array of "|canonical|alias1|alias2|...|" entries.
+Sub replace_words(words$(), replacements$())
+  Local i%, j%
+  For i% = Bound(words$(), 0) To Bound(words$(), 1)
+    If words$(i%) = "" Then Exit For
+    For j% = Bound(replacements$(), 0) To Bound(replacements$(), 1)
+      If InStr(replacements$(j%), "|" + words$(i%) + "|") Then
+        words$(i%) = Field$(replacements$(j%), 2, "|")
+        Exit For
+      EndIf
+    Next
+  Next
+End Sub
