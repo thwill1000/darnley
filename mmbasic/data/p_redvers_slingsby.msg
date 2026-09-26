@@ -109,9 +109,9 @@ shouldn't like to get on her wrong side."
 fellow."
 
 +redvers (get/think) with | yourself
-"Myself? An old friend of Darnley's, that's the whole of it. A
-plain-spoken man, and I don't intend to start mincing words on
-your account now."
+"Myself? An old friend of Darnley's, twenty years now - that's the whole of it.
+A plain-spoken man, and I don't intend to start mincing words on your account
+now."
 
 +(billingsgate/butler) (get/think) with
 "I barely know the man."
@@ -214,9 +214,7 @@ cause to examine it, old man."
 than nobody at all, I suppose."
 
 events yesterday murder last happened
-"I have known Darnley for about 20 years. It was some confidential
-business dealings that brought me here urgently yesterday. Last
-night I had dinner with the family and young Coniston. Afterwards
+"Last night I had dinner with the family and young Coniston. Afterwards
 - at about 9:00 - we gentlemen had a game and some port in the
 billiard room, then we joined the ladies in the lounge for half
 an hour.@
