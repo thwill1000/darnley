@@ -190,8 +190,7 @@ daimler car motor saloon garage
 at it when I pass the window."
 
 events yesterday murder last happened
-"Father was a difficult man to live with but I never expected - this!
-Last night we all ate together until coffee which Sarah and I took
+"Last night we all ate together until coffee which Sarah and I took
 together in the lounge. The men joined us later for half an hour,
 then Arthur and I went into the music room where we talked for a
 while and played duets on the piano.@

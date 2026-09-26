@@ -1,6 +1,6 @@
 # TODO: The Sealed Room Murder (MMBasic)
 
-- Move potted personal history from the start of suspect's "yesterday" dialogue
+- Make sure "father" and "husband" work for Milicent and Sarah talking about the Colonel
 - GFX: fix ornamental pond image
 - "Fix" intrusive [MORE] prompts
 - Implement (obfuscated) walkthrough
