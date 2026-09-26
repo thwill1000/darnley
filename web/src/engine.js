@@ -200,3 +200,193 @@ export function verbExamine(objects, messages, words, synonymEntries, currentLoc
 
   return { success: false, message: 'That is not here, cannot be examined or is unremarkable.' };
 }
+
+// --- SAY / dialogue lookup ------------------------------------------------
+
+const WILDCARD_MATCH = 100;
+
+/**
+ * Removes anything after a "#" from a display name and trims whitespace,
+ * mirroring sanitize_name$() in mmbasic/src/adventlib.inc.
+ *
+ * @param {string} name
+ * @returns {string}
+ */
+function sanitizeName(name) {
+  const hashIndex = name.indexOf('#');
+  return (hashIndex > 0 ? name.slice(0, hashIndex) : name).trim();
+}
+
+/**
+ * Finds the first person-type object located in locationId, or null.
+ * Mirrors find_person_in_room%() in mmbasic/src/adventlib.inc.
+ *
+ * @param {{isPerson: boolean, location: string}[]} objects
+ * @param {string} locationId
+ * @returns {object|null}
+ */
+function findPersonInRoom(objects, locationId) {
+  return objects.find((obj) => obj.isPerson && obj.location === locationId) ?? null;
+}
+
+/**
+ * Resolves the direct object of SAY ("target name, subject words"),
+ * mirroring resolve_say_target%() in mmbasic/src/adventlib.inc. Unlike
+ * the original (which prints a failure message and returns -1/0), this
+ * returns a result object: { object } on success or when nothing named
+ * in that word range matched anything (the caller then falls back to
+ * "no target"), or { failMessage } when a target WAS matched but can't
+ * be spoken to (not present, or not a person).
+ *
+ * @param {object[]} objects
+ * @param {string[]} words
+ * @param {{canonical: string, aliases: string[]}[]} synonymEntries
+ * @param {number} startIndex
+ * @param {number} endIndex
+ * @param {string} currentLocationId
+ * @param {boolean} cheat  Mirrors state.cheat% - if true, the presence
+ *                         check is bypassed.
+ * @returns {{object: object|null, failMessage?: string}}
+ */
+function resolveSayTarget(objects, words, synonymEntries, startIndex, endIndex, currentLocationId, cheat) {
+  const target = findObj(objects, words, synonymEntries, currentLocationId, startIndex, endIndex);
+  if (!target) return { object: null };
+
+  if (!cheat && target.location !== currentLocationId) {
+    let msg = sanitizeName(target.name);
+    if (!target.isPerson) msg = 'The ' + msg.toLowerCase();
+    msg += (msg.endsWith('s') ? ' are' : ' is') + ' not here.';
+    return { object: null, failMessage: msg };
+  }
+
+  if (!target.isPerson) {
+    let msg = 'The ' + sanitizeName(target.name).toLowerCase();
+    msg += (msg.endsWith('s') ? ' do' : ' does') + ' not answer.';
+    return { object: null, failMessage: msg };
+  }
+
+  return { object: target };
+}
+
+/**
+ * Scans a .msg file's parsed entries (as produced by parseMsgFile() in
+ * data.js) for the response whose pattern best matches subjectWords,
+ * respecting each entry's "!requires" eligibility, with the "*" wildcard
+ * used as a fallback only when nothing else has scored above 0. Mirrors
+ * find_response%() in mmbasic/src/adventlib.inc, minus the file-position
+ * bookkeeping (this operates on an already-parsed array, not a line
+ * number into an open file) - and, like findMessageEntry(), does not
+ * apply the winning entry's "!provides" tokens; that is left to the
+ * caller (verbSay() does this itself, since applying provides is part of
+ * what verb_say() does in the original).
+ *
+ * @param {{pattern: string, requires: string[], provides: string[], body: string[]}[]} entries
+ * @param {string[]} subjectWords
+ * @param {{canonical: string, aliases: string[]}[]} synonymEntries
+ * @param {Set<string>} flags
+ * @returns {{pattern: string, requires: string[], provides: string[], body: string[]}|null}
+ */
+export function findResponse(entries, subjectWords, synonymEntries, flags) {
+  const matchIn = makeMatchInput(subjectWords, synonymEntries);
+  let best = 0;
+  let result = null;
+
+  for (const entry of entries) {
+    if (entry.pattern === '*') {
+      if (best === 0) {
+        best = WILDCARD_MATCH;
+        result = entry;
+      }
+      continue;
+    }
+
+    if (!entry.requires.every((token) => flags.has(token))) continue;
+
+    const score = findMatches(entry.pattern, matchIn);
+    if (score > best) {
+      best = score;
+      result = entry;
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Handles the SAY verb, mirroring verb_say() in mmbasic/src/adventlib.inc.
+ *
+ * words is the full split command, including the verb at index 0 and a
+ * "," as its own token when present (i.e. the output of splitWords()
+ * with no padding removed for the comma, matching how the MMBasic
+ * original's words$() always keeps "," as its own element).
+ *
+ * If a target is named before a comma, it is resolved via
+ * resolveSayTarget(); if that lookup finds nothing at all in that word
+ * range, the whole input (including the target words) falls back to
+ * being spoken to the first person present in the room, exactly as the
+ * original's obj_idx% = 0 fallback does. On a successful match, the
+ * winning entry's "!provides" tokens are added to flags (mutating the
+ * passed-in Set), mirroring state.add_flags() inside print_message_lines().
+ *
+ * @param {object[]} objects
+ * @param {Map<string, object[]>} msgFiles    Per-object .msg entries
+ *                                            (as parseMsgFile() returns),
+ *                                            keyed by object id - mirrors
+ *                                            the "p_<id>.msg exists?"
+ *                                            check in the original.
+ * @param {Map<string, object[]>} messages    messages.dat entries (as
+ *                                            parseMessages() returns),
+ *                                            used as the "<ID>_SAY_RESPONSE"
+ *                                            fallback when no .msg file
+ *                                            exists for the target.
+ * @param {string[]} words
+ * @param {{canonical: string, aliases: string[]}[]} synonymEntries
+ * @param {string} currentLocationId
+ * @param {Set<string>} flags
+ * @param {boolean} [cheat]
+ * @returns {{success: true, object: object, entry: object}
+ *          |{success: false, message: string}}
+ */
+export function verbSay(objects, msgFiles, messages, words, synonymEntries, currentLocationId, flags, cheat = false) {
+  const commaIndex = words.indexOf(',');
+  let targetObj = null;
+  let subjectStart = 0;
+
+  if (commaIndex !== -1) {
+    const result = resolveSayTarget(objects, words, synonymEntries, 1, commaIndex - 1, currentLocationId, cheat);
+    if (result.failMessage) {
+      return { success: false, message: result.failMessage };
+    }
+    if (result.object) {
+      targetObj = result.object;
+      subjectStart = commaIndex + 1;
+    }
+  }
+
+  if (!targetObj) {
+    targetObj = findPersonInRoom(objects, currentLocationId);
+    if (!targetObj) {
+      return { success: false, message: 'There is no-one here to speak to.' };
+    }
+    subjectStart = 0;
+  }
+
+  const subjectWords = [];
+  for (let i = subjectStart; i < words.length; i++) {
+    if (words[i] === '') break;
+    subjectWords.push(words[i]);
+  }
+
+  const entries = msgFiles.get(targetObj.id);
+  const response = entries
+    ? findResponse(entries, subjectWords, synonymEntries, flags)
+    : findMessageEntry(messages, `${targetObj.id}_SAY_RESPONSE`, flags);
+
+  if (!response) {
+    return { success: false, message: "I don't know what you are talking about." };
+  }
+
+  for (const token of response.provides) flags.add(token);
+
+  return { success: true, object: targetObj, entry: response };
+}
