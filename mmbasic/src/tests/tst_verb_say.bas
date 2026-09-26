@@ -24,6 +24,7 @@ sys.provides("console")
 #Include "../advdata.inc"
 #Include "../state.inc"
 #Include "../adventlib.inc"
+#Include "../darnley_xtra.inc"
 
 Dim con_output$
 

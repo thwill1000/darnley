@@ -988,10 +988,10 @@ End Sub
 
 ' apply_synonyms() --------------------------------------------------------
 
-' A word with no matching entry anywhere in synonyms$() is left unchanged
+' A word with no matching entry anywhere in adv.synonyms$() is left unchanged
 Sub test_as_gvn_no_match()
   Local words$(4) Length MAX_WORD_LENGTH = ("hello", "", "", "")
-  apply_synonyms(words$())
+  apply_synonyms(words$(), adv.synonyms$())
   assert_string_equals("hello", words$(1))
 End Sub
 
@@ -999,7 +999,7 @@ End Sub
 ' canonical (first real / second field) word
 Sub test_as_gvn_alias_replaced()
   Local words$(4) Length MAX_WORD_LENGTH = ("milicent", "", "", "")
-  apply_synonyms(words$())
+  apply_synonyms(words$(), adv.synonyms$())
   assert_string_equals("millicent", words$(1))
 End Sub
 
@@ -1008,7 +1008,7 @@ End Sub
 ' replaced with itself
 Sub test_as_gvn_canonical_stays()
   Local words$(4) Length MAX_WORD_LENGTH = ("millicent", "", "", "")
-  apply_synonyms(words$())
+  apply_synonyms(words$(), adv.synonyms$())
   assert_string_equals("millicent", words$(1))
 End Sub
 
@@ -1016,7 +1016,7 @@ End Sub
 ' converted to the entry's canonical (second) field, not left alone
 Sub test_as_gvn_third_token()
   Local words$(4) Length MAX_WORD_LENGTH = ("gramaphon", "", "", "")
-  apply_synonyms(words$())
+  apply_synonyms(words$(), adv.synonyms$())
   assert_string_equals("gramophone", words$(1))
 End Sub
 
@@ -1024,7 +1024,7 @@ End Sub
 ' words in the same array are left alone
 Sub test_as_gvn_mixed_words()
   Local words$(4) Length MAX_WORD_LENGTH = ("examine", "milicent", "please", "")
-  apply_synonyms(words$())
+  apply_synonyms(words$(), adv.synonyms$())
   assert_string_equals("examine", words$(1))
   assert_string_equals("millicent", words$(2))
   assert_string_equals("please", words$(3))
@@ -1033,26 +1033,26 @@ End Sub
 ' Different words in the array can each match a different synonym entry
 Sub test_as_gvn_multi_entries()
   Local words$(4) Length MAX_WORD_LENGTH = ("milicent", "gramaphone", "sara", "")
-  apply_synonyms(words$())
+  apply_synonyms(words$(), adv.synonyms$())
   assert_string_equals("millicent", words$(1))
   assert_string_equals("gramophone", words$(2))
   assert_string_equals("sarah", words$(3))
 End Sub
 
 ' If a word matches more than one entry, the FIRST matching entry (lowest
-' index in synonyms$()) wins, since the inner loop exits early
+' index in adv.synonyms$()) wins, since the inner loop exits early
 Sub test_as_gvn_first_wins()
-  synonyms$(4) = "|first_canonical|dupe|"
-  synonyms$(5) = "|second_canonical|dupe|"
+  adv.synonyms$(4) = "|first_canonical|dupe|"
+  adv.synonyms$(5) = "|second_canonical|dupe|"
   Local words$(4) Length MAX_WORD_LENGTH = ("dupe", "", "", "")
-  apply_synonyms(words$())
+  apply_synonyms(words$(), adv.synonyms$())
   assert_string_equals("first_canonical", words$(1))
 End Sub
 
 ' Matching is case-sensitive - a differently-cased word is not recognised
 Sub test_as_gvn_case_sensitive()
   Local words$(4) Length MAX_WORD_LENGTH = ("MILICENT", "", "", "")
-  apply_synonyms(words$())
+  apply_synonyms(words$(), adv.synonyms$())
   assert_string_equals("MILICENT", words$(1))
 End Sub
 
@@ -1060,33 +1060,33 @@ End Sub
 ' bordered by pipes) must not match
 Sub test_as_gvn_no_partial()
   Local words$(4) Length MAX_WORD_LENGTH = ("mili", "", "", "")
-  apply_synonyms(words$())
+  apply_synonyms(words$(), adv.synonyms$())
   assert_string_equals("mili", words$(1))
 End Sub
 
-' With every synonyms$() entry empty, apply_synonyms() is a complete no-op
+' With every adv.synonyms$() entry empty, apply_synonyms() is a complete no-op
 Sub test_as_gvn_empty_synonyms()
-  Local i%, old_synonyms$(Bound(synonyms$(), 1))
-  For i% = Bound(synonyms$(), 0) To Bound(synonyms$(), 1)
-    old_synonyms$(i%) = synonyms$(i%)
-    synonyms$(i%) = ""
+  Local i%, old_synonyms$(Bound(adv.synonyms$(), 1))
+  For i% = Bound(adv.synonyms$(), 0) To Bound(adv.synonyms$(), 1)
+    old_synonyms$(i%) = adv.synonyms$(i%)
+    adv.synonyms$(i%) = ""
   Next
 
   Local words$(4) Length MAX_WORD_LENGTH = ("milicent", "gramaphone", "", "")
-  apply_synonyms(words$())
+  apply_synonyms(words$(), adv.synonyms$())
   assert_string_equals("milicent", words$(1))
   assert_string_equals("gramaphone", words$(2))
 
   ' Restore synonyms
-  For i% = Bound(synonyms$(), 0) To Bound(synonyms$(), 1)
-    synonyms$(i%) = old_synonyms$(i%)
+  For i% = Bound(adv.synonyms$(), 0) To Bound(adv.synonyms$(), 1)
+    adv.synonyms$(i%) = old_synonyms$(i%)
   Next
 End Sub
 
 ' An empty element in words$() halt the synonym processing
 Sub test_as_gvn_empty_word()
   Local words$(4) Length MAX_WORD_LENGTH = ("milicent", "", "sara", "")
-  apply_synonyms(words$())
+  apply_synonyms(words$(), adv.synonyms$())
   assert_string_equals("millicent", words$(1))
   assert_string_equals("", words$(2))
   assert_string_equals("sara", words$(3)) ' Not changed
@@ -1095,7 +1095,7 @@ End Sub
 ' Word order and array positions are preserved - only values change in place
 Sub test_as_gvn_preserves_order()
   Local words$(5) Length MAX_WORD_LENGTH = ("say", "sara", "about", "milicent", "")
-  apply_synonyms(words$())
+  apply_synonyms(words$(), adv.synonyms$())
   assert_string_equals("say", words$(1))
   assert_string_equals("sarah", words$(2))
   assert_string_equals("about", words$(3))
@@ -1106,7 +1106,7 @@ End Sub
 ' A words$() array with a single populated element still works correctly
 Sub test_as_gvn_single_word()
   Local words$(2) Length MAX_WORD_LENGTH = ("sara", "")
-  apply_synonyms(words$())
+  apply_synonyms(words$(), adv.synonyms$())
   assert_string_equals("sarah", words$(1))
 End Sub
 
