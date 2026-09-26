@@ -294,10 +294,10 @@ Function verb_say()
   verb_say = 1
 
   ' Extract target of the conversation.
-  Local subject_idx% = word.find_first%(words$(), ",") + 1
+  Local target_idx% = word.find_first%(words$(), ",") + 1
   Local obj_idx% = 0
-  If subject_idx% Then
-    obj_idx% = resolve_say_target%(2, subject_idx% - 2)
+  If target_idx% Then
+    obj_idx% = resolve_say_target%(2, target_idx% - 2)
     If obj_idx% = -1 Then Exit Function
   EndIf
 
@@ -308,31 +308,35 @@ Function verb_say()
       con.print_fail("There is no-one here to speak to.")
       Exit Function
     EndIf
-    subject_idx% = 1
+    target_idx% = 1
   EndIf
 
   ' Identify the .msg file containing the target's dialogue.
   ' If it doesn't exist then use a fixed response from 'messages.dat'.
-  Const filename$ = LCase$(obj_id$(obj_idx%)) + ".msg"
+  Const target$ = obj_id$(obj_idx%)
+  Const filename$ = LCase$(target$) + ".msg"
   If Not Mm.Info(Exists File adv.game_root$ + "data/" + filename$) Then
-    print_message_or_fail(UCase$(obj_id$(obj_idx%)) + "_SAY_RESPONSE")
+    print_message_or_fail(UCase$(target$) + "_SAY_RESPONSE")
     Exit Function
   EndIf
 
-  ' Extract subject of the conversation
-  Local subject_words$(MAX_WORDS) Length MAX_WORD_LENGTH
-  Local i%, j% = Bound(subject_words$(), 0)
-  For i% = subject_idx% To Bound(words$(), 1)
+  ' Extract topic of the conversation
+  Local topic_words$(MAX_WORDS) Length MAX_WORD_LENGTH
+  Local i%, j% = Bound(topic_words$(), 0)
+  For i% = target_idx% To Bound(words$(), 1)
     If words$(i%) = "" Then Exit For
-    subject_words$(j%) = words$(i%)
+    topic_words$(j%) = words$(i%)
     Inc j%
   Next
 
-  Const match_line% = find_response%(filename$, subject_words$())
+  ' Apply any target specific word substitutions to the topic
+  apply_extra_synonyms(target$, topic_words$())
+
+  Const match_line% = find_response%(filename$, topic_words$())
   print_response(filename$, match_line%)
 End Function
 
-' Resolves the direct object of ("target name, subject words) printing
+' Resolves the direct object of ("target name, topic words) printing
 ' failure message and returning 0 if it can't be found, isn't present,
 ' or isn't a person.
 Function resolve_say_target%(first%, last%)
@@ -386,7 +390,7 @@ Function sanitize_name$(name$)
 End Function
 
 ' Scans filename$ for the response whose pattern best matches
-' subject_words$(), respecting !requires eligibility. Returns the best
+' topic_words$(), respecting !requires eligibility. Returns the best
 ' matching line number, or -1 if none.
 '
 ' Keyword lines (and the "*" wildcard) are never obfuscated (see
@@ -398,7 +402,7 @@ End Function
 ' further decode is required. The inner skip loop discards an
 ' ineligible entry's body unread and must NOT decode - that content is
 ' never used.
-Function find_response%(filename$, subject_words$())
+Function find_response%(filename$, topic_words$())
   Open adv.game_root$ + "data/" + filename$ For Input As #1
 
   Local best_num_matches%, line_num%, num_matches%, s$
@@ -408,7 +412,7 @@ Function find_response%(filename$, subject_words$())
 
   find_response% = -1
 
-  Const match_in$ = make_match_input$(subject_words$())
+  Const match_in$ = make_match_input$(topic_words$())
 
   Do
     Line Input #1, s$
@@ -603,7 +607,7 @@ End Function
 ' TODO: comment this
 Function make_match_input$(w$(), first%, last%)
   Local i%, s$ = "|"
-  apply_synonyms(w$())
+  apply_synonyms(w$(), adv.synonyms$())
   For i% = Choice(first%, first%, Bound(w$(), 0)) To Choice(last%, last%, Bound(w$(), 1))
     If w$(i%) = "" Then Exit For
     Cat s$, w$(i%) + "|"
@@ -1027,7 +1031,7 @@ Function verb_save()
   Const dummy% = state.save%()
 End Function
 
-Sub apply_synonyms(words$())
+Sub apply_synonyms(words$(), synonyms$())
   Local i%, j%
   For i% = Bound(words$(), 0) To Bound(words$(), 1)
     If words$(i%) = "" Then Exit For
