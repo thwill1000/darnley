@@ -133,7 +133,7 @@ describe('parseObjects()', () => {
     expect(revolver).toEqual({
       id: 'OBJ203_REVOLVER',
       name: 'Revolver',
-      pattern: 'revolver gun',
+      pattern: 'gun revolver',
       location: 'LOC005_ORNAMENTAL_POND',
       flag: 1,
       weight: 1,
@@ -157,8 +157,8 @@ describe('parseObjects()', () => {
 });
 
 describe('parseSynonyms()', () => {
-  it('parses exactly 38 synonym entries', () => {
-    expect(parseSynonyms(adventText)).toHaveLength(38);
+  it('parses exactly 39 synonym entries', () => {
+    expect(parseSynonyms(adventText)).toHaveLength(39);
   });
 
   it('parses the first synonym entry, mapping aliases back to "arthur"', () => {
@@ -196,20 +196,21 @@ describe('parseQuestions()', () => {
 });
 
 describe('parseClues()', () => {
-  it('parses exactly 8 clues', () => {
-    expect(parseClues(adventText)).toHaveLength(8);
+  it('parses exactly 9 clues', () => {
+    expect(parseClues(adventText)).toHaveLength(9);
   });
 
   it('parses the clue tokens in file order', () => {
     expect(parseClues(adventText)).toEqual([
-      'cigarettes',
-      'handkerchief',
-      'gramophone',
+      'x_cigarettes',
+      'x_handkerchief',
+      'x_gramophone',
       'x_revolver',
-      'butt',
-      'boots',
-      'letter',
-      'newspaper',
+      'x_cheroot_butt',
+      'x_boots',
+      'x_letter',
+      'x_newspaper',
+      'x_gunrack',
     ]);
   });
 });

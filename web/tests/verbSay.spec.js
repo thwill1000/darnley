@@ -22,7 +22,7 @@ const NO_WILDCARD_MSG_TEXT = 'gramophone\n"only entry, no wildcard fallback"\n';
 let msgFiles;
 
 beforeAll(() => {
-  const testSuspectText = readFileSync(join(__dirname, '..', 'data', 'p_test_suspect.msg'), 'utf8');
+  const testSuspectText = readFileSync(join(__dirname, 'data', 'p_test_suspect.msg'), 'utf8');
   msgFiles = new Map([
     ['P_TEST_SUSPECT', parseMsgFile(testSuspectText)],
     ['P_NO_WILDCARD', parseMsgFile(NO_WILDCARD_MSG_TEXT)],
