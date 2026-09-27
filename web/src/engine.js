@@ -112,3 +112,91 @@ export function findObj(objects, words, synonymEntries, currentLocationId, start
 
   return bestObj;
 }
+
+/**
+ * Picks the first entry for tag whose "!requires" tokens are all present
+ * in flags, mirroring the eligibility-scanning half of print_message%()
+ * in mmbasic/src/adventlib.inc (the part relevant to EXAMINE: finding a
+ * usable entry). Unlike print_message%(), this does not apply the
+ * winning entry's "!provides" tokens or render its body - that belongs
+ * to the console/output layer added in a later step of the port plan.
+ *
+ * @param {Map<string, {requires: string[], provides: string[], body: string[]}[]>} messages
+ * @param {string} tag
+ * @param {Set<string>} flags
+ * @returns {{requires: string[], provides: string[], body: string[]}|null}
+ */
+export function findMessageEntry(messages, tag, flags) {
+  const entries = messages.get(tag);
+  if (!entries) return null;
+  for (const entry of entries) {
+    if (entry.requires.every((token) => flags.has(token))) return entry;
+  }
+  return null;
+}
+
+/**
+ * Handles the GO verb, mirroring verb_go() in mmbasic/src/adventlib.inc.
+ *
+ * @param {{id: string, exits: string[]}} currentLocation
+ * @param {{id: string, pattern: string, exits: string[]}[]} locations
+ * @param {{from: string, pattern: string, to: string}[]} additionalExits
+ * @param {string[]} words
+ * @param {{canonical: string, aliases: string[]}[]} synonymEntries
+ * @returns {{success: boolean, room: string, message?: string}}
+ *          On success, room is the id of the new location. On failure,
+ *          room is unchanged (currentLocation.id) and message explains why.
+ */
+export function verbGo(currentLocation, locations, additionalExits, words, synonymEntries) {
+  const exitId = findExitMatch(currentLocation, locations, additionalExits, words, synonymEntries);
+  if (exitId !== null) {
+    return { success: true, room: exitId };
+  }
+  return { success: false, room: currentLocation.id, message: "You can't go there." };
+}
+
+/**
+ * Handles the EXAMINE verb, mirroring verb_examine() in
+ * mmbasic/src/adventlib.inc.
+ *
+ * With no noun (words has nothing past the verb at index 0), the caller
+ * should redescribe the current location - mirrors the original setting
+ * describe% = 1 and clearing the room's visited flag so any graphics are
+ * reshown; that side effect is surfaced here as redescribe/unmarkVisited
+ * rather than performed directly, since this module has no notion of a
+ * console or a mutable game-state object to act on.
+ *
+ * @param {{id: string, pattern: string, location: string}[]} objects
+ * @param {Map<string, {requires: string[], provides: string[], body: string[]}[]>} messages
+ * @param {string[]} words
+ * @param {{canonical: string, aliases: string[]}[]} synonymEntries
+ * @param {{id: string, exits: string[]}} currentLocation
+ * @param {{id: string, pattern: string, exits: string[]}[]} locations
+ * @param {{from: string, pattern: string, to: string}[]} additionalExits
+ * @param {Set<string>} flags
+ * @returns {{redescribe: true, unmarkVisited: true}
+ *          |{success: true, object: object, entry: object}
+ *          |{success: false, message: string}}
+ */
+export function verbExamine(objects, messages, words, synonymEntries, currentLocation, locations, additionalExits, flags) {
+  const noun = words[1];
+  if (!noun) {
+    return { redescribe: true, unmarkVisited: true };
+  }
+
+  const obj = findObj(objects, words, synonymEntries, currentLocation.id);
+  if (obj && obj.location === currentLocation.id) {
+    const entry = findMessageEntry(messages, obj.id, flags);
+    if (entry) {
+      return { success: true, object: obj, entry };
+    }
+  }
+
+  const exitId = findExitMatch(currentLocation, locations, additionalExits, words, synonymEntries);
+  if (exitId !== null) {
+    const target = words.slice(1).join(' ').toUpperCase();
+    return { success: false, message: `Try \`GO ${target}\`.` };
+  }
+
+  return { success: false, message: 'That is not here, cannot be examined or is unremarkable.' };
+}
