@@ -5,9 +5,16 @@
 // wins" lookups used by GO, EXAMINE and (indirectly, via resolve_say_target%)
 // SAY. Both are thin wrappers around findMatches() (match.js) fed a
 // match-input string built by makeMatchInput() (words.js).
+//
+// printBody() (added for step 17 of the port plan) wires
+// print_body()'s line-join/"@"-hard-break semantics - ported as
+// renderBody() in data.js - into console.js's [[colour:text]] markup
+// parser, matching how the two combine in the MMBasic original.
 
 import { findMatches } from './match.js';
 import { makeMatchInput } from './words.js';
+import { renderBody } from './data.js';
+import { createMarkupState, parseMarkup } from './console.js';
 
 /**
  * Finds the best matching exit location from currentLocation for the
@@ -136,69 +143,47 @@ export function findMessageEntry(messages, tag, flags) {
 }
 
 /**
- * Handles the GO verb, mirroring verb_go() in mmbasic/src/adventlib.inc.
+ * Renders a message entry's body lines into a flat array of coloured
+ * segments, mirroring print_body() in mmbasic/src/adventlib.inc composed
+ * with con.print()'s markup parsing in mmbasic/src/console.inc.
  *
- * @param {{id: string, exits: string[]}} currentLocation
- * @param {{id: string, pattern: string, exits: string[]}[]} locations
- * @param {{from: string, pattern: string, to: string}[]} additionalExits
- * @param {string[]} words
- * @param {{canonical: string, aliases: string[]}[]} synonymEntries
- * @returns {{success: boolean, room: string, message?: string}}
- *          On success, room is the id of the new location. On failure,
- *          room is unchanged (currentLocation.id) and message explains why.
+ * print_body() joins consecutive raw lines with a single space, except
+ * that a line ending in "@" forces a hard paragraph break (the "@" is
+ * stripped) - that line-join/hard-break transform is renderBody()'s job
+ * (data.js), producing one string with an embedded "\n" at each hard
+ * break. That string is then run through a SINGLE markup-parser pass
+ * (parseMarkup(), console.js) with one state object threaded across the
+ * whole body.
+ *
+ * Using one parseMarkup() pass over the whole body (rather than one per
+ * paragraph) matters: it reproduces the original's behaviour of letting
+ * a [[colour:...]] span opened before an "@" break stay open across it -
+ * print_body() calls con.println() at each "@", which flushes and prints
+ * a newline but never resets con.markup_colour$, so a still-open span's
+ * colour carries into the next paragraph exactly as if no break had
+ * occurred. This is the one console.inc behaviour that's easy to get
+ * wrong when porting (see step 17 of the port plan) - splitting the
+ * rendered text into paragraphs first and parsing each with a fresh
+ * state would silently drop that carry-over.
+ *
+ * The returned segments may contain embedded "\n" characters within a
+ * single segment's text (when a hard break falls inside a still-open
+ * span, or simply within plain text) - callers rendering to a UI should
+ * split each segment's text on "\n" for line breaks while keeping that
+ * segment's colour for every piece.
+ *
+ * @param {string[]} bodyLines  A message entry's raw body lines, as
+ *                              parsed by parseMessages()/parseMsgFile().
+ * @returns {{text: string, colour: string}[]}
  */
-export function verbGo(currentLocation, locations, additionalExits, words, synonymEntries) {
-  const exitId = findExitMatch(currentLocation, locations, additionalExits, words, synonymEntries);
-  if (exitId !== null) {
-    return { success: true, room: exitId };
-  }
-  return { success: false, room: currentLocation.id, message: "You can't go there." };
-}
-
-/**
- * Handles the EXAMINE verb, mirroring verb_examine() in
- * mmbasic/src/adventlib.inc.
- *
- * With no noun (words has nothing past the verb at index 0), the caller
- * should redescribe the current location - mirrors the original setting
- * describe% = 1 and clearing the room's visited flag so any graphics are
- * reshown; that side effect is surfaced here as redescribe/unmarkVisited
- * rather than performed directly, since this module has no notion of a
- * console or a mutable game-state object to act on.
- *
- * @param {{id: string, pattern: string, location: string}[]} objects
- * @param {Map<string, {requires: string[], provides: string[], body: string[]}[]>} messages
- * @param {string[]} words
- * @param {{canonical: string, aliases: string[]}[]} synonymEntries
- * @param {{id: string, exits: string[]}} currentLocation
- * @param {{id: string, pattern: string, exits: string[]}[]} locations
- * @param {{from: string, pattern: string, to: string}[]} additionalExits
- * @param {Set<string>} flags
- * @returns {{redescribe: true, unmarkVisited: true}
- *          |{success: true, object: object, entry: object}
- *          |{success: false, message: string}}
- */
-export function verbExamine(objects, messages, words, synonymEntries, currentLocation, locations, additionalExits, flags) {
-  const noun = words[1];
-  if (!noun) {
-    return { redescribe: true, unmarkVisited: true };
-  }
-
-  const obj = findObj(objects, words, synonymEntries, currentLocation.id);
-  if (obj && obj.location === currentLocation.id) {
-    const entry = findMessageEntry(messages, obj.id, flags);
-    if (entry) {
-      return { success: true, object: obj, entry };
-    }
-  }
-
-  const exitId = findExitMatch(currentLocation, locations, additionalExits, words, synonymEntries);
-  if (exitId !== null) {
-    const target = words.slice(1).join(' ').toUpperCase();
-    return { success: false, message: `Try \`GO ${target}\`.` };
-  }
-
-  return { success: false, message: 'That is not here, cannot be examined or is unremarkable.' };
+export function printBody(bodyLines) {
+  const rendered = renderBody(bodyLines);
+  const segments = [];
+  const state = createMarkupState();
+  parseMarkup(state, rendered, (text, colour) => {
+    segments.push({ text, colour });
+  });
+  return segments;
 }
 
 // --- SAY / dialogue lookup ------------------------------------------------
@@ -310,6 +295,72 @@ export function findResponse(entries, subjectWords, synonymEntries, flags) {
   }
 
   return result;
+}
+
+/**
+ * Handles the GO verb, mirroring verb_go() in mmbasic/src/adventlib.inc.
+ *
+ * @param {{id: string, exits: string[]}} currentLocation
+ * @param {{id: string, pattern: string, exits: string[]}[]} locations
+ * @param {{from: string, pattern: string, to: string}[]} additionalExits
+ * @param {string[]} words
+ * @param {{canonical: string, aliases: string[]}[]} synonymEntries
+ * @returns {{success: boolean, room: string, message?: string}}
+ *          On success, room is the id of the new location. On failure,
+ *          room is unchanged (currentLocation.id) and message explains why.
+ */
+export function verbGo(currentLocation, locations, additionalExits, words, synonymEntries) {
+  const exitId = findExitMatch(currentLocation, locations, additionalExits, words, synonymEntries);
+  if (exitId !== null) {
+    return { success: true, room: exitId };
+  }
+  return { success: false, room: currentLocation.id, message: "You can't go there." };
+}
+
+/**
+ * Handles the EXAMINE verb, mirroring verb_examine() in
+ * mmbasic/src/adventlib.inc.
+ *
+ * With no noun (words has nothing past the verb at index 0), the caller
+ * should redescribe the current location - mirrors the original setting
+ * describe% = 1 and clearing the room's visited flag so any graphics are
+ * reshown; that side effect is surfaced here as redescribe/unmarkVisited
+ * rather than performed directly, since this module has no notion of a
+ * console or a mutable game-state object to act on.
+ *
+ * @param {{id: string, pattern: string, location: string}[]} objects
+ * @param {Map<string, {requires: string[], provides: string[], body: string[]}[]>} messages
+ * @param {string[]} words
+ * @param {{canonical: string, aliases: string[]}[]} synonymEntries
+ * @param {{id: string, exits: string[]}} currentLocation
+ * @param {{id: string, pattern: string, exits: string[]}[]} locations
+ * @param {{from: string, pattern: string, to: string}[]} additionalExits
+ * @param {Set<string>} flags
+ * @returns {{redescribe: true, unmarkVisited: true}
+ *          |{success: true, object: object, entry: object}
+ *          |{success: false, message: string}}
+ */
+export function verbExamine(objects, messages, words, synonymEntries, currentLocation, locations, additionalExits, flags) {
+  const noun = words[1];
+  if (!noun) {
+    return { redescribe: true, unmarkVisited: true };
+  }
+
+  const obj = findObj(objects, words, synonymEntries, currentLocation.id);
+  if (obj && obj.location === currentLocation.id) {
+    const entry = findMessageEntry(messages, obj.id, flags);
+    if (entry) {
+      return { success: true, object: obj, entry };
+    }
+  }
+
+  const exitId = findExitMatch(currentLocation, locations, additionalExits, words, synonymEntries);
+  if (exitId !== null) {
+    const target = words.slice(1).join(' ').toUpperCase();
+    return { success: false, message: `Try \`GO ${target}\`.` };
+  }
+
+  return { success: false, message: 'That is not here, cannot be examined or is unremarkable.' };
 }
 
 /**
