@@ -135,3 +135,79 @@ export function makeMatchInput(words, synonymEntries, startIndex, endIndex) {
   }
   return result;
 }
+
+// Mirrors MAX_WORDS/MAX_WORD_LENGTH in mmbasic/src/words.inc. MMBasic
+// enforces these via fixed-size arrays in split_words%(); JS arrays have
+// no such limit, so parseCommand() checks them explicitly to preserve the
+// original UX ("Too many words."/"Word too long.") rather than silently
+// accepting arbitrarily long input.
+export const MAX_WORDS = 20;
+export const MAX_WORD_LENGTH = 64;
+
+// Compass-direction words rejected in favour of "GO location", mirroring
+// the first Select Case branch in parse_common().
+const DIRECTION_WORDS = new Set([
+  'd', 'down', 'e', 'east', 'n', 'north', 's', 'south', 'u', 'up', 'w', 'west',
+]);
+
+// Maps a first word to its canonical verb, mirroring the Select Case
+// verb-synonym branches in parse_common(). A first word not listed here
+// becomes its own verb (the "Case Else" branch).
+const VERB_ALIASES = {
+  die: 'quit', end: 'quit', exit: 'quit', q: 'quit', restart: 'quit', reset: 'quit', start: 'quit',
+  check: 'examine', ex: 'examine', look: 'examine', search: 'examine', x: 'examine',
+  enter: 'go', g: 'go', walk: 'go',
+  grab: 'take', get: 'take', pick: 'take',
+  how: 'help',
+  intro: 'recap', introduction: 'recap', plot: 'recap', what: 'recap', who: 'recap',
+  i: 'inventory', inv: 'inventory',
+  ask: 'say', speak: 'say', talk: 'say', tell: 'say', '"': 'say',
+};
+
+/**
+ * Parses a raw command string into { verb, noun, words }, mirroring
+ * parse_common() in mmbasic/src/adventlib.inc.
+ *
+ * On failure (too many words, a word too long, a bare compass direction,
+ * or the intercepted "kill" verb) returns { failed: true, message } with
+ * verb/noun/words left at their empty defaults - the caller displays
+ * message and takes no further action, mirroring how the MMBasic
+ * original's callers check FAILED(parse_common(...)) before dispatching
+ * on verb$.
+ *
+ * @param {string} cmd
+ * @returns {{failed: boolean, message?: string, verb: string, noun: string, words: string[]}}
+ */
+export function parseCommand(cmd) {
+  let words = splitWords(cmd);
+
+  if (words.length > MAX_WORDS) {
+    return { failed: true, message: 'Too many words.', verb: '', noun: '', words: [] };
+  }
+  if (words.some((w) => w.length > MAX_WORD_LENGTH)) {
+    return { failed: true, message: 'Word too long.', verb: '', noun: '', words: [] };
+  }
+
+  words = removePadding(words);
+
+  if (words.length === 0) {
+    return { failed: false, verb: '', noun: '', words: [] };
+  }
+
+  // Strip a leading "*" from the verb word (e.g. "*record" style commands).
+  let first = words[0];
+  if (first.startsWith('*')) first = first.slice(1);
+
+  if (DIRECTION_WORDS.has(first)) {
+    return { failed: true, message: 'Try `GO location`.', verb: '', noun: '', words };
+  }
+
+  if (first === 'kill') {
+    return { failed: true, message: 'This is not that sort of game.', verb: '', noun: '', words };
+  }
+
+  const verb = VERB_ALIASES[first] ?? first;
+  const noun = words[1] ?? '';
+
+  return { failed: false, verb, noun, words };
+}
