@@ -30,21 +30,32 @@ The `splib/` and `sptest/` directories under `mmbasic/src/tests/` are vendored c
 ```
 mmbasic/
   src/
-    darnley.bas        # Main entry point: game loop, verb dispatch, and all game DATA
-    adventlib.inc      # Adventure library: rooms/objects/people, parsing, verb handlers
-    console.inc        # Console abstraction: word-wrap, paging, colour, line-editing
-    system.inc         # Platform abstraction (splib): include guards, platform detection
+    darnley.bas             # Main entry point: game loop, verb dispatch, questions/accusation flow
+    adventlib.inc           # Adventure library: rooms/objects/people, parsing, verb handlers, .msg lookup
+    advdata.inc             # Reads advent.dat/messages.dat into rooms$()/objects$()/synonyms$() etc.
+    state.inc               # Game state (flags, counters, room, visited) + save/restore
+    console.inc             # Console abstraction: word-wrap, paging, colour, line-editing
+    script.inc              # Script/walkthrough record and replay
+    words.inc               # Word-array helpers (split, cat, dedupe, etc.)
+    system.inc              # Platform abstraction (splib): include guards, platform detection
+    obfuscate_build.bas     # Build-time obfuscation of dist data files (not run at normal game time)
     tests/
-      tst_adventlib.bas  # Unit tests for adventlib.inc
-      splib/             # Vendored splib library
-      sptest/            # Vendored sptest unit-test framework
-  assets/
-    *.msg              # Text content: location descriptions, character dialogue, Q&A
+      msgorder.inc          # Validates per-suspect .msg entry ordering against the template
+      tst_*.bas             # Unit/integration tests (see Running the Game and Tests)
+      splib/, sptest/       # Vendored libraries
+  data/
+    advent.dat              # !locations / !additional_exits / !objects / !synonyms / !questions / !clues sections
+    messages.dat            # Room descriptions, object descriptions, fixed messages, keyed by tag
+    p_<suspect>.msg         # Per-suspect dialogue (keyword-matched), e.g. p_sarah_darnley.msg
+    p_template_suspect.msg  # Canonical entry order reference, validated against by msgorder.inc/tst_suspect_responses.bas
+  src-graphics/
+    prompts/*.md            # Pixel-art image generation prompts, one per location
+  build.sh                  # Builds dist/darnley/, obfuscates data files, transpiles, zips
 ```
 
-**Data flow:** `darnley.bas` embeds all game data as `DATA` statements under labelled anchors (`location_data:`, `object_data:`, `people_data:`). At startup `init_advent()` in `adventlib.inc` reads these into arrays. The main game loop calls `parse()` (defined in `darnley.bas` to handle game-specific synonyms, then falls through to `parse_common()` in `adventlib.inc`), dispatches on `verb$`, and then calls the relevant verb handler.
+**Data flow:** `advdata.init()` (called from `init_advent()` in `adventlib.inc`) reads `data/advent.dat`'s `!locations`, `!additional_exits`, `!objects`, and `!synonyms` sections into `rooms$()`, `additional_exits$()`, `objects$()`, and `synonyms$()` via `read_advent_section%()`. `darnley.bas` separately reads `!questions` and `!clues` for the accusation flow. The main game loop calls `parse()` (defined in `darnley.bas` to handle game-specific synonyms, then falls through to `parse_common()` in `adventlib.inc`), dispatches on `verb$`, and then calls the relevant verb handler.
 
-**Message lookup:** Character dialogue and location descriptions are read at runtime from `assets/*.msg` files. The filename for a character is derived from the object ID (e.g., `P_SARAH_DARNLEY` → `sarah_darnley.msg`). Location descriptions use the location tag as a key within `darnley.msg`.
+**Message lookup:** Character dialogue and location/object descriptions are read at runtime from `data/messages.dat` and per-suspect `data/p_*.msg` files. The filename for a character is derived from the object ID (e.g., `P_SARAH_DARNLEY` → `p_sarah_darnley.msg`). Entries are matched by keyword pattern against player input (see `find_matches%()` in `adventlib.inc`), gated by optional `!requires`/`!provides` directives, with a `*` wildcard fallback. Distribution copies of these files may be obfuscated at build time (`obfuscate_build.bas`); this is transparent to the game, which decodes via `advdata.decode_line$()`.
 
 ## Key Data Formats
 
