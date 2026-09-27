@@ -1,0 +1,182 @@
+!locations
+# id | name | pattern | num exits | exits...
+LOC001_BATHROOM|Bathroom|bathroom|1|LOC025_LANDING
+LOC002_ORCHARD|Orchard|orchard|2|LOC003_KITCHEN_GARDEN|LOC006_TERRACE
+LOC003_KITCHEN_GARDEN|Kitchen garden|garden|3|LOC002_ORCHARD|LOC004_OUTHOUSES|LOC009_KITCHEN
+LOC004_OUTHOUSES|Outhouses|outhouse outhouses|2|LOC003_KITCHEN_GARDEN|LOC011_MAZE
+LOC005_ORNAMENTAL_POND|Ornamental pond|pond|1|LOC006_TERRACE
+LOC006_TERRACE|Paved terrace|terrace outside|4|LOC002_ORCHARD|LOC007_COLONELS_STUDY|LOC005_ORNAMENTAL_POND|LOC012_WEST_WALK
+LOC007_COLONELS_STUDY|Study|study inside|3|LOC006_TERRACE|LOC008_HALL|LOC013_LOUNGE
+LOC008_HALL|Hall|hall inside|6|LOC014_DINING_ROOM|LOC015_MUSIC_ROOM|LOC017_DRIVE|LOC007_COLONELS_STUDY|LOC013_LOUNGE|LOC025_LANDING
+LOC009_KITCHEN|Kitchen|kitchen inside|3|LOC003_KITCHEN_GARDEN|LOC010_BUTLERS_PANTRY|LOC008_HALL
+LOC010_BUTLERS_PANTRY|Butler's pantry|butler pantry|2|LOC009_KITCHEN|LOC014_DINING_ROOM
+LOC011_MAZE|Maze|maze|3|LOC004_OUTHOUSES|LOC018_EAST_WALK|LOC022_EAST_LAWN
+LOC012_WEST_WALK|West walk|west walk|4|LOC017_DRIVE|LOC019_SUMMER_HOUSE|LOC020_WEST_LAWN|LOC006_TERRACE
+LOC013_LOUNGE|Lounge|lounge|2|LOC008_HALL|LOC007_COLONELS_STUDY
+LOC014_DINING_ROOM|Dining room|dining|4|LOC008_HALL|LOC010_BUTLERS_PANTRY|LOC015_MUSIC_ROOM|LOC016_BILLIARD_ROOM
+LOC015_MUSIC_ROOM|Music room|music|3|LOC008_HALL|LOC014_DINING_ROOM|LOC016_BILLIARD_ROOM
+LOC016_BILLIARD_ROOM|Billiard room|billiard billiards|2|LOC014_DINING_ROOM|LOC015_MUSIC_ROOM
+LOC017_DRIVE|Main drive|drive outside|5|LOC008_HALL|LOC018_EAST_WALK|LOC012_WEST_WALK|LOC020_WEST_LAWN|LOC021_STABLES
+LOC018_EAST_WALK|East walk|east walk|5|LOC011_MAZE|LOC017_DRIVE|LOC021_STABLES|LOC022_EAST_LAWN|LOC023_GAMEKEEPERS_COTTAGE
+LOC019_SUMMER_HOUSE|Summer house|summer house summerhouse|2|LOC012_WEST_WALK|LOC020_WEST_LAWN
+LOC020_WEST_LAWN|West lawn|west lawn|3|LOC017_DRIVE|LOC012_WEST_WALK|LOC019_SUMMER_HOUSE
+LOC021_STABLES|Stables|stables|3|LOC017_DRIVE|LOC018_EAST_WALK|LOC022_EAST_LAWN
+LOC022_EAST_LAWN|East lawn|east lawn|3|LOC011_MAZE|LOC021_STABLES|LOC023_GAMEKEEPERS_COTTAGE
+LOC023_GAMEKEEPERS_COTTAGE|Gamekeeper's cottage|gamekeeper cottage|2|LOC018_EAST_WALK|LOC022_EAST_LAWN
+LOC024_MILLICENT_BEDROOM|Millicent's bedroom|millicent bedroom|2|LOC025_LANDING|LOC027_MASTER_BEDROOM
+LOC025_LANDING|Upstairs landing|upstairs landing|6|LOC001_BATHROOM|LOC024_MILLICENT_BEDROOM|LOC028_MORNING_ROOM|LOC026_SERVANTS_QUARTERS|LOC008_HALL|LOC029_GUEST_ROOM
+LOC026_SERVANTS_QUARTERS|Servants' quarters|servant servants quarters|1|LOC025_LANDING
+LOC027_MASTER_BEDROOM|Master bedroom|master bedroom|3|LOC025_LANDING|LOC024_MILLICENT_BEDROOM|LOC028_MORNING_ROOM
+LOC028_MORNING_ROOM|Morning room|morning|3|LOC025_LANDING|LOC027_MASTER_BEDROOM|LOC030_SECOND_GUEST_ROOM
+LOC029_GUEST_ROOM|Guest room|guest|1|LOC025_LANDING
+LOC030_SECOND_GUEST_ROOM|Second guest room|second guest|1|LOC028_MORNING_ROOM
+
+!additional_exits
+# from_loc_id | pattern | to_loc_id
+LOC017_DRIVE|hall house manor inside in|LOC008_HALL
+LOC008_HALL|outside out|LOC017_DRIVE
+LOC003_KITCHEN_GARDEN|hall house manor inside in|LOC009_KITCHEN
+LOC009_KITCHEN|outside out|LOC003_KITCHEN_GARDEN
+LOC006_TERRACE|hall house manor inside in window|LOC007_COLONELS_STUDY
+LOC007_COLONELS_STUDY|outside out window|LOC006_TERRACE
+LOC025_LANDING|down downstairs|LOC008_HALL
+LOC008_HALL|up upstairs|LOC025_LANDING
+
+!objects
+# id | name | pattern | location | flag | weight
+# flag = 1 -> takeable
+# flag = 2 -> person
+P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC028_MORNING_ROOM|2|100
+P_MILLICENT_DARNLEY|Millicent Darnley|millicent|LOC013_LOUNGE|2|100
+P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC015_MUSIC_ROOM|2|100
+P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers|LOC016_BILLIARD_ROOM|2|100
+P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|billingsgate butler|LOC010_BUTLERS_PANTRY|2|100
+P_MILDRED_GOODBODY|Mildred Goodbody|goodbody cook|LOC009_KITCHEN|2|100
+P_NORAH_BAGSBY|Norah Bagsby|bagsby maid|LOC026_SERVANTS_QUARTERS|2|100
+P_RONALD_MELLORS|Ronald Mellors|mellors gamekeeper|LOC023_GAMEKEEPERS_COTTAGE|2|100
+P_CHESTER_CAT|Cat|cat ginger chester|LOC021_STABLES|2|100
+P_THE_BODY|Colonel Darnley's body|colonel darnley body|LOC007_COLONELS_STUDY|2|100
+P_POLICE_CONSTABLE|Police Constable|police constable policeman bobby|LOC017_DRIVE|2|100
+OBJ201_POND|Pond|pond|LOC005_ORNAMENTAL_POND|0|100
+OBJ202_SUNKEN_STATUE|Sunken statue|sunken statue|LOC005_ORNAMENTAL_POND|0|100
+OBJ203_REVOLVER|Revolver|revolver gun|LOC005_ORNAMENTAL_POND|1|1
+OBJ204_STATUES|Marble statues|statue statues|LOC005_ORNAMENTAL_POND|0|100
+OBJ205_FOOTPRINTS_POND|Footprints|footprints bootprints shoeprints prints|LOC005_ORNAMENTAL_POND|0|100
+OBJ206_SLIPPERS|Slippers|slippers|LOC029_GUEST_ROOM|1|1
+OBJ207_CIGARETTES|Cigarettes|cigarette|LOC029_GUEST_ROOM|1|1
+OBJ208_KNIFE|Knife|knife|LOC009_KITCHEN|1|1
+OBJ209_BOOTS|Boots|boots|LOC009_KITCHEN|1|1
+OBJ212_FOOTPRINTS_KG|Footprints|shoeprints|LOC003_KITCHEN_GARDEN|0|100
+OBJ213_BED_MASTER|Bed|bed|LOC027_MASTER_BEDROOM|0|100
+OBJ214_WARDROBE|Wardrobe|wardrobe|LOC027_MASTER_BEDROOM|0|100
+OBJ215_CIGARS|Cigars|cigar|LOC027_MASTER_BEDROOM|1|1
+OBJ216_DRESSING_TABLE|Dressing Table|dressing table|LOC027_MASTER_BEDROOM|0|100
+OBJ217_SHOES|Shoes|shoes|LOC027_MASTER_BEDROOM|1|1
+OBJ219_CORRESPONDENCE|Correspondence|correspondence|LOC026_SERVANTS_QUARTERS|1|1
+OBJ220_PHOTOGRAPHS|Photographs|photographs|LOC026_SERVANTS_QUARTERS|1|1
+OBJ221_SUIT|Suit|suit|LOC026_SERVANTS_QUARTERS|1|1
+OBJ222_NEWSPAPER|Newspaper|newspaper|LOC026_SERVANTS_QUARTERS|1|1
+OBJ223_PIPE|Pipe|pipe|LOC026_SERVANTS_QUARTERS|1|1
+OBJ224_BOOKSHELF|Bookshelf|bookshelf books|LOC010_BUTLERS_PANTRY|0|100
+OBJ225_FRENCH_WINDOW_TERRACE|French Window|french window|LOC006_TERRACE|0|100
+OBJ226_FOOTPRINTS_TERRACE|Footprints|footprints bootprints shoeprints prints|LOC006_TERRACE|0|100
+OBJ228_PORT_GLASS|Port glass|port glass|LOC007_COLONELS_STUDY|1|1
+OBJ229_TANTALUS|Tantalus of port|tantalus port|LOC007_COLONELS_STUDY|1|1
+OBJ230_LETTER|Letter|letter|LOC007_COLONELS_STUDY|1|1
+OBJ231_GUN_RACK|Gun rack|gun rack guns cabinet|LOC007_COLONELS_STUDY|0|100
+OBJ232_FRENCH_WINDOW_STUDY|French Window|french window|LOC007_COLONELS_STUDY|0|100
+OBJ233_SHATTERED_GLASS|Shattered glass|shattered glass|LOC007_COLONELS_STUDY|0|100
+OBJ234_GRAMOPHONE|Gramophone|gramophone|LOC028_MORNING_ROOM|0|100
+OBJ235_PIANO_MORNING|Piano|piano|LOC028_MORNING_ROOM|0|100
+OBJ236_DISPLAY_CASE|Display case|display case|LOC008_HALL|0|100
+OBJ237_FOOTPRINTS_WW|Footprints|footprints bootprints shoeprints prints|LOC012_WEST_WALK|0|100
+OBJ238_CIGAR_STUB|Cigar stub|cigar stub|LOC015_MUSIC_ROOM|1|1
+OBJ239_PIANO_MUSIC|Piano|piano|LOC015_MUSIC_ROOM|0|100
+OBJ240_WINE_GLASSES|Wine glasses|wine glass glasses|LOC016_BILLIARD_ROOM|0|1
+OBJ241_ASHTRAY|Ashtray|ashtray|LOC016_BILLIARD_ROOM|1|1
+OBJ243_FOOTPRINTS_DRIVE|Footprints|footprints bootprints shoeprints prints|LOC017_DRIVE|0|0
+OBJ244_FOOTPRINTS_EW|Footprints|footprints bootprints shoeprints prints|LOC018_EAST_WALK|0|0
+OBJ245_CIGARETTE_ENDS_SH|Cigarette ends|cigarette end ends|LOC019_SUMMER_HOUSE|1|1
+OBJ246_HANDKERCHIEF|Handkerchief|handkerchief|LOC019_SUMMER_HOUSE|1|1
+OBJ247_FOOTPRINTS_WL|Footprints|footprints bootprints shoeprints prints|LOC020_WEST_LAWN|0|0
+OBJ248_FOOTPRINTS_ST|Footprints|footprints bootprints shoeprints prints|LOC021_STABLES|0|0
+OBJ249_FOOTPRINTS_EL|Footprints|footprints bootprints shoeprints prints|LOC022_EAST_LAWN|0|0
+OBJ250_CIGARETTE_ENDS_GC|Cigarette ends|cigarette end ends|LOC023_GAMEKEEPERS_COTTAGE|1|1
+OBJ251_ARMOUR|Armour|armour|LOC008_HALL|0|100
+OBJ252_DOORMAT|Doormat|doormat door mat|LOC008_HALL|0|1
+OBJ253_CHEROOT_BUTT|Cheroot butt|cheroot cigar butt|LOC005_ORNAMENTAL_POND|1|1
+OBJ254_MUSIC_ROOM_ASHTRAY|Brass ashtray|brass ashtray|LOC015_MUSIC_ROOM|1|1
+OBJ255_ROOK|Rook|bird crow rook|LOC022_EAST_LAWN|2|100
+OBJ256_SHOTGUNS|Shotguns|guns shotgun shotguns|LOC023_GAMEKEEPERS_COTTAGE|1|1
+OBJ257_STACKED_FURNITURE|Stacked furniture|stacked furniture|LOC008_HALL|0|100
+OBJ258_BRANCH|Broken branch|branch|LOC005_ORNAMENTAL_POND|1|1
+OBJ259_HORSE|Horse|horse bay hunter|LOC021_STABLES|2|100
+OBJ260_DAIMLER|Daimler|daimler car motor saloon|LOC021_STABLES|0|100
+OBJ261_POLICE_CAR|Police Car|police car saloon|LOC017_DRIVE|0|100
+OBJ262_FOOTPRINTS_SH|Footprints|footprints bootprints shoeprints prints|LOC019_SUMMER_HOUSE|0|0
+
+!synonyms
+arthur|coniston|arthurs|conistons
+bagsby|bagsbys|norah|norahs
+billingsgate|billingsgates|arnold|arnolds
+bootprints|boot-prints
+butler|butlers
+cigar|cigars
+cigarette|cigarettes
+cheroot|cheroots
+corroborate|coroborate
+colonel|colonels|sebastian|sebastians
+darnley|darnleys
+dismissal|dismissed|notice|fired|sacked|sack
+doormat|door-mat
+engagement|engaged
+flatfooted|flat-footed
+footprints|foot-prints
+gamekeeper|gamekeepers|game-keeper|game-keepers|keeper|keepers
+goodbody|goodbodys|mildred|mildreds
+gramophone|gramaphone
+handkerchief|handkerchiefs|hankerchief|hankerchiefs|hanky|hankys
+hobnailed|hob-nailed
+maid|housemaid
+marriage|marry|married|marrying
+mellors|mellorss|ronald|ronalds
+millicent|milicent|millicents|milicents
+money|finance|finances|financial|business|shares|debt|debts
+murder|murdered|kill|killed
+murderer|killer
+photographs|photos
+prints|marks|tracks
+redvers|redverss|slingsby|slingsbys
+revolver|pistol
+sarah|sara|sarahs|saras
+servant|servants
+shoeprints|shoe-prints
+where|wheres
+womens|ladys|womans
+yourself|your
+
+!questions
+# id | result matches...
+Q_1|mellors|gamekeeper
+Q_2|sarah
+Q_3|gramophone|record
+Q_4|pond
+Q_5|c
+Q_6|garden|outside|exterior
+Q_7|big|large
+Q_8|door|slam|slamming
+Q_9|terrace
+Q_10|stone|rock
+Q_11|arthur
+Q_12|redvers
+Q_13|+millicent +(marriage/engagement)
+
+!clues
+cigarettes
+handkerchief
+gramophone
+x_revolver
+butt
+boots
+letter
+newspaper
