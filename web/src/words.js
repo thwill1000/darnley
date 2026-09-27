@@ -67,3 +67,71 @@ export function removePadding(words) {
   const padding = new Set(['of', 'the', 'to']);
   return words.filter((w) => !padding.has(w));
 }
+
+/**
+ * Resolves each word in words against a list of synonym entries, replacing
+ * any word that matches one of an entry's aliases (or its own canonical
+ * form) with that entry's canonical form. Mirrors apply_synonyms() in
+ * mmbasic/src/adventlib.inc.
+ *
+ * Matching is case-sensitive, matching the MMBasic original (which
+ * compares words$() - already lower-cased by split_words%() - directly
+ * against the synonym data, itself stored lower-case, with no further
+ * case-folding). If a word matches more than one entry, the FIRST
+ * matching entry wins (lowest index in synonymEntries), same as the
+ * MMBasic inner-loop-exits-early behaviour. A word matching only a
+ * substring of an alias (not the whole token) must not match - callers
+ * pass whole tokens, so this falls out naturally from exact comparison.
+ *
+ * Processing stops at the first "" (empty string) element of words, if
+ * any - this mirrors the MMBasic original's fixed-size-array convention
+ * where "" marks the end of meaningful data; ordinary token arrays
+ * produced by splitWords() never contain "" and so are unaffected.
+ *
+ * @param {string[]} words
+ * @param {{canonical: string, aliases: string[]}[]} synonymEntries
+ * @returns {string[]} A new array; words is not mutated.
+ */
+export function applySynonyms(words, synonymEntries) {
+  const result = [];
+  for (const word of words) {
+    if (word === '') break;
+    let replaced = word;
+    for (const entry of synonymEntries) {
+      if (word === entry.canonical || entry.aliases.includes(word)) {
+        replaced = entry.canonical;
+        break;
+      }
+    }
+    result.push(replaced);
+  }
+  return result;
+}
+
+/**
+ * Builds a pipe-delimited, lower-case match-input string from a range of
+ * words, applying synonym resolution first. Mirrors make_match_input$()
+ * in mmbasic/src/adventlib.inc - the string form findMatches() (added in
+ * step 8) expects, e.g. "|cat|dog|bird|".
+ *
+ * @param {string[]} words
+ * @param {{canonical: string, aliases: string[]}[]} synonymEntries
+ * @param {number} [startIndex]  First index (inclusive) to include;
+ *                               defaults to 0 (start of the array).
+ * @param {number} [endIndex]    Last index (inclusive) to include;
+ *                               defaults to words.length - 1 (end of the
+ *                               array).
+ * @returns {string} e.g. "|cat|dog|", or "|" for an empty range.
+ */
+export function makeMatchInput(words, synonymEntries, startIndex, endIndex) {
+  const resolved = applySynonyms(words, synonymEntries);
+  const start = startIndex ?? 0;
+  const end = endIndex ?? words.length - 1;
+
+  let result = '|';
+  for (let i = start; i <= end && i < resolved.length; i++) {
+    if (resolved[i] === '') break;
+    result += resolved[i].toLowerCase() + '|';
+  }
+  return result;
+}
