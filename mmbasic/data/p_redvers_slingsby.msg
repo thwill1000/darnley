@@ -23,7 +23,23 @@ cigarette cigar cheroot smoking smoked smokes
 room."
 
 revolver
-"Never seen it before - I keep to my own guns, back home."
+!requires x_revolver x_gunrack
+"The missing one from Darnley's own cabinet, is it? Damned odd place to find
+it. Still never seen the thing before in my life."
+
+revolver
+!requires x_revolver
+"Never seen it before, wherever you dredged it up from."
+
+revolver
+!requires x_gunrack
+"One gone from his rack? Didn't notice, and I wouldn't have - not my
+business what a man keeps in his own study."
+
+(revolver/gun)
+"Darnley kept a small arsenal in that study cabinet of his - revolvers,
+rifles, the usual thing for a man of his sort. I keep my own guns at home,
+nothing here belongs to me."
 
 +statue missing
 "No idea whatsoever. Something about a tramp, so I'm told - servants'

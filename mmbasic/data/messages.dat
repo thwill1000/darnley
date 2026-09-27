@@ -64,12 +64,13 @@ a [[green:French window]] into the [[green:Colonel's Study]], and south the
 
 LOC007_COLONELS_STUDY
 [[green:Colonel Darnley's body]] lies upon a turkish carpet, a [[green:port glass]]
-beside it. A [[green:tantalus]] of decanters stands on the table, and a [[green:letter]] rests upon
-the writing desk. A [[green:gun rack]] displays sporting
-pieces, one notably absent. A [[green:French window]] in the west wall bears
-a jagged hole; [[green:shattered glass]] litters the floor. A
-[[green:Paved terrace]] lies beyond the window, otherwise doors lead to the
-[[green:Hall]] and the [[green:Lounge]].
+beside it. A [[green:tantalus]] of decanters stands on the table,
+and a [[green:letter]] rests upon the writing desk. Mounted on the wall there
+is a [[green:gun rack]] displaying sporting rifles and revolvers.
+A [[green:French window]] in the west wall bears a jagged hole;
+[[green:shattered glass]] litters the floor. A [[green:Paved terrace]] lies
+beyond the window, otherwise doors lead to the [[green:Hall]] and the
+[[green:Lounge]].
 
 LOC008_HALL
 A heavy oak front door with polished brass fittings stands at one end of
@@ -505,6 +506,7 @@ The letter is an incomplete draft: "Dear Sir, I have considered your
 monstrous suggestion and find I cannot..."
 
 OBJ231_GUN_RACK
+!provides x_gunrack new_clue
 This mahogany rack is mounted on the study wall and displays sporting rifles and
 revolvers. It is a fine piece of craftsmanship with brass fittings and glass
 panels. A pair of decorative revolvers with engraved grips should be present,

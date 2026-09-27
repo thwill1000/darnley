@@ -59,7 +59,7 @@ P_THE_BODY|Colonel Darnley's body|colonel darnley body|LOC007_COLONELS_STUDY|2|1
 P_POLICE_CONSTABLE|Police Constable|police constable policeman bobby|LOC017_DRIVE|2|100
 OBJ201_POND|Pond|pond|LOC005_ORNAMENTAL_POND|0|100
 OBJ202_SUNKEN_STATUE|Sunken statue|sunken statue|LOC005_ORNAMENTAL_POND|0|100
-OBJ203_REVOLVER|Revolver|revolver gun|LOC005_ORNAMENTAL_POND|1|1
+OBJ203_REVOLVER|Revolver|gun revolver|LOC005_ORNAMENTAL_POND|1|1
 OBJ204_STATUES|Marble statues|statue statues|LOC005_ORNAMENTAL_POND|0|100
 OBJ205_FOOTPRINTS_POND|Footprints|footprints bootprints shoeprints prints|LOC005_ORNAMENTAL_POND|0|100
 OBJ206_SLIPPERS|Slippers|slippers|LOC029_GUEST_ROOM|1|1
@@ -83,7 +83,7 @@ OBJ226_FOOTPRINTS_TERRACE|Footprints|footprints bootprints shoeprints prints|LOC
 OBJ228_PORT_GLASS|Port glass|port glass|LOC007_COLONELS_STUDY|1|1
 OBJ229_TANTALUS|Tantalus of port|tantalus port|LOC007_COLONELS_STUDY|1|1
 OBJ230_LETTER|Letter|letter|LOC007_COLONELS_STUDY|1|1
-OBJ231_GUN_RACK|Gun rack|gun rack guns|LOC007_COLONELS_STUDY|0|100
+OBJ231_GUN_RACK|Gun rack|gun rack cabinet|LOC007_COLONELS_STUDY|0|100
 OBJ232_FRENCH_WINDOW_STUDY|French Window|french window|LOC007_COLONELS_STUDY|0|100
 OBJ233_SHATTERED_GLASS|Shattered glass|shattered glass|LOC007_COLONELS_STUDY|0|100
 OBJ234_GRAMOPHONE|Gramophone|gramophone|LOC028_MORNING_ROOM|0|100
@@ -107,7 +107,7 @@ OBJ252_DOORMAT|Doormat|doormat door mat|LOC008_HALL|0|1
 OBJ253_CHEROOT_BUTT|Cheroot butt|cheroot cigar butt|LOC005_ORNAMENTAL_POND|1|1
 OBJ254_MUSIC_ROOM_ASHTRAY|Brass ashtray|brass ashtray|LOC015_MUSIC_ROOM|1|1
 OBJ255_ROOK|Rook|bird crow rook|LOC022_EAST_LAWN|2|100
-OBJ256_SHOTGUNS|Shotguns|guns shotgun shotguns|LOC023_GAMEKEEPERS_COTTAGE|1|1
+OBJ256_SHOTGUNS|Shotguns|gun revolver|LOC023_GAMEKEEPERS_COTTAGE|1|1
 OBJ257_STACKED_FURNITURE|Stacked furniture|stacked furniture|LOC008_HALL|0|100
 OBJ258_BRANCH|Broken branch|branch|LOC005_ORNAMENTAL_POND|1|1
 OBJ259_HORSE|Horse|horse bay hunter|LOC021_STABLES|2|100
@@ -135,6 +135,7 @@ footprints|foot-prints
 gamekeeper|gamekeepers|game-keeper|game-keepers|keeper|keepers
 goodbody|goodbodys|mildred|mildreds
 gramophone|gramaphone
+gun|guns|shotgun|shotguns|rifle|rifles
 handkerchief|handkerchiefs|hankerchief|hankerchiefs|hanky|hankys
 hobnailed|hob-nailed
 maid|housemaid
@@ -147,7 +148,7 @@ murderer|killer
 photographs|photos
 prints|marks|tracks
 redvers|redverss|slingsby|slingsbys
-revolver|pistol
+revolver|revolvers|pistol|pistols
 sarah|sara|sarahs|saras
 servant|servants
 shoeprints|shoe-prints
@@ -180,3 +181,4 @@ x_cheroot_butt
 x_boots
 x_letter
 x_newspaper
+x_gunrack

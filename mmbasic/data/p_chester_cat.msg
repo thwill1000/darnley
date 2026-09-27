@@ -27,7 +27,7 @@ somewhere and turns pointedly away.]]@
 @
 "Hssst."
 
-revolver | shotgun | gun
+(revolver/gun)
 [[reset:He shows no interest, guns not being a stable-cat's concern.]]@
 @
 "Mrrp."

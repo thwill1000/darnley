@@ -22,8 +22,24 @@ cigarette cigar cheroot smoking smoked smokes
 "I don't smoke. Colonel Darnley smoked cigars."
 
 revolver
-"It belongs to the master and was kept in the study. The study is
-normally unlocked and it could have been removed at any time."
+!requires x_revolver x_gunrack
+"Yes, sir - that will be the one missing from the Colonel's rack, unless I'm
+much mistaken. I couldn't tell you how it came to be in the pond."
+
+revolver
+!requires x_revolver
+"I couldn't say how it came to be there, sir, only that it belongs to the
+master, kept in the study."
+
+revolver
+!requires x_gunrack
+"I had noticed one of the pair was missing from the rack, sir, though I
+couldn't say when it went, or by whose hand."
+
+(revolver/gun)
+"The master kept a cabinet of sporting guns in the study, sir - revolvers
+and rifles both. Mr. Mellors keeps a pair of shotguns down at the cottage
+for his work. I'm not aware of any others in the house."
 
 +statue missing
 "Mr. Mellors told me that a tramp pitched it into the pond two days ago.

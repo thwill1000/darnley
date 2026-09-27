@@ -22,8 +22,24 @@ cigarette cigar cheroot smoking smoked smokes
 "I don't smoke. Colonel Darnley smoked cigars."
 
 revolver
-"A gun? Bless you, no, dear, I wouldn't know one end of it from the
-other. Guns are for the gentlemen and Mr. Mellors, not the kitchen."
+!requires x_revolver x_gunrack
+"That's the one missing from the master's own rack, dear, so I'm told. Still
+wouldn't know one end of it from the other, mind."
+
+revolver
+!requires x_revolver
+"I couldn't tell you how a gun came to be in that pond, dear. Not my
+department at all."
+
+revolver
+!requires x_gunrack
+"One missing from the study, dear? News to me. I don't go poking about in
+there."
+
+(revolver/gun)
+"Guns, dear? There's the master's cabinet in the study, and Mr. Mellors
+keeps his shotguns down at the cottage for the vermin. Nothing in my
+kitchen, I can promise you that."
 
 +statue missing
 "Mr. B. told me a tramp threw it into the pond. There was a smelly
