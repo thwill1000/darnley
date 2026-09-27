@@ -1,7 +1,8 @@
 // ui.js
 //
-// The transcript pane and input line making up the browser UI shell -
-// see step 18 of web/docs/2026-09-23-web-port-plan-steps.md.
+// The transcript pane, input line, and location image panel making up
+// the browser UI shell - see step 18 (transcript/input) and step 20
+// (image panel) of web/docs/2026-09-23-web-port-plan-steps.md.
 //
 // Loosely mirrors what con.in$()/con.readln$() do in
 // mmbasic/src/console.inc: print a prompt, then wait for a line of
@@ -27,14 +28,27 @@
 //  - word-wrap and [MORE] paging (con.flush()/con.show_more_prompt()) -
 //    the browser wraps text on its own and the transcript simply
 //    scrolls, per the plan's console.js scope notes.
+//
+// Image panel (step 20): setImage(locationId, label) mirrors the
+// graphics half of describe_loc() in mmbasic/src/adventlib.inc (the
+// Load Jpg call), showing the location's picture. Real downscaled
+// artwork under web/images/ is a later step (27) of the port plan - "step
+// 20 can use placeholder colour blocks until this lands" - so this tries
+// `images/<locationId>.webp` first and falls back to a deterministically
+// coloured placeholder <div> (labelled with the location's name) if that
+// image 404s or otherwise fails to load. The image panel is optional:
+// passing no imageEl (or none found in the DOM) simply makes setImage() a
+// no-op, so this stays usable in contexts - like the existing UI tests -
+// that don't set up an image element.
 
 const DEFAULT_TRANSCRIPT_ID = 'transcript';
 const DEFAULT_INPUT_ID = 'command-input';
 const DEFAULT_PROMPT_ID = 'prompt';
+const DEFAULT_IMAGE_ID = 'location-image';
 
 /**
  * Creates a UI instance bound to elements already present in the DOM
- * (see index.html's #transcript/#command-input/#prompt).
+ * (see index.html's #transcript/#command-input/#prompt/#location-image).
  *
  * @param {Object} [options]
  * @param {Element} [options.transcript]  Defaults to
@@ -43,13 +57,16 @@ const DEFAULT_PROMPT_ID = 'prompt';
  *                                            document.getElementById('command-input').
  * @param {Element} [options.prompt]  Defaults to
  *                                    document.getElementById('prompt').
+ * @param {Element} [options.image]  Defaults to
+ *                                   document.getElementById('location-image').
+ *                                   May be absent - see setImage().
  * @param {Document} [options.doc]  Defaults to the global `document`.
  *                                  Overridable so this module can be
  *                                  exercised without a real browser DOM
  *                                  (see web/tests/ui.spec.js).
  * @returns {UI}
  */
-export function createUI({ transcript, input, prompt, doc } = {}) {
+export function createUI({ transcript, input, prompt, image, doc } = {}) {
   const document_ = doc ?? (typeof document !== 'undefined' ? document : undefined);
   if (!document_) throw new Error('UI: no document available; pass options.doc explicitly');
 
@@ -58,7 +75,26 @@ export function createUI({ transcript, input, prompt, doc } = {}) {
     input ?? document_.getElementById(DEFAULT_INPUT_ID),
     prompt ?? document_.getElementById(DEFAULT_PROMPT_ID),
     document_,
+    image ?? document_.getElementById(DEFAULT_IMAGE_ID),
   );
+}
+
+/**
+ * Derives a stable, reasonably distinct HSL background colour from a
+ * location id, for the image placeholder shown before real artwork
+ * (web/images/, step 27) exists or when a specific image 404s. Pure
+ * string hash - no dependency on the id's format.
+ *
+ * @param {string} id
+ * @returns {string}  A CSS `hsl(...)` colour string.
+ */
+export function colourForId(id) {
+  let hash = 0;
+  for (let i = 0; i < id.length; i++) {
+    hash = (hash * 31 + id.charCodeAt(i)) >>> 0;
+  }
+  const hue = hash % 360;
+  return `hsl(${hue}, 35%, 28%)`;
 }
 
 export class UI {
@@ -72,9 +108,12 @@ export class UI {
    *                            readLine() is pending; cleared once the
    *                            line is submitted.
    * @param {Document} doc  Used for createElement() when building
-   *                        transcript lines.
+   *                        transcript lines and image panel content.
+   * @param {Element} [imageEl]  Container for the location image panel.
+   *                             Optional - if omitted, setImage() is a
+   *                             no-op.
    */
-  constructor(transcriptEl, inputEl, promptEl, doc) {
+  constructor(transcriptEl, inputEl, promptEl, doc, imageEl) {
     if (!transcriptEl) throw new Error('UI: transcript element not found');
     if (!inputEl) throw new Error('UI: input element not found');
     if (!promptEl) throw new Error('UI: prompt element not found');
@@ -83,6 +122,7 @@ export class UI {
     this.inputEl = inputEl;
     this.promptEl = promptEl;
     this.doc = doc;
+    this.imageEl = imageEl ?? null;
 
     this._pendingSubmit = null; // set by readLine() while a line is awaited
 
@@ -149,6 +189,43 @@ export class UI {
 
     this.transcriptEl.appendChild(container);
     this._scrollToBottom();
+  }
+
+  /**
+   * Shows the current location's image, mirroring the graphics half of
+   * describe_loc() in mmbasic/src/adventlib.inc. Tries
+   * `images/<locationId>.webp` first; if that image fails to load (404,
+   * or no image panel element configured at all), falls back to a
+   * deterministically-coloured placeholder <div> labelled with `label`
+   * (normally the location's display name) instead - see colourForId().
+   *
+   * A no-op when this UI has no image panel element (see the `image`
+   * constructor/createUI() option).
+   *
+   * @param {string} locationId  e.g. "LOC017_DRIVE".
+   * @param {string} label       Display text for the placeholder/alt text.
+   */
+  setImage(locationId, label) {
+    if (!this.imageEl) return;
+
+    this.imageEl.innerHTML = '';
+
+    const img = this.doc.createElement('img');
+    img.src = `images/${locationId}.webp`;
+    img.alt = label;
+    img.addEventListener('error', () => {
+      img.remove();
+      this._showImagePlaceholder(locationId, label);
+    });
+    this.imageEl.appendChild(img);
+  }
+
+  _showImagePlaceholder(locationId, label) {
+    const placeholder = this.doc.createElement('div');
+    placeholder.className = 'image-placeholder';
+    placeholder.style.backgroundColor = colourForId(locationId);
+    placeholder.textContent = label;
+    this.imageEl.appendChild(placeholder);
   }
 
   /**
