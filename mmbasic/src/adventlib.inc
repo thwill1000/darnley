@@ -263,7 +263,7 @@ Function parse_common(cmd$)
       Exit Function
     Case "die", "end", "exit", "q", "restart", "reset", "start"
       verb$ = "quit"
-    Case "check", "look", "search", "x"
+    Case "check", "ex", "look", "search", "x"
       verb$ = "examine"
     Case "enter", "g", "walk"
       verb$ = "go"

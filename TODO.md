@@ -1,6 +1,5 @@
 # TODO: The Sealed Room Murder (MMBasic)
 
-- Add EX as synonym of EXAMINE
 - Move potted personal history from the start of suspect's "yesterday" dialogue
 - GFX: fix ornamental pond image
 - GFX: neither decanter empty in study image
