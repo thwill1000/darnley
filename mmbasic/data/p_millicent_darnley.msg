@@ -16,9 +16,23 @@ cigarette cigar cheroot smoking smoked smokes
 "I don't smoke. My father smoked cigars."
 
 revolver
-"Daddy kept a pair of revolvers in the study cabinet, along with his
-rifles and shotguns - more for show than anything, I always thought.
-I couldn't tell you if this is one of his. I never had occasion to handle them."
+!requires x_revolver x_gunrack
+"So that's where it went. I did wonder, when I heard one of Daddy's revolvers
+was missing from the cabinet. Fished out of the pond, of all things."
+
+revolver
+!requires x_revolver
+"A revolver, in the pond? I really couldn't say how it got there."
+
+revolver
+!requires x_gunrack
+"One of Daddy's revolvers is missing from the study cabinet? I hadn't noticed,
+though I don't make a habit of looking in there."
+
+(revolver/gun)
+"Daddy has a gun cabinet in the study - revolvers and rifles, that sort
+of thing. And Mellors keeps a pair of shotguns down at his cottage, for the
+vermin. I don't know that anyone else in the house keeps a gun."
 
 +statue missing
 "Someone - I forget who - told me that a beggar had pushed it into

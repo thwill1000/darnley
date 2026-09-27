@@ -18,10 +18,25 @@ cigarette cigar cheroot smoking smoked smokes
 Coniston smokes cigarettes."
 
 revolver
-"Sebastian kept a pair of revolvers in the study, in that gun cabinet of his - I
-couldn't tell you one from the other, they all look alike to me. If
-you're asking whether I recognise this particular one, I'm afraid I
-don't."
+!requires x_revolver x_gunrack
+"That will be the one from the gun cabinet then, the missing one from the pair.
+I really can't imagine how it came to be in the pond, of all places."
+
+revolver
+!requires x_revolver
+"I don't know how a revolver came to be in the pond, of all places. I couldn't
+tell you if it's one of Sebastian's."
+
+revolver
+!requires x_gunrack
+"Sebastian kept a pair of revolvers in the study cabinet - I noticed one was
+missing when Billingsgate mentioned it. I don't know when it went, or who
+might have taken it."
+
+(revolver/gun)
+"Sebastian kept a pair of revolvers in the study, along with a rifle or two -
+sporting guns, mostly for show, I always thought. He never went shooting
+himself, not since his army days."
 
 +statue missing
 "I believe a rather nasty tramp, who called two days ago threw it

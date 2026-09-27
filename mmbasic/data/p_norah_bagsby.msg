@@ -16,8 +16,24 @@ cigarette cigar cheroot smoking smoked smokes
 "I don't smoke. Colonel Darnley smoked cigars."
 
 revolver
-"A gun? Oh, I couldn't say, sir, I've never so much as held one and
-I don't care to look at it too closely neither."
+!requires x_revolver x_gunrack
+"Oh - that's the missing one, sir, from the master's rack? I still couldn't
+tell you how it ended up in the pond, honest I couldn't."
+
+revolver
+!requires x_revolver
+"I couldn't say how it got there, sir. I don't like to look at it too
+closely."
+
+revolver
+!requires x_gunrack
+"One gone missing from the study, sir? I wouldn't know, I don't go in
+there."
+
+(revolver/gun)
+"There's guns in the master's study cabinet, sir - revolvers and rifles. I
+believe Mr. Mellors keeps shotguns too, down at his cottage. I don't go
+near any of them, honest I don't."
 
 +statue missing
 "I wasn't aware it was missing."
