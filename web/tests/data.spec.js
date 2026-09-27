@@ -9,16 +9,21 @@ import {
   parseSynonyms,
   parseQuestions,
   parseClues,
+  parseMessages,
+  renderBody,
   extractSection,
 } from '../src/data.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ADVENT_DAT_PATH = join(__dirname, '..', 'data', 'advent.dat');
+const MESSAGES_DAT_PATH = join(__dirname, '..', 'data', 'messages.dat');
 
 let adventText;
+let messagesText;
 
 beforeAll(() => {
   adventText = readFileSync(ADVENT_DAT_PATH, 'utf8');
+  messagesText = readFileSync(MESSAGES_DAT_PATH, 'utf8');
 });
 
 describe('extractSection()', () => {
@@ -206,5 +211,100 @@ describe('parseClues()', () => {
       'letter',
       'newspaper',
     ]);
+  });
+});
+
+describe('parseMessages()', () => {
+  it('parses 122 unique tags, ~124 entries total (a few tags have more than one entry)', () => {
+    const messages = parseMessages(messagesText);
+    expect(messages.size).toBe(122);
+    let totalEntries = 0;
+    for (const entries of messages.values()) totalEntries += entries.length;
+    expect(totalEntries).toBe(124);
+  });
+
+  it('parses INTRO as a single entry with no directives', () => {
+    const messages = parseMessages(messagesText);
+    const entries = messages.get('INTRO');
+    expect(entries).toHaveLength(1);
+    expect(entries[0].requires).toEqual([]);
+    expect(entries[0].provides).toEqual([]);
+    expect(entries[0].body).toHaveLength(23);
+  });
+
+  it('round-trips INTRO through renderBody() to its expected multi-paragraph text', () => {
+    const messages = parseMessages(messagesText);
+    const [entry] = messages.get('INTRO');
+
+    const expected = [
+      "You have been summoned to Darnley Park one winter's day to investigate the murder of Colonel Sebastian Darnley at some time the previous evening.",
+      '',
+      'The suspects are:',
+      '',
+      "  [[green:Sarah Darnley]]        - the deceased's wife",
+      "  [[green:Millicent Darnley]]    - the deceased's daughter",
+      '  [[green:Arthur Coniston]]      - fiance of Millicent',
+      '  [[green:Sir Redvers Slingsby]] - friend of the deceased',
+      '  [[green:Arnold Billingsgate]]  - butler',
+      '  [[green:Mildred Goodbody]]     - cook',
+      '  [[green:Norah Bagsby]]         - housemaid',
+      '  [[green:Ronald Mellors]]       - gamekeeper',
+      '',
+      "You are free to search the house and grounds and to question the suspects. Examination of the scene and skillful interrogation will yield sufficient information to solve the mystery. And mystery it is! The body of Colonel Darnley was found in his study, the doors and window of which were all locked from the inside. The only keys were in the possession of the Colonel and his faithful butler.",
+      '',
+      '[[green:How could the sealed-room murder be committed?]]',
+    ].join('\n');
+
+    expect(renderBody(entry.body)).toBe(expected);
+  });
+
+  it('parses a "!provides"-only entry (OBJ201_POND)', () => {
+    const messages = parseMessages(messagesText);
+    const [entry] = messages.get('OBJ201_POND');
+    expect(entry.requires).toEqual([]);
+    expect(entry.provides).toEqual(['x_pond']);
+  });
+
+  it('parses both "!requires" and "!provides" together (OBJ203_REVOLVER)', () => {
+    const messages = parseMessages(messagesText);
+    const [entry] = messages.get('OBJ203_REVOLVER');
+    expect(entry.requires).toEqual(['x_pond']);
+    expect(entry.provides).toEqual(['x_revolver', 'new_clue']);
+  });
+
+  it('keeps multiple entries for the same tag, in file order (OBJ202_SUNKEN_STATUE)', () => {
+    const messages = parseMessages(messagesText);
+    const entries = messages.get('OBJ202_SUNKEN_STATUE');
+    expect(entries).toHaveLength(2);
+    expect(entries[0].requires).toEqual(['x_pond']);
+    expect(entries[0].provides).toEqual(['x_statue']);
+    expect(entries[1].requires).toEqual([]);
+    expect(entries[1].provides).toEqual([]);
+  });
+
+  it('keeps a gated entry and its unconditional fallback distinct (OBJ259_HORSE_SAY_RESPONSE)', () => {
+    const messages = parseMessages(messagesText);
+    const entries = messages.get('OBJ259_HORSE_SAY_RESPONSE');
+    expect(entries).toHaveLength(2);
+    expect(entries[0].requires).toEqual(['horse_talked']);
+    expect(entries[1].provides).toEqual(['horse_talked']);
+  });
+});
+
+describe('renderBody()', () => {
+  it('joins a single-line body with no trailing newline', () => {
+    expect(renderBody(['Plain text.'])).toBe('Plain text.');
+  });
+
+  it('joins consecutive lines with a single space', () => {
+    expect(renderBody(['one', 'two', 'three'])).toBe('one two three');
+  });
+
+  it('forces a hard break at a line ending in "@", stripping the "@"', () => {
+    expect(renderBody(['first@', 'second'])).toBe('first\nsecond');
+  });
+
+  it('renders a lone "@" line as a blank line', () => {
+    expect(renderBody(['first@', '@', 'second'])).toBe('first\n\nsecond');
   });
 });
