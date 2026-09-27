@@ -5,7 +5,7 @@ import { dirname, join } from 'node:path';
 import { parseMsgFile, renderBody } from '../src/data.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const FIXTURE_PATH = join(__dirname, '..', 'data', 'p_test_suspect.msg');
+const FIXTURE_PATH = join(__dirname, 'data', 'p_test_suspect.msg');
 
 let text;
 
