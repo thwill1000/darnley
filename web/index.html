@@ -8,14 +8,13 @@
 </head>
 <body>
   <div id="app">
+    <div id="location-image"></div>
     <div id="transcript" role="log" aria-live="polite"></div>
     <div id="input-line">
       <span id="prompt"></span>
       <input id="command-input" type="text" autocomplete="off" spellcheck="false" disabled>
     </div>
   </div>
-  <!-- main.js (the async game loop) wires ui.js up to the engine in a
-       later step of the web port plan - see step 19 of
-       web/docs/2026-09-23-web-port-plan-steps.md. -->
+  <script type="module" src="src/main.js"></script>
 </body>
 </html>
