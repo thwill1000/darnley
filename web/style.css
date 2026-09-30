@@ -1,7 +1,6 @@
 /* Styles for the location image panel, transcript pane and input line -
    see ui.js (steps 18 and 20 of web/docs/2026-09-23-web-port-plan-steps.md).
-   This is a functional first pass only; splash/end screens and a
-   dedicated mobile layout pass come later in the port plan. */
+   The mobile layout pass (step 29) is the media queries at the end. */
 
 html, body {
   height: 100%;
@@ -10,13 +9,18 @@ html, body {
   color: #ccc;
   font-family: 'Courier New', Courier, monospace;
   font-size: 16px;
+  -webkit-text-size-adjust: 100%;
 }
 
 #app {
   display: flex;
   flex-direction: column;
   height: 100%;
+  height: 100dvh; /* excludes the on-screen keyboard / browser chrome */
   padding: 0.5em 1em;
+  padding-left: max(1em, env(safe-area-inset-left));
+  padding-right: max(1em, env(safe-area-inset-right));
+  padding-bottom: max(0.5em, env(safe-area-inset-bottom));
   box-sizing: border-box;
 }
 
@@ -54,6 +58,8 @@ html, body {
 #transcript {
   flex: 1 1 auto;
   overflow-y: auto;
+  min-height: 0;
+  -webkit-overflow-scrolling: touch;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
@@ -78,6 +84,8 @@ html, body {
 
 #command-input {
   flex: 1 1 auto;
+  min-width: 0;
+  font-size: 16px; /* anything smaller makes iOS zoom in on focus */
   background: transparent;
   border: none;
   outline: none;
@@ -100,3 +108,38 @@ html, body {
 .colour-black { color: #666; }
 .colour-white { color: #eee; }
 .colour-reset { color: inherit; }
+
+/* Mobile layout (step 29). */
+@media (max-width: 600px) {
+  #app {
+    padding-top: 0.25em;
+  }
+
+  #location-image {
+    height: 30vh;
+    height: 30dvh;
+    margin-bottom: 0.25em;
+  }
+
+  #transcript {
+    font-size: 15px;
+  }
+
+  #input-line {
+    padding: 0.6em 0;
+  }
+}
+
+/* Short viewports (phones in landscape, or with the keyboard open). */
+@media (max-height: 500px) {
+  #location-image {
+    height: 25vh;
+    height: 25dvh;
+  }
+}
+
+@media (max-height: 360px) {
+  #location-image {
+    display: none;
+  }
+}
