@@ -134,6 +134,14 @@ export async function startGame(ui) {
 
   let redescribe = true;
 
+  // Splash: the image panel shows SPLASH_SCREEN alongside the intro and
+  // help text, until the first location is described.
+  ui.setImage('SPLASH_SCREEN', TITLE);
+  ui.printSegments(introSegments(gameData.messages, state));
+  ui.printSegments(messageSegments(gameData.messages, 'HELP_TEXT', state));
+  ui.printLine('');
+  await ui.readLine('Press ENTER to begin. ');
+
   for (;;) {
     if (redescribe) {
       const location = locationById(gameData.locations, state.room);

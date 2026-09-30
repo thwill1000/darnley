@@ -155,7 +155,7 @@ export async function handleNewAccusation(gameData, state, ui, rng = Math.random
     ui.printLine('');
     ui.printSegments(messageSegments(messages, 'WHAT_REALLY_HAPPENED', state));
     ui.printLine('');
-    ui.setImage('END_SCREEN', 'THE END'); // real end screen: step 28
+    ui.setImage('END_SCREEN', 'THE END');
     ui.printSegments([{ text: 'THE END', colour: 'red' }]);
     return { quit: true };
   }
