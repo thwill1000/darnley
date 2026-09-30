@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { handleNewClue } from '../src/clues.js';
 import { createState } from '../src/state.js';
-import { VERB_HANDLERS, dumpText } from '../src/verbs.js';
+import { VERB_HANDLERS, dumpText, fakeExitTag } from '../src/verbs.js';
 
 const OBJECTS = [
   { id: 'OBJ001', pattern: 'handkerchief', location: 'LOC001' },
@@ -117,5 +117,18 @@ describe('VERB_HANDLERS.examine', () => {
 
     expect(state.flags.has('x_handkerchief')).toBe(true);
     expect(state.flags.has('new_clue')).toBe(true);
+  });
+});
+
+describe('fakeExitTag()', () => {
+  it('blocks Kitchen -> Hall', () => {
+    expect(fakeExitTag('LOC009_KITCHEN', 'LOC008_HALL')).toBe('KITCHEN_TO_HALL');
+  });
+  it('blocks Morning room -> Second guest room', () => {
+    expect(fakeExitTag('LOC028_MORNING_ROOM', 'LOC030_SECOND_GUEST_ROOM')).toBe('MORNING_ROOM_TO_GUEST_ROOM');
+  });
+  it('allows other moves, including the reverse directions', () => {
+    expect(fakeExitTag('LOC008_HALL', 'LOC009_KITCHEN')).toBeNull();
+    expect(fakeExitTag('LOC025_LANDING', 'LOC030_SECOND_GUEST_ROOM')).toBeNull();
   });
 });

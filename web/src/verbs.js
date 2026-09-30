@@ -25,6 +25,18 @@ export function messageSegments(messages, tag, state) {
   return printBody(entry.body);
 }
 
+// Real exits in the data (so GO resolves) that the game refuses to let the
+// player take; mirrors the special cases in darnley.bas's main loop.
+const FAKE_EXITS = [
+  { from: 'LOC009_KITCHEN', to: 'LOC008_HALL', tag: 'KITCHEN_TO_HALL' },
+  { from: 'LOC028_MORNING_ROOM', to: 'LOC030_SECOND_GUEST_ROOM', tag: 'MORNING_ROOM_TO_GUEST_ROOM' },
+];
+
+/** Returns the messages.dat tag explaining a blocked move, or null if the move is genuine. */
+export function fakeExitTag(oldRoom, newRoom) {
+  return FAKE_EXITS.find((e) => e.from === oldRoom && e.to === newRoom)?.tag ?? null;
+}
+
 const TITLE = 'The Sealed Room Murder';
 
 /** Mirrors show_intro(): green title, blank line, then INTRO. */
