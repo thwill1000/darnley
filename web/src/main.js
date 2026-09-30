@@ -183,11 +183,11 @@ export async function startGame(ui) {
 
     if (hasFlag(state, 'new_accuse')) {
       const outcome = await handleNewAccusation(gameData, state, ui);
-      if (outcome.quit) return; // won: input stays disabled
+      if (outcome.quit) { await ui.waitForMore(); return; } // won: input stays disabled
       if (outcome.redescribe) redescribe = true;
     }
 
-    if (result.quit) return; // input stays disabled; nothing is awaiting readLine()
+    if (result.quit) { await ui.waitForMore(); return; } // input stays disabled; nothing is awaiting readLine()
 
     if (result.restart) {
       reset(state);

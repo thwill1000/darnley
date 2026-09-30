@@ -45,6 +45,7 @@
 const DEFAULT_TRANSCRIPT_ID = 'transcript';
 const DEFAULT_INPUT_ID = 'command-input';
 const DEFAULT_PROMPT_ID = 'prompt';
+const DEFAULT_MORE_ID = 'more';
 
 // Maximum number of submitted lines remembered for Up/Down browsing.
 const MAX_HISTORY = 100;
@@ -60,13 +61,16 @@ const MAX_HISTORY = 100;
  *                                            document.getElementById('command-input').
  * @param {Element} [options.prompt]  Defaults to
  *                                    document.getElementById('prompt').
+ * @param {Element} [options.more]  Defaults to
+ *                                  document.getElementById('more'). Optional:
+ *                                  without it output is never paged.
  * @param {Document} [options.doc]  Defaults to the global `document`.
  *                                  Overridable so this module can be
  *                                  exercised without a real browser DOM
  *                                  (see web/tests/ui.spec.js).
  * @returns {UI}
  */
-export function createUI({ transcript, input, prompt, doc } = {}) {
+export function createUI({ transcript, input, prompt, more, doc } = {}) {
   const document_ = doc ?? (typeof document !== 'undefined' ? document : undefined);
   if (!document_) throw new Error('UI: no document available; pass options.doc explicitly');
 
@@ -75,6 +79,7 @@ export function createUI({ transcript, input, prompt, doc } = {}) {
     input ?? document_.getElementById(DEFAULT_INPUT_ID),
     prompt ?? document_.getElementById(DEFAULT_PROMPT_ID),
     document_,
+    more ?? document_.getElementById(DEFAULT_MORE_ID),
   );
 }
 
@@ -108,8 +113,11 @@ export class UI {
    *                            line is submitted.
    * @param {Document} doc  Used for createElement() when building
    *                        transcript lines and image panel content.
+   * @param {Element} [moreEl]  The MORE button shown when output is
+   *                            longer than the visible transcript. If
+   *                            omitted, output is never paged.
    */
-  constructor(transcriptEl, inputEl, promptEl, doc) {
+  constructor(transcriptEl, inputEl, promptEl, doc, moreEl) {
     if (!transcriptEl) throw new Error('UI: transcript element not found');
     if (!inputEl) throw new Error('UI: input element not found');
     if (!promptEl) throw new Error('UI: prompt element not found');
@@ -120,6 +128,19 @@ export class UI {
     this.doc = doc;
 
     this._pendingSubmit = null; // set by readLine() while a line is awaited
+    this._busy = false; // true from readLine() being called until its line is submitted
+
+    // Paging (MORE): output is not auto-scrolled. _turnStart is the first
+    // element appended since output was last paged; waitForMore() scrolls
+    // it to the top and blocks until the reader reaches the bottom.
+    this.moreEl = moreEl ?? null;
+    this._turnStart = null;
+    this._moreResolve = null;
+    if (this.moreEl) {
+      this.moreEl.hidden = true;
+      this.moreEl.addEventListener('click', () => this._pageDown());
+      this.transcriptEl.addEventListener('scroll', () => this._checkMoreDone());
+    }
 
     // Command history, oldest first. _historyIndex === history.length means
     // "not browsing" (showing the line currently being typed, kept in _draft).
@@ -207,8 +228,7 @@ export class UI {
     const div = this.doc.createElement('div');
     div.className = 'transcript-line';
     div.textContent = text;
-    this.transcriptEl.appendChild(div);
-    this._scrollToBottom();
+    this._append(div);
   }
 
   /**
@@ -239,8 +259,7 @@ export class UI {
       });
     }
 
-    this.transcriptEl.appendChild(container);
-    this._scrollToBottom();
+    this._append(container);
   }
 
   /**
@@ -261,15 +280,12 @@ export class UI {
     const img = this.doc.createElement('img');
     img.src = `images/${locationId}.webp`;
     img.alt = label;
-    img.addEventListener('load', () => this._scrollToBottom());
     img.addEventListener('error', () => {
       img.remove();
       this._showImagePlaceholder(block, locationId, label);
-      this._scrollToBottom();
     });
     block.appendChild(img);
-    this.transcriptEl.appendChild(block);
-    this._scrollToBottom();
+    this._append(block);
   }
 
   _showImagePlaceholder(block, locationId, label) {
@@ -296,10 +312,18 @@ export class UI {
    * @returns {Promise<string>}
    */
   readLine(promptText = '') {
-    if (this._pendingSubmit) {
+    if (this._busy) {
       throw new Error('UI.readLine() called while a previous call is still pending');
     }
+    this._busy = true;
 
+    if (this._isPaged()) {
+      return this.waitForMore().then(() => this._readLine(promptText));
+    }
+    return this._readLine(promptText);
+  }
+
+  _readLine(promptText) {
     this.promptEl.textContent = promptText;
     this.inputEl.disabled = false;
     this.inputEl.focus();
@@ -307,10 +331,69 @@ export class UI {
     return new Promise((resolve) => {
       this._pendingSubmit = (line) => {
         this.promptEl.textContent = '';
+        this._busy = false;
         this.printLine(promptText + line);
         resolve(line);
       };
     });
+  }
+
+  _append(el) {
+    this.transcriptEl.appendChild(el);
+    this._turnStart ??= el;
+  }
+
+  _atBottom() {
+    const t = this.transcriptEl;
+    return !(t.scrollHeight - t.scrollTop - t.clientHeight > 1);
+  }
+
+  /** True if output since the last page would overflow the visible transcript. */
+  _isPaged() {
+    if (!this.moreEl || !this._turnStart) return false;
+    const t = this.transcriptEl;
+    return t.scrollHeight - this._turnStart.offsetTop > t.clientHeight + 1;
+  }
+
+  /**
+   * Mirrors con.show_more_prompt(): if the output printed since the last
+   * call is longer than the visible transcript, scrolls its start to the
+   * top, shows the MORE button and resolves once the reader has reached
+   * the bottom (by clicking MORE or scrolling). Otherwise just scrolls to
+   * the bottom and resolves immediately. readLine() calls this itself;
+   * call it directly after final output when no readLine() follows.
+   *
+   * @returns {Promise<void>}
+   */
+  waitForMore() {
+    if (!this._isPaged()) {
+      if (this._turnStart) this._scrollToBottom();
+      this._turnStart = null;
+      return Promise.resolve();
+    }
+    this.transcriptEl.scrollTop = this._turnStart.offsetTop;
+    this._turnStart = null;
+    this.moreEl.hidden = false;
+    this.moreEl.focus?.();
+    return new Promise((resolve) => {
+      this._moreResolve = resolve;
+      this._checkMoreDone();
+    });
+  }
+
+  _pageDown() {
+    const t = this.transcriptEl;
+    // Keep a little overlap so the last line of the previous page stays visible.
+    t.scrollTop += Math.max(1, t.clientHeight - 32);
+    this._checkMoreDone();
+  }
+
+  _checkMoreDone() {
+    if (!this._moreResolve || !this._atBottom()) return;
+    const resolve = this._moreResolve;
+    this._moreResolve = null;
+    this.moreEl.hidden = true;
+    resolve();
   }
 
   _scrollToBottom() {

@@ -59,6 +59,7 @@ html, body {
 }
 
 #transcript {
+  position: relative; /* so child offsetTop is relative to the transcript */
   flex: 1 1 auto;
   overflow-y: auto;
   min-height: 0;
@@ -98,6 +99,21 @@ html, body {
 
 #command-input:disabled {
   opacity: 0.5;
+}
+
+#more {
+  flex: 0 0 auto;
+  margin: 0.3em auto;
+  padding: 0.4em 2em;
+  background: #222;
+  color: #ff5;
+  border: 1px solid #ff5;
+  font: inherit;
+  cursor: pointer;
+}
+
+#more[hidden] {
+  display: none;
 }
 
 /* Colour classes matching the game's [[colour:text]] markup - see

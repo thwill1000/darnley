@@ -328,3 +328,58 @@ describe('createUI()', () => {
     expect(() => createUI({})).toThrow(/document/);
   });
 });
+
+describe('MORE paging', () => {
+  function makePagedUI({ scrollHeight, clientHeight = 100 }) {
+    const transcript = new FakeElement('div');
+    transcript.scrollHeight = scrollHeight;
+    transcript.clientHeight = clientHeight;
+    const input = new FakeElement('input');
+    const more = new FakeElement('button');
+    const ui = new UI(transcript, input, new FakeElement('span'), fakeDoc(), more);
+    return { ui, transcript, input, more };
+  }
+
+  it('does not page, and scrolls to the bottom, when output fits', async () => {
+    const { ui, transcript, more } = makePagedUI({ scrollHeight: 80 });
+    ui.printLine('short');
+    await ui.waitForMore();
+    expect(more.hidden).toBe(true);
+    expect(transcript.scrollTop).toBe(80);
+  });
+
+  it('holds at the start of long output, blocks input and pages with MORE', async () => {
+    const { ui, transcript, input, more } = makePagedUI({ scrollHeight: 500 });
+    ui.printLine('first'); // offsetTop is undefined on the fake - set it
+    transcript.children[0].offsetTop = 40;
+    const p = ui.readLine('> ');
+    expect(transcript.scrollTop).toBe(40);
+    expect(more.hidden).toBe(false);
+    expect(input.disabled).toBe(true);
+
+    more._listeners.click[0]();
+    expect(more.hidden).toBe(false);
+    expect(input.disabled).toBe(true);
+    transcript.scrollTop = 400; // reader reaches the bottom (by clicking or scrolling)
+    transcript.dispatchEvent('scroll', {});
+    await Promise.resolve();
+    await Promise.resolve();
+    expect(more.hidden).toBe(true);
+    expect(input.disabled).toBe(false);
+    input.value = 'go';
+    pressEnter(input);
+    expect(await p).toBe('go');
+  });
+
+  it('manual scrolling to the bottom clears MORE', async () => {
+    const { ui, transcript, more } = makePagedUI({ scrollHeight: 500 });
+    ui.printLine('x');
+    transcript.children[0].offsetTop = 0;
+    const p = ui.waitForMore();
+    expect(more.hidden).toBe(false);
+    transcript.scrollTop = 400;
+    transcript.dispatchEvent('scroll', {});
+    await p;
+    expect(more.hidden).toBe(true);
+  });
+});
