@@ -132,3 +132,34 @@ describe('fakeExitTag()', () => {
     expect(fakeExitTag('LOC025_LANDING', 'LOC030_SECOND_GUEST_ROOM')).toBeNull();
   });
 });
+
+describe('VERB_HANDLERS.save / restore', () => {
+  const store = () => {
+    const m = new Map();
+    return { getItem: (k) => (m.has(k) ? m.get(k) : null), setItem: (k, v) => m.set(k, v) };
+  };
+  const fakeUi = (answers) => ({ printLine() {}, printSegments() {}, readLine: async () => answers.shift() });
+
+  it('saves then restores through the menu', async () => {
+    const storage = store();
+    const s = createState(1);
+    s.room = 'LOC002';
+    s.flags.add('abc');
+    expect((await VERB_HANDLERS.save({}, s, [], fakeUi(['1', 'test']), storage)).message).toBe('Saved game 1.');
+    const t = createState(1);
+    const r = await VERB_HANDLERS.restore({}, t, [], fakeUi(['1']), storage);
+    expect(r.redescribe).toBe(true);
+    expect(t.room).toBe('LOC002');
+    expect(t.flags.has('abc')).toBe(true);
+  });
+
+  it('cancels on an empty name, bad slot or declined overwrite', async () => {
+    const storage = store();
+    const s = createState(1);
+    expect((await VERB_HANDLERS.save({}, s, [], fakeUi(['1', '']), storage)).message).toBe('Cancelled.');
+    expect((await VERB_HANDLERS.save({}, s, [], fakeUi(['x']), storage)).message).toBe('Cancelled.');
+    await VERB_HANDLERS.save({}, s, [], fakeUi(['1', 'a']), storage);
+    expect((await VERB_HANDLERS.save({}, s, [], fakeUi(['1', 'n']), storage)).message).toBe('Cancelled.');
+    expect((await VERB_HANDLERS.restore({}, s, [], fakeUi(['2']), storage)).message).toBe('Cancelled.');
+  });
+});
