@@ -197,6 +197,12 @@ describe('reset()', () => {
     expect(hasFlag(state, 'FOO')).toBe(false);
     expect(isVisited(state, 3)).toBe(false);
   });
+
+  it('clears the cheat flag', () => {
+    state.cheat = true;
+    reset(state);
+    expect(state.cheat).toBe(false);
+  });
 });
 
 describe('markVisited() / isVisited()', () => {
