@@ -220,3 +220,58 @@ describe('markVisited() / isVisited()', () => {
     expect(isVisited(state, 3)).toBe(false);
   });
 });
+
+import {
+  serializeState,
+  deserializeState,
+  saveToSlot,
+  restoreFromSlot,
+  listSlots,
+} from '../src/state.js';
+
+function fakeStorage() {
+  const m = new Map();
+  return { getItem: (k) => (m.has(k) ? m.get(k) : null), setItem: (k, v) => m.set(k, v) };
+}
+
+describe('save/restore', () => {
+  it('round-trips room, visited, flags and counters', () => {
+    const s = createState(4);
+    s.room = 'LOC005';
+    markVisited(s, 2);
+    setFlag(s, 'FOO');
+    s.counters[1] = 7;
+    const storage = fakeStorage();
+    expect(saveToSlot(s, 3, 'my game', storage).ok).toBe(true);
+
+    const t = createState(4);
+    expect(restoreFromSlot(t, 3, storage).ok).toBe(true);
+    expect(t.room).toBe('LOC005');
+    expect(isVisited(t, 2)).toBe(true);
+    expect(hasFlag(t, 'FOO')).toBe(true);
+    expect(t.counters[1]).toBe(7);
+  });
+
+  it('lists slots with names', () => {
+    const storage = fakeStorage();
+    saveToSlot(state, 2, 'hello', storage);
+    const slots = listSlots(storage);
+    expect(slots).toHaveLength(10);
+    expect(slots[0].empty).toBe(true);
+    expect(slots[1]).toMatchObject({ empty: false, name: 'hello' });
+  });
+
+  it('fails on an empty slot and invalid slot', () => {
+    expect(restoreFromSlot(state, 1, fakeStorage()).ok).toBe(false);
+    expect(() => restoreFromSlot(state, 11, fakeStorage())).toThrow();
+  });
+
+  it('rejects corrupt data without modifying state', () => {
+    state.room = 'KEEP';
+    expect(deserializeState(state, 'nope').ok).toBe(false);
+    const bad = JSON.parse(serializeState(state, 'x'));
+    bad.counters = [1, 2];
+    expect(deserializeState(state, JSON.stringify(bad)).ok).toBe(false);
+    expect(state.room).toBe('KEEP');
+  });
+});
