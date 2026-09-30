@@ -1,8 +1,27 @@
 #!/bin/bash
 
+# Usage: convert-images.sh [--web]
+#   (default)  240x160 / 320x240 JPEGs into mmbasic/images
+#   --web      aspect-preserving WebP, at most 960px wide, into ../web/images
+
+cd "$(dirname "$0")" || exit 1
+
+MODE="mmbasic"
+case "$1" in
+    "") ;;
+    "--web") MODE="web" ;;
+    *) echo "Usage: $0 [--web]"; exit 1 ;;
+esac
+
 # Define source and destination directories
 SRC_DIR="src-graphics/images"
-DEST_DIR="images"
+if [ "$MODE" = "web" ]; then
+    DEST_DIR="../web/images"
+    EXT="webp"
+else
+    DEST_DIR="images"
+    EXT="jpg"
+fi
 
 # Ensure the source directory exists
 if [ ! -d "$SRC_DIR" ]; then
@@ -21,8 +40,15 @@ count=0
 for src_file in "$SRC_DIR"/*.png; do
     # Extract filename without path and extension
     filename=$(basename "$src_file" .png)
-    dest_file="$DEST_DIR/${filename}.jpg"
+    dest_file="$DEST_DIR/${filename}.${EXT}"
     
+    if [ "$MODE" = "web" ]; then
+        convert "$src_file" -resize "960x960>" -quality 80 "$dest_file"
+        echo "Converted: $filename.png -> ${filename}.${EXT}"
+        ((count++))
+        continue
+    fi
+
     # Determine target dimensions based on filename
     case "$filename" in
         "END_SCREEN"|"SPLASH_SCREEN")
@@ -36,7 +62,7 @@ for src_file in "$SRC_DIR"/*.png; do
     # Convert and resize image
     convert "$src_file" -resize "$DIMENSIONS" "$dest_file"
     
-    echo "Converted: $filename.png -> ${filename}.jpg (${DIMENSIONS%!})"
+    echo "Converted: $filename.png -> ${filename}.${EXT} (${DIMENSIONS%!})"
     ((count++))
 done
 
