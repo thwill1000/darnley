@@ -29,7 +29,7 @@ import {
   parseMsgFile,
 } from './data.js';
 import { createState, reset, hasFlag } from './state.js';
-import { VERB_HANDLERS, locationById, messageSegments, introSegments } from './verbs.js';
+import { VERB_HANDLERS, fakeExitTag, locationById, messageSegments, introSegments } from './verbs.js';
 import { handleNewAccusation } from './accuse.js';
 import { handleNewClue } from './clues.js';
 import { parseCommand } from './words.js';
@@ -156,9 +156,17 @@ export async function startGame(ui) {
       continue;
     }
 
+    const oldRoom = state.room;
     const result = await handler(gameData, state, parsed.words, ui);
     if (result.segments) ui.printSegments(result.segments);
     if (result.message) ui.printLine(result.message);
+
+    const blockedTag = state.room !== oldRoom ? fakeExitTag(oldRoom, state.room) : null;
+    if (blockedTag) {
+      ui.printSegments(messageSegments(gameData.messages, blockedTag, state));
+      state.room = oldRoom;
+      result.redescribe = false;
+    }
 
     if (hasFlag(state, 'new_clue')) {
       const announcement = handleNewClue(state, gameData.clues);
