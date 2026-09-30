@@ -6,6 +6,7 @@
 // EXAMINE's missed "!provides" application - are directly testable
 // without exercising the DOM bootstrap in main.js.
 
+import { listSlots, saveToSlot, restoreFromSlot, NUM_SLOTS } from './state.js';
 import { verbGo, verbExamine, verbSay, printBody } from './engine.js';
 
 export const DROP_MESSAGE =
@@ -69,6 +70,21 @@ export function dumpText(gameData, state) {
   lines.push(`${pad('NUM FLAGS')}= ${flags.length}`);
   lines.push(`${pad('COUNTERS')}= ${state.counters.slice(1).join(' ')}`);
   return lines.join('\n');
+}
+
+function formatSlots(storage) {
+  const lines = listSlots(storage).map((s) => {
+    const label = `  [${String(s.slot).padStart(2)}] `;
+    return label + (s.empty ? 'Empty' : `${s.date.replace('T', ' ').slice(0, 19)} - ${s.name}`);
+  });
+  return [{ text: lines.join('\n'), colour: '' }];
+}
+
+/** Prompts for a slot number; returns 0 if invalid. Mirrors state.select_game%(). */
+async function selectSlot(ui, storage) {
+  ui.printSegments(formatSlots(storage));
+  const n = Number((await ui.readLine('Saved game number? ')).trim());
+  return Number.isInteger(n) && n >= 1 && n <= NUM_SLOTS ? n : 0;
 }
 
 // Verb dispatch table. Each handler takes (gameData, state, words) -
@@ -146,6 +162,33 @@ export const VERB_HANDLERS = {
     if (answer.startsWith('q')) return { message: 'Goodbye!', quit: true };
     if (answer.startsWith('r')) return { restart: true };
     return { message: 'Cancelled.' };
+  },
+
+  // Mirrors verb_save()/state.save%(); `storage` defaults to localStorage.
+  async save(gameData, state, words, ui, storage = globalThis.localStorage) {
+    ui.printLine('Select saved game:');
+    const slot = await selectSlot(ui, storage);
+    if (slot && storage.getItem('darnley_save_' + slot) !== null) {
+      const answer = await ui.readLine(`Overwrite game ${slot} [y|N]? `);
+      if (answer.trim().toLowerCase() !== 'y') return { message: 'Cancelled.' };
+    }
+    const name = slot ? (await ui.readLine('Saved game name? ')).trim() : '';
+    if (!slot || !name) return { message: 'Cancelled.' };
+    const result = saveToSlot(state, slot, name, storage);
+    if (!result.ok) return { message: 'ERROR: ' + result.error };
+    return { message: `Saved game ${slot}.` };
+  },
+
+  // Mirrors verb_restore()/state.restore%().
+  async restore(gameData, state, words, ui, storage = globalThis.localStorage) {
+    ui.printLine('Select saved game to restore:');
+    const slot = await selectSlot(ui, storage);
+    if (!slot) return { message: 'Cancelled.' };
+    const result = restoreFromSlot(state, slot, storage);
+    if (!result.ok) {
+      return { message: result.error === 'empty slot.' ? 'Cancelled.' : 'ERROR: ' + result.error };
+    }
+    return { message: `Restored game ${slot}.`, redescribe: true };
   },
 
   say(gameData, state, words) {

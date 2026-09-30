@@ -6,10 +6,9 @@
 // see "state.js - a Set, not a byte buffer" in
 // web/docs/2026-09-23-javascript-web-port-plan.md.
 //
-// Save/restore (state.save%()/state.restore%()) is deferred to a later
-// step of the port plan (see step 26, localStorage) - this module only
-// covers the in-memory game state and its flag-related operations, which
-// is what step 12 calls for.
+// Save/restore (state.save%()/state.restore%()) is implemented at the
+// bottom of this file: JSON in localStorage, 10 named slots, replacing
+// the .sav files of the MMBasic original.
 
 export const NUM_COUNTERS = 10;
 
@@ -175,4 +174,111 @@ export function markVisited(state, room) {
  */
 export function isVisited(state, room) {
   return state.visited.has(room);
+}
+
+export const NUM_SLOTS = 10;
+const SAVE_VERSION = 1;
+const SAVE_KEY_PREFIX = 'darnley_save_';
+
+function slotKey(slot) {
+  if (!Number.isInteger(slot) || slot < 1 || slot > NUM_SLOTS) {
+    throw new Error('Invalid saved game number ' + slot);
+  }
+  return SAVE_KEY_PREFIX + slot;
+}
+
+/**
+ * Serialises the persistent parts of the state (room, visited, flags,
+ * counters) - mirrors state.write_body(). The cheat flag is deliberately
+ * not saved, as in the original.
+ *
+ * @returns {string} JSON
+ */
+export function serializeState(state, name, now = new Date()) {
+  return JSON.stringify({
+    version: SAVE_VERSION,
+    date: now.toISOString(),
+    name,
+    room: state.room,
+    visited: [...state.visited],
+    flags: [...state.flags],
+    counters: state.counters.slice(1),
+  });
+}
+
+/**
+ * Parses and validates serialised state, mirroring state.read_body(), and
+ * applies it to `state` only if it is entirely valid.
+ *
+ * @returns {{ok: true} | {ok: false, error: string}}
+ */
+export function deserializeState(state, json) {
+  let data;
+  try {
+    data = JSON.parse(json);
+  } catch {
+    return { ok: false, error: 'corrupt save data.' };
+  }
+  if (!data || typeof data !== 'object') return { ok: false, error: 'corrupt save data.' };
+  if (data.version !== SAVE_VERSION) return { ok: false, error: 'unsupported save version.' };
+  if (typeof data.room !== 'string' && typeof data.room !== 'number') {
+    return { ok: false, error: 'missing room.' };
+  }
+  if (!Array.isArray(data.visited)) return { ok: false, error: 'missing visited data.' };
+  if (!Array.isArray(data.flags) || !data.flags.every((f) => typeof f === 'string')) {
+    return { ok: false, error: 'missing flags data.' };
+  }
+  if (!Array.isArray(data.counters)) return { ok: false, error: 'missing counters data.' };
+  if (data.counters.length !== NUM_COUNTERS) return { ok: false, error: 'counters count mismatch.' };
+  if (!data.counters.every((c) => Number.isFinite(c))) {
+    return { ok: false, error: 'invalid counters data.' };
+  }
+
+  state.room = data.room;
+  state.visited = new Set(data.visited);
+  state.flags = new Set(data.flags);
+  state.counters = [0, ...data.counters];
+  return { ok: true };
+}
+
+/**
+ * Saves the state to a slot (1..10). Returns {ok:false,error} if storage
+ * is unavailable or full.
+ */
+export function saveToSlot(state, slot, name, storage = globalThis.localStorage, now = new Date()) {
+  try {
+    storage.setItem(slotKey(slot), serializeState(state, name, now));
+    return { ok: true };
+  } catch (e) {
+    return { ok: false, error: e.message };
+  }
+}
+
+/** Restores the state from a slot; the state is untouched on failure. */
+export function restoreFromSlot(state, slot, storage = globalThis.localStorage) {
+  const json = storage.getItem(slotKey(slot));
+  if (json === null) return { ok: false, error: 'empty slot.' };
+  return deserializeState(state, json);
+}
+
+/**
+ * Lists all slots: element i is {slot: i+1, empty: true} or
+ * {slot, empty: false, date, name}. Mirrors state.select_game%()'s table.
+ */
+export function listSlots(storage = globalThis.localStorage) {
+  const slots = [];
+  for (let slot = 1; slot <= NUM_SLOTS; slot++) {
+    const json = storage.getItem(slotKey(slot));
+    let info = null;
+    if (json !== null) {
+      try {
+        const data = JSON.parse(json);
+        info = { slot, empty: false, date: String(data.date ?? ''), name: String(data.name ?? '') };
+      } catch {
+        info = { slot, empty: false, date: '', name: '(corrupt)' };
+      }
+    }
+    slots.push(info ?? { slot, empty: true });
+  }
+  return slots;
 }
