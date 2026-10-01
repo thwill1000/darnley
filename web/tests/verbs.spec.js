@@ -60,7 +60,7 @@ describe('VERB_HANDLERS.cheat', () => {
     expect(say(sayData, state, ['say', 'xavier', ',', 'hello']).message).toBe('X is not here.');
 
     state.cheat = true;
-    expect(say(sayData, state, ['say', 'xavier', ',', 'hello']).html).toBe('"hi"');
+    expect(say(sayData, state, ['say', 'xavier', ',', 'hello']).html).toBe('<span class="colour-cyan">"hi"</span>');
   });
 });
 
