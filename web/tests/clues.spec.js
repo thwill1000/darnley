@@ -16,8 +16,8 @@ describe('handleNewClue()', () => {
 
   it('announces the count in green when a clue is newly found', () => {
     addFlags(state, ['x_a', 'new_clue']);
-    const segs = handleNewClue(state, CLUES);
-    expect(segs.at(-1)).toEqual({ text: '* You have found 1 of 3 clues! *', colour: 'green' });
+    const html = handleNewClue(state, CLUES);
+    expect(html).toContain('<span class="colour-green">* You have found 1 of 3 clues! *</span>')
     expect(state.counters[1]).toBe(1);
   });
 
@@ -32,7 +32,7 @@ describe('handleNewClue()', () => {
     addFlags(state, ['x_a', 'new_clue']);
     handleNewClue(state, CLUES);
     addFlags(state, ['x_b', 'new_clue']);
-    expect(handleNewClue(state, CLUES).at(-1).text).toContain('2 of 3');
+    expect(handleNewClue(state, CLUES)).toContain('2 of 3');
   });
 
   it('does not set all_clues until every clue is found', () => {
