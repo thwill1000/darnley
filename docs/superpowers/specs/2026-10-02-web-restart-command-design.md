@@ -14,7 +14,9 @@ require an explicit confirmation, with buttons labelled **YES** and **NO**.
 - The web command aliases `RESET` and `START` continue to invoke restart
   confirmation. Former quit aliases (`Q`, `DIE`, `END`, and `EXIT`) no longer
   invoke restart or exit the game.
-- Other platforms and the MMBasic implementation are out of scope.
+- The command behavior change applies only to the web port. `web/data/messages.dat`
+  links to `mmbasic/data/messages.dat`, so changing the shared help text also
+  changes the MMBasic help text; this limited shared-data effect is accepted.
 
 ## Implementation
 
