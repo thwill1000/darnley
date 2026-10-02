@@ -8,6 +8,8 @@
 // web/docs/2026-09-23-javascript-web-port-plan.md).
 
 import {
+  HELP_TEXT_ID,
+  INTRO_TEXT_ID,
   parseLocations,
   parseAdditionalExits,
   parseObjects,
@@ -18,7 +20,7 @@ import {
   parseMsgFile,
 } from './data.js';
 import { createState, reset, hasFlag, serializeState, deserializeState } from './state.js';
-import { VERB_HANDLERS, fakeExitTag, locationById, messageHtml, introHtml } from './verbs.js';
+import { VERB_HANDLERS, fakeExitTag, locationById, messageHtml } from './verbs.js';
 import { handleNewAccusation } from './accuse.js';
 import { handleNewClue } from './clues.js';
 import { parseCommand } from './words.js';
@@ -105,25 +107,71 @@ function showLocation(ui, location, messages, flags) {
  */
 export async function startGame(ui) {
   const gameData = await loadGameData();
-  const state = createState(gameData.locations.length);
-  state.room = START_ROOM;
+  let restore = true;
 
-  let redescribe = true;
+  // Outer loop: each iteration is one "session"
+  for (;;) {
+    const state = createState(gameData.locations.length);
+    state.room = START_ROOM;
 
-  ui.printHtml(`<span class="colour-green title">${TITLE} v${VERSION}</span>`);
-  ui.printHtml(`<span class="colour-green title">${COPYRIGHT}</span>`);
+    await showSplashIntro(ui, gameData, state, restore ? tryRestoreAutosave(state) : false);
+    restore = false;
+
+    const outcome = await runCommandLoop(ui, gameData, state);
+    if (outcome === 'quit') return;
+
+    // outcome === 'restart'
+  }
+}
+
+/**
+ * Clears the transcript and shows the title banner, then either a
+ * "Welcome back" message (resuming an autosaved game) or the full splash
+ * screen/intro/help text followed by a wait for ENTER (a brand new or
+ * just-restarted game) - mirrors show_splash()/show_intro(1)/show_help(1)
+ * in darnley.bas. The "Welcome back" case is a web-only addition for
+ * autosave (see tryRestoreAutosave()) with no MMBasic equivalent.
+ *
+ * @param {import('./ui.js').UI} ui
+ * @param {object} gameData
+ * @param {object} state
+ * @param {boolean} welcomeBack  True to show the "Welcome back" message
+ *                               instead of the splash/intro/help/wait.
+ */
+async function showSplashIntro(ui, gameData, state, welcomeBack) {
+  ui.clear();
+  ui.printHtml(`<span class="colour-green title">${TITLE}</span>`);
+  ui.printHtml(`<span class="colour-green">${COPYRIGHT}</span>`);
+  ui.printHtml(`<span class="colour-green">Version ${VERSION}</span>`);
   ui.printLine();
 
-  if (tryRestoreAutosave(state)) {
-    ui.printLine('Welcome back - your game in progress has been restored.');
+  if (welcomeBack) {
+    ui.printHtml(messageHtml(gameData.messages, 'WELCOME_BACK_WEB', state));
     ui.printLine();
-  } else {
-    ui.setImage('SPLASH_SCREEN', TITLE);
-    ui.printHtml(introHtml(gameData.messages, state));
-    ui.printHtml(messageHtml(gameData.messages, 'HELP_TEXT', state));
-    ui.printLine();
-    await ui.readLine('Press ENTER to begin. ');
+    return;
   }
+
+  ui.setImage('SPLASH_SCREEN', TITLE);
+  ui.printLine();
+  ui.printHtml(messageHtml(gameData.messages, INTRO_TEXT_ID, state));
+  ui.printLine();
+  ui.printHtml(messageHtml(gameData.messages, HELP_TEXT_ID, state));
+  ui.printLine();
+}
+
+/**
+ * Runs the inner prompt/response loop - mirrors the `Do ... Loop` in
+ * darnley.bas, up to (but not including) the `If state.restart% Then Goto
+ * game_start` check, which the caller implements by re-entering this
+ * function after showSplashIntro().
+ *
+ * @param {import('./ui.js').UI} ui
+ * @param {object} gameData
+ * @param {object} state
+ * @returns {Promise<'quit'|'restart'>}
+ */
+async function runCommandLoop(ui, gameData, state) {
+  let redescribe = true;
 
   for (;;) {
     if (redescribe) {
@@ -170,29 +218,16 @@ export async function startGame(ui) {
     }
 
     if (hasFlag(state, 'new_accuse')) {
-      const outcome = await handleNewAccusation(gameData, state, ui);
-      if (outcome.quit) {
+      const accuseOutcome = await handleNewAccusation(gameData, state, ui);
+      if (accuseOutcome.quit) {
         clearAutosave();
         await ui.waitForMore();
-        return;
+        return 'quit';
       } // won: input stays disabled
-      if (outcome.redescribe) redescribe = true;
+      if (accuseOutcome.redescribe) redescribe = true;
     }
 
-    if (result.quit) {
-      clearAutosave();
-      await ui.waitForMore();
-      return;
-    } // input stays disabled; nothing is awaiting readLine()
-
-    if (result.restart) {
-      reset(state);
-      state.room = START_ROOM;
-      ui.printHtml(introHtml(gameData.messages, state));
-      ui.printHtml(messageHtml(gameData.messages, 'HELP_TEXT', state));
-      redescribe = true;
-      continue;
-    }
+    if (result.restart) return 'restart';
     if (result.redescribe) redescribe = true;
   }
 }

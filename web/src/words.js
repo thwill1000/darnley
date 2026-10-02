@@ -154,7 +154,7 @@ const DIRECTION_WORDS = new Set([
 // verb-synonym branches in parse_common(). A first word not listed here
 // becomes its own verb (the "Case Else" branch).
 const VERB_ALIASES = {
-  die: 'quit', end: 'quit', exit: 'quit', q: 'quit', restart: 'quit', reset: 'quit', start: 'quit',
+  reset: 'restart', restart: 'restart', start: 'restart',
   check: 'examine', ex: 'examine', look: 'examine', search: 'examine', x: 'examine',
   enter: 'go', g: 'go', walk: 'go',
   grab: 'take', get: 'take', pick: 'take',

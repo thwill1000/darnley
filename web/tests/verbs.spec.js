@@ -64,6 +64,20 @@ describe('VERB_HANDLERS.cheat', () => {
   });
 });
 
+describe('VERB_HANDLERS.restart', () => {
+  it('returns restart when confirmed', async () => {
+    const ui = { confirmRestart: async () => true };
+    await expect(VERB_HANDLERS.restart({}, createState(1), [], ui))
+      .resolves.toEqual({ restart: true });
+  });
+
+  it('does nothing when declined', async () => {
+    const ui = { confirmRestart: async () => false };
+    await expect(VERB_HANDLERS.restart({}, createState(1), [], ui))
+      .resolves.toEqual({});
+  });
+});
+
 describe('dumpText() / VERB_HANDLERS.dump', () => {
   const gameData = {
     locations: [

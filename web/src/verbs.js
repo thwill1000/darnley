@@ -6,6 +6,7 @@
 // EXAMINE's missed "!provides" application - are directly testable
 // without exercising the DOM bootstrap in main.js.
 
+import { HELP_TEXT_ID } from './data.js';
 import { markupToHtml } from './console.js';
 import { verbGo, verbExamine, verbSay, printBody } from './engine.js';
 import { listSlots, saveToSlot, restoreFromSlot, NUM_SLOTS } from './state.js';
@@ -37,13 +38,6 @@ const FAKE_EXITS = [
 /** Returns the messages.dat tag explaining a blocked move, or null if the move is genuine. */
 export function fakeExitTag(oldRoom, newRoom) {
   return FAKE_EXITS.find((e) => e.from === oldRoom && e.to === newRoom)?.tag ?? null;
-}
-
-const TITLE = 'The Sealed Room Murder';
-
-/** Mirrors show_intro(): green title, blank line, then INTRO. */
-export function introHtml(messages, state) {
-  return markupToHtml(`[[green:${TITLE}]]\n\n`) + messageHtml(messages, 'INTRO', state);
 }
 
 /**
@@ -93,7 +87,7 @@ export const VERB_HANDLERS = {
   inventory() { return VERB_HANDLERS.drop(); },
 
   // Debug aid, mirrors verb_cheat() in darnley.bas; deliberately not
-  // listed in HELP_TEXT. Finds every clue, and lets SAY reach suspects
+  // listed in the HELP text. Finds every clue, and lets SAY reach suspects
   // who are not in the current room (see state.cheat in verbSay()).
   cheat(gameData, state) {
     const html = messageHtml(gameData.messages, 'CHEAT_TEXT', state);
@@ -103,7 +97,7 @@ export const VERB_HANDLERS = {
     return { html };
   },
 
-  // Debug aid, mirrors verb_dump(); deliberately not listed in HELP_TEXT.
+  // Debug aid, mirrors verb_dump(); deliberately not listed in the HELP text.
   dump(gameData, state) {
     return { html: markupToHtml(dumpText(gameData, state)) };
   },
@@ -139,23 +133,16 @@ export const VERB_HANDLERS = {
   },
 
   help(gameData, state) {
-    return { html: messageHtml(gameData.messages, 'HELP_TEXT', state) };
+    return { html: messageHtml(gameData.messages, HELP_TEXT_ID, state) };
   },
 
   recap(gameData, state) {
-    return { html: introHtml(gameData.messages, state) };
+    return { html: messageHtml(gameData.messages, 'INTRO', state) };
   },
 
-  // Mirrors verb_quit(): (Q)uit / (R)estart / (C)ancel.
-  async quit(gameData, state, words, ui) {
-    ui.printHtml(markupToHtml(
-      '[[yellow:Please choose ]][[green:(Q)]][[yellow:uit, ]][[green:(R)]]' +
-      '[[yellow:estart or ]][[green:(C)]][[yellow:ancel?]]',
-    ));
-    const answer = (await ui.readLine('> ')).trim().toLowerCase();
-    if (answer.startsWith('q')) return { message: 'Goodbye!', quit: true };
-    if (answer.startsWith('r')) return { restart: true };
-    return { message: 'Cancelled.' };
+  async restart(gameData, state, words, ui) {
+    if (await ui.confirmRestart()) return { restart: true };
+    return {};
   },
 
   // Mirrors verb_save()/state.save%(); `storage` defaults to localStorage.

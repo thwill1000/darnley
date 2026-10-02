@@ -23,6 +23,39 @@ in the possession of the Colonel and his faithful butler.@
 @
 [[green:How could the sealed-room murder be committed?]]
 
+INTRO_WEB
+You have been summoned to Darnley Park one winter's day to
+investigate the murder of Colonel Sebastian Darnley at some time
+the previous evening.@
+@
+The suspects are:@
+@
+  [[green:Sarah Darnley]]@
+          - the deceased's wife@
+  [[green:Millicent Darnley]]@
+          - the deceased's daughter@
+  [[green:Arthur Coniston]]@
+          - fiance of Millicent@
+  [[green:Sir Redvers Slingsby]]@
+          - friend of the deceased@
+  [[green:Arnold Billingsgate]]@
+          - the butler@
+  [[green:Mildred Goodbody]]@
+          - the cook@
+  [[green:Norah Bagsby]]@
+          - the housemaid@
+  [[green:Ronald Mellors]]@
+          - the gamekeeper@
+@
+You are free to search the house and grounds and to question the
+suspects. Examination of the scene and skillful interrogation will
+yield sufficient information to solve the mystery. And mystery it is!
+The body of Colonel Darnley was found in his study, the doors and
+window of which were all locked from the inside. The only keys were
+in the possession of the Colonel and his faithful butler.@
+@
+[[green:How could the sealed-room murder be committed?]]
+
 LOC001_BATHROOM
 The bathroom contains an enamelled cast iron bath with claw feet
 and a toilet bearing a brass tablet calling it 'The Imperial Avenger'.
@@ -853,7 +886,7 @@ The game accepts the following commands:@
     - talk to suspect, e.g.@
         [[green:"millicent, what happened?]]@
         [[green:"norah, you did it!]]@
-        [[green:"cat, hello puss]]@
+        [[green:"cat, hello moggie]]@
   [[green:FONT]] [[cyan:DEFAULT]]|[[cyan:SERIF]]|[[cyan:SMALL]]@
     - change the font@
   [[green:HELP]]@
@@ -866,6 +899,29 @@ The game accepts the following commands:@
     - save and restore game progress@
   [[green:QUIT]]@
     - restart or exit the game
+
+HELP_TEXT_WEB
+The game accepts the following commands:@
+@
+  [[green:GO]] [[cyan:location]]@
+          - go to a visible location@
+  [[green:EXAMINE]] [[cyan:object]]@
+          - get additional detail about an object@
+  [[green:LOOK]]@
+          - redescribe current location@
+  [[green:"]][[cyan:suspect, topic]]@
+          - talk to suspect, e.g.@
+                    [[green:"millicent, what happened?]]@
+                    [[green:"norah, you did it!]]@
+                    [[green:"cat, hello moggie]]@
+  [[green:HELP]]@
+          - show this text@
+  [[green:RECAP]]@
+          - show the game introduction@
+  [[green:SAVE]] and [[green:RESTORE]]@
+          - save and restore game progress@
+  [[green:RESTART]]@
+          - restart the game
 
 ACCUSE_TEXT
 There are questions you must answer to press your accusation:
@@ -901,3 +957,10 @@ OBJ259_HORSE_SAY_RESPONSE
 The horse eyes you with weary tolerance.@
 @
 [[cyan:"Don't tell me your troubles, I've got my own!"]]
+
+WELCOME_BACK_WEB
+Welcome back - your game in progress has been restored.@
+@
+For a reminder of what you are doing type [[green:RECAP]].@
+For a reminder of how to play the game type [[green:HELP]].@
+To restart the game from the beginning type [[green:RESTART]].

@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import {
+  HELP_TEXT_ID,
   parseLocations,
   parseAdditionalExits,
   parseObjects,
@@ -216,12 +217,12 @@ describe('parseClues()', () => {
 });
 
 describe('parseMessages()', () => {
-  it('parses 122 unique tags, ~124 entries total (a few tags have more than one entry)', () => {
+  it('parses 123 unique tags, ~125 entries total (a few tags have more than one entry)', () => {
     const messages = parseMessages(messagesText);
-    expect(messages.size).toBe(122);
+    expect(messages.size).toBe(123);
     let totalEntries = 0;
     for (const entries of messages.values()) totalEntries += entries.length;
-    expect(totalEntries).toBe(124);
+    expect(totalEntries).toBe(125);
   });
 
   it('parses INTRO as a single entry with no directives', () => {
@@ -231,6 +232,14 @@ describe('parseMessages()', () => {
     expect(entries[0].requires).toEqual([]);
     expect(entries[0].provides).toEqual([]);
     expect(entries[0].body).toHaveLength(23);
+  });
+
+  it('advertises RESTART, not QUIT, in HELP text', () => {
+    const messages = parseMessages(messagesText);
+    const [entry] = messages.get(HELP_TEXT_ID);
+    const help = renderBody(entry.body);
+    expect(help).toContain('[[green:RESTART]]');
+    expect(help).not.toContain('[[green:QUIT]]');
   });
 
   it('round-trips INTRO through renderBody() to its expected multi-paragraph text', () => {
