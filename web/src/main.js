@@ -20,7 +20,7 @@ import {
   parseMsgFile,
 } from './data.js';
 import { createState, reset, hasFlag, serializeState, deserializeState } from './state.js';
-import { VERB_HANDLERS, fakeExitTag, locationById, messageHtml } from './verbs.js';
+import { VERB_HANDLERS, fakeExitTag, linkCommand, locationById, messageHtml } from './verbs.js';
 import { handleNewAccusation } from './accuse.js';
 import { handleNewClue } from './clues.js';
 import { parseCommand } from './words.js';
@@ -95,7 +95,7 @@ function showLocation(ui, location, messages, flags) {
   ui.printLine();
   const entries = messages.get(location.id);
   const entry = entries ? entries.find((e) => e.requires.every((t) => flags.has(t))) : null;
-  ui.printHtml(entry ? printBody(entry.body) : '');
+  ui.printHtml(entry ? printBody(entry.body, { links: true }) : '');
   ui.scrollToTop();
 }
 
@@ -169,6 +169,7 @@ async function showSplashIntro(ui, gameData, state, welcomeBack) {
  */
 async function runCommandLoop(ui, gameData, state) {
   let redescribe = true;
+  ui.resolveLink = (text) => linkCommand(gameData, state, text);
 
   for (;;) {
     if (redescribe) {
@@ -180,7 +181,7 @@ async function runCommandLoop(ui, gameData, state) {
     autosave(state);   // <-- state is consistent here, before every prompt
 
     ui.printLine();
-    const cmd = await ui.readLine('What would you like to do? ');
+    const cmd = await ui.readLine('What would you like to do? ', { links: true });
     ui.printLine();
     const parsed = parseCommand(cmd);
 

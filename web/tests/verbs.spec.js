@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { handleNewClue } from '../src/clues.js';
 import { createState } from '../src/state.js';
-import { VERB_HANDLERS, dumpText, fakeExitTag } from '../src/verbs.js';
+import { VERB_HANDLERS, dumpText, fakeExitTag, linkCommand } from '../src/verbs.js';
 
 const OBJECTS = [
   { id: 'OBJ001', pattern: 'handkerchief', location: 'LOC001' },
@@ -175,5 +175,32 @@ describe('VERB_HANDLERS.save / restore', () => {
     await VERB_HANDLERS.save({}, s, [], fakeUi(['1', 'a']), storage);
     expect((await VERB_HANDLERS.save({}, s, [], fakeUi(['1', 'n']), storage)).message).toBe('Cancelled.');
     expect((await VERB_HANDLERS.restore({}, s, [], fakeUi(['2']), storage)).message).toBe('Cancelled.');
+  });
+});
+
+describe('linkCommand()', () => {
+  const gameData = {
+    locations: [
+      { id: 'LOC_A', pattern: 'room a', exits: ['LOC_B'] },
+      { id: 'LOC_B', pattern: 'hall', exits: ['LOC_A'] },
+    ],
+    additionalExits: [{ from: 'LOC_A', pattern: 'window', to: 'LOC_B' }],
+    objects: [
+      { id: 'OBJ1', pattern: 'french window', location: 'LOC_A' },
+      { id: 'OBJ2', pattern: 'handkerchief', location: 'LOC_B' },
+    ],
+    synonyms: [],
+  };
+  const here = () => { const s = createState(1); s.room = 'LOC_A'; return s; };
+
+  it('examines an object even when its words also match an additional exit', () => {
+    expect(linkCommand(gameData, here(), 'French window')).toBe('examine French window');
+  });
+  it('goes to a reachable location, ignoring padding words', () => {
+    expect(linkCommand(gameData, here(), 'The Hall')).toBe('go The Hall');
+  });
+  it('examines an unknown word, or an object that is elsewhere', () => {
+    expect(linkCommand(gameData, here(), 'handkerchief')).toBe('examine handkerchief');
+    expect(linkCommand(gameData, here(), 'zebra')).toBe('examine zebra');
   });
 });

@@ -137,6 +137,9 @@ export class UI {
 
     this._pendingSubmit = null; // set by readLine() while a line is awaited
     this._busy = false; // true from readLine() being called until its line is submitted
+    this._linksActive = false;  // true only for a readLine() that opted in to clickable links
+    this.resolveLink = null;    // (text) => command string; set by main.js
+    this.transcriptEl.addEventListener('click', (event) => this._onClick(event));
 
     // Paging (MORE): output is not auto-scrolled. _turnStart is the first
     // element appended since output was last paged; waitForMore() scrolls
@@ -170,9 +173,11 @@ export class UI {
 
     if (event.key !== 'Enter') return;
     event.preventDefault();
-    if (!this._pendingSubmit) return; // stray Enter with no readLine() pending
+    this._submitLine(this.inputEl.value);
+  }
 
-    const line = this.inputEl.value;
+  _submitLine(line) {
+    if (!this._pendingSubmit) return; // stray Enter/click with no readLine() pending
     this.inputEl.value = '';
     this.inputEl.disabled = true;
     this._recordHistory(line);
@@ -180,6 +185,13 @@ export class UI {
     const submit = this._pendingSubmit;
     this._pendingSubmit = null;
     submit(line);
+  }
+
+  _onClick(event) {
+    if (!this._pendingSubmit || !this._linksActive || !this.resolveLink) return;
+    const el = event.target?.closest?.('.link');
+    if (!el) return;
+    this._submitLine(this.resolveLink(el.textContent));
   }
 
   /**
@@ -325,14 +337,14 @@ export class UI {
    * @param {string} [promptText]
    * @returns {Promise<string>}
    */
-  readLine(promptText = '') {
+  readLine(promptText = '', { links = false } = {}) {
     if (this._busy) {
       throw new Error('UI.readLine() called while a previous call is still pending');
     }
     this._busy = true;
 
     if (this._isPaged()) {
-      return this.waitForMore().then(() => this._readLine(promptText));
+      return this.waitForMore().then(() => this._readLine(promptText, links));
     }
     // Not paged: still need the same "settle" bookkeeping waitForMore() does
     // in this case (scroll to bottom, reset the turn marker) - but done
@@ -340,16 +352,18 @@ export class UI {
     // _settleNotPaged() below; callers rely on Enter being handleable
     // immediately after readLine() returns).
     this._settleNotPaged();
-    return this._readLine(promptText);
+    return this._readLine(promptText, links);
   }
 
-  _readLine(promptText) {
+  _readLine(promptText, links = false) {
+    this._linksActive = links;
     this.promptEl.textContent = promptText;
     this.inputEl.disabled = false;
     this.inputEl.focus();
 
     return new Promise((resolve) => {
       this._pendingSubmit = (line) => {
+        this._linksActive = false;
         this.promptEl.textContent = '';
         this._busy = false;
         const fullLine = escapeHtml(promptText + line);

@@ -6,10 +6,11 @@
 // EXAMINE's missed "!provides" application - are directly testable
 // without exercising the DOM bootstrap in main.js.
 
-import { HELP_TEXT_ID, INTRO_TEXT_ID } from './data.js';
 import { markupToHtml } from './console.js';
-import { verbGo, verbExamine, verbSay, printBody } from './engine.js';
+import { HELP_TEXT_ID, INTRO_TEXT_ID } from './data.js';
+import { verbGo, verbExamine, verbSay, printBody, findObj, findExitMatch } from './engine.js';
 import { listSlots, saveToSlot, restoreFromSlot, NUM_SLOTS } from './state.js';
+import { splitWords, removePadding } from './words.js';
 
 export const DROP_MESSAGE =
   'This game does not require you to TAKE, DROP or otherwise manipulate objects. ' +
@@ -17,6 +18,24 @@ export const DROP_MESSAGE =
 
 export function locationById(locations, id) {
   return locations.find((loc) => loc.id === id);
+}
+
+/**
+ * Decides what clicking a green link should do: EXAMINE if it names something
+ * examinable in the current room, GO if it names a reachable location,
+ * otherwise EXAMINE (so the player gets the normal "not here" message).
+ */
+export function linkCommand(gameData, state, text) {
+  const words = removePadding(splitWords(text));
+  const current = locationById(gameData.locations, state.room);
+
+  const obj = findObj(gameData.objects, words, gameData.synonyms, state.room);
+  if (obj && obj.location === state.room) return 'examine ' + text;
+
+  const exit = findExitMatch(current, gameData.locations, gameData.additionalExits, ['go', ...words], gameData.synonyms);
+  if (exit !== null) return 'go ' + text;
+
+  return 'examine ' + text;
 }
 
 /** Segments for a messages.dat entry by tag (mirrors print_message_or_fail()). */
@@ -127,7 +146,7 @@ export const VERB_HANDLERS = {
     if (result.redescribe) return { redescribe: true };
     if (result.success) {
       for (const token of result.entry.provides) state.flags.add(token);
-      return { html: printBody(result.entry.body) };
+      return { html: printBody(result.entry.body, { links: true }) };
     }
     return { message: result.message };
   },
