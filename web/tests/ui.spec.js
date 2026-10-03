@@ -488,7 +488,7 @@ describe('UI.clear()', () => {
 });
 
 describe('UI link clicks', () => {
-  const link = { closest: () => ({ textContent: 'door' }) };
+  const link = { closest: (sel) => (sel === '.link' ? { textContent: 'door' } : null) };
 
   it('submits the resolved command only while a link-enabled readLine() is pending', async () => {
     const { ui, transcript } = makeUI();
@@ -507,5 +507,91 @@ describe('UI link clicks', () => {
     input.value = 'typed';
     pressEnter(input);
     await expect(p).resolves.toBe('typed');
+  });
+});
+
+describe('UI speech bubble clicks', () => {
+  const bubble = (name) => {
+    const talkEl = { previousElementSibling: { textContent: name } };
+    return { closest: (sel) => (sel === '.talk' ? talkEl : null) };
+  };
+
+  function makeTalkUI() {
+    const parts = makeUI();
+    parts.ui.resolveTalk = (name) => `"${name}, `;
+    return parts;
+  }
+
+  it('fills the input with the resolved text, focuses it, and does not submit', async () => {
+    const { ui, transcript, input } = makeTalkUI();
+    const p = ui.readLine('> ', { links: true });
+    let settled = false;
+    p.then(() => { settled = true; });
+    input._focused = false;
+
+    transcript.dispatchEvent('click', { target: bubble('Sarah Darnley') });
+    await Promise.resolve();
+
+    expect(input.value).toBe('"Sarah Darnley, ');
+    expect(input._focused).toBe(true);
+    expect(input.disabled).toBe(false);
+    expect(settled).toBe(false);
+  });
+
+  it('the filled text can then be completed and submitted with Enter', async () => {
+    const { ui, transcript, input } = makeTalkUI();
+    const p = ui.readLine('> ', { links: true });
+    transcript.dispatchEvent('click', { target: bubble('Sarah Darnley') });
+    input.value += 'hello';
+    pressEnter(input);
+    await expect(p).resolves.toBe('"Sarah Darnley, hello');
+  });
+
+  it('overwrites anything already typed', () => {
+    const { ui, transcript, input } = makeTalkUI();
+    ui.readLine('> ', { links: true });
+    input.value = 'half-typed';
+    transcript.dispatchEvent('click', { target: bubble('Arthur Coniston') });
+    expect(input.value).toBe('"Arthur Coniston, ');
+  });
+
+  it('ignores clicks when the readLine() did not opt in to links', async () => {
+    const { ui, transcript, input } = makeTalkUI();
+    const p = ui.readLine('> ');
+    transcript.dispatchEvent('click', { target: bubble('Sarah Darnley') });
+    expect(input.value).toBe('');
+    input.value = 'typed';
+    pressEnter(input);
+    await expect(p).resolves.toBe('typed');
+  });
+
+  it('ignores clicks when no readLine() is pending', () => {
+    const { transcript, input } = makeTalkUI();
+    transcript.dispatchEvent('click', { target: bubble('Sarah Darnley') });
+    expect(input.value).toBe('');
+  });
+
+  it('ignores a bubble with no preceding name element', () => {
+    const { ui, transcript, input } = makeTalkUI();
+    ui.readLine('> ', { links: true });
+    const orphan = { closest: (sel) => (sel === '.talk' ? {} : null) };
+    transcript.dispatchEvent('click', { target: orphan });
+    expect(input.value).toBe('');
+  });
+
+  it('resets history browsing so Up afterwards recalls the newest entry', async () => {
+    const { ui, transcript, input } = makeTalkUI();
+    await submit(ui, input, 'one');
+    ui.readLine('> ', { links: true });
+    pressKey(input, 'ArrowUp');
+    expect(input.value).toBe('one');
+
+    transcript.dispatchEvent('click', { target: bubble('Sarah Darnley') });
+    expect(input.value).toBe('"Sarah Darnley, ');
+
+    pressKey(input, 'ArrowUp');
+    expect(input.value).toBe('one');
+    pressKey(input, 'ArrowDown');
+    expect(input.value).toBe('"Sarah Darnley, ');
   });
 });

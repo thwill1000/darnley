@@ -27,12 +27,16 @@ export function escapeHtml(s) {
  *                                         "link" class so they are clickable.
  * @returns {string} HTML
  */
-export function markupToHtml(text, { links = false } = {}) {
-  return escapeHtml(text).replace(
-    /\[\[(\w+):(.*?)\]\]/gs,
-    (_, colour, body) => {
-      const cls = links && colour === 'green' ? `colour-${colour} link` : `colour-${colour}`;
-      return `<span class="${cls}">${body}</span>`;
-    },
-  );
-}
+ export function markupToHtml(text, { links = false, isSpeakable = null } = {}) {
+   return escapeHtml(text).replace(
+     /\[\[(\w+):(.*?)\]\]/gs,
+     (_, colour, body) => {
+       const isLink = links && colour === 'green';
+       const span = `<span class="colour-${colour}${isLink ? ' link' : ''}">${body}</span>`;
+       const talk = isLink && isSpeakable?.(body)
+         ? '<span class="talk" role="button" title="Talk">\u{1F4AC}</span>'
+         : '';
+       return span + talk;
+     },
+   );
+ }

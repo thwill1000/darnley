@@ -139,6 +139,7 @@ export class UI {
     this._busy = false; // true from readLine() being called until its line is submitted
     this._linksActive = false;  // true only for a readLine() that opted in to clickable links
     this.resolveLink = null;    // (text) => command string; set by main.js
+    this.resolveTalk = null;
     this.transcriptEl.addEventListener('click', (event) => this._onClick(event));
 
     // Paging (MORE): output is not auto-scrolled. _turnStart is the first
@@ -188,7 +189,23 @@ export class UI {
   }
 
   _onClick(event) {
-    if (!this._pendingSubmit || !this._linksActive || !this.resolveLink) return;
+    if (!this._pendingSubmit || !this._linksActive) return;
+
+    const talk = event.target?.closest?.('.talk');
+    if (talk) {
+      if (!this.resolveTalk) return;
+      const name = talk.previousElementSibling?.textContent;
+      if (!name) return;
+      this.inputEl.value = this.resolveTalk(name);
+      this._historyIndex = this.history.length; // stop any in-progress history browse
+      this._draft = '';
+      this.inputEl.focus();
+      const end = this.inputEl.value.length;
+      this.inputEl.setSelectionRange?.(end, end);
+      return;
+    }
+
+    if (!this.resolveLink) return;
     const el = event.target?.closest?.('.link');
     if (!el) return;
     this._submitLine(this.resolveLink(el.textContent));

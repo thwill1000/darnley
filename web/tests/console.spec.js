@@ -42,3 +42,42 @@ describe('markupToHtml() links option', () => {
     expect(markupToHtml('[[red:x]]', { links: true })).toBe('<span class="colour-red">x</span>');
   });
 });
+
+describe('markupToHtml() speech bubble', () => {
+  const BUBBLE = '<span class="talk" role="button" title="Talk">\u{1F4AC}</span>';
+  const always = () => true;
+
+  it('follows a linked green span, outside it', () => {
+    expect(markupToHtml('[[green:Sarah Darnley]]', { links: true, isSpeakable: always })).toBe(
+      span('green', 'Sarah Darnley').replace('colour-green', 'colour-green link') + BUBBLE,
+    );
+  });
+
+  it('is not added without the links option', () => {
+    expect(markupToHtml('[[green:Sarah Darnley]]', { isSpeakable: always })).toBe(span('green', 'Sarah Darnley'));
+  });
+
+  it('is not added when isSpeakable() returns false', () => {
+    const html = markupToHtml('[[green:Hall]]', { links: true, isSpeakable: () => false });
+    expect(html).not.toContain('talk');
+  });
+
+  it('is not added when no isSpeakable() is supplied', () => {
+    expect(markupToHtml('[[green:Hall]]', { links: true })).not.toContain('talk');
+  });
+
+  it('is not added for non-green spans', () => {
+    expect(markupToHtml('[[red:Sarah]]', { links: true, isSpeakable: always })).toBe(span('red', 'Sarah'));
+  });
+
+  it('passes each span\'s text to isSpeakable() and bubbles only those that qualify', () => {
+    const seen = [];
+    const html = markupToHtml('[[green:Sarah]] and [[green:Hall]]', {
+      links: true,
+      isSpeakable: (t) => { seen.push(t); return t === 'Sarah'; },
+    });
+    expect(seen).toEqual(['Sarah', 'Hall']);
+    expect(html.match(/class="talk"/g)).toHaveLength(1);
+    expect(html.indexOf('talk')).toBeLessThan(html.indexOf('Hall'));
+  });
+});
