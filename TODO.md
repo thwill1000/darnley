@@ -7,5 +7,4 @@
 - You should be able to GO OUTSIDE from gamekeeper's cottage
 - Fix weird comment about morning room and Sir Redvers at end of Millicent's statement
 - ARGUMENT should be synonym of ARGUE (or vice versa)
-- BUG: graphics font goes black if player input ends immediately before end of line
 - REPLAY should ignore [MORE] prompts
