@@ -24,11 +24,13 @@ import {
   parseObjects,
   parseSynonyms,
   parseClues,
+  parseQuestions,
   parseMessages,
   parseMsgFile,
 } from './data.js';
 import { createState, reset, hasFlag } from './state.js';
 import { VERB_HANDLERS, locationById, messageSegments, introSegments } from './verbs.js';
+import { handleNewAccusation } from './accuse.js';
 import { handleNewClue } from './clues.js';
 import { parseCommand } from './words.js';
 import { printBody } from './engine.js';
@@ -45,8 +47,8 @@ const TITLE = 'The Sealed Room Murder';
  * "Mm.Info(Exists File ...msg)" check in verb_say()) into the structures
  * the engine functions expect.
  *
- * @returns {Promise<{locations: object[], additionalExits: object[],
- *   objects: object[], synonyms: object[], clues: string[], messages: Map, msgFiles: Map}>}
+ * @returns {Promise<{locations: object[], additionalExits: object[], objects: object[],
+ *   synonyms: object[], clues: string[], questions: object[], messages: Map, msgFiles: Map}>}
  */
 export async function loadGameData() {
   const adventText = await fetchText(DATA_DIR + 'advent.dat');
@@ -57,6 +59,7 @@ export async function loadGameData() {
   const objects = parseObjects(adventText);
   const synonyms = parseSynonyms(adventText);
   const clues = parseClues(adventText);
+  const questions = parseQuestions(adventText);
   const messages = parseMessages(messagesText);
 
   const msgFiles = new Map();
@@ -72,7 +75,7 @@ export async function loadGameData() {
     }
   }
 
-  return { locations, additionalExits, objects, synonyms, clues, messages, msgFiles };
+  return { locations, additionalExits, objects, synonyms, clues, questions, messages, msgFiles };
 }
 
 async function fetchText(path) {
@@ -160,6 +163,12 @@ export async function startGame(ui) {
     if (hasFlag(state, 'new_clue')) {
       const announcement = handleNewClue(state, gameData.clues);
       if (announcement) ui.printSegments(announcement);
+    }
+
+    if (hasFlag(state, 'new_accuse')) {
+      const outcome = await handleNewAccusation(gameData, state, ui);
+      if (outcome.quit) return; // won: input stays disabled
+      if (outcome.redescribe) redescribe = true;
     }
 
     if (result.quit) return; // input stays disabled; nothing is awaiting readLine()

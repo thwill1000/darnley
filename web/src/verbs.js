@@ -68,6 +68,17 @@ export const VERB_HANDLERS = {
   take() { return VERB_HANDLERS.drop(); },
   inventory() { return VERB_HANDLERS.drop(); },
 
+  // Debug aid, mirrors verb_cheat() in darnley.bas; deliberately not
+  // listed in HELP_TEXT. Finds every clue, and lets SAY reach suspects
+  // who are not in the current room (see state.cheat in verbSay()).
+  cheat(gameData, state) {
+    const segments = messageSegments(gameData.messages, 'CHEAT_TEXT', state);
+    for (const clue of gameData.clues) state.flags.add(clue);
+    state.flags.add('new_clue');
+    state.cheat = true;
+    return { segments };
+  },
+
   // Debug aid, mirrors verb_dump(); deliberately not listed in HELP_TEXT.
   dump(gameData, state) {
     return { segments: [{ text: dumpText(gameData, state), colour: '' }] };
@@ -134,6 +145,7 @@ export const VERB_HANDLERS = {
       gameData.synonyms,
       state.room,
       state.flags,
+      state.cheat,
     );
     if (result.success) return { segments: printBody(result.entry.body) };
     return { message: result.message };

@@ -33,6 +33,7 @@ export function createState(numRooms) {
     // Index 0 is unused so counters[1]..counters[NUM_COUNTERS] mirror the
     // 1-based state.counters%(1 To 10) array in the MMBasic original.
     counters: new Array(NUM_COUNTERS + 1).fill(0),
+    cheat: false,
   };
 }
 
@@ -48,6 +49,7 @@ export function reset(state) {
   state.visited.clear();
   state.flags.clear();
   state.counters.fill(0);
+  state.cheat = false;
 }
 
 /**
