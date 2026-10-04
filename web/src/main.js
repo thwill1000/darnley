@@ -26,12 +26,19 @@ import {
   parseMessages,
   parseMsgFile,
 } from './data.js';
-import { createState } from './state.js';
+import { createState, reset } from './state.js';
 import { parseCommand } from './words.js';
 import { verbGo, verbExamine, verbSay, printBody } from './engine.js';
 import { createUI } from './ui.js';
 
 const DATA_DIR = 'data/';
+
+const START_ROOM = 'LOC017_DRIVE';
+const TITLE = 'The Sealed Room Murder';
+
+const DROP_MESSAGE =
+  'This game does not require you to TAKE, DROP or otherwise manipulate objects. ' +
+  'Just explore your surroundings, search for and EXAMINE the clues and talk to the suspects.';
 
 /**
  * Fetches and parses advent.dat, messages.dat, and every person-object's
@@ -115,10 +122,33 @@ function showLocation(ui, location, messages, flags) {
   ui.printSegments(describeLoc(location, messages, flags));
 }
 
+/** Segments for a messages.dat entry by tag (mirrors print_message_or_fail()). */
+export function messageSegments(messages, tag, state) {
+  const entries = messages.get(tag);
+  const entry = entries?.find((e) => e.requires.every((t) => state.flags.has(t)));
+  if (!entry) return [{ text: `ERROR: message ${tag.toUpperCase()} not found.`, colour: 'red' }];
+  for (const token of entry.provides) state.flags.add(token);
+  return printBody(entry.body);
+}
+
+/** Mirrors show_intro(): green title, blank line, then INTRO. */
+export function introSegments(messages, state) {
+  return [
+    { text: TITLE, colour: 'green' },
+    { text: '\n\n', colour: '' },
+    ...messageSegments(messages, 'INTRO', state),
+  ];
+}
+
 // Verb dispatch table. Each handler takes (gameData, state, words) -
 // the full split command words, verb included at index 0 - and returns
 // { segments? , message?, redescribe? }.
 const VERB_HANDLERS = {
+  // INVENTORY, TAKE and DROP all give the same refusal (verb_inventory/verb_take -> verb_drop).
+  drop() { return { segments: [{ text: DROP_MESSAGE, colour: 'red' }] }; },
+  take() { return VERB_HANDLERS.drop(); },
+  inventory() { return VERB_HANDLERS.drop(); },
+
   go(gameData, state, words) {
     const current = locationById(gameData.locations, state.room);
     const result = verbGo(current, gameData.locations, gameData.additionalExits, words, gameData.synonyms);
@@ -146,6 +176,28 @@ const VERB_HANDLERS = {
     return { message: result.message };
   },
 
+  help(gameData, state) {
+    return { segments: messageSegments(gameData.messages, 'HELP_TEXT', state) };
+  },
+
+  recap(gameData, state) {
+    return { segments: introSegments(gameData.messages, state) };
+  },
+
+  // Mirrors verb_quit(): (Q)uit / (R)estart / (C)ancel.
+  async quit(gameData, state, words, ui) {
+    ui.printSegments([
+      { text: 'Please choose ', colour: 'yellow' },
+      { text: '(Q)', colour: 'green' }, { text: 'uit, ', colour: 'yellow' },
+      { text: '(R)', colour: 'green' }, { text: 'estart or ', colour: 'yellow' },
+      { text: '(C)', colour: 'green' }, { text: 'ancel?', colour: 'yellow' },
+    ]);
+    const answer = (await ui.readLine('> ')).trim().toLowerCase();
+    if (answer.startsWith('q')) return { message: 'Goodbye!', quit: true };
+    if (answer.startsWith('r')) return { restart: true };
+    return { message: 'Cancelled.' };
+  },
+
   say(gameData, state, words) {
     const result = verbSay(
       gameData.objects,
@@ -170,7 +222,7 @@ const VERB_HANDLERS = {
 export async function startGame(ui) {
   const gameData = await loadGameData();
   const state = createState(gameData.locations.length);
-  state.room = gameData.locations[0].id;
+  state.room = START_ROOM;
 
   let redescribe = true;
 
@@ -196,9 +248,20 @@ export async function startGame(ui) {
       continue;
     }
 
-    const result = handler(gameData, state, parsed.words);
+    const result = await handler(gameData, state, parsed.words, ui);
     if (result.segments) ui.printSegments(result.segments);
     if (result.message) ui.printLine(result.message);
+
+    if (result.quit) return; // input stays disabled; nothing is awaiting readLine()
+
+    if (result.restart) {
+      reset(state);
+      state.room = START_ROOM;
+      ui.printSegments(introSegments(gameData.messages, state));
+      ui.printSegments(messageSegments(gameData.messages, 'HELP_TEXT', state));
+      redescribe = true;
+      continue;
+    }
     if (result.redescribe) redescribe = true;
   }
 }
