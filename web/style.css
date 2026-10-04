@@ -10,6 +10,7 @@ html, body {
   font-family: 'Courier New', Courier, monospace;
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+  overscroll-behavior-y: none;
 }
 
 #app {
@@ -66,10 +67,18 @@ html, body {
   -webkit-overflow-scrolling: touch;
   white-space: pre-wrap;
   word-wrap: break-word;
+  overscroll-behavior: contain;
 }
 
 .transcript-line {
   margin: 0 0 0.2em 0;
+}
+
+/* An empty line (printLine() with no text) generates no line box by default,
+   so it would otherwise collapse to zero height and not appear as a blank
+   line. Force it to occupy one line's height instead. */
+.transcript-line:empty {
+  min-height: 1em;
 }
 
 #input-line {
@@ -127,6 +136,11 @@ html, body {
 .colour-black { color: #666; }
 .colour-white { color: #eee; }
 .colour-reset { color: inherit; }
+
+.title {
+  font-size: 1.3em;
+  font-weight: bold;
+}
 
 /* Mobile layout (step 29). */
 @media (max-width: 600px) {

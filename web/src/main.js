@@ -6,17 +6,6 @@
 // get_input$()'s blocking wait with ui.readLine() (see "main.js - the
 // blocking loop becomes async" in
 // web/docs/2026-09-23-javascript-web-port-plan.md).
-//
-// Wired to steps 14-15's verbs only: GO, EXAMINE, SAY. HELP, RECAP,
-// INVENTORY/TAKE/DROP, QUIT, input history, clue gating and the
-// accusation endgame are all later steps (21-25) - any other verb word
-// falls through to the "I don't know the command" message, mirroring
-// darnley.bas's Call("verb_" + verb$) failure path.
-//
-// Step 20 wires the location image panel (ui.setImage()) into the
-// describe step, alongside the text describeLoc() already produces -
-// see describe_loc() in mmbasic/src/adventlib.inc, which likewise pairs
-// a Load Jpg call with the room's text description.
 
 import {
   parseLocations,
@@ -28,8 +17,7 @@ import {
   parseMessages,
   parseMsgFile,
 } from './data.js';
-import { createState, reset, hasFlag } from './state.js';
-import { markupToHtml } from './console.js';
+import { createState, reset, hasFlag, serializeState, deserializeState } from './state.js';
 import { VERB_HANDLERS, fakeExitTag, locationById, messageHtml, introHtml } from './verbs.js';
 import { handleNewAccusation } from './accuse.js';
 import { handleNewClue } from './clues.js';
@@ -41,6 +29,9 @@ const DATA_DIR = 'data/';
 
 const START_ROOM = 'LOC017_DRIVE';
 const TITLE = 'The Sealed Room Murder';
+const VERSION = '0.9.3';
+const COPYRIGHT = '© 1987-2026 Thomas Hugo Williams & Jim Williams'
+const AUTOSAVE_KEY = 'darnley_autosave'; // separate from the darnley_save_N slots
 
 /**
  * Fetches and parses advent.dat, messages.dat, and every person-object's
@@ -86,29 +77,8 @@ async function fetchText(path) {
 }
 
 /**
- * Builds the segments to print for describing the current location:
- * its name (in green) followed by its messages.dat body. Mirrors the
- * text portion of describe_loc() in mmbasic/src/adventlib.inc. The
- * accompanying image is shown separately via ui.setImage() (step 20) -
- * this function stays UI-agnostic, matching printBody()'s pattern of
- * returning segments rather than touching the DOM itself.
- *
- * @param {{id: string, name: string}} location
- * @param {Map} messages
- * @param {Set<string>} flags
- * @returns {string} HTML content representing the location description.
- */
-export function describeLoc(location, messages, flags) {
-  const entries = messages.get(location.id);
-  const entry = entries ? entries.find((e) => e.requires.every((t) => flags.has(t))) : null;
-  return markupToHtml(`[[green:${location.name}]]\n`) + (entry ? printBody(entry.body) : '');
-}
-
-/**
- * Describes the current location to the UI: shows its image panel (step
- * 20) and prints its text segments (describeLoc()). Mirrors the two
- * halves of describe_loc() - Load Jpg and the printed body - firing
- * together on entry to a room or on LOOK/re-describe.
+ * Describes the current location to the UI: prints its name, shows its image,
+ * and then its messages.dat body.
  *
  * @param {import('./ui.js').UI} ui
  * @param {{id: string, name: string}} location
@@ -116,8 +86,13 @@ export function describeLoc(location, messages, flags) {
  * @param {Set<string>} flags
  */
 function showLocation(ui, location, messages, flags) {
+  ui.printHtml(`<span class="colour-green title">${location.name}</span>`);
+  ui.printLine();
   ui.setImage(location.id, location.name);
-  ui.printHtml(describeLoc(location, messages, flags));
+  ui.printLine();
+  const entries = messages.get(location.id);
+  const entry = entries ? entries.find((e) => e.requires.every((t) => flags.has(t))) : null;
+  ui.printHtml(entry ? printBody(entry.body) : '');
 }
 
 /**
@@ -133,13 +108,20 @@ export async function startGame(ui) {
 
   let redescribe = true;
 
-  // Splash: the image panel shows SPLASH_SCREEN alongside the intro and
-  // help text, until the first location is described.
-  ui.setImage('SPLASH_SCREEN', TITLE);
-  ui.printHtml(introHtml(gameData.messages, state));
-  ui.printHtml(messageHtml(gameData.messages, 'HELP_TEXT', state));
-  ui.printLine('');
-  await ui.readLine('Press ENTER to begin. ');
+  ui.printHtml(`<span class="colour-green title">${TITLE} v${VERSION}</span>`);
+  ui.printHtml(`<span class="colour-green title">${COPYRIGHT}</span>`);
+  ui.printLine();
+
+  if (tryRestoreAutosave(state)) {
+    ui.printLine('Welcome back - your game in progress has been restored.');
+    ui.printLine();
+  } else {
+    ui.setImage('SPLASH_SCREEN', TITLE);
+    ui.printHtml(introHtml(gameData.messages, state));
+    ui.printHtml(messageHtml(gameData.messages, 'HELP_TEXT', state));
+    ui.printLine();
+    await ui.readLine('Press ENTER to begin. ');
+  }
 
   for (;;) {
     if (redescribe) {
@@ -147,6 +129,8 @@ export async function startGame(ui) {
       showLocation(ui, location, gameData.messages, state.flags);
       redescribe = false;
     }
+
+    autosave(state);   // <-- state is consistent here, before every prompt
 
     const cmd = await ui.readLine('What would you like to do? ');
     const parsed = parseCommand(cmd);
@@ -182,11 +166,19 @@ export async function startGame(ui) {
 
     if (hasFlag(state, 'new_accuse')) {
       const outcome = await handleNewAccusation(gameData, state, ui);
-      if (outcome.quit) { await ui.waitForMore(); return; } // won: input stays disabled
+      if (outcome.quit) {
+        clearAutosave();
+        await ui.waitForMore();
+        return;
+      } // won: input stays disabled
       if (outcome.redescribe) redescribe = true;
     }
 
-    if (result.quit) { await ui.waitForMore(); return; } // input stays disabled; nothing is awaiting readLine()
+    if (result.quit) {
+      clearAutosave();
+      await ui.waitForMore();
+      return;
+    } // input stays disabled; nothing is awaiting readLine()
 
     if (result.restart) {
       reset(state);
@@ -208,4 +200,19 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
       ui.printLine('A fatal error occurred - see the browser console for details.');
     });
   });
+}
+
+function autosave(state) {
+  try { localStorage.setItem(AUTOSAVE_KEY, serializeState(state, 'autosave')); } catch { /* storage full/disabled */ }
+}
+
+function clearAutosave() {
+  try { localStorage.removeItem(AUTOSAVE_KEY); } catch { /* ignore */ }
+}
+
+function tryRestoreAutosave(state) {
+  try {
+    const json = localStorage.getItem(AUTOSAVE_KEY);
+    return json !== null && deserializeState(state, json).ok;
+  } catch { return false; }
 }
