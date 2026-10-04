@@ -53,6 +53,25 @@ function pressEnter(input) {
   input.dispatchEvent('keydown', { key: 'Enter', preventDefault: () => {} });
 }
 
+function pressKey(input, key) {
+  const event = {
+    key,
+    defaultPrevented: false,
+    preventDefault() {
+      this.defaultPrevented = true;
+    },
+  };
+  input.dispatchEvent('keydown', event);
+  return event;
+}
+
+async function submit(ui, input, text) {
+  const p = ui.readLine('> ');
+  input.value = text;
+  pressEnter(input);
+  await p;
+}
+
 describe('UI - construction', () => {
   it('the input line starts disabled', () => {
     const { input } = makeUI();
@@ -218,6 +237,88 @@ describe('UI.readLine()', () => {
     input.value = 'two';
     pressEnter(input);
     await expect(second).resolves.toBe('two');
+  });
+});
+
+describe('UI input history', () => {
+  it('Up recalls the most recent submitted line', async () => {
+    const { ui, input } = makeUI();
+    await submit(ui, input, 'go north');
+    ui.readLine('> ');
+    pressKey(input, 'ArrowUp');
+    expect(input.value).toBe('go north');
+  });
+
+  it('repeated Up walks back through older lines and stops at the oldest', async () => {
+    const { ui, input } = makeUI();
+    await submit(ui, input, 'one');
+    await submit(ui, input, 'two');
+    ui.readLine('> ');
+    pressKey(input, 'ArrowUp');
+    pressKey(input, 'ArrowUp');
+    pressKey(input, 'ArrowUp');
+    expect(input.value).toBe('one');
+  });
+
+  it('Down walks forward and finally restores the line being typed', async () => {
+    const { ui, input } = makeUI();
+    await submit(ui, input, 'one');
+    await submit(ui, input, 'two');
+    ui.readLine('> ');
+    input.value = 'draft';
+    pressKey(input, 'ArrowUp');
+    pressKey(input, 'ArrowUp');
+    expect(input.value).toBe('one');
+    pressKey(input, 'ArrowDown');
+    expect(input.value).toBe('two');
+    pressKey(input, 'ArrowDown');
+    expect(input.value).toBe('draft');
+    pressKey(input, 'ArrowDown');
+    expect(input.value).toBe('draft');
+  });
+
+  it('Up with an empty history leaves the input unchanged', () => {
+    const { ui, input } = makeUI();
+    ui.readLine('> ');
+    input.value = 'abc';
+    pressKey(input, 'ArrowUp');
+    expect(input.value).toBe('abc');
+  });
+
+  it('empty lines and immediate duplicates are not recorded', async () => {
+    const { ui, input } = makeUI();
+    await submit(ui, input, 'look');
+    await submit(ui, input, '');
+    await submit(ui, input, 'look');
+    expect(ui.history).toEqual(['look']);
+  });
+
+  it('submitting resets browsing so Up starts from the newest entry again', async () => {
+    const { ui, input } = makeUI();
+    await submit(ui, input, 'one');
+    await submit(ui, input, 'two');
+    ui.readLine('> ');
+    pressKey(input, 'ArrowUp');
+    pressKey(input, 'ArrowUp');
+    pressEnter(input); // resubmits 'one'
+    ui.readLine('> ');
+    pressKey(input, 'ArrowUp');
+    expect(input.value).toBe('one');
+  });
+
+  it('arrow keys are ignored, and not prevented, when no readLine() is pending', async () => {
+    const { ui, input } = makeUI();
+    await submit(ui, input, 'one');
+    const event = pressKey(input, 'ArrowUp');
+    expect(event.defaultPrevented).toBe(false);
+    expect(input.value).toBe('');
+  });
+
+  it('history is capped at 100 entries, dropping the oldest', async () => {
+    const { ui, input } = makeUI();
+    for (let i = 0; i < 105; i++) await submit(ui, input, `cmd${i}`);
+    expect(ui.history).toHaveLength(100);
+    expect(ui.history[0]).toBe('cmd5');
   });
 });
 

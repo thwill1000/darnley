@@ -1,8 +1,9 @@
 // ui.js
 //
 // The transcript pane, input line, and location image panel making up
-// the browser UI shell - see step 18 (transcript/input) and step 20
-// (image panel) of web/docs/2026-09-23-web-port-plan-steps.md.
+// the browser UI shell - see step 18 (transcript/input), step 20 (image
+// panel) and step 22 (input history) of
+// web/docs/2026-09-23-web-port-plan-steps.md.
 //
 // Loosely mirrors what con.in$()/con.readln$() do in
 // mmbasic/src/console.inc: print a prompt, then wait for a line of
@@ -22,12 +23,19 @@
 //    scope" in the plan doc). Once a line is submitted it is always
 //    shown in the transcript, mirroring what a real terminal would
 //    already display as part of its own scrollback.
-//  - con.readln$()'s history/backspace/insert line editing - the
-//    browser's native <input> already provides editing, and arrow-key
-//    command history is added in step 22.
+//  - con.readln$()'s backspace/insert line editing - the browser's
+//    native <input> already provides editing.
 //  - word-wrap and [MORE] paging (con.flush()/con.show_more_prompt()) -
 //    the browser wraps text on its own and the transcript simply
 //    scrolls, per the plan's console.js scope notes.
+//
+// Input history (step 22): Up/Down arrow keys browse previously
+// submitted lines while a readLine() is pending, mirroring the Up/Down
+// cases in con.readln$() and con.history_put(). The MMBasic original
+// keeps history in a packed byte buffer manipulated with Peek/Memory
+// Copy; here it is simply an array. Only non-empty lines are recorded,
+// and (unlike con.history_put()) a line identical to the most recent
+// entry is not recorded again.
 //
 // Image panel (step 20): setImage(locationId, label) mirrors the
 // graphics half of describe_loc() in mmbasic/src/adventlib.inc (the
@@ -45,6 +53,9 @@ const DEFAULT_TRANSCRIPT_ID = 'transcript';
 const DEFAULT_INPUT_ID = 'command-input';
 const DEFAULT_PROMPT_ID = 'prompt';
 const DEFAULT_IMAGE_ID = 'location-image';
+
+// Maximum number of submitted lines remembered for Up/Down browsing.
+const MAX_HISTORY = 100;
 
 /**
  * Creates a UI instance bound to elements already present in the DOM
@@ -126,11 +137,24 @@ export class UI {
 
     this._pendingSubmit = null; // set by readLine() while a line is awaited
 
+    // Command history, oldest first. _historyIndex === history.length means
+    // "not browsing" (showing the line currently being typed, kept in _draft).
+    this.history = [];
+    this._historyIndex = 0;
+    this._draft = '';
+
     this.inputEl.disabled = true;
     this.inputEl.addEventListener('keydown', (event) => this._onKeyDown(event));
   }
 
   _onKeyDown(event) {
+    if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+      if (!this._pendingSubmit) return;
+      event.preventDefault();
+      this._browseHistory(event.key === 'ArrowUp' ? -1 : 1);
+      return;
+    }
+
     if (event.key !== 'Enter') return;
     event.preventDefault();
     if (!this._pendingSubmit) return; // stray Enter with no readLine() pending
@@ -138,10 +162,54 @@ export class UI {
     const line = this.inputEl.value;
     this.inputEl.value = '';
     this.inputEl.disabled = true;
+    this._recordHistory(line);
 
     const submit = this._pendingSubmit;
     this._pendingSubmit = null;
     submit(line);
+  }
+
+  /**
+   * Adds a submitted line to the history, mirroring con.history_put():
+   * empty lines are never recorded. Unlike the original, a line identical
+   * to the most recent entry is not recorded again. Oldest entries are
+   * dropped beyond MAX_HISTORY. Also resets any in-progress browsing.
+   *
+   * @param {string} line
+   */
+  _recordHistory(line) {
+    if (line !== '' && this.history[this.history.length - 1] !== line) {
+      this.history.push(line);
+      if (this.history.length > MAX_HISTORY) this.history.shift();
+    }
+    this._historyIndex = this.history.length;
+    this._draft = '';
+  }
+
+  /**
+   * Moves through the history: direction -1 (Up) goes to an older entry,
+   * +1 (Down) to a newer one, ending back at the line that was being
+   * typed before browsing began. Mirrors the Up/Down cases in
+   * con.readln$().
+   *
+   * @param {number} direction  -1 for older, +1 for newer.
+   */
+  _browseHistory(direction) {
+    const len = this.history.length;
+    if (len === 0) return;
+
+    if (this._historyIndex === len) this._draft = this.inputEl.value;
+
+    const next = this._historyIndex + direction;
+    if (next < 0 || next > len) return;
+
+    this._historyIndex = next;
+    this.inputEl.value = next === len ? this._draft : this.history[next];
+
+    if (typeof this.inputEl.setSelectionRange === 'function') {
+      const end = this.inputEl.value.length;
+      this.inputEl.setSelectionRange(end, end);
+    }
   }
 
   /**
@@ -234,7 +302,8 @@ export class UI {
    * with whatever the person typed once they press Enter. The submitted
    * line (prompt plus text) is always appended to the transcript,
    * mirroring what would already be visible in a real terminal's
-   * scrollback.
+   * scrollback. Up/Down arrow keys browse previously submitted lines
+   * while the call is pending (see _browseHistory()).
    *
    * Only one readLine() may be pending at a time, mirroring the
    * original's single blocking get_input$() call in the game loop.
