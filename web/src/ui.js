@@ -42,6 +42,8 @@
 // shows earlier images. Falls back to a coloured placeholder <div> if
 // the image fails to load.
 
+import { escapeHtml } from './console.js';
+
 const DEFAULT_TRANSCRIPT_ID = 'transcript';
 const DEFAULT_INPUT_ID = 'command-input';
 const DEFAULT_PROMPT_ID = 'prompt';
@@ -244,6 +246,10 @@ export class UI {
     this._append(div);
   }
 
+  printFail(text) {
+    this.printHtml(`<span class="colour-red">${escapeHtml(text)}</span>`);
+  }
+
   /**
    * Appends a location's image to the transcript, inline with the text
    * (so scrolling back reveals earlier images), mirroring the graphics
@@ -302,6 +308,12 @@ export class UI {
     if (this._isPaged()) {
       return this.waitForMore().then(() => this._readLine(promptText));
     }
+    // Not paged: still need the same "settle" bookkeeping waitForMore() does
+    // in this case (scroll to bottom, reset the turn marker) - but done
+    // synchronously, so _readLine() arms the input in this same tick (see
+    // _settleNotPaged() below; callers rely on Enter being handleable
+    // immediately after readLine() returns).
+    this._settleNotPaged();
     return this._readLine(promptText);
   }
 
@@ -314,7 +326,8 @@ export class UI {
       this._pendingSubmit = (line) => {
         this.promptEl.textContent = '';
         this._busy = false;
-        this.printLine(promptText + line);
+        const fullLine = escapeHtml(promptText + line);
+        this.printHtml(`<span class="colour-yellow">${fullLine}</span>`);
         resolve(line);
       };
     });
@@ -328,6 +341,32 @@ export class UI {
   _atBottom() {
     const t = this.transcriptEl;
     return !(t.scrollHeight - t.scrollTop - t.clientHeight > 1);
+  }
+
+  /**
+   * Marks the next appended element as the start of a new output block,
+   * discarding any earlier marker. Call before printing a block that a
+   * later scrollToTop() call should align to the top of the transcript
+   * (e.g. a room description - see showLocation() in main.js).
+   */
+  startBlock() {
+    this._turnStart = null;
+  }
+
+  /**
+   * Scrolls the transcript so the element marked by startBlock() (or, if
+   * that wasn't called, the first element appended since the last
+   * scroll/page) sits at the top of the panel - unconditionally, unlike
+   * waitForMore() which only does this when the block overflows the
+   * viewport. Mirrors con.clear() being called before describe_loc() in
+   * the MMBasic original: a fresh room description always starts at the
+   * top, even if it would otherwise fit on screen. Does not touch MORE
+   * paging state - waitForMore() still pages later output in the same
+   * block if it overflows.
+   */
+  scrollToTop() {
+    if (!this._turnStart) return;
+    this.transcriptEl.scrollTop = this._turnStart.offsetTop;
   }
 
   /** True if output since the last page would overflow the visible transcript. */
@@ -349,8 +388,7 @@ export class UI {
    */
   waitForMore() {
     if (!this._isPaged()) {
-      if (this._turnStart) this._scrollToBottom();
-      this._turnStart = null;
+      this._settleNotPaged();
       return Promise.resolve();
     }
     this.transcriptEl.scrollTop = this._turnStart.offsetTop;
@@ -368,6 +406,12 @@ export class UI {
     // Keep a little overlap so the last line of the previous page stays visible.
     t.scrollTop += Math.max(1, t.clientHeight - 32);
     this._checkMoreDone();
+  }
+
+  /** Shared "output fits" bookkeeping for waitForMore()/readLine(): scrolls to the bottom and clears the turn marker. */
+  _settleNotPaged() {
+    if (this._turnStart) this._scrollToBottom();
+    this._turnStart = null;
   }
 
   _checkMoreDone() {

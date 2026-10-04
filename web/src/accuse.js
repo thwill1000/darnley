@@ -40,8 +40,6 @@ export function pickReplyIndex(last, rng = Math.random) {
   return idx;
 }
 
-const fail = (text) => markupToHtml(`[[red:${text}]]`);
-
 /**
  * Scores one answer against a question pattern, mirroring the body of the
  * question loop in handle_new_accusation(): "you" becomes the accused's tag,
@@ -85,9 +83,9 @@ export async function handleNewAccusation(gameData, state, ui, rng = Math.random
     const found = countSetFlags(state, clues);
     if (found < clues.length) {
       ui.printLine('');
-      ui.printHtml(fail(
+      ui.printFail(
         `You have found ${found} of the ${clues.length} clues needed to make a successful accusation.`,
-      ));
+      );
       return {};
     }
   }
@@ -108,12 +106,12 @@ export async function handleNewAccusation(gameData, state, ui, rng = Math.random
 
     const words = splitWords(answer);
     if (words.length > MAX_WORDS) {
-      ui.printHtml(fail('Too many words.'));
+      ui.printFail('Too many words.');
       q--;
       continue;
     }
     if (words.some((w) => w.length > MAX_WORD_LENGTH)) {
-      ui.printHtml(fail('Word too long.'));
+      ui.printFail('Word too long.');
       q--;
       continue;
     }
@@ -128,7 +126,7 @@ export async function handleNewAccusation(gameData, state, ui, rng = Math.random
 
     if (q !== numQuestions - 1) {
       lastReply = pickReplyIndex(lastReply, rng);
-      ui.printHtml(markupToHtml("[[cyan:${ACCUSE_REPLIES[lastReply]}]]"));
+      ui.printHtml(markupToHtml(`[[cyan:${ACCUSE_REPLIES[lastReply]}]]`));
     }
   }
 
@@ -142,18 +140,19 @@ export async function handleNewAccusation(gameData, state, ui, rng = Math.random
   setFlag(state, flag);
   const said = VERB_HANDLERS.say(gameData, state, ['"', accused, ',', flag]);
   if (said.html) ui.printHtml(said.html);
-  if (said.message) ui.printHtml(fail(said.message));
+  if (said.message) ui.printFail(said.message);
   clearFlag(state, flag);
 
   if (correct !== numQuestions) {
-    ui.printLine('');
-    ui.printHtml(fail(`You answered ${correct} of ${numQuestions} questions correctly.`));
+    ui.printLine();
+    ui.printFail(`You answered ${correct} of ${numQuestions} questions correctly.`);
   }
 
+  ui.printLine();
+
   if (win) {
-    ui.printLine('');
     ui.printHtml(messageHtml(messages, 'WHAT_REALLY_HAPPENED', state));
-    ui.printLine('');
+    ui.printLine();
     ui.setImage('END_SCREEN', 'THE END');
     ui.printHtml(markupToHtml('[[red:THE END]]'));
     return { quit: true };

@@ -86,6 +86,7 @@ async function fetchText(path) {
  * @param {Set<string>} flags
  */
 function showLocation(ui, location, messages, flags) {
+  ui.startBlock();
   ui.printHtml(`<span class="colour-green title">${location.name}</span>`);
   ui.printLine();
   ui.setImage(location.id, location.name);
@@ -93,6 +94,7 @@ function showLocation(ui, location, messages, flags) {
   const entries = messages.get(location.id);
   const entry = entries ? entries.find((e) => e.requires.every((t) => flags.has(t))) : null;
   ui.printHtml(entry ? printBody(entry.body) : '');
+  ui.scrollToTop();
 }
 
 /**
@@ -132,7 +134,9 @@ export async function startGame(ui) {
 
     autosave(state);   // <-- state is consistent here, before every prompt
 
+    ui.printLine();
     const cmd = await ui.readLine('What would you like to do? ');
+    ui.printLine();
     const parsed = parseCommand(cmd);
 
     if (parsed.failed) {
@@ -143,14 +147,15 @@ export async function startGame(ui) {
 
     const handler = VERB_HANDLERS[parsed.verb];
     if (!handler) {
-      ui.printLine("I don't know the command `" + parsed.words[0].toUpperCase() + "`, try `HELP`.");
+      const text = "I don't know the command `" + parsed.words[0].toUpperCase() + "`, try `HELP`.";
+      ui.printFail(text);
       continue;
     }
 
     const oldRoom = state.room;
     const result = await handler(gameData, state, parsed.words, ui);
     if (result.html) ui.printHtml(result.html);
-    if (result.message) ui.printLine(result.message);
+    if (result.message) ui.printFail(result.message);
 
     const blockedTag = state.room !== oldRoom ? fakeExitTag(oldRoom, state.room) : null;
     if (blockedTag) {
