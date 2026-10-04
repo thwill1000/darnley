@@ -198,7 +198,7 @@ while and played duets on the piano.@
 At about 10:30 I decided to go to bed. I know the time because I
 looked at my watch when there was a loud noise - probably a poacher
 somewhere. Arthur stayed in the music room and I went upstairs. I
-think I saw Sir Redvers disappearing into his bedroom, but I was
+think I saw Sir Redvers going into the servants' quarters, but I was
 distracted by Sarah who was on the landing. She said she was
 intending to play the piano in the morning room and hoped it
 wouldn't disturb me. I went to my room and stayed there. I heard
@@ -211,8 +211,9 @@ sleep for a few minutes when there was a bang - a door slamming, I
 thought.@
 @
 Then at about midnight there was a racket of people everywhere. I
-went into Sarah's room and found her undressing there. We went into
-the morning room and found Billingsgate waking Sir Redvers."
+went into Sarah's room and found her undressing there. We went out
+onto the landing and found Billingsgate knocking up Sir Redvers at
+the door of the servants' quarters."
 
 +(bang/bangs/shot/shots) (time/what/when) (hear/heard)
 "There was a noise at about 10:30 - I assumed a poacher, and rather
@@ -236,8 +237,8 @@ alone in my room the whole time."
 when she stopped, or started again for that matter."
 
 +(confirm/corroborate/vouch/alibi/with) +redvers you
-"I only glimpsed him disappearing into his room as I came up. After
-that I couldn't say."
+"I only glimpsed him going into the servants' quarters as I came up.
+After that I couldn't say."
 
 +(confirm/corroborate/vouch/alibi/with) +(servant/bagsby/billingsgate/goodbody/butler/cook/maid) you
 "I've no idea what the servants do of an evening. That's hardly
