@@ -6,6 +6,7 @@
 // announcement segments when appropriate. Kept separate from main.js so
 // it can be tested and reused without pulling in the DOM bootstrap.
 
+import { markupToHtml } from './console.js';
 import { clearFlag, setFlag, countSetFlags } from './state.js';
 
 /**
@@ -16,7 +17,7 @@ import { clearFlag, setFlag, countSetFlags } from './state.js';
  *
  * @param {ReturnType<typeof import('./state.js').createState>} state
  * @param {string[]} clues  Clue flag tokens, from parseClues().
- * @returns {{text: string, colour: string}[]|null}
+ * @returns {string|null}
  */
 export function handleNewClue(state, clues) {
   clearFlag(state, 'new_clue');
@@ -24,8 +25,5 @@ export function handleNewClue(state, clues) {
   if (count === clues.length) setFlag(state, 'all_clues');
   if (count <= state.counters[1]) return null;
   state.counters[1] = count;
-  return [
-    { text: '\n', colour: '' },
-    { text: `* You have found ${count} of ${clues.length} clues! *`, colour: 'green' },
-  ];
+  return markupToHtml(`\n[[green:* You have found ${count} of ${clues.length} clues! *]]`);
 }

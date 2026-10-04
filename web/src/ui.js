@@ -232,34 +232,16 @@ export class UI {
   }
 
   /**
-   * Appends a coloured segment array - as produced by printBody() in
-   * engine.js - to the transcript as a single block. Each segment
-   * renders as a <span>; when its colour is non-empty the span gets a
-   * "colour-<name>" CSS class (see style.css) matching the game's
-   * [[colour:text]] markup. A segment's embedded "\n" characters (hard
-   * breaks - see printBody()'s doc comment) become <br> elements,
-   * splitting the text without splitting its colour.
+   * Appends an HTML string (as produced by markupToHtml()/printBody()) to the
+   * transcript as a single block. The string must already be escaped.
    *
-   * @param {{text: string, colour: string}[]} segments
+   * @param {string} html
    */
-  printSegments(segments) {
-    const container = this.doc.createElement('div');
-    container.className = 'transcript-line';
-
-    for (const { text, colour } of segments) {
-      const parts = text.split('\n');
-      parts.forEach((part, i) => {
-        if (part.length > 0) {
-          const span = this.doc.createElement('span');
-          if (colour) span.className = 'colour-' + colour;
-          span.textContent = part;
-          container.appendChild(span);
-        }
-        if (i < parts.length - 1) container.appendChild(this.doc.createElement('br'));
-      });
-    }
-
-    this._append(container);
+  printHtml(html) {
+    const div = this.doc.createElement('div');
+    div.className = 'transcript-line';
+    div.innerHTML = html;
+    this._append(div);
   }
 
   /**

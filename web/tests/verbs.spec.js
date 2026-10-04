@@ -22,7 +22,7 @@ describe('VERB_HANDLERS.cheat', () => {
 
   it('prints CHEAT_TEXT in cyan', () => {
     const result = VERB_HANDLERS.cheat(gameData, createState(1));
-    expect(result.segments).toEqual([{ text: 'You rotter - cheat mode enabled.', colour: 'cyan' }]);
+    expect(result.html).toBe('<span class="colour-cyan">You rotter - cheat mode enabled.</span>');
   });
 
   it('sets every clue flag, plus new_clue', () => {
@@ -43,7 +43,7 @@ describe('VERB_HANDLERS.cheat', () => {
     VERB_HANDLERS.cheat(gameData, state);
     const announcement = handleNewClue(state, clues);
     expect(state.flags.has('all_clues')).toBe(true);
-    expect(announcement.at(-1).text).toBe('* You have found 3 of 3 clues! *');
+    expect(announcement).toContain('* You have found 3 of 3 clues! *');
   });
 
   it('lets SAY reach a suspect who is not in the current room', () => {
@@ -60,7 +60,7 @@ describe('VERB_HANDLERS.cheat', () => {
     expect(say(sayData, state, ['say', 'xavier', ',', 'hello']).message).toBe('X is not here.');
 
     state.cheat = true;
-    expect(say(sayData, state, ['say', 'xavier', ',', 'hello']).segments[0].text).toBe('"hi"');
+    expect(say(sayData, state, ['say', 'xavier', ',', 'hello']).html).toBe('"hi"');
   });
 });
 
@@ -103,7 +103,7 @@ describe('dumpText() / VERB_HANDLERS.dump', () => {
     const state = createState(3);
     state.room = 'LOC001';
     const result = VERB_HANDLERS.dump(gameData, state);
-    expect(result.segments[0].text).toContain('ROOM');
+    expect(result.html).toContain('ROOM');
   });
 });
 

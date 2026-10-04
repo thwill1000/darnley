@@ -42,7 +42,7 @@ function fakeUI(answers) {
   return {
     out, asked,
     printLine: (t = '') => out.push(t),
-    printSegments: (segs) => out.push(segs.map((s) => s.text).join('')),
+    printHtml: (h) => out.push(h.replace(/<[^>]*>/g, '')),
     setImage: () => {},
     readLine: async () => {
       asked.push(out.filter((l) => l.startsWith('Question')).at(-1));

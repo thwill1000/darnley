@@ -11,10 +11,10 @@
 // renderBody() in data.js - into console.js's [[colour:text]] markup
 // parser, matching how the two combine in the MMBasic original.
 
+import { markupToHtml } from './console.js';
+import { renderBody } from './data.js';
 import { findMatches } from './match.js';
 import { applySynonyms, makeMatchInput } from './words.js';
-import { renderBody } from './data.js';
-import { createMarkupState, parseMarkup } from './console.js';
 
 const EXTRA_REPLACEMENTS = {
   P_MILLICENT_DARNLEY: [
@@ -154,47 +154,16 @@ export function findMessageEntry(messages, tag, flags) {
 }
 
 /**
- * Renders a message entry's body lines into a flat array of coloured
- * segments, mirroring print_body() in mmbasic/src/adventlib.inc composed
- * with con.print()'s markup parsing in mmbasic/src/console.inc.
+ * Renders a message entry's body lines to an HTML string: renderBody()
+ * (lines joined with a space, trailing "@" = hard newline) followed by
+ * markupToHtml(). A [[colour:...]] span open across an "@" break simply
+ * contains the newline, so the colour carries over with no special handling.
  *
- * print_body() joins consecutive raw lines with a single space, except
- * that a line ending in "@" forces a hard paragraph break (the "@" is
- * stripped) - that line-join/hard-break transform is renderBody()'s job
- * (data.js), producing one string with an embedded "\n" at each hard
- * break. That string is then run through a SINGLE markup-parser pass
- * (parseMarkup(), console.js) with one state object threaded across the
- * whole body.
- *
- * Using one parseMarkup() pass over the whole body (rather than one per
- * paragraph) matters: it reproduces the original's behaviour of letting
- * a [[colour:...]] span opened before an "@" break stay open across it -
- * print_body() calls con.println() at each "@", which flushes and prints
- * a newline but never resets con.markup_colour$, so a still-open span's
- * colour carries into the next paragraph exactly as if no break had
- * occurred. This is the one console.inc behaviour that's easy to get
- * wrong when porting (see step 17 of the port plan) - splitting the
- * rendered text into paragraphs first and parsing each with a fresh
- * state would silently drop that carry-over.
- *
- * The returned segments may contain embedded "\n" characters within a
- * single segment's text (when a hard break falls inside a still-open
- * span, or simply within plain text) - callers rendering to a UI should
- * split each segment's text on "\n" for line breaks while keeping that
- * segment's colour for every piece.
- *
- * @param {string[]} bodyLines  A message entry's raw body lines, as
- *                              parsed by parseMessages()/parseMsgFile().
- * @returns {{text: string, colour: string}[]}
+ * @param {string[]} bodyLines
+ * @returns {string}
  */
 export function printBody(bodyLines) {
-  const rendered = renderBody(bodyLines);
-  const segments = [];
-  const state = createMarkupState();
-  parseMarkup(state, rendered, (text, colour) => {
-    segments.push({ text, colour });
-  });
-  return segments;
+  return markupToHtml(renderBody(bodyLines));
 }
 
 // --- SAY / dialogue lookup ------------------------------------------------

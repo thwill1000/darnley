@@ -29,7 +29,8 @@ import {
   parseMsgFile,
 } from './data.js';
 import { createState, reset, hasFlag } from './state.js';
-import { VERB_HANDLERS, fakeExitTag, locationById, messageSegments, introSegments } from './verbs.js';
+import { markupToHtml } from './console.js';
+import { VERB_HANDLERS, fakeExitTag, locationById, messageHtml, introHtml } from './verbs.js';
 import { handleNewAccusation } from './accuse.js';
 import { handleNewClue } from './clues.js';
 import { parseCommand } from './words.js';
@@ -95,14 +96,12 @@ async function fetchText(path) {
  * @param {{id: string, name: string}} location
  * @param {Map} messages
  * @param {Set<string>} flags
- * @returns {{text: string, colour: string}[]}
+ * @returns {string} HTML content representing the location description.
  */
 export function describeLoc(location, messages, flags) {
-  const segments = [{ text: location.name, colour: 'green' }, { text: '\n', colour: '' }];
   const entries = messages.get(location.id);
   const entry = entries ? entries.find((e) => e.requires.every((t) => flags.has(t))) : null;
-  if (entry) segments.push(...printBody(entry.body));
-  return segments;
+  return markupToHtml(`[[green:${location.name}]]\n`) + (entry ? printBody(entry.body) : '');
 }
 
 /**
@@ -118,7 +117,7 @@ export function describeLoc(location, messages, flags) {
  */
 function showLocation(ui, location, messages, flags) {
   ui.setImage(location.id, location.name);
-  ui.printSegments(describeLoc(location, messages, flags));
+  ui.printHtml(describeLoc(location, messages, flags));
 }
 
 /**
@@ -137,8 +136,8 @@ export async function startGame(ui) {
   // Splash: the image panel shows SPLASH_SCREEN alongside the intro and
   // help text, until the first location is described.
   ui.setImage('SPLASH_SCREEN', TITLE);
-  ui.printSegments(introSegments(gameData.messages, state));
-  ui.printSegments(messageSegments(gameData.messages, 'HELP_TEXT', state));
+  ui.printHtml(introHtml(gameData.messages, state));
+  ui.printHtml(messageHtml(gameData.messages, 'HELP_TEXT', state));
   ui.printLine('');
   await ui.readLine('Press ENTER to begin. ');
 
@@ -166,19 +165,19 @@ export async function startGame(ui) {
 
     const oldRoom = state.room;
     const result = await handler(gameData, state, parsed.words, ui);
-    if (result.segments) ui.printSegments(result.segments);
+    if (result.html) ui.printHtml(result.html);
     if (result.message) ui.printLine(result.message);
 
     const blockedTag = state.room !== oldRoom ? fakeExitTag(oldRoom, state.room) : null;
     if (blockedTag) {
-      ui.printSegments(messageSegments(gameData.messages, blockedTag, state));
+      ui.printHtml(messageHtml(gameData.messages, blockedTag, state));
       state.room = oldRoom;
       result.redescribe = false;
     }
 
     if (hasFlag(state, 'new_clue')) {
       const announcement = handleNewClue(state, gameData.clues);
-      if (announcement) ui.printSegments(announcement);
+      if (announcement) ui.printHtml(announcement);
     }
 
     if (hasFlag(state, 'new_accuse')) {
@@ -192,8 +191,8 @@ export async function startGame(ui) {
     if (result.restart) {
       reset(state);
       state.room = START_ROOM;
-      ui.printSegments(introSegments(gameData.messages, state));
-      ui.printSegments(messageSegments(gameData.messages, 'HELP_TEXT', state));
+      ui.printHtml(introHtml(gameData.messages, state));
+      ui.printHtml(messageHtml(gameData.messages, 'HELP_TEXT', state));
       redescribe = true;
       continue;
     }
