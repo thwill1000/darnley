@@ -23,22 +23,21 @@ import {
   parseAdditionalExits,
   parseObjects,
   parseSynonyms,
+  parseClues,
   parseMessages,
   parseMsgFile,
 } from './data.js';
-import { createState, reset } from './state.js';
+import { createState, reset, hasFlag } from './state.js';
+import { VERB_HANDLERS, locationById, messageSegments, introSegments } from './verbs.js';
+import { handleNewClue } from './clues.js';
 import { parseCommand } from './words.js';
-import { verbGo, verbExamine, verbSay, printBody } from './engine.js';
+import { printBody } from './engine.js';
 import { createUI } from './ui.js';
 
 const DATA_DIR = 'data/';
 
 const START_ROOM = 'LOC017_DRIVE';
 const TITLE = 'The Sealed Room Murder';
-
-const DROP_MESSAGE =
-  'This game does not require you to TAKE, DROP or otherwise manipulate objects. ' +
-  'Just explore your surroundings, search for and EXAMINE the clues and talk to the suspects.';
 
 /**
  * Fetches and parses advent.dat, messages.dat, and every person-object's
@@ -47,7 +46,7 @@ const DROP_MESSAGE =
  * the engine functions expect.
  *
  * @returns {Promise<{locations: object[], additionalExits: object[],
- *   objects: object[], synonyms: object[], messages: Map, msgFiles: Map}>}
+ *   objects: object[], synonyms: object[], clues: string[], messages: Map, msgFiles: Map}>}
  */
 export async function loadGameData() {
   const adventText = await fetchText(DATA_DIR + 'advent.dat');
@@ -57,6 +56,7 @@ export async function loadGameData() {
   const additionalExits = parseAdditionalExits(adventText);
   const objects = parseObjects(adventText);
   const synonyms = parseSynonyms(adventText);
+  const clues = parseClues(adventText);
   const messages = parseMessages(messagesText);
 
   const msgFiles = new Map();
@@ -72,17 +72,13 @@ export async function loadGameData() {
     }
   }
 
-  return { locations, additionalExits, objects, synonyms, messages, msgFiles };
+  return { locations, additionalExits, objects, synonyms, clues, messages, msgFiles };
 }
 
 async function fetchText(path) {
   const response = await fetch(path);
   if (!response.ok) throw new Error(`Failed to fetch ${path}: ${response.status}`);
   return response.text();
-}
-
-export function locationById(locations, id) {
-  return locations.find((loc) => loc.id === id);
 }
 
 /**
@@ -122,97 +118,6 @@ function showLocation(ui, location, messages, flags) {
   ui.printSegments(describeLoc(location, messages, flags));
 }
 
-/** Segments for a messages.dat entry by tag (mirrors print_message_or_fail()). */
-export function messageSegments(messages, tag, state) {
-  const entries = messages.get(tag);
-  const entry = entries?.find((e) => e.requires.every((t) => state.flags.has(t)));
-  if (!entry) return [{ text: `ERROR: message ${tag.toUpperCase()} not found.`, colour: 'red' }];
-  for (const token of entry.provides) state.flags.add(token);
-  return printBody(entry.body);
-}
-
-/** Mirrors show_intro(): green title, blank line, then INTRO. */
-export function introSegments(messages, state) {
-  return [
-    { text: TITLE, colour: 'green' },
-    { text: '\n\n', colour: '' },
-    ...messageSegments(messages, 'INTRO', state),
-  ];
-}
-
-// Verb dispatch table. Each handler takes (gameData, state, words) -
-// the full split command words, verb included at index 0 - and returns
-// { segments? , message?, redescribe? }.
-const VERB_HANDLERS = {
-  // INVENTORY, TAKE and DROP all give the same refusal (verb_inventory/verb_take -> verb_drop).
-  drop() { return { segments: [{ text: DROP_MESSAGE, colour: 'red' }] }; },
-  take() { return VERB_HANDLERS.drop(); },
-  inventory() { return VERB_HANDLERS.drop(); },
-
-  go(gameData, state, words) {
-    const current = locationById(gameData.locations, state.room);
-    const result = verbGo(current, gameData.locations, gameData.additionalExits, words, gameData.synonyms);
-    if (result.success) {
-      state.room = result.room;
-      return { redescribe: true };
-    }
-    return { message: result.message };
-  },
-
-  examine(gameData, state, words) {
-    const current = locationById(gameData.locations, state.room);
-    const result = verbExamine(
-      gameData.objects,
-      gameData.messages,
-      words,
-      gameData.synonyms,
-      current,
-      gameData.locations,
-      gameData.additionalExits,
-      state.flags,
-    );
-    if (result.redescribe) return { redescribe: true };
-    if (result.success) return { segments: printBody(result.entry.body) };
-    return { message: result.message };
-  },
-
-  help(gameData, state) {
-    return { segments: messageSegments(gameData.messages, 'HELP_TEXT', state) };
-  },
-
-  recap(gameData, state) {
-    return { segments: introSegments(gameData.messages, state) };
-  },
-
-  // Mirrors verb_quit(): (Q)uit / (R)estart / (C)ancel.
-  async quit(gameData, state, words, ui) {
-    ui.printSegments([
-      { text: 'Please choose ', colour: 'yellow' },
-      { text: '(Q)', colour: 'green' }, { text: 'uit, ', colour: 'yellow' },
-      { text: '(R)', colour: 'green' }, { text: 'estart or ', colour: 'yellow' },
-      { text: '(C)', colour: 'green' }, { text: 'ancel?', colour: 'yellow' },
-    ]);
-    const answer = (await ui.readLine('> ')).trim().toLowerCase();
-    if (answer.startsWith('q')) return { message: 'Goodbye!', quit: true };
-    if (answer.startsWith('r')) return { restart: true };
-    return { message: 'Cancelled.' };
-  },
-
-  say(gameData, state, words) {
-    const result = verbSay(
-      gameData.objects,
-      gameData.msgFiles,
-      gameData.messages,
-      words,
-      gameData.synonyms,
-      state.room,
-      state.flags,
-    );
-    if (result.success) return { segments: printBody(result.entry.body) };
-    return { message: result.message };
-  },
-};
-
 /**
  * Runs the game loop against an already-created UI - mirrors the
  * `Do ... Loop` in darnley.bas. Never returns under normal play.
@@ -251,6 +156,11 @@ export async function startGame(ui) {
     const result = await handler(gameData, state, parsed.words, ui);
     if (result.segments) ui.printSegments(result.segments);
     if (result.message) ui.printLine(result.message);
+
+    if (hasFlag(state, 'new_clue')) {
+      const announcement = handleNewClue(state, gameData.clues);
+      if (announcement) ui.printSegments(announcement);
+    }
 
     if (result.quit) return; // input stays disabled; nothing is awaiting readLine()
 
