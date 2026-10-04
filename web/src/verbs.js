@@ -6,8 +6,9 @@
 // EXAMINE's missed "!provides" application - are directly testable
 // without exercising the DOM bootstrap in main.js.
 
-import { listSlots, saveToSlot, restoreFromSlot, NUM_SLOTS } from './state.js';
+import { markupToHtml } from './console.js';
 import { verbGo, verbExamine, verbSay, printBody } from './engine.js';
+import { listSlots, saveToSlot, restoreFromSlot, NUM_SLOTS } from './state.js';
 
 export const DROP_MESSAGE =
   'This game does not require you to TAKE, DROP or otherwise manipulate objects. ' +
@@ -18,10 +19,10 @@ export function locationById(locations, id) {
 }
 
 /** Segments for a messages.dat entry by tag (mirrors print_message_or_fail()). */
-export function messageSegments(messages, tag, state) {
+export function messageHtml(messages, tag, state) {
   const entries = messages.get(tag);
   const entry = entries?.find((e) => e.requires.every((t) => state.flags.has(t)));
-  if (!entry) return [{ text: `ERROR: message ${tag.toUpperCase()} not found.`, colour: 'red' }];
+  if (!entry) return markupToHtml(`[[red:ERROR: message ${tag.toUpperCase()} not found.]]`);
   for (const token of entry.provides) state.flags.add(token);
   return printBody(entry.body);
 }
@@ -41,12 +42,8 @@ export function fakeExitTag(oldRoom, newRoom) {
 const TITLE = 'The Sealed Room Murder';
 
 /** Mirrors show_intro(): green title, blank line, then INTRO. */
-export function introSegments(messages, state) {
-  return [
-    { text: TITLE, colour: 'green' },
-    { text: '\n\n', colour: '' },
-    ...messageSegments(messages, 'INTRO', state),
-  ];
+export function introHtml(messages, state) {
+  return markupToHtml(`[[green:${TITLE}]]\n\n`) + messageHtml(messages, 'INTRO', state);
 }
 
 /**
@@ -73,16 +70,15 @@ export function dumpText(gameData, state) {
 }
 
 function formatSlots(storage) {
-  const lines = listSlots(storage).map((s) => {
+  return listSlots(storage).map((s) => {
     const label = `  [${String(s.slot).padStart(2)}] `;
     return label + (s.empty ? 'Empty' : `${s.date.replace('T', ' ').slice(0, 19)} - ${s.name}`);
-  });
-  return [{ text: lines.join('\n'), colour: '' }];
+  }).join('\n');
 }
 
 /** Prompts for a slot number; returns 0 if invalid. Mirrors state.select_game%(). */
 async function selectSlot(ui, storage) {
-  ui.printSegments(formatSlots(storage));
+  ui.printLine(formatSlots(storage));
   const n = Number((await ui.readLine('Saved game number? ')).trim());
   return Number.isInteger(n) && n >= 1 && n <= NUM_SLOTS ? n : 0;
 }
@@ -92,7 +88,7 @@ async function selectSlot(ui, storage) {
 // { segments? , message?, redescribe? }.
 export const VERB_HANDLERS = {
   // INVENTORY, TAKE and DROP all give the same refusal (verb_inventory/verb_take -> verb_drop).
-  drop() { return { segments: [{ text: DROP_MESSAGE, colour: 'red' }] }; },
+  drop() { return { html: markupToHtml(`[[red:${DROP_MESSAGE}]]`) }; },
   take() { return VERB_HANDLERS.drop(); },
   inventory() { return VERB_HANDLERS.drop(); },
 
@@ -100,16 +96,16 @@ export const VERB_HANDLERS = {
   // listed in HELP_TEXT. Finds every clue, and lets SAY reach suspects
   // who are not in the current room (see state.cheat in verbSay()).
   cheat(gameData, state) {
-    const segments = messageSegments(gameData.messages, 'CHEAT_TEXT', state);
+    const html = messageHtml(gameData.messages, 'CHEAT_TEXT', state);
     for (const clue of gameData.clues) state.flags.add(clue);
     state.flags.add('new_clue');
     state.cheat = true;
-    return { segments };
+    return { html };
   },
 
   // Debug aid, mirrors verb_dump(); deliberately not listed in HELP_TEXT.
   dump(gameData, state) {
-    return { segments: [{ text: dumpText(gameData, state), colour: '' }] };
+    return { html: markupToHtml(dumpText(gameData, state)) };
   },
 
   go(gameData, state, words) {
@@ -137,27 +133,25 @@ export const VERB_HANDLERS = {
     if (result.redescribe) return { redescribe: true };
     if (result.success) {
       for (const token of result.entry.provides) state.flags.add(token);
-      return { segments: printBody(result.entry.body) };
+      return { html: printBody(result.entry.body) };
     }
     return { message: result.message };
   },
 
   help(gameData, state) {
-    return { segments: messageSegments(gameData.messages, 'HELP_TEXT', state) };
+    return { html: messageHtml(gameData.messages, 'HELP_TEXT', state) };
   },
 
   recap(gameData, state) {
-    return { segments: introSegments(gameData.messages, state) };
+    return { html: introHtml(gameData.messages, state) };
   },
 
   // Mirrors verb_quit(): (Q)uit / (R)estart / (C)ancel.
   async quit(gameData, state, words, ui) {
-    ui.printSegments([
-      { text: 'Please choose ', colour: 'yellow' },
-      { text: '(Q)', colour: 'green' }, { text: 'uit, ', colour: 'yellow' },
-      { text: '(R)', colour: 'green' }, { text: 'estart or ', colour: 'yellow' },
-      { text: '(C)', colour: 'green' }, { text: 'ancel?', colour: 'yellow' },
-    ]);
+    ui.printHtml(markupToHtml(
+      '[[yellow:Please choose ]][[green:(Q)]][[yellow:uit, ]][[green:(R)]]' +
+      '[[yellow:estart or ]][[green:(C)]][[yellow:ancel?]]',
+    ));
     const answer = (await ui.readLine('> ')).trim().toLowerCase();
     if (answer.startsWith('q')) return { message: 'Goodbye!', quit: true };
     if (answer.startsWith('r')) return { restart: true };
@@ -202,7 +196,7 @@ export const VERB_HANDLERS = {
       state.flags,
       state.cheat,
     );
-    if (result.success) return { segments: printBody(result.entry.body) };
+    if (result.success) return { html: printBody(result.entry.body) };
     return { message: result.message };
   },
 };

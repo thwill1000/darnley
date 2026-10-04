@@ -107,55 +107,13 @@ describe('UI.printLine()', () => {
   });
 });
 
-describe('UI.printSegments()', () => {
-  it('renders a plain (uncoloured) segment as a span with no colour class', () => {
+describe('UI.printHtml()', () => {
+  it('appends a transcript line whose innerHTML is the given html', () => {
     const { ui, transcript } = makeUI();
-    ui.printSegments([{ text: 'plain text', colour: '' }]);
-    const [line] = transcript.children;
-    expect(line.children).toHaveLength(1);
-    expect(line.children[0].textContent).toBe('plain text');
-    expect(line.children[0].className).toBe('');
-  });
-
-  it('renders a coloured segment with a "colour-<name>" class', () => {
-    const { ui, transcript } = makeUI();
-    ui.printSegments([{ text: 'Hall', colour: 'green' }]);
-    const [line] = transcript.children;
-    expect(line.children[0].className).toBe('colour-green');
-    expect(line.children[0].textContent).toBe('Hall');
-  });
-
-  it('renders mixed plain/coloured segments as separate spans in order', () => {
-    const { ui, transcript } = makeUI();
-    ui.printSegments([
-      { text: 'A door leads to the ', colour: '' },
-      { text: 'Hall', colour: 'green' },
-      { text: '.', colour: '' },
-    ]);
-    const [line] = transcript.children;
-    expect(line.children.map((c) => c.textContent)).toEqual(['A door leads to the ', 'Hall', '.']);
-  });
-
-  it('splits an embedded "\\n" within a segment into separate spans joined by a <br>, keeping the colour', () => {
-    const { ui, transcript } = makeUI();
-    ui.printSegments([{ text: 'one\ntwo', colour: 'green' }]);
-    const [line] = transcript.children;
-    // span("one"), br, span("two")
-    expect(line.children).toHaveLength(3);
-    expect(line.children[0].tagName).toBe('span');
-    expect(line.children[0].textContent).toBe('one');
-    expect(line.children[0].className).toBe('colour-green');
-    expect(line.children[1].tagName).toBe('br');
-    expect(line.children[2].textContent).toBe('two');
-    expect(line.children[2].className).toBe('colour-green');
-  });
-
-  it('a lone "\\n" (blank line inside a span) becomes just a <br>, with no empty span either side', () => {
-    const { ui, transcript } = makeUI();
-    ui.printSegments([{ text: 'first\n\nsecond', colour: '' }]);
-    const [line] = transcript.children;
-    // span("first"), br, br, span("second")
-    expect(line.children.map((c) => c.tagName)).toEqual(['span', 'br', 'br', 'span']);
+    ui.printHtml('A <span class="colour-green">Hall</span>');
+    expect(transcript.children).toHaveLength(1);
+    expect(transcript.children[0].className).toBe('transcript-line');
+    expect(transcript.children[0].innerHTML).toBe('A <span class="colour-green">Hall</span>');
   });
 });
 

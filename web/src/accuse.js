@@ -5,10 +5,11 @@
 // accusation sequence, "you" substitution, scoring, and result delivery
 // through the accused's own .msg file via the SAY handler.
 
+import { markupToHtml } from './console.js';
 import { splitWords, makeMatchInput, MAX_WORDS, MAX_WORD_LENGTH } from './words.js';
 import { findMatches } from './match.js';
 import { clearFlag, setFlag, hasFlag, countSetFlags } from './state.js';
-import { VERB_HANDLERS, messageSegments } from './verbs.js';
+import { VERB_HANDLERS, messageHtml } from './verbs.js';
 
 export const SUSPECT_TAGS = [
   'arthur', 'bagsby', 'billingsgate', 'goodbody', 'mellors', 'millicent', 'redvers', 'sarah',
@@ -39,7 +40,7 @@ export function pickReplyIndex(last, rng = Math.random) {
   return idx;
 }
 
-const fail = (text) => [{ text, colour: 'red' }];
+const fail = (text) => markupToHtml(`[[red:${text}]]`);
 
 /**
  * Scores one answer against a question pattern, mirroring the body of the
@@ -84,7 +85,7 @@ export async function handleNewAccusation(gameData, state, ui, rng = Math.random
     const found = countSetFlags(state, clues);
     if (found < clues.length) {
       ui.printLine('');
-      ui.printSegments(fail(
+      ui.printHtml(fail(
         `You have found ${found} of the ${clues.length} clues needed to make a successful accusation.`,
       ));
       return {};
@@ -92,7 +93,7 @@ export async function handleNewAccusation(gameData, state, ui, rng = Math.random
   }
 
   ui.printLine('');
-  ui.printSegments(messageSegments(messages, 'ACCUSE_TEXT', state));
+  ui.printHtml(messageHtml(messages, 'ACCUSE_TEXT', state))
 
   const numQuestions = questions.length;
   let correct = 0;
@@ -101,20 +102,18 @@ export async function handleNewAccusation(gameData, state, ui, rng = Math.random
   for (let q = 0; q < numQuestions; q++) {
     ui.printLine('');
     // Question text is yellow unless its own markup says otherwise.
-    ui.printSegments(
-      messageSegments(messages, questions[q].id, state).map((s) => ({ ...s, colour: s.colour || 'yellow' })),
-    );
+    ui.printHtml(`<span class="colour-yellow">${messageHtml(messages, questions[q].id, state)}</span>`);
     const answer = await ui.readLine('> ');
     ui.printLine('');
 
     const words = splitWords(answer);
     if (words.length > MAX_WORDS) {
-      ui.printSegments(fail('Too many words.'));
+      ui.printHtml(fail('Too many words.'));
       q--;
       continue;
     }
     if (words.some((w) => w.length > MAX_WORD_LENGTH)) {
-      ui.printSegments(fail('Word too long.'));
+      ui.printHtml(fail('Word too long.'));
       q--;
       continue;
     }
@@ -129,7 +128,7 @@ export async function handleNewAccusation(gameData, state, ui, rng = Math.random
 
     if (q !== numQuestions - 1) {
       lastReply = pickReplyIndex(lastReply, rng);
-      ui.printSegments([{ text: `"${ACCUSE_REPLIES[lastReply]}"`, colour: 'cyan' }]);
+      ui.printHtml(markupToHtml("[[cyan:${ACCUSE_REPLIES[lastReply]}]]"));
     }
   }
 
@@ -142,21 +141,21 @@ export async function handleNewAccusation(gameData, state, ui, rng = Math.random
   // file supplies the closing speech.
   setFlag(state, flag);
   const said = VERB_HANDLERS.say(gameData, state, ['"', accused, ',', flag]);
-  if (said.segments) ui.printSegments(said.segments);
-  if (said.message) ui.printSegments(fail(said.message));
+  if (said.html) ui.printHtml(said.html);
+  if (said.message) ui.printHtml(fail(said.message));
   clearFlag(state, flag);
 
   if (correct !== numQuestions) {
     ui.printLine('');
-    ui.printSegments(fail(`You answered ${correct} of ${numQuestions} questions correctly.`));
+    ui.printHtml(fail(`You answered ${correct} of ${numQuestions} questions correctly.`));
   }
 
   if (win) {
     ui.printLine('');
-    ui.printSegments(messageSegments(messages, 'WHAT_REALLY_HAPPENED', state));
+    ui.printHtml(messageHtml(messages, 'WHAT_REALLY_HAPPENED', state));
     ui.printLine('');
     ui.setImage('END_SCREEN', 'THE END');
-    ui.printSegments([{ text: 'THE END', colour: 'red' }]);
+    ui.printHtml(markupToHtml('[[red:THE END]]'));
     return { quit: true };
   }
 
