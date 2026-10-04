@@ -128,7 +128,8 @@ add_test("What clues have you found?", "test_evidence")
 add_test("Where is the body?", "test_body")
 add_test("Was there something going on between Sarah and Mellors?", "test_affair_blocked")
 add_test("Was there something going on between Sarah and Mellors? (once handkerchief and cigarettes are found)", "test_affair_unlocked")
-add_test("Tell me about the Colonel's finances.", "test_money_blocked")
+add_test("Tell me about the Colonel's finances", "test_money_blocked")
+add_test("Tell me about the Colonel's finances (after the newspaper is found)", "test_money_unlocked")
 add_test("What do you know about the bangs last night?", "test_bang")
 add_test("Did you argue with the colonel? (before the newspaper is found)", "test_argument_blocked")
 add_test("Did you argue with the colonel? (after the newspaper is found)", "test_argument_unlocked")
@@ -860,12 +861,9 @@ End Sub
 ' appears first in the file and is now eligible)
 Sub test_affair_unlocked()
   reset_flags("x_handkerchief", "x_cigarettes")
+
   assert_response("ask about the affair", "affair response given handkerchief and cigarettes")
-
-  reset_flags("x_handkerchief", "x_cigarettes")
   assert_response("was there something going on between sarah and mellors", "affair response given handkerchief and cigarettes")
-
-  reset_flags("x_handkerchief", "x_cigarettes")
   assert_response("was sarah having a secret affair with the gamekeeper", "affair response given handkerchief and cigarettes")
 End Sub
 
@@ -882,24 +880,16 @@ End Sub
 ' Once "x_newspaper" is set, the gated entry wins
 Sub test_money_unlocked()
   reset_flags("x_newspaper")
+
   assert_response("tell me about redvers' debts", "finance response given newspaper and redvers")
-
-  reset_flags("x_newspaper")
   assert_response("tell me about slingsby' debts", "finance response given newspaper and redvers")
-
-  reset_flags("x_newspaper")
   assert_response("tell me about redvers' money troubles", "finance response given newspaper and redvers")
-
-  reset_flags("x_newspaper")
   assert_response("tell me about redvers's money troubles", "finance response given newspaper and redvers")
-
-  reset_flags("x_newspaper")
   assert_response("what about slingsby' debts", "finance response given newspaper and redvers")
 
   ' Ask Redvers directly without referencing him by name in the subject.
   objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
-  reset_flags("x_newspaper")
-  assert_response("Redvers, did you have money troubles?", "He goes rather grey about the gills.", 1)
+  assert_response("Redvers, did you have money troubles?", "[[reset:He goes rather grey about the gills.", 1)
 End Sub
 
 Sub test_bang()
@@ -1008,39 +998,18 @@ End Sub
 
 Sub test_subsequent_accusation()
   reset_flags("all_clues", "accuse_b4_tag")
+
   assert_response("accuse", "subsequent accusation response")
-
-  reset_flags("all_clues", "accuse_b4_tag")
   assert_response("guilty", "subsequent accusation response")
-
-  reset_flags("all_clues", "accuse_b4_tag")
   assert_response("I accuse you!", "subsequent accusation response")
-
-  reset_flags("all_clues", "accuse_b4_tag")
   assert_response("You did it", "subsequent accusation response")
-
-  reset_flags("all_clues", "accuse_b4_tag")
   assert_response("You are the murderer", "subsequent accusation response")
-
-  reset_flags("all_clues", "accuse_b4_tag")
   assert_response("You are the killer", "subsequent accusation response")
-
-  reset_flags("all_clues", "accuse_b4_tag")
   assert_response("You killed the colonel", "subsequent accusation response")
-
-  reset_flags("all_clues", "accuse_b4_tag")
   assert_response("You murdered the colonel", "subsequent accusation response")
-
-  reset_flags("all_clues", "accuse_b4_tag")
   assert_response("J'accuse!", "subsequent accusation response")
-
-  reset_flags("all_clues", "accuse_b4_tag")
   assert_response("I accuse you of murder", "subsequent accusation response")
-
-  reset_flags("all_clues", "accuse_b4_tag")
   assert_response("I accuse you, confess!", "subsequent accusation response")
-
-  reset_flags("all_clues", "accuse_b4_tag")
   assert_response("You are guilty!", "subsequent accusation response")
 End Sub
 
