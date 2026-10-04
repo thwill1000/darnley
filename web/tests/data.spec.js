@@ -85,8 +85,8 @@ describe('parseLocations()', () => {
 });
 
 describe('parseAdditionalExits()', () => {
-  it('parses exactly 8 additional exits', () => {
-    expect(parseAdditionalExits(adventText)).toHaveLength(8);
+  it('parses exactly 11 additional exits', () => {
+    expect(parseAdditionalExits(adventText)).toHaveLength(11);
   });
 
   it('parses the drive-to-hall additional exit', () => {
