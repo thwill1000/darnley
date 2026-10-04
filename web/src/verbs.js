@@ -10,6 +10,7 @@ import { markupToHtml } from './console.js';
 import { HELP_TEXT_ID, INTRO_TEXT_ID } from './data.js';
 import { verbGo, verbExamine, verbSay, printBody, findObj, findExitMatch } from './engine.js';
 import { listSlots, saveToSlot, restoreFromSlot, NUM_SLOTS } from './state.js';
+import { loadCommands, transcriptText } from './transcript.js';
 import { splitWords, removePadding } from './words.js';
 
 export const DROP_MESSAGE =
@@ -114,6 +115,12 @@ export const VERB_HANDLERS = {
     state.flags.add('new_clue');
     state.cheat = true;
     return { html };
+  },
+
+  // Offers the recorded input lines as a downloadable text file.
+  download(gameData, state, words, ui) {
+    ui.downloadText('darnley-transcript.txt', transcriptText(loadCommands()));
+    return { html: markupToHtml('Transcript downloaded.') };
   },
 
   // Debug aid, mirrors verb_dump(); deliberately not listed in the HELP text.

@@ -242,6 +242,12 @@ describe('parseMessages()', () => {
     expect(help).not.toContain('[[green:QUIT]]');
   });
 
+  it('advertises DOWNLOAD in the web HELP text', () => {
+    const messages = parseMessages(messagesText);
+    const [entry] = messages.get(HELP_TEXT_ID);
+    expect(renderBody(entry.body)).toContain('[[green:DOWNLOAD]]');
+  });
+
   it('round-trips INTRO through renderBody() to its expected multi-paragraph text', () => {
     const messages = parseMessages(messagesText);
     const [entry] = messages.get('INTRO');

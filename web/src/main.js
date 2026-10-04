@@ -33,6 +33,7 @@ import { handleNewAccusation } from './accuse.js';
 import { handleNewClue } from './clues.js';
 import { parseCommand } from './words.js';
 import { printBody } from './engine.js';
+import { recordCommand, clearTranscript } from './transcript.js';
 import { createUI } from './ui.js';
 
 const DATA_DIR = 'data/';
@@ -116,13 +117,16 @@ function showLocation(ui, location, messages, flags, options) {
 export async function startGame(ui) {
   const gameData = await loadGameData();
   let restore = true;
+  ui.onSubmit = (line) => { recordCommand(line); };
 
   // Outer loop: each iteration is one "session"
   for (;;) {
     const state = createState(gameData.locations.length);
     state.room = START_ROOM;
 
-    await showSplashIntro(ui, gameData, state, restore ? tryRestoreAutosave(state) : false);
+    const restored = restore ? tryRestoreAutosave(state) : false;
+    if (!restored) clearTranscript(); // fresh game or RESTART: start a new transcript
+    await showSplashIntro(ui, gameData, state, restored);
     restore = false;
 
     const outcome = await runCommandLoop(ui, gameData, state);
@@ -228,6 +232,7 @@ async function runCommandLoop(ui, gameData, state) {
       const accuseOutcome = await handleNewAccusation(gameData, state, ui);
       if (accuseOutcome.quit) {
         clearAutosave();
+        clearTranscript();
         await ui.waitForMore();
         return 'quit';
       } // won: input stays disabled
