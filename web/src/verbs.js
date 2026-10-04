@@ -36,6 +36,29 @@ export function introSegments(messages, state) {
   ];
 }
 
+/**
+ * Builds the text for the DUMP verb, mirroring verb_dump() in
+ * mmbasic/src/adventlib.inc: room, visited string, one flag per line,
+ * flag count and counters.
+ */
+export function dumpText(gameData, state) {
+  const pad = (label) => label.padEnd(10);
+  const roomIndex = gameData.locations.findIndex((loc) => loc.id === state.room) + 1;
+  const visited = gameData.locations
+    .map((loc, i) => (state.visited.has(i + 1) || state.visited.has(loc.id) ? '1' : '0'))
+    .join('');
+  const flags = [...state.flags];
+
+  const lines = [
+    `${pad('ROOM')}= ${roomIndex} (${state.room})`,
+    `${pad('VISITED')}= ${visited}`,
+  ];
+  flags.forEach((flag, i) => lines.push(`${i === 0 ? pad('FLAGS') + '= ' : ' '.repeat(12)}${flag}`));
+  lines.push(`${pad('NUM FLAGS')}= ${flags.length}`);
+  lines.push(`${pad('COUNTERS')}= ${state.counters.slice(1).join(' ')}`);
+  return lines.join('\n');
+}
+
 // Verb dispatch table. Each handler takes (gameData, state, words) -
 // the full split command words, verb included at index 0 - and returns
 // { segments? , message?, redescribe? }.
@@ -44,6 +67,11 @@ export const VERB_HANDLERS = {
   drop() { return { segments: [{ text: DROP_MESSAGE, colour: 'red' }] }; },
   take() { return VERB_HANDLERS.drop(); },
   inventory() { return VERB_HANDLERS.drop(); },
+
+  // Debug aid, mirrors verb_dump(); deliberately not listed in HELP_TEXT.
+  dump(gameData, state) {
+    return { segments: [{ text: dumpText(gameData, state), colour: '' }] };
+  },
 
   go(gameData, state, words) {
     const current = locationById(gameData.locations, state.room);
