@@ -7,6 +7,9 @@
 // in full, into objects - see web/docs/2026-09-23-javascript-web-port-plan.md
 // ("data.js - parse once into objects, not line numbers").
 
+export const INTRO_TEXT_ID = 'INTRO_WEB';
+export const HELP_TEXT_ID = 'HELP_TEXT_WEB';
+
 /**
  * Splits text into lines, tolerating \n, \r\n or \r line endings.
  *

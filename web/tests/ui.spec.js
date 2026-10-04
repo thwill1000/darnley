@@ -16,6 +16,8 @@ class FakeElement {
     this.disabled = false;
     this.scrollTop = 0;
     this.scrollHeight = 0;
+    this.open = false;
+    this.returnValue = '';
     this._listeners = {};
     this._focused = false;
     this._innerHTML = '';
@@ -41,12 +43,30 @@ class FakeElement {
     (this._listeners[type] ??= []).push(cb);
   }
 
+  removeEventListener(type, cb) {
+    this._listeners[type] = (this._listeners[type] ?? []).filter((listener) => listener !== cb);
+  }
+
   dispatchEvent(type, event) {
     for (const cb of this._listeners[type] ?? []) cb(event);
   }
 
+  showModal() {
+    this.open = true;
+  }
+
+  close(value = '') {
+    this.returnValue = value;
+    this.open = false;
+    this.dispatchEvent('close', {});
+  }
+
   appendChild(child) {
     this.children.push(child);
+  }
+
+  replaceChildren() {
+    this.children = [];
   }
 
   focus() {
@@ -62,8 +82,9 @@ function makeUI() {
   const transcript = new FakeElement('div');
   const input = new FakeElement('input');
   const prompt = new FakeElement('span');
-  const ui = new UI(transcript, input, prompt, fakeDoc());
-  return { ui, transcript, input, prompt };
+  const dialog = new FakeElement('dialog');
+  const ui = new UI(transcript, input, prompt, fakeDoc(), null, dialog);
+  return { ui, transcript, input, prompt, dialog };
 }
 
 function pressEnter(input) {
@@ -212,6 +233,35 @@ describe('UI.readLine()', () => {
     input.value = 'two';
     pressEnter(input);
     await expect(second).resolves.toBe('two');
+  });
+});
+
+describe('UI.confirmRestart()', () => {
+  it('resolves true when the YES button closes the restart dialog', async () => {
+    const { ui, dialog } = makeUI();
+    const result = ui.confirmRestart();
+    expect(dialog.open).toBe(true);
+    dialog.close('yes');
+    await expect(result).resolves.toBe(true);
+  });
+
+  it('resolves false when the NO button closes the restart dialog', async () => {
+    const { ui, dialog } = makeUI();
+    const result = ui.confirmRestart();
+    dialog.close('no');
+    await expect(result).resolves.toBe(false);
+  });
+
+  it('resolves false when the dialog is dismissed without a button choice', async () => {
+    const { ui, dialog } = makeUI();
+    const result = ui.confirmRestart();
+    dialog.close();
+    await expect(result).resolves.toBe(false);
+  });
+
+  it('fails clearly if the restart dialog is unavailable', () => {
+    const ui = new UI(new FakeElement('div'), new FakeElement('input'), new FakeElement('span'), fakeDoc());
+    expect(() => ui.confirmRestart()).toThrow('UI: restart dialog element not found');
   });
 });
 
@@ -399,5 +449,40 @@ describe('UI.startBlock() / UI.scrollToTop()', () => {
     ui.startBlock();
     ui.scrollToTop();
     expect(transcript.scrollTop).toBe(42);
+  });
+});
+
+describe('UI.clear()', () => {
+  it('removes everything previously printed to the transcript', () => {
+    const { ui, transcript } = makeUI();
+    ui.printLine('one');
+    ui.printLine('two');
+    expect(transcript.children).toHaveLength(2);
+
+    ui.clear();
+
+    expect(transcript.children).toHaveLength(0);
+  });
+
+  it('resets the startBlock()/scrollToTop() marker', () => {
+    const { ui, transcript } = makeUI();
+    ui.startBlock();
+    ui.printLine('one');
+    ui.clear();
+    transcript.scrollTop = 42;
+
+    ui.scrollToTop(); // no marker left to scroll to - should do nothing
+
+    expect(transcript.scrollTop).toBe(42);
+  });
+
+  it('allows printing normally afterwards', () => {
+    const { ui, transcript } = makeUI();
+    ui.printLine('one');
+    ui.clear();
+    ui.printLine('fresh start');
+
+    expect(transcript.children).toHaveLength(1);
+    expect(transcript.children[0].textContent).toBe('fresh start');
   });
 });
