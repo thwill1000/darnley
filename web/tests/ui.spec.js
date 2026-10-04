@@ -18,6 +18,23 @@ class FakeElement {
     this.scrollHeight = 0;
     this._listeners = {};
     this._focused = false;
+    this._innerHTML = '';
+  }
+
+  get innerHTML() {
+    return this._innerHTML;
+  }
+
+  // Minimal stand-in for jsdom's innerHTML: strips tags and decodes the
+  // handful of entities escapeHtml()/printHtml() produce, enough to keep
+  // textContent in sync for assertions.
+  set innerHTML(html) {
+    this._innerHTML = html;
+    this.textContent = html
+      .replace(/<[^>]*>/g, '')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&amp;/g, '&');
   }
 
   addEventListener(type, cb) {
@@ -306,6 +323,14 @@ describe('MORE paging', () => {
     expect(transcript.scrollTop).toBe(80);
   });
 
+  it('readLine() itself scrolls to the bottom when output fits, without needing an explicit waitForMore()', () => {
+    const { ui, transcript } = makePagedUI({ scrollHeight: 80 });
+    ui.printLine('short');
+    expect(transcript.scrollTop).toBe(0);
+    ui.readLine('> ');
+    expect(transcript.scrollTop).toBe(80);
+  });
+
   it('holds at the start of long output, blocks input and pages with MORE', async () => {
     const { ui, transcript, input, more } = makePagedUI({ scrollHeight: 500 });
     ui.printLine('first'); // offsetTop is undefined on the fake - set it
@@ -339,5 +364,40 @@ describe('MORE paging', () => {
     transcript.dispatchEvent('scroll', {});
     await p;
     expect(more.hidden).toBe(true);
+  });
+});
+
+describe('UI.startBlock() / UI.scrollToTop()', () => {
+  it('scrolls so the first element printed since startBlock() is at the top, even when the block fits on screen', () => {
+    const { ui, transcript } = makeUI();
+    transcript.scrollHeight = 500;
+    transcript.clientHeight = 100;
+    ui.printLine('earlier scrollback');
+    ui.startBlock();
+    ui.printLine('ROOM NAME');
+    transcript.children[1].offsetTop = 300;
+    ui.printLine('room body text');
+    ui.scrollToTop();
+    expect(transcript.scrollTop).toBe(300);
+  });
+
+  it('scrolls so the first element printed since startBlock() is at the top when the block overflows', () => {
+    const { ui, transcript } = makeUI();
+    transcript.scrollHeight = 1000;
+    transcript.clientHeight = 100;
+    ui.startBlock();
+    ui.printLine('ROOM NAME');
+    transcript.children[0].offsetTop = 600;
+    ui.printLine('lots of room body text');
+    ui.scrollToTop();
+    expect(transcript.scrollTop).toBe(600);
+  });
+
+  it('does nothing if nothing has been printed since startBlock()', () => {
+    const { ui, transcript } = makeUI();
+    transcript.scrollTop = 42;
+    ui.startBlock();
+    ui.scrollToTop();
+    expect(transcript.scrollTop).toBe(42);
   });
 });

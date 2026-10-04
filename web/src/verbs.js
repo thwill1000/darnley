@@ -196,7 +196,7 @@ export const VERB_HANDLERS = {
       state.flags,
       state.cheat,
     );
-    if (result.success) return { html: printBody(result.entry.body) };
+    if (result.success) return { html: `<span class="colour-cyan">${printBody(result.entry.body)}</span>` };
     return { message: result.message };
   },
 };
