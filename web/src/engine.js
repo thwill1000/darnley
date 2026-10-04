@@ -12,9 +12,20 @@
 // parser, matching how the two combine in the MMBasic original.
 
 import { findMatches } from './match.js';
-import { makeMatchInput } from './words.js';
+import { applySynonyms, makeMatchInput } from './words.js';
 import { renderBody } from './data.js';
 import { createMarkupState, parseMarkup } from './console.js';
+
+const EXTRA_REPLACEMENTS = {
+  P_MILLICENT_DARNLEY: [
+    { canonical: 'colonel', aliases: ['father'] },
+    { canonical: 'sarah', aliases: ['mother'] },
+  ],
+  P_SARAH_DARNLEY: [
+    { canonical: 'colonel', aliases: ['husband'] },
+    { canonical: 'millicent', aliases: ['daughter'] },
+  ],
+};
 
 /**
  * Finds the best matching exit location from currentLocation for the
@@ -427,10 +438,11 @@ export function verbSay(objects, msgFiles, messages, words, synonymEntries, curr
     if (words[i] === '') break;
     subjectWords.push(words[i]);
   }
+  const subject = applySynonyms(subjectWords, EXTRA_REPLACEMENTS[targetObj.id] ?? []);
 
   const entries = msgFiles.get(targetObj.id);
   const response = entries
-    ? findResponse(entries, subjectWords, synonymEntries, flags)
+    ? findResponse(entries, subject, synonymEntries, flags)
     : findMessageEntry(messages, `${targetObj.id}_SAY_RESPONSE`, flags);
 
   if (!response) {
