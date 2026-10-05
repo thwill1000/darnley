@@ -69,11 +69,11 @@ letter
 handkerchief
 "handkerchief response"
 
-+colonel +(argue/argument/row/quarrel/quarrelled/quarrelling)
++colonel +argue
 !requires x_newspaper
 "argument with colonel given newspaper response"
 
-+colonel +(argue/argument/row/quarrel/quarrelled/quarrelling)
++colonel +argue
 "argument with colonel response"
 
 +colonel -(millicent/sarah/who) (get/think) with

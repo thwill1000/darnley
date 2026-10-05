@@ -75,7 +75,7 @@ called me by name, not 'Dear Sir' - after all we were friends."
 handkerchief
 "Not mine, obviously. I don't go about with lace and scent, man."
 
-+colonel +(argue/argument/row/quarrel/quarrelled/quarrelling)
++colonel +argue
 !requires x_newspaper
 [[reset:He exhales slowly, some of the bluster gone out of him.]]@
 @
@@ -84,7 +84,7 @@ we argued - about my Peruvian silver, and what Darnley's own advice
 had cost me. I asked him for a loan to cover it. Heated, I'll grant
 you, but a damned sight short of murder."
 
-+colonel +(argue/argument/row/quarrel/quarrelled/quarrelling)
++colonel +argue
 "Argued, yes - I'll not pretend otherwise, half the house probably
 heard us. Business, that's all it was. Gentlemen argue about business
 without murdering each other over it, or the clubs of London would be

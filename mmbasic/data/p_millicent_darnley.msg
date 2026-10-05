@@ -63,7 +63,7 @@ handkerchief
 don't remember when I lose them. I certainly wasn't in the summer
 house yesterday. Is it important?"
 
-+colonel +(argue/argument/row/quarrel/quarrelled/quarrelling)
++colonel +argue
 "Not that I heard, but I was in the music room with Arthur most of
 the evening. Daddy could be sharp with people when he chose to be -
 I shouldn't be at all surprised if someone had crossed him."

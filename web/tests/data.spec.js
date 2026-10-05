@@ -158,15 +158,15 @@ describe('parseObjects()', () => {
 });
 
 describe('parseSynonyms()', () => {
-  it('parses exactly 39 synonym entries', () => {
-    expect(parseSynonyms(adventText)).toHaveLength(39);
+  it('parses exactly 40 synonym entries', () => {
+    expect(parseSynonyms(adventText)).toHaveLength(40);
   });
 
-  it('parses the first synonym entry, mapping aliases back to "arthur"', () => {
+  it('parses the first synonym entry, mapping aliases back to "argue"', () => {
     const synonyms = parseSynonyms(adventText);
     expect(synonyms[0]).toEqual({
-      canonical: 'arthur',
-      aliases: ['coniston', 'arthurs', 'conistons'],
+      canonical: 'argue',
+      aliases: ['argued', 'argument', 'arguing', 'row', 'quarrel', 'quarrelled', 'quarrelling'],
     });
   });
 
