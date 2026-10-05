@@ -72,7 +72,7 @@ that I could marry Millicent."
 handkerchief
 "I don't know whose handkerchief it is."
 
-+colonel +(argue/argument/row/quarrel/quarrelled/quarrelling)
++colonel +argue
 "Good lord, no - quite the opposite, old boy. He gave his blessing
 for Millicent and me that very afternoon. Can't think why I'd have
 picked a fight with the man on the happiest day of my life."

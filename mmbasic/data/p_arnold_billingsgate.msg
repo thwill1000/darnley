@@ -67,7 +67,7 @@ letter
 handkerchief
 "I don't know anything about it."
 
-+colonel +(argue/argument/row/quarrel/quarrelled/quarrelling)
++colonel +argue
 "It is not my place to comment on the family's private business, sir.
 I will say the atmosphere at dinner was not entirely comfortable, and
 I withdrew before the gentlemen retired to the billiard room."

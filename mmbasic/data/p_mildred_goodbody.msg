@@ -66,7 +66,7 @@ handkerchief
 "Mrs. Sarah and Miss Millicent both have handkerchiefs like this one.
 I can't say whose it is."
 
-+colonel +(argue/argument/row/quarrel/quarrelled/quarrelling)
++colonel +argue
 "Not that I saw, dear, I keep to my kitchen. But there's been a queer
 atmosphere in this house since Sir Redvers arrived, if you want my
 honest opinion."

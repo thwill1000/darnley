@@ -56,7 +56,7 @@ letter
 handkerchief
 "Do I look like I use lady's hankies?"
 
-+colonel +(argue/argument/row/quarrel/quarrelled/quarrelling)
++colonel +argue
 "Wasn't at the house of an evening, was I. Whatever went on between
 him and his guests is nothing to do with me."
 
