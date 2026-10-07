@@ -19,7 +19,7 @@ import {
   parseMessages,
   parseMsgFile,
 } from './data.js';
-import { createState, reset, hasFlag, serializeState, deserializeState } from './state.js';
+import { createState, reset, hasFlag, setVisited, isVisited, serializeState, deserializeState } from './state.js';
 import {
   VERB_HANDLERS,
   fakeExitTag,
@@ -88,24 +88,45 @@ async function fetchText(path) {
 }
 
 /**
- * Describes the current location to the UI: prints its name, shows its image,
- * and then its messages.dat body.
+ * Describes the current location to the UI: prints its name, and then its
+ * messages.dat body. The image (and the blank line following it) is shown
+ * only on the room's first visit.
  *
  * @param {import('./ui.js').UI} ui
- * @param {{id: string, name: string}} location
- * @param {Map} messages
- * @param {Set<string>} flags
+ * @param {object} state
+ * @param {object} gameData
  */
-function showLocation(ui, location, messages, flags, options) {
+function showLocation(ui, state, gameData) {
+  const location = locationById(gameData.locations, state.room);
   ui.startBlock();
   ui.printHtml(`<span class="colour-green title">${location.name}</span>`);
   ui.printLine();
-  ui.setImage(location.id, location.name);
-  ui.printLine();
-  const entries = messages.get(location.id);
-  const entry = entries ? entries.find((e) => e.requires.every((t) => flags.has(t))) : null;
-  ui.printHtml(entry ? printBody(entry.body, options) : '');   // was { links: true }
+  if (!isVisited(state, state.room)) {
+    ui.setImage(location.id, location.name);
+    ui.printLine();
+  }
+  const entries = gameData.messages.get(location.id);
+  const entry = entries ? entries.find((e) => e.requires.every((t) => state.flags.has(t))) : null;
+  ui.printHtml(entry ? printBody(entry.body, linkOptions(gameData, state)) : '');   // was { links: true }
   ui.scrollToTop();
+  setVisited(state, state.room, true);
+}
+
+/**
+ * Sets up a fresh state object for a new session: sets the starting room,
+ * attempts an autosave restore if requested, and clears the starting
+ * room's visited flag - its first describe is always "unvisited", whether
+ * this is a brand new game, a RESTART, or a restored autosave.
+ *
+ * @param {object} state
+ * @param {boolean} restore  True to attempt restoring the autosave.
+ * @returns {boolean} true if an autosave was successfully restored.
+ */
+export function prepareSession(state, restore) {
+  state.room = START_ROOM;
+  const restored = restore ? tryRestoreAutosave(state) : false;
+  setVisited(state, state.room, false);
+  return restored;
 }
 
 /**
@@ -122,9 +143,7 @@ export async function startGame(ui) {
   // Outer loop: each iteration is one "session"
   for (;;) {
     const state = createState(gameData.locations.length);
-    state.room = START_ROOM;
-
-    const restored = restore ? tryRestoreAutosave(state) : false;
+    const restored = prepareSession(state, restore);
     if (!restored) clearTranscript(); // fresh game or RESTART: start a new transcript
     await showSplashIntro(ui, gameData, state, restored);
     restore = false;
@@ -186,8 +205,7 @@ async function runCommandLoop(ui, gameData, state) {
 
   for (;;) {
     if (redescribe) {
-      const location = locationById(gameData.locations, state.room);
-      showLocation(ui, location, gameData.messages, state.flags, linkOptions(gameData, state));
+      showLocation(ui, state, gameData);
       redescribe = false;
     }
 

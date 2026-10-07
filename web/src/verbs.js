@@ -9,7 +9,7 @@
 import { markupToHtml } from './console.js';
 import { HELP_TEXT_ID, INTRO_TEXT_ID } from './data.js';
 import { verbGo, verbExamine, verbSay, printBody, findObj, findExitMatch } from './engine.js';
-import { listSlots, saveToSlot, restoreFromSlot, NUM_SLOTS } from './state.js';
+import { listSlots, saveToSlot, restoreFromSlot, NUM_SLOTS, setVisited } from './state.js';
 import { loadCommands, transcriptText } from './transcript.js';
 import { splitWords, removePadding } from './words.js';
 
@@ -150,7 +150,10 @@ export const VERB_HANDLERS = {
       gameData.additionalExits,
       state.flags,
     );
-    if (result.redescribe) return { redescribe: true };
+    if (result.redescribe) {
+      if (result.unmarkVisited) setVisited(state, state.room, false);
+      return { redescribe: true };
+    }
     if (result.success) {
       for (const token of result.entry.provides) state.flags.add(token);
       return { html: printBody(result.entry.body, linkOptions(gameData, state)) };
@@ -195,6 +198,7 @@ export const VERB_HANDLERS = {
     if (!result.ok) {
       return { message: result.error === 'empty slot.' ? 'Cancelled.' : 'ERROR: ' + result.error };
     }
+    setVisited(state, state.room, false); // first describe after restore is always "unvisited"
     return { message: `Restored game ${slot}.`, redescribe: true };
   },
 

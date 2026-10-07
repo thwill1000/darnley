@@ -155,14 +155,20 @@ function countNonEmpty(tokens) {
 }
 
 /**
- * Marks a room as visited. Mirrors setting Mid$(visited$, r, 1) = "1" in
- * the MMBasic original (e.g. in describe_loc()).
+ * Sets or clears a room's visited flag. Mirrors setting
+ * Mid$(visited$, r, 1) = "1" or "0" in the MMBasic original (e.g. in
+ * describe_loc() and verb_examine()).
  *
  * @param {{visited: Set<number>}} state
  * @param {number} room
+ * @param {boolean} visited
  */
-export function markVisited(state, room) {
-  state.visited.add(room);
+export function setVisited(state, room, visited) {
+  if (visited) {
+    state.visited.add(room);
+  } else {
+    state.visited.delete(room);
+  }
 }
 
 /**

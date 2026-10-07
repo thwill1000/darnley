@@ -8,7 +8,7 @@ import {
   addFlags,
   hasFlags,
   countSetFlags,
-  markVisited,
+  setVisited,
   isVisited,
   NUM_COUNTERS,
 } from '../src/state.js';
@@ -192,7 +192,7 @@ describe('reset()', () => {
 
   it('clears flags and visited rooms', () => {
     setFlag(state, 'FOO');
-    markVisited(state, 3);
+    setVisited(state, 3, true);
     reset(state);
     expect(hasFlag(state, 'FOO')).toBe(false);
     expect(isVisited(state, 3)).toBe(false);
@@ -205,19 +205,30 @@ describe('reset()', () => {
   });
 });
 
-describe('markVisited() / isVisited()', () => {
+describe('setVisited() / isVisited()', () => {
   it('a room never visited is not visited', () => {
     expect(isVisited(state, 2)).toBe(false);
   });
 
-  it('marking a room visited makes it visited', () => {
-    markVisited(state, 2);
+  it('setting a room visited(true) makes it visited', () => {
+    setVisited(state, 2, true);
     expect(isVisited(state, 2)).toBe(true);
   });
 
-  it('marking one room visited does not affect another', () => {
-    markVisited(state, 2);
+  it('setting one room visited does not affect another', () => {
+    setVisited(state, 2, true);
     expect(isVisited(state, 3)).toBe(false);
+  });
+
+  it('setting a visited room visited(false) makes it not visited', () => {
+    setVisited(state, 2, true);
+    setVisited(state, 2, false);
+    expect(isVisited(state, 2)).toBe(false);
+  });
+
+  it('setting visited(false) on a never-visited room is a no-op', () => {
+    setVisited(state, 2, false);
+    expect(isVisited(state, 2)).toBe(false);
   });
 });
 
@@ -238,7 +249,7 @@ describe('save/restore', () => {
   it('round-trips room, visited, flags and counters', () => {
     const s = createState(4);
     s.room = 'LOC005';
-    markVisited(s, 2);
+    setVisited(s, 2, true);
     setFlag(s, 'FOO');
     s.counters[1] = 7;
     const storage = fakeStorage();
