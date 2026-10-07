@@ -232,7 +232,7 @@ async function runCommandLoop(ui, gameData, state) {
     const oldRoom = state.room;
     const result = await handler(gameData, state, parsed.words, ui);
     if (result.html) ui.printHtml(result.html);
-    if (result.message) ui.printFail(result.message);
+    if (result.errorMessage) ui.printFail(result.errorMessage);
 
     const blockedTag = state.room !== oldRoom ? fakeExitTag(oldRoom, state.room) : null;
     if (blockedTag) {

@@ -140,7 +140,7 @@ export async function handleNewAccusation(gameData, state, ui, rng = Math.random
   setFlag(state, flag);
   const said = VERB_HANDLERS.say(gameData, state, ['"', accused, ',', flag]);
   if (said.html) ui.printHtml(said.html);
-  if (said.message) ui.printFail(said.message);
+  if (said.errorMessage) ui.printFail(said.errorMessage);
   clearFlag(state, flag);
 
   if (correct !== numQuestions) {
