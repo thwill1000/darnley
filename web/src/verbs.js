@@ -99,7 +99,7 @@ async function selectSlot(ui, storage) {
 
 // Verb dispatch table. Each handler takes (gameData, state, words) -
 // the full split command words, verb included at index 0 - and returns
-// { segments? , message?, redescribe? }.
+// { segments? , errorMessage?, redescribe? }.
 export const VERB_HANDLERS = {
   // INVENTORY, TAKE and DROP all give the same refusal (verb_inventory/verb_take -> verb_drop).
   drop() { return { html: markupToHtml(`[[red:${DROP_MESSAGE}]]`) }; },
@@ -135,7 +135,7 @@ export const VERB_HANDLERS = {
       state.room = result.room;
       return { redescribe: true };
     }
-    return { message: result.message };
+    return { errorMessage: result.message };
   },
 
   examine(gameData, state, words) {
@@ -158,7 +158,7 @@ export const VERB_HANDLERS = {
       for (const token of result.entry.provides) state.flags.add(token);
       return { html: printBody(result.entry.body, linkOptions(gameData, state)) };
     }
-    return { message: result.message };
+    return { errorMessage: result.message };
   },
 
   help(gameData, state) {
@@ -180,26 +180,27 @@ export const VERB_HANDLERS = {
     const slot = await selectSlot(ui, storage);
     if (slot && storage.getItem('darnley_save_' + slot) !== null) {
       const answer = await ui.readLine(`Overwrite game ${slot} [y|N]? `);
-      if (answer.trim().toLowerCase() !== 'y') return { message: 'Cancelled.' };
+      if (answer.trim().toLowerCase() !== 'y') return { html: markupToHtml('Cancelled.') };
     }
     const name = slot ? (await ui.readLine('Saved game name? ')).trim() : '';
-    if (!slot || !name) return { message: 'Cancelled.' };
+    if (!slot || !name) return { html: markupToHtml('Cancelled.') };
     const result = saveToSlot(state, slot, name, storage);
-    if (!result.ok) return { message: 'ERROR: ' + result.error };
-    return { message: `Saved game ${slot}.` };
+    if (!result.ok) return { errorMessage: 'ERROR: ' + result.error };
+    return { html: markupToHtml(`Saved game ${slot}.`) };
   },
 
   // Mirrors verb_restore()/state.restore%().
   async restore(gameData, state, words, ui, storage = globalThis.localStorage) {
     ui.printLine('Select saved game to restore:');
     const slot = await selectSlot(ui, storage);
-    if (!slot) return { message: 'Cancelled.' };
+    if (!slot) return { html: markupToHtml('Cancelled.') };
     const result = restoreFromSlot(state, slot, storage);
     if (!result.ok) {
-      return { message: result.error === 'empty slot.' ? 'Cancelled.' : 'ERROR: ' + result.error };
+      if (result.error === 'empty slot.') return { html: markupToHtml('Cancelled.') };
+      return { errorMessage: 'ERROR: ' + result.error };
     }
     setVisited(state, state.room, false); // first describe after restore is always "unvisited"
-    return { message: `Restored game ${slot}.`, redescribe: true };
+    return { html: markupToHtml(`Restored game ${slot}.`), redescribe: true };
   },
 
   say(gameData, state, words) {
@@ -214,7 +215,7 @@ export const VERB_HANDLERS = {
       state.cheat,
     );
     if (result.success) return { html: `<span class="colour-cyan">${printBody(result.entry.body)}</span>` };
-    return { message: result.message };
+    return { errorMessage: result.message };
   },
 };
 

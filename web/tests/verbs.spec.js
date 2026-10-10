@@ -66,7 +66,7 @@ describe('VERB_HANDLERS.cheat', () => {
     const state = createState(1);
     state.room = 'LOC001';
 
-    expect(say(sayData, state, ['say', 'xavier', ',', 'hello']).message).toBe('X is not here.');
+    expect(say(sayData, state, ['say', 'xavier', ',', 'hello']).errorMessage).toBe('X is not here.');
 
     state.cheat = true;
     expect(say(sayData, state, ['say', 'xavier', ',', 'hello']).html).toBe('<span class="colour-cyan">"hi"</span>');
@@ -180,7 +180,7 @@ describe('VERB_HANDLERS.save / restore', () => {
     const s = createState(1);
     s.room = 'LOC002';
     s.flags.add('abc');
-    expect((await VERB_HANDLERS.save({}, s, [], fakeUi(['1', 'test']), storage)).message).toBe('Saved game 1.');
+    expect((await VERB_HANDLERS.save({}, s, [], fakeUi(['1', 'test']), storage)).html).toBe('Saved game 1.');
     const t = createState(1);
     const r = await VERB_HANDLERS.restore({}, t, [], fakeUi(['1']), storage);
     expect(r.redescribe).toBe(true);
@@ -191,11 +191,11 @@ describe('VERB_HANDLERS.save / restore', () => {
   it('cancels on an empty name, bad slot or declined overwrite', async () => {
     const storage = store();
     const s = createState(1);
-    expect((await VERB_HANDLERS.save({}, s, [], fakeUi(['1', '']), storage)).message).toBe('Cancelled.');
-    expect((await VERB_HANDLERS.save({}, s, [], fakeUi(['x']), storage)).message).toBe('Cancelled.');
+    expect((await VERB_HANDLERS.save({}, s, [], fakeUi(['1', '']), storage)).html).toBe('Cancelled.');
+    expect((await VERB_HANDLERS.save({}, s, [], fakeUi(['x']), storage)).html).toBe('Cancelled.');
     await VERB_HANDLERS.save({}, s, [], fakeUi(['1', 'a']), storage);
-    expect((await VERB_HANDLERS.save({}, s, [], fakeUi(['1', 'n']), storage)).message).toBe('Cancelled.');
-    expect((await VERB_HANDLERS.restore({}, s, [], fakeUi(['2']), storage)).message).toBe('Cancelled.');
+    expect((await VERB_HANDLERS.save({}, s, [], fakeUi(['1', 'n']), storage)).html).toBe('Cancelled.');
+    expect((await VERB_HANDLERS.restore({}, s, [], fakeUi(['2']), storage)).html).toBe('Cancelled.');
   });
 
   it('clears the restored room\'s visited flag, even if it was set when saved', async () => {
@@ -203,7 +203,7 @@ describe('VERB_HANDLERS.save / restore', () => {
     const s = createState(1);
     s.room = 'LOC002';
     s.visited.add('LOC002');
-    expect((await VERB_HANDLERS.save({}, s, [], fakeUi(['1', 'test']), storage)).message).toBe('Saved game 1.');
+    expect((await VERB_HANDLERS.save({}, s, [], fakeUi(['1', 'test']), storage)).html).toBe('Saved game 1.');
 
     const t = createState(1);
     const r = await VERB_HANDLERS.restore({}, t, [], fakeUi(['1']), storage);
