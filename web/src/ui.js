@@ -48,6 +48,7 @@ const DEFAULT_TRANSCRIPT_ID = 'transcript';
 const DEFAULT_INPUT_ID = 'command-input';
 const DEFAULT_PROMPT_ID = 'prompt';
 const DEFAULT_MORE_ID = 'more';
+const DEFAULT_RESTART_DIALOG_ID = 'restart-dialog';
 
 // Maximum number of submitted lines remembered for Up/Down browsing.
 const MAX_HISTORY = 100;
@@ -66,13 +67,15 @@ const MAX_HISTORY = 100;
  * @param {Element} [options.more]  Defaults to
  *                                  document.getElementById('more'). Optional:
  *                                  without it output is never paged.
+ * @param {HTMLDialogElement} [options.restartDialog]  Defaults to
+ *                                                      #restart-dialog.
  * @param {Document} [options.doc]  Defaults to the global `document`.
  *                                  Overridable so this module can be
  *                                  exercised without a real browser DOM
  *                                  (see web/tests/ui.spec.js).
  * @returns {UI}
  */
-export function createUI({ transcript, input, prompt, more, doc } = {}) {
+export function createUI({ transcript, input, prompt, more, restartDialog, doc } = {}) {
   const document_ = doc ?? (typeof document !== 'undefined' ? document : undefined);
   if (!document_) throw new Error('UI: no document available; pass options.doc explicitly');
 
@@ -82,6 +85,7 @@ export function createUI({ transcript, input, prompt, more, doc } = {}) {
     prompt ?? document_.getElementById(DEFAULT_PROMPT_ID),
     document_,
     more ?? document_.getElementById(DEFAULT_MORE_ID),
+    restartDialog ?? document_.getElementById(DEFAULT_RESTART_DIALOG_ID),
   );
 }
 
@@ -118,8 +122,9 @@ export class UI {
    * @param {Element} [moreEl]  The MORE button shown when output is
    *                            longer than the visible transcript. If
    *                            omitted, output is never paged.
+   * @param {HTMLDialogElement} [restartDialogEl]  Confirmation dialog for RESTART.
    */
-  constructor(transcriptEl, inputEl, promptEl, doc, moreEl) {
+  constructor(transcriptEl, inputEl, promptEl, doc, moreEl, restartDialogEl) {
     if (!transcriptEl) throw new Error('UI: transcript element not found');
     if (!inputEl) throw new Error('UI: input element not found');
     if (!promptEl) throw new Error('UI: prompt element not found');
@@ -128,6 +133,7 @@ export class UI {
     this.inputEl = inputEl;
     this.promptEl = promptEl;
     this.doc = doc;
+    this.restartDialogEl = restartDialogEl ?? null;
 
     this._pendingSubmit = null; // set by readLine() while a line is awaited
     this._busy = false; // true from readLine() being called until its line is submitted
@@ -250,6 +256,26 @@ export class UI {
     this.printHtml(`<span class="colour-red">${escapeHtml(text)}</span>`);
   }
 
+  /** Resolves true for YES and false for NO or dialog dismissal. */
+  confirmRestart() {
+    const dialog = this.restartDialogEl;
+    if (!dialog) throw new Error('UI: restart dialog element not found');
+
+    return new Promise((resolve, reject) => {
+      const onClose = () => {
+        dialog.removeEventListener('close', onClose);
+        resolve(dialog.returnValue === 'yes');
+      };
+      dialog.addEventListener('close', onClose);
+      try {
+        dialog.showModal();
+      } catch (error) {
+        dialog.removeEventListener('close', onClose);
+        reject(error);
+      }
+    });
+  }
+
   /**
    * Appends a location's image to the transcript, inline with the text
    * (so scrolling back reveals earlier images), mirroring the graphics
@@ -336,6 +362,18 @@ export class UI {
   _append(el) {
     this.transcriptEl.appendChild(el);
     this._turnStart ??= el;
+  }
+
+  /**
+   * Empties the transcript entirely - used by RESTART, which (unlike a
+   * normal room re-description) should start the player back at a blank
+   * screen rather than leave the previous game's scrollback in place.
+   * Does not touch command history (Up/Down browsing still recalls
+   * earlier-typed lines).
+   */
+  clear() {
+    this.transcriptEl.replaceChildren();
+    this._turnStart = null;
   }
 
   _atBottom() {

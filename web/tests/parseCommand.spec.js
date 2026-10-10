@@ -62,8 +62,16 @@ describe('parseCommand()', () => {
     }
   });
 
-  it('alias "q" maps to verb "quit"', () => {
-    expect(parseCommand('q').verb).toBe('quit');
+  it('maps RESTART, RESET and START to the restart verb', () => {
+    for (const command of ['restart', 'reset', 'start']) {
+      expect(parseCommand(command).verb).toBe('restart');
+    }
+  });
+
+  it('does not treat former quit aliases as restart', () => {
+    for (const command of ['q', 'die', 'end', 'exit']) {
+      expect(parseCommand(command).verb).toBe(command);
+    }
   });
 
   it('rejects bare compass directions in favour of GO', () => {
