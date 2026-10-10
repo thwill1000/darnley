@@ -141,6 +141,18 @@ describe('VERB_HANDLERS.examine', () => {
     expect(state.flags.has('x_handkerchief')).toBe(true);
     expect(state.flags.has('new_clue')).toBe(true);
   });
+
+  it('clears the current room\'s visited flag on bare EXAMINE (no noun)', () => {
+    const gameData = { objects: OBJECTS, messages: MESSAGES, synonyms: [], locations: LOCATIONS, additionalExits: [] };
+    const state = createState(1);
+    state.room = 'LOC001';
+    state.visited.add('LOC001');
+
+    const result = VERB_HANDLERS.examine(gameData, state, ['examine']);
+
+    expect(result.redescribe).toBe(true);
+    expect(state.visited.has('LOC001')).toBe(false);
+  });
 });
 
 describe('fakeExitTag()', () => {
@@ -184,6 +196,20 @@ describe('VERB_HANDLERS.save / restore', () => {
     await VERB_HANDLERS.save({}, s, [], fakeUi(['1', 'a']), storage);
     expect((await VERB_HANDLERS.save({}, s, [], fakeUi(['1', 'n']), storage)).message).toBe('Cancelled.');
     expect((await VERB_HANDLERS.restore({}, s, [], fakeUi(['2']), storage)).message).toBe('Cancelled.');
+  });
+
+  it('clears the restored room\'s visited flag, even if it was set when saved', async () => {
+    const storage = store();
+    const s = createState(1);
+    s.room = 'LOC002';
+    s.visited.add('LOC002');
+    expect((await VERB_HANDLERS.save({}, s, [], fakeUi(['1', 'test']), storage)).message).toBe('Saved game 1.');
+
+    const t = createState(1);
+    const r = await VERB_HANDLERS.restore({}, t, [], fakeUi(['1']), storage);
+    expect(r.redescribe).toBe(true);
+    expect(t.room).toBe('LOC002');
+    expect(t.visited.has('LOC002')).toBe(false);
   });
 });
 

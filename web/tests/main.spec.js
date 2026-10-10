@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { startGame } from '../src/main.js';
-import { createState, serializeState } from '../src/state.js';
+import { startGame, prepareSession } from '../src/main.js';
+import { createState, serializeState, setVisited, isVisited } from '../src/state.js';
 import { TRANSCRIPT_KEY } from '../src/transcript.js';
 
 const ADVENT_DAT = `!locations
@@ -116,6 +116,66 @@ describe('startGame() RESTART', () => {
       (c) => c[0] === 'printHtml' && typeof c[1] === 'string' && c[1].startsWith('Welcome back')
     );
     expect(welcomeBack).toBeTruthy();
+  });
+});
+
+describe('prepareSession()', () => {
+  beforeEach(() => {
+    global.localStorage = {
+      getItem: () => null,
+      setItem: () => {},
+      removeItem: () => {},
+    };
+  });
+
+  it('starts a fresh game at the starting room, not visited, not restored', () => {
+    const state = createState(1);
+    const restored = prepareSession(state, false);
+    expect(restored).toBe(false);
+    expect(state.room).toBe('LOC017_DRIVE');
+    expect(isVisited(state, 'LOC017_DRIVE')).toBe(false);
+  });
+
+  it('clears the starting room\'s visited flag on resume, even if the autosave had it set', () => {
+    const savedState = createState(1);
+    savedState.room = 'LOC017_DRIVE';
+    setVisited(savedState, 'LOC017_DRIVE', true);
+    global.localStorage.getItem = () => serializeState(savedState, 'autosave');
+
+    const state = createState(1);
+    const restored = prepareSession(state, true);
+
+    expect(restored).toBe(true);
+    expect(state.room).toBe('LOC017_DRIVE');
+    expect(isVisited(state, 'LOC017_DRIVE')).toBe(false);
+  });
+});
+
+describe('startGame() visited flag', () => {
+  beforeEach(() => {
+    global.fetch = vi.fn(async (path) => ({
+      ok: true,
+      text: async () => (path.endsWith('advent.dat') ? ADVENT_DAT : MESSAGES_DAT),
+    }));
+    global.localStorage = {
+      getItem: () => null,
+      setItem: () => {},
+      removeItem: () => {},
+    };
+  });
+
+  it('marks the starting room visited once it has been described', async () => {
+    let capturedState;
+    const ui = createFakeUI(['dump']);
+    const originalPrintHtml = ui.printHtml.bind(ui);
+    ui.printHtml = (html) => {
+      originalPrintHtml(html);
+      if (typeof html === 'string' && html.includes('ROOM')) {
+        capturedState = html; // the DUMP output includes the VISITED row
+      }
+    };
+    await expect(startGame(ui)).rejects.toThrow('STOP');
+    expect(capturedState).toContain('VISITED   = 1');
   });
 });
 

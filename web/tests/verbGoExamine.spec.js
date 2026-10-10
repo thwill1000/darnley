@@ -81,9 +81,10 @@ describe('verbGo()', () => {
 });
 
 describe('verbExamine()', () => {
-  it('with no noun, signals a redescribe rather than failing', () => {
+  it('with no noun, signals a redescribe and an unmark-visited rather than failing', () => {
     const result = verbExamine(OBJECTS, MESSAGES, ['examine'], [], locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, new Set());
     expect(result.redescribe).toBe(true);
+    expect(result.unmarkVisited).toBe(true);
   });
 
   it('finds an object present in the current room and returns its description entry', () => {
