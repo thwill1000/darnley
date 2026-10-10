@@ -694,7 +694,7 @@ Function con.readln$(initial$, max_len%, history%())
           ' Delete the character immediately to the left.
           s$ = Mid$(con.readln$, p%)
           con.readln$ = Left$(con.readln$, p% - 2) + s$
-          con.cursor_backward()
+          con.cursor_backward(1)
           con.puts(s$ + " ")
           con.cursor_backward(Len(s$) + 1)
           Inc p%, -1
@@ -739,12 +739,12 @@ Function con.readln$(initial$, max_len%, history%())
       Case 130 ' Left
         If p% > 1 Then
           Inc p%, -1
-          con.cursor_backward()
+          con.cursor_backward(1)
         EndIf
 
       Case 131 ' Right
         If p% <= Len(con.readln$) Then
-          con.cursor_forward()
+          con.cursor_forward(1)
           Inc p%
         EndIf
 
@@ -811,9 +811,10 @@ End Sub
 ' Moves cursor forward,
 ' if at the end of row then moves it to beginning of the next row.
 Sub con.cursor_forward(count%)
+  If count% <= 0 Then Exit Sub
+
   Local x%, y%
   con.get_pos(x%, y%)
-  If count% = 0 Then count% = 1
   Do While count% > 0
     Inc x%
     If x% > con.WIDTH Then
@@ -828,9 +829,10 @@ End Sub
 ' Moves cursor backward,
 ' if at the beginning of row then moves it to the end of the previous row.
 Sub con.cursor_backward(count%)
+  If count% <= 0 Then Exit Sub
+
   Local x%, y%
   con.get_pos(x%, y%)
-  If count% = 0 Then count% = 1
   Do While count% > 0
     If x% = 1 Then
       x% = con.WIDTH
