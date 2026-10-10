@@ -1,11 +1,13 @@
 {
   "name": "sealed-room-murder-web",
-  "version": "0.0.0",
+  "version": "0.9.3",
   "private": true,
   "type": "module",
   "description": "Browser port of \"The Sealed Room Murder\" - see web/docs/2026-09-23-javascript-web-port-plan.md",
   "scripts": {
+    "prestart": "node scripts/generate-version.js",
     "start": "npx http-server . -c-1 -o",
+    "pretest": "node scripts/generate-version.js",
     "test": "vitest run"
   },
   "devDependencies": {

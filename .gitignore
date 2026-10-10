@@ -2,3 +2,4 @@ node_modules/
 mmbasic/dist/
 mmbasic/saves/
 mmbasic/scripts/
+web/src/version.js

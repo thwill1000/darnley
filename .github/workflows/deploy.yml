@@ -26,6 +26,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Generate ephemeral version file
+        run: |
+          # Pull base version from package.json
+          VERSION=$(node -p "require('./web/package.json').version")
+
+          # Use GitHub's sequential run number (rebase-safe!)
+          BUILD_NUMBER="${{ github.run_number }}"
+
+          # Write it directly into web/version.js for this deployment only
+          cat << EOF > web/src/version.js
+          export const APP_VERSION = "$VERSION-build.$BUILD_NUMBER";
+          EOF
+
       - name: Replace symlink with real directory content
         run: |
           rm -rf web/data

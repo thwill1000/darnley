@@ -19,7 +19,7 @@ import {
   parseMessages,
   parseMsgFile,
 } from './data.js';
-import { createState, reset, hasFlag, setVisited, isVisited, serializeState, deserializeState } from './state.js';
+import { createState, hasFlag, setVisited, isVisited, serializeState, deserializeState } from './state.js';
 import {
   VERB_HANDLERS,
   fakeExitTag,
@@ -35,12 +35,12 @@ import { parseCommand } from './words.js';
 import { printBody } from './engine.js';
 import { recordCommand, clearTranscript } from './transcript.js';
 import { createUI } from './ui.js';
+import { APP_VERSION } from './version.js';
 
 const DATA_DIR = 'data/';
 
 const START_ROOM = 'LOC017_DRIVE';
 const TITLE = 'The Sealed Room Murder';
-const VERSION = '0.9.3';
 const COPYRIGHT = '© 1987-2026 Thomas Hugo Williams & Jim Williams'
 const AUTOSAVE_KEY = 'darnley_autosave'; // separate from the darnley_save_N slots
 
@@ -168,7 +168,7 @@ async function showSplashIntro(ui, gameData, state, welcomeBack) {
   ui.clear();
   ui.printHtml(`<br/><br/><span class="colour-green title">${TITLE}</span>`);
   ui.printHtml(`<span class="colour-green">${COPYRIGHT}</span>`);
-  ui.printHtml(`<span class="colour-green">Version ${VERSION}</span>`);
+  ui.printHtml(`<span class="colour-green">Version ${APP_VERSION}</span>`);
   ui.printLine();
 
   if (welcomeBack) {
