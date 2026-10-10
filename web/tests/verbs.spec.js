@@ -1,6 +1,7 @@
-import { describe, it, expect } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { handleNewClue } from '../src/clues.js';
 import { createState } from '../src/state.js';
+import { recordCommand } from '../src/transcript.js';
 import {
   VERB_HANDLERS,
   dumpText,
@@ -256,5 +257,28 @@ describe('isSpeakable() / talkInput() / linkOptions()', () => {
     expect(opts.isSpeakable('Sarah')).toBe(true);
     state.room = 'LOC_B';
     expect(opts.isSpeakable('Sarah')).toBe(false);
+  });
+});
+
+describe('VERB_HANDLERS.download', () => {
+  beforeEach(() => {
+    const m = new Map();
+    global.localStorage = {
+      getItem: (k) => (m.has(k) ? m.get(k) : null),
+      setItem: (k, v) => m.set(k, v),
+      removeItem: (k) => m.delete(k),
+    };
+  });
+
+  it('downloads the recorded commands, and DOWNLOAD itself is not among them', () => {
+    recordCommand('go hall');
+    recordCommand('download');
+    const ui = { downloadText: vi.fn() };
+    const result = VERB_HANDLERS.download({}, createState(1), ['download'], ui);
+    expect(ui.downloadText).toHaveBeenCalledTimes(1);
+    const [filename, text] = ui.downloadText.mock.calls[0];
+    expect(filename).toBe('darnley-transcript.txt');
+    expect(text.split('\n').slice(2)).toEqual(['go hall', '']);
+    expect(result.html).toBe('Transcript downloaded.');
   });
 });

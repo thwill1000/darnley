@@ -918,6 +918,8 @@ The game accepts the following commands:@
           - show the game introduction@
   [[green:SAVE]] and [[green:RESTORE]]@
           - save and restore game progress@
+  [[green:DOWNLOAD]]@
+          - download a transcript of your commands@
   [[green:RESTART]]@
           - restart the game
 

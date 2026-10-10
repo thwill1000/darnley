@@ -10,6 +10,7 @@ class FakeElement {
   constructor(tag) {
     this.tagName = tag;
     this.children = [];
+    this.clicked = false;
     this.textContent = '';
     this.className = '';
     this.value = '';
@@ -71,6 +72,10 @@ class FakeElement {
 
   focus() {
     this._focused = true;
+  }
+
+  click() {
+    this.clicked = true;
   }
 }
 
@@ -593,5 +598,35 @@ describe('UI speech bubble clicks', () => {
     expect(input.value).toBe('one');
     pressKey(input, 'ArrowDown');
     expect(input.value).toBe('"Sarah Darnley, ');
+  });
+});
+
+describe('UI.downloadText()', () => {
+  it('creates a download link for the text and clicks it', () => {
+    const anchors = [];
+    const doc = { createElement: (tag) => { const el = new FakeElement(tag); anchors.push(el); return el; } };
+    const ui = new UI(new FakeElement('div'), new FakeElement('input'), new FakeElement('span'), doc);
+    const realCreate = URL.createObjectURL, realRevoke = URL.revokeObjectURL;
+    URL.createObjectURL = () => 'blob:fake';
+    URL.revokeObjectURL = () => {};
+    try {
+      ui.downloadText('t.txt', 'hello');
+    } finally {
+      URL.createObjectURL = realCreate;
+      URL.revokeObjectURL = realRevoke;
+    }
+    const a = anchors.at(-1);
+    expect(a.href).toBe('blob:fake');
+    expect(a.download).toBe('t.txt');
+    expect(a.clicked).toBe(true);
+  });
+
+  it('calls onSubmit with every submitted line', async () => {
+    const { ui, input } = makeUI();
+    const seen = [];
+    ui.onSubmit = (line) => seen.push(line);
+    await submit(ui, input, 'go hall');
+    await submit(ui, input, '');
+    expect(seen).toEqual(['go hall', '']);
   });
 });

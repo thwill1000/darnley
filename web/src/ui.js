@@ -162,6 +162,7 @@ export class UI {
 
     this.inputEl.disabled = true;
     this.inputEl.addEventListener('keydown', (event) => this._onKeyDown(event));
+    this.onSubmit = null; // optional (line) => void, called for every submitted line
   }
 
   _onKeyDown(event) {
@@ -305,6 +306,16 @@ export class UI {
     });
   }
 
+  /** Offers `text` to the browser as a file download. */
+  downloadText(filename, text) {
+    const url = URL.createObjectURL(new Blob([text], { type: 'text/plain' }));
+    const a = this.doc.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 0);
+  }
+
   /**
    * Appends a location's image to the transcript, inline with the text
    * (so scrolling back reveals earlier images), mirroring the graphics
@@ -383,6 +394,7 @@ export class UI {
         this._linksActive = false;
         this.promptEl.textContent = '';
         this._busy = false;
+        this.onSubmit?.(line);
         const fullLine = escapeHtml(promptText + line);
         this.printHtml(`<span class="colour-yellow">${fullLine}</span>`);
         resolve(line);

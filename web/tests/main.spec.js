@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { startGame } from '../src/main.js';
 import { createState, serializeState } from '../src/state.js';
+import { TRANSCRIPT_KEY } from '../src/transcript.js';
 
 const ADVENT_DAT = `!locations
 LOC017_DRIVE|The Drive|drive|1|LOC017_DRIVE
@@ -115,5 +116,50 @@ describe('startGame() RESTART', () => {
       (c) => c[0] === 'printHtml' && typeof c[1] === 'string' && c[1].startsWith('Welcome back')
     );
     expect(welcomeBack).toBeTruthy();
+  });
+});
+
+describe('startGame() transcript', () => {
+  beforeEach(() => {
+    global.fetch = vi.fn(async (path) => ({
+      ok: true,
+      text: async () => (path.endsWith('advent.dat') ? ADVENT_DAT : MESSAGES_DAT),
+    }));
+  });
+
+  it('records every submitted line except DOWNLOAD in localStorage via ui.onSubmit', async () => {
+    const store = new Map();
+    global.localStorage = {
+      getItem: vi.fn((k) => (store.has(k) ? store.get(k) : null)),
+      setItem: vi.fn((k, v) => store.set(k, v)),
+      removeItem: vi.fn((k) => store.delete(k)),
+    };
+
+    const ui = createFakeUI(['look', 'download']);
+    ui.downloadText = vi.fn();
+
+    // The fake UI never submits lines itself, so mimic the real UI: call
+    // ui.onSubmit(line) (the hook startGame() installs) as each line is submitted.
+    const fakeReadLine = ui.readLine;
+    ui.readLine = async (prompt) => {
+      const line = await fakeReadLine.call(ui, prompt);
+      ui.onSubmit?.(line);
+      return line;
+    };
+
+    await expect(startGame(ui)).rejects.toThrow('STOP');
+
+    expect(typeof ui.onSubmit).toBe('function');
+    expect(global.localStorage.setItem).toHaveBeenCalledWith(
+      TRANSCRIPT_KEY,
+      JSON.stringify(['look']),
+    );
+    expect(JSON.parse(store.get(TRANSCRIPT_KEY))).toEqual(['look']);
+
+    // The DOWNLOAD verb ran and was offered the transcript, without recording itself.
+    expect(ui.downloadText).toHaveBeenCalledTimes(1);
+    const [filename, text] = ui.downloadText.mock.calls[0];
+    expect(filename).toBe('darnley-transcript.txt');
+    expect(text.split('\n').slice(2)).toEqual(['look', '']);
   });
 });
