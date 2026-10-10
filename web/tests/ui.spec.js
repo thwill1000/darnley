@@ -486,3 +486,26 @@ describe('UI.clear()', () => {
     expect(transcript.children[0].textContent).toBe('fresh start');
   });
 });
+
+describe('UI link clicks', () => {
+  const link = { closest: () => ({ textContent: 'door' }) };
+
+  it('submits the resolved command only while a link-enabled readLine() is pending', async () => {
+    const { ui, transcript } = makeUI();
+    ui.resolveLink = (t) => `examine ${t}`;
+    transcript.dispatchEvent('click', { target: link }); // nothing pending: ignored
+    const p = ui.readLine('> ', { links: true });
+    transcript.dispatchEvent('click', { target: link });
+    await expect(p).resolves.toBe('examine door');
+  });
+
+  it('ignores clicks when the readLine() did not opt in', async () => {
+    const { ui, transcript, input } = makeUI();
+    ui.resolveLink = (t) => `examine ${t}`;
+    const p = ui.readLine('> ');
+    transcript.dispatchEvent('click', { target: link });
+    input.value = 'typed';
+    pressEnter(input);
+    await expect(p).resolves.toBe('typed');
+  });
+});

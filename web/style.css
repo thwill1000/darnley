@@ -142,7 +142,10 @@ html, body {
   font-weight: bold;
 }
 
-/* Mobile layout (step 29). */
+.link { cursor: pointer; text-decoration: underline; }
+.link:hover { filter: brightness(1.3); }
+
+/* Mobile layout. */
 @media (max-width: 600px) {
   #app {
     padding-top: 0.25em;

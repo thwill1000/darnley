@@ -34,3 +34,11 @@ describe('markupToHtml()', () => {
     expect(markupToHtml('[[red:<script>]]')).toBe(span('red', '&lt;script&gt;'));
   });
 });
+
+describe('markupToHtml() links option', () => {
+  it('adds the link class to green spans only when links is true', () => {
+    expect(markupToHtml('[[green:Hall]]', { links: true })).toBe('<span class="colour-green link">Hall</span>');
+    expect(markupToHtml('[[green:Hall]]')).toBe('<span class="colour-green">Hall</span>');
+    expect(markupToHtml('[[red:x]]', { links: true })).toBe('<span class="colour-red">x</span>');
+  });
+});

@@ -160,10 +160,15 @@ export function findMessageEntry(messages, tag, flags) {
  * contains the newline, so the colour carries over with no special handling.
  *
  * @param {string[]} bodyLines
- * @returns {string}
+ * @param {Object} [options]  Passed straight through to markupToHtml().
+ * @param {boolean} [options.links=false]  If true, green spans are made
+ *                                         clickable (see markupToHtml()).
+ *                                         Used for room descriptions and
+ *                                         EXAMINE output only.
+ * @returns {string} HTML
  */
-export function printBody(bodyLines) {
-  return markupToHtml(renderBody(bodyLines));
+export function printBody(bodyLines, options) {
+  return markupToHtml(renderBody(bodyLines), options);
 }
 
 // --- SAY / dialogue lookup ------------------------------------------------
