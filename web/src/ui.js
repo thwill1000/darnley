@@ -130,6 +130,7 @@ export class UI {
     this._pendingSubmit = null; // set by readLine() while a line is awaited
     this._busy = false; // true from readLine() being called until its line is submitted
     this._linksActive = false;  // true only for a readLine() that opted in to clickable links
+    this._scrollAnchor = null; // element that must not scroll off the top on the next readLine()
     this.resolveLink = null;    // (text) => command string; set by main.js
     this.resolveTalk = null;
     this.transcriptEl.addEventListener('click', (event) => this._onClick(event));
@@ -255,11 +256,12 @@ export class UI {
    *
    * @param {string} html
    */
-  printHtml(html) {
+  printHtml(html, { scrollAnchor = false } = {}) {
     const div = this.doc.createElement('div');
     div.className = 'transcript-line';
     div.innerHTML = html;
     this._append(div);
+    if (scrollAnchor) this._scrollAnchor = div;
   }
 
   printFail(text) {
@@ -387,10 +389,17 @@ export class UI {
    */
   clear() {
     this.transcriptEl.replaceChildren();
+    this._scrollAnchor = null;
   }
 
   _scrollToBottom() {
-    this.transcriptEl.scrollTop = this.transcriptEl.scrollHeight;
+    const anchor = this._scrollAnchor;
+    this._scrollAnchor = null; // one-shot: only applies to the next prompt
+    // Setting scrollTop beyond the maximum is clamped by the browser, so this is
+    // "the bottom, unless that would push the anchor above the top of the view".
+    this.transcriptEl.scrollTop = anchor
+      ? Math.min(this.transcriptEl.scrollHeight, anchor.offsetTop)
+      : this.transcriptEl.scrollHeight;
   }
 
   /** True only at the main command prompt, where canned commands are accepted. */

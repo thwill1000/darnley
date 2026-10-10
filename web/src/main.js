@@ -98,8 +98,7 @@ async function fetchText(path) {
  */
 function showLocation(ui, state, gameData) {
   const location = locationById(gameData.locations, state.room);
-  ui.printHtml(`<span class="colour-green title">${location.name}</span>`);
-  ui.printLine();
+  ui.printHtml(`<span class="colour-green title">${location.name}</span>`, { scrollAnchor: true });  ui.printLine();
   if (!isVisited(state, state.room)) {
     ui.setImage(location.id, location.name);
     ui.printLine();
