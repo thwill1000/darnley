@@ -168,7 +168,7 @@ export async function startGame(ui) {
  */
 async function showSplashIntro(ui, gameData, state, welcomeBack) {
   ui.clear();
-  ui.printHtml(`<span class="colour-green title">${TITLE}</span>`);
+  ui.printHtml(`<br/><br/><span class="colour-green title">${TITLE}</span>`);
   ui.printHtml(`<span class="colour-green">${COPYRIGHT}</span>`);
   ui.printHtml(`<span class="colour-green">Version ${VERSION}</span>`);
   ui.printLine();
@@ -266,14 +266,41 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
   window.addEventListener('DOMContentLoaded', () => {
     const ui = createUI();
 
+    // LOOK button wiring
     const look = document.getElementById('look-button');
     look?.addEventListener('click', () => ui.submitQuick('look'));
     pinToVisualViewport(look);
+
+    // MENU button wiring
+    const menuButton = document.getElementById('menu-button');
+    setupMenu(menuButton, document.getElementById('menu-dialog'), ui);
+    pinToVisualViewport(menuButton);
 
     startGame(ui).catch((err) => {
       console.error(err);
       ui.printLine('A fatal error occurred - see the browser console for details.');
     });
+  });
+}
+
+/**
+ * Wires the menu button to its dialog. Opening is only allowed at the main
+ * command prompt; choosing an item submits the corresponding command, and
+ * Close/Escape submits nothing.
+ */
+export function setupMenu(button, dialog, ui) {
+  if (!button || !dialog) return;
+
+  button.addEventListener('click', () => {
+    if (!ui.canSubmitQuick()) return;
+    dialog.returnValue = ''; // Escape leaves the previous choice in place
+    dialog.showModal();
+  });
+
+  dialog.addEventListener('close', () => {
+    const command = dialog.returnValue;
+    dialog.returnValue = '';
+    if (command) ui.submitQuick(command);
   });
 }
 

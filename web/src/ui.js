@@ -507,9 +507,14 @@ export class UI {
     this.transcriptEl.scrollTop = this.transcriptEl.scrollHeight;
   }
 
+  /** True only at the main command prompt, where canned commands are accepted. */
+  canSubmitQuick() {
+    return !!this._pendingSubmit && this._linksActive;
+  }
+
   /** Submits a canned command, but only at the main command prompt. */
   submitQuick(command) {
-    if (!this._pendingSubmit || !this._linksActive) return;
+    if (!this.canSubmitQuick()) return;
     this._submitLine(command);
   }
 }
