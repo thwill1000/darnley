@@ -1,7 +1,15 @@
 import { describe, it, expect } from 'vitest';
 import { handleNewClue } from '../src/clues.js';
 import { createState } from '../src/state.js';
-import { VERB_HANDLERS, dumpText, fakeExitTag, linkCommand } from '../src/verbs.js';
+import {
+  VERB_HANDLERS,
+  dumpText,
+  fakeExitTag,
+  isSpeakable,
+  linkCommand,
+  linkOptions,
+  talkInput
+} from '../src/verbs.js';
 
 const OBJECTS = [
   { id: 'OBJ001', pattern: 'handkerchief', location: 'LOC001' },
@@ -202,5 +210,51 @@ describe('linkCommand()', () => {
   it('examines an unknown word, or an object that is elsewhere', () => {
     expect(linkCommand(gameData, here(), 'handkerchief')).toBe('examine handkerchief');
     expect(linkCommand(gameData, here(), 'zebra')).toBe('examine zebra');
+  });
+});
+
+describe('isSpeakable() / talkInput() / linkOptions()', () => {
+  const gameData = {
+    objects: [
+      { id: 'P_SARAH', pattern: 'sarah', location: 'LOC_A', isPerson: true },
+      { id: 'P_ARTHUR', pattern: 'arthur', location: 'LOC_B', isPerson: true },
+      { id: 'P_REDVERS', pattern: 'redvers', location: 'LOC_A', isPerson: true },
+      { id: 'OBJ_DOOR', pattern: 'green door', location: 'LOC_A', isPerson: false },
+    ],
+    synonyms: [],
+  };
+  const here = () => { const s = createState(1); s.room = 'LOC_A'; return s; };
+
+  it('is true for a person in the current room', () => {
+    expect(isSpeakable(gameData, here(), 'Sarah')).toBe(true);
+  });
+
+  it('is true for a multi-word name that matches the person\'s pattern', () => {
+    expect(isSpeakable(gameData, here(), 'Sir Redvers Slingsby')).toBe(true);
+  });
+
+  it('is false for a person who is elsewhere', () => {
+    expect(isSpeakable(gameData, here(), 'Arthur')).toBe(false);
+  });
+
+  it('is false for a non-person object in the room', () => {
+    expect(isSpeakable(gameData, here(), 'Green door')).toBe(false);
+  });
+
+  it('is false for text matching nothing', () => {
+    expect(isSpeakable(gameData, here(), 'zebra')).toBe(false);
+  });
+
+  it('talkInput() opens a quote, adds a comma and keeps a trailing space', () => {
+    expect(talkInput('Sarah Darnley')).toBe('"Sarah Darnley, ');
+  });
+
+  it('linkOptions() enables links and binds isSpeakable() to the current state', () => {
+    const state = here();
+    const opts = linkOptions(gameData, state);
+    expect(opts.links).toBe(true);
+    expect(opts.isSpeakable('Sarah')).toBe(true);
+    state.room = 'LOC_B';
+    expect(opts.isSpeakable('Sarah')).toBe(false);
   });
 });

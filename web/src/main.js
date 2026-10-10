@@ -20,7 +20,15 @@ import {
   parseMsgFile,
 } from './data.js';
 import { createState, reset, hasFlag, serializeState, deserializeState } from './state.js';
-import { VERB_HANDLERS, fakeExitTag, linkCommand, locationById, messageHtml } from './verbs.js';
+import {
+  VERB_HANDLERS,
+  fakeExitTag,
+  linkCommand,
+  linkOptions,
+  locationById,
+  messageHtml,
+  talkInput
+} from './verbs.js';
 import { handleNewAccusation } from './accuse.js';
 import { handleNewClue } from './clues.js';
 import { parseCommand } from './words.js';
@@ -87,7 +95,7 @@ async function fetchText(path) {
  * @param {Map} messages
  * @param {Set<string>} flags
  */
-function showLocation(ui, location, messages, flags) {
+function showLocation(ui, location, messages, flags, options) {
   ui.startBlock();
   ui.printHtml(`<span class="colour-green title">${location.name}</span>`);
   ui.printLine();
@@ -95,7 +103,7 @@ function showLocation(ui, location, messages, flags) {
   ui.printLine();
   const entries = messages.get(location.id);
   const entry = entries ? entries.find((e) => e.requires.every((t) => flags.has(t))) : null;
-  ui.printHtml(entry ? printBody(entry.body, { links: true }) : '');
+  ui.printHtml(entry ? printBody(entry.body, options) : '');   // was { links: true }
   ui.scrollToTop();
 }
 
@@ -170,11 +178,12 @@ async function showSplashIntro(ui, gameData, state, welcomeBack) {
 async function runCommandLoop(ui, gameData, state) {
   let redescribe = true;
   ui.resolveLink = (text) => linkCommand(gameData, state, text);
+  ui.resolveTalk = talkInput;
 
   for (;;) {
     if (redescribe) {
       const location = locationById(gameData.locations, state.room);
-      showLocation(ui, location, gameData.messages, state.flags);
+      showLocation(ui, location, gameData.messages, state.flags, linkOptions(gameData, state));
       redescribe = false;
     }
 

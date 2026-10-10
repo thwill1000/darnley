@@ -146,7 +146,7 @@ export const VERB_HANDLERS = {
     if (result.redescribe) return { redescribe: true };
     if (result.success) {
       for (const token of result.entry.provides) state.flags.add(token);
-      return { html: printBody(result.entry.body, { links: true }) };
+      return { html: printBody(result.entry.body, linkOptions(gameData, state)) };
     }
     return { message: result.message };
   },
@@ -206,3 +206,14 @@ export const VERB_HANDLERS = {
     return { message: result.message };
   },
 };
+
+export function isSpeakable(gameData, state, text) {
+  const obj = findObj(gameData.objects, removePadding(splitWords(text)), gameData.synonyms, state.room);
+  return !!obj && obj.isPerson && obj.location === state.room;
+}
+
+export function talkInput(text) { return `"${text}, `; }
+
+export function linkOptions(gameData, state) {
+  return { links: true, isSpeakable: (t) => isSpeakable(gameData, state, t) };
+}
