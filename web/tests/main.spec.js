@@ -35,8 +35,6 @@ function createFakeUI(commands) {
   let cmdIndex = 0;
   return {
     calls,
-    startBlock() {},
-    scrollToTop() {},
     clear() { calls.push(['clear']); },
     printLine(text) { calls.push(['printLine', text]); },
     printHtml(html) { calls.push(['printHtml', html]); },
@@ -49,7 +47,6 @@ function createFakeUI(commands) {
       if (cmdIndex >= commands.length) throw new Error('STOP');
       return commands[cmdIndex++];
     },
-    async waitForMore() {},
   };
 }
 

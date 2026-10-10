@@ -27,7 +27,7 @@
 //    native <input> already provides editing.
 //  - word-wrap and [MORE] paging (con.flush()/con.show_more_prompt()) -
 //    the browser wraps text on its own and the transcript simply
-//    scrolls, per the plan's console.js scope notes.
+//    scrolls to the bottom before each prompt.
 //
 // Input history (step 22): Up/Down arrow keys browse previously
 // submitted lines while a readLine() is pending, mirroring the Up/Down
@@ -47,7 +47,6 @@ import { escapeHtml } from './console.js';
 const DEFAULT_TRANSCRIPT_ID = 'transcript';
 const DEFAULT_INPUT_ID = 'command-input';
 const DEFAULT_PROMPT_ID = 'prompt';
-const DEFAULT_MORE_ID = 'more';
 const DEFAULT_RESTART_DIALOG_ID = 'restart-dialog';
 
 // Maximum number of submitted lines remembered for Up/Down browsing.
@@ -64,9 +63,6 @@ const MAX_HISTORY = 100;
  *                                            document.getElementById('command-input').
  * @param {Element} [options.prompt]  Defaults to
  *                                    document.getElementById('prompt').
- * @param {Element} [options.more]  Defaults to
- *                                  document.getElementById('more'). Optional:
- *                                  without it output is never paged.
  * @param {HTMLDialogElement} [options.restartDialog]  Defaults to
  *                                                      #restart-dialog.
  * @param {Document} [options.doc]  Defaults to the global `document`.
@@ -75,7 +71,7 @@ const MAX_HISTORY = 100;
  *                                  (see web/tests/ui.spec.js).
  * @returns {UI}
  */
-export function createUI({ transcript, input, prompt, more, restartDialog, doc } = {}) {
+export function createUI({ transcript, input, prompt, restartDialog, doc } = {}) {
   const document_ = doc ?? (typeof document !== 'undefined' ? document : undefined);
   if (!document_) throw new Error('UI: no document available; pass options.doc explicitly');
 
@@ -84,7 +80,6 @@ export function createUI({ transcript, input, prompt, more, restartDialog, doc }
     input ?? document_.getElementById(DEFAULT_INPUT_ID),
     prompt ?? document_.getElementById(DEFAULT_PROMPT_ID),
     document_,
-    more ?? document_.getElementById(DEFAULT_MORE_ID),
     restartDialog ?? document_.getElementById(DEFAULT_RESTART_DIALOG_ID),
   );
 }
@@ -119,12 +114,9 @@ export class UI {
    *                            line is submitted.
    * @param {Document} doc  Used for createElement() when building
    *                        transcript lines and image panel content.
-   * @param {Element} [moreEl]  The MORE button shown when output is
-   *                            longer than the visible transcript. If
-   *                            omitted, output is never paged.
    * @param {HTMLDialogElement} [restartDialogEl]  Confirmation dialog for RESTART.
    */
-  constructor(transcriptEl, inputEl, promptEl, doc, moreEl, restartDialogEl) {
+  constructor(transcriptEl, inputEl, promptEl, doc, restartDialogEl) {
     if (!transcriptEl) throw new Error('UI: transcript element not found');
     if (!inputEl) throw new Error('UI: input element not found');
     if (!promptEl) throw new Error('UI: prompt element not found');
@@ -141,18 +133,6 @@ export class UI {
     this.resolveLink = null;    // (text) => command string; set by main.js
     this.resolveTalk = null;
     this.transcriptEl.addEventListener('click', (event) => this._onClick(event));
-
-    // Paging (MORE): output is not auto-scrolled. _turnStart is the first
-    // element appended since output was last paged; waitForMore() scrolls
-    // it to the top and blocks until the reader reaches the bottom.
-    this.moreEl = moreEl ?? null;
-    this._turnStart = null;
-    this._moreResolve = null;
-    if (this.moreEl) {
-      this.moreEl.hidden = true;
-      this.moreEl.addEventListener('click', () => this._pageDown());
-      this.transcriptEl.addEventListener('scroll', () => this._checkMoreDone());
-    }
 
     // Command history, oldest first. _historyIndex === history.length means
     // "not browsing" (showing the line currently being typed, kept in _draft).
@@ -352,12 +332,13 @@ export class UI {
 
   /**
    * Prompts for and waits for one line of input, mirroring con.in$():
-   * shows promptText, enables and focuses the input line, and resolves
-   * with whatever the person typed once they press Enter. The submitted
-   * line (prompt plus text) is always appended to the transcript,
-   * mirroring what would already be visible in a real terminal's
-   * scrollback. Up/Down arrow keys browse previously submitted lines
-   * while the call is pending (see _browseHistory()).
+   * scrolls the transcript to the bottom, shows promptText, enables and
+   * focuses the input line, and resolves with whatever the person typed
+   * once they press Enter. The submitted line (prompt plus text) is
+   * always appended to the transcript, mirroring what would already be
+   * visible in a real terminal's scrollback. Up/Down arrow keys browse
+   * previously submitted lines while the call is pending (see
+   * _browseHistory()).
    *
    * Only one readLine() may be pending at a time, mirroring the
    * original's single blocking get_input$() call in the game loop.
@@ -370,16 +351,7 @@ export class UI {
       throw new Error('UI.readLine() called while a previous call is still pending');
     }
     this._busy = true;
-
-    if (this._isPaged()) {
-      return this.waitForMore().then(() => this._readLine(promptText, links));
-    }
-    // Not paged: still need the same "settle" bookkeeping waitForMore() does
-    // in this case (scroll to bottom, reset the turn marker) - but done
-    // synchronously, so _readLine() arms the input in this same tick (see
-    // _settleNotPaged() below; callers rely on Enter being handleable
-    // immediately after readLine() returns).
-    this._settleNotPaged();
+    this._scrollToBottom();
     return this._readLine(promptText, links);
   }
 
@@ -404,7 +376,6 @@ export class UI {
 
   _append(el) {
     this.transcriptEl.appendChild(el);
-    this._turnStart ??= el;
   }
 
   /**
@@ -416,91 +387,6 @@ export class UI {
    */
   clear() {
     this.transcriptEl.replaceChildren();
-    this._turnStart = null;
-  }
-
-  _atBottom() {
-    const t = this.transcriptEl;
-    return !(t.scrollHeight - t.scrollTop - t.clientHeight > 1);
-  }
-
-  /**
-   * Marks the next appended element as the start of a new output block,
-   * discarding any earlier marker. Call before printing a block that a
-   * later scrollToTop() call should align to the top of the transcript
-   * (e.g. a room description - see showLocation() in main.js).
-   */
-  startBlock() {
-    this._turnStart = null;
-  }
-
-  /**
-   * Scrolls the transcript so the element marked by startBlock() (or, if
-   * that wasn't called, the first element appended since the last
-   * scroll/page) sits at the top of the panel - unconditionally, unlike
-   * waitForMore() which only does this when the block overflows the
-   * viewport. Mirrors con.clear() being called before describe_loc() in
-   * the MMBasic original: a fresh room description always starts at the
-   * top, even if it would otherwise fit on screen. Does not touch MORE
-   * paging state - waitForMore() still pages later output in the same
-   * block if it overflows.
-   */
-  scrollToTop() {
-    if (!this._turnStart) return;
-    this.transcriptEl.scrollTop = this._turnStart.offsetTop;
-  }
-
-  /** True if output since the last page would overflow the visible transcript. */
-  _isPaged() {
-    if (!this.moreEl || !this._turnStart) return false;
-    const t = this.transcriptEl;
-    return t.scrollHeight - this._turnStart.offsetTop > t.clientHeight + 1;
-  }
-
-  /**
-   * Mirrors con.show_more_prompt(): if the output printed since the last
-   * call is longer than the visible transcript, scrolls its start to the
-   * top, shows the MORE button and resolves once the reader has reached
-   * the bottom (by clicking MORE or scrolling). Otherwise just scrolls to
-   * the bottom and resolves immediately. readLine() calls this itself;
-   * call it directly after final output when no readLine() follows.
-   *
-   * @returns {Promise<void>}
-   */
-  waitForMore() {
-    if (!this._isPaged()) {
-      this._settleNotPaged();
-      return Promise.resolve();
-    }
-    this.transcriptEl.scrollTop = this._turnStart.offsetTop;
-    this._turnStart = null;
-    this.moreEl.hidden = false;
-    this.moreEl.focus?.();
-    return new Promise((resolve) => {
-      this._moreResolve = resolve;
-      this._checkMoreDone();
-    });
-  }
-
-  _pageDown() {
-    const t = this.transcriptEl;
-    // Keep a little overlap so the last line of the previous page stays visible.
-    t.scrollTop += Math.max(1, t.clientHeight - 32);
-    this._checkMoreDone();
-  }
-
-  /** Shared "output fits" bookkeeping for waitForMore()/readLine(): scrolls to the bottom and clears the turn marker. */
-  _settleNotPaged() {
-    if (this._turnStart) this._scrollToBottom();
-    this._turnStart = null;
-  }
-
-  _checkMoreDone() {
-    if (!this._moreResolve || !this._atBottom()) return;
-    const resolve = this._moreResolve;
-    this._moreResolve = null;
-    this.moreEl.hidden = true;
-    resolve();
   }
 
   _scrollToBottom() {

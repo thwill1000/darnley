@@ -98,7 +98,6 @@ async function fetchText(path) {
  */
 function showLocation(ui, state, gameData) {
   const location = locationById(gameData.locations, state.room);
-  ui.startBlock();
   ui.printHtml(`<span class="colour-green title">${location.name}</span>`);
   ui.printLine();
   if (!isVisited(state, state.room)) {
@@ -108,7 +107,6 @@ function showLocation(ui, state, gameData) {
   const entries = gameData.messages.get(location.id);
   const entry = entries ? entries.find((e) => e.requires.every((t) => state.flags.has(t))) : null;
   ui.printHtml(entry ? printBody(entry.body, linkOptions(gameData, state)) : '');   // was { links: true }
-  ui.scrollToTop();
   setVisited(state, state.room, true);
 }
 
@@ -251,7 +249,6 @@ async function runCommandLoop(ui, gameData, state) {
       if (accuseOutcome.quit) {
         clearAutosave();
         clearTranscript();
-        await ui.waitForMore();
         return 'quit';
       } // won: input stays disabled
       if (accuseOutcome.redescribe) redescribe = true;
