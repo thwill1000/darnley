@@ -8,7 +8,15 @@
 
 import { markupToHtml } from './console.js';
 import { HELP_TEXT_ID, INTRO_TEXT_ID } from './data.js';
-import { verbGo, verbExamine, verbSay, printBody, findObj, findExitMatch } from './engine.js';
+import {
+  findExitMatch,
+  findObj,
+  printBody,
+  speechBody,
+  verbExamine,
+  verbGo,
+  verbSay
+} from './engine.js';
 import { listSlots, saveToSlot, restoreFromSlot, NUM_SLOTS, setVisited } from './state.js';
 import { loadCommands, transcriptText } from './transcript.js';
 import { splitWords, removePadding } from './words.js';
@@ -214,7 +222,7 @@ export const VERB_HANDLERS = {
       state.flags,
       state.cheat,
     );
-    if (result.success) return { html: `<span class="colour-cyan">${printBody(result.entry.body)}</span>` };
+    if (result.success) return { html: speechBody(result.entry.body) };
     return { errorMessage: result.message };
   },
 };
