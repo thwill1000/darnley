@@ -573,3 +573,92 @@ describe('UI.canSubmitQuick() / UI.submitQuick()', () => {
     await expect(p).resolves.toBe('typed');
   });
 });
+
+describe('UI scroll anchor', () => {
+  it('scrolls to the bottom when there is no anchor', () => {
+    const { ui, transcript } = makeUI();
+    transcript.scrollHeight = 500;
+    ui.readLine('> ');
+    expect(transcript.scrollTop).toBe(500);
+  });
+
+  it('stops at the anchor when scrolling to the bottom would hide it', () => {
+    const { ui, transcript } = makeUI();
+    ui.printHtml('<b>Title</b>', { scrollAnchor: true });
+    transcript.children[0].offsetTop = 120;
+    transcript.scrollHeight = 500;
+    ui.readLine('> ');
+    expect(transcript.scrollTop).toBe(120);
+  });
+
+  it('still reaches the bottom when the anchor is below the maximum scroll', () => {
+    const { ui, transcript } = makeUI();
+    ui.printHtml('<b>Title</b>', { scrollAnchor: true });
+    transcript.children[0].offsetTop = 900;
+    transcript.scrollHeight = 500;
+    ui.readLine('> ');
+    expect(transcript.scrollTop).toBe(500);
+  });
+
+  it('only applies to the next readLine()', async () => {
+    const { ui, transcript, input } = makeUI();
+    ui.printHtml('<b>Title</b>', { scrollAnchor: true });
+    transcript.children[0].offsetTop = 120;
+    transcript.scrollHeight = 500;
+    const p = ui.readLine('> ');
+    input.value = 'x';
+    pressEnter(input);
+    await p;
+    transcript.scrollHeight = 800;
+    ui.readLine('> ');
+    expect(transcript.scrollTop).toBe(800);
+  });
+
+  it('clear() drops the anchor', () => {
+    const { ui, transcript } = makeUI();
+    ui.printHtml('<b>Title</b>', { scrollAnchor: true });
+    ui.clear();
+    transcript.scrollHeight = 500;
+    ui.readLine('> ');
+    expect(transcript.scrollTop).toBe(500);
+  });
+
+  it('reapplies scrolling after visual viewport layout changes', async () => {
+    const originalViewport = Object.getOwnPropertyDescriptor(globalThis, 'visualViewport');
+    const originalRequestAnimationFrame = Object.getOwnPropertyDescriptor(globalThis, 'requestAnimationFrame');
+    const resizeListeners = [];
+    const animationFrames = [];
+    Object.defineProperty(globalThis, 'visualViewport', {
+      configurable: true,
+      value: { addEventListener: (type, listener) => {
+        if (type === 'resize') resizeListeners.push(listener);
+      } },
+    });
+    Object.defineProperty(globalThis, 'requestAnimationFrame', {
+      configurable: true,
+      value: (callback) => animationFrames.push(callback),
+    });
+
+    try {
+      const { ui, transcript, input } = makeUI();
+      transcript.scrollHeight = 500;
+      const p = ui.readLine('> ');
+      resizeListeners.forEach((listener) => listener());
+
+      expect(transcript.scrollTop).toBe(500);
+      transcript.scrollHeight = 200;
+      animationFrames.forEach((callback) => callback());
+      expect(transcript.scrollTop).toBe(200);
+
+      input.value = 'x';
+      pressEnter(input);
+      await p;
+    } finally {
+      if (originalViewport) Object.defineProperty(globalThis, 'visualViewport', originalViewport);
+      else delete globalThis.visualViewport;
+      if (originalRequestAnimationFrame) {
+        Object.defineProperty(globalThis, 'requestAnimationFrame', originalRequestAnimationFrame);
+      } else delete globalThis.requestAnimationFrame;
+    }
+  });
+});

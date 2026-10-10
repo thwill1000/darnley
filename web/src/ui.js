@@ -143,6 +143,20 @@ export class UI {
     this.inputEl.disabled = true;
     this.inputEl.addEventListener('keydown', (event) => this._onKeyDown(event));
     this.onSubmit = null; // optional (line) => void, called for every submitted line
+
+    this._scrollAnchor = null; // element that must not scroll off the top on the next readLine()
+    this._promptAnchor = null; // anchor in force for the currently pending prompt
+
+    // The soft keyboard resizes the visual viewport after focus(); redo the scroll
+    // after viewport-driven layout changes so it is computed against the visible
+    // transcript size.
+    globalThis.visualViewport?.addEventListener('resize', () => {
+      if (this._pendingSubmit) {
+        globalThis.requestAnimationFrame(() => {
+          if (this._pendingSubmit) this._applyScroll();
+        });
+      }
+    });
   }
 
   _onKeyDown(event) {
@@ -255,11 +269,12 @@ export class UI {
    *
    * @param {string} html
    */
-  printHtml(html) {
+  printHtml(html, { scrollAnchor = false } = {}) {
     const div = this.doc.createElement('div');
     div.className = 'transcript-line';
     div.innerHTML = html;
     this._append(div);
+    if (scrollAnchor) this._scrollAnchor = div;
   }
 
   printFail(text) {
@@ -359,13 +374,14 @@ export class UI {
     this._linksActive = links;
     this.promptEl.textContent = promptText;
     this.inputEl.disabled = false;
-    this.inputEl.focus();
+    this.inputEl.focus({ preventScroll: true });
 
     return new Promise((resolve) => {
       this._pendingSubmit = (line) => {
         this._linksActive = false;
         this.promptEl.textContent = '';
         this._busy = false;
+        this._promptAnchor = null;
         this.onSubmit?.(line);
         const fullLine = escapeHtml(promptText + line);
         this.printHtml(`<span class="colour-yellow">${fullLine}</span>`);
@@ -387,10 +403,23 @@ export class UI {
    */
   clear() {
     this.transcriptEl.replaceChildren();
+    this._scrollAnchor = null;
+    this._promptAnchor = null;
   }
 
   _scrollToBottom() {
-    this.transcriptEl.scrollTop = this.transcriptEl.scrollHeight;
+    this._promptAnchor = this._scrollAnchor;
+    this._scrollAnchor = null; // one-shot: only applies to the next prompt
+    this._applyScroll();
+  }
+
+  _applyScroll() {
+    const anchor = this._promptAnchor;
+    // scrollTop is clamped to the maximum, so this is "the bottom, unless that
+    // would push the anchor above the top of the view".
+    this.transcriptEl.scrollTop = anchor
+      ? Math.min(this.transcriptEl.scrollHeight, anchor.offsetTop)
+      : this.transcriptEl.scrollHeight;
   }
 
   /** True only at the main command prompt, where canned commands are accepted. */

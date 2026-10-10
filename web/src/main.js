@@ -98,7 +98,7 @@ async function fetchText(path) {
  */
 function showLocation(ui, state, gameData) {
   const location = locationById(gameData.locations, state.room);
-  ui.printHtml(`<span class="colour-green title">${location.name}</span>`);
+  ui.printHtml(`<span class="colour-green title">${location.name}</span>`, { scrollAnchor: true });
   ui.printLine();
   if (!isVisited(state, state.room)) {
     ui.setImage(location.id, location.name);
@@ -273,12 +273,31 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
     setupMenu(menuButton, document.getElementById('menu-dialog'), ui);
     pinToVisualViewport(menuButton);
 
+    fitToVisualViewport(document.getElementById('app'));
+
     startGame(ui).catch((err) => {
       console.error(err);
       ui.printLine('A fatal error occurred - see the browser console for details.');
     });
   });
 }
+
+  /** Sizes #app to the visual viewport so the soft keyboard doesn't cover the transcript. */
+  function fitToVisualViewport(app) {
+    const vv = window.visualViewport;
+    if (!vv || !app) return;
+
+    const update = () => {
+      app.style.height = `${vv.height}px`;
+      app.style.position = 'relative'; // not a transform: that would re-base the position:fixed buttons
+      app.style.top = `${vv.offsetTop}px`;
+      window.scrollTo(0, 0);
+    };
+
+    vv.addEventListener('resize', update);
+    vv.addEventListener('scroll', update);
+    update();
+  }
 
 /**
  * Wires the menu button to its dialog. Opening is only allowed at the main
