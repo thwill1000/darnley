@@ -11,6 +11,19 @@
     <div id="transcript" role="log" aria-live="polite"></div>
     <button id="more" type="button" hidden>MORE</button>
     <button id="look-button" type="button" aria-label="Redescribe location" title="Redescribe location">&#x1F441;&#xFE0E;</button>
+    <button id="menu-button" type="button" aria-label="Menu" title="Menu">&#x2630;</button>
+    <dialog id="menu-dialog" aria-labelledby="menu-title">
+      <form method="dialog">
+        <p id="menu-title">Menu</p>
+        <button type="submit" value="help">Help</button>
+        <button type="submit" value="recap">Recap</button>
+        <button type="submit" value="save">Save</button>
+        <button type="submit" value="restore">Restore</button>
+        <button type="submit" value="restart">Restart</button>
+        <button type="submit" value="download">Download script</button>
+        <button type="submit" value="">Cancel</button>
+      </form>
+    </dialog>
     <dialog id="restart-dialog" aria-labelledby="restart-prompt">
       <form method="dialog">
         <p id="restart-prompt">Restart the game?</p>

@@ -630,3 +630,47 @@ describe('UI.downloadText()', () => {
     expect(seen).toEqual(['go hall', '']);
   });
 });
+
+describe('UI.canSubmitQuick() / UI.submitQuick()', () => {
+  it('is false when no readLine() is pending', () => {
+    const { ui } = makeUI();
+    expect(ui.canSubmitQuick()).toBe(false);
+  });
+
+  it('is false for a readLine() that did not opt in to links', () => {
+    const { ui } = makeUI();
+    ui.readLine('> ');
+    expect(ui.canSubmitQuick()).toBe(false);
+  });
+
+  it('is true for a link-enabled readLine()', () => {
+    const { ui } = makeUI();
+    ui.readLine('> ', { links: true });
+    expect(ui.canSubmitQuick()).toBe(true);
+  });
+
+  it('is false again once the line has been submitted', async () => {
+    const { ui, input } = makeUI();
+    const p = ui.readLine('> ', { links: true });
+    input.value = 'look';
+    pressEnter(input);
+    await p;
+    expect(ui.canSubmitQuick()).toBe(false);
+  });
+
+  it('submitQuick() resolves the pending readLine() with the command', async () => {
+    const { ui } = makeUI();
+    const p = ui.readLine('> ', { links: true });
+    ui.submitQuick('help');
+    await expect(p).resolves.toBe('help');
+  });
+
+  it('submitQuick() is ignored when the readLine() did not opt in', async () => {
+    const { ui, input } = makeUI();
+    const p = ui.readLine('> ');
+    ui.submitQuick('help');
+    input.value = 'typed';
+    pressEnter(input);
+    await expect(p).resolves.toBe('typed');
+  });
+});

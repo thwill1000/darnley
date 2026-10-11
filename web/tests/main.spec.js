@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { startGame, prepareSession } from '../src/main.js';
+import { startGame, prepareSession, setupMenu } from '../src/main.js';
 import { createState, serializeState, setVisited, isVisited } from '../src/state.js';
 import { TRANSCRIPT_KEY } from '../src/transcript.js';
 
@@ -221,5 +221,82 @@ describe('startGame() transcript', () => {
     const [filename, text] = ui.downloadText.mock.calls[0];
     expect(filename).toBe('darnley-transcript.txt');
     expect(text.split('\n').slice(2)).toEqual(['look', '']);
+  });
+});
+
+describe('setupMenu()', () => {
+  function fakeEl() {
+    const listeners = {};
+    return {
+      returnValue: '',
+      open: false,
+      addEventListener(type, cb) { (listeners[type] ??= []).push(cb); },
+      fire(type) { (listeners[type] ?? []).forEach((cb) => cb()); },
+      showModal() { this.open = true; },
+      // Mimics a button choice: sets returnValue, closes, fires 'close'.
+      close(value = '') { this.returnValue = value; this.open = false; this.fire('close'); },
+      // Mimics Escape: closes and fires 'close' without touching returnValue.
+      dismiss() { this.open = false; this.fire('close'); },
+    };
+  }
+
+  function setup(canSubmit = true) {
+    const button = fakeEl();
+    const dialog = fakeEl();
+    const ui = { canSubmitQuick: vi.fn(() => canSubmit), submitQuick: vi.fn() };
+    setupMenu(button, dialog, ui);
+    return { button, dialog, ui };
+  }
+
+  it('opens the dialog when the button is clicked at the main prompt', () => {
+    const { button, dialog } = setup();
+    button.fire('click');
+    expect(dialog.open).toBe(true);
+  });
+
+  it('does not open the dialog when commands cannot be submitted', () => {
+    const { button, dialog } = setup(false);
+    button.fire('click');
+    expect(dialog.open).toBe(false);
+  });
+
+  it('submits the chosen command when the dialog closes', () => {
+    const { button, dialog, ui } = setup();
+    button.fire('click');
+    dialog.close('restore');
+    expect(ui.submitQuick).toHaveBeenCalledExactlyOnceWith('restore');
+  });
+
+  it('submits each of the menu commands unchanged', () => {
+    for (const command of ['restart', 'download', 'help', 'recap', 'save', 'restore']) {
+      const { button, dialog, ui } = setup();
+      button.fire('click');
+      dialog.close(command);
+      expect(ui.submitQuick).toHaveBeenCalledWith(command);
+    }
+  });
+
+  it('submits nothing when Close is chosen', () => {
+    const { button, dialog, ui } = setup();
+    button.fire('click');
+    dialog.close('');
+    expect(ui.submitQuick).not.toHaveBeenCalled();
+  });
+
+  it('does not resubmit a previous choice when dismissed with Escape', () => {
+    const { button, dialog, ui } = setup();
+    button.fire('click');
+    dialog.close('help');
+    expect(ui.submitQuick).toHaveBeenCalledTimes(1);
+
+    button.fire('click');
+    dialog.dismiss();
+    expect(ui.submitQuick).toHaveBeenCalledTimes(1);
+  });
+
+  it('does nothing, without throwing, if the button or dialog is missing', () => {
+    const ui = { canSubmitQuick: vi.fn(), submitQuick: vi.fn() };
+    expect(() => setupMenu(null, fakeEl(), ui)).not.toThrow();
+    expect(() => setupMenu(fakeEl(), null, ui)).not.toThrow();
   });
 });
