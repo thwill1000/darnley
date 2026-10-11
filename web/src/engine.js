@@ -171,6 +171,42 @@ export function printBody(bodyLines, options) {
   return markupToHtml(renderBody(bodyLines), options);
 }
 
+/**
+ * Renders a SAY response body. Unlike printBody(), any [[cyan:...]] and
+ * [[reset:...]] markers in the data are ignored (they exist for the MMBasic
+ * build); instead, text inside "double quotes" is spoken and shown in cyan,
+ * and everything else is narration in the default colour.
+ *
+ * The quote state persists across "@" paragraph breaks, so a speech spanning
+ * several paragraphs stays cyan throughout. An unbalanced quote leaves the
+ * remainder cyan; tests/speech.spec.js guards the data files against that.
+ * Other colour markup (e.g. green) is passed through untouched.
+ *
+ * @param {string[]} bodyLines
+ * @returns {string} HTML
+ */
+export function speechBody(bodyLines) {
+  const text = renderBody(bodyLines).replace(/\[\[(?:cyan|reset):(.*?)\]\]/gs, '$1');
+  let out = '';
+  let run = '';
+  let inQuote = false;
+  for (const ch of text) {
+    if (ch === '"' && !inQuote) {
+      out += run;
+      run = '"';
+      inQuote = true;
+    } else if (ch === '"') {
+      out += `[[cyan:${run}"]]`;
+      run = '';
+      inQuote = false;
+    } else {
+      run += ch;
+    }
+  }
+  out += inQuote ? `[[cyan:${run}]]` : run;
+  return markupToHtml(out);
+}
+
 // --- SAY / dialogue lookup ------------------------------------------------
 
 const WILDCARD_MATCH = 100;
