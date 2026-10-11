@@ -88,7 +88,7 @@ function makeUI() {
   const input = new FakeElement('input');
   const prompt = new FakeElement('span');
   const dialog = new FakeElement('dialog');
-  const ui = new UI(transcript, input, prompt, fakeDoc(), null, dialog);
+  const ui = new UI(transcript, input, prompt, fakeDoc(), dialog);
   return { ui, transcript, input, prompt, dialog };
 }
 
@@ -167,6 +167,15 @@ describe('UI.readLine()', () => {
     expect(prompt.textContent).toBe('What would you like to do? ');
     expect(input.disabled).toBe(false);
     expect(input._focused).toBe(true);
+  });
+
+  it('scrolls the transcript to the bottom', () => {
+    const { ui, transcript } = makeUI();
+    transcript.scrollHeight = 500;
+    ui.printLine('some output');
+    expect(transcript.scrollTop).toBe(0);
+    ui.readLine('> ');
+    expect(transcript.scrollTop).toBe(500);
   });
 
   it('resolves with the typed value on Enter', async () => {
@@ -359,104 +368,6 @@ describe('createUI()', () => {
   });
 });
 
-describe('MORE paging', () => {
-  function makePagedUI({ scrollHeight, clientHeight = 100 }) {
-    const transcript = new FakeElement('div');
-    transcript.scrollHeight = scrollHeight;
-    transcript.clientHeight = clientHeight;
-    const input = new FakeElement('input');
-    const more = new FakeElement('button');
-    const ui = new UI(transcript, input, new FakeElement('span'), fakeDoc(), more);
-    return { ui, transcript, input, more };
-  }
-
-  it('does not page, and scrolls to the bottom, when output fits', async () => {
-    const { ui, transcript, more } = makePagedUI({ scrollHeight: 80 });
-    ui.printLine('short');
-    await ui.waitForMore();
-    expect(more.hidden).toBe(true);
-    expect(transcript.scrollTop).toBe(80);
-  });
-
-  it('readLine() itself scrolls to the bottom when output fits, without needing an explicit waitForMore()', () => {
-    const { ui, transcript } = makePagedUI({ scrollHeight: 80 });
-    ui.printLine('short');
-    expect(transcript.scrollTop).toBe(0);
-    ui.readLine('> ');
-    expect(transcript.scrollTop).toBe(80);
-  });
-
-  it('holds at the start of long output, blocks input and pages with MORE', async () => {
-    const { ui, transcript, input, more } = makePagedUI({ scrollHeight: 500 });
-    ui.printLine('first'); // offsetTop is undefined on the fake - set it
-    transcript.children[0].offsetTop = 40;
-    const p = ui.readLine('> ');
-    expect(transcript.scrollTop).toBe(40);
-    expect(more.hidden).toBe(false);
-    expect(input.disabled).toBe(true);
-
-    more._listeners.click[0]();
-    expect(more.hidden).toBe(false);
-    expect(input.disabled).toBe(true);
-    transcript.scrollTop = 400; // reader reaches the bottom (by clicking or scrolling)
-    transcript.dispatchEvent('scroll', {});
-    await Promise.resolve();
-    await Promise.resolve();
-    expect(more.hidden).toBe(true);
-    expect(input.disabled).toBe(false);
-    input.value = 'go';
-    pressEnter(input);
-    expect(await p).toBe('go');
-  });
-
-  it('manual scrolling to the bottom clears MORE', async () => {
-    const { ui, transcript, more } = makePagedUI({ scrollHeight: 500 });
-    ui.printLine('x');
-    transcript.children[0].offsetTop = 0;
-    const p = ui.waitForMore();
-    expect(more.hidden).toBe(false);
-    transcript.scrollTop = 400;
-    transcript.dispatchEvent('scroll', {});
-    await p;
-    expect(more.hidden).toBe(true);
-  });
-});
-
-describe('UI.startBlock() / UI.scrollToTop()', () => {
-  it('scrolls so the first element printed since startBlock() is at the top, even when the block fits on screen', () => {
-    const { ui, transcript } = makeUI();
-    transcript.scrollHeight = 500;
-    transcript.clientHeight = 100;
-    ui.printLine('earlier scrollback');
-    ui.startBlock();
-    ui.printLine('ROOM NAME');
-    transcript.children[1].offsetTop = 300;
-    ui.printLine('room body text');
-    ui.scrollToTop();
-    expect(transcript.scrollTop).toBe(300);
-  });
-
-  it('scrolls so the first element printed since startBlock() is at the top when the block overflows', () => {
-    const { ui, transcript } = makeUI();
-    transcript.scrollHeight = 1000;
-    transcript.clientHeight = 100;
-    ui.startBlock();
-    ui.printLine('ROOM NAME');
-    transcript.children[0].offsetTop = 600;
-    ui.printLine('lots of room body text');
-    ui.scrollToTop();
-    expect(transcript.scrollTop).toBe(600);
-  });
-
-  it('does nothing if nothing has been printed since startBlock()', () => {
-    const { ui, transcript } = makeUI();
-    transcript.scrollTop = 42;
-    ui.startBlock();
-    ui.scrollToTop();
-    expect(transcript.scrollTop).toBe(42);
-  });
-});
-
 describe('UI.clear()', () => {
   it('removes everything previously printed to the transcript', () => {
     const { ui, transcript } = makeUI();
@@ -467,18 +378,6 @@ describe('UI.clear()', () => {
     ui.clear();
 
     expect(transcript.children).toHaveLength(0);
-  });
-
-  it('resets the startBlock()/scrollToTop() marker', () => {
-    const { ui, transcript } = makeUI();
-    ui.startBlock();
-    ui.printLine('one');
-    ui.clear();
-    transcript.scrollTop = 42;
-
-    ui.scrollToTop(); // no marker left to scroll to - should do nothing
-
-    expect(transcript.scrollTop).toBe(42);
   });
 
   it('allows printing normally afterwards', () => {
