@@ -247,11 +247,33 @@ async function runCommandLoop(ui, gameData, state) {
 if (typeof window !== 'undefined' && typeof document !== 'undefined') {
   window.addEventListener('DOMContentLoaded', () => {
     const ui = createUI();
+
+    const look = document.getElementById('look-button');
+    look?.addEventListener('click', () => ui.submitQuick('look'));
+    pinToVisualViewport(look);
+
     startGame(ui).catch((err) => {
       console.error(err);
       ui.printLine('A fatal error occurred - see the browser console for details.');
     });
   });
+}
+
+/** Keeps a position:fixed element pinned to the top-right of the *visual* viewport. */
+function pinToVisualViewport(el) {
+  const vv = window.visualViewport;
+  if (!vv || !el) return;
+
+  const update = () => {
+    const layoutWidth = document.documentElement.clientWidth;
+    const dx = vv.offsetLeft + vv.width - layoutWidth; // right-edge correction
+    const dy = vv.offsetTop;                           // how far the view has panned down
+    el.style.transform = `translate(${dx}px, ${dy}px)`;
+  };
+
+  vv.addEventListener('resize', update);
+  vv.addEventListener('scroll', update);
+  update();
 }
 
 function autosave(state) {

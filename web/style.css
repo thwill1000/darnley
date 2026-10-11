@@ -125,6 +125,25 @@ html, body {
   display: none;
 }
 
+#look-button {
+  position: fixed;
+  top: max(0.5em, env(safe-area-inset-top));
+  right: max(2.4em, calc(env(safe-area-inset-right) + 1.6em)); /* clear of the transcript scrollbar */
+  z-index: 10;
+  width: 2.2em;
+  height: 2.2em;
+  padding: 0;
+  font-size: 1.1em;
+  line-height: 1;
+  color: #ff5;
+  background: #000;
+  border: 1px solid #ff5;
+  border-radius: 0.3em;
+  cursor: pointer;
+}
+#look-button:hover,
+#look-button:focus-visible { background: #222; }
+
 /* Colour classes matching the game's [[colour:text]] markup - see
    console.js's parseMarkup() and printBody() in engine.js. */
 .colour-red { color: #f55; }

@@ -506,4 +506,10 @@ export class UI {
   _scrollToBottom() {
     this.transcriptEl.scrollTop = this.transcriptEl.scrollHeight;
   }
+
+  /** Submits a canned command, but only at the main command prompt. */
+  submitQuick(command) {
+    if (!this._pendingSubmit || !this._linksActive) return;
+    this._submitLine(command);
+  }
 }
