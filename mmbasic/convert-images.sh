@@ -43,7 +43,19 @@ for src_file in "$SRC_DIR"/*.png; do
     dest_file="$DEST_DIR/${filename}.${EXT}"
     
     if [ "$MODE" = "web" ]; then
-        convert "$src_file" -resize "960x960>" -quality 80 "$dest_file"
+        case "$filename" in
+            "END_SCREEN"|"SPLASH_SCREEN")
+                # Source aspect ratio differs from the other location images,
+                # so force a non-aspect-preserving resize to the same output
+                # size as the other images (3:2, matching .transcript-image's
+                # CSS aspect-ratio) to avoid letterboxing in the web UI.
+                WEB_DIMENSIONS="960x644!"
+                ;;
+            *)
+                WEB_DIMENSIONS="960x960>"
+                ;;
+        esac
+        convert "$src_file" -resize "$WEB_DIMENSIONS" -quality 80 "$dest_file"
         echo "Converted: $filename.png -> ${filename}.${EXT}"
         ((count++))
         continue
