@@ -151,7 +151,7 @@ bookshelf books
 "Couldn't tell you, old boy. Never been much of a one for books
 myself - Millicent's the reader in this business, not me."
 
-correspondence photographs letters servant
++(correspondence/photographs/letters) servant
 "No idea whose those are. Not the sort of thing I'd go poking through
 even if I did know, old boy - a fellow's letters are his own
 business."

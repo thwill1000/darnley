@@ -147,7 +147,7 @@ bookshelf books
 his books and his Bible. I never have the time myself, what with the
 kitchen to run."
 
-correspondence photographs letters servant
++(correspondence/photographs/letters) servant
 "Oh, those are mine, dear! Letters from my nephew - a good boy, if a
 poor speller - and some photographs of the family. Nothing exciting,
 just an old woman's keepsakes."

@@ -162,7 +162,7 @@ bookshelf books
 "I'm afraid I couldn't say. I don't spend a great deal of time in the
 servants' rooms, as you might imagine."
 
-correspondence photographs letters servant
++(correspondence/photographs/letters) servant
 "Not mine. I really shouldn't like to speculate whose they are - it
 seems rather an intrusion to go asking after other people's letters."
 

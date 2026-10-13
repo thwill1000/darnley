@@ -130,7 +130,7 @@ bookshelf books
 "Never been past the kitchen door in the house. Couldn't tell you
 whose books they are or what's in 'em."
 
-correspondence photographs letters servant
++(correspondence/photographs/letters) servant
 "Nothing to do with me. Don't go near the house past the kitchen,
 same as I told you before."
 

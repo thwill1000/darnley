@@ -150,7 +150,7 @@ a good many years and I'm rather fond of them. I don't know that
 there's anything remarkable to be found in them, though I dare say
 they tell you I've always tried to better myself."
 
-correspondence photographs letters servant
++(correspondence/photographs/letters) servant
 "Those belong to Mrs. Goodbody, sir - letters from her nephew and
 photographs of family, I believe. I shouldn't think there's anything
 in them to concern you, but you're welcome to ask her yourself."

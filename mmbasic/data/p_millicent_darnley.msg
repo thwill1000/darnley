@@ -149,7 +149,7 @@ bookshelf books
 read, when Father allows me a moment's peace for it. Those are Mr.
 Billingsgate's books, I should think, from the sound of them."
 
-correspondence photographs letters servant
++(correspondence/photographs/letters) servant
 "Not mine. I don't know whose they'd be - the servants', I should
 think, from the look of them. I don't make a habit of examining
 other people's letters."

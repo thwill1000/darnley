@@ -173,7 +173,7 @@ bookshelf books
 them. Not much of a reader myself, old man - give me a good paper and I'm
 satisfied."
 
-correspondence photographs letters servant
++(correspondence/photographs/letters) servant
 "Not mine, and none of my business either. A person's letters are their
 own affair - I shouldn't care for anyone pawing through mine."
 

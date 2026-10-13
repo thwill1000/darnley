@@ -139,7 +139,7 @@ bookshelf books
 though I couldn't tell you what's in most of them - I've never had
 call to look."
 
-correspondence photographs letters servant
++(correspondence/photographs/letters) servant
 "Those are Mrs. Goodbody's, sir - I've seen her looking at the
 photographs of an evening. Letters from her nephew, I think. I'd
 never go through them myself, that wouldn't be right."

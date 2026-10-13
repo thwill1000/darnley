@@ -139,7 +139,7 @@ pipe
 bookshelf books
 "bookshelf response"
 
-correspondence photographs letters servant
++(correspondence/photographs/letters) servant
 "correspondence response"
 
 +(cheroot/cigar) +pond
