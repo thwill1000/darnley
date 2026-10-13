@@ -323,8 +323,8 @@ ask. I trust you to make sense of it better than any of us could."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
 !requires x_handkerchief x_cigarettes
-[[reset:Billingsgate's composure does not slip, but there is a long pause
-before he answers.]]@
+Billingsgate's composure does not slip, but there is a long pause
+before he answers.@
 @
 "It is not my place to speculate about the private conduct of the
 family, sir. I have nothing further to say on the matter."
@@ -356,8 +356,8 @@ further."
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_billingsgate
 !provides new_accuse accuse_billingsgate
-[[reset:The butler's composure has returned, though something guarded remains
-in his manner.]]@
+The butler's composure has returned, though something guarded remains
+in his manner.@
 @
 "You have already put that question to me, sir, and my answer has not
 changed in the meantime."
@@ -366,8 +366,8 @@ changed in the meantime."
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_billingsgate accuse_b4_billingsgate
-[[reset:Billingsgate draws himself up, visibly wounded, though he masters
-himself with the discipline of long service.]]@
+Billingsgate draws himself up, visibly wounded, though he masters
+himself with the discipline of long service.@
 @
 "I have served this family faithfully for the whole of my working life,
 sir. I should hope my conduct speaks for itself, whatever you may
@@ -382,28 +382,28 @@ proper cause."
 # Response after accusation questions have been answered correctly
 accuse_succeed
 !requires accuse_succeed
-[[reset:Billingsgate's composure does not slip, though something in his
+Billingsgate's composure does not slip, though something in his
 expression suggests genuine respect for the reasoning, if not the
-conclusion.]]@
+conclusion.@
 @
-[[cyan:"You have set it out very thoroughly, sir, and I do not doubt you
+"You have set it out very thoroughly, sir, and I do not doubt you
 believe every word of it. But I was not the one who did this thing,
-whatever the facts may seem to say."]]@
+whatever the facts may seem to say."@
 @
-[[reset:He had no hand in the Colonel's death, whatever your reasoning suggests.
-Go back over the evidence and look again at who was truly where.]]
+He had no hand in the Colonel's death, whatever your reasoning suggests.
+Go back over the evidence and look again at who was truly where.
 
 # Response after accusation questions have been answered incorrectly
 accuse_fail
 !requires accuse_fail
-[[reset:Billingsgate inclines his head gravely, choosing his words with evident
-care.]]@
+Billingsgate inclines his head gravely, choosing his words with evident
+care.@
 @
-[[cyan:"If I may say so, sir, there is a gap somewhere in what you have just
+"If I may say so, sir, there is a gap somewhere in what you have just
 told me - a detail that does not sit right beside the others. I would
-not wish to see you act on it as it stands."]]@
+not wish to see you act on it as it stands."@
 @
-[[reset:Go back over your questioning and look again.]]
+Go back over your questioning and look again.
 
 (who/whose/whom/why/what/where/when/how/which/?)
 "I don't believe that falls within my knowledge, I'm afraid."

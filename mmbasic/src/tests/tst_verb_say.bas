@@ -28,10 +28,6 @@ sys.provides("console")
 
 Dim con_output$
 
-Sub con.foreground(color$)
-  Cat con_output$, "<" + color$ + ">"
-End Sub
-
 Sub con.print(s$)
   Cat con_output$, s$
 End Sub
@@ -96,7 +92,7 @@ Sub test_say_gvn_no_comma()
   result% = verb_say()
 
   assert_int_equals(1, result%)
-  Const expected$ = "<cyan>" + str.quote$("wildcard fallback") + "<reset>" + sys.CRLF$
+  Const expected$ = "[[speech:" + str.quote$("wildcard fallback") + "]]" + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub
 
@@ -110,7 +106,7 @@ Sub test_say_gvn_no_comma_matches()
   result% = verb_say()
 
   assert_int_equals(1, result%)
-  Const expected$ = "<cyan>" + str.quote$("line B - unconditional, grants clue") + "<reset>" + sys.CRLF$
+  Const expected$ = "[[speech:" + str.quote$("line B - unconditional, grants clue") + "]]" + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub
 
@@ -139,7 +135,7 @@ Sub test_say_no_comma_first_person()
   assert_int_equals(1, result%)
   ' "line B" only appears in test_suspect.msg (P_TEST_SUSPECT's file),
   ' confirming P_TEST_SUSPECT - not P_OTHER_SUSPECT - was spoken to.
-  Const expected$ = "<cyan>" + str.quote$("line B - unconditional, grants clue") + "<reset>" + sys.CRLF$
+  Const expected$ = "[[speech:" + str.quote$("line B - unconditional, grants clue") + "]]" + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub
 
@@ -152,7 +148,7 @@ Sub test_say_no_comma_one_word()
   result% = verb_say()
 
   assert_int_equals(1, result%)
-  Const expected$ = "<cyan>" + str.quote$("line B - unconditional, grants clue") + "<reset>" + sys.CRLF$
+  Const expected$ = "[[speech:" + str.quote$("line B - unconditional, grants clue") + "]]" + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub
 
@@ -164,7 +160,7 @@ Sub test_say_gvn_no_target()
   result% = verb_say()
 
   assert_int_equals(1, result%)
-  Const expected$ = "<cyan>" + str.quote$("line B - unconditional, grants clue") + "<reset>" + sys.CRLF$
+  Const expected$ = "[[speech:" + str.quote$("line B - unconditional, grants clue") + "]]" + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub
 
@@ -214,7 +210,7 @@ Sub test_say_gvn_wildcard_fallback()
   result% = verb_say()
 
   assert_int_equals(1, result%)
-  Const expected$ = "<cyan>" + str.quote$("wildcard fallback") + "<reset>" + sys.CRLF$
+  Const expected$ = "[[speech:" + str.quote$("wildcard fallback") + "]]" + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub
 
@@ -227,7 +223,7 @@ Sub test_say_skips_ineligible()
   result% = verb_say()
 
   assert_int_equals(1, result%)
-  Const expected$ = "<cyan>" + str.quote$("line B - unconditional, grants clue") + "<reset>" + sys.CRLF$
+  Const expected$ = "[[speech:" + str.quote$("line B - unconditional, grants clue") + "]]" + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub
 
@@ -243,7 +239,7 @@ Sub test_say_gvn_flag_met_wins()
   result% = verb_say()
 
   assert_int_equals(1, result%)
-  Const expected$ = "<cyan>" + str.quote$("line A - needs pond") + "<reset>" + sys.CRLF$
+  Const expected$ = "[[speech:" + str.quote$("line A - needs pond") + "]]" + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub
 
@@ -270,7 +266,7 @@ Sub test_say_gvn_all_blocked()
   result% = verb_say()
 
   assert_int_equals(1, result%)
-  Const expected$ = "<cyan>" + str.quote$("wildcard fallback") + "<reset>" + sys.CRLF$
+  Const expected$ = "[[speech:" + str.quote$("wildcard fallback") + "]]" + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub
 
@@ -287,7 +283,7 @@ Sub test_say_gvn_best_match()
   result% = verb_say()
 
   assert_int_equals(1, result%)
-  Const expected$ = "<cyan>" + str.quote$("line B - unconditional, grants clue") + "<reset>" + sys.CRLF$
+  Const expected$ = "[[speech:" + str.quote$("line B - unconditional, grants clue") + "]]" + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub
 
@@ -300,7 +296,7 @@ Sub test_say_gvn_case_insensitive()
   result% = verb_say()
 
   assert_int_equals(1, result%)
-  Const expected$ = "<cyan>" + str.quote$("line B - unconditional, grants clue") + "<reset>" + sys.CRLF$
+  Const expected$ = "[[speech:" + str.quote$("line B - unconditional, grants clue") + "]]" + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub
 
@@ -327,7 +323,7 @@ Sub test_say_gvn_comma_no_target()
   result% = verb_say()
 
   assert_int_equals(1, result%)
-  Const expected$ = "<cyan>" + str.quote$("line B - unconditional, grants clue") + "<reset>" + sys.CRLF$
+  Const expected$ = "[[speech:" + str.quote$("line B - unconditional, grants clue") + "]]" + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub
 
@@ -340,7 +336,7 @@ Sub test_say_msg_comments_ignored()
   result% = verb_say()
 
   assert_int_equals(1, result%)
-  Const expected$ = "<cyan>" + str.quote$("line B - unconditional, grants clue") + "<reset>" + sys.CRLF$
+  Const expected$ = "[[speech:" + str.quote$("line B - unconditional, grants clue") + "]]" + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub
 
@@ -353,7 +349,7 @@ Sub test_say_comment_b4_wildcard()
   result% = verb_say()
 
   assert_int_equals(1, result%)
-  Const expected$ = "<cyan>" + str.quote$("wildcard fallback") + "<reset>" + sys.CRLF$
+  Const expected$ = "[[speech:" + str.quote$("wildcard fallback") + "]]" + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub
 
@@ -366,7 +362,7 @@ Sub test_say_gvn_plus_missing()
   result% = verb_say()
 
   assert_int_equals(1, result%)
-  Const expected$ = "<cyan>" + str.quote$("wildcard fallback") + "<reset>" + sys.CRLF$
+  Const expected$ = "[[speech:" + str.quote$("wildcard fallback") + "]]" + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub
 
@@ -378,7 +374,7 @@ Sub test_say_gvn_plus_present()
   result% = verb_say()
 
   assert_int_equals(1, result%)
-  Const expected$ = "<cyan>" + str.quote$("mandatory word matched - urgent news response") + "<reset>" + sys.CRLF$
+  Const expected$ = "[[speech:" + str.quote$("mandatory word matched - urgent news response") + "]]" + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub
 
@@ -391,7 +387,7 @@ Sub test_say_gvn_minus_absent()
   result% = verb_say()
 
   assert_int_equals(1, result%)
-  Const expected$ = "<cyan>" + str.quote$("forbidden word absent - quiet response") + "<reset>" + sys.CRLF$
+  Const expected$ = "[[speech:" + str.quote$("forbidden word absent - quiet response") + "]]" + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub
 
@@ -404,6 +400,6 @@ Sub test_say_gvn_minus_present()
   result% = verb_say()
 
   assert_int_equals(1, result%)
-  Const expected$ = "<cyan>" + str.quote$("wildcard fallback") + "<reset>" + sys.CRLF$
+  Const expected$ = "[[speech:" + str.quote$("wildcard fallback") + "]]" + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub

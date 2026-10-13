@@ -84,13 +84,13 @@ function respond(cmd) {
 
 /**
  * Asserts the response body is exactly "<expected>" (quoted), or with
- * partial, merely starts with it (unquoted-start when expected begins "[",
- * i.e. the body opens with markup rather than a quote).
+ * partial, merely starts with it (unquoted-start when the actual body
+ * opens with narration rather than a quote mark).
  */
 function assertResponse(cmd, expected, partial = false) {
   const text = respond(cmd);
   if (partial) {
-    const wanted = expected.startsWith('[') ? expected : '"' + expected;
+    const wanted = text.startsWith('"') ? '"' + expected : expected;
     expect(text.slice(0, wanted.length)).toBe(wanted);
   } else {
     expect(text).toBe('"' + expected + '"');
@@ -262,11 +262,11 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     ]);
 
     target('redvers');
-    assertResponse('did you read the newspaper', '[[reset:He stiffens slightly', true);
+    assertResponse('did you read the newspaper', 'He stiffens slightly', true);
     target('arthur');
     assertResponse('did you read the newspaper', 'I heard that old Slingsby had plunged into mining shares', true);
     target('sarah');
-    assertResponse('did you read the newspaper', '[[reset:She hesitates, choosing her words', true);
+    assertResponse('did you read the newspaper', 'She hesitates, choosing her words', true);
   });
 
   it("What do you know about the letter on the Colonel's desk?", () => {
@@ -509,7 +509,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
     // Once both gating flags are set, the more specific (still evasive) entry wins.
     resetFlags('x_handkerchief', 'x_cigarettes');
-    assertResponse('confirm sarah', '[[reset:Something flickers behind his flat stare.]]', true);
+    assertResponse('confirm sarah', 'Something flickers behind his flat stare.', true);
   });
 
   it("Can you corroborate Redvers' alibi?", () => {
@@ -663,7 +663,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
     // Ask Redvers directly without referencing him by name in the subject.
     target('redvers');
-    assertResponse('Redvers, did you have money troubles?', "[[reset:He goes rather grey about the gills.", true);
+    assertResponse('Redvers, did you have money troubles?', 'He goes rather grey about the gills.', true);
   });
 
   it('What do you know about the bangs last night?', () => {
@@ -694,7 +694,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     ]);
 
     target('redvers');
-    const opening = '[[reset:He exhales slowly, some of the bluster gone out of him.';
+    const opening = 'He exhales slowly, some of the bluster gone out of him.';
     assertResponse('did you argue with the colonel', opening, true);
     assertResponse('did you have an argument with the colonel', opening, true);
   });

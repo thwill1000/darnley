@@ -296,7 +296,7 @@ sat in my soup. You get on with your job."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
 !requires x_handkerchief x_cigarettes
-[[reset:She goes quiet for a moment, wiping her hands slowly on her apron.]]@
+She goes quiet for a moment, wiping her hands slowly on her apron.@
 @
 "I don't like to gossip, dear, truly I don't. But I've wondered,
 watching her these past months. Mrs. Sarah always did seem lonelier
@@ -328,7 +328,7 @@ could use it."
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_goodbody
 !provides new_accuse accuse_goodbody
-[[reset:She fixes you with a look that could curdle milk.]]@
+She fixes you with a look that could curdle milk.@
 @
 "You asked me that already, and my answer's the same as it was then. I
 didn't do it, and that's flat."
@@ -337,8 +337,8 @@ didn't do it, and that's flat."
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_goodbody accuse_b4_goodbody
-[[reset:Mrs. Goodbody plants her floury hands on her hips, drawing herself up
-to her full and considerable height.]]@
+Mrs. Goodbody plants her floury hands on her hips, drawing herself up
+to her full and considerable height.@
 @
 "Well I never! Me, murder the Colonel? I've cooked this family's dinners
 for five years and never so much as raised my voice, let alone a gun!"
@@ -352,27 +352,27 @@ up neither."
 # Response after accusation questions have been answered correctly
 accuse_succeed
 !requires accuse_succeed
-[[reset:Mrs. Goodbody's hands come off her hips, and for a moment she just
-looks tired.]]@
+Mrs. Goodbody's hands come off her hips, and for a moment she just
+looks tired.@
 @
 "You've puzzled it out clever enough, I'll say that - but you've
 puzzled your way to the wrong one of us, dear, and that's the truth
 of it whatever the rest adds up to."@
 @
-[[reset:She was asleep in the butler's pantry that night, not committing murder.
-Go back over the evidence and look again at who was truly where.]]
+She was asleep in the butler's pantry that night, not committing murder.
+Go back over the evidence and look again at who was truly where.
 
 # Response after accusation questions have been answered incorrectly
 accuse_fail
 !requires accuse_fail
-[[reset:Mrs. Goodbody folds her arms, entirely unmoved, and looks at you the way
-she'd look at a badly-risen loaf.]]@
+Mrs. Goodbody folds her arms, entirely unmoved, and looks at you the way
+she'd look at a badly-risen loaf.@
 @
 "That's not how it went, dear, and you know it same as I do. Something
 in what you've just told me doesn't hold together - go and have
 another think."@
 @
-[[reset:Go back over your questioning and look again.]]
+Go back over your questioning and look again.
 
 (who/whose/whom/why/what/where/when/how/which/?)
 "I'm afraid you're asking the wrong person, dear."

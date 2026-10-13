@@ -25,13 +25,13 @@ describe('VERB_HANDLERS.cheat', () => {
   const gameData = {
     clues,
     messages: new Map([
-      ['CHEAT_TEXT', [{ requires: [], provides: [], body: ['[[cyan:You rotter - cheat mode enabled.]]'] }]],
+      ['CHEAT_TEXT', [{ requires: [], provides: [], body: ['[[speech:You rotter - cheat mode enabled.]]'] }]],
     ]),
   };
 
-  it('prints CHEAT_TEXT in cyan', () => {
+  it('prints CHEAT_TEXT in colour-speech', () => {
     const result = VERB_HANDLERS.cheat(gameData, createState(1));
-    expect(result.html).toBe('<span class="colour-cyan">You rotter - cheat mode enabled.</span>');
+    expect(result.html).toBe('<span class="colour-speech">You rotter - cheat mode enabled.</span>');
   });
 
   it('sets every clue flag, plus new_clue', () => {
@@ -69,7 +69,7 @@ describe('VERB_HANDLERS.cheat', () => {
     expect(say(sayData, state, ['say', 'xavier', ',', 'hello']).errorMessage).toBe('X is not here.');
 
     state.cheat = true;
-    expect(say(sayData, state, ['say', 'xavier', ',', 'hello']).html).toBe('<span class="colour-cyan">"hi"</span>');
+    expect(say(sayData, state, ['say', 'xavier', ',', 'hello']).html).toBe('<span class="colour-speech">"hi"</span>');
   });
 });
 

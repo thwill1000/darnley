@@ -308,7 +308,7 @@ please be certain, whatever you conclude. It matters rather a lot."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
 !requires x_handkerchief x_cigarettes
-[[reset:She goes quite still, and for a moment says nothing at all.]]@
+She goes quite still, and for a moment says nothing at all.@
 @
 "I - I don't know what you're suggesting. Sarah was in the morning
 room, I heard her playing all evening. I really don't think you
@@ -344,7 +344,7 @@ goodbye bye farewell thanks thank
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_millicent
 !provides new_accuse accuse_millicent
-[[reset:Her jaw sets and she regards you with cold, level eyes.]]@
+Her jaw sets and she regards you with cold, level eyes.@
 @
 "I heard you the first time. I did not do it then, and I do not do it
 now, however many times you care to repeat yourself."
@@ -353,8 +353,8 @@ now, however many times you care to repeat yourself."
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_millicent accuse_b4_millicent
-[[reset:Millicent's composure cracks for the first time since you met her
-- her eyes bright with sudden anger, or something close to it.]]@
+Millicent's composure cracks for the first time since you met her
+- her eyes bright with sudden anger, or something close to it.@
 @
 "How dare you. My own father, and you accuse me? You had better be
 absolutely certain, because I will not forgive this lightly."
@@ -368,27 +368,27 @@ reasons than mere suspicion."
 # Response after accusation questions have been answered correctly
 accuse_succeed
 !requires accuse_succeed
-[[reset:Millicent's composure cracks, not into anger this time, but into
-something closer to bewilderment.]]@
+Millicent's composure cracks, not into anger this time, but into
+something closer to bewilderment.@
 @
 "You have got the how of it right, I think - I can see that in the way
 you tell it. But you have got the who quite wrong, and I would rather
 you admitted that than dressed it up as certainty."@
 @
-[[reset:She cannot have done this, whatever your reasoning suggests about the
-method. Go back over the evidence and look again at who was truly where.]]
+She cannot have done this, whatever your reasoning suggests about the
+method. Go back over the evidence and look again at who was truly where.
 
 # Response after accusation questions have been answered incorrectly
 accuse_fail
 !requires accuse_fail
-[[reset:Millicent's eyes narrow slightly, watching you the way one watches
-someone building an argument on sand.]]@
+Millicent's eyes narrow slightly, watching you the way one watches
+someone building an argument on sand.@
 @
 "You have missed something, Inspector - I could hear it. I do not know
 what, precisely, but I know when a story does not hang together, and
 this one does not."@
 @
-[[reset:Go back over your questioning and look again.]]
+Go back over your questioning and look again.
 
 (who/whose/whom/why/what/where/when/how/which/?)
 "I'm afraid that is rather outside my knowledge.

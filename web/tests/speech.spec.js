@@ -5,43 +5,33 @@ import { dirname, join } from 'node:path';
 import { speechBody } from '../src/engine.js';
 import { parseMsgFile, parseMessages, renderBody } from '../src/data.js';
 
-const cyan = (t) => `<span class="colour-cyan">${t}</span>`;
+const speechSpan = (t) => `<span class="colour-speech">${t}</span>`;
 
 describe('speechBody()', () => {
-  it('colours a quoted run cyan, quotes included', () => {
-    expect(speechBody(['"hi"'])).toBe(cyan('"hi"'));
+  it('colours a quoted run speechSpan, quotes included', () => {
+    expect(speechBody(['"hi"'])).toBe(speechSpan('"hi"'));
   });
   it('leaves narration uncoloured', () => {
     expect(speechBody(['He nods.'])).toBe('He nods.');
   });
   it('narration then speech', () => {
-    expect(speechBody(['He nods. "Yes."'])).toBe(`He nods. ${cyan('"Yes."')}`);
-  });
-  it('ignores [[reset:]] markers, so narration is not coloured', () => {
-    expect(speechBody(['[[reset:He nods.]]@', '@', '"Yes."'])).toBe(`He nods.\n\n${cyan('"Yes."')}`);
-  });
-  it('ignores [[cyan:]] markers around narration', () => {
-    expect(speechBody(['[[cyan:You see a rook.]]'])).toBe('You see a rook.');
-  });
-  it('a stray cyan wrapper around speech does not double up', () => {
-    expect(speechBody(['[[cyan:"Caw?"]]'])).toBe(cyan('"Caw?"'));
+    expect(speechBody(['He nods. "Yes."'])).toBe(`He nods. ${speechSpan('"Yes."')}`);
   });
   it('speech split by a stage direction', () => {
-    expect(speechBody(['"Well," [[reset:he says.]] "Right."'])).toBe(
-      `${cyan('"Well,"')} he says. ${cyan('"Right."')}`,
+    expect(speechBody(['"Well," he says. "Right."'])).toBe(
+      `${speechSpan('"Well,"')} he says. ${speechSpan('"Right."')}`,
     );
   });
-  it('a speech spanning "@" paragraph breaks stays cyan', () => {
-    expect(speechBody(['"One@', '@', 'two."'])).toBe(cyan('"One\n\ntwo."'));
+  it('a speech spanning "@" paragraph breaks stays speechSpan', () => {
+    expect(speechBody(['"One@', '@', 'two."'])).toBe(speechSpan('"One\n\ntwo."'));
   });
   it('an unbalanced quote colours the remainder', () => {
-    expect(speechBody(['A "b'])).toBe(`A ${cyan('"b')}`);
+    expect(speechBody(['A "b'])).toBe(`A ${speechSpan('"b')}`);
   });
 });
 
 describe('SAY data files', () => {
   const dir = join(dirname(fileURLToPath(import.meta.url)), '..', 'data');
-  const strip = (body) => renderBody(body).replace(/\[\[(?:cyan|reset):(.*?)\]\]/gs, '$1');
 
   const sources = readdirSync(dir)
     .filter((f) => /^p_.*\.msg$/.test(f))
@@ -52,13 +42,11 @@ describe('SAY data files', () => {
   sources.push(['messages.dat *_SAY_RESPONSE', sayEntries.flatMap(([, e]) => e)]);
 
   for (const [name, entries] of sources) {
-    it(`${name}: every entry has balanced quotes and no markup inside them`, () => {
+    it(`${name}: every entry has balanced quotes and no leftover markup`, () => {
       for (const entry of entries) {
-        const text = strip(entry.body);
+        const text = renderBody(entry.body);
         expect((text.match(/"/g) ?? []).length % 2, `${entry.pattern ?? ''}: ${text}`).toBe(0);
-        for (const quoted of text.match(/"[^"]*"/g) ?? []) {
-          expect(quoted, `markup inside quotes: ${quoted}`).not.toMatch(/\[\[|\]\]/);
-        }
+        expect(text, `leftover markup: ${text}`).not.toMatch(/\[\[(?:speech|reset):/);
       }
     });
   }

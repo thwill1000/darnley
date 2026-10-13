@@ -33,10 +33,6 @@ sys.provides("console")
 
 Dim con_output$
 
-Sub con.foreground(color$)
-  con.print("<" + color$ + ">")
-End Sub
-
 Sub con.print(s$)
   Cat con_output$, Left$(s$, 128 - Len(con_output$))
 End Sub
@@ -175,10 +171,11 @@ Sub assert_response(cmd$, expected$, partial%)
   assert_int_equals(1, result%)
 
   If partial% Then
-    Const wanted$ = "<cyan>" + Choice(Left$(expected$, 1) = "[", "" , Chr$(34)) + expected$
+    ' Narration-first expectations start "[[reset:"; speech-first ones are quoted.
+    Const wanted$ = Choice(Left$(expected$, 1) = "[", str.replace$(Mid$(expected$, 9), "]]", ""), "[[speech:" + Chr$(34) + expected$)
     assert_string_equals(wanted$, Left$(con_output$, Len(wanted$)))
   Else
-    Const wanted$ = "<cyan>" + str.quote$(expected$) + "<reset>" + sys.CRLF$
+    Const wanted$ = "[[speech:" + str.quote$(expected$) + "]]" + sys.CRLF$
     assert_string_equals(wanted$, con_output$)
   EndIf
 End Sub

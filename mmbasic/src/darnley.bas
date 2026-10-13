@@ -271,9 +271,7 @@ Sub print_accuse_reply()
     idx% = Int(Rnd * NUM_ACCUSE_REPLIES) + 1
   Loop Until idx% <> last_idx% Or NUM_ACCUSE_REPLIES = 1
   last_idx% = idx%
-  con.foreground("cyan")
-  con.println(Chr$(34) + accuse_replies$(idx%) + Chr$(34))
-  con.foreground("reset")
+  con.println("[[speech:" + Chr$(34) + accuse_replies$(idx%) + Chr$(34) + "]]")
 End Sub
 
 ' Handles the CHEAT verb

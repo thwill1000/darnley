@@ -58,7 +58,7 @@ if my life depended on it."
 
 +newspaper read
 !requires x_newspaper
-[[reset:He stiffens slightly at the mention of the newspaper.]]@
+He stiffens slightly at the mention of the newspaper.@
 @
 "I was reading it on the train coming here, if you must know. Some of
 my friends lost money in the collapse."
@@ -77,7 +77,7 @@ handkerchief
 
 +colonel +argue
 !requires x_newspaper
-[[reset:He exhales slowly, some of the bluster gone out of him.]]@
+He exhales slowly, some of the bluster gone out of him.@
 @
 "Very well, since you've evidently seen that wretched newspaper. Yes,
 we argued - about my Peruvian silver, and what Darnley's own advice
@@ -324,7 +324,7 @@ before you go accusing anyone."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
 !requires x_handkerchief x_cigarettes
-[[reset:He gives a short, humourless laugh.]]@
+He gives a short, humourless laugh.@
 @
 "Wouldn't surprise me in the least, if I'm honest. Told Darnley his
 wife would go looking for warmth elsewhere - man was thirty years
@@ -336,7 +336,7 @@ affair mellors sarah (summerhouse/summer) together secret lovers
 
 +redvers money mining peru ruin | +you money mining peru ruin
 !requires x_newspaper
-[[reset:He goes rather grey about the gills.]]@
+He goes rather grey about the gills.@
 @
 "Very well, since you've clearly found the wretched newspaper. Yes
 - I'd put a considerable sum into Peruvian silver on Darnley's own
@@ -365,8 +365,8 @@ goodbye bye farewell thanks thank
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_redvers
 !provides new_accuse accuse_redvers
-[[reset:He glares at you with undisguised fury, though there is something else
-beneath it now - a flicker of unease.]]@
+He glares at you with undisguised fury, though there is something else
+beneath it now - a flicker of unease.@
 @
 "You said your piece once already, and I gave you my answer. Don't try
 my patience further."
@@ -375,8 +375,8 @@ my patience further."
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_redvers accuse_b4_redvers
-[[reset:Slingsby's face darkens to an alarming shade of puce, his moustache
-fairly bristling with outrage.]]@
+Slingsby's face darkens to an alarming shade of puce, his moustache
+fairly bristling with outrage.@
 @
 "By God, sir! I've a good mind to horsewhip you for that. I left Darnley
 alive and well, and I'll thank you to remember it!"
@@ -390,26 +390,26 @@ facts straight first."
 # Response after accusation questions have been answered correctly
 accuse_succeed
 !requires accuse_succeed
-[[reset:The colour drains from Slingsby's face, and for once his fury seems to
-have deserted him entirely.]]@
+The colour drains from Slingsby's face, and for once his fury seems to
+have deserted him entirely.@
 @
 "Damn it all, you argue it well enough - I'll grant you that much. But
 you've argued yourself to the wrong door, sir, and no amount of clever
 reasoning changes where I was last night."@
 @
-[[reset:Go back over the evidence and look again at who was truly where.]]
+Go back over the evidence and look again at who was truly where.
 
 # Response after accusation questions have been answered incorrectly
 accuse_fail
 !requires accuse_fail
-[[reset:Slingsby's outrage gives way, unexpectedly, to something almost like
-contempt.]]@
+Slingsby's outrage gives way, unexpectedly, to something almost like
+contempt.@
 @
 "Good God, man, is that the best you can manage? Half of what you've
 just told me doesn't square with itself, let alone with what actually
 happened. Try again, and try harder."@
 @
-[[reset:Go back over your questioning and look again.]]
+Go back over your questioning and look again.
 
 (who/whose/whom/why/what/where/when/how/which/?)
 "No idea whatsoever. Can we stick to the point?"

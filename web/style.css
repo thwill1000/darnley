@@ -165,6 +165,7 @@ html, body {
 .colour-green { color: #5f5; }
 .colour-yellow { color: #ff5; }
 .colour-cyan { color: #5ff; }
+.colour-speech { color: #5ff; } /* cyan */
 .colour-magenta { color: #f5f; }
 .colour-blue { color: #59f; }
 .colour-black { color: #666; }

@@ -34,3 +34,6 @@ multiline_provides
 !provides TOKEN_E
 "line one@
 line two"
+
+unbalanced_speech
+"an opening quote that never closes

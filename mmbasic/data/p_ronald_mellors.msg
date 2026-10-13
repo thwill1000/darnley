@@ -184,7 +184,7 @@ you."
 
 +(confirm/corroborate/vouch/alibi/with) +sarah you
 !requires x_handkerchief x_cigarettes
-[[reset:Something flickers behind his flat stare.]]@
+Something flickers behind his flat stare.@
 @
 "Can't help you there. I was on my own all evening, same as I told
 you."
@@ -262,7 +262,7 @@ Rest's up to you."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
 !requires x_handkerchief x_cigarettes
-[[reset:His jaw tightens and, for the first time, he looks away from you.]]@
+His jaw tightens and, for the first time, he looks away from you.@
 @
 "I don't know what you're getting at, and I'll thank you not to say
 such things about Mrs. Darnley. She's a fine woman. That's all
@@ -293,7 +293,7 @@ goodbye bye farewell thanks thank
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_mellors
 !provides new_accuse accuse_mellors
-[[reset:He doesn't so much as blink.]]@
+He doesn't so much as blink.@
 @
 "Already told you once. Nothing's changed, and I'm not about to start
 singing a different tune just to please you."
@@ -302,9 +302,9 @@ singing a different tune just to please you."
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_mellors accuse_b4_mellors
-[[reset:Mellors doesn't flinch. He looks back at you with the same flat,
+Mellors doesn't flinch. He looks back at you with the same flat,
 unreadable hostility he's shown from the start, though something behind
-his eyes has sharpened.]]@
+his eyes has sharpened.@
 @
 "Say that again and see what it gets you. I never touched him. Been
 saying so all along, and I'll keep saying it."
@@ -318,26 +318,26 @@ again."
 # Response after accusation questions have been answered correctly
 accuse_succeed
 !requires accuse_succeed
-[[reset:Mellors doesn't flinch, though something behind his eyes has sharpened
-- not anger this time, something closer to grudging attention.]]@
+Mellors doesn't flinch, though something behind his eyes has sharpened
+- not anger this time, something closer to grudging attention.@
 @
 "You've worked it out proper, I'll give you that. Worked it out wrong,
 mind. Wasn't me. You'd best go back and find the one it was."@
 @
-[[reset:He may be surly and close-mouthed, but he did not fire the shot that
+He may be surly and close-mouthed, but he did not fire the shot that
 killed Colonel Darnley. Go back over the evidence and look again at who was
-truly where.]]
+truly where.
 
 # Response after accusation questions have been answered incorrectly
 accuse_fail
 !requires accuse_fail
-[[reset:Mellors' flat stare does not waver, though there's the ghost of
-something like scorn in it now.]]@
+Mellors' flat stare does not waver, though there's the ghost of
+something like scorn in it now.@
 @
 "That's not it. Don't ask me how I know, I just know - something in
 what you said don't sit right. Go and look again."@
 @
-[[reset:Go back over your questioning and look again.]]
+Go back over your questioning and look again.
 
 (who/whose/whom/why/what/where/when/how/which/?)
 "Do I look like I'd know anything about that?"

@@ -316,7 +316,7 @@ Function verb_say()
   Const target$ = obj_id$(obj_idx%)
   Const filename$ = LCase$(target$) + ".msg"
   If Not Mm.Info(Exists File adv.game_root$ + "data/" + filename$) Then
-    print_message_or_fail(UCase$(target$) + "_SAY_RESPONSE")
+    print_message_or_fail(UCase$(target$) + "_SAY_RESPONSE", 0, 1)
     Exit Function
   EndIf
 
@@ -478,9 +478,7 @@ Sub print_response(filename$, line%)
   Do
     Line Input #1, s$
     If i% = line% Then
-      con.foreground("cyan")
-      print_message_lines()
-      con.foreground("reset")
+      print_message_lines(1)
       con.println()
       Exit Do
     EndIf
@@ -837,8 +835,9 @@ End Function
 '
 ' @param tag$     The tag to search for in the message file.
 ' @param no_eol%  If not 0 then don't print EOL at end of message.
+' @param speech%  If not 0 then render the body as SAY speech.
 ' @return         0 on success, 1 if no eligible entry was found.
-Function print_message%(tag$, no_eol%)
+Function print_message%(tag$, no_eol%, speech%)
   Const fnbr% = 1
   Local s$
   Local requires$(MAX_WORDS) Length MAX_WORD_LENGTH
@@ -855,7 +854,7 @@ Function print_message%(tag$, no_eol%)
 
       If state.has_flags%(requires$()) Then
         state.add_flags(provides$())
-        print_body(first_line$)
+        print_body(first_line$, speech%)
         print_message% = 0
         Exit Do
       Else
@@ -874,8 +873,8 @@ End Function
 ' As print_message%(), but raises an error if no eligible entry is found.
 ' For use by callers that treat a missing/ineligible message as a data bug
 ' rather than a normal game-state outcome.
-Sub print_message_or_fail(tag$, no_eol%)
-  If print_message%(tag$, no_eol%) Then
+Sub print_message_or_fail(tag$, no_eol%, speech%)
+  If print_message%(tag$, no_eol%, speech%) Then
     con.print_fail("ERROR: message " + UCase$(tag$) + " not found.")
   EndIf
 End Sub
@@ -884,14 +883,14 @@ End Sub
 ' after the keyword line, applying any "!provides" tokens unconditionally.
 ' Used by callers (e.g. print_say_response()) that have already picked an
 ' eligible entry and don't need print_message%()'s scanning/gating.
-Sub print_message_lines()
+Sub print_message_lines(speech%)
   Local requires$(MAX_WORDS) Length MAX_WORD_LENGTH
   Local provides$(MAX_WORDS) Length MAX_WORD_LENGTH
   Local s$, lines_consumed%
 
   read_directives(1, requires$(), provides$(), s$, lines_consumed%)
   state.add_flags(provides$())
-  print_body(s$)
+  print_body(s$, speech%)
 End Sub
 
 ' Prints the response body lines for the current message entry.
@@ -906,10 +905,12 @@ End Sub
 ' caller produced it (so it is not double-decoded here), but every
 ' subsequent line re-read via Line Input within this loop is decoded
 ' immediately, since each is printed/used directly.
-Sub print_body(s$)
-  Local first% = 1
+' @param  speech%  If not 0 then the body is SAY speech, see speech_markup().
+Sub print_body(s$, speech%)
+  Local first% = 1, in_quote%
   Do
     If s$ = "" Then Exit Do
+    If speech% Then speech_markup(s$, in_quote%)
     If first% Then first% = 0 Else s$ = " " + s$
     If Right$(s$, 1) = "@" Then
       con.println(Left$(s$, Len(s$) - 1))
@@ -920,6 +921,31 @@ Sub print_body(s$)
     Line Input #1, s$
     s$ = advdata.decode_line$(s$)
   Loop
+  If in_quote% Then con.print("]]")
+End Sub
+
+' Rewrites one line of SAY response text so that speech is highlighted,
+' by wrapping each pair of double-quotes, and the text between them, in a
+' [[speech:...]] span.
+'
+' Assumes s$ contains no [[colour: markers of its own (nesting of spans is not
+' supported by con.parse_markup()).
+'
+' @param[in,out]  s$         the line to rewrite.
+' @param[in,out]  in_quote%  1 if inside speech; carried between lines so
+'                            that speech may span "@" paragraph breaks.
+Sub speech_markup(s$, in_quote%)
+  Local c$, i%, out$
+  For i% = 1 To Len(s$)
+    c$ = Mid$(s$, i%, 1)
+    If c$ = Chr$(34) Then
+      Cat out$, Choice(in_quote%, Chr$(34) + "]]", "[[speech:" + Chr$(34))
+      in_quote% = Not in_quote%
+    Else
+      Cat out$, c$
+    EndIf
+  Next
+  s$ = out$
 End Sub
 
 ' Handles the DUMP verb

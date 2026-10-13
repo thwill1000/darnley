@@ -59,7 +59,7 @@ earlier yesterday."
 
 +newspaper read
 !requires x_newspaper
-[[reset:She hesitates, choosing her words carefully.]]@
+She hesitates, choosing her words carefully.@
 @
 "I believe that Sebastian advised one or two people to invest in
 Peruvian shares."
@@ -290,7 +290,7 @@ happy enough, in our own way. He was strict, and older than me. I loved him,
 whatever anyone supposes."
 
 remarriage remarry remarrying marry again
-[[reset:Her expression cools noticeably.]]@
+Her expression cools noticeably.@
 @
 "I can't imagine why you would ask me that, today of all days. I
 haven't the smallest intention of discussing my future, Inspector -
@@ -326,7 +326,7 @@ almost afraid to ask. Just be sure, whatever you decide."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
 !requires x_handkerchief x_cigarettes
-[[reset:Her face goes very pale, then very still.]]@
+Her face goes very pale, then very still.@
 @
 "I don't know what you think you've found, Inspector, but you are
 quite mistaken. I was in the morning room all evening, playing the
@@ -362,8 +362,8 @@ this."
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_sarah
 !provides new_accuse accuse_sarah
-[[reset:She looks at you steadily now, some of the shock worn off, replaced by
-something harder to read.]]@
+She looks at you steadily now, some of the shock worn off, replaced by
+something harder to read.@
 @
 "You said that once already. I have nothing further to add, except that
 you are quite wrong."
@@ -372,7 +372,7 @@ you are quite wrong."
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_sarah accuse_b4_sarah
-[[reset:Sarah's hand goes to her throat, the colour draining from her face.]]@
+Sarah's hand goes to her throat, the colour draining from her face.@
 @
 "Me? You cannot be serious. I - I don't know what to say to such a
 thing."
@@ -386,29 +386,29 @@ anyone."
 # Response after accusation questions have been answered correctly
 accuse_succeed
 !requires accuse_succeed
-[[reset:Sarah's hand goes to her throat, though there is something almost
+Sarah's hand goes to her throat, though there is something almost
 puzzled beneath the shock, as though she is following your reasoning and can
-find no flaw in it - only the conclusion.]]@
+find no flaw in it - only the conclusion.@
 @
 "You have clearly thought this through very carefully, Inspector. Every
 detail... and yet I promise you, on my husband's memory, that you have
 the wrong person."@
 @
-[[reset:She was elsewhere that night, and no amount of careful reasoning
+She was elsewhere that night, and no amount of careful reasoning
 will make her fit a crime she did not commit. Go back over the
-evidence and look again at who was truly where.]]
+evidence and look again at who was truly where.
 
 # Response after accusation questions have been answered incorrectly
 accuse_fail
 !requires accuse_fail
-[[reset:Sarah listens with the faint, careful attention of someone checking
-each sentence against what she knows to be true - and finding it wanting.]]@
+Sarah listens with the faint, careful attention of someone checking
+each sentence against what she knows to be true - and finding it wanting.@
 @
 "That isn't how it happened, Inspector. I don't say that to defend
 myself - I say it because you have got some part of it wrong, and I
 think you know it too."@
 @
-[[reset:Go back over your questioning and look again.]]
+Go back over your questioning and look again.
 
 (who/whose/whom/why/what/where/when/how/which/?)
 "I'm afraid I really couldn't say. This has all been such a terrible shock."

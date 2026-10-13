@@ -929,7 +929,7 @@ There are questions you must answer to press your accusation:
 KITCHEN_TO_HALL
 Mrs. Goodbody stops you.@
 @
-[[cyan:"Now don't go that way, dear - that door leads through to the hall, but
+[[speech:"Now don't go that way, dear - that door leads through to the hall, but
 the other side is blocked with furniture from the second guest room. Go round
 through the pantry, if you don't mind."]]
 
@@ -941,12 +941,12 @@ Plainly no one has slept here in some time. You withdraw and pull the door to.
 OBJ255_ROOK_SAY_RESPONSE
 The rook looks at you quizzically.@
 @
-[[cyan:"Caw?"]]
+"Caw?"
 
 P_THE_BODY_SAY_RESPONSE
 The body stares at you glassy eyed and you think to yourself,
-[[cyan:"One of the advantages of being dead is not having to answer impertinent
-questions!"]]
+"One of the advantages of being dead is not having to answer impertinent
+questions!"
 
 OBJ259_HORSE_SAY_RESPONSE
 !requires horse_talked
@@ -956,7 +956,7 @@ OBJ259_HORSE_SAY_RESPONSE
 !provides horse_talked
 The horse eyes you with weary tolerance.@
 @
-[[cyan:"Don't tell me your troubles, I've got my own!"]]
+"Don't tell me your troubles, I've got my own!"
 
 WELCOME_BACK_WEB
 Welcome back - your game in progress has been restored.@

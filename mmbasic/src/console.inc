@@ -528,7 +528,12 @@ Sub con.foreground(fg$, no_flush%)
   ' Flush anything in previous foreground colour
   If Not no_flush% Then con.flush()
 
-  If fg$ = "purple" Then fg$ = "magenta"
+  Select Case fg$
+    Case "purple"
+      fg$ = "magenta"
+    Case "speech"
+      fg$ = "cyan"
+  End Select
 
   Const type% = con.get_type%()
 

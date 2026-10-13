@@ -172,21 +172,20 @@ export function printBody(bodyLines, options) {
 }
 
 /**
- * Renders a SAY response body. Unlike printBody(), any [[cyan:...]] and
- * [[reset:...]] markers in the data are ignored (they exist for the MMBasic
- * build); instead, text inside "double quotes" is spoken and shown in cyan,
- * and everything else is narration in the default colour.
+ * Renders a SAY response body. Unlike printBody(), text inside "double quotes"
+ * is spoken and marked up as [[speech: ...], and everything else is narration
+ * in the default colour.
  *
  * The quote state persists across "@" paragraph breaks, so a speech spanning
- * several paragraphs stays cyan throughout. An unbalanced quote leaves the
- * remainder cyan; tests/speech.spec.js guards the data files against that.
- * Other colour markup (e.g. green) is passed through untouched.
+ * several paragraphs stays marked up throughout. An unbalanced quote leaves the
+ * remainder marked up as [[speech: ...]]; tests/speech.spec.js guards the data
+ * files against that.
  *
  * @param {string[]} bodyLines
  * @returns {string} HTML
  */
 export function speechBody(bodyLines) {
-  const text = renderBody(bodyLines).replace(/\[\[(?:cyan|reset):(.*?)\]\]/gs, '$1');
+  const text = renderBody(bodyLines);
   let out = '';
   let run = '';
   let inQuote = false;
@@ -196,14 +195,14 @@ export function speechBody(bodyLines) {
       run = '"';
       inQuote = true;
     } else if (ch === '"') {
-      out += `[[cyan:${run}"]]`;
+      out += `[[speech:${run}"]]`;
       run = '';
       inQuote = false;
     } else {
       run += ch;
     }
   }
-  out += inQuote ? `[[cyan:${run}]]` : run;
+  out += inQuote ? `[[speech:${run}]]` : run;
   return markupToHtml(out);
 }
 

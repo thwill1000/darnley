@@ -126,7 +126,7 @@ export async function handleNewAccusation(gameData, state, ui, rng = Math.random
 
     if (q !== numQuestions - 1) {
       lastReply = pickReplyIndex(lastReply, rng);
-      ui.printHtml(markupToHtml(`[[cyan:${ACCUSE_REPLIES[lastReply]}]]`));
+      ui.printHtml(markupToHtml(`[[speech:${ACCUSE_REPLIES[lastReply]}]]`));
     }
   }
 

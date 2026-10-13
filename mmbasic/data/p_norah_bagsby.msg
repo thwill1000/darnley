@@ -279,7 +279,7 @@ you need to. I just want this all to be over."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
 !requires x_handkerchief x_cigarettes
-[[reset:Norah's eyes go wide and she glances toward the door.]]@
+Norah's eyes go wide and she glances toward the door.@
 @
 "Oh, I - I really shouldn't say, sir. I don't know nothing about
 that, honest I don't." (She does not meet your eye as she says it.)
@@ -309,8 +309,8 @@ just, well, you know."
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_bagsby
 !provides new_accuse accuse_bagsby
-[[reset:She sniffs, dabbing at her eyes with her sleeve, though there is a
-flicker of something more wary beneath the tears now.]]@
+She sniffs, dabbing at her eyes with her sleeve, though there is a
+flicker of something more wary beneath the tears now.@
 @
 "You asked me that before, sir. I told you I never done it, and I
 haven't changed my mind."
@@ -319,8 +319,8 @@ haven't changed my mind."
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_bagsby accuse_b4_bagsby
-[[reset:Norah's eyes go wide and her lip trembles - she looks for all the world
-as though she might burst into tears on the spot.]]@
+Norah's eyes go wide and her lip trembles - she looks for all the world
+as though she might burst into tears on the spot.@
 @
 "Me, sir? Oh, please, I never - I wouldn't know how to fire a gun if you
 paid me! I only been here six months, sir, honest!"
@@ -333,26 +333,26 @@ paid me! I only been here six months, sir, honest!"
 # Response after accusation questions have been answered correctly
 accuse_succeed
 !requires accuse_succeed
-[[reset:Norah's eyes go wide, but this time it's confusion more than fear.]]@
+Norah's eyes go wide, but this time it's confusion more than fear.@
 @
 "But sir - that's not - I mean, you've explained it ever so clear, but
 it wasn't me what did it, sir, honest it wasn't. You must have the
 wrong one of us."@
 @
-[[reset:Young Norah Bagsby is guilty of nothing more than nerves. Go back over
-the evidence and look again at who was truly where.]]
+Young Norah Bagsby is guilty of nothing more than nerves. Go back over
+the evidence and look again at who was truly where.
 
 # Response after accusation questions have been answered incorrectly
 accuse_fail
 !requires accuse_fail
-[[reset:Norah looks at you uncertainly, twisting her apron between her
-fingers.]]@
+Norah looks at you uncertainly, twisting her apron between her
+fingers.@
 @
 "I don't like to say, sir, only - that doesn't sound quite right to me,
 what you just said. I can't rightly explain why, but it doesn't."@
 @
-[[reset:She is not yet convinced her ordeal is over. Go back over your
-questioning and look again.]]
+She is not yet convinced her ordeal is over. Go back over your
+questioning and look again.
 
 (who/whose/whom/why/what/where/when/how/which/?)
 "I wouldn't know about that. Nobody tells me anything."

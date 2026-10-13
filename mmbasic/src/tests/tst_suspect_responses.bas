@@ -33,10 +33,6 @@ sys.provides("console")
 
 Dim con_output$
 
-Sub con.foreground(color$)
-  Cat con_output$, "<" + color$ + ">"
-End Sub
-
 Sub con.print(s$)
   Cat con_output$, s$
 End Sub
@@ -73,6 +69,7 @@ add_test("Ronald Mellors's .msg file matches template entry order", "test_msg_or
 add_test("Sarah Darnley's .msg file matches template entry order", "test_msg_order_sarah")
 add_test("Chester Cat's .msg file matches template entry order", "test_msg_order_chester")
 add_test("Police Constable's .msg file matches template entry order", "test_msg_order_police")
+add_test("Every .msg file has balanced double-quotes in each entry", "test_msg_balanced_quotes")
 
 run_tests()
 End
@@ -131,4 +128,41 @@ End Sub
 
 Sub test_msg_order_police()
   assert_msg_order("p_police_constable.msg")
+End Sub
+
+' Asserts that every entry in filename$ contains an even number of
+' double-quotes, since an odd number would flip the speech colouring for the
+' remainder of that response (see speech_markup()).
+Sub assert_balanced_quotes(filename$)
+  Local s$, key$, n%, i%, bad$
+  Open DATA_DIR$ + filename$ For Input As #1
+  Do While Not Eof(#1)
+    Line Input #1, s$
+    If s$ = "" Then
+      If n% Mod 2 Then bad$ = filename$ + ": " + key$
+      n% = 0 : key$ = ""
+    ElseIf Left$(s$, 1) <> "#" Then
+      If key$ = "" Then key$ = s$
+      For i% = 1 To Len(s$)
+        If Mid$(s$, i%, 1) = Chr$(34) Then Inc n%
+      Next
+    EndIf
+    If bad$ <> "" Then Exit Do
+  Loop
+  Close #1
+  If n% Mod 2 Then bad$ = filename$ + ": " + key$
+  assert_string_equals("", bad$)
+End Sub
+
+Sub test_msg_balanced_quotes()
+  assert_balanced_quotes("p_arnold_billingsgate.msg")
+  assert_balanced_quotes("p_arthur_coniston.msg")
+  assert_balanced_quotes("p_mildred_goodbody.msg")
+  assert_balanced_quotes("p_millicent_darnley.msg")
+  assert_balanced_quotes("p_norah_bagsby.msg")
+  assert_balanced_quotes("p_redvers_slingsby.msg")
+  assert_balanced_quotes("p_ronald_mellors.msg")
+  assert_balanced_quotes("p_sarah_darnley.msg")
+  assert_balanced_quotes("p_chester_cat.msg")
+  assert_balanced_quotes("p_police_constable.msg")
 End Sub

@@ -29,10 +29,6 @@ sys.provides("console")
 
 Dim con_output$
 
-Sub con.foreground(color$)
-  Cat con_output$, "<" + color$ + ">"
-End Sub
-
 Sub con.print(s$)
   Cat con_output$, s$
 End Sub
@@ -117,6 +113,11 @@ add_test("test_read_directives_empty_rsp")
 add_test("test_print_body_gvn_single_line")
 add_test("test_print_body_gvn_multi_line")
 add_test("test_print_body_gvn_empty")
+add_test("speech_markup() leaves plain narration unchanged", "test_sm_gvn_narration")
+add_test("speech_markup() wraps a quoted run in a speech span", "test_sm_gvn_speech")
+add_test("speech_markup() carries an open quote across lines", "test_sm_gvn_split_lines")
+add_test("speech_markup() leaves markup alone", "test_sm_keeps_markup")
+add_test("print_body() in speech mode closes a span left open at the end", "test_pb_speech_closes_open")
 add_test("test_pml_gvn_plain")
 add_test("test_pml_applies_provides")
 add_test("test_pml_gvn_multiline")
@@ -479,6 +480,50 @@ End Sub
 Sub test_print_body_gvn_empty()
   print_body("")
   assert_string_equals("", con_output$)
+End Sub
+
+' speech_markup() ---------------------------------------------------------
+
+Sub test_sm_gvn_narration()
+  Local s$ = "He nods.", q%
+  speech_markup(s$, q%)
+  assert_string_equals("He nods.", s$)
+End Sub
+
+Sub test_sm_gvn_speech()
+  Local s$ = "He nods. " + Chr$(34) + "Yes." + Chr$(34), q%
+  speech_markup(s$, q%)
+  assert_string_equals("He nods. [[speech:" + Chr$(34) + "Yes." + Chr$(34) + "]]", s$)
+  assert_int_equals(0, q%)
+End Sub
+
+Sub test_sm_gvn_split_lines()
+  Local s$ = Chr$(34) + "One", q%
+  speech_markup(s$, q%)
+  assert_string_equals("[[speech:" + Chr$(34) + "One", s$)
+  assert_int_equals(1, q%)
+  s$ = "two." + Chr$(34)
+  speech_markup(s$, q%)
+  assert_string_equals("two." + Chr$(34) + "]]", s$)
+  assert_int_equals(0, q%)
+End Sub
+
+Sub test_sm_keeps_markup()
+  Local s$ = "Go to the [[green:Hall]].", q%
+  speech_markup(s$, q%)
+  assert_string_equals("Go to the [[green:Hall]].", s$)
+End Sub
+
+' print_body() in speech mode: a span left open by an unbalanced quote is
+' closed at the end of the body so [[speech: markup cannot leak into later output.
+Sub test_pb_speech_closes_open()
+  Local s$
+  Open TEST_DIRECTIVES_FILE$ For Input As #1
+  seek_to_keyword("unbalanced_speech")
+  Line Input #1, s$
+  print_body(s$, 1)
+  Close #1
+  assert_string_equals("[[speech:" + Chr$(34) + "an opening quote that never closes]]", con_output$)
 End Sub
 
 ' print_message_lines() ---------------------------------------------------
