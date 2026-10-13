@@ -396,9 +396,9 @@ worse. I loved her, you know. That part wasn't a lie, whatever else
 was." A short, humourless laugh. "Funny thing, murder. Seemed awfully
 clever at the time."@
 @
-[[green:With your evidence Arthur Coniston is arrested, tried and found
-guilty of the murder of Colonel Sebastian Darnley. He is sentenced
-to 30 years of imprisonment at Her Majesty's pleasure.]]
+[[green:With your evidence, Arthur Coniston is arrested, tried, and found guilty
+of the murder of Colonel Sebastian Darnley. Sentenced to death by hanging, he is
+executed at His Majesty's pleasure behind the grey walls of the county gaol.]]
 
 # Response after accusation questions have been answered incorrectly
 accuse_fail
