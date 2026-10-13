@@ -54,7 +54,7 @@ crossed every which way by footprints. I couldn't tell you how many
 comings and goings, there's been too much traffic across this snow
 to make sense of it."
 
-+(footprints/shoeprints/bootprints/prints/marks) foot boot shoe
++(footprints/shoeprints/bootprints/prints) foot boot shoe
 "A proper tangle of them, sir, criss-crossing all directions. I've
 kept everyone off the drive since I arrived, for whatever good that
 will do you now."
@@ -98,7 +98,7 @@ account, I believe."
 "In the study, sir, same as when it was found. Nobody's to go in or move
 anything until you say so."
 
-police investigation scotland yard inspector detective think here of me
+police investigation scotland yard inspector detective think here me
 "Glad to have you here, sir. I'll keep the drive clear and pass
 along anyone who needs to come through."
 

@@ -112,24 +112,24 @@ truth be told."
 "Nice enough young man, dear. I took him out a cup of tea earlier - standing
 out there in this cold, someone had to."
 
-+(flatfooted/flat/odd) (bootprints/footprints/prints/marks)
++(flatfooted/flat/odd) (bootprints/footprints/prints)
 "I remember the gardener's child playing around wearing grown-up's
 boots. They made flat-footed prints because they were too big for
 her."
 
-+hobnailed +(bootprints/prints/marks) boot
++hobnailed +(bootprints/prints) boot
 "I don't know whose these are, dear - not something I make a study of."
 
-+slipper +(footprints/prints/marks)
++slipper +(footprints/prints)
 "I couldn't tell you, dear."
 
-+mens +(shoeprints/footprints/prints/marks) shoe
++mens +(shoeprints/footprints/prints) shoe
 "No idea, dear - I don't go inspecting people's footwear."
 
-+womens +(shoeprints/footprints/prints/marks) shoe
++womens +(shoeprints/footprints/prints) shoe
 "I don't recognise those, dear."
 
-+(footprints/shoeprints/bootprints/prints/marks) foot boot shoe
++(footprints/shoeprints/bootprints/prints) foot boot shoe
 "There's prints all over the snow, dear. Can't say I paid them any
 mind beyond keeping the kitchen floor clean."
 
@@ -147,7 +147,7 @@ bookshelf books
 his books and his Bible. I never have the time myself, what with the
 kitchen to run."
 
-correspondence photographs letters servants
+correspondence photographs letters servant
 "Oh, those are mine, dear! Letters from my nephew - a good boy, if a
 poor speller - and some photographs of the family. Nothing exciting,
 just an old woman's keepsakes."
@@ -156,7 +156,7 @@ just an old woman's keepsakes."
 "In the pond? I couldn't tell you, dear. I don't go wandering out
 there myself - too cold and too far from my ovens for my liking."
 
-+suit servants
++suit servant
 "That suit's Sir Redvers', dear. He came without warning and Mr. Coniston
 had already the guest room - and the second one's all upside-down with
 the redecorating besides - so he ended up put in with me and Norah's
@@ -311,7 +311,7 @@ money mining peru ruin redvers colonel
 tension in the house since Sir Redvers arrived. Mr. B. said the two
 of them were shut up in the study a good while, talking business."
 
-police investigation scotland yard inspector detective think here of me
+police investigation scotland yard inspector detective think here me
 "Well, someone's got to sort this out, haven't they? You ask what
 you need to, dear, I've nothing to hide. Can't say the same for
 everyone in this house, mind."

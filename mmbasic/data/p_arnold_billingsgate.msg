@@ -113,23 +113,23 @@ house."
 "A most correct young man, sir. He has kept good order at the gate since he
 arrived, and troubled none of us in the house."
 
-+(flatfooted/flat/odd) (bootprints/footprints/prints/marks)
++(flatfooted/flat/odd) (bootprints/footprints/prints)
 "I've studied all the people here and none of them are flat-footed.
 It's a mystery to me why the bootprints should be flat-footed."
 
-+hobnailed +(bootprints/prints/marks) boot
++hobnailed +(bootprints/prints) boot
 "I don't know whose these are."
 
-+slipper +(footprints/prints/marks)
++slipper +(footprints/prints)
 "I believe the slipper prints are Mr. Coniston's."
 
-+mens +(shoeprints/footprints/prints/marks) shoe
++mens +(shoeprints/footprints/prints) shoe
 "The shoe prints are mine."
 
-+womens +(shoeprints/footprints/prints/marks) shoe
++womens +(shoeprints/footprints/prints) shoe
 "I don't know whose these are."
 
-+(footprints/shoeprints/bootprints/prints/marks) foot boot shoe
++(footprints/shoeprints/bootprints/prints) foot boot shoe
 "There are prints all over the place, sir - boots, slippers, shoes.
 I couldn't begin to say which matter and which don't."
 
@@ -150,7 +150,7 @@ a good many years and I'm rather fond of them. I don't know that
 there's anything remarkable to be found in them, though I dare say
 they tell you I've always tried to better myself."
 
-correspondence photographs letters servants
+correspondence photographs letters servant
 "Those belong to Mrs. Goodbody, sir - letters from her nephew and
 photographs of family, I believe. I shouldn't think there's anything
 in them to concern you, but you're welcome to ask her yourself."
@@ -159,7 +159,7 @@ in them to concern you, but you're welcome to ask her yourself."
 "As far as I'm aware only the Colonel smoked cheroots. But he was a
 most particular man and would never throw a butt into the pond."
 
-+suit servants
++suit servant
 "That suit belongs to Sir Redvers, sir. He arrived unexpectedly and, Mr.
 Coniston already being accommodated in the guest room, there was
 nowhere suitable to put him but the servants' quarters - the second
@@ -339,7 +339,7 @@ sir - it is not my place to listen at doors. I will say Sir Redvers
 arrived rather suddenly yesterday, without prior arrangement, which
 struck me as unusual for a gentleman of his standing."
 
-police investigation scotland yard inspector detective think here of me
+police investigation scotland yard inspector detective think here me
 "I have every confidence you will get to the bottom of it, sir. The
 household will give you whatever assistance it can - you have my
 word on that, at least."

@@ -109,25 +109,25 @@ handkerchief
 +(officer/constable/police/policeman/bobby) (get/think) with
 "police constable response"
 
-+(flatfooted/flat/odd) (bootprints/footprints/prints/marks)
++(flatfooted/flat/odd) (bootprints/footprints/prints)
 "flatfooted bootprints response"
 
-+hobnailed +(bootprints/prints/marks) boot
++hobnailed +(bootprints/prints) boot
 "hobnailed bootprints response"
 
-+slipper +(footprints/prints/marks)
++slipper +(footprints/prints)
 "slipper prints response"
 
-+mens +(shoeprints/footprints/prints/marks) shoe
++mens +(shoeprints/footprints/prints) shoe
 "mens shoeprints response"
 
-+womens +(shoeprints/footprints/prints/marks) shoe
++womens +(shoeprints/footprints/prints) shoe
 "womens shoeprints response"
 
 +prints +(car/motor/saloon) | +(tyre/tyres)
 "car tracks response"
 
-+(footprints/shoeprints/bootprints/prints/marks) foot boot shoe
++(footprints/shoeprints/bootprints/prints) foot boot shoe
 "footprints response"
 
 pond
@@ -139,13 +139,13 @@ pipe
 bookshelf books
 "bookshelf response"
 
-correspondence photographs letters servants
+correspondence photographs letters servant
 "correspondence response"
 
 +(cheroot/cigar) +pond
 "cheroot in the pond response"
 
-+suit servants
++suit servant
 "suit response"
 
 stacked furniture
@@ -215,7 +215,7 @@ events yesterday murder last happened
 -again marriage colonel sarah wife husband happy get with
 "colonel's marriage response"
 
-remarriage remarry remarrying marry again
++(remarriage/remarry/remarrying/marriage) again
 "sarah's remarriage response"
 
 +(engagement/marriage/propose) millicent arthur when
@@ -250,7 +250,7 @@ affair mellors sarah (summerhouse/summer) together secret lovers
 money mining peru ruin redvers colonel
 "finance response"
 
-police investigation scotland yard inspector detective think here of me
+police investigation scotland yard inspector detective think here me
 "investigation response"
 
 weather cold snow

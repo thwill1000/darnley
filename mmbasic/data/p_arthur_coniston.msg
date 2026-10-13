@@ -119,22 +119,22 @@ a cat man."
 "Decent enough chap, I should think, old boy - can't say I've exchanged more
 than a nod with him on my way past the gate."
 
-+(flatfooted/flat/odd) (bootprints/footprints/prints/marks)
++(flatfooted/flat/odd) (bootprints/footprints/prints)
 "I followed the bootprints from the terrace around to the kitchen."
 
-+hobnailed +(bootprints/prints/marks) boot
++hobnailed +(bootprints/prints) boot
 "I don't know whose they are."
 
-+slipper +(footprints/prints/marks)
++slipper +(footprints/prints)
 "The prints from the slippers are mine."
 
-+mens +(shoeprints/footprints/prints/marks) shoe
++mens +(shoeprints/footprints/prints) shoe
 "I think they are probably Billingsgate's."
 
-+womens +(shoeprints/footprints/prints/marks) shoe
++womens +(shoeprints/footprints/prints) shoe
 "I don't know whose these are."
 
-+(footprints/shoeprints/bootprints/prints/marks) foot boot shoe
++(footprints/shoeprints/bootprints/prints) foot boot shoe
 "Prints everywhere, old boy. I shouldn't like to guess which ones
 signify anything."
 
@@ -151,7 +151,7 @@ bookshelf books
 "Couldn't tell you, old boy. Never been much of a one for books
 myself - Millicent's the reader in this business, not me."
 
-correspondence photographs letters servants
+correspondence photographs letters servant
 "No idea whose those are. Not the sort of thing I'd go poking through
 even if I did know, old boy - a fellow's letters are his own
 business."
@@ -161,7 +161,7 @@ business."
 and I went outside. Maybe I did throw it in the pond. Does it
 matter?"
 
-+suit servants
++suit servant
 "Ah, that suit will be Slingsby's. I gather he descended on the house
 without warning and there wasn't a bed to be had except with the
 servants - I'd already bagged the guest room, and the other one's
@@ -341,7 +341,7 @@ money mining peru ruin redvers colonel
 "Couldn't tell you. Money troubles aren't really the sort of thing
 a fellow discusses over billiards."
 
-police investigation scotland yard inspector detective think here of me
+police investigation scotland yard inspector detective think here me
 "Rather glad they sent someone who knows what he's doing, if I'm
 honest. This house needs answers, and quickly, before everyone's
 nerves give out entirely."

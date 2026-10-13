@@ -98,23 +98,23 @@ same as the horses - he earns his keep, unlike some."
 "Seen him stood at the gate. Doesn't concern me - I keep to the grounds,
 he keeps to the drive."
 
-+(flatfooted/flat/odd) (bootprints/footprints/prints/marks)
++(flatfooted/flat/odd) (bootprints/footprints/prints)
 "Clear off! I'm not showing anyone my boots."
 
-+hobnailed +(bootprints/prints/marks) boot
++hobnailed +(bootprints/prints) boot
 "Hobnailed's what half the boots on this estate look like, mine included.
 Don't mean nothing."
 
-+slipper +(footprints/prints/marks)
++slipper +(footprints/prints)
 "I don't know whose they are."
 
-+mens +(shoeprints/footprints/prints/marks) shoe
++mens +(shoeprints/footprints/prints) shoe
 "I don't know whose these are."
 
-+womens +(shoeprints/footprints/prints/marks) shoe
++womens +(shoeprints/footprints/prints) shoe
 "Do I look like I wear women's shoes?"
 
-+(footprints/shoeprints/bootprints/prints/marks) foot boot shoe
++(footprints/shoeprints/bootprints/prints) foot boot shoe
 "There's prints all over the estate this time of year. Don't mean
 nothing on their own."
 
@@ -130,14 +130,14 @@ bookshelf books
 "Never been past the kitchen door in the house. Couldn't tell you
 whose books they are or what's in 'em."
 
-correspondence photographs letters servants
+correspondence photographs letters servant
 "Nothing to do with me. Don't go near the house past the kitchen,
 same as I told you before."
 
 +(cheroot/cigar) +pond
 "Don't know and don't much care."
 
-+suit servants
++suit servant
 "A suit? Never been past the kitchen door in that house, and I don't
 intend to start now. Couldn't tell you whose it is or why."
 
@@ -277,7 +277,7 @@ money mining peru ruin redvers colonel
 know is Sir Redvers came up the drive in a black temper yesterday
 afternoon."
 
-police investigation scotland yard inspector detective think here of me
+police investigation scotland yard inspector detective think here me
 "Don't much care for coppers poking round my cottage, if that's
 what you're asking. But get on with your job. I've nothing to hide
 from you or anyone else."

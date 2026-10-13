@@ -134,27 +134,27 @@ recall."
 "Seems steady enough for a village bobby. Can't say I've had cause to
 exchange more than two words with the fellow."
 
-+(flatfooted/flat/odd) (bootprints/footprints/prints/marks)
++(flatfooted/flat/odd) (bootprints/footprints/prints)
 "The bootprints around the house look like mine, but I didn't make
 them. I'm not flat-footed."
 
-+hobnailed +(bootprints/prints/marks) boot
++hobnailed +(bootprints/prints) boot
 "Hobnailed, flat-footed, whatever you like to call it - can't tell one
 from another out there in the snow, and don't propose to try."
 
-+slipper +(footprints/prints/marks)
++slipper +(footprints/prints)
 "Slipper prints? Damned if I know, and damned if I care whose they
 are."
 
-+mens +(shoeprints/footprints/prints/marks) shoe
++mens +(shoeprints/footprints/prints) shoe
 "Couldn't say. Ask the butler - that's rather more his line than
 mine."
 
-+womens +(shoeprints/footprints/prints/marks) shoe
++womens +(shoeprints/footprints/prints) shoe
 "Haven't the foggiest. A woman's shoe is a woman's shoe as far as I'm
 concerned, old man."
 
-+(footprints/shoeprints/bootprints/prints/marks) foot boot shoe
++(footprints/shoeprints/bootprints/prints) foot boot shoe
 "Prints all over the blasted grounds, so I'm told. Couldn't tell
 you one from another."
 
@@ -173,7 +173,7 @@ bookshelf books
 them. Not much of a reader myself, old man - give me a good paper and I'm
 satisfied."
 
-correspondence photographs letters servants
+correspondence photographs letters servant
 "Not mine, and none of my business either. A person's letters are their
 own affair - I shouldn't care for anyone pawing through mine."
 
@@ -181,7 +181,7 @@ own affair - I shouldn't care for anyone pawing through mine."
 "A cheroot? Not me, old man! I'm one for Havanas if I'm not smoking
 the old pipe."
 
-+suit servants
++suit servant
 "My suit, obviously. I turned up unannounced and Darnley's staff put me
 up in the servants' quarters rather than turf out young Coniston from
 the guest room - the other guest room is apparently all torn
@@ -349,7 +349,7 @@ money mining peru ruin redvers colonel
 "My business affairs are my own concern, and none of yours unless
 you can show otherwise."
 
-police investigation scotland yard inspector detective think here of me
+police investigation scotland yard inspector detective think here me
 "About time too. Damned unpleasant business, having one's private
 affairs picked over, but I'd rather have it done properly than not
 at all. Get on with it, man."

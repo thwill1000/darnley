@@ -112,25 +112,25 @@ standoffish, myself."
 "I've only seen him through the window, stood out there in the cold. Rather
 a thankless job, I should think, on a morning like this."
 
-+(flatfooted/flat/odd) (bootprints/footprints/prints/marks)
++(flatfooted/flat/odd) (bootprints/footprints/prints)
 "I'm afraid I paid no attention to footprints. Really, is that the sort of thing
 one is expected to notice?"
 
-+hobnailed +(bootprints/prints/marks) boot
++hobnailed +(bootprints/prints) boot
 "I couldn't tell you. I don't make a habit of studying people's footwear."
 
-+slipper +(footprints/prints/marks)
++slipper +(footprints/prints)
 "I really couldn't say. I don't see how I could be expected to recognise a
 slipper print."
 
-+mens +(shoeprints/footprints/prints/marks) shoe
++mens +(shoeprints/footprints/prints) shoe
 "That is rather beyond me I'm afraid. Aren't you the detective?"
 
-+womens +(shoeprints/footprints/prints/marks) shoe
++womens +(shoeprints/footprints/prints) shoe
 "I might recognise my own shoes, but I couldn't tell you whose prints these are
 from looking at them in the snow."
 
-+(footprints/shoeprints/bootprints/prints/marks) foot boot shoe
++(footprints/shoeprints/bootprints/prints) foot boot shoe
 "There seem to be prints absolutely everywhere. I really couldn't
 tell you which are significant."
 
@@ -149,7 +149,7 @@ bookshelf books
 read, when Father allows me a moment's peace for it. Those are Mr.
 Billingsgate's books, I should think, from the sound of them."
 
-correspondence photographs letters servants
+correspondence photographs letters servant
 "Not mine. I don't know whose they'd be - the servants', I should
 think, from the look of them. I don't make a habit of examining
 other people's letters."
@@ -158,7 +158,7 @@ other people's letters."
 "I couldn't tell you. I don't make a habit of going to the pond
 in this weather, it's perfectly miserable out there."
 
-+suit servants
++suit servant
 "Sir Redvers' suit I should think. He arrived out of the blue and there
 was nowhere left for him but the servants' quarters, what with Arthur
 already installed in the guest room. Rather awkward for a man of his
@@ -328,7 +328,7 @@ money mining peru ruin redvers colonel
 "I really don't know anything about finance. That's
 not the sort of thing anyone discusses with me."
 
-police investigation scotland yard inspector detective think here of me
+police investigation scotland yard inspector detective think here me
 "I suppose you have to suspect all of us equally, don't you? It's a
 horrid feeling, being looked at that way in one's own home. But I
 want whoever did this caught, so ask what you must."

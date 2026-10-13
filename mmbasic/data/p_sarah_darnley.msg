@@ -127,24 +127,24 @@ stables, as I understand it."
 "I haven't really spoken to him. He seems very young to be standing guard
 over something so dreadful."
 
-+(flatfooted/flat/odd) (bootprints/footprints/prints/marks)
++(flatfooted/flat/odd) (bootprints/footprints/prints)
 "I'm too distressed to think clearly about bootprints, I'm afraid."
 
-+hobnailed +(bootprints/prints/marks) boot
++hobnailed +(bootprints/prints) boot
 "I really couldn't say. I wasn't paying attention to people's boots."
 
-+slipper +(footprints/prints/marks)
++slipper +(footprints/prints)
 "I don't know whose slippers those would be. I'm sorry, this is all rather too
 much."
 
-+mens +(shoeprints/footprints/prints/marks) shoe
++mens +(shoeprints/footprints/prints) shoe
 "I'm afraid I don't notice that sort of thing at the best of times."
 
-+womens +(shoeprints/footprints/prints/marks) shoe
++womens +(shoeprints/footprints/prints) shoe
 "I couldn't say whose they are. I'm really not in a fit state to be asked about
 footprints."
 
-+(footprints/shoeprints/bootprints/prints/marks) foot boot shoe
++(footprints/shoeprints/bootprints/prints) foot boot shoe
 "I understand there are prints all over the grounds. I'm afraid I
 haven't the faintest idea which ones matter."
 
@@ -162,14 +162,14 @@ bookshelf books
 "I'm afraid I couldn't say. I don't spend a great deal of time in the
 servants' rooms, as you might imagine."
 
-correspondence photographs letters servants
+correspondence photographs letters servant
 "Not mine. I really shouldn't like to speculate whose they are - it
 seems rather an intrusion to go asking after other people's letters."
 
 +(cheroot/cigar) +pond
 "I don't know anything about it."
 
-+suit servants
++suit servant
 "Sir Redvers' suit I should think. He arrived out of the blue and there
 was nowhere left for him but the servants' quarters, what with Arthur
 already installed in the guest room, and the other guest room being
@@ -289,7 +289,7 @@ older than Millicent, and people will talk regardless of what's true. We were
 happy enough, in our own way. He was strict, and older than me. I loved him,
 whatever anyone supposes."
 
-remarriage remarry remarrying marry again
++(remarriage/remarry/remarrying/marriage) again
 Her expression cools noticeably.@
 @
 "I can't imagine why you would ask me that, today of all days. I
@@ -345,7 +345,7 @@ realise it was quite so serious until now."
 money mining peru ruin redvers colonel
 "I really couldn't say. Sebastian didn't discuss financial business with me."
 
-police investigation scotland yard inspector detective think here of me
+police investigation scotland yard inspector detective think here me
 "I want to know who did this as much as anyone, Inspector - more,
 perhaps. Ask whatever you must. I only hope it's over soon, for all
 our sakes."

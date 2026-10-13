@@ -127,7 +127,7 @@ indifference and returns to washing a paw.@
 @
 "Mrp."
 
-+suit servants
++suit servant
 He has, at some point, clearly slept on someone's good tweeds - there
 is a dusting of ginger fur that suggests as much, though not here in
 the stables.@
@@ -188,7 +188,7 @@ distance from where it happened.@
 @
 "Mrow?"
 
-police investigation scotland yard inspector detective think here of me
+police investigation scotland yard inspector detective think here me
 He sniffs your trouser leg, decides you'll do, and headbutts your
 shin companionably.@
 @

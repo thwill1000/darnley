@@ -102,25 +102,25 @@ something dreadful on my apron when he jumps up."
 "He gave me quite a fright when I saw him from the landing window, sir. I
 expect he's only doing his job, same as anyone."
 
-+(flatfooted/flat/odd) (bootprints/footprints/prints/marks)
++(flatfooted/flat/odd) (bootprints/footprints/prints)
 "Oh, I couldn't say, sir. I don't look at people's feet, it isn't my place."
 
-+hobnailed +(bootprints/prints/marks) boot
++hobnailed +(bootprints/prints) boot
 "I wouldn't know one bootprint from another, sir, honest I wouldn't."
 
-+slipper +(footprints/prints/marks)
++slipper +(footprints/prints)
 "I couldn't tell you, sir. I'm too busy with my work to go noticing
 things like that."
 
-+mens +(shoeprints/footprints/prints/marks) shoe
++mens +(shoeprints/footprints/prints) shoe
 "I only know Mr. Billingsgate keeps his shoes ever so clean, sir - but
 I couldn't say if these are his."
 
-+womens +(shoeprints/footprints/prints/marks) shoe
++womens +(shoeprints/footprints/prints) shoe
 "I wouldn't like to guess, sir. A lady's shoe print's a lady's shoe
 print to me."
 
-+(footprints/shoeprints/bootprints/prints/marks) foot boot shoe
++(footprints/shoeprints/bootprints/prints) foot boot shoe
 "There's ever so many prints about the place, sir. I wouldn't know
 which ones you mean."
 
@@ -139,7 +139,7 @@ bookshelf books
 though I couldn't tell you what's in most of them - I've never had
 call to look."
 
-correspondence photographs letters servants
+correspondence photographs letters servant
 "Those are Mrs. Goodbody's, sir - I've seen her looking at the
 photographs of an evening. Letters from her nephew, I think. I'd
 never go through them myself, that wouldn't be right."
@@ -148,7 +148,7 @@ never go through them myself, that wouldn't be right."
 "In the pond, sir? I don't go near the pond, it gives me the
 shivers even in summer. I couldn't tell you a thing about it."
 
-+suit servants
++suit servant
 "Oh, that's Sir Redvers' suit, sir. He came ever so sudden and there was
 nowhere for him but our room, on account of Mr. Coniston having the
 guest room already, and the other guest room being all in a state with
@@ -292,7 +292,7 @@ money mining peru ruin redvers colonel
 when he arrived. Mrs. G. said it was money troubles, but I don't
 know more than that."
 
-police investigation scotland yard inspector detective think here of me
+police investigation scotland yard inspector detective think here me
 "Oh, it does put the wind up me, having a proper detective in the
 house. I haven't done anything wrong, sir, honest I haven't - I just
 get nervous with all the questions."
