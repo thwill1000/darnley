@@ -61,10 +61,10 @@ handkerchief
 him and his guests is nothing to do with me."
 
 +colonel -(millicent/sarah/who) (get/think) with
-"Strict but fair. I've said all I'm goin to say about him."
+"Strict but fair. I've said all I'm goin' to say about him."
 
 +sarah (get/think) with
-"Mrs. Darnely is a fine woman. That's all I'm saying."
+"Mrs. Darnley is a fine woman. That's all I'm saying."
 
 +millicent (get/think) with
 "Miss Darnley never had much to do with me. Suited us both."

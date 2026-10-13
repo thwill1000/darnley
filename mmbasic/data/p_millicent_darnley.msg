@@ -44,7 +44,7 @@ gramophone
 piano
 "Which piano? Arthur and I played duets on the music room piano for a
 while after dinner. I remember that later, Sarah said she intended
-to play the morning room piano. I woke up at about 11.20 and heard
+to play the morning room piano. I woke up at about 11:20 and heard
 Sarah still playing a Chopin nocturne. She was having difficulty and
 repeated the same piece again and again."
 
@@ -249,7 +249,7 @@ something I'd notice."
 keeps to himself down at the cottage."
 
 -thanks alibi | -thanks +time murder
-"I was with Arthur in the music room at 10.30 and, naturally, I was
+"I was with Arthur in the music room at 10:30 and, naturally, I was
 alone in bed at 11:30."
 
 -thanks alone (confirm/confirmed) corroborate witness anyone time

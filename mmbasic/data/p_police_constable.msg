@@ -3,7 +3,7 @@ hello hi morning afternoon evening greetings
 for what that's worth."
 
 +colonel -(millicent/sarah/who) (get/think) with
-"Never met the gentleman myself, sir. I'm only posted here since the
+"Never met the gentleman myself, sir. I've only been posted here since the
 alarm was raised this morning."
 
 +sarah (get/think) with
@@ -69,7 +69,7 @@ hasn't stirred an inch."
 
 +police +(car/saloon)
 "That's yours, sir, isn't it? I came up from the village on my bicycle -
-left it propped up behind the wall sir."
+left it propped up behind the wall, sir."
 
 events yesterday murder last happened
 "Can't help you there, sir. I only came on duty this morning when the

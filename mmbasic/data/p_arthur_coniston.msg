@@ -13,9 +13,9 @@ knife
 "Haven't the foggiest - kitchen's not somewhere I go poking about."
 
 cigarette cigar cheroot smoking smoked smokes
-"I smoke an expensive cigarette made by Fribourg & Treyer in London
-- those and cigars after dinner, Cheroots same as old Darnley. I
-would never smoke cheap cigarettes."
+"I smoke expensive cigarettes made by Fribourg & Treyer in London. I enjoy those
+and cigars after dinner, or cheroots, the same as old Darnley. I would never
+smoke cheap cigarettes."
 
 revolver
 !requires x_revolver x_gunrack
@@ -31,7 +31,7 @@ revolver
 "A revolver missing from the rack? First I've heard of it."
 
 (revolver/gun)
-"Darnley's has a gun cabinet in his study, revolvers and rifles and whatnot.
+"Darnley has a gun cabinet in his study, revolvers and rifles and whatnot.
 I imagine the gamekeeper keeps a shotgun or two down at his cottage.
 Can't say I own a gun myself, old boy - never saw the appeal."
 

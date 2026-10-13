@@ -92,7 +92,7 @@ work proper, though I know Mrs. G. thinks I'm lazy sometimes. I
 don't know what more you'd want me to say about myself."
 
 +(mellors/gamekeeper) (get/think) with
-"A rough man. A womanizer by all accounts."
+"A rough man. A womaniser by all accounts."
 
 +(cat/chester/ginger) (get/think) with
 "Oh, that's Chester, sir. He's ever so sweet, though he does shed

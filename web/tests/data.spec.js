@@ -266,7 +266,7 @@ describe('parseMessages()', () => {
       '  [[green:Norah Bagsby]]         - housemaid',
       '  [[green:Ronald Mellors]]       - gamekeeper',
       '',
-      "You are free to search the house and grounds and to question the suspects. Examination of the scene and skillful interrogation will yield sufficient information to solve the mystery. And mystery it is! The body of Colonel Darnley was found in his study, the doors and window of which were all locked from the inside. The only keys were in the possession of the Colonel and his faithful butler.",
+      "You are free to search the house and grounds and to question the suspects. Examination of the scene and skilful interrogation will yield sufficient information to solve the mystery. And mystery it is! The body of Colonel Darnley was found in his study, the doors and window of which were all locked from the inside. The only keys were in the possession of the Colonel and his faithful butler.",
       '',
       '[[green:How could the sealed-room murder be committed?]]',
     ].join('\n');
