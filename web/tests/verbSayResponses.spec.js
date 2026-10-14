@@ -276,6 +276,18 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     ]);
   });
 
+  it('Who had the keys to the study?', () => {
+    all('key response', [
+      'keys', 'who had the keys to the study', 'did billingsgate have keys', 'whose key was in the lock',
+    ]);
+    assertResponse('how was the study locked', 'locked study response');
+
+    target('billingsgate');
+    assertResponse('tell me about the keys', 'The Colonel kept the study keys on his person, sir', true);
+    target('arthur');
+    assertResponse('tell me about the keys', 'Billingsgate has a set of his own', true);
+  });
+
   it('Who dropped this handkerchief?', () => {
     all('handkerchief response', [
       'ask about the handkerchief', 'whose handkerchief is this', 'tell me about the handkerchief',

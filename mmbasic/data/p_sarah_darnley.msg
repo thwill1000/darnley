@@ -74,6 +74,11 @@ Arthur told me that Sebastian had agreed to the marriage, and
 Redvers said that he and Sebastian had sorted out their business; so
 I'm at a loss about the letter."
 
+key
+"Sebastian never let the study keys out of his pocket, so far as I
+know. I understand Billingsgate has a set too, though I've never seen
+them."
+
 handkerchief
 "You found it in the summer house? I'm absolutely sure it isn't mine."
 

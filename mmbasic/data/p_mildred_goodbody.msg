@@ -62,6 +62,11 @@ letter
 "A letter, dear? That's not something that'd cross my kitchen table.
 You'd best ask Mr. B., he sees to the master's post."
 
+key
+"The Colonel had his and Mr. B. has his, dear, and neither of them
+would hand them round for love nor money. Mr. B. keeps his on him
+day and night, and we were all in the same room last night."
+
 handkerchief
 "Mrs. Sarah and Miss Millicent both have handkerchiefs like this one.
 I can't say whose it is."

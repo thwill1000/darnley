@@ -56,6 +56,11 @@ letter
 "A letter? I wouldn't know anything about that, sir. I don't touch
 the master's correspondence, that's not my place."
 
+key
+"Mr. B. has keys to ever so many things, sir, but he'd never let me
+touch them. He keeps them on him, and I was asleep in the same room
+as him last night."
+
 handkerchief
 "Both the ladies have this sort of hanky. Sometimes Mrs. G. is given
 the older ones."

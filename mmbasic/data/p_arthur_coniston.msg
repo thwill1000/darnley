@@ -69,6 +69,13 @@ have been to old Slingsby. I fancy he had lost a lot of money and
 needed a loan. We had spoken in the afternoon and Darnley had agreed
 that I could marry Millicent."
 
+key
+"Billingsgate has a set of his own, but it was no good - when I
+looked through the keyhole it was blocked, with the Colonel's key
+sitting in the lock on the inside. Once we were in we found his keys
+in both doors. I'd like to know how it was done as much as you would,
+old boy."
+
 handkerchief
 "I don't know whose handkerchief it is."
 
@@ -213,11 +220,12 @@ I undressed and went to bed but couldn't sleep. At about 11:30 I heard
 a noise - a door banging, so I thought at the time. I decided to go
 downstairs and smoke another cigar in the lounge. I noticed a light
 under the study door and knocked on it to see who was there. I got
-worried when it was locked and no-one answered so I got Billingsgate
-and together we went outside and round to the French window. It was
-locked too, so I picked a stone up and broke the glass. Billingsgate
-stuck his hand through the hole and tried the lock. He told me it was
-locked on the inside, and - damn me! - he was right. We both went
+worried when it was locked and no-one answered. I bent down to look
+through the keyhole but it was blocked - there was a key in the lock on
+the other side. So I got Billingsgate and together we went outside and
+round to the french window. It was locked too, so I picked a stone up and broke
+the glass. Billingsgate stuck his hand through the hole and tried the lock. He
+told me it was locked on the inside, and - damn me! - he was right. We both went
 inside and found Darnley on the floor, shot and dead. When we checked
 the doors to the hall and lounge we found the Colonel's keys in the
 locks, so it would have been impossible to open them from the outside.

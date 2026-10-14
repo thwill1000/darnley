@@ -53,6 +53,10 @@ piano
 letter
 "Why should I know anything about some bloody letter?"
 
+key
+"Only keys I carry are for my own cottage. Nothing to do with the big
+house."
+
 handkerchief
 "Do I look like I use lady's hankies?"
 

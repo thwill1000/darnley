@@ -66,6 +66,9 @@ piano
 letter
 "letter response"
 
+key
+"key response"
+
 handkerchief
 "handkerchief response"
 

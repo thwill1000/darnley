@@ -74,6 +74,7 @@ add_test("Who owns these lady's shoes?", "test_ladys_shoes")
 add_test("Did you read the newspaper? (before the newspaper is found)", "test_newspaper_blocked")
 add_test("Did you read the newspaper? (after the newspaper is found)", "test_newspaper_unlocked")
 add_test("What do you know about the letter on the Colonel's desk?", "test_letter")
+add_test("Who had the keys to the study?", "test_keys")
 add_test("Who dropped this handkerchief?", "test_handkerchief")
 add_test("What did you think of Colonel Darnley?", "test_opinion_colonel")
 add_test("What do you think of Sarah Darnley?", "test_opinion_sarah")
@@ -413,6 +414,22 @@ Sub test_letter()
   assert_response("what about the unfinished letter", "letter response")
   assert_response("tell me about the letter on the desk", "letter response")
   assert_response("who was the letter addressed to", "letter response")
+End Sub
+
+Sub test_keys()
+  assert_response("key", "key response")
+  assert_response("who had the keys to the study", "key response")
+  assert_response("did billingsgate have keys", "key response")
+  assert_response("whose key was in the lock", "key response")
+
+  ' The locked-study topic must still win when asking how it was locked
+  assert_response("how was the study locked", "locked study response")
+
+  objects$(9) = "P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|billingsgate butler|LOC001_BATHROOM|2|100"
+  assert_response("tell me about the keys", "The Colonel kept the study keys on his person, sir", 1)
+
+  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  assert_response("tell me about the keys", "Billingsgate has a set of his own", 1)
 End Sub
 
 Sub test_handkerchief()

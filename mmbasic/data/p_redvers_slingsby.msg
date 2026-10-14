@@ -72,6 +72,10 @@ letter
 "The letter certainly wasn't addressed to me. Darnley would have
 called me by name, not 'Dear Sir' - after all we were friends."
 
+key
+"Never saw a key. I left by the hall door at half past ten and
+slammed it behind me - I didn't lock it, and I'd no cause to."
+
 handkerchief
 "Not mine, obviously. I don't go about with lace and scent, man."
 

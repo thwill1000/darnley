@@ -65,6 +65,14 @@ Mrs. Darnley's or Miss Millicent's, I should imagine - you might ask young Norah
 letter
 "I have no knowledge of it, sir - the master's correspondence was his own affair."
 
+key
+"The Colonel kept the study keys on his person, sir, and I keep mine on
+me. Last night I slept in the same room as Mrs. Goodbody and young
+Norah, so nobody could have taken them without waking one of us. When
+Mr. Coniston and I went in by the window, the Colonel's own keys were in
+the locks of both doors, on the inside, which is why mine would have
+been of no use."
+
 handkerchief
 "I don't know anything about it."
 
@@ -214,12 +222,13 @@ I was woken by Mr. Coniston at 11:30. He said that he had not been able
 to sleep and had gone to the lounge to smoke. He saw a light under the
 study doors and was concerned because the doors were locked and Colonel
 Darnley would not answer. I offered to get my own keys but Mr. Coniston
-said it was too urgent. As far as the study is concerned the Colonel
-kept the keys on his person and I keep mine hidden - I won't say where
-- but you can be sure no-one can get their hand on them either. We left
-through the kitchen door and I walked round to the French windows;
-Mr. Coniston ran and was there a couple of seconds before me. He threw
-a stone through the window and one of us - I think myself - put a hand
+said the keyhole was blocked by a key on the inside, so mine would have
+been no use. As far as the study is concerned the Colonel kept the keys
+on his person and I keep mine on me. I slept in the same room as
+Mrs. Goodbody and young Norah, so no-one could have taken them without
+waking one of us. We left through the kitchen door and I walked round to the
+french windows; Mr. Coniston ran and was there a couple of seconds before me.
+He threw a stone through the window and one of us - I think myself - put a hand
 through the hole to open the lock. I can confirm that the window was
 locked. We both went into the room and saw the Colonel's body with a
 bullet through the chest. The body was on the floor and you couldn't
@@ -305,7 +314,7 @@ are ever told, above stairs or below."
 
 +study (locked/sealed) door window how
 "I have turned it over in my mind and I confess I cannot account
-for it, sir. I keep my own key hidden, as I told you, and the
+for it, sir. I keep my own keys on me, as I told you, and the
 Colonel's was on his person. I do not see how anyone could have got
 in or out."
 

@@ -58,6 +58,11 @@ letter
 "A letter? I don't know anything about it. Daddy didn't discuss his
 correspondence with me - I only know he'd agreed I might marry Arthur."
 
+key
+"Daddy kept his study keys on him always - he was fussy about it. I
+believe Billingsgate has a set of his own, but I couldn't tell you
+more than that."
+
 handkerchief
 "I'm always losing handkerchiefs so I suppose it could be mine. I
 don't remember when I lose them. I certainly wasn't in the summer
