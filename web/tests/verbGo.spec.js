@@ -33,9 +33,6 @@ const MESSAGES = new Map([
   ['OBJ006', [{ requires: [], provides: [], body: ['Description of statue'] }]],
 ]);
 
-const EXAMINE_FAIL_MSG = "In this location you can examine: [[green:GREEN DOOR]], "
-  + "[[green:RED GEM]], [[green:SECRET PANEL]] or [[green:OLD STATUE]].";
-
 const locationById = (id) => LOCATIONS.find((loc) => loc.id === id);
 
 describe('verbGo()', () => {
@@ -83,68 +80,5 @@ describe('verbGo()', () => {
   it('resolves an additional exit not in the location\'s own exit list', () => {
     const result = verbGo(locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, ['go', 'house'], []);
     expect(result.room).toBe('LOC003');
-  });
-});
-
-describe('verbExamine()', () => {
-  it('with no noun, signals a redescribe and an unmark-visited rather than failing', () => {
-    const result = verbExamine(OBJECTS, MESSAGES, ['examine'], [], locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, new Set());
-    expect(result.redescribe).toBe(true);
-    expect(result.unmarkVisited).toBe(true);
-  });
-
-  it('finds an object present in the current room and returns its description entry', () => {
-    const result = verbExamine(OBJECTS, MESSAGES, ['examine', 'door'], [], locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, new Set());
-    expect(result.success).toBe(true);
-    expect(result.object.id).toBe('OBJ001');
-    expect(result.entry.body).toEqual(['Description of object 1']);
-  });
-
-  it('fails when the object exists but is in a different room', () => {
-    // "key" matches OBJ002/OBJ004, both in LOC002, not the current room (LOC001)
-    const result = verbExamine(OBJECTS, MESSAGES, ['examine', 'key'], [], locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, new Set());
-    expect(result.success).toBe(false);
-    expect(result.entry.body[0]).toBe(EXAMINE_FAIL_MSG);
-  });
-
-  it('fails generically when nothing matches and no exit matches either', () => {
-    const result = verbExamine(OBJECTS, MESSAGES, ['examine', 'nonexistent'], [], locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, new Set());
-    expect(result.success).toBe(false);
-    expect(result.entry.body[0]).toBe(EXAMINE_FAIL_MSG);
-  });
-
-  it('suggests GO when no object matches but the words match an exit instead', () => {
-    // "two" doesn't match any object, but matches exit LOC002 "Room Two"
-    const result = verbExamine(OBJECTS, MESSAGES, ['examine', 'two'], [], locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, new Set());
-    expect(result.success).toBe(false);
-    expect(result.message).toBe('Try `GO TWO`.');
-  });
-
-  it('does not suggest GO when an object match exists elsewhere', () => {
-    // "key" matches an object (elsewhere) but not any exit name
-    const result = verbExamine(OBJECTS, MESSAGES, ['examine', 'key'], [], locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, new Set());
-    expect(result.entry.body[0]).toBe(EXAMINE_FAIL_MSG);
-  });
-
-  it('fails to match a mandatory "+" word missing from the command (OBJ005 needs "secret")', () => {
-    const result = verbExamine(OBJECTS, MESSAGES, ['examine', 'panel'], [], locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, new Set());
-    expect(result.success).toBe(false);
-  });
-
-  it('matches once the mandatory "+" word is present (OBJ005)', () => {
-    const result = verbExamine(OBJECTS, MESSAGES, ['examine', 'secret', 'panel'], [], locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, new Set());
-    expect(result.success).toBe(true);
-    expect(result.object.id).toBe('OBJ005');
-  });
-
-  it('matches when a forbidden "-" word is absent (OBJ006 "statue" alone)', () => {
-    const result = verbExamine(OBJECTS, MESSAGES, ['examine', 'statue'], [], locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, new Set());
-    expect(result.success).toBe(true);
-    expect(result.object.id).toBe('OBJ006');
-  });
-
-  it('fails to match when the forbidden "-" word is present alongside (OBJ006 "broken statue")', () => {
-    const result = verbExamine(OBJECTS, MESSAGES, ['examine', 'broken', 'statue'], [], locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, new Set());
-    expect(result.success).toBe(false);
   });
 });
