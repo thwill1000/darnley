@@ -61,9 +61,10 @@ P_CHESTER_CAT|Cat|cat ginger chester|LOC021_STABLES|2|100
 P_THE_BODY|Colonel Darnley's body|colonel darnley body|LOC007_COLONELS_STUDY|2|100
 P_POLICE_CONSTABLE|Police Constable|police constable policeman bobby|LOC017_DRIVE|2|100
 OBJ201_POND|Pond|pond|LOC005_ORNAMENTAL_POND|0|100
-OBJ202_SUNKEN_STATUE|Sunken statue|sunken statue|LOC005_ORNAMENTAL_POND|0|100
 OBJ203_REVOLVER|Revolver|gun revolver|LOC005_ORNAMENTAL_POND|1|1
-OBJ204_STATUES|Marble statues|statue statues|LOC005_ORNAMENTAL_POND|0|100
+OBJ204_STATUES|Marble statues|marble statue statues|LOC005_ORNAMENTAL_POND|0|100
+# Deliberately match "sunken statue" after "marble statues"
+OBJ202_SUNKEN_STATUE|Sunken statue|statue sunken missing fourth gone|LOC005_ORNAMENTAL_POND|0|100
 OBJ205_FOOTPRINTS_POND|Footprints|footprints bootprints shoeprints prints|LOC005_ORNAMENTAL_POND|0|100
 OBJ206_SLIPPERS|Slippers|slippers|LOC029_GUEST_ROOM|1|1
 OBJ207_CIGARETTES|Cigarettes|cigarette|LOC029_GUEST_ROOM|1|1
@@ -105,7 +106,7 @@ OBJ247_FOOTPRINTS_WL|Footprints|footprints bootprints shoeprints prints|LOC020_W
 OBJ248_FOOTPRINTS_ST|Footprints|footprints bootprints shoeprints prints|LOC021_STABLES|0|0
 OBJ249_FOOTPRINTS_EL|Footprints|footprints bootprints shoeprints prints|LOC022_EAST_LAWN|0|0
 OBJ250_CIGARETTE_ENDS_GC|Cigarette ends|cigarette end ends|LOC023_GAMEKEEPERS_COTTAGE|1|1
-OBJ251_ARMOUR|Armour|armour|LOC008_HALL|0|100
+OBJ251_ARMOUR|Armour|armour armor|LOC008_HALL|0|100
 OBJ252_DOORMAT|Doormat|doormat door mat|LOC008_HALL|0|1
 OBJ253_CHEROOT_BUTT|Cheroot butt|cheroot cigar butt|LOC005_ORNAMENTAL_POND|1|1
 OBJ254_MUSIC_ROOM_ASHTRAY|Brass ashtray|brass ashtray|LOC015_MUSIC_ROOM|1|1

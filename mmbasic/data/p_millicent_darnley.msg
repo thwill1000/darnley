@@ -34,7 +34,7 @@ though I don't make a habit of looking in there."
 of thing. And Mellors keeps a pair of shotguns down at his cottage, for the
 vermin. I don't know that anyone else in the house keeps a gun."
 
-+statue missing
++(statue/statues) +(missing/sunken/fourth/gone)
 "Someone - I forget who - told me that a beggar had pushed it into
 the pond. Out of spite I suppose."
 

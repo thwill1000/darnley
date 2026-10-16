@@ -35,7 +35,7 @@ revolver
 I imagine the gamekeeper keeps a shotgun or two down at his cottage.
 Can't say I own a gun myself, old boy - never saw the appeal."
 
-+statue missing
++(statue/statues) +(missing/sunken/fourth/gone)
 "I don't know what you're talking about."
 
 gramophone

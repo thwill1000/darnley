@@ -271,7 +271,7 @@ Function parse_common(cmd$)
       verb$ = "take"
     Case "how"
       verb$ = "help"
-    Case "intro", "introduction", "plot", "what", "who"
+    Case "characters", "intro", "introduction", "plot", "what", "who"
       verb$ = "recap"
     Case "i", "inv"
       verb$ = "inventory"
@@ -279,8 +279,10 @@ Function parse_common(cmd$)
       con.print_fail("This is not that sort of game.")
       parse_common = 1
       Exit Function
-    Case "ask", "speak", "talk", "tell", Chr$(34)
+    Case Chr$(34)
       verb$ = "say"
+    Case "ask", "speak", "tell"
+      verb$ = "talk"
     Case Else
       verb$ = words$(1)
   End Select
@@ -334,6 +336,13 @@ Function verb_say()
 
   Const match_line% = find_response%(filename$, topic_words$())
   print_response(filename$, match_line%)
+End Function
+
+' Handles the TALK verb
+'!dynamic_call verb_talk
+Function verb_talk()
+  verb_talk = 1
+  print_message_or_fail("TALK_TEXT", 0, 0)
 End Function
 
 ' Resolves the direct object of ("target name, topic words) printing
@@ -586,20 +595,42 @@ Function verb_examine()
 
   Const obj% = find_obj%(words$())
   Const oloc% = Choice(obj%, obj_loc%(obj%), 0)
-  Local ok% = 0
-
   If oloc% = r Then ' Object exists and is present
-    ok% = print_message%(obj_id$(obj%)) = 0
+    If SUCCEEDED(print_message%(obj_id$(obj%))) Then Exit Function
   EndIf
 
-  If Not ok% Then
-    Const exit_loc% = find_exit_match%(words$())
-    If exit_loc% > -1 Then
-      con.print_fail("Try `GO " + UCase$(cat_words$(words$(), 2)) + "`.")
-    Else
-      con.print_fail("That is not here, cannot be examined or is unremarkable.")
-    EndIf
+  ' If we match an exit rather than an object then suggest the GO command.
+  Const exit_loc% = find_exit_match%(words$())
+  If exit_loc% > -1 Then
+    con.print_fail("Try `GO " + UCase$(cat_words$(words$(), 2)) + "`.")
+    Exit Function
   EndIf
+
+  ' Unknown object, so list the objects in this location.
+  con.print("In this location you can examine: ")
+  Local i%, visible%, obj_in_loc%(10), num_obj%
+  Local requires$(MAX_WORDS) Length MAX_WORD_LENGTH
+  Local provides$(MAX_WORDS) Length MAX_WORD_LENGTH
+  Local first_line$
+  For i% = Bound(objects$(), 0) To Bound(objects$(), 1)
+    visible% = 0
+    If obj_loc%(i%) = r Then
+      ' Check the object is not hidden (i.e. it has a matchable message)
+      visible% = SUCCEEDED(find_message%(obj_id$(i%), requires$(), provides$(), first_line$))
+      If visible% Then Close #1
+      If Not visible% Then Continue For
+      Inc num_obj%
+      obj_in_loc%(num_obj%) = i%
+    EndIf
+  Next
+  For i% = 1 To num_obj%
+    If i% > 1 Then
+      If i% = num_obj% Then con.print(" or ") Else con.print(", ")
+    EndIf
+    con.print("[[green:" + obj_name$(obj_in_loc%(i%)) + "]]")
+  Next
+  If num_obj% = 0 Then con.print("nothing")
+  con.println(".")
 End Function
 
 ' TODO: comment this
@@ -739,9 +770,27 @@ End Function
 ' @return  1 always (indicating the verb was handled).
 '!dynamic_call verb_go
 Function verb_go()
-  Const r_new% = find_exit_match%(words$())
-  If r_new% > -1 Then r = r_new% Else con.print_fail("You can't go there.")
   verb_go = 1
+  Const r_new% = find_exit_match%(words$())
+  If r_new% > -1 Then
+    r = r_new%
+    Exit Function
+  EndIf
+
+  ' Unknown exit, so list the exits from this location.
+  con.print("From this location you can go to: ")
+  Const num_exits% = Val(Field$(rooms$(r), 4, "|"))
+  Local i%, loc%, loc_name$, to_id$
+  For i% = 1 To num_exits%
+    to_id$ = Field$(rooms$(r), 4 + i%, "|")
+    loc% = find_loc%(to_id$)
+    loc_name$ = Field$(rooms$(loc%), 2, "|")
+    If i% > 1 Then
+      If i% = num_exits% Then con.print(" or ") Else con.print(", ")
+    EndIf
+    con.print("[[green:" + loc_name$ + "]]")
+    If i% = num_exits% Then con.println(".")
+  Next
 End Function
 
 ' Handles the INVENTORY verb
@@ -819,32 +868,43 @@ Function verb_quit()
   End Select
 End Function
 
-' Prints the first entry in the message file matching tag$ whose !requires
-' (if any) is currently satisfied. Any !provides tokens on the winning
-' entry are applied to the flags set.
+' Finds the first entry in the message file matching tag$.
 '
-' Entries matching tag$ but failing their !requires are skipped, and
-' scanning continues for a later entry with the same tag.
+' If any% is 0 then only an entry whose !requires (if any) is currently
+' satisfied counts as a match; entries matching tag$ but failing their
+' !requires are skipped, and scanning continues for a later entry with
+' the same tag. If any% is not 0 then the first entry matching tag$ is
+' returned regardless of !requires.
+'
+' This is a pure lookup - it has no side effects, e.g. it does NOT apply
+' any !provides tokens to the flags set, nor does it print anything.
+' Callers that want those side effects (e.g. print_message%()) must
+' apply them themselves based on the returned out-parameters.
+'
+' File lifecycle: on success (return 0) file #1 is left OPEN, positioned
+' immediately after the matching entry's first body line, ready for a
+' caller such as print_body() to continue reading the rest of the body
+' from #1 - the caller owns closing it once done. On failure (return 1)
+' the file has already been closed by this function.
 '
 ' Tag/keyword lines are never obfuscated (see advdata.decode_line$()'s
 ' doc comment), so the "s$ = tag$" comparison below works correctly
 ' against the raw line - no decode needed. On a match, read_directives()
-' decodes first_line$ as it is produced, and that value flows straight
-' into print_body(). The ineligible-entry skip loop below discards a
-' body it will never print and must NOT decode that content.
+' decodes first_line$ as it is produced. The ineligible-entry skip loop
+' below discards a body the caller will never see and must NOT decode
+' that content.
 '
-' @param tag$     The tag to search for in the message file.
-' @param no_eol%  If not 0 then don't print EOL at end of message.
-' @param speech%  If not 0 then render the body as SAY speech.
-' @return         0 on success, 1 if no eligible entry was found.
-Function print_message%(tag$, no_eol%, speech%)
+' @param tag$         The tag to search for in the message file.
+' @param requires$()  [out] Tokens from the matching entry's "!requires".
+' @param provides$()  [out] Tokens from the matching entry's "!provides".
+' @param first_line$  [out] The first line of the matching entry's body.
+' @param any%          If not 0 then match the first entry with tag$
+'                       regardless of !requires; otherwise only an entry
+'                       whose !requires is satisfied counts as a match.
+' @return              0 on success, 1 if no matching entry was found.
+Function find_message%(tag$, requires$(), provides$(), first_line$, any%)
   Const fnbr% = 1
-  Local s$
-  Local requires$(MAX_WORDS) Length MAX_WORD_LENGTH
-  Local provides$(MAX_WORDS) Length MAX_WORD_LENGTH
-  Local first_line$, lines_consumed%
-
-  print_message% = 1
+  Local s$, lines_consumed%
 
   Open adv.game_root$ + "data/messages.dat" For Input As #1
   Do While Not Eof(fnbr%)
@@ -852,11 +912,9 @@ Function print_message%(tag$, no_eol%, speech%)
     If s$ = tag$ Then
       read_directives(fnbr%, requires$(), provides$(), first_line$, lines_consumed%)
 
-      If state.has_flags%(requires$()) Then
-        state.add_flags(provides$())
-        print_body(first_line$, speech%)
-        print_message% = 0
-        Exit Do
+      If any% Or state.has_flags%(requires$()) Then
+        find_message% = 0 ' success
+        Exit Function
       Else
         ' Ineligible - skip past the rest of this entry's body and keep scanning.
         Do While first_line$ <> ""
@@ -867,7 +925,30 @@ Function print_message%(tag$, no_eol%, speech%)
   Loop
   Close fnbr%
 
-  If print_message% = 0 And no_eol% = 0 Then con.println()
+  find_message% = 1 ' failure
+End Function
+
+' Prints the first entry in the message file matching tag$ whose !requires
+' (if any) is currently satisfied. Any !provides tokens on the winning
+' entry are applied to the flags set.
+'
+' @param tag$     The tag to search for in the message file.
+' @param no_eol%  If not 0 then don't print EOL at end of message.
+' @param speech%  If not 0 then render the body as SAY speech.
+' @return         0 on success, 1 if no eligible entry was found.
+Function print_message%(tag$, no_eol%, speech%)
+  Local requires$(MAX_WORDS) Length MAX_WORD_LENGTH
+  Local provides$(MAX_WORDS) Length MAX_WORD_LENGTH
+  Local first_line$
+
+  print_message% = find_message%(tag$, requires$(), provides$(), first_line$, 0)
+
+  If SUCCEEDED(print_message%) Then
+    state.add_flags(provides$())
+    print_body(first_line$, speech%)
+    If Not no_eol% Then con.println()
+    Close #1
+  EndIf
 End Function
 
 ' As print_message%(), but raises an error if no eligible entry is found.

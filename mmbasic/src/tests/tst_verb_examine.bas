@@ -47,13 +47,16 @@ Sub con.print_fail(s$)
   con.println("[[red:" + s$ + "]]")
 End Sub
 
+const EXAMINE_FAIL_MSG = "In this location you can examine:"
+
 advdata.set_root(Mm.Info(Path))
 advdata.init()
 
 add_test("verb_examine() with no noun re-describes the location", "test_ex_gvn_no_noun")
 add_test("verb_examine() finds an object present in the current room", "test_ex_gvn_found_present")
 add_test("verb_examine() fails when object exists but is elsewhere", "test_ex_gvn_found_elsewhere")
-add_test("verb_examine() fails when nothing matches and no exit matches", "test_ex_gvn_not_found")
+add_test("verb_examine() fails when objects present but no object or exit matches", "test_ex_gvn_no_matches")
+add_test("verb_examine() fails when no objects present and no exit matches", "test_ex_gvn_no_objects")
 add_test("verb_examine() suggests GO when words match an exit instead", "test_ex_gvn_suggests_go")
 add_test("verb_examine() does not suggest GO when an object match exists elsewhere", "test_ex_no_go_when_obj_elsewhere")
 add_test("verb_examine() always returns 1 (handled)", "test_ex_always_returns_handled")
@@ -107,18 +110,30 @@ Sub test_ex_gvn_found_elsewhere()
   Local ret% = verb_examine()
 
   assert_int_equals(1, ret%)
-  assert_string_equals("[[red:That is not here, cannot be examined or is unremarkable.]]" + sys.CRLF$, con_output$)
+  assert_string_equals(EXAMINE_FAIL_MSG, Left$(con_output$, Len(EXAMINE_FAIL_MSG)))
 End Sub
 
-' No object matches at all, and no exit name matches either - generic failure
-Sub test_ex_gvn_not_found()
+' Objects are present but not object or exit matches
+Sub test_ex_gvn_no_matches()
   Local result% = parse_common("examine nonexistent")
   assert_int_equals(0, result%)
 
   Local ret% = verb_examine()
 
   assert_int_equals(1, ret%)
-  assert_string_equals("[[red:That is not here, cannot be examined or is unremarkable.]]" + sys.CRLF$, con_output$)
+  assert_string_equals(EXAMINE_FAIL_MSG, Left$(con_output$, Len(EXAMINE_FAIL_MSG)))
+End Sub
+
+' No objects are present and no exit matches
+Sub test_ex_gvn_no_objects()
+  r = 3 ' LOC003, no objects
+  Local result% = parse_common("examine banana")
+  assert_int_equals(0, result%)
+
+  Local ret% = verb_examine()
+
+  assert_int_equals(1, ret%)
+  assert_string_equals(EXAMINE_FAIL_MSG + " nothing." + sys.CRLF$, con_output$)
 End Sub
 
 ' No object matches, but the words match an exit from the current room -
@@ -144,7 +159,7 @@ Sub test_ex_no_go_when_obj_elsewhere()
   Local ret% = verb_examine()
 
   assert_int_equals(1, ret%)
-  assert_string_equals("[[red:That is not here, cannot be examined or is unremarkable.]]" + sys.CRLF$, con_output$)
+  assert_string_equals(EXAMINE_FAIL_MSG, Left$(con_output$, Len(EXAMINE_FAIL_MSG)))
 End Sub
 
 ' verb_examine() always returns 1 (i.e. "handled"), regardless of path taken
@@ -170,7 +185,7 @@ Sub test_ex_gvn_plus_missing()
   Local ret% = verb_examine()
 
   assert_int_equals(1, ret%)
-  assert_string_equals("[[red:That is not here, cannot be examined or is unremarkable.]]" + sys.CRLF$, con_output$)
+  assert_string_equals(EXAMINE_FAIL_MSG, Left$(con_output$, Len(EXAMINE_FAIL_MSG)))
 End Sub
 
 ' Including the mandatory word "secret" allows OBJ005 to match
@@ -205,5 +220,5 @@ Sub test_ex_gvn_minus_present()
   Local ret% = verb_examine()
 
   assert_int_equals(1, ret%)
-  assert_string_equals("[[red:That is not here, cannot be examined or is unremarkable.]]" + sys.CRLF$, con_output$)
+  assert_string_equals(EXAMINE_FAIL_MSG, Left$(con_output$, Len(EXAMINE_FAIL_MSG)))
 End Sub

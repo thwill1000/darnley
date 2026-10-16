@@ -217,9 +217,9 @@ describe('parseClues()', () => {
 });
 
 describe('parseMessages()', () => {
-  it('parses 125 unique tags, ~127 entries total (a few tags have more than one entry)', () => {
+  it('parses 126 unique tags, ~127 entries total (a few tags have more than one entry)', () => {
     const messages = parseMessages(messagesText);
-    expect(messages.size).toBe(125);
+    expect(messages.size).toBe(126);
     let totalEntries = 0;
     for (const entries of messages.values()) totalEntries += entries.length;
     expect(totalEntries).toBe(127);
@@ -288,14 +288,14 @@ describe('parseMessages()', () => {
     expect(entry.provides).toEqual(['x_revolver', 'new_clue']);
   });
 
-  it('keeps multiple entries for the same tag, in file order (OBJ202_SUNKEN_STATUE)', () => {
+  it('keeps multiple entries for the same tag, in file order (OBJ259_HORSE_SAY_RESPONSE)', () => {
     const messages = parseMessages(messagesText);
-    const entries = messages.get('OBJ202_SUNKEN_STATUE');
+    const entries = messages.get('OBJ259_HORSE_SAY_RESPONSE');
     expect(entries).toHaveLength(2);
-    expect(entries[0].requires).toEqual(['x_pond']);
-    expect(entries[0].provides).toEqual(['x_statue']);
+    expect(entries[0].requires).toEqual(['horse_talked']);
+    expect(entries[0].provides).toEqual([]);
     expect(entries[1].requires).toEqual([]);
-    expect(entries[1].provides).toEqual([]);
+    expect(entries[1].provides).toEqual(['horse_talked']);
   });
 
   it('keeps a gated entry and its unconditional fallback distinct (OBJ259_HORSE_SAY_RESPONSE)', () => {

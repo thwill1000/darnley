@@ -44,7 +44,7 @@ revolver
 (revolver/gun)
 "guns in the house response"
 
-+statue missing
++(statue/statues) +(missing/sunken/fourth/gone)
 "missing statue response"
 
 gramophone

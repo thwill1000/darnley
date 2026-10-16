@@ -99,6 +99,7 @@ add_test("test_parse_common_alias_take")
 add_test("test_parse_common_alias_inv")
 add_test("test_parse_common_alias_go")
 add_test("test_parse_common_alias_say")
+add_test("test_parse_common_alias_talk")
 add_test("test_parse_common_alias_q")
 add_test("test_parse_common_direct")
 add_test("test_parse_common_intercepts")
@@ -292,14 +293,26 @@ Sub test_parse_common_alias_go()
   assert_string_equals("go", verb$)
 End Sub
 
-' Aliases for "say": ask, speak, talk, tell, and the double-quote "
+' Aliases for "say": the double-quote "
 Sub test_parse_common_alias_say()
-  Local aliases$ = "ask|say|speak|talk|tell|" + Chr$(34)
+  Local aliases$ = "say|" + Chr$(34)
   Local i% = 1
   Do While Field$(aliases$, i%, "|") <> ""
     con_output$ = ""
     assert_int_equals(0, parse_common(Field$(aliases$, i%, "|")))
     assert_string_equals("say", verb$)
+    Inc i%
+  Loop
+End Sub
+
+' Aliases for "talk": ask, speak and tell
+Sub test_parse_common_alias_talk()
+  Local aliases$ = "ask|speak|talk|tell"
+  Local i% = 1
+  Do While Field$(aliases$, i%, "|") <> ""
+    con_output$ = ""
+    assert_int_equals(0, parse_common(Field$(aliases$, i%, "|")))
+    assert_string_equals("talk", verb$)
     Inc i%
   Loop
 End Sub

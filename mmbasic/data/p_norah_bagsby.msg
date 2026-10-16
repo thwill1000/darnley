@@ -35,7 +35,7 @@ there."
 believe Mr. Mellors keeps shotguns too, down at his cottage. I don't go
 near any of them, honest I don't."
 
-+statue missing
++(statue/statues) +(missing/sunken/fourth/gone)
 "I wasn't aware it was missing."
 
 gramophone

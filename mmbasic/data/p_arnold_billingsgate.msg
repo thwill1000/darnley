@@ -42,7 +42,7 @@ couldn't say when it went, or by whose hand."
 and rifles both. Mr. Mellors keeps a pair of shotguns down at the cottage
 for his work. I'm not aware of any others in the house."
 
-+statue missing
++(statue/statues) +(missing/sunken/fourth/gone)
 "Mr. Mellors told me that a tramp pitched it into the pond two days ago.
 I repeated this to the Colonel at the time and he seemed to accept it, though
 he was not best pleased. Personally I should have thought a tramp would have

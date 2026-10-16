@@ -56,9 +56,15 @@ describe('parseCommand()', () => {
     expect(parseCommand('walk north').verb).toBe('go');
   });
 
-  it('aliases for "say": ask, speak, talk, tell, and the double-quote character', () => {
-    for (const word of ['ask', 'say', 'speak', 'talk', 'tell', '"']) {
+  it('aliases for "say":the double-quote character', () => {
+    for (const word of ['say', '"']) {
       expect(parseCommand(word).verb).toBe('say');
+    }
+  });
+
+  it('aliases for "talk": ask, speak, tell', () => {
+    for (const word of ['ask', 'speak', 'talk', 'tell']) {
+      expect(parseCommand(word).verb).toBe('talk');
     }
   });
 
