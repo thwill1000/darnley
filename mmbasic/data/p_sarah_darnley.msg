@@ -38,7 +38,7 @@ might have taken it."
 sporting guns, mostly for show, I always thought. He never went shooting
 himself, not since his army days."
 
-+statue missing
++(statue/statues) +(missing/sunken/fourth/gone)
 "I believe a rather nasty tramp, who called two days ago threw it
 into the pond."
 

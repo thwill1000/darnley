@@ -4,10 +4,10 @@ import { verbGo, verbExamine } from '../src/engine.js';
 // Mirrors the small fixture used by mmbasic/src/tests/data/advent.dat /
 // mmbasic/src/tests/tst_verb_go.bas / tst_verb_examine.bas.
 const LOCATIONS = [
-  { id: 'LOC001', pattern: 'room one', exits: ['LOC002', 'LOC003'] },
-  { id: 'LOC002', pattern: 'room two', exits: ['LOC001', 'LOC003'] },
-  { id: 'LOC003', pattern: 'room three', exits: ['LOC001', 'LOC002', 'LOC004'] },
-  { id: 'LOC004', pattern: 'room four', exits: ['LOC003'] },
+  { id: 'LOC001', name: 'r1', pattern: 'room one', exits: ['LOC002', 'LOC003'] },
+  { id: 'LOC002', name: 'r2', pattern: 'room two', exits: ['LOC001', 'LOC003'] },
+  { id: 'LOC003', name: 'r3', pattern: 'room three', exits: ['LOC001', 'LOC002', 'LOC004'] },
+  { id: 'LOC004', name: 'r4', pattern: 'room four', exits: ['LOC003'] },
 ];
 
 const ADDITIONAL_EXITS = [
@@ -16,12 +16,12 @@ const ADDITIONAL_EXITS = [
 ];
 
 const OBJECTS = [
-  { id: 'OBJ001', pattern: 'green door', location: 'LOC001' },
-  { id: 'OBJ002', pattern: 'red key', location: 'LOC002' },
-  { id: 'OBJ003', pattern: 'red gem', location: 'LOC001' },
-  { id: 'OBJ004', pattern: 'red curious key', location: 'LOC002' },
-  { id: 'OBJ005', pattern: '+secret panel', location: 'LOC001' },
-  { id: 'OBJ006', pattern: 'old statue -broken', location: 'LOC001' },
+  { id: 'OBJ001', name: 'GREEN DOOR', pattern: 'green door', location: 'LOC001' },
+  { id: 'OBJ002', name: 'RED KEY', pattern: 'red key', location: 'LOC002' },
+  { id: 'OBJ003', name: 'RED GEM', pattern: 'red gem', location: 'LOC001' },
+  { id: 'OBJ004', name: 'RED CURIOUS KEY', pattern: 'red curious key', location: 'LOC002' },
+  { id: 'OBJ005', name: 'SECRET PANEL', pattern: '+secret panel', location: 'LOC001' },
+  { id: 'OBJ006', name: 'OLD STATUE', pattern: 'old statue -broken', location: 'LOC001' },
 ];
 
 const MESSAGES = new Map([
@@ -32,6 +32,9 @@ const MESSAGES = new Map([
   ['OBJ005', [{ requires: [], provides: [], body: ['Description of secret panel'] }]],
   ['OBJ006', [{ requires: [], provides: [], body: ['Description of statue'] }]],
 ]);
+
+const EXAMINE_FAIL_MSG = "In this location you can examine: [[green:GREEN DOOR]], "
+  + "[[green:RED GEM]], [[green:SECRET PANEL]] or [[green:OLD STATUE]].";
 
 const locationById = (id) => LOCATIONS.find((loc) => loc.id === id);
 
@@ -54,9 +57,12 @@ describe('verbGo()', () => {
     expect(result.room).toBe('LOC001');
   });
 
-  it('prints a fixed failure message when no exit matches', () => {
+  it('prints available exits when no exit matches', () => {
     const result = verbGo(locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, ['go', 'nonexistent'], []);
-    expect(result.message).toBe("You can't go there.");
+    expect(result.success).toBe(false);
+    expect(result.html).toBe(
+      "From this location you can go to: <span class=\"colour-green link\">r2</span> " +
+      "or <span class=\"colour-green link\">r3</span>.");
   });
 
   it('breaks ties in favour of the first exit ("room" -> LOC002)', () => {
@@ -98,13 +104,13 @@ describe('verbExamine()', () => {
     // "key" matches OBJ002/OBJ004, both in LOC002, not the current room (LOC001)
     const result = verbExamine(OBJECTS, MESSAGES, ['examine', 'key'], [], locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, new Set());
     expect(result.success).toBe(false);
-    expect(result.message).toBe('That is not here, cannot be examined or is unremarkable.');
+    expect(result.entry.body[0]).toBe(EXAMINE_FAIL_MSG);
   });
 
   it('fails generically when nothing matches and no exit matches either', () => {
     const result = verbExamine(OBJECTS, MESSAGES, ['examine', 'nonexistent'], [], locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, new Set());
     expect(result.success).toBe(false);
-    expect(result.message).toBe('That is not here, cannot be examined or is unremarkable.');
+    expect(result.entry.body[0]).toBe(EXAMINE_FAIL_MSG);
   });
 
   it('suggests GO when no object matches but the words match an exit instead', () => {
@@ -117,7 +123,7 @@ describe('verbExamine()', () => {
   it('does not suggest GO when an object match exists elsewhere', () => {
     // "key" matches an object (elsewhere) but not any exit name
     const result = verbExamine(OBJECTS, MESSAGES, ['examine', 'key'], [], locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, new Set());
-    expect(result.message).toBe('That is not here, cannot be examined or is unremarkable.');
+    expect(result.entry.body[0]).toBe(EXAMINE_FAIL_MSG);
   });
 
   it('fails to match a mandatory "+" word missing from the command (OBJ005 needs "secret")', () => {

@@ -325,16 +325,32 @@ export function findResponse(entries, subjectWords, synonymEntries, flags) {
  * @param {{from: string, pattern: string, to: string}[]} additionalExits
  * @param {string[]} words
  * @param {{canonical: string, aliases: string[]}[]} synonymEntries
- * @returns {{success: boolean, room: string, message?: string}}
+ * @returns {{success: boolean, room: string, html?: string}}
  *          On success, room is the id of the new location. On failure,
- *          room is unchanged (currentLocation.id) and message explains why.
+ *          room is unchanged (currentLocation.id) and html explains why.
  */
 export function verbGo(currentLocation, locations, additionalExits, words, synonymEntries) {
   const exitId = findExitMatch(currentLocation, locations, additionalExits, words, synonymEntries);
   if (exitId !== null) {
     return { success: true, room: exitId };
   }
-  return { success: false, room: currentLocation.id, message: "You can't go there." };
+
+  // Unknown exit, so list the exits from this location.
+  let msg = "From this location you can go to: ";
+  const num_exits = currentLocation.exits.length;
+  for (let i = 0; i < num_exits; i++) {
+    const to_id = currentLocation.exits[i];
+    const loc = locations.find((loc) => loc.id === to_id);
+    const loc_name = loc ? loc.name : to_id;
+    if (i > 0) {
+      if (i === num_exits - 1) msg += " or ";
+      else msg += ", ";
+    }
+    msg += `[[green:${loc_name}]]`;
+    if (i === num_exits - 1) msg += ".";
+  }
+
+  return { success: false, room: currentLocation.id, html: markupToHtml(msg, { links: true }) };
 }
 
 /**
@@ -361,6 +377,7 @@ export function verbGo(currentLocation, locations, additionalExits, words, synon
  *          |{success: false, message: string}}
  */
 export function verbExamine(objects, messages, words, synonymEntries, currentLocation, locations, additionalExits, flags) {
+  // EXAMINE on its own redescribes the current location
   const noun = words[1];
   if (!noun) {
     return { redescribe: true, unmarkVisited: true };
@@ -374,13 +391,29 @@ export function verbExamine(objects, messages, words, synonymEntries, currentLoc
     }
   }
 
+  // If we match an exit rather than an object then suggest the GO command.
   const exitId = findExitMatch(currentLocation, locations, additionalExits, words, synonymEntries);
   if (exitId !== null) {
     const target = words.slice(1).join(' ').toUpperCase();
     return { success: false, message: `Try \`GO ${target}\`.` };
   }
 
-  return { success: false, message: 'That is not here, cannot be examined or is unremarkable.' };
+  // Unknown object, so list the objects in this location.
+  let obj_in_loc = objects
+    .filter(obj => obj.location === currentLocation.id)
+    .filter(obj => findMessageEntry(messages, obj.id, flags) !== null);
+  let msg = "In this location you can examine: "
+  for (let i = 0; i < obj_in_loc.length; i++) {
+    if (i > 0) {
+      msg += (i === obj_in_loc.length - 1) ? " or " : ", ";
+    }
+    msg += "[[green:" + obj_in_loc[i].name + "]]";
+  }
+  if (obj_in_loc.length === 0) {
+    msg += "nothing";
+  }
+  msg += ".";
+  return { success: false, entry: { body: [msg] } };
 }
 
 /**

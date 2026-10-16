@@ -41,7 +41,7 @@ there."
 keeps his shotguns down at the cottage for the vermin. Nothing in my
 kitchen, I can promise you that."
 
-+statue missing
++(statue/statues) +(missing/sunken/fourth/gone)
 "Mr. B. told me a tramp threw it into the pond. There was a smelly
 old villain came by a couple of days ago."
 

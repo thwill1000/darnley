@@ -143,7 +143,7 @@ export const VERB_HANDLERS = {
       state.room = result.room;
       return { redescribe: true };
     }
-    return { errorMessage: result.message };
+    return { html: result.html };
   },
 
   examine(gameData, state, words) {
@@ -164,6 +164,9 @@ export const VERB_HANDLERS = {
     }
     if (result.success) {
       for (const token of result.entry.provides) state.flags.add(token);
+      return { html: printBody(result.entry.body, linkOptions(gameData, state)) };
+    }
+    if (result.entry.body) {
       return { html: printBody(result.entry.body, linkOptions(gameData, state)) };
     }
     return { errorMessage: result.message };
@@ -224,6 +227,10 @@ export const VERB_HANDLERS = {
     );
     if (result.success) return { html: speechBody(result.entry.body) };
     return { errorMessage: result.message };
+  },
+
+  talk(gameData, state) {
+    return { html: messageHtml(gameData.messages, 'TALK_TEXT', state) };
   },
 };
 

@@ -123,7 +123,8 @@ Sub test_go_gvn_no_match_message()
 
   Local ret% = verb_go()
 
-  assert_string_equals("[[red:You can't go there.]]" + sys.CRLF$, con_output$)
+  const expected$ = "From this location you can go to: [[green:Room Two]] or [[green:Room Three]]." + sys.CRLF$
+  assert_string_equals(expected$, con_output$)
 End Sub
 
 ' "room" matches both "Room Two" and "Room Three" equally;

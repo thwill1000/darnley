@@ -41,7 +41,7 @@ business what a man keeps in his own study."
 rifles, the usual thing for a man of his sort. I keep my own guns at home,
 nothing here belongs to me."
 
-+statue missing
++(statue/statues) +(missing/sunken/fourth/gone)
 "No idea whatsoever. Something about a tramp, so I'm told - servants'
 gossip, not really my concern."
 

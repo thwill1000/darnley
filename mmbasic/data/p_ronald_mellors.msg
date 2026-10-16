@@ -34,7 +34,7 @@ down here."
 I believe there's revolvers and rifles up at the house too, in the Colonel's
 study, but that's nothing to do with me."
 
-+statue missing
++(statue/statues) +(missing/sunken/fourth/gone)
 "Mrs. G. at the big house turned away a tramp. That'd be two days
 ago. I caught him lurking about and found the statue in the pond."
 

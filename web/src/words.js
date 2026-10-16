@@ -159,9 +159,10 @@ const VERB_ALIASES = {
   enter: 'go', g: 'go', walk: 'go',
   grab: 'take', get: 'take', pick: 'take',
   how: 'help',
-  intro: 'recap', introduction: 'recap', plot: 'recap', what: 'recap', who: 'recap',
+  characters: 'recap', intro: 'recap', introduction: 'recap', plot: 'recap', what: 'recap', who: 'recap',
   i: 'inventory', inv: 'inventory',
-  ask: 'say', speak: 'say', talk: 'say', tell: 'say', '"': 'say',
+  ask: 'talk', speak: 'talk', tell: 'talk',
+  '"': 'say',
 };
 
 /**
