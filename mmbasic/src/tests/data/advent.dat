@@ -3,6 +3,7 @@ LOC001|Room One|room one|2|LOC002|LOC003
 LOC002|Room Two|room two|2|LOC001|LOC003
 LOC003|Room Three|room three|3|LOC001|LOC002|LOC004
 LOC004|Room Four|room four|1|LOC003
+LOC005|Empty room|room five|0
 
 !additional_exits
 LOC001|house|LOC003
@@ -17,7 +18,7 @@ OBJ005|Secret Panel|+secret panel|LOC001|0|100
 OBJ006|Old Statue|old statue -broken|LOC001|0|100
 P_TEST_SUSPECT|Test Suspect|test suspect|LOC001|2|100
 P_OTHER_SUSPECT|Other Suspect|other suspect|LOC002|2|100
-P_NO_WILDCARD|No Wildcard|no wildcard|LOC001|2|100
+P_NO_WILDCARD|No Wildcard|no wildcard|LOC003|2|100
 P_TEMPLATE_SUSPECT|Template Suspect|template suspect|LOC004|2|100
 
 !synonyms

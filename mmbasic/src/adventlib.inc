@@ -306,11 +306,16 @@ Function verb_say()
   ' If no target then direct conversation to first person in the current location.
   If obj_idx% = 0 Then
     obj_idx% = find_person_in_room%(r)
-    If Not obj_idx% Then
-      con.print_fail("There is no-one here to speak to.")
-      Exit Function
-    EndIf
-    target_idx% = 1
+    Select Case obj_idx%
+      Case > 0
+        target_idx% = 1
+      Case -2
+        print_message_or_fail("MULTIPLE_SAY_TARGETS")
+        Exit Function
+      Case Else
+        con.println("There is no-one here to speak to.")
+        Exit Function
+    End Select
   EndIf
 
   ' Identify the .msg file containing the target's dialogue.
@@ -358,7 +363,7 @@ Function resolve_say_target%(first%, last%)
     Local msg$ = sanitize_name$(obj_name$(resolve_say_target%))
     If Not obj_is_person%(resolve_say_target%) Then msg$ = "The " + LCase$(msg$)
     Cat msg$, Choice(Right$(msg$, 1) = "s", " are", " is") + " not here."
-    con.print_fail(msg$)
+    con.println(msg$)
     resolve_say_target% = -1
     Exit Function
   EndIf
@@ -367,22 +372,28 @@ Function resolve_say_target%(first%, last%)
   If Not obj_is_person%(resolve_say_target%) Then
     Local msg$ = "The " + LCase$(sanitize_name$(obj_name$(resolve_say_target%)))
     Cat msg$, Choice(Right$(msg$, 1) = "s", " do", " does") + " not answer."
-    con.print_fail(msg$)
+    con.println(msg$)
     resolve_say_target% = -1
     Exit Function
   EndIf
 End Function
 
-' Finds the first person-type object located in loc%, or 0 if none.
+' Finds the "person" object in a location.
 '
 ' @param  loc%  Index into rooms$() of the location to search.
-' @return       Index into objects$() of the first matching person, or 0.
+' @return       Index into objects$() of the first matching person,
+'               -1 if no-one is in the location,
+'               -2 if multiple persons are in the location.
 Function find_person_in_room%(loc%)
+  find_person_in_room% = -1
   Local i%
   For i% = Bound(objects$(), 0) To Bound(objects$(), 1)
     If obj_is_person%(i%) And obj_loc%(i%) = loc% Then
+      If find_person_in_room% <> - 1 Then
+        find_person_in_room% = -2
+        Exit For
+      EndIf
       find_person_in_room% = i%
-      Exit For
     EndIf
   Next
 End Function
@@ -478,7 +489,7 @@ End Function
 ' decodes it, so no decode is needed in this function.
 Sub print_response(filename$, line%)
   If line% = -1 Then
-    con.print_fail("I don't know what you are talking about.")
+    con.println("[[speech:" + str.quote$("I don't know what you are talking about.") + "]]")
     Exit Sub
   EndIf
 

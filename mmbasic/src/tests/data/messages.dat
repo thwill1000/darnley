@@ -10,6 +10,9 @@ Description of room 3
 LOC004
 Description of room 4
 
+LOC005
+Description of room 5
+
 OBJ001
 Description of object 1
 
@@ -70,3 +73,6 @@ PROVIDES_MSG
 # comment before commented_entry
 commented_entry
 "response after comment"
+
+MULTIPLE_SAY_TARGETS
+There are multiple suspects here.

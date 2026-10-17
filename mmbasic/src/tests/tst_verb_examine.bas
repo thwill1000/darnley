@@ -126,7 +126,7 @@ End Sub
 
 ' No objects are present and no exit matches
 Sub test_ex_gvn_no_objects()
-  r = 3 ' LOC003, no objects
+  r = 5 ' LOC005, no objects
   Local result% = parse_common("examine banana")
   assert_int_equals(0, result%)
 

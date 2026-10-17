@@ -223,15 +223,28 @@ function sanitizeName(name) {
 }
 
 /**
- * Finds the first person-type object located in locationId, or null.
- * Mirrors find_person_in_room%() in mmbasic/src/adventlib.inc.
+ * Finds the index of the "person" object in a location.
  *
  * @param {{isPerson: boolean, location: string}[]} objects
  * @param {string} locationId
- * @returns {object|null}
+ * @returns {number} index into objects[] of the first matching person,
+ *                   -1 if no-one is in the location,
+ *                   -2 if multiple persons are in the location.
  */
 function findPersonInRoom(objects, locationId) {
-  return objects.find((obj) => obj.isPerson && obj.location === locationId) ?? null;
+  let result = -1
+  for (let i = 0; i < objects.length; i++) {
+    const obj = objects[i];
+    if (obj.isPerson && obj.location === locationId) {
+      if (result === -1) {
+        result = i;
+      } else {
+        result = -2;  // multiple persons in the room
+        break;
+      }
+    }
+  }
+  return result;
 }
 
 /**
@@ -448,18 +461,18 @@ export function verbExamine(objects, messages, words, synonymEntries, currentLoc
  * @param {string} currentLocationId
  * @param {Set<string>} flags
  * @param {boolean} [cheat]
- * @returns {{success: true, object: object, entry: object}
- *          |{success: false, message: string}}
+ * @returns {{success: true|false, object: object, entry: object}
  */
 export function verbSay(objects, msgFiles, messages, words, synonymEntries, currentLocationId, flags, cheat = false) {
-  const commaIndex = words.indexOf(',');
   let targetObj = null;
   let subjectStart = 0;
 
+  // Extract target of the conversation.
+  const commaIndex = words.indexOf(',');
   if (commaIndex !== -1) {
     const result = resolveSayTarget(objects, words, synonymEntries, 1, commaIndex - 1, currentLocationId, cheat);
     if (result.failMessage) {
-      return { success: false, message: result.failMessage };
+      return { success: false, entry: { body: [result.failMessage] } };
     }
     if (result.object) {
       targetObj = result.object;
@@ -467,11 +480,18 @@ export function verbSay(objects, msgFiles, messages, words, synonymEntries, curr
     }
   }
 
+  // If no target then direct conversation to first person in the current location.
   if (!targetObj) {
-    targetObj = findPersonInRoom(objects, currentLocationId);
-    if (!targetObj) {
-      return { success: false, message: 'There is no-one here to speak to.' };
+    const objIdx = findPersonInRoom(objects, currentLocationId);
+    if (objIdx == -1) {
+      return { success: false, entry: { body: ['There is no-one here to speak to.'] } };
+    } else if (objIdx == -2) {
+      return {
+        success: false,
+        entry: findMessageEntry(messages, 'MULTIPLE_SAY_TARGETS'),
+      };
     }
+    targetObj = objects[objIdx];
     subjectStart = 0;
   }
 
@@ -488,7 +508,7 @@ export function verbSay(objects, msgFiles, messages, words, synonymEntries, curr
     : findMessageEntry(messages, `${targetObj.id}_SAY_RESPONSE`, flags);
 
   if (!response) {
-    return { success: false, message: "I don't know what you are talking about." };
+    return { success: false, entry: { body: [`"I don't know what you are talking about."`] } };
   }
 
   for (const token of response.provides) flags.add(token);

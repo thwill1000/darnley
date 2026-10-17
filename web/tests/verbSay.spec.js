@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll } from 'vitest';
+import { describe, it, expect, beforeAll, beforeEach } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
@@ -9,15 +9,19 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Mirrors mmbasic/src/tests/data/advent_no_additional_exits.dat's !objects
 // section: OBJ001 (a non-person object) plus P_TEST_SUSPECT, P_OTHER_SUSPECT
-// and P_NO_WILDCARD, spread across LOC001/LOC002, with LOC003 left empty.
+// and P_NO_WILDCARD, spread across LOC001..LOC003, with LOC004 left empty.
 const OBJECTS = [
   { id: 'OBJ001', name: 'Green Door', pattern: 'green door', location: 'LOC001', isPerson: false },
   { id: 'P_TEST_SUSPECT', name: 'Test Suspect', pattern: 'test suspect', location: 'LOC001', isPerson: true },
   { id: 'P_OTHER_SUSPECT', name: 'Other Suspect', pattern: 'other suspect', location: 'LOC002', isPerson: true },
-  { id: 'P_NO_WILDCARD', name: 'No Wildcard', pattern: 'no wildcard', location: 'LOC001', isPerson: true },
+  { id: 'P_NO_WILDCARD', name: 'No Wildcard', pattern: 'no wildcard', location: 'LOC003', isPerson: true },
 ];
 
 const NO_WILDCARD_MSG_TEXT = 'gramophone\n"only entry, no wildcard fallback"\n';
+
+const MESSAGES = new Map([
+  ['MULTIPLE_SAY_TARGETS', [{ requires: [], provides: [], body: ['There are multiple suspects here.'] }]],
+]);
 
 let msgFiles;
 
@@ -29,6 +33,10 @@ beforeAll(() => {
   ]);
 });
 
+beforeEach(() => {
+  OBJECTS[2].location = 'LOC002'; // One of the tests changes this from its default.
+});
+
 // verb_say()/say() is always invoked against the split words array,
 // including the verb at index 0 and "," as its own token where present -
 // mirrors splitWords()'s comma handling with no padding removal.
@@ -38,7 +46,7 @@ function say(input, currentLocationId, flags, cheat) {
     .split(/(\s*,\s*)/)
     .flatMap((part) => (part.trim() === ',' ? [','] : part.trim().split(/\s+/)))
     .filter((w) => w !== '');
-  return verbSay(OBJECTS, msgFiles, new Map(), words, [], currentLocationId, flags, cheat);
+  return verbSay(OBJECTS, msgFiles, MESSAGES, words, [], currentLocationId, flags, cheat);
 }
 
 describe('verbSay()', () => {
@@ -55,16 +63,17 @@ describe('verbSay()', () => {
   });
 
   it('with no comma and no-one in the room, fails gracefully', () => {
-    const result = say('say gramophone', 'LOC003', new Set());
+    const result = say('say gramophone', 'LOC004', new Set());
     expect(result.success).toBe(false);
-    expect(result.message).toBe('There is no-one here to speak to.');
+    expect(result.entry.body).toEqual(['There is no-one here to speak to.']);
   });
 
-  it('with multiple people in the room, addresses the first one listed (P_TEST_SUSPECT, not P_OTHER_SUSPECT)', () => {
-    // Both P_TEST_SUSPECT and P_NO_WILDCARD are in LOC001; the fixture
-    // lists P_TEST_SUSPECT first, so it should win the default target.
+  it('with multiple people in the room, fails gracefully', () => {
+    OBJECTS[2].location = 'LOC001'
+    // Both P_TEST_SUSPECT and P_OTHER_SUSPECT are nowin LOC001.
     const result = say('say gramophone', 'LOC001', new Set());
-    expect(result.object.id).toBe('P_TEST_SUSPECT');
+    expect(result.success).toBe(false);
+    expect(result.entry.body).toEqual(['There are multiple suspects here.']);
   });
 
   it('a single-word command with no comma still treats that word as the subject', () => {
@@ -82,19 +91,19 @@ describe('verbSay()', () => {
   it('fails when the direct object exists but is not present in the room', () => {
     const result = say('say other suspect, gramophone', 'LOC001', new Set());
     expect(result.success).toBe(false);
-    expect(result.message).toBe('Other Suspect is not here.');
+    expect(result.entry.body).toEqual(['Other Suspect is not here.']);
   });
 
   it('fails when the direct object exists and is present, but is not a person', () => {
     const result = say('say green door, gramophone', 'LOC001', new Set());
     expect(result.success).toBe(false);
-    expect(result.message).toBe('The green door does not answer.');
+    expect(result.entry.body).toEqual(['The green door does not answer.']);
   });
 
   it('falls back to a generic failure when the subject has no keyword match and the file has no wildcard', () => {
-    const result = say('say no wildcard, something else entirely', 'LOC001', new Set());
+    const result = say('say no wildcard, something else entirely', 'LOC003', new Set());
     expect(result.success).toBe(false);
-    expect(result.message).toBe("I don't know what you are talking about.");
+    expect(result.entry.body).toEqual([`"I don't know what you are talking about."`]);
   });
 
   it('falls back to the wildcard entry when the subject has no keyword match', () => {

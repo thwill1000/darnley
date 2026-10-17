@@ -40,17 +40,13 @@ Sub con.println(s$)
   Cat con_output$, s$ + sys.CRLF$
 End Sub
 
-Sub con.print_fail(s$)
-  con.println("[[red:" + s$ + "]]")
-End Sub
-
 advdata.set_root(Mm.Info(Path))
 advdata.init()
 
 add_test("verb_say() with no target says to first person in room about all words", "test_say_gvn_no_comma")
 add_test("verb_say() with no target and matching keyword gets a real answer", "test_say_gvn_no_comma_matches")
 add_test("verb_say() with no target and no-one in room fails gracefully", "test_say_gvn_no_comma_no_person")
-add_test("verb_say() with no target picks first person, not second", "test_say_no_comma_first_person")
+add_test("verb_say() with no target and multiple people in room fails gracefully", "test_say_no_comma_mult_person")
 add_test("verb_say() with no target and single word topic", "test_say_no_comma_one_word")
 add_test("verb_say() when target not found", "test_say_gvn_no_target")
 add_test("verb_say() when target not in room", "test_say_gvn_not_here")
@@ -78,7 +74,10 @@ End
 Sub setup_test()
   con_output$ = ""
   state.reset()
-  r = 1 ' LOC001, where P_TEST_SUSPECT and P_NO_WILDCARD live
+  r = 1 ' LOC001, contains P_TEST_SUSPECT.
+
+  ' Restore default definition - it is modified by one of the tests.
+  objects$(8) = "P_OTHER_SUSPECT|Other Suspect|other suspect|LOC002|2|100"
 End Sub
 
 ' No comma in the input - all words after the verb become the subject,
@@ -113,29 +112,27 @@ End Sub
 ' No comma in the input and no person present in the current room -
 ' fails gracefully rather than resolving to object index 0.
 Sub test_say_gvn_no_comma_no_person()
-  r = 3 ' LOC003, contains no objects or people at all
+  r = 5 ' LOC005, contains no objects or people at all.
   Local result% = parse_common("say gramophone")
   assert_int_equals(0, result%)
 
   result% = verb_say()
 
   assert_int_equals(1, result%)
-  Const expected$ = "[[red:There is no-one here to speak to.]]" + sys.CRLF$
+  Const expected$ = "There is no-one here to speak to." + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub
 
-' When multiple people occupy the current room, the fallback targets the
-' first one listed in the object data (P_TEST_SUSPECT), not P_OTHER_SUSPECT.
-Sub test_say_no_comma_first_person()
+' When multiple people occupy the current room, report a failure.
+Sub test_say_no_comma_mult_person()
+  objects$(8) = "P_OTHER_SUSPECT|Other Suspect|other suspect|LOC001|2|100"
   Local result% = parse_common("say gramophone")
   assert_int_equals(0, result%)
 
   result% = verb_say()
 
   assert_int_equals(1, result%)
-  ' "line B" only appears in test_suspect.msg (P_TEST_SUSPECT's file),
-  ' confirming P_TEST_SUSPECT - not P_OTHER_SUSPECT - was spoken to.
-  Const expected$ = "[[speech:" + str.quote$("line B - unconditional, grants clue") + "]]" + sys.CRLF$
+  Const expected$ = "There are multiple suspects here." + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub
 
@@ -172,7 +169,7 @@ Sub test_say_gvn_not_here()
   result% = verb_say()
 
   assert_int_equals(1, result%)
-  Const expected$ = "[[red:Other Suspect is not here.]]" + sys.CRLF$
+  Const expected$ = "Other Suspect is not here." + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub
 
@@ -184,20 +181,21 @@ Sub test_say_gvn_not_person()
   result% = verb_say()
 
   assert_int_equals(1, result%)
-  Const expected$ = "[[red:The green door does not answer.]]" + sys.CRLF$
+  Const expected$ = "The green door does not answer." + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub
 
 ' Subject has no keyword match and the target's .msg file has no "*"
 ' wildcard fallback entry.
 Sub test_say_gvn_no_wildcard()
+  r = 3 ' LOC003, contains P_NO_WILDCARD.
   Local result% = parse_common("say no wildcard, something else entirely")
   assert_int_equals(0, result%)
 
   result% = verb_say()
 
   assert_int_equals(1, result%)
-  Const expected$ = "[[red:I don't know what you are talking about.]]" + sys.CRLF$
+  Const expected$ = "[[speech:" + str.quote$("I don't know what you are talking about.") + "]]" + sys.CRLF$
   assert_string_equals(expected$, con_output$)
 End Sub
 

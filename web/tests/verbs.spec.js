@@ -66,7 +66,7 @@ describe('VERB_HANDLERS.cheat', () => {
     const state = createState(1);
     state.room = 'LOC001';
 
-    expect(say(sayData, state, ['say', 'xavier', ',', 'hello']).errorMessage).toBe('X is not here.');
+    expect(say(sayData, state, ['say', 'xavier', ',', 'hello']).html).toBe('X is not here.');
 
     state.cheat = true;
     expect(say(sayData, state, ['say', 'xavier', ',', 'hello']).html).toBe('<span class="colour-speech">"hi"</span>');
