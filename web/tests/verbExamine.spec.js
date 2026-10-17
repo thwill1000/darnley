@@ -59,10 +59,16 @@ describe('verbExamine()', () => {
     expect(result.entry.body[0]).toBe(EXAMINE_FAIL_MSG);
   });
 
-  it('fails generically when nothing matches and no exit matches either', () => {
+  it('fails with list of objects when nothing matches and no exit matches either', () => {
     const result = verbExamine(OBJECTS, MESSAGES, ['examine', 'nonexistent'], [], locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, new Set());
     expect(result.success).toBe(false);
     expect(result.entry.body[0]).toBe(EXAMINE_FAIL_MSG);
+  });
+
+  it('fails when no objects present and no exit matches either', () => {
+    const result = verbExamine(OBJECTS, MESSAGES, ['examine', 'football'], [], locationById('LOC004'), LOCATIONS, ADDITIONAL_EXITS, new Set());
+    expect(result.success).toBe(false);
+    expect(result.entry.body[0]).toBe('In this location you can examine: nothing.');
   });
 
   it('suggests GO when no object matches but the words match an exit instead', () => {

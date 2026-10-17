@@ -34,7 +34,8 @@ beforeAll(() => {
 });
 
 beforeEach(() => {
-  OBJECTS[2].location = 'LOC002'; // One of the tests changes this from its default.
+  // Restore default definition - it is modified by one of the tests.
+  OBJECTS[2].location = 'LOC002';
 });
 
 // verb_say()/say() is always invoked against the split words array,
