@@ -247,7 +247,10 @@ the young gentleman well enough to say more than that."
 home than the grounds - that fine young gentleman's a sight too
 pleased with himself for my liking."
 
-+study (locked/sealed) door window how
++(stone/rock)
+"Don't know about any stone. I was at my cottage all night."
+
++study (locked/sealed) door
 "Nothing to do with me. I don't go near the house of an evening
 unless I'm sent for. Whatever went on with locked doors, you'll not
 get an answer from me."

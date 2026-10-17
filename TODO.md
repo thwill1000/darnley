@@ -5,7 +5,6 @@
 - Dialogue for "Who am I?", "What's my name?"
 - !provides => !set_flag, and add !move_obj
 - Auto path-find to location
-- Add "Stone" object to the study
 - Add option to show location illustration on each entry
 - "Fix" intrusive [MORE] prompts
 - Implement (obfuscated) walkthrough

@@ -307,7 +307,11 @@ yesterday afternoon. I still can't quite believe my luck."
 Slingsby - man had the look of someone with troubles on his mind
 last night. But don't quote me, old boy."
 
-+study (locked/sealed) door window how
++(stone/rock)
+"That's the one I used, old boy - picked it up from the terrace. Not that big,
+but it did the job. Can't think it matters where it ended up."
+
++study (locked/sealed) door
 "Damned peculiar business. Billingsgate and I found both doors
 locked from the inside with the Colonel's own keys still in them.
 I broke the window pane myself to get us in - can't see how anyone

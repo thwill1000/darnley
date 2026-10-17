@@ -312,7 +312,12 @@ understand it. Miss Millicent seemed very happy about it indeed."
 only that a house such as this holds more secrets than its servants
 are ever told, above stairs or below."
 
-+study (locked/sealed) door window how
++(stone/rock)
+"Mr. Coniston threw it through the pane, sir, and I put my hand through the hole
+afterwards to try the catch. Beyond that I couldn't tell you anything - I never
+saw where it came from, nor where it landed."
+
++study (locked/sealed) door
 "I have turned it over in my mind and I confess I cannot account
 for it, sir. I keep my own keys on me, as I told you, and the
 Colonel's was on his person. I do not see how anyone could have got

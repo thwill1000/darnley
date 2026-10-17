@@ -227,7 +227,10 @@ events yesterday murder last happened
 +who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
 "who did it response"
 
-+study (locked/sealed) door window how
++(stone/rock)
+"stone response"
+
++study (locked/sealed) door
 "locked study response"
 
 +(window/glass/pane) +(french/broken/smashed/shattered)

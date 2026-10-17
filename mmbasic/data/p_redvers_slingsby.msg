@@ -307,7 +307,11 @@ match."
 great deal more than they let on - I shouldn't rule out that butler
 of his, watchful sort of fellow. But that's guesswork, mind."
 
-+study (locked/sealed) door window how
++(stone/rock)
+"Heard the young pup used a stone on the window. Sensible enough.
+Not my concern where it ended up."
+
++study (locked/sealed) door
 "I left by the hall door at 10:30 and heard it slam behind me -
 I certainly didn't lock it. If it was locked afterwards, someone
 did that after I'd gone, and I couldn't tell you who or how."

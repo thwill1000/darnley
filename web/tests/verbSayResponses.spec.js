@@ -618,6 +618,15 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     assertResponse('tell me about the broken window', 'That was me, old boy', true);
   });
 
+  it('Who threw the stone through the study window?', () => {
+    all('stone response', [
+      'stone',
+      'rock',
+      'Who threw the stone through the study window?',
+      'What can you tell me about this stone I found in the study?',
+    ]);
+  });
+
   it('What clues have you found?', () => {
     all('evidence response', [
       'what clues have you found', 'what have you found so far', 'any clues yet', "what's the evidence",

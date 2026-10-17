@@ -110,8 +110,8 @@ describe('parseAdditionalExits()', () => {
 });
 
 describe('parseObjects()', () => {
-  it('parses exactly 68 objects (including the 11 people)', () => {
-    expect(parseObjects(adventText)).toHaveLength(68);
+  it('parses exactly 69 objects (including the 11 people)', () => {
+    expect(parseObjects(adventText)).toHaveLength(69);
   });
 
   it('parses the first object, a person', () => {
@@ -197,8 +197,8 @@ describe('parseQuestions()', () => {
 });
 
 describe('parseClues()', () => {
-  it('parses exactly 9 clues', () => {
-    expect(parseClues(adventText)).toHaveLength(9);
+  it('parses exactly 10 clues', () => {
+    expect(parseClues(adventText)).toHaveLength(10);
   });
 
   it('parses the clue tokens in file order', () => {
@@ -212,17 +212,18 @@ describe('parseClues()', () => {
       'x_letter',
       'x_newspaper',
       'x_gunrack',
+      'x_stone',
     ]);
   });
 });
 
 describe('parseMessages()', () => {
-  it('parses 127 unique tags, ~128 entries total (a few tags have more than one entry)', () => {
+  it('parses 129 unique tags, ~129 entries total (a few tags have more than one entry)', () => {
     const messages = parseMessages(messagesText);
-    expect(messages.size).toBe(127);
+    expect(messages.size).toBe(128);
     let totalEntries = 0;
     for (const entries of messages.values()) totalEntries += entries.length;
-    expect(totalEntries).toBe(128);
+    expect(totalEntries).toBe(129);
   });
 
   it('parses INTRO as a single entry with no directives', () => {

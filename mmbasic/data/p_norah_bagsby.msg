@@ -264,7 +264,11 @@ should think."
 Millicent seemed ever so calm about it all, calmer than I'd have
 been. I don't mean nothing by that, mind."
 
-+study (locked/sealed) door window how
++(stone/rock)
+"I heard Mr. Coniston threw a stone through the window, sir. I
+didn't see it - I was asleep till all the commotion started."
+
++study (locked/sealed) door
 "It frightens me something dreadful, sir, thinking about it. A
 locked room and nobody able to get in or out - it doesn't seem
 natural."
