@@ -217,12 +217,12 @@ describe('parseClues()', () => {
 });
 
 describe('parseMessages()', () => {
-  it('parses 126 unique tags, ~127 entries total (a few tags have more than one entry)', () => {
+  it('parses 127 unique tags, ~128 entries total (a few tags have more than one entry)', () => {
     const messages = parseMessages(messagesText);
-    expect(messages.size).toBe(126);
+    expect(messages.size).toBe(127);
     let totalEntries = 0;
     for (const entries of messages.values()) totalEntries += entries.length;
-    expect(totalEntries).toBe(127);
+    expect(totalEntries).toBe(128);
   });
 
   it('parses INTRO as a single entry with no directives', () => {

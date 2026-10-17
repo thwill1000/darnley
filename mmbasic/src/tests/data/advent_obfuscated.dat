@@ -1,8 +1,9 @@
 !locations
-$cORF334 Urrp#Rqh urrp#rqh 5 ORF335 ORF336
-$kWZN;;=(]zzx+_#z(}zzx+ #z(=(WZN;;<(WZN;;>
-$yeh\IIL6k))'9m",~~6,))'9.",~~6L6eh\IIJ6eh\IIK6eh\IIM
-$aMPD115}Sppn!Gpvs}sppn!gpvs}2}MPD114
+$aMPD112}Sppn!Pof}sppn!pof}3}MPD113}MPD114
+$hTWK88:%Zwwu(\ w%zwwu(| w%:%TWK889%TWK88;
+$iUXL99<&[xxv)]q{nn&{xxv)}q{nn&<&UXL99:&UXL99;&UXL99=
+$eQTH559"Wttr%Ktzw"wttr%ktzw"6"QTH558
+$p\_S@@E-U}!%*0#  }-#  }0vy'u-@
 
 !additional_exits
 house|LOC001|LOC003
@@ -17,7 +18,7 @@ OBJ005|Secret Panel|+secret panel|LOC001|0|100
 OBJ006|Old Statue|old statue -broken|LOC001|0|100
 P_TEST_SUSPECT|Test Suspect|test suspect|LOC001|2|100
 P_OTHER_SUSPECT|Other Suspect|other suspect|LOC002|2|100
-P_NO_WILDCARD|No Wildcard|no wildcard|LOC001|2|100
+P_NO_WILDCARD|No Wildcard|no wildcard|LOC003|2|100
 P_TEMPLATE_SUSPECT|Template Suspect|template suspect|LOC004|2|100
 
 !synonyms

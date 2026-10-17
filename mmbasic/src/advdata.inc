@@ -40,10 +40,10 @@ Sub read_rooms(f$)
   For i% = Bound(rooms$(), 0) To num_rooms%
     loc_tag$ = Field$(rooms$(i%), 1, "|")
 
-    ' Check location has exits
+    ' Check location has >= 0 exits
     num_exits% = Val(Field$(rooms$(i%), 4, "|"))
-    If num_exits% = 0 Then
-      con.println("Location " + loc_tag$ + " has 0 exits")
+    If num_exits% < 0 Then
+      con.println("Location " + loc_tag$ + " has " + Str$(num_exits%) + " exits")
       Inc error_count%
     EndIf
 

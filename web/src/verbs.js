@@ -225,8 +225,7 @@ export const VERB_HANDLERS = {
       state.flags,
       state.cheat,
     );
-    if (result.success) return { html: speechBody(result.entry.body) };
-    return { errorMessage: result.message };
+    return { html: speechBody(result.entry.body) };
   },
 
   talk(gameData, state) {
