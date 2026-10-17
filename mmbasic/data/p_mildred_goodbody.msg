@@ -281,7 +281,11 @@ came straight down to the kitchen to tell me, bless her."
 Redvers had an almighty row with the Colonel that evening - words
 were raised. Make of that what you will."
 
-+study (locked/sealed) door window how
++(stone/rock)
+"A stone, dear? So I'm told - Mr. Coniston threw it through the
+study window. I wasn't there, mind. I was asleep behind the curtain."
+
++study (locked/sealed) door
 "I don't understand it at all, dear. Locked doors, broken windows -
 sounds like something out of a novel, not something that happens in
 a respectable house."

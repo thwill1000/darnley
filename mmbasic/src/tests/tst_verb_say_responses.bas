@@ -121,6 +121,7 @@ add_test("Have you considered remarrying?", "test_remarriage")
 add_test("When did Arthur and Millicent get engaged?", "test_engagement")
 add_test("How was the study locked?", "test_locked_study")
 add_test("What do you know about the broken french window?", "test_broken_window")
+add_test("Who threw the stone through the study window?", "test_stone")
 add_test("What clues have you found?", "test_evidence")
 add_test("Where is the body?", "test_body")
 add_test("Was there something going on between Sarah and Mellors?", "test_affair_blocked")
@@ -847,6 +848,13 @@ Sub test_broken_window()
 
   objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
   assert_response("tell me about the broken window", "That was me, old boy", 1)
+End Sub
+
+Sub test_stone()
+  assert_response("stone", "stone response")
+  assert_response("rock", "stone response")
+  assert_response("Who threw the stone through the study window?", "stone response")
+  assert_response("What can you tell me about this stone I found in the study?", "stone response")
 End Sub
 
 Sub test_body()

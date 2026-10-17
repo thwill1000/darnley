@@ -293,7 +293,12 @@ him to say yes."
 honest, Mellors has always given me an uneasy feeling. But that isn't
 proof, is it? Just a feeling."
 
-+study (locked/sealed) door window how
++(stone/rock)
+"Arthur told me he put a stone through the window to get in. I
+suppose it must still be lying in there somewhere. I haven't
+been in, and I don't mean to."
+
++study (locked/sealed) door
 "It doesn't make sense, does it? Both doors locked, the window
 broken from outside - I heard people saying it's impossible. I
 suppose that's why they needed a proper detective."

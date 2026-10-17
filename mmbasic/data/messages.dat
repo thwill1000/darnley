@@ -546,12 +546,14 @@ The frame is solid mahogany and bears no marks of forcing or violence beyond the
 broken pane itself.
 
 OBJ233_SHATTERED_GLASS
+!provides x_shattered_glass
 This glass is apparently from the smashed french window pane. The shards are sharp
 and glittering, some as large as a man's hand, others fine as sand. The glass has
 a peculiar property - when examined closely, each shard seems to have fallen
 inward. Yet the pattern of breakage is odd; some pieces rest atop others in a
 way that suggests the breakage may not have been a single violent impact, but
 perhaps more deliberate - possibly even repeated strikes against the pane.
+Half-hidden beneath some of the larger shards lies a [[green:small stone]].
 
 OBJ234_GRAMOPHONE
 !provides x_gramophone new_clue
@@ -723,6 +725,12 @@ OBJ262_FOOTPRINTS_SH
 Two distinct tracks lead to and from the entrance - the first heavy hobnailed
 bootprints, the other smaller lady's shoeprints. The rest of the snow
 around the summer house lies smooth and undisturbed.
+
+OBJ263_STONE
+!requires x_shattered_glass
+!provides x_stone new_clue
+A rough lump of grey stone about the size of a golf ball.
+It lies on the carpet among the shards of window glass.
 
 WHAT_REALLY_HAPPENED
 [[green:What really happened at Darnley Park?]]@

@@ -311,7 +311,11 @@ happiness, whatever else has happened."
 name someone - Sir Redvers seemed dreadfully agitated all evening. I
 don't like to say more than that."
 
-+study (locked/sealed) door window how
++(stone/rock)
+"I'm told Arthur threw a stone through the pane. I haven't been
+in to look, and I don't think I could."
+
++study (locked/sealed) door
 "I still can't make sense of it. Both doors locked with his own
 keys, and that broken window - it's as though no one could possibly
 have got to him. And yet someone did."
