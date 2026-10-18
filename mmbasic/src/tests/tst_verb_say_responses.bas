@@ -69,6 +69,8 @@ add_test("What guns are there in the house?", "test_revolver")
 add_test("What do you know about this revolver I found in the pond?", "test_revolver_pond_found")
 add_test("What do you know about the missing revolver?", "test_revolver_gunrack_examined")
 add_test("What do you know about the revolver? (after revolver and gun rack examined)", "test_revolver_both_found")
+add_test("Who was the tramp?", "test_tramp")
+add_test("Could the tramp have murdered him?", "test_tramp_suspect")
 add_test("What happened to the missing statue?", "test_missing_statue")
 add_test("Was anyone playing the gramophone?", "test_gramophone")
 add_test("Was the piano being played last night?", "test_piano")
@@ -365,6 +367,23 @@ Sub test_revolver_both_found()
 
   ' General gun questions
   assert_response("What guns are there in the house?", "guns in the house response")
+End Sub
+
+Sub test_tramp()
+  assert_response("tramp", "tramp response")
+  assert_response("Who was the tramp?", "tramp response")
+  assert_response("tell me about the beggar", "tramp response")
+  assert_response("was there a vagrant here?", "tramp response")
+  assert_response("what did the tramp do to the statue", "tramp response")
+End Sub
+
+Sub test_tramp_suspect()
+  assert_response("could the tramp have murdered him", "tramp suspect response")
+  assert_response("was the tramp the killer", "tramp suspect response")
+  assert_response("is the tramp a suspect", "tramp suspect response")
+  assert_response("what did the tramp do to the statue", "tramp response")
+  reset_flags("x_gunrack")
+  assert_response("could the tramp have murdered him", "tramp suspect response given gun rack")
 End Sub
 
 Sub test_missing_statue()

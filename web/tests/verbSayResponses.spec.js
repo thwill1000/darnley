@@ -231,6 +231,35 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     assertResponse('What guns are there in the house?', 'guns in the house response');
   });
 
+  if('Who was the tramp?', () => {
+    all('tramp response', [
+      'Who was the tramp?',
+      'Tell me about the beggar',
+      'Was there a vagrant here?',
+      'What did the tramp do to the statue?',
+    ]);
+
+    resetFlags('x_gunrack');
+    all('tramp response', [
+      'What did the tramp do to the statue?',
+    ]);
+  });
+
+  if('Could the tramp have murdered him?', () => {
+    all('tramp suspect response', [
+      'Could the tramp have murdered him?',
+      'Was the tramp the killer',
+      'Is the tramp a suspect?',
+    ]);
+
+    resetFlags('x_gunrack');
+    all('tramp suspect response given gun rack', [
+      'Could the tramp have murdered him?',
+      'Was the tramp the killer',
+      'Is the tramp a suspect?',
+    ]);
+  });
+
   it('What happened to the missing statue?', () => {
     all('missing statue response', [
       'ask about the missing statue', 'what happened to the missing statue',

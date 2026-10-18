@@ -44,6 +44,12 @@ He shows no interest, guns not being a stable-cat's concern.@
 @
 "Mrrp."
 
+tramp
+The cat regards tramps with polite indifference - unless they happen
+to be carrying fish.@
+@
+"Mrp?"
+
 gramophone
 Distant and faint from the house, a record is audible; his ears
 swivel toward it once, then he loses interest entirely.@

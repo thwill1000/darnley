@@ -40,6 +40,15 @@ down here."
 I believe there's revolvers and rifles up at the house too, in the Colonel's
 study, but that's nothing to do with me."
 
+tramp
+"Scruffy old fellow come by two days back. Mrs. G. sent him off from
+the kitchen, and I caught him lurking about the grounds after. Next
+thing I find the statue in the pond. Told Mr. B. Seems plain enough."
+
++tramp (murder/murderer/suspect/done)
+"Him? Cowed as a whipped dog when I ran him off. Wouldn't know the first
+thing about the big house, let alone how to get at the Colonel."
+
 +(statue/statues) +(missing/sunken/fourth/gone)
 "Mrs. G. at the big house turned away a tramp. That'd be two days
 ago. I caught him lurking about and found the statue in the pond."

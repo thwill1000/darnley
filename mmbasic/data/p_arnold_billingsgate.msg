@@ -49,6 +49,21 @@ couldn't say when it went, or by whose hand."
 and rifles both. Mr. Mellors keeps a pair of shotguns down at the cottage
 for his work. I'm not aware of any others in the house."
 
+tramp
+"I did not see the man myself, sir. Mr. Mellors informed me that a
+tramp had been about the place and that he had found the statue in the
+pond. I passed the matter on to the Colonel, who was not best pleased."
+
++tramp (murder/murderer/suspect/done)
+!requires x_gunrack
+"The revolver was taken from the Colonel's own cabinet, sir. I cannot
+see how a man begging at the back door could have laid hands on it."
+
++tramp (murder/murderer/suspect/done)
+"I should be very surprised, sir. A tramp has no business in the house,
+and I do not believe anyone could have passed through my pantry
+without our hearing."
+
 +(statue/statues) +(missing/sunken/fourth/gone)
 "Mr. Mellors told me that a tramp pitched it into the pond two days ago.
 I repeated this to the Colonel at the time and he seemed to accept it, though

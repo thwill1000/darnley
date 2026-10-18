@@ -43,6 +43,10 @@ revolver
 I imagine the gamekeeper keeps a shotgun or two down at his cottage.
 Can't say I own a gun myself, old boy - never saw the appeal."
 
+tramp
+"A tramp? Can't say I know anything about one, old boy. If there was
+a fellow about, he'd come and gone before I arrived."
+
 +(statue/statues) +(missing/sunken/fourth/gone)
 "I don't know what you're talking about."
 
