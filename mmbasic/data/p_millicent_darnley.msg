@@ -47,6 +47,10 @@ tramp
 beggar had come round and later the statue turned up in the pond.
 Daddy was in a temper about it all the next day."
 
+poacher
+"I assumed the first bang was a poacher, and rather hoped Mellors would catch
+him. I never heard whether he did."
+
 +(statue/statues) +(missing/sunken/fourth/gone)
 "Someone - I forget who - told me that a beggar had pushed it into
 the pond. Out of spite I suppose."

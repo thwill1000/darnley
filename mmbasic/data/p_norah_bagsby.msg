@@ -45,6 +45,10 @@ tramp
 "I never saw no tramp, sir, honest. Mrs. G. sees to the kitchen door
 when beggars come, and I keep well back."
 
+poacher
+"Mrs. G. said the first bang was only a door, sir, and I never thought about
+poachers. I don't know anything about them, honest I don't."
+
 +(statue/statues) +(missing/sunken/fourth/gone)
 "I wasn't aware it was missing."
 

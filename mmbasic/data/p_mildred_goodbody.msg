@@ -62,6 +62,10 @@ lane myself. How'd he get at the master's gun in a locked study?"
 "Never got further than my step, dear. Poor old soul was in no state to
 go creeping about shooting gentlemen."
 
+poacher
+"I thought the shot at 11:20 was poachers, dear, and went back to sleep. Not
+unheard of in the country, I'm told. Mr. Mellors is the one to ask."
+
 +(statue/statues) +(missing/sunken/fourth/gone)
 "Mr. B. told me a tramp threw it into the pond. There was a smelly
 old villain came by a couple of days ago."

@@ -50,6 +50,12 @@ to be carrying fish.@
 @
 "Mrp?"
 
+poacher
+The cat's ears flick at the word, but he holds no view on trespassers of any
+kind.@
+@
+"Mrrp."
+
 gramophone
 Distant and faint from the house, a record is audible; his ears
 swivel toward it once, then he loses interest entirely.@
