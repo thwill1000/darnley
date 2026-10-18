@@ -3,6 +3,18 @@ The cat opens one eye, assesses you as unimportant, and closes it again.@
 @
 "Mrow."
 
++who +are +you | +name +yourself | +(call/called) +you
+The cat regards the question with flat indifference and begins to
+wash a paw.@
+@
+"Mrow."
+
++who +am +i | +my +name
+The cat studies you for a moment, decides you are neither food nor a
+threat, and looks away.@
+@
+"Mrp."
+
 slippers
 He shows no interest whatsoever in slippers, being some distance
 from where they were found.@

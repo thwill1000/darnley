@@ -2,6 +2,14 @@ hello hi morning afternoon evening greetings
 "Morning. Damned unpleasant way to start a day, having policemen
 tramping about the place, but I suppose it can't be helped."
 
++who +are +you | +name +yourself | +(call/called) +you
+"Slingsby. Sir Redvers Slingsby. Friend of Darnley's twenty years -
+you'll have my name already, I'd wager."
+
++who +am +i | +my +name
+"The detective, damn it. If anyone told me your name I've forgotten
+it."
+
 slippers
 "Didn't pack the things. A man doesn't take slippers when he's called
 away on business at a moment's notice - boots'll do for getting about

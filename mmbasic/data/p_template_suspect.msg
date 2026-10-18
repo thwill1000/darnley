@@ -17,6 +17,12 @@
 hello hi morning afternoon evening greetings
 "greeting response"
 
++who +are +you | +name +yourself | +(call/called) +you
+"who are you response"
+
++who +am +i | +my +name
+"who am i response"
+
 slippers
 "slippers response"
 

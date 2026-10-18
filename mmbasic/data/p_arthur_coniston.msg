@@ -2,6 +2,14 @@ hello hi morning afternoon evening greetings
 "Ah, hello there. Ghastly business, all this - still, glad to have
 someone competent looking into it."
 
++who +are +you | +name +yourself | +(call/called) +you
+"Arthur Coniston, old boy - Millicent's intended. Down for the
+weekend."
+
++who +am +i | +my +name
+"The chap they sent to sort this out, I should think. Didn't catch a
+name, I'm afraid."
+
 slippers
 "These are my slippers. I was wearing them when Billingsgate and I
 broke into the study."

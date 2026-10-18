@@ -2,6 +2,13 @@ hello hi morning afternoon evening greetings
 "Good morning, dear. Can't say it's been much of one, what with
 everything, but sit yourself down if you need anything."
 
++who +are +you | +name +yourself | +(call/called) +you
+"Mrs. Goodbody, dear - the cook, five years now."
+
++who +am +i | +my +name
+"The detective, dear, come about the Colonel. Nobody's told me your
+name, and I've not asked."
+
 slippers
 "I don't know whose slippers these are."
 

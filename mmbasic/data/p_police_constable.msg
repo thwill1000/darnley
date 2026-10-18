@@ -2,6 +2,13 @@ hello hi morning afternoon evening greetings
 "Morning, sir. Constable on duty at the gate - nothing gets past me,
 for what that's worth."
 
++who +are +you | +name +yourself | +(call/called) +you
+"Constable Pegg, sir, on gate duty, up from the village station this morning."
+
++who +am +i | +my +name
+"You're the detective we were told to expect, sir. I wasn't given a
+name."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "Never met the gentleman myself, sir. I've only been posted here since the
 alarm was raised this morning."

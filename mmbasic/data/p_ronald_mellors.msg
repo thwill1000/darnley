@@ -1,6 +1,12 @@
 hello hi morning afternoon evening greetings
 "Morning. Get on with your questions, then, if you've got some."
 
++who +are +you | +name +yourself | +(call/called) +you
+"Mellors. Gamekeeper."
+
++who +am +i | +my +name
+"The law, aren't you? Never heard a name and don't need one."
+
 slippers
 "I don't give a damn about slippers."
 

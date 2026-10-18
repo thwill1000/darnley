@@ -54,6 +54,8 @@ advdata.set_root(Mm.Info(Path) + "../../")
 advdata.init()
 
 add_test("Good morning.", "test_greeting")
+add_test("Who are you? / What's your name?", "test_who_are_you")
+add_test("Who am I? / What's my name?", "test_who_am_i")
 add_test("Bit cold isn't it?", "test_weather")
 add_test("What happened last night?", "test_events")
 add_test("Why are you here?", "test_why_here")
@@ -189,6 +191,34 @@ Sub test_greeting()
   assert_response("afternoon", "greeting response")
   assert_response("evening", "greeting response")
   assert_response("warm greetings", "greeting response")
+End Sub
+
+Sub test_who_are_you()
+  assert_response("who are you", "who are you response")
+  assert_response("Who are you?", "who are you response")
+  assert_response("what's your name", "who are you response")
+  assert_response("what is your name", "who are you response")
+  assert_response("what are you called", "who are you response")
+  assert_response("what do they call you", "who are you response")
+
+  ' A real suspect gives their own self-introduction rather than the
+  ' generic question fallback.
+  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  assert_response("who are you", "Arthur Coniston, old boy", 1)
+  assert_response("what's your name", "Arthur Coniston, old boy", 1)
+End Sub
+
+Sub test_who_am_i()
+  assert_response("who am I", "who am i response")
+  assert_response("Who am I?", "who am i response")
+  assert_response("do you know who I am", "who am i response")
+  assert_response("what's my name", "who am i response")
+  assert_response("what is my name", "who am i response")
+  assert_response("do you know my name", "who am i response")
+
+  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  assert_response("who am I", "The chap they sent to sort this out", 1)
+  assert_response("what's my name", "The chap they sent to sort this out", 1)
 End Sub
 
 Sub test_weather()
