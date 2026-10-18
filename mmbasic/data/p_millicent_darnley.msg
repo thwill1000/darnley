@@ -42,6 +42,11 @@ though I don't make a habit of looking in there."
 of thing. And Mellors keeps a pair of shotguns down at his cottage, for the
 vermin. I don't know that anyone else in the house keeps a gun."
 
+tramp
+"A tramp? I never saw him myself - I only know someone mentioned a
+beggar had come round and later the statue turned up in the pond.
+Daddy was in a temper about it all the next day."
+
 +(statue/statues) +(missing/sunken/fourth/gone)
 "Someone - I forget who - told me that a beggar had pushed it into
 the pond. Out of spite I suppose."

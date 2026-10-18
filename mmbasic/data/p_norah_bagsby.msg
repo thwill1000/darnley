@@ -41,6 +41,10 @@ there."
 believe Mr. Mellors keeps shotguns too, down at his cottage. I don't go
 near any of them, honest I don't."
 
+tramp
+"I never saw no tramp, sir, honest. Mrs. G. sees to the kitchen door
+when beggars come, and I keep well back."
+
 +(statue/statues) +(missing/sunken/fourth/gone)
 "I wasn't aware it was missing."
 

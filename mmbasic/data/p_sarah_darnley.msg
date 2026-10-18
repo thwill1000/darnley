@@ -46,6 +46,16 @@ might have taken it."
 sporting guns, mostly for show, I always thought. He never went shooting
 himself, not since his army days."
 
+tramp
+"I'm told some dreadful creature came begging at the kitchen door two
+days ago and Mrs. Goodbody sent him packing. I never laid eyes on him.
+Afterwards the statue was found in the pond and everyone assumed he'd
+done it out of spite."
+
++tramp (murder/murderer/suspect/done)
+"My husband was shot in a locked room, Inspector. I can't imagine a
+vagrant from the lane managing that."
+
 +(statue/statues) +(missing/sunken/fourth/gone)
 "I believe a rather nasty tramp, who called two days ago threw it
 into the pond."

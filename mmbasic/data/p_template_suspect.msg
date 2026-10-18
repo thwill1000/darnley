@@ -50,6 +50,16 @@ revolver
 (revolver/gun)
 "guns in the house response"
 
+tramp
+"tramp response"
+
++tramp (murder/murderer/suspect/done)
+!requires x_gunrack
+"tramp suspect response given gun rack"
+
++tramp (murder/murderer/suspect/done)
+"tramp suspect response"
+
 +(statue/statues) +(missing/sunken/fourth/gone)
 "missing statue response"
 

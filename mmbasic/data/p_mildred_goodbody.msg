@@ -48,6 +48,20 @@ there."
 keeps his shotguns down at the cottage for the vermin. Nothing in my
 kitchen, I can promise you that."
 
+tramp
+"Oh, him! Filthy old villain turned up at my kitchen door two days ago
+wanting feeding. I sent him off with a flea in his ear, and next thing
+Mr. B. says the statue's in the pond. I wouldn't put it past him, dear."
+
++tramp (murder/murderer/suspect/done)
+!requires x_gunrack
+"Him? Never got further than my step, dear, and I watched him down the
+lane myself. How'd he get at the master's gun in a locked study?"
+
++tramp (murder/murderer/suspect/done)
+"Never got further than my step, dear. Poor old soul was in no state to
+go creeping about shooting gentlemen."
+
 +(statue/statues) +(missing/sunken/fourth/gone)
 "Mr. B. told me a tramp threw it into the pond. There was a smelly
 old villain came by a couple of days ago."
