@@ -107,6 +107,28 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     all('greeting response', ['hello', 'hi there', 'good morning', 'afternoon', 'evening', 'warm greetings']);
   });
 
+  it('Who are you? / What\'s your name?', () => {
+    all('who are you response', [
+      'who are you', 'Who are you?', "what's your name", 'what is your name',
+      'what are you called', 'what do they call you',
+    ]);
+
+    target('arthur');
+    assertResponse('who are you', 'Arthur Coniston, old boy', true);
+    assertResponse("what's your name", 'Arthur Coniston, old boy', true);
+  });
+
+  it('Who am I? / What\'s my name?', () => {
+    all('who am i response', [
+      'who am I', 'Who am I?', 'do you know who I am', "what's my name",
+      'what is my name', 'do you know my name',
+    ]);
+
+    target('arthur');
+    assertResponse('who am I', 'The chap they sent to sort this out', true);
+    assertResponse("what's my name", 'The chap they sent to sort this out', true);
+  });
+
   it("Bit cold isn't it?", () => {
     all('weather response', [
       "it's cold today", "bit cold isn't it", 'what dreadful weather', 'all this snow',

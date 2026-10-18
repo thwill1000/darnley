@@ -2,6 +2,13 @@ hello hi morning afternoon evening greetings
 "Good day to you, sir. I only wish it were under happier
 circumstances."
 
++who +are +you | +name +yourself | +(call/called) +you
+"Billingsgate, sir. I am - was - the Colonel's butler."
+
++who +am +i | +my +name
+"You are the Inspector, sir, come to look into this dreadful
+business. I was not given your name."
+
 slippers
 "I believe these are Mr. Coniston's slippers. He was wearing them
 when he woke me up to help the Colonel."

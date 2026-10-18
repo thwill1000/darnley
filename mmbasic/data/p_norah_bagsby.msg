@@ -2,6 +2,12 @@ hello hi morning afternoon evening greetings
 "Oh - good morning, sir. Sorry, I'm all of a fluster still, what
 with everything that's happened."
 
++who +are +you | +name +yourself | +(call/called) +you
+"Norah Bagsby, sir. I'm the housemaid."
+
++who +am +i | +my +name
+"You're the Inspector, sir. I wasn't told your name - honest."
+
 slippers
 "I don't know whose slippers these are."
 

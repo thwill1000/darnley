@@ -2,6 +2,14 @@ hello hi morning afternoon evening greetings
 "Good morning, Inspector. Forgive me if I don't manage much of a
 smile today."
 
++who +are +you | +name +yourself | +(call/called) +you
+"I am Sarah Darnley, Inspector - Sebastian's wife. I should have
+thought you'd been told that."
+
++who +am +i | +my +name
+"You are the detective they sent for, I assume. Nobody has mentioned
+your name to me."
+
 slippers
 "Not mine - I wear proper shoes, or slippers with rather more
 embroidery than that, if it comes to it."

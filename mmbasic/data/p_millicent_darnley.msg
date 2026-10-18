@@ -2,6 +2,14 @@ hello hi morning afternoon evening greetings
 "Hello, Inspector. I suppose there's nothing 'good' about this
 morning, but you're welcome all the same."
 
++who +are +you | +name +yourself | +(call/called) +you
+"Millicent Darnley. Daddy's daughter - and Arthur's fiancée, as of
+yesterday."
+
++who +am +i | +my +name
+"You're the Inspector, aren't you? I don't believe anyone troubled to
+tell me your name."
+
 slippers
 "I don't know whose slippers these are."
 
