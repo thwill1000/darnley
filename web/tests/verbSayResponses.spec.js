@@ -260,6 +260,21 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     ]);
   });
 
+  it('Were there poachers about?', () => {
+    all('poachers response', [
+      'poachers',
+      'poaching',
+      'Was it a poacher?',
+      'Were there poachers about?',
+    ]);
+
+    target('mellors');
+    assertResponse('Were there poachers about?', "Not this weather", true);
+
+    target('millicent');
+    assertResponse('Were there poachers about?', "I assumed the first bang was a poacher", true);
+  });
+
   it('What happened to the missing statue?', () => {
     all('missing statue response', [
       'ask about the missing statue', 'what happened to the missing statue',

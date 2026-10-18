@@ -13,6 +13,9 @@ tramp
 "Not on my watch, sir. I've seen no-one at the gate this morning but
 the household and yourself."
 
+poacher
+"Nothing of the sort to report at the gate, sir. I only came on this morning."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "Never met the gentleman myself, sir. I've only been posted here since the
 alarm was raised this morning."

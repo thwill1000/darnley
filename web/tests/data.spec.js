@@ -158,8 +158,8 @@ describe('parseObjects()', () => {
 });
 
 describe('parseSynonyms()', () => {
-  it('parses exactly 42 synonym entries', () => {
-    expect(parseSynonyms(adventText)).toHaveLength(42);
+  it('parses exactly 43 synonym entries', () => {
+    expect(parseSynonyms(adventText)).toHaveLength(43);
   });
 
   it('parses the first synonym entry, mapping aliases back to "argue"', () => {

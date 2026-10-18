@@ -56,6 +56,10 @@ done it out of spite."
 "My husband was shot in a locked room, Inspector. I can't imagine a
 vagrant from the lane managing that."
 
+poacher
+"When I heard the noise at 11:30 I took it for poachers. I can't tell you now
+why I was so sure."
+
 +(statue/statues) +(missing/sunken/fourth/gone)
 "I believe a rather nasty tramp, who called two days ago threw it
 into the pond."

@@ -64,6 +64,10 @@ see how a man begging at the back door could have laid hands on it."
 and I do not believe anyone could have passed through my pantry
 without our hearing."
 
+poacher
+"I took the first noise for a door, sir, not poachers. Poaching is Mr. Mellors'
+department, not mine."
+
 +(statue/statues) +(missing/sunken/fourth/gone)
 "Mr. Mellors told me that a tramp pitched it into the pond two days ago.
 I repeated this to the Colonel at the time and he seemed to accept it, though

@@ -53,6 +53,10 @@ tramp
 "Some vagrant or other, I gather - servants' gossip, before I got here.
 Never laid eyes on the fellow and can't say he interests me."
 
+poacher
+"Poachers? Damned if I know. If there are any about, that's the keeper's
+business, not mine."
+
 +(statue/statues) +(missing/sunken/fourth/gone)
 "No idea whatsoever. Something about a tramp, so I'm told - servants'
 gossip, not really my concern."

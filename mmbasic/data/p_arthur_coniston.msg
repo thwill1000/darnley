@@ -47,6 +47,10 @@ tramp
 "A tramp? Can't say I know anything about one, old boy. If there was
 a fellow about, he'd come and gone before I arrived."
 
+poacher
+"Millicent thought the first bang was a poacher, old boy. I took it for a door
+banging, and thought no more of it."
+
 +(statue/statues) +(missing/sunken/fourth/gone)
 "I don't know what you're talking about."
 

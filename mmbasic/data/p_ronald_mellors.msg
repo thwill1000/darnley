@@ -49,6 +49,10 @@ thing I find the statue in the pond. Told Mr. B. Seems plain enough."
 "Him? Cowed as a whipped dog when I ran him off. Wouldn't know the first
 thing about the big house, let alone how to get at the Colonel."
 
+poacher
+"Not this weather. Snow shows every track, and I saw none on my rounds at 8:00.
+Ask what you like, I've not been bothered by anybody."
+
 +(statue/statues) +(missing/sunken/fourth/gone)
 "Mrs. G. at the big house turned away a tramp. That'd be two days
 ago. I caught him lurking about and found the statue in the pond."

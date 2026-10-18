@@ -71,6 +71,7 @@ add_test("What do you know about the missing revolver?", "test_revolver_gunrack_
 add_test("What do you know about the revolver? (after revolver and gun rack examined)", "test_revolver_both_found")
 add_test("Who was the tramp?", "test_tramp")
 add_test("Could the tramp have murdered him?", "test_tramp_suspect")
+add_test("Were there poachers about?", "test_poacher")
 add_test("What happened to the missing statue?", "test_missing_statue")
 add_test("Was anyone playing the gramophone?", "test_gramophone")
 add_test("Was the piano being played last night?", "test_piano")
@@ -384,6 +385,20 @@ Sub test_tramp_suspect()
   assert_response("what did the tramp do to the statue", "tramp response")
   reset_flags("x_gunrack")
   assert_response("could the tramp have murdered him", "tramp suspect response given gun rack")
+End Sub
+
+Sub test_poacher()
+  assert_response("poachers", "poachers response")
+  assert_response("poaching", "poachers response")
+  assert_response("Was it a poacher?", "poachers response")
+  assert_response("Were there poachers about?", "poachers response")
+ 
+  ' Ask Mellors and Millicent directly
+  objects$(9) = "P_RONALD_MELLORS|Ronald Mellors|ronald mellors gamekeeper|LOC001_BATHROOM|2|100"
+  assert_response("Mellors, were there poachers about?", "Not this weather.", 1)
+ 
+  objects$(9) = "P_MILLICENT_DARNLEY|Millicent Darnley|millicent|LOC001_BATHROOM|2|100"
+  assert_response("Millicent, did you hear poachers?", "I assumed the first bang was a poacher", 1)
 End Sub
 
 Sub test_missing_statue()

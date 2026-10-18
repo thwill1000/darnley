@@ -60,6 +60,9 @@ tramp
 +tramp (murder/murderer/suspect/done)
 "tramp suspect response"
 
+poacher
+"poachers response"
+
 +(statue/statues) +(missing/sunken/fourth/gone)
 "missing statue response"
 
