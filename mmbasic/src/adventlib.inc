@@ -521,41 +521,39 @@ End Function
 ' given words, using the same word-matching approach as verb_go().
 '
 ' @param words$()  Array of words to match against exit location names.
-' @return          Index into rooms$() of the best matching exit, or -1 if none.
+' @return          Index into rooms$() of the best matching exit,
+'                  -1 if none,
+'                  -2 if exists but "blocked"
 Function find_exit_match%(words$())
-  Local best_num_matches%, from_id$, i%, loc%, loc_pattern$, loc_id$, num_matches%, to_id$
-
-  find_exit_match% = -1
+  Local exits$(8) Length 127
 
   Const match_in$ = make_match_input$(words$(), 2)
+  Const num_exits% = get_exits%(r, exits$())
 
-  Const num_exits% = Val(Field$(rooms$(r), 4, "|"))
+  Local i%, best_exit% = -1, best_num_matches%, pattern$, num_matches%, to_id$
   For i% = 1 To num_exits%
-    to_id$ = Field$(rooms$(r), 4 + i%, "|")
-    loc% = find_loc%(to_id$)
-    loc_pattern$ = Field$(rooms$(loc%), 3, "|")
-    num_matches% = find_matches%(loc_pattern$, match_in$)
+    to_id$ = Field$(exits$(i%), 1, "|")
+    pattern$ = Field$(exits$(i%), 2, "|")
+    num_matches% = find_matches%(pattern$, match_in$)
     If num_matches% > best_num_matches% Then
       best_num_matches% = num_matches%
-      find_exit_match% = loc%
+      best_exit% = i%
     EndIf
   Next
 
-  ' Additional exits scoped to the current room. Checked after real exits
-  ' above, so on a tied score a real exit always wins (strict '>' below).
-  loc_id$ = Field$(rooms$(r), 1, "|")
-  For i% = Bound(additional_exits$(), 0) To Bound(additional_exits$(), 1)
-    If additional_exits$(i%) = "" Then Exit For
-    from_id$ = Field$(additional_exits$(i%), 1, "|")
-    If from_id$ <> loc_id$ Then Continue For
-    loc_pattern$ = Field$(additional_exits$(i%), 2, "|")
-    num_matches% = find_matches%(loc_pattern$, match_in$)
-    If num_matches% > best_num_matches% Then
-      best_num_matches% = num_matches%
-      to_id$ = Field$(additional_exits$(i%), 3, "|")
-      find_exit_match% = find_loc%(to_id$)
-    EndIf
-  Next
+  If best_exit% = -1 Then
+    find_exit_match% = -1
+    Exit Function
+  EndIf
+
+  Const blocked$ = Field$(exits$(best_exit%), 3, "|")
+  If blocked$ <> "" Then
+    print_message_or_fail(blocked$)
+    find_exit_match% = -2
+    Exit Function
+  EndIf
+
+  find_exit_match% = find_loc%(Field$(exits$(best_exit%), 1, "|"))
 End Function
 
 ' Finds the best matching object for the given words.
@@ -786,15 +784,16 @@ Function verb_go()
   If r_new% > -1 Then
     r = r_new%
     Exit Function
+  ElseIf r_new% = -2 Then ' Blocked
+    Exit Function
   EndIf
 
   ' Unknown exit, so list the exits from this location.
   con.print("From this location you can go to: ")
-  Const num_exits% = Val(Field$(rooms$(r), 4, "|"))
-  Local i%, loc%, loc_name$, to_id$
+  Local i%, exits$(8) Length 127, loc%, loc_name$
+  Const num_exits% = get_exits%(r, exits$())
   For i% = 1 To num_exits%
-    to_id$ = Field$(rooms$(r), 4 + i%, "|")
-    loc% = find_loc%(to_id$)
+    loc% = find_loc%(Field$(exits$(i%), 1, "|"))
     loc_name$ = Field$(rooms$(loc%), 2, "|")
     If i% > 1 Then
       If i% = num_exits% Then con.print(" or ") Else con.print(", ")

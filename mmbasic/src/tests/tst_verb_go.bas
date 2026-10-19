@@ -187,10 +187,10 @@ Sub test_go_gvn_ignores_verb_word()
   assert_int_equals(2, r)
 End Sub
 
-' "house" only matches via the additional exit entry "house|LOC001|LOC003",
+' "outside" only matches via the additional exit entry "LOC001|outside|LOC003",
 ' not any of LOC001's own listed exits (Room Two / Room Three)
 Sub test_go_gvn_additional_exit()
-  Local result% = parse_common("go house")
+  Local result% = parse_common("go outside")
   assert_int_equals(0, result%)
 
   Local ret% = verb_go()
@@ -199,17 +199,17 @@ Sub test_go_gvn_additional_exit()
   assert_int_equals(3, r) ' LOC003
 End Sub
 
-' The additional exit "house|LOC001|LOC003" only applies FROM LOC001;
-' from LOC002 the same word must not match
+' The additional exit "LOC001|outside|LOC003" only applies FROM LOC001;
+' from LOC003 the same word must not match
 Sub test_go_gvn_addexit_wrong_room()
-  r = 2 ' LOC002
-  Local result% = parse_common("go house")
+  r = 3 ' LOC003
+  Local result% = parse_common("go outside")
   assert_int_equals(0, result%)
 
   Local ret% = verb_go()
 
   assert_int_equals(1, ret%)
-  assert_int_equals(2, r) ' unchanged - no match found
+  assert_int_equals(3, r) ' unchanged - no match found
 End Sub
 
 ' "three" matches both LOC001's real exit "Room Three" (LOC003) and the
@@ -227,7 +227,7 @@ Sub test_go_gvn_addexit_tie_real()
 End Sub
 
 Sub test_go_gvn_addexit_case()
-  Local result% = parse_common("go HOUSE")
+  Local result% = parse_common("go OUTSIDE")
   assert_int_equals(0, result%)
 
   Local ret% = verb_go()

@@ -61,7 +61,7 @@ describe('parseLocations()', () => {
     expect(hall).toEqual({
       id: 'LOC008_HALL',
       name: 'Hall',
-      pattern: 'hall inside',
+      pattern: 'hall',
       exits: [
         'LOC014_DINING_ROOM',
         'LOC015_MUSIC_ROOM',
@@ -85,15 +85,15 @@ describe('parseLocations()', () => {
 });
 
 describe('parseAdditionalExits()', () => {
-  it('parses exactly 11 additional exits', () => {
-    expect(parseAdditionalExits(adventText)).toHaveLength(11);
+  it('parses exactly 13 additional exits', () => {
+    expect(parseAdditionalExits(adventText)).toHaveLength(13);
   });
 
   it('parses the drive-to-hall additional exit', () => {
     const exits = parseAdditionalExits(adventText);
     expect(exits[0]).toEqual({
       from: 'LOC017_DRIVE',
-      pattern: 'hall house manor inside in',
+      pattern: 'house manor inside in',
       to: 'LOC008_HALL',
     });
   });

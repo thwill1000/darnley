@@ -10,6 +10,13 @@ If sys.err$ <> "" Then Error sys.err$
 Const MAX_WORDS = 20
 Const MAX_WORD_LENGTH = 64
 
+Sub clear_words(words$())
+  Local i%
+  For i% = Bound(words$(), 0) To Bound(words$(), 1)
+    words$(i%) = ""
+  Next
+End Sub
+
 Function cat_words$(words$(), si%, ei%)
   Local first% = 1, i%
   If Not si% Then si% = Bound(words$(), 0)
@@ -79,18 +86,15 @@ End Function
 Function split_words%(cmd$, words$())
   Local i%, p%, c%, w$, wLen%
 
-  Const maxIdx% = Bound(words$(), 1)
-
   ' Clear output array
-  For i% = Bound(words$(), 0) To maxIdx%
-    words$(i%) = ""
-  Next
+  clear_words(words$())
 
   cmd$ = LCase$(cmd$)
   Const cmdLen% = Len(cmd$)
   If cmdLen% = 0 Then split_words% = 0: Exit Function
 
   Const cmdAddr% = Peek(VarAddr cmd$) + 1
+  Const maxIdx% = Bound(words$(), 1)
   i% = Bound(words$(), 0)
   w$ = ""
   wLen% = 0
@@ -188,10 +192,12 @@ End Sub
 ' elements remain at the tail of the array.
 '
 ' @param words$()  The array of words to deduplicate.
-Sub unique_words(words$())
+' @return          The number of unique words.
+Function unique_words%(words$())
   Local i%, j%, result%
   For i% = Bound(words$(), 0) To Bound(words$(), 1)
     If words$(i%) = "" Then Exit For
+    Inc unique_words%
     For j% = i% + 1 To Bound(words$(), 1)
       If words$(j%) = "" Then Exit For
       If LCase$(words$(i%)) = LCase$(words$(j%)) Then
@@ -200,7 +206,7 @@ Sub unique_words(words$())
       EndIf
     Next
   Next
-End Sub
+End Function
 
 Sub print_words(words$())
   Local count%, i%

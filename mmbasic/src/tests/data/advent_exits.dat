@@ -1,0 +1,24 @@
+!locations
+LOC001|Room One|room one|1|LOC002
+LOC002|Room Two|room two|1|LOC001
+LOC003|Room Three|room three|0
+LOC004|Room Four|room four|1|LOC003
+LOC005|Empty room|room five|0
+LOC006|Room Six|room six|2|LOC001|LOC002
+
+!additional_exits
+LOC001|alpha|LOC002
+LOC002|other|LOC001
+LOC001|beta|LOC002
+LOC001|gamma|LOC003|gamma_msg
+LOC001|delta|LOC003
+LOC005|north door|LOC001
+LOC005|cellar|LOC002|cellar_msg
+LOC006|trapdoor|LOC001|trap_msg
+LOC006|attic|LOC003
+
+!objects
+OBJ001|Green Door|green door|LOC001|0|100
+
+!synonyms
+placeholder|placeholder

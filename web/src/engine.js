@@ -28,17 +28,8 @@ const EXTRA_REPLACEMENTS = {
 };
 
 /**
- * Finds the best matching exit location from currentLocation for the
- * given words, mirroring find_exit_match%() in mmbasic/src/adventlib.inc.
+ * Finds the best matching exit from currentLocation for the given words.
  *
- * Real exits (currentLocation.exits, each an id into locations) are
- * scored first against each candidate location's own pattern; additional
- * exits scoped to currentLocation.id (additionalExits, from
- * parseAdditionalExits()) are then scored against their own pattern. A
- * real exit is checked first so that on a tied score it wins over an
- * additional exit (strict "greater than" comparison throughout, exactly
- * as the MMBasic original relies on checking order rather than a
- * tie-break rule).
  *
  * @param {{id: string, exits: string[]}} currentLocation
  * @param {{id: string, pattern: string, exits: string[]}[]} locations
@@ -50,33 +41,22 @@ const EXTRA_REPLACEMENTS = {
  *                                   defaults to 1 (skips the verb word,
  *                                   mirroring make_match_input$(words$(), 2)
  *                                   against MMBasic's 1-based words$()).
- * @returns {string|null}            The id of the best matching
- *                                   destination location, or null if
- *                                   nothing matched (mirrors the -1
- *                                   sentinel return of the original).
+ * @returns {{id: string, pattern: string, blocked: string}|null}
+ *                                   The best matching exit,
+ *                                   or null if nothing matched.
  */
 export function findExitMatch(currentLocation, locations, additionalExits, words, synonymEntries, startIndex = 1) {
+  const exits = getExits(currentLocation, locations, additionalExits);
   const matchIn = makeMatchInput(words, synonymEntries, startIndex);
-  const locationsById = new Map(locations.map((loc) => [loc.id, loc]));
 
   let best = 0;
   let result = null;
 
-  for (const exitId of currentLocation.exits) {
-    const exitLocation = locationsById.get(exitId);
-    const score = findMatches(exitLocation.pattern, matchIn);
+  for (const exit of exits) {
+    const score = findMatches(exit.pattern, matchIn);
     if (score > best) {
       best = score;
-      result = exitLocation.id;
-    }
-  }
-
-  for (const additionalExit of additionalExits) {
-    if (additionalExit.from !== currentLocation.id) continue;
-    const score = findMatches(additionalExit.pattern, matchIn);
-    if (score > best) {
-      best = score;
-      result = additionalExit.to;
+      result = exit;
     }
   }
 
@@ -338,32 +318,96 @@ export function findResponse(entries, subjectWords, synonymEntries, flags) {
  * @param {{from: string, pattern: string, to: string}[]} additionalExits
  * @param {string[]} words
  * @param {{canonical: string, aliases: string[]}[]} synonymEntries
- * @returns {{success: boolean, room: string, html?: string}}
+ * @returns {{success: boolean, room: string, blocked?: string, html?: string}}
  *          On success, room is the id of the new location. On failure,
- *          room is unchanged (currentLocation.id) and html explains why.
+ *          room is unchanged (currentLocation.id) and blocked/html explains why.
  */
 export function verbGo(currentLocation, locations, additionalExits, words, synonymEntries) {
-  const exitId = findExitMatch(currentLocation, locations, additionalExits, words, synonymEntries);
-  if (exitId !== null) {
-    return { success: true, room: exitId };
+  const exit = findExitMatch(currentLocation, locations, additionalExits, words, synonymEntries);
+  if (exit !== null) {
+    if (exit.blocked) {
+      return {
+        success: false,
+        room: currentLocation.id,
+        blocked: exit.blocked,
+      };
+    } else {
+      return { success: true, room: exit.id };
+    }
   }
 
   // Unknown exit, so list the exits from this location.
   let msg = "From this location you can go to: ";
-  const num_exits = currentLocation.exits.length;
-  for (let i = 0; i < num_exits; i++) {
-    const to_id = currentLocation.exits[i];
+  const exits = getExits(currentLocation, locations, additionalExits);
+  for (let i = 0; i < exits.length; i++) {
+    const to_id = exits[i].id;
     const loc = locations.find((loc) => loc.id === to_id);
     const loc_name = loc ? loc.name : to_id;
     if (i > 0) {
-      if (i === num_exits - 1) msg += " or ";
+      if (i === exits.length - 1) msg += " or ";
       else msg += ", ";
     }
     msg += `[[green:${loc_name}]]`;
-    if (i === num_exits - 1) msg += ".";
   }
+  msg += '.';
 
   return { success: false, room: currentLocation.id, html: markupToHtml(msg, { links: true }) };
+}
+
+/**
+ * Generates a list of exits for a given location, combining standard location exits
+ * and matching additional exits.
+ *
+ * @param {{id: string, exits: string[]}} location
+ * @param {{id: string, pattern: string, exits: string[]}[]} locations
+ * @param {{from: string, pattern: string, to: string, blocked: string}[]} additionalExits
+ * @returns {{id: string, pattern: string, blocked: string}[]}
+ */
+export function getExits(location, locations, additionalExits) {
+  // Create a fast lookup map for locations by their ID
+  const locationsById = new Map(locations.map((loc) => [loc.id, loc]));
+  const exits = [];
+  const seenWords = new Set();
+
+  // Process standard location exits
+  if (location?.exits) {
+    for (const exitId of location.exits) {
+      const exitLocation = locationsById.get(exitId);
+      if (exitLocation) {
+        exits.push({
+          id: exitLocation.id,
+          pattern: exitLocation.pattern,
+          blocked: null
+        });
+      }
+    }
+  }
+
+  // Process additional exits
+  for (const additionalExit of additionalExits) {
+    // Skip if this additional exit doesn't originate from the current location
+    if (additionalExit.from !== location?.id) continue;
+
+    // Check if an exit with the same target id already exists
+    const existingExit = exits.find((exit) => exit.id === additionalExit.to);
+
+    if (existingExit) {
+      // Append to the existing pattern with an intervening space
+      existingExit.pattern = [existingExit.pattern, additionalExit.pattern]
+        .filter(Boolean)
+        .join(' ');
+
+      existingExit.blocked = additionalExit.blocked ?? null;
+    } else {
+      exits.push({
+        id: additionalExit.to,
+        pattern: additionalExit.pattern,
+        blocked: additionalExit.blocked ?? null
+      });
+    }
+  }
+
+  return exits;
 }
 
 /**
@@ -405,8 +449,8 @@ export function verbExamine(objects, messages, words, synonymEntries, currentLoc
   }
 
   // If we match an exit rather than an object then suggest the GO command.
-  const exitId = findExitMatch(currentLocation, locations, additionalExits, words, synonymEntries);
-  if (exitId !== null) {
+  const exit = findExitMatch(currentLocation, locations, additionalExits, words, synonymEntries);
+  if (exit !== null) {
     const target = words.slice(1).join(' ').toUpperCase();
     return { success: false, message: `Try \`GO ${target}\`.` };
   }

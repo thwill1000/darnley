@@ -6,8 +6,10 @@ LOC004|Room Four|room four|1|LOC003
 LOC005|Empty room|room five|0
 
 !additional_exits
-LOC001|house|LOC003
-LOC001|three|LOC002
+LOC001|outside|LOC003
+LOC002|outside|LOC004
+LOC003|inside|LOC001|blocked
+LOC004|inside|LOC002|blocked
 
 !objects
 OBJ001|Green Door|green door|LOC001|0|100
