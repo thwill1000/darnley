@@ -56,18 +56,6 @@ export function messageHtml(messages, tag, state) {
   return printBody(entry.body);
 }
 
-// Real exits in the data (so GO resolves) that the game refuses to let the
-// player take; mirrors the special cases in darnley.bas's main loop.
-const FAKE_EXITS = [
-  { from: 'LOC009_KITCHEN', to: 'LOC008_HALL', tag: 'KITCHEN_TO_HALL' },
-  { from: 'LOC028_MORNING_ROOM', to: 'LOC030_SECOND_GUEST_ROOM', tag: 'MORNING_ROOM_TO_GUEST_ROOM' },
-];
-
-/** Returns the messages.dat tag explaining a blocked move, or null if the move is genuine. */
-export function fakeExitTag(oldRoom, newRoom) {
-  return FAKE_EXITS.find((e) => e.from === oldRoom && e.to === newRoom)?.tag ?? null;
-}
-
 /**
  * Builds the text for the DUMP verb, mirroring verb_dump() in
  * mmbasic/src/adventlib.inc: room, visited string, one flag per line,
@@ -142,8 +130,11 @@ export const VERB_HANDLERS = {
     if (result.success) {
       state.room = result.room;
       return { redescribe: true };
+    } else if (result.blocked) {
+      return { html: messageHtml(gameData.messages, result.blocked, state)}
+    } else {
+      return { html: result.html };
     }
-    return { html: result.html };
   },
 
   examine(gameData, state, words) {
@@ -166,7 +157,7 @@ export const VERB_HANDLERS = {
       for (const token of result.entry.provides) state.flags.add(token);
       return { html: printBody(result.entry.body, linkOptions(gameData, state)) };
     }
-    if (result.entry.body) {
+    if (result.entry?.body) {
       return { html: printBody(result.entry.body, linkOptions(gameData, state)) };
     }
     return { errorMessage: result.message };

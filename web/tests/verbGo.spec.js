@@ -12,7 +12,6 @@ const LOCATIONS = [
 
 const ADDITIONAL_EXITS = [
   { from: 'LOC001', pattern: 'house', to: 'LOC003' },
-  { from: 'LOC001', pattern: 'three', to: 'LOC002' },
 ];
 
 const OBJECTS = [
@@ -40,12 +39,6 @@ describe('verbGo()', () => {
     const result = verbGo(locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, ['go', 'two'], []);
     expect(result.success).toBe(true);
     expect(result.room).toBe('LOC002');
-  });
-
-  it('"three" moves to the matching real exit (LOC003)', () => {
-    const result = verbGo(locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, ['go', 'three'], []);
-    expect(result.success).toBe(true);
-    expect(result.room).toBe('LOC003');
   });
 
   it('fails, leaving room unchanged, when no exit matches', () => {

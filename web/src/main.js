@@ -22,7 +22,6 @@ import {
 import { createState, hasFlag, setVisited, isVisited, serializeState, deserializeState } from './state.js';
 import {
   VERB_HANDLERS,
-  fakeExitTag,
   linkCommand,
   linkOptions,
   locationById,
@@ -231,13 +230,6 @@ async function runCommandLoop(ui, gameData, state) {
     const result = await handler(gameData, state, parsed.words, ui);
     if (result.html) ui.printHtml(result.html);
     if (result.errorMessage) ui.printFail(result.errorMessage);
-
-    const blockedTag = state.room !== oldRoom ? fakeExitTag(oldRoom, state.room) : null;
-    if (blockedTag) {
-      ui.printHtml(messageHtml(gameData.messages, blockedTag, state));
-      state.room = oldRoom;
-      result.redescribe = false;
-    }
 
     if (hasFlag(state, 'new_clue')) {
       const announcement = handleNewClue(state, gameData.clues);

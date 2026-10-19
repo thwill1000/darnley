@@ -15,6 +15,7 @@ Option Default Integer
 
 sys.provides("console")
 
+#Include "../words.inc"
 #Include "../advdata.inc"
 
 advdata.set_root(Mm.Info(Path))
@@ -41,9 +42,26 @@ add_test("encode_line$() rejects shift=0", "test_encode_gvn_shift_zero")
 add_test("encode_line$() rejects shift=26", "test_encode_gvn_shift_26")
 add_test("decode_line$() on an empty '$'-prefixed body returns an empty string", "test_decode_gvn_empty_body")
 add_test("read_advent_section%() decodes obfuscated data lines identically to plaintext", "test_read_section_gvn_obfuscated")
+add_test("get_exits%() appends an additional exit to a new destination after the standard exits", "test_ge_new_addexit")
+add_test("get_exits%() merges a blocked additional exit into the matching standard exit in place", "test_ge_merge_blocked")
+add_test("get_exits%() returns 0 and leaves the array empty for a room with no exits", "test_ge_no_exits")
+add_test("get_exits%() clears stale entries left over from a previous call", "test_ge_clears_stale")
+add_test("get_exits%() return value equals the number of populated entries for every room", "test_ge_return_matches_count")
+add_test("get_exits%() returns only standard exits when the '!additional_exits' section is absent", "test_ge_no_addexit_section")
+add_test("get_exits%() merges several additional exits to one destination, in file order", "test_ge_merge_twice")
+add_test("get_exits%() lets a later additional exit override the blocked flag", "test_ge_blocked_override")
+add_test("get_exits%() ignores other rooms' additional exits interleaved in the data", "test_ge_other_room_ignored")
+add_test("get_exits%() builds exits purely from additional exits when there are no standard exits", "test_ge_addexit_only")
+add_test("get_exits%() leaves rooms without additional exits untouched", "test_ge_untouched_standard")
 
 run_tests()
 End
+
+' Re-initialises the game data from a fixture in the tests data directory.
+Sub init_exits_fixture(f$)
+  Erase rooms$(), additional_exits$(), objects$(), adv.synonyms$()
+  advdata.init(DATA_DIR$ + f$)
+End Sub
 
 Sub test_init_no_add_exits_section()
   Erase rooms$(), additional_exits$(), objects$(), adv.synonyms$()
@@ -183,4 +201,150 @@ Sub test_read_section_gvn_obfuscated()
   For i% = 1 To n_plain%
     assert_string_equals(plain$(i%), obfuscated$(i%))
   Next
+End Sub
+
+' LOC006: two standard exits (LOC001, LOC002), plus the additional exit
+' "attic" to LOC003, which is not a standard exit and so is appended as a
+' third, with no blocked message.
+Sub test_ge_new_addexit()
+  init_exits_fixture("advent_exits.dat")
+  Local exits$(5) Length 128
+
+  assert_int_equals(3, get_exits%(find_loc%("LOC006", 0), exits$()))
+  assert_string_equals("LOC002|room two|", exits$(2))
+  assert_string_equals("LOC003|attic|", exits$(3))
+  assert_string_equals("", exits$(4))
+End Sub
+
+' LOC006: the blocked additional exit "trapdoor" to LOC001 merges into the
+' first standard exit (same position) rather than being appended.
+Sub test_ge_merge_blocked()
+  init_exits_fixture("advent_exits.dat")
+  Local exits$(5) Length 128
+
+  assert_int_equals(3, get_exits%(find_loc%("LOC006", 0), exits$()))
+  assert_string_equals("LOC001|room one trapdoor|trap_msg", exits$(1))
+  assert_string_equals("LOC002|room two|", exits$(2))
+  assert_string_equals("", exits$(4))
+End Sub
+
+' LOC003 has neither standard nor additional exits.
+Sub test_ge_no_exits()
+  init_exits_fixture("advent_exits.dat")
+  Local exits$(5) Length 128
+
+  assert_int_equals(0, get_exits%(find_loc%("LOC003", 0), exits$()))
+  assert_string_equals("", exits$(1))
+  assert_string_equals("", exits$(5))
+End Sub
+
+' Reusing one array: a room with fewer exits must not leave the previous
+' room's entries behind.
+Sub test_ge_clears_stale()
+  init_exits_fixture("advent_exits.dat")
+  Local exits$(5) Length 128
+
+  ' LOC006 (3 exits) then LOC004 (1 exit).
+  assert_int_equals(3, get_exits%(find_loc%("LOC006", 0), exits$()))
+  assert_int_equals(1, get_exits%(find_loc%("LOC004", 0), exits$()))
+  assert_string_equals("LOC003|room three|", exits$(1))
+  assert_string_equals("", exits$(2))
+  assert_string_equals("", exits$(3))
+
+  ' LOC001 (2 exits) then LOC003 (none).
+  assert_int_equals(2, get_exits%(find_loc%("LOC001", 0), exits$()))
+  assert_int_equals(0, get_exits%(find_loc%("LOC003", 0), exits$()))
+  assert_string_equals("", exits$(1))
+  assert_string_equals("", exits$(2))
+End Sub
+
+Sub test_ge_return_matches_count()
+  init_exits_fixture("advent_exits.dat")
+  Local exits$(5) Length 128, i%, n%
+
+  For i% = 1 To 6
+    ' Capture the return value first so exits$() is populated before counting.
+    n% = get_exits%(find_loc%("LOC00" + Str$(i%), 0), exits$())
+    assert_int_equals(count_words%(exits$()), n%)
+  Next
+End Sub
+
+' The '!additional_exits' section is optional; with it absent
+' only the standard exits are returned.
+Sub test_ge_no_addexit_section()
+  init_exits_fixture("advent_no_additional_exits.dat")
+  Local exits$(5) Length 128
+
+  assert_int_equals(3, get_exits%(find_loc%("LOC003", 0), exits$()))
+  assert_string_equals("LOC001|room one|", exits$(1))
+  assert_string_equals("LOC002|room two|", exits$(2))
+  assert_string_equals("LOC004|room four|", exits$(3))
+  assert_string_equals("", exits$(4))
+
+  assert_int_equals(1, get_exits%(find_loc%("LOC004", 0), exits$()))
+  assert_string_equals("LOC003|room three|", exits$(1))
+  assert_string_equals("", exits$(2))
+End Sub
+
+' LOC001: "alpha" and "beta" both target the standard exit to LOC002, so its
+' pattern accumulates in file order and no extra exit is created.
+Sub test_ge_merge_twice()
+  init_exits_fixture("advent_exits.dat")
+  Local exits$(5) Length 128
+
+  Const n% = get_exits%(find_loc%("LOC001", 0), exits$())
+  assert_int_equals(2, n%)
+  assert_string_equals("LOC002|room two alpha beta|", exits$(1))
+End Sub
+
+' LOC001: "gamma" creates a new exit blocked by "gamma_msg"; "delta" then
+' merges into it with no blocked message, which replaces the earlier one.
+' (Characterises current behaviour: the last additional exit wins.)
+Sub test_ge_blocked_override()
+  init_exits_fixture("advent_exits.dat")
+  Local exits$(5) Length 128
+
+  Const n% = get_exits%(find_loc%("LOC001", 0), exits$())
+  assert_int_equals(2, n%)
+  assert_string_equals("LOC003|gamma delta|", exits$(2))
+End Sub
+
+' In the data the LOC002 entry ("other") sits between two LOC001 entries.
+' LOC002 must see only its own, and LOC001 must not see it.
+Sub test_ge_other_room_ignored()
+  init_exits_fixture("advent_exits.dat")
+  Local exits$(5) Length 128
+
+  assert_int_equals(1, get_exits%(find_loc%("LOC002", 0), exits$()))
+  assert_string_equals("LOC001|room one other|", exits$(1))
+  assert_string_equals("", exits$(2))
+
+  assert_int_equals(2, get_exits%(find_loc%("LOC001", 0), exits$()))
+  assert_string_equals("", exits$(3))
+End Sub
+
+' LOC005 has no standard exits; its exits come only from the additional
+' exits, in file order, the second carrying a blocked message.
+Sub test_ge_addexit_only()
+  init_exits_fixture("advent_exits.dat")
+  Local exits$(5) Length 128
+
+  assert_int_equals(2, get_exits%(find_loc%("LOC005", 0), exits$()))
+  assert_string_equals("LOC001|north door|", exits$(1))
+  assert_string_equals("LOC002|cellar|cellar_msg", exits$(2))
+  assert_string_equals("", exits$(3))
+End Sub
+
+' LOC003 (no exits at all) and LOC004 (one standard exit) have no additional
+' exits, so nothing is added to or merged into them.
+Sub test_ge_untouched_standard()
+  init_exits_fixture("advent_exits.dat")
+  Local exits$(5) Length 128
+
+  assert_int_equals(0, get_exits%(find_loc%("LOC003", 0), exits$()))
+  assert_string_equals("", exits$(1))
+
+  assert_int_equals(1, get_exits%(find_loc%("LOC004", 0), exits$()))
+  assert_string_equals("LOC003|room three|", exits$(1))
+  assert_string_equals("", exits$(2))
 End Sub

@@ -477,14 +477,14 @@ End Sub
 ' Empty array is unchanged
 Sub test_unique_words_gvn_empty()
   Local words$(4) Length MAX_WORD_LENGTH
-  unique_words(words$())
+  assert_int_equals(0, unique_words%(words$()))
   assert_string_equals("", words$(1))
 End Sub
 
 ' No duplicates, array unchanged
 Sub test_unique_words_gvn_no_dupes()
   Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "")
-  unique_words(words$())
+  assert_int_equals(3, unique_words%(words$()))
   assert_string_equals("one", words$(1))
   assert_string_equals("two", words$(2))
   assert_string_equals("three", words$(3))
@@ -494,7 +494,7 @@ End Sub
 ' Duplicate removed and array shuffled down
 Sub test_unique_words_gvn_dupe()
   Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "one", "")
-  unique_words(words$())
+  assert_int_equals(2, unique_words%(words$()))
   assert_string_equals("one", words$(1))
   assert_string_equals("two", words$(2))
   assert_string_equals("", words$(3))
@@ -504,7 +504,7 @@ End Sub
 ' Comparison is case-insensitive
 Sub test_unique_words_gvn_case()
   Local words$(4) Length MAX_WORD_LENGTH = ("one", "ONE", "three", "")
-  unique_words(words$())
+  assert_int_equals(2, unique_words%(words$()))
   assert_string_equals("one", words$(1))
   assert_string_equals("three", words$(2))
   assert_string_equals("", words$(3))
@@ -514,7 +514,7 @@ End Sub
 ' Multiple duplicates all removed
 Sub test_unique_words_gvn_mult_dupes()
   Local words$(4) Length MAX_WORD_LENGTH = ("one", "one", "one", "two")
-  unique_words(words$())
+  assert_int_equals(2, unique_words%(words$()))
   assert_string_equals("one", words$(1))
   assert_string_equals("two", words$(2))
   assert_string_equals("", words$(3))
@@ -524,7 +524,7 @@ End Sub
 ' Adjacent duplicates handled correctly
 Sub test_unique_words_gvn_adjacent()
   Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "two", "")
-  unique_words(words$())
+  assert_int_equals(2, unique_words%(words$()))
   assert_string_equals("one", words$(1))
   assert_string_equals("two", words$(2))
   assert_string_equals("", words$(3))

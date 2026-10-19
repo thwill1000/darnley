@@ -155,19 +155,6 @@ describe('VERB_HANDLERS.examine', () => {
   });
 });
 
-describe('fakeExitTag()', () => {
-  it('blocks Kitchen -> Hall', () => {
-    expect(fakeExitTag('LOC009_KITCHEN', 'LOC008_HALL')).toBe('KITCHEN_TO_HALL');
-  });
-  it('blocks Morning room -> Second guest room', () => {
-    expect(fakeExitTag('LOC028_MORNING_ROOM', 'LOC030_SECOND_GUEST_ROOM')).toBe('MORNING_ROOM_TO_GUEST_ROOM');
-  });
-  it('allows other moves, including the reverse directions', () => {
-    expect(fakeExitTag('LOC008_HALL', 'LOC009_KITCHEN')).toBeNull();
-    expect(fakeExitTag('LOC025_LANDING', 'LOC030_SECOND_GUEST_ROOM')).toBeNull();
-  });
-});
-
 describe('VERB_HANDLERS.save / restore', () => {
   const store = () => {
     const m = new Map();

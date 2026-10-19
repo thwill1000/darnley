@@ -3,7 +3,7 @@
 '!if !defined(NO_INCLUDE_GUARDS)
 On Error Skip 1 : Dim sys.VERSION = -1
 If sys.VERSION = -1 Then Error "'system.inc' not included"
-sys.requires("console", "file")
+sys.requires("console", "file", "words")
 sys.provides("advdata")
 If sys.err$ <> "" Then Error sys.err$
 '!endif
@@ -128,7 +128,7 @@ Function read_advent_section%(f$, section$, dout$())
   Const fnbr% = 1
   Open f$ For Input As #fnbr%
 
-  For i% = Bound(dout$(), 0) To Bound(dout$(), 1) : dout$(i%) = "" : Next
+  clear_words(dout$())
 
   Seek #fnbr%, 1
   Do While Not Eof(fnbr%)
@@ -286,6 +286,51 @@ End Function
 
 Function obj_weight%(obj_idx%)
   obj_weight% = Val(Field$(objects$(obj_idx%), 6, "|"))
+End Function
+
+' Gets exits from a location.
+'
+' @param       loc%       The location index.
+' @param[out]  exits$     On exit an array of exit records: "id|pattern|blocked"
+' @return                 The number of exits.
+Function get_exits%(loc%, exits$())
+  clear_words(exits$())
+
+  ' Process standard exits.
+  Const num_exits% = Val(Field$(rooms$(loc%), 4, "|"))
+  Local exit_id$, exit_idx%
+  Do While get_exits% < num_exits%
+    Inc get_exits%
+    exit_id$ = Field$(rooms$(loc%), 4 + get_exits%, "|")
+    exit_idx% = find_loc%(exit_id$)
+    exits$(get_exits%) = exit_id$ + "|" + Field$(rooms$(exit_idx%), 3, "|") + "|"
+  Loop
+
+  ' Process additional exits.
+  Const from_id$ = Field$(rooms$(loc%), 1, "|")
+  Local i%, j%, blocked$, ex$, found%, pattern$, to_id$
+  For i% = Bound(additional_exits$(), 0) To Bound(additional_exits$(), 1)
+    ex$ = additional_exits$(i%)
+    If Field$(ex$, 1, "|") = from_id$ Then
+      pattern$ = Field$(ex$, 2, "|")
+      to_id$ = Field$(ex$, 3, "|")
+      blocked$ = Field$(ex$, 4, "|")
+      found% = 0
+      For j% = 1 To get_exits%
+        If Field$(exits$(j%), 1, "|") = to_id$ Then
+          found% = j%
+          Exit For
+        EndIf
+      Next
+      If found% Then
+        pattern$ = Field$(exits$(found%), 2, "|") + " " + pattern$
+      Else
+        Inc get_exits%
+        found% = get_exits%
+      EndIf
+      exits$(found%) = to_id$ + "|" + pattern$ + "|" + blocked$
+    EndIf
+  Next
 End Function
 
 ' Decodes a line read from a .dat/.msg file. Lines not beginning with "$" are

@@ -87,8 +87,8 @@ export function parseLocations(text) {
  */
 export function parseAdditionalExits(text) {
   return extractSection(text, '!additional_exits').map((line) => {
-    const [from, pattern, to] = line.split('|');
-    return { from, pattern, to };
+    const [from, pattern, to, blocked] = line.split('|');
+    return { from, pattern, to, blocked };
   });
 }
 
