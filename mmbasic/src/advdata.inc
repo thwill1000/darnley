@@ -154,7 +154,7 @@ End Function
 ' Each entry is "pattern|from_loc_id|to_loc_id" and defines an extra way to
 ' reach to_loc_id from from_loc_id, on top of that location's own listed
 ' exits. The section is optional - if absent, additional_exits$() ends up
-' as an empty (zero-entry) array and find_exit_match%() simply has nothing
+' as an empty (zero-entry) array and find_exit%() simply has nothing
 ' extra to scan.
 Sub read_additional_exits(f$)
   Const num% = count_advent_section%(f$, "!additional_exits", 1)
