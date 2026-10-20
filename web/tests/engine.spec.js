@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { findExitMatch, findObj, getExits } from '../src/engine.js';
+import { findExit, findObj, getExits } from '../src/engine.js';
 
 // Mirrors the small fixture used by mmbasic/src/tests/data/advent.dat /
 // mmbasic/src/tests/tst_verb_go.bas / tst_adventlib.bas: four rooms, two
@@ -24,49 +24,49 @@ const OBJECTS = [
 
 const locationById = (id) => LOCATIONS.find((loc) => loc.id === id);
 
-describe('findExitMatch()', () => {
+describe('findExit()', () => {
   it('"two" matches the exit "Room Two" (LOC002)', () => {
-    const result = findExitMatch(locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, ['go', 'two'], []);
+    const result = findExit(locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, ['go', 'two'], []);
     expect(result).toStrictEqual({ blocked: null, id: 'LOC002', pattern: 'room two' });
   });
 
   it('no word matches any exit - returns null', () => {
-    const result = findExitMatch(locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, ['go', 'nonexistent'], []);
+    const result = findExit(locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, ['go', 'nonexistent'], []);
     expect(result).toBeNull();
   });
 
   it('"room" matches both "Room Two" and "Room Three" equally - ties favour the first-listed exit', () => {
-    const result = findExitMatch(locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, ['go', 'room'], []);
+    const result = findExit(locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, ['go', 'room'], []);
     expect(result).toStrictEqual({ blocked: null, id: 'LOC002', pattern: 'room two' });
   });
 
   it('matching is case-insensitive', () => {
-    const result = findExitMatch(locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, ['go', 'TWO'], []);
+    const result = findExit(locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, ['go', 'TWO'], []);
     expect(result).toStrictEqual({ blocked: null, id: 'LOC002', pattern: 'room two' });
   });
 
   it('works from a different starting room', () => {
-    const result = findExitMatch(locationById('LOC002'), LOCATIONS, ADDITIONAL_EXITS, ['go', 'one'], []);
+    const result = findExit(locationById('LOC002'), LOCATIONS, ADDITIONAL_EXITS, ['go', 'one'], []);
     expect(result).toStrictEqual({ blocked: null, id: 'LOC001', pattern: 'room one' });
   });
 
   it('the verb word itself is never considered when matching', () => {
-    const result = findExitMatch(locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, ['go', 'two'], []);
+    const result = findExit(locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, ['go', 'two'], []);
     expect(result).toStrictEqual({ blocked: null, id: 'LOC002', pattern: 'room two' });
   });
 
   it('matches an additional exit not in the location\'s own exit list ("house" -> LOC003)', () => {
-    const result = findExitMatch(locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, ['go', 'house'], []);
+    const result = findExit(locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, ['go', 'house'], []);
     expect(result).toStrictEqual({ blocked: null, id: 'LOC003', pattern: 'room three house' });
   });
 
   it('an additional exit is scoped to its own from-location - unmatched elsewhere', () => {
-    const result = findExitMatch(locationById('LOC002'), LOCATIONS, ADDITIONAL_EXITS, ['go', 'house'], []);
+    const result = findExit(locationById('LOC002'), LOCATIONS, ADDITIONAL_EXITS, ['go', 'house'], []);
     expect(result).toBeNull();
   });
 
   it('additional exit matching is case-insensitive', () => {
-    const result = findExitMatch(locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, ['go', 'HOUSE'], []);
+    const result = findExit(locationById('LOC001'), LOCATIONS, ADDITIONAL_EXITS, ['go', 'HOUSE'], []);
     expect(result).toStrictEqual({ blocked: null, id: 'LOC003', pattern: 'room three house' });
   });
 });
