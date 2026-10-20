@@ -9,7 +9,7 @@
 import { markupToHtml } from './console.js';
 import { HELP_TEXT_ID, INTRO_TEXT_ID } from './data.js';
 import {
-  findExitMatch,
+  findExit,
   findObj,
   printBody,
   speechBody,
@@ -41,7 +41,7 @@ export function linkCommand(gameData, state, text) {
   const obj = findObj(gameData.objects, words, gameData.synonyms, state.room);
   if (obj && obj.location === state.room) return 'examine ' + text;
 
-  const exit = findExitMatch(current, gameData.locations, gameData.additionalExits, ['go', ...words], gameData.synonyms);
+  const exit = findExit(current, gameData.locations, gameData.additionalExits, ['go', ...words], gameData.synonyms);
   if (exit !== null) return 'go ' + text;
 
   return 'examine ' + text;

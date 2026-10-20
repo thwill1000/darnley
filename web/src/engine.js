@@ -30,7 +30,6 @@ const EXTRA_REPLACEMENTS = {
 /**
  * Finds the best matching exit from currentLocation for the given words.
  *
- *
  * @param {{id: string, exits: string[]}} currentLocation
  * @param {{id: string, pattern: string, exits: string[]}[]} locations
  * @param {{from: string, pattern: string, to: string}[]} additionalExits
@@ -45,7 +44,7 @@ const EXTRA_REPLACEMENTS = {
  *                                   The best matching exit,
  *                                   or null if nothing matched.
  */
-export function findExitMatch(currentLocation, locations, additionalExits, words, synonymEntries, startIndex = 1) {
+export function findExit(currentLocation, locations, additionalExits, words, synonymEntries, startIndex = 1) {
   const exits = getExits(currentLocation, locations, additionalExits);
   const matchIn = makeMatchInput(words, synonymEntries, startIndex);
 
@@ -323,7 +322,7 @@ export function findResponse(entries, subjectWords, synonymEntries, flags) {
  *          room is unchanged (currentLocation.id) and blocked/html explains why.
  */
 export function verbGo(currentLocation, locations, additionalExits, words, synonymEntries) {
-  const exit = findExitMatch(currentLocation, locations, additionalExits, words, synonymEntries);
+  const exit = findExit(currentLocation, locations, additionalExits, words, synonymEntries);
   if (exit !== null) {
     if (exit.blocked) {
       return {
@@ -449,7 +448,7 @@ export function verbExamine(objects, messages, words, synonymEntries, currentLoc
   }
 
   // If we match an exit rather than an object then suggest the GO command.
-  const exit = findExitMatch(currentLocation, locations, additionalExits, words, synonymEntries);
+  const exit = findExit(currentLocation, locations, additionalExits, words, synonymEntries);
   if (exit !== null) {
     const target = words.slice(1).join(' ').toUpperCase();
     return { success: false, message: `Try \`GO ${target}\`.` };
