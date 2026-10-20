@@ -123,11 +123,11 @@ add_test("test_pml_gvn_plain")
 add_test("test_pml_applies_provides")
 add_test("test_pml_gvn_multiline")
 add_test("test_pml_ignores_requires")
-add_test("find_exit_match() matches single exit by name", "test_fem_gvn_match")
-add_test("find_exit_match() matches a different exit", "test_fem_gvn_other_match")
-add_test("find_exit_match() returns -1 when no exit matches", "test_fem_gvn_no_match")
-add_test("find_exit_match() breaks ties in favour of first exit", "test_fem_gvn_tie_first")
-add_test("find_exit_match() matching is case-insensitive", "test_fem_gvn_case")
+add_test("find_exit() matches single exit by name", "test_fem_gvn_match")
+add_test("find_exit() matches a different exit", "test_fem_gvn_other_match")
+add_test("find_exit() returns -1 when no exit matches", "test_fem_gvn_no_match")
+add_test("find_exit() breaks ties in favour of first exit", "test_fem_gvn_tie_first")
+add_test("find_exit() matching is case-insensitive", "test_fem_gvn_case")
 add_test("find_obj() in current location", "test_find_obj_gvn_current")
 add_test("find_obj() in other location", "test_find_obj_gvn_other")
 add_test("find_obj() not found", "test_find_obj_gvn_not_found")
@@ -855,27 +855,27 @@ Sub test_fm_gvn_group_with_plain()
   assert_int_equals(2, find_matches%(pattern$, match_in$))
 End Sub
 
-' find_exit_match%() ------------------------------------------------------
+' find_exit%() ------------------------------------------------------
 
 ' r=LOC001; "two" matches the exit "Room Two" (LOC002)
 Sub test_fem_gvn_match()
   r = 1
   Local words$(4) Length MAX_WORD_LENGTH = ("examine", "two", "", "")
-  assert_int_equals(2, find_exit_match%(words$()))
+  assert_int_equals(2, find_exit%(words$()))
 End Sub
 
 ' r=LOC001; "three" matches the exit "Room Three" (LOC003)
 Sub test_fem_gvn_other_match()
   r = 1
   Local words$(4) Length MAX_WORD_LENGTH = ("examine", "three", "", "")
-  assert_int_equals(3, find_exit_match%(words$()))
+  assert_int_equals(3, find_exit%(words$()))
 End Sub
 
 ' No word matches any exit name
 Sub test_fem_gvn_no_match()
   r = 1
   Local words$(4) Length MAX_WORD_LENGTH = ("examine", "nonexistent", "", "")
-  assert_int_equals(-1, find_exit_match%(words$()))
+  assert_int_equals(-1, find_exit%(words$()))
 End Sub
 
 ' "room" matches both "Room Two" and "Room Three" equally;
@@ -883,14 +883,14 @@ End Sub
 Sub test_fem_gvn_tie_first()
   r = 1
   Local words$(4) Length MAX_WORD_LENGTH = ("examine", "room", "", "")
-  assert_int_equals(2, find_exit_match%(words$()))
+  assert_int_equals(2, find_exit%(words$()))
 End Sub
 
 ' Matching is case-insensitive
 Sub test_fem_gvn_case()
   r = 1
   Local words$(4) Length MAX_WORD_LENGTH = ("examine", "TWO", "", "")
-  assert_int_equals(2, find_exit_match%(words$()))
+  assert_int_equals(2, find_exit%(words$()))
 End Sub
 
 ' find_obj%() -------------------------------------------------------------
