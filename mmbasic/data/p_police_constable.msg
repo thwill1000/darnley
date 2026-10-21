@@ -1,4 +1,4 @@
-hello hi morning afternoon evening greetings
+hello hi greetings | -room morning | afternoon | evening
 "Morning, sir. Constable on duty at the gate - nothing gets past me,
 for what that's worth."
 

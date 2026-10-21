@@ -1,4 +1,4 @@
-hello hi morning afternoon evening greetings
+hello hi greetings | -room morning | afternoon | evening
 "Good day to you, sir. I only wish it were under happier
 circumstances."
 
@@ -294,7 +294,7 @@ retired, though - I was asleep myself until Mr. Coniston woke me."
 "I have no knowledge of Mr. Mellors' movements last night, sir. He
 does not come up to the house after dark unless sent for."
 
--thanks alibi | -thanks +time murder
+-thanks alibi | -thanks +time murder | +yesterday you evening
 "I was with Mrs. Goodbody and young Norah in my pantry at both 10:30
 and 11:30."
 

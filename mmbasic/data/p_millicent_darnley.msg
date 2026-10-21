@@ -1,4 +1,4 @@
-hello hi morning afternoon evening greetings
+hello hi greetings | -room morning | afternoon | evening
 "Hello, Inspector. I suppose there's nothing 'good' about this
 morning, but you're welcome all the same."
 
@@ -270,7 +270,7 @@ something I'd notice."
 "I shouldn't think anyone in the house could vouch for Mellors. He
 keeps to himself down at the cottage."
 
--thanks alibi | -thanks +time murder
+-thanks alibi | -thanks +time murder | +yesterday you evening
 "I was with Arthur in the music room at 10:30 and, naturally, I was
 alone in bed at 11:30."
 

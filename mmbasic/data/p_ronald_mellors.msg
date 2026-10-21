@@ -1,4 +1,4 @@
-hello hi morning afternoon evening greetings
+hello hi greetings | -room morning | afternoon | evening
 "Morning. Get on with your questions, then, if you've got some."
 
 +who +are +you | +name +yourself | +(call/called) +you
@@ -227,7 +227,7 @@ cottage."
 "Nobody vouches for me of an evening, and I don't ask them to. I was
 alone, same as always."
 
--thanks alibi | -thanks +time murder
+-thanks alibi | -thanks +time murder | +yesterday you evening
 "I was in my cottage alone all evening and I don't give a tinker's
 curse if you believe me or not. If you look for my tracks to the big
 house, you won't find them."

@@ -1,4 +1,4 @@
-hello hi morning afternoon evening greetings
+hello hi greetings | -room morning | afternoon | evening
 "Good morning, Inspector. Forgive me if I don't manage much of a
 smile today."
 
@@ -284,7 +284,7 @@ wasn't paying attention to the servants that evening."
 "I don't see why you should ask me about Mellors' evening, Inspector.
 I'm sure I couldn't tell you."
 
--thanks alibi | -thanks +time murder
+-thanks alibi | -thanks +time murder | +yesterday you evening
 "At 10:30 I was reading and drinking coffee in the lounge - on my
 own, I'm afraid. At 11:30 I was playing the piano in the morning
 room - also alone, alas! I don't suppose it looks to good?"

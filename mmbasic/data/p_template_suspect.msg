@@ -14,7 +14,7 @@
 # suspect-specific (accuse_b4_<tag>) and are normalized to a common
 # placeholder for comparison (see msgorder.normalize_token$()).
 
-hello hi morning afternoon evening greetings
+hello hi greetings | -room morning | afternoon | evening
 "greeting response"
 
 +who +are +you | +name +yourself | +(call/called) +you
@@ -219,7 +219,7 @@ events yesterday murder last happened
 +(confirm/corroborate/vouch/alibi/with) +(mellors/gamekeeper) you
 "vouch for mellors response"
 
--thanks alibi | -thanks +time murder
+-thanks alibi | -thanks +time murder | +yesterday you evening
 "alibi response"
 
 -thanks alone (confirm/confirmed) corroborate witness anyone time

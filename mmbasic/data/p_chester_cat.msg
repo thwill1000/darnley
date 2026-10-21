@@ -1,4 +1,4 @@
-hello hi morning afternoon evening greetings
+hello hi greetings | -room morning | afternoon | evening
 The cat opens one eye, assesses you as unimportant, and closes it again.@
 @
 "Mrow."
@@ -189,7 +189,7 @@ other sign of comprehension.@
 @
 "Mrp?"
 
--thanks alibi | -thanks +time murder
+-thanks alibi | -thanks +time murder | +yesterday you evening
 The cat blinks at you slowly, which you choose to interpret as either
 total innocence or total guilt. It is impossible to tell.@
 @

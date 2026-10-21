@@ -267,6 +267,7 @@ Sub test_alibi()
   assert_response("What alibi can you give me?", "alibi response")
   assert_response("What were you doing at the time of the murder?", "alibi response")
   assert_response("Where were you at the time of the murder?", "alibi response")
+  assert_response("What did you do yesterday evening?", "alibi response")
 
   objects$(9) = "P_MILDRED_GOODBODY|Mildred Goodbody|mildred goodbody cook|LOC001_BATHROOM|2|100"
   assert_response("Mildred, where were you at the time of the murder?", "We was all three together", 1)
@@ -413,6 +414,7 @@ Sub test_gramophone()
   assert_response("what about the gramophone", "gramophone response")
   assert_response("tell me about the gramophone", "gramophone response")
   assert_response("was anyone playing the gramophone", "gramophone response")
+  assert_response("Tell me about the gramophone in the morning room", "gramophone response")
 
   ' Test misspelling of "gramophone" as "gramaphone"
   assert_response("tell me about the gramaphone", "gramophone response")

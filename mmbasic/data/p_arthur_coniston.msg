@@ -1,4 +1,4 @@
-hello hi morning afternoon evening greetings
+hello hi greetings | -room morning | afternoon | evening
 "Ah, hello there. Ghastly business, all this - still, glad to have
 someone competent looking into it."
 
@@ -283,7 +283,7 @@ notice - servants keep rather different hours to the rest of us."
 "Never even laid eyes on the fellow, far as I recall. Couldn't tell
 you a thing about his evening."
 
--thanks alibi | -thanks +time murder
+-thanks alibi | -thanks +time murder | +yesterday you evening
 "Millicent and I were together in the music room at 10:30. I don't
 know how anyone can be expected to have an alibi for 11:30.
 Certainly a single gentleman could never admit to one, if you follow

@@ -1,4 +1,4 @@
-hello hi morning afternoon evening greetings
+hello hi greetings | -room morning | afternoon | evening
 "Oh - good morning, sir. Sorry, I'm all of a fluster still, what
 with everything that's happened."
 
@@ -243,7 +243,7 @@ after we all dropped off, though."
 "I don't know anything about Mr. Mellors of an evening, sir. He
 doesn't come up to the house after dark unless he's sent for."
 
--thanks alibi | -thanks +time murder
+-thanks alibi | -thanks +time murder | +yesterday you evening
 "I'm not good where times are concerned. I s'pose I was with Mr. B.
 and Mrs. G. in Mr. B.'s room."
 
