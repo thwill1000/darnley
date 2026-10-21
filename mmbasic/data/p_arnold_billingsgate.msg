@@ -151,19 +151,19 @@ arrived, and troubled none of us in the house."
 "I've studied all the people here and none of them are flat-footed.
 It's a mystery to me why the bootprints should be flat-footed."
 
-+hobnailed +(bootprints/prints) boot
++hobnailed +(bootprints/prints) boots
 "I don't know whose these are."
 
-+slipper +(footprints/prints)
++slippers +(footprints/prints)
 "I believe the slipper prints are Mr. Coniston's."
 
-+mens +(shoeprints/footprints/prints) shoe
++mens +(shoeprints/footprints/prints) shoes
 "The shoe prints are mine."
 
-+womens +(shoeprints/footprints/prints) shoe
++womens +(shoeprints/footprints/prints) shoes
 "I don't know whose these are."
 
-+(footprints/shoeprints/bootprints/prints) foot boot shoe
++(footprints/shoeprints/bootprints/prints) foot boots shoes
 "There are prints all over the place, sir - boots, slippers, shoes.
 I couldn't begin to say which matter and which don't."
 

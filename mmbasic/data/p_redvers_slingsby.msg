@@ -158,23 +158,23 @@ exchange more than two words with the fellow."
 "The bootprints around the house look like mine, but I didn't make
 them. I'm not flat-footed."
 
-+hobnailed +(bootprints/prints) boot
++hobnailed +(bootprints/prints) boots
 "Hobnailed, flat-footed, whatever you like to call it - can't tell one
 from another out there in the snow, and don't propose to try."
 
-+slipper +(footprints/prints)
++slippers +(footprints/prints)
 "Slipper prints? Damned if I know, and damned if I care whose they
 are."
 
-+mens +(shoeprints/footprints/prints) shoe
++mens +(shoeprints/footprints/prints) shoes
 "Couldn't say. Ask the butler - that's rather more his line than
 mine."
 
-+womens +(shoeprints/footprints/prints) shoe
++womens +(shoeprints/footprints/prints) shoes
 "Haven't the foggiest. A woman's shoe is a woman's shoe as far as I'm
 concerned, old man."
 
-+(footprints/shoeprints/bootprints/prints) foot boot shoe
++(footprints/shoeprints/bootprints/prints) foot boots shoes
 "Prints all over the blasted grounds, so I'm told. Couldn't tell
 you one from another."
 

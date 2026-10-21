@@ -124,20 +124,20 @@ he keeps to the drive."
 +(flatfooted/flat/odd) (bootprints/footprints/prints)
 "Clear off! I'm not showing anyone my boots."
 
-+hobnailed +(bootprints/prints) boot
++hobnailed +(bootprints/prints) boots
 "Hobnailed's what half the boots on this estate look like, mine included.
 Don't mean nothing."
 
-+slipper +(footprints/prints)
++slippers +(footprints/prints)
 "I don't know whose they are."
 
-+mens +(shoeprints/footprints/prints) shoe
++mens +(shoeprints/footprints/prints) shoes
 "I don't know whose these are."
 
-+womens +(shoeprints/footprints/prints) shoe
++womens +(shoeprints/footprints/prints) shoes
 "Do I look like I wear women's shoes?"
 
-+(footprints/shoeprints/bootprints/prints) foot boot shoe
++(footprints/shoeprints/bootprints/prints) foot boots shoes
 "There's prints all over the estate this time of year. Don't mean
 nothing on their own."
 

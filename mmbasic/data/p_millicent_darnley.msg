@@ -138,21 +138,21 @@ a thankless job, I should think, on a morning like this."
 "I'm afraid I paid no attention to footprints. Really, is that the sort of thing
 one is expected to notice?"
 
-+hobnailed +(bootprints/prints) boot
++hobnailed +(bootprints/prints) boots
 "I couldn't tell you. I don't make a habit of studying people's footwear."
 
-+slipper +(footprints/prints)
++slippers +(footprints/prints)
 "I really couldn't say. I don't see how I could be expected to recognise a
 slipper print."
 
-+mens +(shoeprints/footprints/prints) shoe
++mens +(shoeprints/footprints/prints) shoes
 "That is rather beyond me I'm afraid. Aren't you the detective?"
 
-+womens +(shoeprints/footprints/prints) shoe
++womens +(shoeprints/footprints/prints) shoes
 "I might recognise my own shoes, but I couldn't tell you whose prints these are
 from looking at them in the snow."
 
-+(footprints/shoeprints/bootprints/prints) foot boot shoe
++(footprints/shoeprints/bootprints/prints) foot boots shoes
 "There seem to be prints absolutely everywhere. I really couldn't
 tell you which are significant."
 

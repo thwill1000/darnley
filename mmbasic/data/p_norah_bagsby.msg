@@ -124,22 +124,22 @@ expect he's only doing his job, same as anyone."
 +(flatfooted/flat/odd) (bootprints/footprints/prints)
 "Oh, I couldn't say, sir. I don't look at people's feet, it isn't my place."
 
-+hobnailed +(bootprints/prints) boot
++hobnailed +(bootprints/prints) boots
 "I wouldn't know one bootprint from another, sir, honest I wouldn't."
 
-+slipper +(footprints/prints)
++slippers +(footprints/prints)
 "I couldn't tell you, sir. I'm too busy with my work to go noticing
 things like that."
 
-+mens +(shoeprints/footprints/prints) shoe
++mens +(shoeprints/footprints/prints) shoes
 "I only know Mr. Billingsgate keeps his shoes ever so clean, sir - but
 I couldn't say if these are his."
 
-+womens +(shoeprints/footprints/prints) shoe
++womens +(shoeprints/footprints/prints) shoes
 "I wouldn't like to guess, sir. A lady's shoe print's a lady's shoe
 print to me."
 
-+(footprints/shoeprints/bootprints/prints) foot boot shoe
++(footprints/shoeprints/bootprints/prints) foot boots shoes
 "There's ever so many prints about the place, sir. I wouldn't know
 which ones you mean."
 

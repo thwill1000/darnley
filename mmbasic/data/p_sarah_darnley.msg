@@ -157,21 +157,21 @@ over something so dreadful."
 +(flatfooted/flat/odd) (bootprints/footprints/prints)
 "I'm too distressed to think clearly about bootprints, I'm afraid."
 
-+hobnailed +(bootprints/prints) boot
++hobnailed +(bootprints/prints) boots
 "I really couldn't say. I wasn't paying attention to people's boots."
 
-+slipper +(footprints/prints)
++slippers +(footprints/prints)
 "I don't know whose slippers those would be. I'm sorry, this is all rather too
 much."
 
-+mens +(shoeprints/footprints/prints) shoe
++mens +(shoeprints/footprints/prints) shoes
 "I'm afraid I don't notice that sort of thing at the best of times."
 
-+womens +(shoeprints/footprints/prints) shoe
++womens +(shoeprints/footprints/prints) shoes
 "I couldn't say whose they are. I'm really not in a fit state to be asked about
 footprints."
 
-+(footprints/shoeprints/bootprints/prints) foot boot shoe
++(footprints/shoeprints/bootprints/prints) foot boots shoes
 "I understand there are prints all over the grounds. I'm afraid I
 haven't the faintest idea which ones matter."
 
