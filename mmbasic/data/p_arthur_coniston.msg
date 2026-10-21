@@ -145,19 +145,19 @@ than a nod with him on my way past the gate."
 +(flatfooted/flat/odd) (bootprints/footprints/prints)
 "I followed the bootprints from the terrace around to the kitchen."
 
-+hobnailed +(bootprints/prints) boot
++hobnailed +(bootprints/prints) boots
 "I don't know whose they are."
 
-+slipper +(footprints/prints)
++slippers +(footprints/prints)
 "The prints from the slippers are mine."
 
-+mens +(shoeprints/footprints/prints) shoe
++mens +(shoeprints/footprints/prints) shoes
 "I think they are probably Billingsgate's."
 
-+womens +(shoeprints/footprints/prints) shoe
++womens +(shoeprints/footprints/prints) shoes
 "I don't know whose these are."
 
-+(footprints/shoeprints/bootprints/prints) foot boot shoe
++(footprints/shoeprints/bootprints/prints) foot boots shoes
 "Prints everywhere, old boy. I shouldn't like to guess which ones
 signify anything."
 

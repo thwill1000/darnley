@@ -134,22 +134,22 @@ handkerchief
 +(flatfooted/flat/odd) (bootprints/footprints/prints)
 "flatfooted bootprints response"
 
-+hobnailed +(bootprints/prints) boot
++hobnailed +(bootprints/prints) boots
 "hobnailed bootprints response"
 
-+slipper +(footprints/prints)
++slippers +(footprints/prints)
 "slipper prints response"
 
-+mens +(shoeprints/footprints/prints) shoe
++mens +(shoeprints/footprints/prints) shoes
 "mens shoeprints response"
 
-+womens +(shoeprints/footprints/prints) shoe
++womens +(shoeprints/footprints/prints) shoes
 "womens shoeprints response"
 
 +prints +(car/motor/saloon) | +(tyre/tyres)
 "car tracks response"
 
-+(footprints/shoeprints/bootprints/prints) foot boot shoe
++(footprints/shoeprints/bootprints/prints) foot boots shoes
 "footprints response"
 
 pond

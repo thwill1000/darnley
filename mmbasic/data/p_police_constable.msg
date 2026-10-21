@@ -68,7 +68,7 @@ crossed every which way by footprints. I couldn't tell you how many
 comings and goings, there's been too much traffic across this snow
 to make sense of it."
 
-+(footprints/shoeprints/bootprints/prints) foot boot shoe
++(footprints/shoeprints/bootprints/prints) foot boots shoes
 "A proper tangle of them, sir, criss-crossing all directions. I've
 kept everyone off the drive since I arrived, for whatever good that
 will do you now."

@@ -147,19 +147,19 @@ out there in this cold, someone had to."
 boots. They made flat-footed prints because they were too big for
 her."
 
-+hobnailed +(bootprints/prints) boot
++hobnailed +(bootprints/prints) boots
 "I don't know whose these are, dear - not something I make a study of."
 
-+slipper +(footprints/prints)
++slippers +(footprints/prints)
 "I couldn't tell you, dear."
 
-+mens +(shoeprints/footprints/prints) shoe
++mens +(shoeprints/footprints/prints) shoes
 "No idea, dear - I don't go inspecting people's footwear."
 
-+womens +(shoeprints/footprints/prints) shoe
++womens +(shoeprints/footprints/prints) shoes
 "I don't recognise those, dear."
 
-+(footprints/shoeprints/bootprints/prints) foot boot shoe
++(footprints/shoeprints/bootprints/prints) foot boots shoes
 "There's prints all over the snow, dear. Can't say I paid them any
 mind beyond keeping the kitchen floor clean."
 
