@@ -1,4 +1,4 @@
-hello hi morning afternoon evening greetings
+hello hi greetings | -room morning | afternoon | evening
 "Morning. Damned unpleasant way to start a day, having policemen
 tramping about the place, but I suppose it can't be helped."
 
@@ -282,7 +282,7 @@ evening, nor any particular wish to."
 "Never laid eyes on the fellow last night. Don't even know where his
 cottage is, come to that."
 
--thanks alibi | -thanks +time murder
+-thanks alibi | -thanks +time murder | +yesterday you evening
 "I left Darnley alive at 10:30 and it's damn nonsense to suggest I
 shot him with all the house awake and then waited to see what would
 happen. At 11:30 I was asleep like a good Christian, and the Devil

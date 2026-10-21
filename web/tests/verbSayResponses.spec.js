@@ -160,6 +160,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       'alibi', "What's your alibi?", 'Give me your alibi', 'Do you have an alibi?',
       'What alibi can you give me?', 'What were you doing at the time of the murder?',
       'Where were you at the time of the murder?',
+      "What did you do yesterday evening?",
     ]);
 
     target('goodbody');
@@ -285,7 +286,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
   it('Was anyone playing the gramophone?', () => {
     all('gramophone response', [
       'ask about the gramophone', 'what about the gramophone', 'tell me about the gramophone',
-      'was anyone playing the gramophone',
+      'was anyone playing the gramophone', 'Tell me about the gramophone in the morning room',
       // Misspelling of "gramophone" as "gramaphone" (via synonyms)
       'tell me about the gramaphone', 'gramaphone', 'that gramaphone record',
     ]);

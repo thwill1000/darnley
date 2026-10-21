@@ -1,4 +1,4 @@
-hello hi morning afternoon evening greetings
+hello hi greetings | -room morning | afternoon | evening
 "Good morning, dear. Can't say it's been much of one, what with
 everything, but sit yourself down if you need anything."
 
@@ -265,7 +265,7 @@ ten, so I couldn't swear to any of us after that."
 "Nothing to do with me, dear. Mr. Mellors keeps to his cottage of an
 evening, same as always. I couldn't vouch for him one way or another."
 
--thanks alibi | -thanks +time murder
+-thanks alibi | -thanks +time murder | +yesterday you evening
 "We was all three together, me, Norah and Mr. B. in Mr. B.'s pantry
 at 10:30 and 11:30. Of course we was asleep at 11:30 so I suppose
 any of us could have slipped out without the others noticing."
