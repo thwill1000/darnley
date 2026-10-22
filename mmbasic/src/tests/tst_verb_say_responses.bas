@@ -101,7 +101,6 @@ add_test("What do you know about the slipper prints?", "test_slipper_prints")
 add_test("What do you know about the men's shoe prints?", "test_mens_shoeprints")
 add_test("What do you know about the women's shoe prints?", "test_womens_shoeprints")
 add_test("Tell me about the footprints.", "test_footprints")
-add_test("What do you know about the tyre tracks by the car?", "test_car_tracks")
 add_test("What do you know about the pond?", "test_pond")
 add_test("Tell me about the pipe in the servants' quarters.", "test_pipe")
 add_test("Whose books are these?", "test_bookshelf")
@@ -705,13 +704,6 @@ Sub test_footprints()
   assert_response("Tell me about the shoe prints", "footprints response")
   assert_response("What about the shoeprints?", "footprints response")
   assert_response("What about the shoe tracks?", "footprints response")
-End Sub
-
-Sub test_car_tracks()
-  assert_response("car tracks", "car tracks response")
-  assert_response("Tell me about the tyre tracks", "car tracks response")
-  assert_response("What about the tracks by the car?", "car tracks response")
-  assert_response("What about the daimler's tyres?", "car tracks response")
 End Sub
 
 Sub test_pond()

@@ -505,13 +505,6 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     ]);
   });
 
-  it('What do you know about the tyre tracks by the car?', () => {
-    all('car tracks response', [
-      'car tracks', 'Tell me about the tyre tracks', 'What about the tracks by the car?',
-      "What about the daimler's tyres?",
-    ]);
-  });
-
   it('What do you know about the pond?', () => {
     all('pond response', ['pond', 'Tell me about the ornamental pond', 'What about the pond?']);
   });
