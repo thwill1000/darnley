@@ -62,12 +62,6 @@ anyone that I've noticed."
 call came in, and I've been minding the gate since. I'll do my duty here as
 long as you need me to."
 
-+prints +(car/motor/saloon) | +(tyre/tyres)
-"Tyre-tracks run the length of the drive up to the parked car, sir,
-crossed every which way by footprints. I couldn't tell you how many
-comings and goings, there's been too much traffic across this snow
-to make sense of it."
-
 +(footprints/shoeprints/bootprints/prints) foot boots shoes
 "A proper tangle of them, sir, criss-crossing all directions. I've
 kept everyone off the drive since I arrived, for whatever good that

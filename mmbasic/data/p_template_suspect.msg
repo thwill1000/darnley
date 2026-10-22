@@ -146,9 +146,6 @@ handkerchief
 +womens +(shoeprints/footprints/prints) shoes
 "womens shoeprints response"
 
-+prints +(car/motor/saloon) | +(tyre/tyres)
-"car tracks response"
-
 +(footprints/shoeprints/bootprints/prints) foot boots shoes
 "footprints response"
 
