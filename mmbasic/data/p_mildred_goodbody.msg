@@ -282,7 +282,7 @@ darkest secrets. Though there's been a queer atmosphere in this
 house since Sir Redvers arrived, if you want my honest opinion."
 
 (inheritance/inherit) will estate money (left/leave)
-"That's not something the Colonel would ever discuss infront of the
+"That's not something the Colonel would ever discuss in front of the
 servants, dear, nor would I expect him to. I couldn't tell you a thing
 about it."
 

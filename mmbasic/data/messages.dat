@@ -71,9 +71,9 @@ the south the orchard opens onto a [[green:Paved terrace]].
 
 LOC003_KITCHEN_GARDEN
 The kitchen garden lies frozen and barren under snow. [[green:Footprints]]
-criss-cross the frozen vegetables. The [[green:Orchard]] spreads to the north,
-the [[green:Outhouses]] to the east, and the [[green:Kitchen]] door to the
-south.
+criss-cross the frozen vegetables. The [[green:Orchard]] spreads to the north
+and west, the [[green:Outhouses]] to the east, and the [[green:Kitchen]] door
+to the south.
 
 LOC004_OUTHOUSES
 A cluster of outbuildings occupies this corner: a laundry, a
@@ -93,7 +93,7 @@ This paved terrace extends from the house westward toward an
 [[green:Ornamental pond]]. The snow shows a profusion of [[green:footprints]] -
 many feet have crossed here. To the north lies the [[green:Orchard]], east
 a [[green:french window]] into the [[green:Colonel's Study]], and south the
-[[green:West walk]].
+[[green:Tennis court]].
 
 LOC007_COLONELS_STUDY
 The body of [[green:Colonel Darnley]] lies upon a Turkish carpet, a
@@ -112,12 +112,14 @@ foot, damp with recent use. The marble floor extends the length of the
 room, reflecting what little winter light finds its way through the fanlight
 above the door. The walls carry swords and Civil War pikes, and two suits
 of fine [[green:armour]] stand sentinel either side of the staircase. A
-glass [[green:display case]] mounted on the wall holds flints and pottery
-shards collected from the estate grounds. Doors lead to the
+glass [[green:display case]] mounted on the wall holds a collection of flints
+and pottery shards.@
+@
+Interior doors lead to the
 [[green:Dining room]], [[green:Music room]], [[green:Colonel's Study]], and
-[[green:Lounge]], or the staircase climbs to the [[green:Upstairs landing]].
-A door that would otherwise lead through to the kitchen passage stands
-blocked by [[green:stacked furniture]].
+[[green:Lounge]]. Alternatively the staircase climbs to the
+[[green:Upstairs landing]]. A door that would otherwise lead through to the
+kitchen passage stands blocked by [[green:stacked furniture]].
 
 LOC009_KITCHEN
 Game birds hang from the ceiling of this kitchen. On the sink's
@@ -138,14 +140,14 @@ LOC011_MAZE
 Chest-height box hedges form the walls of this modest maze. They are
 dark and winter-dense, with a thin crust of snow along each flat top.
 The paths between them are scuffed and disturbed but yield no clear
-footprints. The [[green:Outhouses]] lie north, the [[green:East walk]]
-west, the [[green:East lawn]] south.
+footprints. The [[green:Outhouses]] lie north and the
+[[green:Avenue of statues]] leads west across the front of the house.
 
 LOC012_WEST_WALK
-A gravel path runs clockwise around the house between the snow-covered tennis court
-and a bed of withered flowers. [[green:Footprints]] are visible in the snow.
-The [[green:Main drive]] lies east, the [[green:Summer house]] south-west, the
-[[green:West lawn]] south, and a [[green:Paved terrace]] north.
+A gravel path runs clockwise around the house between the snow-covered tennis
+court and a bed of withered flowers. [[green:Footprints]] are visible in the
+snow. The front of the house and [[green:Main drive]] lies east, the
+[[green:Summer house]] south-west, and a [[green:Paved terrace]] north.
 
 LOC013_LOUNGE
 A three-piece suite sits upon a Chinese carpet scattered with magazines and
@@ -175,78 +177,78 @@ recent game. Shelves hold magazines and novels by Conan Doyle and Buchan. Three
 and [[green:Music room]].
 
 LOC017_DRIVE
-From wrought-iron gates, the drive sweeps northward toward a small red-brick Georgian
-manor, its weathered facade and plain symmetrical proportions speaking of an
-earlier, more restrained age. Stone lions flank the steps that climb to the
-[[green:Hall]] door. Paths branch away: clockwise around the house along
-snow-covered gravel toward the [[green:West walk]] and [[green:West lawn]],
-or anti-clockwise through an avenue of statues along the [[green:East walk]]
-towards the [[green:Stables]]. A [[green:police constable]] stands watchfully
-by one of the gate-piers, whilst a pre-war black [[green:police car]] is parked
-on the drive close to the house. The snow reveals a confused tangle of
-[[green:footprints]] criss-crossing in all directions.
+From wrought-iron gates, the drive sweeps northward toward a small red-brick
+Georgian manor, its weathered facade and plain symmetrical proportions speaking
+of an earlier, more restrained age. Stone lions flank the steps that climb to
+the [[green:Hall]] door. A [[green:police constable]] stands watchfully by one
+of the gate-piers, whilst a 1920s black [[green:police car]] is parked on the
+drive close to the house. The snow reveals a confused tangle of
+[[green:footprints]] criss-crossing in all directions.@
+@
+To the west of the house, a gravel path leads past the [[green:Tennis court]],
+with the snowy [[green:West lawn]] spreading out in front. To the east, an
+[[green:Avenue of statues]] runs along the front of the house, and a yard gate
+opens onto the [[green:Stables]].
 
 LOC018_EAST_WALK
 This gravel path runs east-west across the front of the house, flanked by an
 avenue of statues. [[green:Footprints]] mark the snow-covered gravel. The
 [[green:Main drive]] lies to the west, a box-hedge [[green:Maze]] to the east,
-the [[green:Stables]] to the south, the [[green:East lawn]] and the
-[[green:Gamekeeper's cottage]] to the south-east.
+and the [[green:Gamekeeper's cottage]] to the south-east.
 
 LOC019_SUMMER_HOUSE
 A wooden summer house stands on a patch of lawn. [[green:Footprints]] lead
 to and from the entrance. Inside are croquet mallets and hoops, several
 [[green:cigarette ends]], and a [[green:handkerchief]]. Exits lead to the
-[[green:West walk]] and [[green:West lawn]].
+[[green:Tennis court]] and [[green:West lawn]].
 
 LOC020_WEST_LAWN
-A broad lawn stretches between the west walk and the drive, planted with
-young copper beeches, their bare winter branches fine as pen-strokes
-against the grey sky. The snow covering is largely intact but crossed
-by [[green:footprints]] in two or three directions. The
-[[green:Main drive]], [[green:West walk]], and [[green:Summer house]] are near.
+A broad lawn stretches between the [[green:Main drive]] and the
+[[green:Summer house]], planted with young copper beeches, their bare winter
+branches fine as pen-strokes against the grey sky. The snow covering is largely
+intact but crossed by [[green:footprints]] to and from the drive and summer
+house.
 
 LOC021_STABLES
 The stable block is a handsome structure going gently to seed: loose
 slates on the roof, paint flaking from the doors, but the horses
 inside well-tended enough. One box houses Colonel Darnley's [[green:bay
 hunter]], its breath steaming in the cold air. The other half of the building
-has been converted into a garage to hold a large Daimler, which sits beneath a
-dusty, worn tarpaulin, its oil dripping to leave dark stains in the snow beside
-it. Tucked into a sheltered doorway, a large [[green:ginger cat]] sits
-watchfully in the straw, tracking your approach with unhurried interest. The
-yard between the buildings is crossed by [[green:footprints]] and littered with
-loose hay. The tack room off the yard holds saddle and gear for the horse.
-Access to the [[green:Main drive]], [[green:East walk]], and [[green:East lawn]]
-lies beyond the yard gate.
+has been converted into a garage to hold a large [[green:Daimler]] partially
+covered by a tarpaulin. Tucked into a sheltered doorway, a large
+[[green:ginger cat]] sits watchfully in the straw, tracking your approach with
+unhurried interest. The yard itself is crossed by [[green:footprints]].@
+@
+The yard gate opens onto the [[green:Main drive]] to the west, and a track
+leads away to the east across the [[green:East lawn]].
 
 LOC022_EAST_LAWN
 An open lawn lies between the [[green:Stables]] and the
-[[green:Gamekeeper's cottage]], sheltered to the north by the box-hedge
-[[green:Maze]]. The snow here is undisturbed at the margins but broken by
-[[green:footprints]] crossing between east and west. A [[green:rook]] picks
-at something in the middle of the lawn.
+[[green:Gamekeeper's cottage]]. The snow here is undisturbed at the margins but
+broken by [[green:footprints]] crossing between east and west.
+A [[green:rook]] picks at something in the middle of the lawn.
 
 LOC023_GAMEKEEPERS_COTTAGE
 In the damp shade of chestnut trees stands a gamekeeper's cottage tucked
 against the south-east corner of the manor grounds. The door stands open.
-Inside are game items, two [[green:shotguns]] on the wall, an oil-cloth table,
-an unmade bed, a slop-stone sink, and an open fire. [[green:Cigarette ends]]
-litter the dirty hearth amongst food scraps and newspapers.
-[[green:Ronald Mellors]] dwells here. Paths lead away from the cottage onto the
-[[green:East walk]] and [[green:East lawn]].
+Inside is a single plain, orderly room: game items hung by the door, two
+[[green:shotguns]] on the wall above a small cast-iron stove, an oil-cloth
+table, a neatly made bed, and a slop-stone sink. A saucer on the table
+overflows with [[green:cigarette ends]]. [[green:Ronald Mellors]] dwells here.
+Paths lead away from the cottage onto the [[green:Avenue of statues]] and
+[[green:East lawn]].
 
 LOC024_MILLICENT_BEDROOM
 Millicent Darnley's bedroom is decorated to a young lady's taste, with a bed,
 wardrobe, dressing table, and small writing table. The surfaces overflow with
 small dog ornaments and the walls display pictures of favourite pets. Doors
-lead out to the [[green:Upstairs landing]] and [[green:Master bedroom]].
+lead out to the [[green:Master bedroom]] and [[green:Upstairs landing]].
 
 LOC025_LANDING
 The landing walls hold fine antlers and animal heads alongside unflattering
-portraits of the Darnley ancestors. Doors lead to the [[green:Bathroom]],
-[[green:Millicent's bedroom]], [[green:Morning room]],
-[[green:Servants' quarters]], and [[green:Guest room]], while stairs lead down
+portraits of the Darnley ancestors. Doors lead to the [[green:Morning room]],
+[[green:Millicent's bedroom]], [[green:Second guest room]],
+[[green:Servants' quarters]], and [[green:Bathroom]], while stairs lead down
 into the [[green:Hall]].
 
 LOC026_SERVANTS_QUARTERS
@@ -261,21 +263,20 @@ LOC027_MASTER_BEDROOM
 Colonel and Mrs. Darnley's bedroom is heavily panelled with sporting prints and
 a humidor of [[green:cigars]]. A [[green:double bed]], [[green:dressing table]],
 [[green:wardrobe]], and trouser press furnish the room. A small bathroom is attached.
-Doors lead to the [[green:Upstairs landing]], [[green:Millicent's bedroom]], and
-the [[green:Morning room]].
+Doors lead to the [[green:Morning room]] and [[green:Millicent's bedroom]].
 
 LOC028_MORNING_ROOM
 A chintz sofa and occasional table with magazines and books furnish this room.
 A [[green:piano]] stands against one wall, whilst a [[green:gramophone]] sits on
 a table, surrounded by watercolour bird pictures. [[green:Sarah Darnley]] rests
-here. Doors lead to the [[green:Upstairs landing]], [[green:Master bedroom]], and
-a [[green:Second guest room]].
+here. Doors lead to the [[green:Master bedroom]], [[green:Guest room]], and
+[[green:Upstairs landing]].
 
 LOC029_GUEST_ROOM
 A guest room decorated in blue with wardrobe, bed, washstand, and writing-table.
 By the bed lies a pair of men's [[green:slippers]], slightly damp and mud-stained.
 On the writing table sits a pack of [[green:cigarettes]] alongside stationery
-and pens. The only door leads back onto the [[green:upstairs landing]].
+and pens. The only door leads back into the [[green:Morning room]].
 
 LOC030_SECOND_GUEST_ROOM
 The door opens into a second guest room, currently in a state of
@@ -342,7 +343,7 @@ the night have clearly unsettled her more than she is letting on. She answers
 questions readily enough, though her eyes dart toward the door at intervals.
 
 P_RONALD_MELLORS
-The gamekeeper. Aged 35. Stocky and dark with black curly hair and the kind of
+The gamekeeper. Aged 35. Rugged and dark with black curly hair and the kind of
 good looks that owe nothing to grooming or effort. He wears working clothes and
 hob-nailed boots and regards you with an expression of settled hostility that
 suggests this is simply his default manner rather than evidence of a guilty
@@ -416,7 +417,7 @@ OBJ209_BOOTS
 All these boots are polished clean except for a large mud stained pair.
 
 OBJ212_FOOTPRINTS_KG
-Both flat-footed bootprints and slipper prints can be seen going to and from the
+Flat-footed bootprints, and slipper prints can be seen going to and from the
 kitchen and the outhouses.
 
 OBJ213_BED_MASTER
@@ -573,8 +574,9 @@ arranged on black velvet, lie hand-axes, arrowheads, and ancient pottery fragmen
 - the Colonel apparently had an interest in the history beneath his own land.
 
 OBJ237_FOOTPRINTS_WW
-There are slipper prints, flat-footed bootprints and some men's shoeprints
-heading to and from the terrace and the front of the house.
+Slipper prints, flat-footed bootprints, and men's shoeprints lead to and from
+the terrace and the front of the house. Meanwhile, a lady's shoeprints lead to
+and from the summer house.
 
 OBJ238_CIGAR_STUB
 A cheroot stub sits in the brass ashtray on the music room piano - a straight
@@ -602,13 +604,13 @@ as if it burned intensely before being discarded.
 OBJ243_FOOTPRINTS_DRIVE
 Flat-footed bootprints go east and west along the gravel path in front of the
 house. Slipper prints come from the house and head east and west along the path.
-Men's shoeprints come from the house and go west. Lady's shoeprints head to and
-from the front door and the west lawn. At the gate end of the drive hobnailed
+Men's shoeprints come from the house and go west. Lady's shoeprints head to andcopilo
+from the front door and the tennis court. At the gate end of the drive hobnailed
 bootprints go between the west lawn and the stables.
 
 OBJ244_FOOTPRINTS_EW
 Flat-footed bootprints and slipper prints are visible in the snow heading around
-the corner of the house, to and from the maze and avenue of statues.
+the corner of the house, to and from the maze and the main drive.
 
 OBJ245_CIGARETTE_ENDS_SH
 !provides x_cigarettes new_clue
@@ -627,8 +629,8 @@ and bears traces of dirt on one corner, as if it has been clutched in a nervous
 hand. The perfume is distinctive - not common, and quite costly.
 
 OBJ247_FOOTPRINTS_WL
-Lady's shoeprints and hobnailed bootprints can be seen in the snow going to and
-from the drive and the summer house.
+Hobnailed bootprints can be seen in the snow going to and from the drive and the
+summer house.
 
 OBJ248_FOOTPRINTS_ST
 Hobnailed bootprints can be seen in the snow going to and from the drive and the
@@ -639,9 +641,9 @@ Deep and purposeful, hobnailed bootprints can be seen in the snow going to and
 from the stables and the cottage.
 
 OBJ250_CIGARETTE_ENDS_GC
-These cigarette ends come from a cheap, mass produced brand.
-There are perhaps twenty of them scattered about the cottage hearth amongst food
-scraps and newspapers. The tobacco is coarse and cheap. Ronald Mellors
+These cigarette ends come from a cheap, mass produced brand. There are
+perhaps twenty of them heaped in a saucer on the table, with a few more
+dropped on the hearth. The tobacco is coarse and cheap. Ronald Mellors
 apparently smokes incessantly, and his choice of cigarette reflects his
 station.
 
@@ -717,14 +719,15 @@ coats what can be seen of the coachwork. Small dark oil stains mark the
 snow beside it.
 
 OBJ261_POLICE_CAR
-A dark Edwardian touring car with round brass headlamps, wide running boards,
+A black 1920s police saloon with round brass headlamps, wide running boards,
 and a spare wheel mounted at the rear. It is the motor car that brought you here
 this morning, left parked on the drive close to the house.
 
 OBJ262_FOOTPRINTS_SH
 Two distinct tracks lead to and from the entrance - the first heavy hobnailed
-bootprints, the other smaller lady's shoeprints. The rest of the snow
-around the summer house lies smooth and undisturbed.
+bootprints to and from the west lawn, the other smaller lady's shoeprints to
+and from the tennis court. The rest of the snow around the summer house lies
+smooth and undisturbed.
 
 OBJ263_STONE
 !requires x_shattered_glass
@@ -932,8 +935,8 @@ Mrs. Goodbody stops you.@
 the other side is blocked with furniture from the second guest room. Go round
 through the pantry, if you don't mind."]]
 
-MORNING_ROOM_TO_GUEST_ROOM
-The door opens into a second guest room, currently in a state of mid-decoration
+LANDING_TO_GUEST_ROOM
+The door opens into the second guest room, currently in a state of mid-decoration
 disarray - dust sheets, bare boards, and furniture stacked every which way.
 Plainly no one has slept here in some time. You withdraw and pull the door to.
 
@@ -971,7 +974,7 @@ e.g.@
   [[green:SAY tell me about the murder]]
 
 MULTIPLE_SAY_TARGETS
-There are multiple suspects here, try:@
+There are multiple listeners here, try:@
   [[green:SAY ]][[cyan:suspect]][[green:,]] [[cyan:conversation topic]]@
 e.g.@
   [[green:SAY policeman, tell me about the murder]]

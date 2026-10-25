@@ -252,7 +252,7 @@ said the keyhole was blocked by a key on the inside, so mine would have
 been no use. As far as the study is concerned the Colonel kept the keys
 on his person and I keep mine on me. I slept in the same room as
 Mrs. Goodbody and young Norah, so no-one could have taken them without
-waking one of us. We left through the kitchen door and I walked round to the
+waking one of us. We left through the hall door and I walked round to the
 french windows; Mr. Coniston ran and was there a couple of seconds before me.
 He threw a stone through the window and one of us - I think myself - put a hand
 through the hole to open the lock. I can confirm that the window was
