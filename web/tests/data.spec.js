@@ -79,7 +79,7 @@ describe('parseLocations()', () => {
       id: 'LOC030_SECOND_GUEST_ROOM',
       name: 'Second guest room',
       pattern: 'second guest',
-      exits: ['LOC028_MORNING_ROOM'],
+      exits: ['LOC025_LANDING'],
     });
   });
 });
@@ -93,7 +93,7 @@ describe('parseAdditionalExits()', () => {
     const exits = parseAdditionalExits(adventText);
     expect(exits[0]).toEqual({
       from: 'LOC017_DRIVE',
-      pattern: 'house manor inside in',
+      pattern: '-summer house manor inside in',
       to: 'LOC008_HALL',
     });
   });
