@@ -232,7 +232,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     assertResponse('What guns are there in the house?', 'guns in the house response');
   });
 
-  if('Who was the tramp?', () => {
+  it('Who was the tramp?', () => {
     all('tramp response', [
       'Who was the tramp?',
       'Tell me about the beggar',
@@ -246,7 +246,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     ]);
   });
 
-  if('Could the tramp have murdered him?', () => {
+  it('Could the tramp have murdered him?', () => {
     all('tramp suspect response', [
       'Could the tramp have murdered him?',
       'Was the tramp the killer',
