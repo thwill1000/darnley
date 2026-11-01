@@ -1,5 +1,12 @@
 # TODO: The Sealed Room Murder (MMBasic)
 
+- Rename "Second guest room" => "West guest room"
+- Make the "Second/West guest room" into a proper location
+- Rename "Guest room" => "East guest room"
+- Rename location ids:
+    - LOC012_WEST_WALK => LOC012_TENNIS_COURT
+    - LOC018_EAST_WALK => LOC018_AVENUE_OF_STATUES
+- The path between the orchard and terrace should be blocked, to explain why Coniston didn't make use of it
 - !provides => !set_flag, and add !move_obj
 - Auto path-find to location
 - Add option to show location illustration on each entry
