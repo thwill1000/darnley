@@ -110,8 +110,8 @@ describe('parseAdditionalExits()', () => {
 });
 
 describe('parseObjects()', () => {
-  it('parses exactly 69 objects (including the 11 people)', () => {
-    expect(parseObjects(adventText)).toHaveLength(69);
+  it('parses exactly 71 objects (including the 11 people)', () => {
+    expect(parseObjects(adventText)).toHaveLength(71);
   });
 
   it('parses the first object, a person', () => {
@@ -218,12 +218,12 @@ describe('parseClues()', () => {
 });
 
 describe('parseMessages()', () => {
-  it('parses 130 unique tags, 131 entries total (a few tags have more than one entry)', () => {
+  it('parses 132 unique tags, 133 entries total (a few tags have more than one entry)', () => {
     const messages = parseMessages(messagesText);
-    expect(messages.size).toBe(130);
+    expect(messages.size).toBe(132);
     let totalEntries = 0;
     for (const entries of messages.values()) totalEntries += entries.length;
-    expect(totalEntries).toBe(131);
+    expect(totalEntries).toBe(133);
   });
 
   it('parses INTRO as a single entry with no directives', () => {

@@ -79,8 +79,8 @@ to the south.
 LOC004_OUTHOUSES
 A cluster of outbuildings occupies this corner: a laundry, a
 coal store, and a timber pigeon-coop. The smell of coal smoke and damp
-brick hangs in the air. Footprints cross the snow between the buildings
-without settling into any clear pattern. The [[green:Kitchen garden]]
+brick hangs in the air. [[green:Footprints]] cross the snow between the
+buildings without settling into any clear pattern. The [[green:Kitchen garden]]
 lies west, the [[green:Maze]] to the south.
 
 LOC005_ORNAMENTAL_POND
@@ -140,15 +140,16 @@ squeezed in. A small [[green:bookshelf]] holds various volumes.
 LOC011_MAZE
 Chest-height box hedges form the walls of this modest maze. They are
 dark and winter-dense, with a thin crust of snow along each flat top.
-The paths between them are scuffed and disturbed but yield no clear
-footprints. The [[green:Outhouses]] lie north and the
-[[green:Avenue of statues]] leads west across the front of the house.
+The paths between them are scuffed and disturbed, though some
+[[green:footprints]] can still be made out. Some [[green:Outhouses]] lie north
+whilst the [[green:Avenue of statues]] leads west across the front of the house.
 
 LOC012_WEST_WALK
-A gravel path runs clockwise around the house between the snow-covered tennis
-court and a bed of withered flowers. [[green:Footprints]] are visible in the
-snow. The front of the house and [[green:Main drive]] lies east, the
-[[green:Summer house]] south-west, and a [[green:Paved terrace]] north.
+A snow-covered tennis court lies beside a gravel path that runs clockwise
+around the house, with a bed of withered flowers on the far side.
+[[green:Footprints]] are visible in the snow. The front of the house and
+[[green:Main drive]] lies east, the [[green:Summer house]] south-west, and a
+[[green:Paved terrace]] north.
 
 LOC013_LOUNGE
 A three-piece suite sits upon a Chinese carpet scattered with magazines and
@@ -715,7 +716,7 @@ stranger visitors than you at this hour.
 
 OBJ260_DAIMLER
 A large Daimler stands beneath a worn tarpaulin, its wheels and running
-boards just visible where the covering has slipped. A film of road dust
+boards just visible where the covering has slipped. A generous layer of dust
 coats what can be seen of the coachwork. Small dark oil stains mark the
 snow beside it.
 
@@ -735,6 +736,19 @@ OBJ263_STONE
 !provides x_stone new_clue
 A rough lump of grey stone about the size of a golf ball.
 It lies on the carpet among the shards of window glass.
+
+OBJ264_FOOTPRINTS_OH
+The yard between the laundry, the coal store and the pigeon-coop has been
+trampled by the household's daily comings and goings, and most of the snow is
+a churned grey mess. Two trails can still be picked out where they cross the
+open ground: flat-footed bootprints and slipper prints, running in both
+directions between the kitchen garden and the maze.
+
+OBJ265_FOOTPRINTS_MZ
+The hedges have scuffed most of the snow on the paths into a trampled slush.
+Only along the sheltered foot of the hedge can a single trail be followed:
+flat-footed bootprints and slipper prints, both traveling back and forth
+between the outhouses and the avenue of statues.
 
 WHAT_REALLY_HAPPENED
 [[green:What really happened at Darnley Park?]]@
