@@ -16,6 +16,10 @@ the household and yourself."
 poacher
 "Nothing of the sort to report at the gate, sir. I only came on this morning."
 
++(die/bullet/bullets/wound/cause) | +how +murder
+"Shot through the chest, sir, so I was told when the call came in. I've
+not been in to see."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "Never met the gentleman myself, sir. I've only been posted here since the
 alarm was raised this morning."
@@ -87,6 +91,9 @@ time."
 +(bang/bangs/shot/shots) (time/what/when) (hear/heard)
 "Wasn't here last night, sir, so I couldn't say. You'd want someone
 who was in the house."
+
+-you +(when/time) +(die/murder)
+"Couldn't say, sir. I only came on duty this morning."
 
 +(motive/reason/would) why murder
 "Not my place to guess at that sort of thing, sir. I just mind the

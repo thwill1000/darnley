@@ -90,6 +90,9 @@ house yesterday. Is it important?"
 the evening. Daddy could be sharp with people when he chose to be -
 I shouldn't be at all surprised if someone had crossed him."
 
++(die/bullet/bullets/wound/cause) | +how +murder
+"Shot, I'm told - in the chest. I haven't seen him and I don't mean to."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "Daddy was a tyrant but always kind to me. He was always fearful that
 Sarah would leave him for a younger man."
@@ -244,6 +247,10 @@ heard Sarah still at the piano, and shortly after that there was
 another bang, closer to midnight this time. I really can't say what
 either one was, only that there were the two of them, some while
 apart."
+
+-you +(when/time) +(die/murder)
+"I really couldn't say. I woke at about 11:20 and heard Sarah playing the piano,
+and shortly afterwards there was a bang, but I took it for a door."
 
 +(confirm/corroborate/vouch/alibi/with) +arthur you
 "Until 10:30, certainly - we were playing duets the whole

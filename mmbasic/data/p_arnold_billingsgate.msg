@@ -107,6 +107,10 @@ handkerchief
 I will say the atmosphere at dinner was not entirely comfortable, and
 I withdrew before the gentlemen retired to the billiard room."
 
++(die/bullet/bullets/wound/cause) | +how +murder
+"He was shot, sir - a single bullet through the chest. He lay on the
+rug, and I could not tell you from where the shot was fired."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "The master was a very honest, decent gentleman, and extremely good to his family."
 
@@ -267,6 +271,10 @@ assumed, given the tempers on display that evening - and thought no
 more of it. I heard nothing further myself; I was woken directly by
 Mr. Coniston at 11:30 with word of the locked study. If there was a
 second sound before then, I'm afraid I slept through it."
+
+-you +(when/time) +(die/murder)
+"I couldn't say, sir. Mr. Coniston woke me at 11:30 and we found the
+Colonel then. I heard a bang at about 10:30, but I took it for a door."
 
 +(confirm/corroborate/vouch/alibi/with) +arthur you
 "I did not see Mr. Coniston again until he woke me at 11:30, sir.

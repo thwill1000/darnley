@@ -110,6 +110,10 @@ heard us. Business, that's all it was. Gentlemen argue about business
 without murdering each other over it, or the clubs of London would be
 a good deal emptier than they are."
 
++(die/bullet/bullets/wound/cause) | +how +murder
+"Shot, so I hear. Through the chest. I wasn't there and I haven't been
+in to look."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "A hard man but very fair. Once I had explained my business problem
 he agreed to help me out."
@@ -259,8 +263,12 @@ plainly what caused it - I left Darnley's study at 10:30 and slammed
 the door behind me, hard, being in no mood for delicacy. If someone
 heard a second noise later, it's news to me. I was asleep by 11:00."
 
+-you +(when/time) +(die/murder)
+"No idea. I left Darnley alive at 10:30 and was asleep by 11:00.
+Billingsgate woke me at midnight with the news."
+
 +(confirm/corroborate/vouch/alibi/with) +arthur you
-"Couldn't tell you. I turned in myself well before 12:00 and took
+"Couldn't tell you. I turned in myself well before midnight and took
 no notice of the young pup's comings and goings."
 
 +(confirm/corroborate/vouch/alibi/with) +millicent you

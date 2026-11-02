@@ -83,6 +83,9 @@ the older ones."
 "I never heard anything like that, sir. I don't go where the gentlemen
 are of an evening, that's not my part of the house."
 
++(die/bullet/bullets/wound/cause) | +how +murder
+"He was shot, sir. Mr. B. told us. I didn't see, honest."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "Very strict. I didn't like him."
 
@@ -215,6 +218,10 @@ where I was."
 "Just before we went to bed there was a bang, like I said - about
 10:30, I think. Mrs. G. said it was a door. I didn't hear anything
 after that, sir, I was asleep."
+
+-you +(when/time) +(die/murder)
+"I couldn't say, sir. There was a bang before we went to bed, and I woke
+when Mr. Coniston came for Mr. B. I don't know the hour."
 
 +(confirm/corroborate/vouch/alibi/with) +arthur you
 "I never saw Mr. Coniston again after we cleared away, sir. I couldn't

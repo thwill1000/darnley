@@ -136,6 +136,8 @@ add_test("What do you know about the bangs last night?", "test_bang")
 add_test("Did you argue with the colonel? (before the newspaper is found)", "test_argument_blocked")
 add_test("Did you argue with the colonel? (after the newspaper is found)", "test_argument_unlocked")
 add_test("What do you think of the police investigation?", "test_investigation")
+add_test("How did the Colonel die?", "test_cause_of_death")
+add_test("When did he die?", "test_time_of_death")
 add_test("I accuse you! (but don't have all the clues)", "test_premature_accusation")
 add_test("I accuse you! (the first time)", "test_first_accusation")
 add_test("I accuse you! (subsequent times)", "test_subsequent_accusation")
@@ -1021,6 +1023,42 @@ Sub test_investigation()
   assert_response("what do you think of the police investigation", "investigation response")
   assert_response("what do you think of the police being here", "investigation response")
   assert_response("how do you feel about the police investigation", "investigation response")
+End Sub
+
+Sub test_cause_of_death()
+  assert_response("bullet", "cause of death response")
+  assert_response("wound", "cause of death response")
+  assert_response("How did he die?", "cause of death response")
+  assert_response("How did the colonel die?", "cause of death response")
+  assert_response("What was the cause of death?", "cause of death response")
+  assert_response("Tell me about the bullet wound?", "cause of death response")
+  assert_response("How was he killed?", "cause of death response")
+
+  objects$(9) = "P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|billingsgate butler|LOC001_BATHROOM|2|100"
+  assert_response("How did the colonel die?", "He was shot, sir", 1)
+
+  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  assert_response("How did the colonel die?", "Shot, old boy.", 1)
+End Sub
+
+Sub test_time_of_death()
+  assert_response("When did he die?", "time of death response")
+  assert_response("What time did he die?", "time of death response")
+  assert_response("What was the time of death?", "time of death response")
+  assert_response("When was he killed?", "time of death response")
+  assert_response("When was the murder?", "time of death response")
+  assert_response("When was he found dead?", "time of death response")
+  assert_response("bullet", "cause of death response")
+  assert_response("wound", "cause of death response")
+
+  objects$(9) = "P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|billingsgate butler|LOC001_BATHROOM|2|100"
+  assert_response("When did the colonel die?", "I couldn't say, sir. Mr. Coniston woke me", 1)
+
+  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  assert_response("When did the colonel die?", "Couldn't say exactly, old boy", 1)
+
+  objects$(9) = "P_MILDRED_GOODBODY|Mildred Goodbody|goodbody cook|LOC001_BATHROOM|2|100"
+  assert_response("When did the colonel die?", "I couldn't tell you, dear. A bang woke me at 11:20", 1)
 End Sub
 
 Sub test_premature_accusation()

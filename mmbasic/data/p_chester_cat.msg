@@ -85,6 +85,11 @@ violence.@
 @
 "Hetchoo!"
 
++(die/bullet/bullets/wound/cause) | +how +murder
+The cat wrinkles his nose at the word and carries on washing.@
+@
+"Mrp."
+
 +colonel -(millicent/sarah/who) (get/think) with
 The cat's ears go back at the mention of his late master, and for a
 moment he seems almost solemn. Almost.@
@@ -188,6 +193,12 @@ The cat's ear flicks once at the word "bang," but he shows no
 other sign of comprehension.@
 @
 "Mrp?"
+
+-you +(when/time) +(die/murder)
+The cat's ears flick at the question, and he glances towards the empty
+stable door as if expecting dinner.@
+@
+"Mrp."
 
 -thanks alibi | -thanks +time murder | +yesterday you evening
 The cat blinks at you slowly, which you choose to interpret as either

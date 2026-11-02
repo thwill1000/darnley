@@ -101,6 +101,10 @@ I can't say whose it is."
 atmosphere in this house since Sir Redvers arrived, if you want my
 honest opinion."
 
++(die/bullet/bullets/wound/cause) | +how +murder
+"Shot, dear - Mr. B. told us after. Through the chest, he said. I didn't
+go in to see."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "A hard man both in his business dealings and with his family."
 
@@ -238,6 +242,10 @@ I was woken again by another one at 11:20 by the clock - I
 remember looking straight at it. Didn't think much of either at the
 time, what with the hour and the season - you do get all sorts of
 bangs and pops on a cold night like that."
+
+-you +(when/time) +(die/murder)
+"I couldn't tell you, dear. A bang woke me at 11:20 by my clock and I
+thought it was poachers. Mr. Coniston turned up a few minutes later."
 
 +(confirm/corroborate/vouch/alibi/with) +arthur you
 "Couldn't say, dear. Once we'd cleared away I didn't see hide nor hair

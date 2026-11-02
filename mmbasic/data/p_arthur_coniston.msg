@@ -100,6 +100,10 @@ handkerchief
 for Millicent and me that very afternoon. Can't think why I'd have
 picked a fight with the man on the happiest day of my life."
 
++(die/bullet/bullets/wound/cause) | +how +murder
+"Shot, old boy. Billingsgate and I found him on the rug with a bullet
+wound in the front of his shirt. Beyond that I'm no doctor."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "A decent old buffer. When I asked his permission to marry Millicent
 he agreed straight away. I was surprised, I admit it!"
@@ -258,6 +262,10 @@ actually. Worked up my nerve all afternoon before I finally asked him
 door slamming, I assumed - and then another, later, closer to 11:30,
 when I was downstairs again. Can't say I thought much of it at the
 time. Two bangs, one house full of nerves - hardly conclusive, is it?"
+
+-you +(when/time) +(die/murder)
+"Couldn't say exactly, old boy. I heard a noise at about 11:30 - a door,
+I thought - and Billingsgate and I found him not long afterwards."
 
 +(confirm/corroborate/vouch/alibi/with) +arthur you
 "Myself? Ha - I don't suppose I'm much of a witness to my own doings,

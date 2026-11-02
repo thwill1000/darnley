@@ -787,6 +787,41 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     ]);
   });
 
+  it('How did the Colonel die?', () => {
+    all('cause of death response', [
+      'How did he die?',
+      'How did the colonel die?',
+      'What was the cause of death?',
+      'Tell me about the bullet wound',
+      'bullet',
+      'wound',
+      'How was he killed?',
+    ]);
+
+    target('billingsgate');
+    assertResponse('How did the colonel die?', 'He was shot, sir', true);
+    target('arthur');
+    assertResponse('How did the colonel die?', 'Shot, old boy.', true);
+  });
+
+  it('When did he die?', () => {
+    all('time of death response', [
+      'When did he die?',
+      'What time did he die?',
+      'What was the time of death?',
+      'When was he killed?',
+      'When was the murder?',
+      'When was he found dead?',
+    ]);
+
+    target('billingsgate');
+    assertResponse('When did the colonel die?', "I couldn't say, sir. Mr. Coniston woke me", true);
+    target('arthur');
+    assertResponse('When did the colonel die?', "Couldn't say exactly, old boy", true);
+    target('goodbody');
+    assertResponse('When did the colonel die?', "I couldn't tell you, dear. A bang woke me at 11:20", true);
+  });
+
   const accusations = [
     'accuse', 'guilty', 'I accuse you!', 'You did it', 'You are the murderer', 'You are the killer',
     'You killed the colonel', 'You murdered the colonel', "J'accuse!", 'I accuse you of murder',

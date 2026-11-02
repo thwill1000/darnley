@@ -98,6 +98,9 @@ handkerchief
 +colonel +argue
 "argument with colonel response"
 
++(die/bullet/bullets/wound/cause) | +how +murder
+"cause of death response"
+
 +colonel -(millicent/sarah/who) (get/think) with
 "colonel darnley opinion response"
 
@@ -193,6 +196,9 @@ events yesterday murder last happened
 
 +(bang/bangs/shot/shots) (time/what/when) (hear/heard)
 "bang/shot timeline response"
+
+-you +(when/time) +(die/murder)
+"time of death response"
 
 +(confirm/corroborate/vouch/alibi/with) +arthur you
 "vouch for arthur response"

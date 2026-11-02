@@ -109,6 +109,10 @@ handkerchief
 I couldn't tell you what it was about. I didn't think anything of it
 at the time - gentlemen do quarrel over their business."
 
++(die/bullet/bullets/wound/cause) | +how +murder
+"I'm told he was shot, Inspector. I haven't seen him, and I don't think
+I could."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "He was somewhat strict and suspicious by nature, but we were happy
 enough."
@@ -259,6 +263,10 @@ too gently. Then later, around 11:30, I heard something else while I
 was in the morning room - more like a shot, if I'm honest, though at
 the time I told myself it was poachers. I don't know why you keep
 asking me to separate the two. Isn't it obvious enough?"
+
+-you +(when/time) +(die/murder)
+"I couldn't tell you, Inspector. I heard a noise like a shot at about
+11:30 and thought it was poachers. I only learned the truth afterwards."
 
 +(confirm/corroborate/vouch/alibi/with) +arthur you
 "I really couldn't say what Arthur got up to. I had gone upstairs

@@ -83,6 +83,9 @@ handkerchief
 "Wasn't at the house of an evening, was I. Whatever went on between
 him and his guests is nothing to do with me."
 
++(die/bullet/bullets/wound/cause) | +how +murder
+"Shot. That's what I was told. I wasn't there."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "Strict but fair. I've said all I'm goin' to say about him."
 
@@ -197,6 +200,9 @@ noises. It wasn't the weather for poachers."
 and in bed by 10:00. Whatever bangs or shots you're on about,
 they didn't reach me out there - or if they did, I slept through
 the lot."
+
+-you +(when/time) +(die/murder)
+"No idea. I was in bed by 10:00 and slept through whatever it was."
 
 +(confirm/corroborate/vouch/alibi/with) +arthur you
 "Don't know the man's business. I was in my cottage, same as I told
