@@ -65,9 +65,10 @@ the ensemble. A heavy mahogany door leads back out to the [[green:Upstairs landi
 LOC002_ORCHARD
 Bare apple trees stand in rows across the frozen orchard ground,
 branches black against a white sky. A park wall runs along the north boundary.
-Snow covers the ground between the trunks - disturbed here and there by unclear
-footprints. A path to the east leads to the [[green:Kitchen garden]], while to
-the south the orchard opens onto a [[green:Paved terrace]].
+Snow covers the ground between the trunks, unmarked but for the odd bird track.
+A path to the east leads to the [[green:Kitchen garden]]. In the south wall a
+weathered door leads through to the [[green:Paved terrace]], though it looks
+long unused.
 
 LOC003_KITCHEN_GARDEN
 The kitchen garden lies frozen and barren under snow. [[green:Footprints]]
@@ -91,9 +92,9 @@ held [[green:marble statues]] - the Four Seasons - but one is missing.
 LOC006_TERRACE
 This paved terrace extends from the house westward toward an
 [[green:Ornamental pond]]. The snow shows a profusion of [[green:footprints]] -
-many feet have crossed here. To the north lies the [[green:Orchard]], east
-a [[green:french window]] into the [[green:Colonel's Study]], and south the
-[[green:Tennis court]].
+many feet have crossed here. To the north, beyond a shut door in a high stone
+wall, lies the [[green:Orchard]], east a [[green:french window]] into the
+[[green:Colonel's Study]], and south the [[green:Tennis court]].
 
 LOC007_COLONELS_STUDY
 The body of [[green:Colonel Darnley]] lies upon a Turkish carpet, a
@@ -787,18 +788,19 @@ guessed what was happening and devised his plan. He had stolen a gun from the
 study earlier in the day. He now changed into dressing gown and slippers and
 went outside the house and around to the kitchen door which was open. Reaching
 through the door he picked up Sir Redvers Slingsby's boots. Changing into them
-he walked around the house to the terrace. The boots being too large, they left
-flat-footed bootprints. From the terrace Coniston looked into the study where
-the Colonel was drinking. He tapped on the window, the Colonel stood up and saw
-him, Coniston fired the gun and the Colonel fell dead. He now had to act fast to
-dispose of the gun, conceal the bullet-hole in the window glass and return the
-boots. He made for the pond, where the ice over the spot the tramp had broken
-two days before had only thinly reformed. Using a fallen branch to break it
-again, he threw the gun in beside the statue. He then returned to the kitchen,
-changed the boots for the slippers and then entered the house by the front door.
-He did not notice Sarah who had heard the shot and rushed back before everyone
-was roused by the noise and she was discovered. In her haste Sarah dropped a
-handkerchief in the summer house.@
+he walked the long way round the house to the terrace, knowing that the door
+through the orchard wall had been rusted shut all winter. The boots being too
+large, they left flat-footed bootprints. From the terrace Coniston looked into
+the study where the Colonel was drinking. He tapped on the window, the Colonel
+stood up and saw him, Coniston fired the gun and the Colonel fell dead. He now
+had to act fast to dispose of the gun, conceal the bullet-hole in the window
+glass and return the boots. He made for the pond, where the ice over the spot
+the tramp had broken two days before had only thinly reformed. Using a fallen
+branch to break it again, he threw the gun in beside the statue. He then
+returned to the kitchen, changed the boots for the slippers and then entered
+the house by the front door. He did not notice Sarah who had heard the shot
+and rushed back before everyone was roused by the noise and she was discovered.
+In her haste Sarah dropped a handkerchief in the summer house.@
 @
 Coniston now came to the boldest part of his plot. He woke
 Billingsgate and persuaded him to break in by the french window
@@ -939,6 +941,17 @@ LANDING_TO_GUEST_ROOM
 The door opens into the second guest room, currently in a state of mid-decoration
 disarray - dust sheets, bare boards, and furniture stacked every which way.
 Plainly no one has slept here in some time. You withdraw and pull the door to.
+
+ORCHARD_TO_TERRACE
+A weathered door in the old brick wall leads through to the terrace, but it
+is shut fast. Rust and a skin of ice have seized the bolt, and the snow
+banked against it has not been disturbed all winter. You will have to go
+another way round.
+
+TERRACE_TO_ORCHARD
+A weathered door in the orchard wall stands shut. Rust and a skin of ice
+have seized the bolt, and the snow drifted against it has not been
+disturbed all winter. You will have to go another way round.
 
 OBJ255_ROOK_SAY_RESPONSE
 The rook looks at you quizzically.@
