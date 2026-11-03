@@ -1,7 +1,5 @@
 # TODO: The Sealed Room Murder (MMBasic)
 
-- Rename "Second guest room" => "West guest room"
-- Make the "Second/West guest room" into a proper location
 - Rename "Guest room" => "East guest room"
 - Rename location ids:
     - LOC012_WEST_WALK => LOC012_TENNIS_COURT

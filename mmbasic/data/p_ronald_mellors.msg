@@ -170,7 +170,7 @@ intend to start now. Couldn't tell you whose it is or why."
 stacked furniture
 "Don't know and don't much care. That's house business, not mine."
 
-+(guest/spare) second room
++(guest/spare) west room
 "Never been inside the big house past the kitchen, let alone
 upstairs. Couldn't tell you the first thing about it."
 

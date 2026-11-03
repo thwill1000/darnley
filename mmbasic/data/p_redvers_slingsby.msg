@@ -216,9 +216,9 @@ room."
 stacked furniture
 "No idea, and can't say I care. Ask the servants."
 
-+(guest/spare) second room
-"No notion, and no great interest either. Wherever it is, it
-clearly wasn't fit for me, which is how I ended up bunking in the
++(guest/spare) west room
+"Haven't seen the thing. Being papered or some such, I'm told - not
+fit for a guest, anyway, which is how I ended up bunking in the
 servants' quarters."
 
 +(blocked/passage) door kitchen

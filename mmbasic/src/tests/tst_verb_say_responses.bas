@@ -109,7 +109,7 @@ add_test("What do you know about about the cheroot butt found in the pond?", "te
 add_test("Tell me about the suit found in the servants' quarters.", "test_suit")
 add_test("Why is their furniture stacked in the hall?", "test_stacked_furniture")
 add_test("Why is the kitchen passage blocked?", "test_kitchen_passage")
-add_test("Why is Sir Redvers not staying in the second guest room?", "test_2nd_guest_room")
+add_test("Why is Sir Redvers not staying in the west guest room?", "test_west_guest_room")
 add_test("Can you corroborate Arthur's alibi?", "test_confirm_arthur")
 add_test("Can you corroborate Millicent's alibi?", "test_confirm_millicent")
 add_test("Can you corroborate Sarah's alibi?", "test_confirm_sarah")
@@ -760,10 +760,10 @@ Sub test_kitchen_passage()
   assert_response("Why is the kitchen passage blocked?", "kitchen passage response")
 End Sub
 
-Sub test_2nd_guest_room()
-  assert_response("second guest room", "second guest room response")
-  assert_response("spare room", "second guest room response")
-  assert_response("Why is Sir Redvers not staying in the second guest room?", "second guest room response")
+Sub test_west_guest_room()
+  assert_response("spare room", "west guest room response")
+  assert_response("west guest room", "west guest room response")
+  assert_response("Why is Sir Redvers not staying in the west guest room?", "west guest room response")
 End Sub
 
 Sub test_confirm_arthur()

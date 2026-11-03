@@ -199,10 +199,10 @@ stacked furniture
 "Haven't the foggiest, old boy. Some household business, I
 shouldn't wonder."
 
-+(guest/spare) second room
-"Couldn't tell you, old boy. Didn't know there was a second one
-until I heard someone mention it - just glad I got the room that
-was actually habitable."
++(guest/spare) west room
+"Never set foot in it, old boy - I gather it's all dust sheets and
+paste at the moment. Just glad I got the room that was actually
+habitable."
 
 +(blocked/passage) door kitchen
 "Is there a blocked door? Can't say I've had occasion to go

@@ -551,9 +551,9 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     all('kitchen passage response', ['kitchen passage', 'blocked door', 'Why is the kitchen passage blocked?']);
   });
 
-  it('Why is Sir Redvers not staying in the second guest room?', () => {
-    all('second guest room response', [
-      'second guest room', 'spare room', 'Why is Sir Redvers not staying in the second guest room?',
+  it('Why is Sir Redvers not staying in the west guest room?', () => {
+    all('west guest room response', [
+      'west guest room', 'spare room', 'Why is Sir Redvers not staying in the west guest room?',
     ]);
   });
 

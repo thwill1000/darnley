@@ -173,8 +173,8 @@ bookshelf books
 stacked furniture
 "stacked furniture response"
 
-+(guest/spare) second room
-"second guest room response"
++(guest/spare) west room
+"west guest room response"
 
 +(blocked/passage) door kitchen
 "kitchen passage response"

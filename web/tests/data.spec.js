@@ -76,17 +76,17 @@ describe('parseLocations()', () => {
   it('parses the last location', () => {
     const locations = parseLocations(adventText);
     expect(locations.at(-1)).toEqual({
-      id: 'LOC030_SECOND_GUEST_ROOM',
-      name: 'Second guest room',
-      pattern: 'second guest',
+      id: 'LOC030_WEST_GUEST_ROOM',
+      name: 'West guest room',
+      pattern: 'west guest',
       exits: ['LOC025_LANDING'],
     });
   });
 });
 
 describe('parseAdditionalExits()', () => {
-  it('parses exactly 15 additional exits', () => {
-    expect(parseAdditionalExits(adventText)).toHaveLength(15);
+  it('parses exactly 14 additional exits', () => {
+    expect(parseAdditionalExits(adventText)).toHaveLength(14);
   });
 
   it('parses the drive-to-hall additional exit', () => {
@@ -106,6 +106,13 @@ describe('parseAdditionalExits()', () => {
       pattern: 'down downstairs',
       to: 'LOC008_HALL',
     });
+  });
+
+  it('leaves the west guest room unblocked from the landing', () => {
+    const landing = parseLocations(adventText).find((loc) => loc.id === 'LOC025_LANDING');
+    expect(landing.exits).toContain('LOC030_WEST_GUEST_ROOM');
+    const blocking = parseAdditionalExits(adventText).filter((e) => e.to === 'LOC030_WEST_GUEST_ROOM');
+    expect(blocking).toEqual([]);
   });
 });
 
@@ -218,12 +225,12 @@ describe('parseClues()', () => {
 });
 
 describe('parseMessages()', () => {
-  it('parses 132 unique tags, 133 entries total (a few tags have more than one entry)', () => {
+  it('parses 131 unique tags, 132 entries total (a few tags have more than one entry)', () => {
     const messages = parseMessages(messagesText);
-    expect(messages.size).toBe(132);
+    expect(messages.size).toBe(131);
     let totalEntries = 0;
     for (const entries of messages.values()) totalEntries += entries.length;
-    expect(totalEntries).toBe(133);
+    expect(totalEntries).toBe(132);
   });
 
   it('parses INTRO as a single entry with no directives', () => {

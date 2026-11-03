@@ -192,16 +192,16 @@ there myself - too cold and too far from my ovens for my liking."
 
 +suit servant
 "That suit's Sir Redvers', dear. He came without warning and Mr. Coniston
-had already the guest room - and the second one's all upside-down with
+had already the east guest room - and the west one's all upside-down with
 the redecorating besides - so he ended up put in with me and Norah's
 things instead - poor man, having his good tweeds hung next to our
 aprons. We managed, though."
 
 stacked furniture
-"That'll be the second guest room, I should think, dear - I heard
+"That'll be the west guest room, I should think, dear - I heard
 tell it was being done up. Not my department, mind."
 
-+(guest/spare) second room
++(guest/spare) west room
 "That's the one being done up, dear - new paper and I don't know
 what besides. Mrs. Darnley's business, not mine. All I know is the
 furniture had to come out somewhere, and somewhere turned out to be
@@ -209,7 +209,7 @@ the hall."
 
 +(blocked/passage) door kitchen
 "That door, dear? Stacked to the ceiling with furniture from the
-second guest room, and I'll not have anyone trying to squeeze past
+west guest room, and I'll not have anyone trying to squeeze past
 it and bringing the lot down on themselves. Round through the
 pantry, same as always."
 

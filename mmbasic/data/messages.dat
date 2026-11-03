@@ -249,7 +249,7 @@ lead out to the [[green:Master bedroom]] and [[green:Upstairs landing]].
 LOC025_LANDING
 The landing walls hold fine antlers and animal heads alongside unflattering
 portraits of the Darnley ancestors. Doors lead to the [[green:Morning room]],
-[[green:Millicent's bedroom]], [[green:Second guest room]],
+[[green:Millicent's bedroom]], [[green:West guest room]],
 [[green:Servants' quarters]], and [[green:Bathroom]], while stairs lead down
 into the [[green:Hall]].
 
@@ -280,11 +280,11 @@ By the bed lies a pair of men's [[green:slippers]], slightly damp and mud-staine
 On the writing table sits a pack of [[green:cigarettes]] alongside stationery
 and pens. The only door leads back into the [[green:Morning room]].
 
-LOC030_SECOND_GUEST_ROOM
-The door opens into a second guest room, currently in a state of
-mid-decoration disarray - dust sheets, bare boards, and furniture
-stacked every which way. Plainly no one has slept here in some time.
-You withdraw and pull the door to.
+LOC030_WEST_GUEST_ROOM
+This room is being redecorated. Dust sheets cover what little furniture
+remains, old wallpaper hangs in strips from the walls, and a ladder leans
+beside a pasting table stacked with rolls of new paper. Dust lies thick on
+the bare floorboards. The only door leads back to the [[green:Upstairs landing]].
 
 PER101_COLONEL_DARNLEY
 Aged 60. The Colonel served in the South African War and
@@ -697,7 +697,7 @@ fired recently, they have since been thoroughly cleaned. A box of
 cartridges sits nearby on a shelf, a handful missing.
 
 OBJ257_STACKED_FURNITURE
-A stack of furniture and effects from the second guest room, temporarily
+A stack of furniture and effects from the west guest room, temporarily
 stored here while that room is redecorated. Too heavy and too numerous to
 move alone, they block what would otherwise be a passage through to
 the kitchen.
@@ -948,13 +948,8 @@ KITCHEN_TO_HALL
 Mrs. Goodbody stops you.@
 @
 [[speech:"Now don't go that way, dear - that door leads through to the hall, but
-the other side is blocked with furniture from the second guest room. Go round
+the other side is blocked with furniture from the west guest room. Go round
 through the pantry, if you don't mind."]]
-
-LANDING_TO_GUEST_ROOM
-The door opens into the second guest room, currently in a state of mid-decoration
-disarray - dust sheets, bare boards, and furniture stacked every which way.
-Plainly no one has slept here in some time. You withdraw and pull the door to.
 
 ORCHARD_TO_TERRACE
 A weathered door in the old brick wall leads through to the terrace, but it

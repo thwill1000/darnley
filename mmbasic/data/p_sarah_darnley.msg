@@ -208,17 +208,17 @@ turned out for redecoration besides. Rather awkward for a man of his
 standing, I imagine, though he didn't complain - much."
 
 stacked furniture
-"Oh, that's just from the second guest room being done up - I gave the
+"Oh, that's just from the west guest room being done up - I gave the
 order myself, weeks ago, before any of us knew Sir Redvers would be
 descending on us. Rather inconvenient timing, as it turns out."
 
-+(guest/spare) second room
++(guest/spare) west room
 "I arranged to have it done up weeks ago - new paper, mostly. I'd no idea at
 the time it would leave us short a room when Sir Redvers turned up
 without warning. Rather bad timing, as these things go."
 
 +(blocked/passage) door kitchen
-"Oh, that's just where the furniture from the second guest room
+"Oh, that's just where the furniture from the west guest room
 ended up - there was nowhere else to put it in a hurry. I'm told
 it's rather in the way."
 

@@ -178,11 +178,11 @@ the redecorating. I felt right embarrassed hanging a gentleman's
 suit up next to my own things, but Mrs. G. said not to make a fuss."
 
 stacked furniture
-"That's the second guest room's furniture, sir - it's having new
+"That's the west guest room's furniture, sir - it's having new
 paper hung, so I've not been in to do it these past two weeks.
 Mrs. Darnley gave the order herself, I believe."
 
-+(guest/spare) second room
++(guest/spare) west room
 "I heard it's having new paper hung, sir. I don't go in there
 myself - not my part of the house to clean at present, on account
 of the work."

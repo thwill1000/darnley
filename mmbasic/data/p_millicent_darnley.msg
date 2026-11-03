@@ -193,7 +193,7 @@ stacked furniture
 "I believe that's something to do with one of the spare rooms being
 redecorated. I haven't paid it much attention, I'm afraid."
 
-+(guest/spare) second room
++(guest/spare) west room
 "I believe it's being redecorated - I haven't been in there myself
 for weeks. Sarah's doing, I should think, though I couldn't tell
 you why now of all times."
