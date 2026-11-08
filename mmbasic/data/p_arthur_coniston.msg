@@ -447,8 +447,7 @@ a smile playing about his lips.@
 "You can't go about making accusations without a shred of proof to back
 them up."@
 @
-It's plausible you have the right man, Inspector, but not yet the right
-explanation. Go back over your questioning and look again.
+Go back over your questioning and look again.
 
 (who/whose/whom/why/what/where/when/how/which/?)
 "Can't say I know anything about that. Sorry, old boy."

@@ -381,8 +381,7 @@ fingers.@
 "I don't like to say, sir, only - that doesn't sound quite right to me,
 what you just said. I can't rightly explain why, but it doesn't."@
 @
-She is not yet convinced her ordeal is over. Go back over your
-questioning and look again.
+Go back over your questioning and look again.
 
 (who/whose/whom/why/what/where/when/how/which/?)
 "I wouldn't know about that. Nobody tells me anything."
