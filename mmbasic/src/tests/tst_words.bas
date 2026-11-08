@@ -64,6 +64,7 @@ add_test("test_split_words_gvn_lead_comma")
 add_test("test_split_words_gvn_embed_comma")
 add_test("test_split_words_gvn_trail_comma")
 add_test("test_split_words_single_quote")
+add_test("test_split_words_hyphen")
 add_test("test_split_words_question")
 add_test("test_split_words_exclamation")
 add_test("test_unique_words_gvn_empty")
@@ -455,7 +456,18 @@ Sub test_split_words_single_quote()
   assert_string_equals("", words$(2))
 End Sub
 
-' Question marks are ignored
+' Hyphens are treated as separate words
+Sub test_split_words_hyphen()
+  Local words$(10) Length MAX_WORD_LENGTH
+  assert_int_equals(0, split_words%("-hello- -", words$()))
+  assert_string_equals("-", words$(1))
+  assert_string_equals("hello", words$(2))
+  assert_string_equals("-", words$(3))
+  assert_string_equals("-", words$(4))
+  assert_string_equals("", words$(5))
+End Sub
+
+' Question marks are treated as separate words
 Sub test_split_words_question()
   Local words$(10) Length MAX_WORD_LENGTH
   assert_int_equals(0, split_words%("?hello? ?", words$()))

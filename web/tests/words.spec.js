@@ -54,6 +54,10 @@ describe('splitWords()', () => {
     expect(splitWords("'hello' '")).toEqual(['hello']);
   });
 
+  it('splits hyphens into their own tokens', () => {
+    expect(splitWords('-hello- -')).toEqual(['-', 'hello', '-', '-']);
+  });
+
   it('splits question marks into their own tokens', () => {
     expect(splitWords('?hello? ?')).toEqual(['?', 'hello', '?', '?']);
   });

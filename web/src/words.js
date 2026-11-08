@@ -37,7 +37,7 @@ export function splitWords(cmd) {
         words.push(current);
         current = '';
       }
-    } else if (ch === '"' || ch === ',' || ch === '?') {
+    } else if (ch === '"' || ch === ',' || ch === "-" || ch === '?') {
       if (current.length > 0) {
         words.push(current);
         current = '';

@@ -111,7 +111,7 @@ Function split_words%(cmd$, words$())
           Inc i%
         EndIf
 
-      Case 34, 44, 63 ' Double quote (") or comma (,) or question mark (?)
+      Case 34, 44, 45, 63 ' Double quote ("), comma (,), hyphen (-), or question mark (?)
         If wLen% > 0 Then
           words$(i%) = w$
           w$ = ""
