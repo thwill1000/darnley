@@ -109,8 +109,8 @@ whatever anyone supposes, and I mean to see whoever did this
 brought to justice - however long it takes."
 
 +arthur (get/think) with
-"He's a darling! I don't know how he persuaded Daddy to agree, so I
-am probably mistaken."
+"He’s a darling! We get on wonderfully, and Daddy gave his consent only yesterday - I’m still
+getting used to being the happiest girl in the house."
 
 +redvers (get/think) with
 "I didn't know him before last night."
