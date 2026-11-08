@@ -1,7 +1,6 @@
 # TODO: The Sealed Room Murder (MMBasic)
 
 - Rename location ids:
-    - LOC012_WEST_WALK => LOC012_TENNIS_COURT
     - LOC018_EAST_WALK => LOC018_AVENUE_OF_STATUES
 - !provides => !set_flag, and add !move_obj
 - Auto path-find to location
