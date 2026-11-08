@@ -487,11 +487,10 @@ careful copperplate - Arnold Billingsgate, 1889. The books tell you rather more
 about their owner than he may be willing to tell you himself.
 
 OBJ225_FRENCH_WINDOW_TERRACE
-One of the panes is smashed into jagged teeth of glass. There is, however, no
-glass on the terrace itself - it has all fallen inward into the study. The
-window lock shows that it cannot be locked or unlocked from outside; the
-mechanism is internal. The wooden frame shows no signs of tampering or forcing
-- the glass has simply been broken from outside, the lock then opened from within.
+One pane has a jagged hole broken through it. There is no glass on the terrace
+itself - it has all fallen inward into the study. The catch is on the inside of
+the frame, with no handle or keyhole on the outside. The wooden frame shows no
+signs of tampering or forcing.
 
 OBJ226_FOOTPRINTS_TERRACE
 A mess of footprints including flat-footed bootprints, slipper prints and some
@@ -530,22 +529,16 @@ but only one remains. The missing revolver has left a clear outline in the felt
 backing, showing exactly where it once rested.
 
 OBJ232_FRENCH_WINDOW_STUDY
-The french window bears a jagged hole where one pane has been
-smashed. The glass on the floor inside is sprinkled across the carpet and the sill.
-No glass lies on the terrace outside - it all fell inward. The hole is roughly
-hand-sized, large enough for someone to reach through and manipulate the lock.
-The frame is solid mahogany and bears no marks of forcing or violence beyond the
-broken pane itself.
+The french window has a jagged hole where one pane has been broken. The glass
+lies sprinkled across the carpet and the sill. The hole is roughly hand-sized,
+and a hand could reach through it to the catch on the inside of the frame. The
+frame is solid mahogany and bears no marks of forcing beyond the broken pane.
 
 OBJ233_SHATTERED_GLASS
 !provides x_shattered_glass
-This glass is apparently from the smashed french window pane. The shards are sharp
-and glittering, some as large as a man's hand, others fine as sand. The glass has
-a peculiar property - when examined closely, each shard seems to have fallen
-inward. Yet the pattern of breakage is odd; some pieces rest atop others in a
-way that suggests the breakage may not have been a single violent impact, but
-perhaps more deliberate - possibly even repeated strikes against the pane.
-Half-hidden beneath some of the larger shards lies a [[green:small stone]].
+This is the glass from the broken french window pane. The shards are sharp, some
+almost as large as a man's hand, others fine as sand. Some of the pieces lie on
+top of others and half-hidden amongst them sits a [[green:small stone]].
 
 OBJ234_GRAMOPHONE
 !provides x_gramophone new_clue
