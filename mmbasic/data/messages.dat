@@ -90,7 +90,7 @@ held [[green:marble statues]] - the Four Seasons - but one is missing.
 [[green:Footprints]] in the snow circle the pond's edge.
 
 LOC006_TERRACE
-This paved terrace extends from the house westward toward an
+A paved terrace extends from the house westward toward an
 [[green:Ornamental pond]]. The snow shows a profusion of [[green:footprints]] -
 many feet have crossed here. To the north, beyond a shut door in a high stone
 wall, lies the [[green:Orchard]], east a [[green:french window]] into the
@@ -193,7 +193,7 @@ with the snowy [[green:West lawn]] spreading out in front. To the east, an
 opens onto the [[green:Stables]].
 
 LOC018_AVENUE_OF_STATUES
-This gravel path runs east-west across the front of the house, flanked by an
+A gravel path runs east-west across the front of the house, flanked by an
 avenue of statues. [[green:Footprints]] mark the snow-covered gravel. The
 [[green:Main drive]] lies to the west, a box-hedge [[green:Maze]] to the east,
 and the [[green:Gamekeeper's cottage]] to the south-east.
@@ -402,7 +402,7 @@ lettering on the blue packet gleams in the light. The cigarettes themselves are
 pure white, tightly rolled, and of excellent quality.
 
 OBJ208_KNIFE
-This wickedly sharp knife lies on the draining board amongst the other
+A wickedly sharp knife lies on the draining board amongst the other
 kitchen utensils. The blade shows signs of recent use and is stained with
 blood - quite dry now, darkened to a dull rust colour. The wooden handle
 bears the initials "R.M." burnt into it.
@@ -447,7 +447,7 @@ righted, which seems at odds with the general tidiness of the room.
 
 OBJ217_SHOES
 !requires x_wardrobe
-This selection of men's and women's shoes ranges from formal evening wear to
+A selection of men's and women's shoes that ranges from formal evening wear to
 practical country footwear. The women's shoes include delicate satin evening
 slippers and sturdy walking boots. The men's collection is equally varied. Most
 are clean and well-maintained, but one pair of lady's shoes - soft kid leather
@@ -460,7 +460,7 @@ OBJ220_PHOTOGRAPHS
 These photographs depict Mrs. Goodbody's various ugly relatives.
 
 OBJ221_SUIT
-This gentleman's country-suit apparently belongs to Sir Redvers. It is made
+A gentleman's country-suit apparently belonging to Sir Redvers. It is made
 of fine Scotch tweed in a dark green and brown pattern, well-tailored and evidently
 expensive. The suit has been carefully hung in the servants' quarters wardrobe,
 though this is an odd place for a visitor's good clothing. Why would Sir Redvers
@@ -527,7 +527,7 @@ monstrous suggestion and find I cannot..."
 
 OBJ231_GUN_RACK
 !provides x_gunrack new_clue
-This mahogany rack is mounted on the study wall and displays sporting rifles and
+A mahogany rack is mounted on the study wall and displays sporting rifles and
 revolvers. It is a fine piece of craftsmanship with brass fittings and glass
 panels. A pair of decorative revolvers with engraved grips should be present,
 but only one remains. The missing revolver has left a clear outline in the felt
@@ -561,7 +561,7 @@ There are several sheets of Schubert Lieder music on the piano's music
 stand.
 
 OBJ236_DISPLAY_CASE
-This glass case is mounted on the hall wall and displays an interesting collection
+A glass case is mounted on the hall wall and displays an interesting collection
 of archaeological finds. According to a label at the front, these flints and
 pottery shards were discovered in the grounds of the estate during excavations some
 years ago. The case is kept locked with a small brass key. Inside, carefully
@@ -573,10 +573,7 @@ Slipper prints, flat-footed bootprints, and men's shoeprints lead to and from
 the terrace and the front of the house. Meanwhile, lady's shoeprints lead to
 and from the summer house.
 
-OBJ238_CIGAR_STUB
-A cheroot stub sits in the brass ashtray on the music room piano - a straight
-dark cylinder, partially smoked and carefully stubbed out, the ash still faintly
-moist. Someone was in this room recently, smoking.
+# OBJ238 deliberately deleted
 
 OBJ239_PIANO_MUSIC
 The sheets of music on the piano are for duets.
@@ -589,7 +586,7 @@ delicate stems. The wine residue in each glass suggests they were filled and the
 left standing - perhaps abandoned hastily?
 
 OBJ241_ASHTRAY
-This ashtray rests atop the billiard room bookcase and contains the remains of
+An ashtray rests atop the billiard room bookcase and contains the remains of
 three cigars - one Havana and two cheroots. The ash is dark and densely packed,
 suggesting these cigars were smoked in succession without pause, and were clenched
 hard rather than smoked in a relaxed manner. The Havana is of the finest quality,
@@ -617,7 +614,7 @@ They suggest prolonged occupation of the summer house by someone of modest means
 
 OBJ246_HANDKERCHIEF
 !provides x_handkerchief new_clue
-This is a lady's handkerchief of plain linen with delicate lace edging and a faint
+A lady's handkerchief of plain linen with delicate lace edging and a faint
 perfume - the scent is floral, sweet, and distinctly expensive. The handkerchief
 is initialled with an ornate "S" worked in pale silk thread. It is slightly damp
 and bears traces of dirt on one corner, as if it has been clutched in a nervous
@@ -661,14 +658,14 @@ or early this morning.
 OBJ253_CHEROOT_BUTT
 !requires x_statue
 !provides x_cheroot_butt new_clue
-This is the sodden butt of a Burmah cheroot, waterlogged from its time in
+The sodden butt of a Burmah cheroot, waterlogged from its time in
 the pond. Despite being soaked, you can still make out its straight dark
 cylinder shape, characteristic of a cheroot rather than a conventional
 cigarette. It was wedged in a crevice of the statue as if placed there
 deliberately or dropped in haste.
 
 OBJ254_MUSIC_ROOM_ASHTRAY
-This brass ashtray of considerable quality sits on the piano. It contains a single
+A brass ashtray of considerable quality sits on the piano. It contains a single
 cigar stub - a cheroot by the appearance - partially smoked and carefully stubbed
 out. The cheroot bears the tooth marks of someone who smoked it clenched between their
 teeth.
