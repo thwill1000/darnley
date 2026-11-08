@@ -154,7 +154,7 @@ now."
 the creatures myself, but Darnley was rather fond of him, as I
 recall."
 
-+(officer/constable/police/policeman/bobby) (get/think) with
++(officer/policeman/police) (get/think) with
 "Seems steady enough for a village bobby. Can't say I've had cause to
 exchange more than two words with the fellow."
 

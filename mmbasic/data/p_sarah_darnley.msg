@@ -154,7 +154,7 @@ probably mistaken."
 I'm afraid I've never had much to do with him. He lives down at the
 stables, as I understand it."
 
-+(officer/constable/police/policeman/bobby) (get/think) with
++(officer/policeman/police) (get/think) with
 "I haven't really spoken to him. He seems very young to be standing guard
 over something so dreadful."
 

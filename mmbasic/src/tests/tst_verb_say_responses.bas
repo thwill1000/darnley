@@ -620,6 +620,7 @@ End Sub
 Sub test_opinion_constable()
   assert_response("What do you think of the police constable?", "police constable response")
   assert_response("What do you make of the officer at the gate?", "police constable response")
+  assert_response("What do you make of Pegg?", "police constable response")
   assert_response("Tell me about the constable.", "police constable response")
   assert_response("What's the policeman like?", "police constable response")
   assert_response("Your impression of the officer.", "police constable response")

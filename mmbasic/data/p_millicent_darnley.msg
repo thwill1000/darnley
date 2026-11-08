@@ -133,7 +133,7 @@ Daddy to get rid of him."
 down at the stables bothering Mellors. I've always found him rather
 standoffish, myself."
 
-+(officer/constable/police/policeman/bobby) (get/think) with
++(officer/policeman/police) (get/think) with
 "I've only seen him through the window, stood out there in the cold. Rather
 a thankless job, I should think, on a morning like this."
 

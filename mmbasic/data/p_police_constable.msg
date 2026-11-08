@@ -61,7 +61,7 @@ had cause to speak to him."
 "Seen him about the stables, sir. Big ginger fellow. No trouble to
 anyone that I've noticed."
 
-+(officer/constable/police/policeman/bobby) (get/think) with | yourself | order | posted | duty
++(officer/policeman/police) (get/think) with | yourself | order | posted | duty
 "Me, sir? Not much to tell - come up from the station this morning when the
 call came in, and I've been minding the gate since. I'll do my duty here as
 long as you need me to."

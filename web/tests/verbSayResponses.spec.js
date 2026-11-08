@@ -37,7 +37,7 @@ const SUSPECTS = {
   billingsgate: { id: 'P_ARNOLD_BILLINGSGATE', name: 'Arnold Billingsgate', pattern: 'billingsgate butler' },
   goodbody: { id: 'P_MILDRED_GOODBODY', name: 'Mildred Goodbody', pattern: 'goodbody cook' },
   mellors: { id: 'P_RONALD_MELLORS', name: 'Ronald Mellors', pattern: 'mellors gamekeeper' },
-  constable: { id: 'P_POLICE_CONSTABLE', name: 'Police Constable', pattern: 'police constable policeman bobby' },
+  constable: { id: 'P_POLICE_CONSTABLE', name: 'Police constable', pattern: 'officer police policeman' },
 };
 
 let synonyms;
@@ -425,8 +425,12 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
   it('What do you think of the Police Constable?', () => {
     all('police constable response', [
-      'What do you think of the police constable?', 'What do you make of the officer at the gate?',
-      'Tell me about the constable.', "What's the policeman like?", 'Your impression of the officer.',
+      'What do you think of the police constable?',
+      'What do you make of the officer at the gate?',
+      'What do you think of Pegg?',
+      'Tell me about the constable.',
+      "What's the policeman like?",
+      'Your impression of the officer.',
       'How do you get on with the constable?',
     ]);
 

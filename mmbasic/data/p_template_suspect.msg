@@ -131,7 +131,7 @@ handkerchief
 +(cat/chester/ginger) (get/think) with
 "chester cat response"
 
-+(officer/constable/police/policeman/bobby) (get/think) with
++(officer/policeman/police) (get/think) with
 "police constable response"
 
 +(flatfooted/flat/odd) (bootprints/footprints/prints)

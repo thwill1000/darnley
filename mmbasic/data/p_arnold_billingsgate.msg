@@ -147,7 +147,7 @@ service to the family, in their hour of need as in any other."
 stables and is, if I may say so, better behaved than most of the
 house."
 
-+(officer/constable/police/policeman/bobby) (get/think) with
++(officer/policeman/police) (get/think) with
 "A most correct young man, sir. He has kept good order at the gate since he
 arrived, and troubled none of us in the house."
 

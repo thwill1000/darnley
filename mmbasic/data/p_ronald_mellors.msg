@@ -120,7 +120,7 @@ see as I owe anyone an account of myself."
 "Chester. Good ratter, keeps the stables clear of vermin. I feed him
 same as the horses - he earns his keep, unlike some."
 
-+(officer/constable/police/policeman/bobby) (get/think) with
++(officer/policeman/police) (get/think) with
 "Seen him stood at the gate. Doesn't concern me - I keep to the grounds,
 he keeps to the drive."
 

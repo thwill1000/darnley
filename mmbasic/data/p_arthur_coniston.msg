@@ -142,7 +142,7 @@ fellow I should think."
 believe. Can't say I've had much to do with him myself - not much of
 a cat man."
 
-+(officer/constable/police/policeman/bobby) (get/think) with
++(officer/policeman/police) (get/think) with
 "Decent enough chap, I should think, old boy - can't say I've exchanged more
 than a nod with him on my way past the gate."
 

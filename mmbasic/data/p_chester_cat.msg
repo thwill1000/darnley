@@ -150,7 +150,7 @@ beneath him.@
 @
 "Mrow."
 
-+(officer/constable/police/policeman/bobby) (get/think) with
++(officer/policeman/police) (get/think) with
 The cat regards the mention of a uniformed stranger with complete
 indifference and returns to washing a paw.@
 @

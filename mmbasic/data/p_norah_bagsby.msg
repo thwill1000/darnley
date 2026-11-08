@@ -120,7 +120,7 @@ don't know what more you'd want me to say about myself."
 "Oh, that's Chester, sir. He's ever so sweet, though he does shed
 something dreadful on my apron when he jumps up."
 
-+(officer/constable/police/policeman/bobby) (get/think) with
++(officer/policeman/police) (get/think) with
 "He gave me quite a fright when I saw him from the landing window, sir. I
 expect he's only doing his job, same as anyone."
 

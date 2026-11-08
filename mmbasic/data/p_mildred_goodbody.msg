@@ -142,7 +142,7 @@ him his notice; he'd already given him a warning letter."
 the moment he smells anything worth having. I've a soft spot for him,
 truth be told."
 
-+(officer/constable/police/policeman/bobby) (get/think) with
++(officer/policeman/police) (get/think) with
 "Nice enough young man, dear. I took him out a cup of tea earlier - standing
 out there in this cold, someone had to."
 
