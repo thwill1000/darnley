@@ -1,4 +1,4 @@
-# LOC018_EAST_WALK
+# LOC018_AVENUE_OF_STATUES
 
 Pixel art, VGA 256-colour palette, 480x320 pixels (displayed at 240x160), style of early 1990s point-and-click adventure games such as Police Quest or King's Quest VI. Hard pixel edges throughout, no anti-aliasing, no modern rendering techniques. Muted period-appropriate colour palette. Static background scene, no characters, no UI elements, no text overlays.
 
