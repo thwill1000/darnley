@@ -299,7 +299,7 @@ goodbye bye farewell thanks thank
 !provides new_accuse accuse_tag accuse_b4_tag
 "first accusation response"
 
-# Response after accusation questions have been answered correctly
+# Response when accused when insufficient clues have been gathered
 -who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
 !provides new_accuse accuse_tag
 "premature accusation response"
