@@ -1,6 +1,5 @@
 # TODO: The Sealed Room Murder (MMBasic)
 
-- Rename "Guest room" => "East guest room"
 - Rename location ids:
     - LOC012_WEST_WALK => LOC012_TENNIS_COURT
     - LOC018_EAST_WALK => LOC018_AVENUE_OF_STATUES

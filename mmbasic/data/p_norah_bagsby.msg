@@ -173,7 +173,7 @@ shivers even in summer. I couldn't tell you a thing about it."
 +suit servant
 "Oh, that's Sir Redvers' suit, sir. He came ever so sudden and there was
 nowhere for him but our room, on account of Mr. Coniston having the
-guest room already, and the other guest room being all in a state with
+east guest room already, and the west guest room being all in a state with
 the redecorating. I felt right embarrassed hanging a gentleman's
 suit up next to my own things, but Mrs. G. said not to make a fuss."
 
