@@ -389,11 +389,10 @@ Only one set of footprints can be made out in the snow. They are of flat-footed
 bootprints coming to and from the terrace.
 
 OBJ206_SLIPPERS
-The slippers are slightly damp and stained with mud. The mud appears fresh
-and is concentrated around the heel and toe areas, as if the wearer had walked
-purposefully through wet ground. The slippers are well-made with silk lining,
-though the lining is now darkened and stained. They give off a faint smell of
-earth and something else - perhaps tobacco smoke.
+The slippers are slightly damp and stained with mud. The mud appears fresh and
+is concentrated around the heel and toe. The slippers are well-made with a silk
+lining, now darkened and stained. They give off a faint smell of earth and
+tobacco smoke.
 
 OBJ207_CIGARETTES
 These cigarettes are an expensive brand by Fribourg & Treyer, made in London.
@@ -416,13 +415,11 @@ Flat-footed bootprints and slipper prints can be seen going to and from the
 kitchen and the outhouses.
 
 OBJ213_BED_MASTER
-The Colonel's bed is large and ornate with heavy mahogany posts. The linen sheets
-and quilted coverlet on one side have been disturbed - slept in - whilst the other
-side remains pristine and undisturbed. Clearly Mrs. Darnley slept here, but the
-Colonel did not. A silk nightshirt is carefully folded and placed upon the Colonel's
-pillow. On the bedside table sits a small bottle of sleeping draught, the stopper
-removed and a spoon beside it, yet the bed itself remains untouched on his side.
-Whatever the Colonel was doing last night, sleep in his own bed was not his intention.
+The bed is large and ornate, with heavy mahogany posts. The sheets and quilted
+coverlet on one side have been disturbed, as if slept in. The other side is
+smooth and untouched, and a silk nightshirt lies folded on its pillow. On the
+bedside table sits a small bottle of sleeping draught, the stopper removed and
+a spoon beside it.
 
 OBJ214_WARDROBE
 !provides x_wardrobe
@@ -477,9 +474,8 @@ loss to British investors.'
 
 OBJ223_PIPE
 The pipe is in the style called 'calabash' with a meerschaum bowl and amber
-mouthpiece - a gentleman's smoking pipe of considerable quality and expense. The
-bowl still bears the residue of tobacco, now darkened and hardened. The pipe sits
-on the servants' quarters washstand, suggesting it belonged to a visitor. The
+mouthpiece - a gentleman's smoking pipe of considerable quality and expense.
+The bowl still bears the residue of tobacco, now darkened and hardened. The
 amber mouthpiece shows signs of much use and is polished smooth by years of
 handling.
 
@@ -579,11 +575,10 @@ OBJ239_PIANO_MUSIC
 The sheets of music on the piano are for duets.
 
 OBJ240_WINE_GLASSES
-The three wine glasses are all dirty, bearing the stains of red wine that has
-long since dried. They sit atop the bookcase in the billiard room, clearly forgotten
-after last night's game. The glasses are fine crystal, part of a set, with
-delicate stems. The wine residue in each glass suggests they were filled and then
-left standing - perhaps abandoned hastily?
+Three wine glasses stand on top of the bookcase, set down at odd angles rather
+than in a row. Two are empty, with a dried reddish residue at the bottom.
+The third is part-filled with dark red wine. They are fine crystal, part of a
+set, with delicate stems.
 
 OBJ241_ASHTRAY
 An ashtray rests atop the billiard room bookcase and contains the remains of
@@ -606,19 +601,16 @@ the corner of the house, to and from the maze and the main drive.
 
 OBJ245_CIGARETTE_ENDS_SH
 !provides x_cigarettes new_clue
-These cigarette ends come from a cheap, mass produced brand. There are
-perhaps a dozen of them scattered about the summer house floor, some trodden into
-the dust, others carefully arranged. The tobacco inside is coarse and poor quality.
-They suggest prolonged occupation of the summer house by someone of modest means
-- or someone pretending to be.
+These cigarette ends come from a cheap, mass-produced brand. There are perhaps a
+dozen of them scattered about the summer house floor, some trodden into the
+dust. The tobacco inside is coarse and poor quality.
 
 OBJ246_HANDKERCHIEF
 !provides x_handkerchief new_clue
 A lady's handkerchief of plain linen with delicate lace edging and a faint
 perfume - the scent is floral, sweet, and distinctly expensive. The handkerchief
-is initialled with an ornate "S" worked in pale silk thread. It is slightly damp
-and bears traces of dirt on one corner, as if it has been clutched in a nervous
-hand. The perfume is distinctive - not common, and quite costly.
+is slightly damp and bears traces of dirt on one corner. The perfume is
+distinctive - not common, and quite costly.
 
 OBJ247_FOOTPRINTS_WL
 Hobnailed bootprints can be seen in the snow going to and from the drive and the
@@ -649,11 +641,9 @@ that seems merely decorative in daylight and considerably less so after dark.
 OBJ252_DOORMAT
 The doormat is made of coarse coir and bears the word 'WELCOME' in faded letters.
 It is decidedly damp with recent use, the moisture having soaked onto the
-marble tiles beneath it. The dampness is concentrated at the edges and corners
-where water might drip from wet boots or shoes. There are distinct muddy footprints
-impressed into the coir - at least two sets, one noticeably smaller than the other.
-The mat has not yet dried, suggesting the wet footprints are fresh - from last night
-or early this morning.
+marble tiles beneath it. The dampness is concentrated at the edges and corners.
+There are distinct muddy footprints impressed into the coir - at least two sets,
+one noticeably smaller than the other. The mat has not yet dried.
 
 OBJ253_CHEROOT_BUTT
 !requires x_statue
