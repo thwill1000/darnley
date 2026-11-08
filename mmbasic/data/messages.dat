@@ -254,12 +254,12 @@ portraits of the Darnley ancestors. Doors lead to the [[green:Morning room]],
 into the [[green:Hall]].
 
 LOC026_SERVANTS_QUARTERS
-A single room with two single beds, a rail for clothes behind a curtain, a washstand
-and chest of drawers. On the chest rest a bundle of [[green:correspondence]]
-and framed [[green:photographs]]. A gentleman's [[green:country-suit]] with a [[green:newspaper]]
-in the pocket hangs among the dresses, and a [[green:pipe]] rests on the washstand.
-The maid, [[green:Norah Bagsby]], is tidying this cramped space. Only a door to the
-[[green:Upstairs landing]] provides egress.
+A single room with two single beds, a rail for clothes behind a curtain, a
+washstand and chest of drawers. On the chest rest a bundle of
+[[green:correspondence]] and framed [[green:photographs]]. A gentleman's
+[[green:country-suit]] hangs among the dresses, and a [[green:pipe]] rests on
+the washstand. The maid, [[green:Norah Bagsby]], is tidying this cramped space.
+Only a door to the [[green:Upstairs landing]] provides egress.
 
 LOC027_MASTER_BEDROOM
 Colonel and Mrs. Darnley's bedroom is heavily panelled with sporting prints and
@@ -457,14 +457,14 @@ OBJ220_PHOTOGRAPHS
 These photographs depict Mrs. Goodbody's various ugly relatives.
 
 OBJ221_SUIT
-A gentleman's country-suit apparently belonging to Sir Redvers. It is made
-of fine Scotch tweed in a dark green and brown pattern, well-tailored and evidently
-expensive. The suit has been carefully hung in the servants' quarters wardrobe,
-though this is an odd place for a visitor's good clothing. Why would Sir Redvers
-leave his suit here rather than in the guest room? Inside the jacket pocket,
-a label reads "Hawes & Curtis, Piccadilly."
+!provides x_suit
+This gentleman's country-suit is made of Scotch tweed in a dark green and brown
+pattern, well tailored. It hangs on the clothes rail among the servants' dresses
+and aprons. A [[green:newspaper]] is folded in the jacket's outer pocket, and
+sewn inside the jacket a label reads "Hawes & Curtis, Piccadilly."
 
 OBJ222_NEWSPAPER
+!requires x_suit
 !provides x_newspaper new_clue
 One headline on the front page catches your eye -
 'Collapse of Rio Plata Mining Co. - Our correspondent in Lima, Peru
