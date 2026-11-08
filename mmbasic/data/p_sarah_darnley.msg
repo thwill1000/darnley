@@ -319,7 +319,7 @@ of the estate with me, and Mellors has always struck me as
 perfectly loyal - I can't think what would have prompted it."
 
 -again marriage colonel sarah wife husband happy get with
-"We married two years ago - I'm more than twenty years his junior, not much
+"We married two years ago - I'm more than thirty years his junior, not much
 older than Millicent, and people will talk regardless of what's true. We were
 happy enough, in our own way. He was strict, and older than me. I loved him,
 whatever anyone supposes."

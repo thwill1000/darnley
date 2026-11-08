@@ -359,8 +359,8 @@ affair mellors sarah (summerhouse/summer) together secret lovers
 He gives a short, humourless laugh.@
 @
 "Wouldn't surprise me in the least, if I'm honest. Told Darnley his
-wife would go looking for warmth elsewhere - man was thirty years
-her senior and colder than the weather. Didn't think I'd be proved
+wife would go looking for warmth elsewhere - man was more than twice
+her age and colder than the weather. Didn't think I'd be proved
 right quite so literally, though."
 
 affair mellors sarah (summerhouse/summer) together secret lovers

@@ -303,7 +303,7 @@ about a letter. If Daddy did write to him, he never mentioned it to
 me. But I shouldn't be surprised."
 
 -again marriage colonel sarah wife husband happy get with
-"Daddy was twenty years older than Sarah and never quite trusted
+"Daddy was thirty years older than Sarah and never quite trusted
 that she'd stay. I don't think either of them was truly happy,
 if I'm honest. But that's marriage for you, isn't it?"
 
