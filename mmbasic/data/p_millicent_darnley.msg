@@ -3,7 +3,7 @@ hello hi greetings | -room morning | afternoon | evening
 morning, but you're welcome all the same."
 
 +who +are +you | +name +yourself | +(call/called) +you
-"Millicent Darnley. Daddy's daughter - and Arthur's fiancée, as of
+"Millicent Darnley. Daddy's daughter - and Arthur's fiancee, as of
 yesterday."
 
 +who +am +i | +my +name
@@ -99,7 +99,7 @@ Sarah would leave him for a younger man."
 
 +sarah (get/think) with
 "We got on well enough though it is difficult to have a step-mother
-who is almost the same age. I thought she would leave daddy some day
+who is almost the same age. I thought she would leave Daddy some day
 as soon as she found a lover. But, of course, she would need Daddy's
 money."
 
@@ -109,7 +109,7 @@ whatever anyone supposes, and I mean to see whoever did this
 brought to justice - however long it takes."
 
 +arthur (get/think) with
-"He's a darling! I don't know how he persuaded daddy to agree, so I
+"He's a darling! I don't know how he persuaded Daddy to agree, so I
 am probably mistaken."
 
 +redvers (get/think) with
@@ -171,7 +171,7 @@ hardly anyone else it could belong to."
 
 bookshelf books
 "Not mine, though I don't suppose I'd be ashamed if they were - I do like to
-read, when Father allows me a moment's peace for it. Those are Mr.
+read, when Daddy allows me a moment's peace for it. Those are Mr.
 Billingsgate's books, I should think, from the sound of them."
 
 +(correspondence/photographs/letters) servant

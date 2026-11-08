@@ -62,10 +62,10 @@ business, not mine."
 gossip, not really my concern."
 
 gramophone
-"The Darnley's have a gramophone in the morning room."
+"The Darnleys have a gramophone in the morning room."
 
 piano
-"The Darnley's have two pianos, one in the music room and one in the
+"The Darnleys have two pianos, one in the music room and one in the
 morning room."
 
 +womens shoes

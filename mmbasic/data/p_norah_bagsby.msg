@@ -312,7 +312,7 @@ affair mellors sarah (summerhouse/summer) together secret lovers
 Norah's eyes go wide and she glances toward the door.@
 @
 "Oh, I - I really shouldn't say, sir. I don't know nothing about
-that, honest I don't." (She does not meet your eye as she says it.)
+that, honest I don't."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
 "I don't know anything about that, sir, honest."

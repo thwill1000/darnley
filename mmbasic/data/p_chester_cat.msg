@@ -189,7 +189,7 @@ the stables the whole night, as usual.@
 "Meow."
 
 +(bang/bangs/shot/shots) (time/what/when) (hear/heard)
-The cat's ear flicks once at the word "bang," but he shows no
+The cat's ear flicks once at the word `bang,` but he shows no
 other sign of comprehension.@
 @
 "Mrp?"

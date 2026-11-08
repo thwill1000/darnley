@@ -147,9 +147,8 @@ truth be told."
 out there in this cold, someone had to."
 
 +(flatfooted/flat/odd) (bootprints/footprints/prints)
-"I remember the gardener's child playing around wearing grown-up's
-boots. They made flat-footed prints because they were too big for
-her."
+"I remember the gardener's child playing around in grown-ups' boots. They made
+flat-footed prints because the boots were too big for her."
 
 +hobnailed +(bootprints/prints) boots
 "I don't know whose these are, dear - not something I make a study of."
@@ -191,8 +190,8 @@ just an old woman's keepsakes."
 there myself - too cold and too far from my ovens for my liking."
 
 +suit servant
-"That suit's Sir Redvers', dear. He came without warning and Mr. Coniston
-had already the east guest room - and the west one's all upside-down with
+"That suit is Sir Redvers', dear. He came without warning and Mr. Coniston
+had already taken the east guest room - and the west one's all upside-down with
 the redecorating besides - so he ended up put in with me and Norah's
 things instead - poor man, having his good tweeds hung next to our
 aprons. We managed, though."

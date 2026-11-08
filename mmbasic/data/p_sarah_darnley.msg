@@ -295,7 +295,7 @@ I'm sure I couldn't tell you."
 -thanks alibi | -thanks +time murder | +yesterday you evening
 "At 10:30 I was reading and drinking coffee in the lounge - on my
 own, I'm afraid. At 11:30 I was playing the piano in the morning
-room - also alone, alas! I don't suppose it looks to good?"
+room - also alone, alas! I don't suppose it looks too good?"
 
 -thanks alone (confirm/confirmed) corroborate witness anyone time
 "No - I was quite alone in the morning room the entire time. I

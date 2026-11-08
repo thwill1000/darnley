@@ -48,7 +48,7 @@ The suspects are:@
           - the gamekeeper@
 @
 You are free to search the house and grounds and to question the
-suspects. Examination of the scene and skillful interrogation will
+suspects. Examination of the scene and skilful interrogation will
 yield sufficient information to solve the mystery. And mystery it is!
 The body of Colonel Darnley was found in his study, the doors and
 window of which were all locked from the inside. The only keys were
@@ -132,8 +132,8 @@ passageway to the [[green:Hall]].
 
 LOC010_BUTLERS_PANTRY
 A small sitting room featuring a bed tucked behind a curtain - apparently the
-butler's private quarter, though at the moment two makeshift beds have been
-squeezed in. A small [[green:bookshelf]] holds various volumes.
+butler's private quarters, though at the moment two additional makeshift beds
+have been squeezed in. A small [[green:bookshelf]] holds various volumes.
 [[green:Arnold Billingsgate]] tends to his duties. Doors lead to the
 [[green:Kitchen]] and [[green:Dining room]].
 
@@ -256,7 +256,7 @@ into the [[green:Hall]].
 LOC026_SERVANTS_QUARTERS
 A single room with two single beds, a rail for clothes behind a curtain, a washstand
 and chest of drawers. On the chest rest a bundle of [[green:correspondence]]
-and framed [[green:photographs]]. A gentleman's country-[[green:suit]] with a [[green:newspaper]]
+and framed [[green:photographs]]. A gentleman's [[green:country-suit]] with a [[green:newspaper]]
 in the pocket hangs among the dresses, and a [[green:pipe]] rests on the washstand.
 The maid, [[green:Norah Bagsby]], is tidying this cramped space. Only a door to the
 [[green:Upstairs landing]] provides egress.
@@ -393,7 +393,7 @@ one.
 
 OBJ205_FOOTPRINTS_POND
 Only one set of footprints can be made out in the snow. They are of flat-footed
-bootprint coming to and from the terrace.
+bootprints coming to and from the terrace.
 
 OBJ206_SLIPPERS
 The slippers are slightly damp and stained with mud. The mud appears fresh
@@ -419,7 +419,7 @@ OBJ209_BOOTS
 All these boots are polished clean except for a large mud stained pair.
 
 OBJ212_FOOTPRINTS_KG
-Flat-footed bootprints, and slipper prints can be seen going to and from the
+Flat-footed bootprints and slipper prints can be seen going to and from the
 kitchen and the outhouses.
 
 OBJ213_BED_MASTER
@@ -467,7 +467,7 @@ OBJ220_PHOTOGRAPHS
 These photographs depict Mrs. Goodbody's various ugly relatives.
 
 OBJ221_SUIT
-This gentleman's country suit apparently belongs to Sir Redvers. It is made
+This gentleman's country-suit apparently belongs to Sir Redvers. It is made
 of fine Scotch tweed in a dark green and brown pattern, well-tailored and evidently
 expensive. The suit has been carefully hung in the servants' quarters wardrobe,
 though this is an odd place for a visitor's good clothing. Why would Sir Redvers
@@ -577,7 +577,7 @@ arranged on black velvet, lie hand-axes, arrowheads, and ancient pottery fragmen
 
 OBJ237_FOOTPRINTS_WW
 Slipper prints, flat-footed bootprints, and men's shoeprints lead to and from
-the terrace and the front of the house. Meanwhile, a lady's shoeprints lead to
+the terrace and the front of the house. Meanwhile, lady's shoeprints lead to
 and from the summer house.
 
 OBJ238_CIGAR_STUB
