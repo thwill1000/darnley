@@ -258,10 +258,11 @@ actually. Worked up my nerve all afternoon before I finally asked him
 - and he said yes, would you believe it."
 
 +(bang/bangs/shot/shots) (time/what/when) (hear/heard)
-"Funny you should press on that. There was a bang at about 10:30 -
-door slamming, I assumed - and then another, later, closer to 11:30,
-when I was downstairs again. Can't say I thought much of it at the
-time. Two bangs, one house full of nerves - hardly conclusive, is it?"
+"Funny you should press on that. There was a bang at about 10:30, while
+Millicent and I were in the music room - door slamming, I assumed - and then
+another, later, around 11:30, when I was lying awake in my room. Can't say I
+thought much of it at the time. Two bangs, one house full of nerves - hardly
+conclusive, is it?"
 
 -you +(when/time) +(die/murder)
 "Couldn't say exactly, old boy. I heard a noise at about 11:30 - a door,
