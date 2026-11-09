@@ -767,8 +767,8 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     ]);
 
     target('redvers');
-    assertResponse('did you argue with the colonel', "Argued, yes - I'll not pretend otherwise", true);
-    assertResponse('did you have an argument with the colonel', "Argued, yes - I'll not pretend otherwise", true);
+    assertResponse('did you argue with the colonel', "Argue? Good God, no. We talked business,", true);
+    assertResponse('did you have an argument with the colonel', "Argue? Good God, no. We talked business,", true);
   });
 
   it('Did you argue with the colonel? (after the newspaper is found)', () => {

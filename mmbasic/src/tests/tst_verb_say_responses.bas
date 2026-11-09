@@ -1002,8 +1002,8 @@ Sub test_argument_blocked()
 
   ' Ask Redvers directly without the newspaper flag - he stonewalls
   objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
-  assert_response("did you argue with the colonel", "Argued, yes - I'll not pretend otherwise", 1)
-  assert_response("did you have an argument with the colonel", "Argued, yes - I'll not pretend otherwise", 1)
+  assert_response("did you argue with the colonel", "Argue? Good God, no. We talked business,", 1)
+  assert_response("did you have an argument with the colonel", "Argue? Good God, no. We talked business,", 1)
 End Sub
 
 ' Once "x_newspaper" is set, Redvers' gated entry wins and he admits the

@@ -105,18 +105,17 @@ had cost me. I asked him for a loan to cover it. Heated, I'll grant
 you, but a damned sight short of murder."
 
 +colonel +argue
-"Argued, yes - I'll not pretend otherwise, half the house probably
-heard us. Business, that's all it was. Gentlemen argue about business
-without murdering each other over it, or the clubs of London would be
-a good deal emptier than they are."
+"Argue? Good God, no. We talked business, as old friends do, and Darnley always
+did talk at the top of his voice. If someone heard raised voices, that's all it
+was."
 
 +(die/bullet/bullets/wound/cause) | +how +murder
 "Shot, so I hear. Through the chest. I wasn't there and I haven't been
 in to look."
 
 +colonel -(millicent/sarah/who) (get/think) with
-"A hard man but very fair. Once I had explained my business problem
-he agreed to help me out."
+"A hard man but very fair. Twenty years I've known him, and I've never had cause
+to complain of him."
 
 +sarah (get/think) with
 "Darnley should never have married her. I told him so at the time but he wouldn't
@@ -259,9 +258,9 @@ suffice it to say Darnley and I had matters to discuss."
 
 +(bang/bangs/shot/shots) (time/what/when) (hear/heard)
 "There was only the one bang so far as I heard, and I'll tell you
-plainly what caused it - I left Darnley's study at 10:30 and slammed
-the door behind me, hard, being in no mood for delicacy. If someone
-heard a second noise later, it's news to me. I was asleep by 11:00."
+what caused it - I left Darnley's study at 10:30 and the door slammed behind me.
+Heavy door, stiff spring. If someone heard a second noise later, it's news to
+me. I was asleep by 11:00."
 
 -you +(when/time) +(die/murder)
 "No idea. I left Darnley alive at 10:30 and was asleep by 11:00.
