@@ -159,7 +159,7 @@ Sub handle_new_accusation()
   con.println()
   print_message_or_fail("ACCUSE_TEXT")
 
-  Local answer$, correct%, pattern$, match_in$, msg$, num_matches%, q%
+  Local answer$, correct%, pattern$, msg$, num_matches%, q%
 
   Const num_questions% = Bound(questions$(), 1)
   For q% = Bound(questions$(), 0) To num_questions%
@@ -182,12 +182,6 @@ Sub handle_new_accusation()
         Continue For
     End Select
 
-    ' Replace "you" with name of accused suspect
-    For i% = Bound(words$(), 0) To Bound(words$(), 1)
-      If words$(i%) = "" Then Exit For
-      If words$(i%) = "you" Then words$(i%) = accused$
-    Next
-
     ' Uncomment for debugging
     If words$(Bound(words$(), 0)) = "succeed" Or words$(Bound(words$(), 0)) = "fail" Then
       correct% = num_questions% * (words$(Bound(words$(), 0)) = "succeed")
@@ -196,8 +190,7 @@ Sub handle_new_accusation()
 
     ' Compare the answer to the expected response pattern
     pattern$ = Mid$(questions$(q%), InStr(questions$(q%), "|") + 1)
-    match_in$ = make_match_input$(words$())
-    num_matches% = find_matches%(pattern$, match_in$)
+    num_matches% = accuse_match%(words$(), accused$, pattern$)
     If num_matches% Then Inc correct%
 
     ' Uncomment for debugging
