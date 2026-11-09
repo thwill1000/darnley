@@ -243,10 +243,9 @@ the door of the servants' quarters."
 +(bang/bangs/shot/shots) (time/what/when) (hear/heard)
 "There was a noise at about 10:30 - I assumed a poacher, and rather
 hoped Mellors would catch him. Then I woke again around 11:20 and
-heard Sarah still at the piano, and shortly after that there was
-another bang, closer to midnight this time. I really can't say what
-either one was, only that there were the two of them, some while
-apart."
+heard Sarah still at the piano, and a few minutes after that there was another
+bang. I really can't say what either one was, only that there were the two of
+them, the best part of an hour apart."
 
 -you +(when/time) +(die/murder)
 "I really couldn't say. I woke at about 11:20 and heard Sarah playing the piano,
