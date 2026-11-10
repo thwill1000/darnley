@@ -43,7 +43,7 @@ export function splitWords(cmd) {
         current = '';
       }
       words.push(ch);
-    } else if (ch === "'" || ch === '!' || ch === '.') {
+    } else if (ch === "'" || ch === '!' || ch === '.' || ch === '(' || ch === ')') {
       // Stripped - silently skip.
     } else {
       current += ch;
