@@ -76,6 +76,7 @@ add_test("Q11 who the letter was for: Arthur, by name, alias or 'you'", "test_q1
 add_test("Q11 'you' is only correct when the accused is Arthur", "test_q11_you_per_suspect")
 add_test("Q12 who had the financial motive: Redvers, by either name", "test_q12_redvers")
 add_test("Q13 the motive: needs both Millicent and marriage/engagement", "test_q13_millicent_marriage")
+add_test("Synonyms map whos/whats/hows (and wheres) to who/what/how/where", "test_question_synonyms")
 add_test("An empty answer is wrong for every question", "test_empty_answer_wrong")
 
 run_tests()
@@ -146,9 +147,13 @@ End Sub
 Sub test_q05_time_letter_c()
   assert_right(5, "c")
   assert_right(5, "C")
+  assert_right(5, "c)")
+  assert_right(5, "(c)")
   assert_wrong(5, "a")
+  assert_wrong(5, "(a)")
   assert_wrong(5, "b")
   assert_wrong(5, "d")
+  assert_wrong(5, "d)")
   assert_wrong(5, "e")
 End Sub
 
@@ -165,14 +170,20 @@ Sub test_q07_big_boots()
   assert_right(7, "big")
   assert_right(7, "the boots were too large")
   assert_right(7, "too big for him")
+  assert_right(7, "oversized")
+  assert_right(7, "they were too loose")
+  assert_right(7, "huge boots")
   assert_wrong(7, "small")
   assert_wrong(7, "he was lame")
+  assert_wrong(7, "tiny")
 End Sub
 
 Sub test_q08_door_slam()
   assert_right(8, "door")
   assert_right(8, "a door slamming")
   assert_right(8, "the door slam")
+  assert_right(8, "slammed")
+  assert_right(8, "the door slammed")
   assert_wrong(8, "a poacher")
   assert_wrong(8, "the shot")
 End Sub
@@ -229,9 +240,33 @@ Sub test_q13_millicent_marriage()
   assert_right(13, "to marry millicent")
   assert_right(13, "his engagement to millicent")
   assert_right(13, "millicents engaged")
+  assert_right(13, "millicent inheritance")
+  assert_right(13, "he wanted millicents money")
+  assert_right(13, "refused consent to marry millicent")
   assert_wrong(13, "marriage")
   assert_wrong(13, "millicent")
   assert_wrong(13, "money")
+  assert_wrong(13, "inheritance")
+  assert_wrong(13, "consent")
+End Sub
+
+' split_words%() strips the apostrophe from "who's" etc., leaving "whos",
+' which must be mapped back to the word the question wildcard matches on.
+Sub test_question_synonyms()
+  Local w$(MAX_WORDS) Length MAX_WORD_LENGTH
+  Local rc%
+
+  rc% = split_words%("where's", w$())
+  assert_string_equals("|where|", make_match_input$(w$())) ' control: already works
+
+  rc% = split_words%("who's", w$())
+  assert_string_equals("|who|", make_match_input$(w$()))
+
+  rc% = split_words%("what's", w$())
+  assert_string_equals("|what|", make_match_input$(w$()))
+
+  rc% = split_words%("how's", w$())
+  assert_string_equals("|how|", make_match_input$(w$()))
 End Sub
 
 Sub test_empty_answer_wrong()

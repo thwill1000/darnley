@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { parseQuestions, parseSynonyms } from '../src/data.js';
-import { splitWords } from '../src/words.js';
+import { splitWords, makeMatchInput } from '../src/words.js';
 import { answerMatches, SUSPECT_TAGS } from '../src/accuse.js';
 
 // Ports mmbasic/src/tests/tst_accusation.bas. Unlike accuse.spec.js
@@ -66,8 +66,8 @@ describe('answerMatches() against the real accusation questions', () => {
   });
 
   it('Q5 time of the murder: only option c is correct', () => {
-    right(5, ['c', 'C']);
-    wrong(5, ['a', 'b', 'd', 'e']);
+    right(5, ['c', 'C', 'c)', '(c)']);
+    wrong(5, ['a', '(a)','b', 'd', 'd)', 'e']);
   });
 
   it('Q6 which door the murderer left the kitchen by: the outside one', () => {
@@ -76,12 +76,19 @@ describe('answerMatches() against the real accusation questions', () => {
   });
 
   it('Q7 why the bootprints were flat-footed: boots too big/large', () => {
-    right(7, ['big', 'the boots were too large', 'too big for him']);
-    wrong(7, ['small', 'he was lame']);
+    right(7, [
+      'big',
+      'the boots were too large',
+      'too big for him',
+      'oversized',
+      'they were too loose',
+      'huge boots',
+    ]);
+    wrong(7, ['small', 'he was lame', 'tiny']);
   });
 
   it('Q8 what caused the first bang: the door slamming', () => {
-    right(8, ['door', 'a door slamming', 'the door slam']);
+    right(8, ['door', 'a door slamming', 'the door slam', 'slammed', 'the door slammed']);
     wrong(8, ['a poacher', 'the shot']);
   });
 
@@ -115,8 +122,16 @@ describe('answerMatches() against the real accusation questions', () => {
   });
 
   it('Q13 the motive: needs both Millicent and marriage/engagement', () => {
-    right(13, ['millicent marriage', 'to marry millicent', 'his engagement to millicent', 'millicents engaged']);
-    wrong(13, ['marriage', 'millicent', 'money']);
+    right(13, [
+      'millicent marriage',
+      'to marry millicent',
+      'his engagement to millicent',
+      'millicents engaged',
+      'millicent inheritance',
+      'he wanted millicents money',
+      'refused consent to marry millicent',
+    ]);
+    wrong(13, ['marriage', 'millicent', 'money', 'inheritance', 'consent']);
   });
 
   it('an empty answer is wrong for every question', () => {
@@ -124,4 +139,21 @@ describe('answerMatches() against the real accusation questions', () => {
       expect(ok(q, ''), `Q${q}`).toBe(false);
     }
   });
+});
+
+describe('question-word synonyms', () => {
+  // "who's" becomes "whos" once the apostrophe is stripped; it must map back
+  // to the word the unhandled-question wildcard in the .msg files matches on.
+  const mapped = (input) => makeMatchInput(splitWords(input), synonyms);
+
+  it('"where\'s" maps to "where" (control: already works)', () => {
+    expect(mapped("where's")).toBe('|where|');
+  });
+
+  it.each([["who's", 'who'], ["what's", 'what'], ["how's", 'how']])(
+    '%s maps to "%s"',
+    (input, canonical) => {
+      expect(mapped(input)).toBe(`|${canonical}|`);
+    },
+  );
 });

@@ -165,8 +165,8 @@ describe('parseObjects()', () => {
 });
 
 describe('parseSynonyms()', () => {
-  it('parses exactly 51 synonym entries', () => {
-    expect(parseSynonyms(adventText)).toHaveLength(51);
+  it('parses exactly 54 synonym entries', () => {
+    expect(parseSynonyms(adventText)).toHaveLength(54);
   });
 
   it('parses the first synonym entry, mapping aliases back to "argue"', () => {
@@ -198,7 +198,7 @@ describe('parseQuestions()', () => {
     const questions = parseQuestions(adventText);
     expect(questions.at(-1)).toEqual({
       id: 'Q_13',
-      pattern: '+millicent +(marriage/engagement)',
+      pattern: '+millicent +(marriage/engagement/inheritance/money) | +millicent +consent +refused',
     });
   });
 });
