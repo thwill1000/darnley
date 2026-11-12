@@ -66,6 +66,12 @@ poacher
 +(statue/statues) +(missing/sunken/fourth/gone)
 "missing statue response"
 
+(statue/statues)
+"statues response"
+
+schubert
+"schubert response"
+
 gramophone
 "gramophone response"
 
@@ -84,6 +90,15 @@ piano
 
 letter
 "letter response"
+
++(tantalus/decanters/brandy/port/drinks) study
+"study drinks response"
+
++wine (glass/glasses) | billiards
+"billiard room response"
+
++(ashtray/ashtrays) (cigar/cheroot)
+"ashtray response"
 
 key
 "key response"
@@ -188,6 +203,12 @@ daimler car motor saloon garage
 +police +(car/saloon)
 "police car response"
 
++(master/colonel) +bedroom | draught |dressing
+"master bedroom response"
+
+(dinner/supper/coffee)
+"dinner response"
+
 events yesterday murder last happened
 "events response"
 
@@ -252,7 +273,7 @@ events yesterday murder last happened
 +(stone/rock)
 "stone response"
 
-+study (locked/sealed) door
++study -drinks (locked/sealed) door
 "locked study response"
 
 +(window/glass/pane) +(french/broken/smashed/shattered)
@@ -263,6 +284,12 @@ events yesterday murder last happened
 
 clues evidence found discovered proof
 "evidence response"
+
++(summer/summerhouse) -handkerchief -cigarette
+"summer house response"
+
+gamekeeper cottage
+"gamekeepers cottage response"
 
 affair mellors sarah (summerhouse/summer) together secret lovers
 !requires x_handkerchief x_cigarettes
@@ -278,7 +305,7 @@ affair mellors sarah (summerhouse/summer) together secret lovers
 money mining peru ruin redvers colonel
 "finance response"
 
-police investigation scotland yard inspector detective think here me
+police investigation scotland yard inspector detective think here
 "investigation response"
 
 weather cold snow
@@ -288,19 +315,19 @@ goodbye bye farewell thanks thank
 "goodbye response"
 
 # Response when accused of the murder for a second (or subsequent) time
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_tag
 !provides new_accuse accuse_tag
 "subsequent accusation response"
 
 # Response when accused of the murder
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_tag accuse_b4_tag
 "first accusation response"
 
 # Response when accused when insufficient clues have been gathered
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !provides new_accuse accuse_tag
 "premature accusation response"
 

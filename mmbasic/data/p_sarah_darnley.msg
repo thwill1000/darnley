@@ -64,14 +64,22 @@ why I was so sure."
 "I believe a rather nasty tramp, who called two days ago threw it
 into the pond."
 
-gramophone
-"The gramophone? I was in the morning room from about 10:40 until
-11:30 playing the piano. It's possible I played a record, but I
-don't remember doing so."
+(statue/statues)
+"Italian marble - the Four Seasons, round the pond. I've never cared for
+them; rather cold company in winter."
 
-piano
-"If you mean the morning room piano, I was playing it from about
-10:40 until I heard the bang at 11:30. I was on my own throughout
+schubert
+"Schubert? I played Chopin, Inspector - the nocturnes. I can't think why you
+are asking about Schubert."
+
+gramophone | (record/records)
+"The gramophone? I was in the morning room from about 10:40 until
+11:30 playing Chopin nocturnes on the piano. It's possible I played a record,
+but I don't remember doing so."
+
+piano | chopin
+"If you mean the morning room piano, I was playing Chopin nocturnes on it from
+about 10:40 until I heard the bang at 11:30. I was on my own throughout
 and no-one else came into the room."
 
 +womens shoes
@@ -95,6 +103,14 @@ understood it was for Arthur - or was it Sir Redvers? Afterwards
 Arthur told me that Sebastian had agreed to the marriage, and
 Redvers said that he and Sebastian had sorted out their business; so
 I'm at a loss about the letter."
+
++(tantalus/decanters/brandy/port/drinks) study
+"Sebastian liked a glass of port when he was out of sorts. That's all I
+can tell you."
+
++wine (glass/glasses) | billiards
+"The gentlemen went off to billiards over their port while Millicent and I
+had coffee in the lounge. I never went into the billiard room yesterday."
 
 key
 "Sebastian never let the study keys out of his pocket, so far as I
@@ -233,6 +249,13 @@ sits idle out there."
 "It seems dreadfully out of place doesn't it. I suppose it had to come,
 but I wish it hadn't."
 
++(master/colonel) +bedroom | draught |dressing
+"I don't see what my bedroom has to do with anything, Inspector."
+
+(dinner/supper/coffee)
+"We all dined together. Afterwards the men took port and billiards while
+Millicent and I had coffee in the lounge."
+
 events yesterday murder last happened
 "Last night we all had dinner together. Afterwards the men played billiards
 while Millicent and I had coffee in the lounge.@
@@ -345,7 +368,7 @@ don't like to say more than that."
 "I'm told Arthur threw a stone through the pane. I haven't been
 in to look, and I don't think I could."
 
-+study (locked/sealed) door
++study -drinks (locked/sealed) door
 "I still can't make sense of it. Both doors locked with his own
 keys, and that broken window - it's as though no one could possibly
 have got to him. And yet someone did."
@@ -362,6 +385,10 @@ think I could bear to."
 clues evidence found discovered proof
 "I don't know what you've discovered, Inspector, and I find I'm
 almost afraid to ask. Just be sure, whatever you decide."
+
++(summer/summerhouse) -handkerchief -cigarette
+"I haven't been down to the summer house since last summer, I should
+think."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
 !requires x_handkerchief x_cigarettes
@@ -384,7 +411,7 @@ realise it was quite so serious until now."
 money mining peru ruin redvers colonel
 "I really couldn't say. Sebastian didn't discuss financial business with me."
 
-police investigation scotland yard inspector detective think here me
+police investigation scotland yard inspector detective think here
 "I want to know who did this as much as anyone, Inspector - more,
 perhaps. Ask whatever you must. I only hope it's over soon, for all
 our sakes."
@@ -398,7 +425,7 @@ goodbye bye farewell thanks thank
 this."
 
 # Response when accused of the murder for a second (or subsequent) time
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_sarah
 !provides new_accuse accuse_sarah
 She looks at you steadily now, some of the shock worn off, replaced by
@@ -408,7 +435,7 @@ something harder to read.@
 you are quite wrong."
 
 # Response when accused of the murder
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_sarah accuse_b4_sarah
 Sarah's hand goes to her throat, the colour draining from her face.@
@@ -417,7 +444,7 @@ Sarah's hand goes to her throat, the colour draining from her face.@
 thing."
 
 # Response when accused when insufficient clues have been gathered
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !provides new_accuse accuse_sarah
 "You mustn't say such things without evidence - it isn't fair, not to
 anyone."

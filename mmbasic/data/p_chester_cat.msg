@@ -223,7 +223,7 @@ distance from where it happened.@
 @
 "Mrow?"
 
-police investigation scotland yard inspector detective think here me
+police investigation scotland yard inspector detective think here
 He sniffs your trouser leg, decides you'll do, and headbutts your
 shin companionably.@
 @
@@ -240,7 +240,7 @@ The cat has already lost interest and is washing his tail.@
 @
 "..."
 
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 The cat regards your accusation with the withering scorn of a
 creature who has never answered to anyone in his life.@
 @

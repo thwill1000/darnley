@@ -35,7 +35,8 @@ const SUSPECTS = {
   sarah: { id: 'P_SARAH_DARNLEY', name: 'Sarah Darnley', pattern: 'sarah' },
   millicent: { id: 'P_MILLICENT_DARNLEY', name: 'Millicent Darnley', pattern: 'millicent' },
   billingsgate: { id: 'P_ARNOLD_BILLINGSGATE', name: 'Arnold Billingsgate', pattern: 'billingsgate butler' },
-  goodbody: { id: 'P_MILDRED_GOODBODY', name: 'Mildred Goodbody', pattern: 'goodbody cook' },
+  mildred: { id: 'P_MILDRED_GOODBODY', name: 'Mildred Goodbody', pattern: 'goodbody cook' },
+  norah: { id: 'P_NORAH_BAGSBY', name: 'Norah Bagsby', pattern: 'bagsby maid' },
   mellors: { id: 'P_RONALD_MELLORS', name: 'Ronald Mellors', pattern: 'mellors gamekeeper' },
   constable: { id: 'P_POLICE_CONSTABLE', name: 'Police constable', pattern: 'officer police policeman' },
 };
@@ -163,7 +164,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       "What did you do yesterday evening?",
     ]);
 
-    target('goodbody');
+    target('mildred');
     assertResponse('Mildred, where were you at the time of the murder?', 'We was all three together', true);
   });
 
@@ -281,6 +282,27 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       'ask about the missing statue', 'what happened to the missing statue',
       "tell me about the statue that's gone", "where's the fourth statue",
     ]);
+  });
+
+  it('Tell me about the marble statues', () => {
+    all('statues response', [
+      'statues',
+      'statue',
+      'Tell me about the marble statues',
+      'Who made the statues round the pond?',
+    ]);
+
+    target('billingsgate');
+    assertResponse('tell me about the statues', 'The Four Seasons, sir - Italian marble', true);
+
+    target('sarah');
+    assertResponse('tell me about the statues', 'Italian marble - the Four Seasons', true);
+
+    target('mellors');
+    assertResponse('tell me about the statues', "Four of 'em round the pond", true);
+
+    target('norah');
+    assertResponse('tell me about the statues', "I don't go near them, sir", true);
   });
 
   it('Was anyone playing the gramophone?', () => {
@@ -561,6 +583,119 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     ]);
   });
 
+  it('What about the Schubert sheet music on the upstairs piano?', () => {
+    all('schubert response', [
+      'schubert',
+      'What about the Schubert sheet music on the upstairs piano?',
+      'What is the schubert on the piano?',
+    ]);
+
+    target('sarah');
+    assertResponse('What about the Schubert sheet music on the upstairs piano?', 'Schubert? I played Chopin, Inspector', true);
+  });
+
+  it('Who played duets on the piano?', () => {
+    assertResponse('duets', 'wildcard response');
+    assertResponse('Who played duets on the piano?', 'piano response');
+
+    target('sarah');
+    assertResponse('duets', "I'm not sure what you'd have me say to that", true);
+
+    target('millicent');
+    assertResponse('duets', 'Which piano?', true);
+
+    target('arthur');
+    assertResponse('duets', 'After dinner Millicent and I played duets on the piano', true);
+  });
+
+  it('Who played Chopin on the piano?', () => {
+    assertResponse('Chopin', 'wildcard response');
+    assertResponse('Who played Chopin on the piano?', 'piano response');
+
+    target('sarah');
+    assertResponse('Chopin', 'If you mean the morning room piano', true);
+
+    target('millicent');
+    assertResponse('Chopin', 'Which piano?', true);
+
+    target('arthur');
+    assertResponse('Chopin', 'When I went to bed', true);
+  });
+
+  it('Who played records in the morning room?', () => {
+    assertResponse('record', 'wildcard response');
+    assertResponse('records', 'wildcard response');
+    assertResponse('Who played records in the morning room?', 'unhandled question response');
+
+    target('sarah');
+    assertResponse('records', 'The gramophone?', true);
+
+    target('millicent');
+    assertResponse('records', "I don't follow you, Inspector. Was that a question?", true);
+
+    target('arthur');
+    assertResponse('records', 'When I went to bed at 11:00', true);
+  });
+
+  it('Who had drinks in the study?', () => {
+    all('study drinks response', [
+      'tantalus',
+      'Tell me about the decanter',
+      'What about the decanters?',
+      'Whose is this port glass?',
+      'Who drank the brandy?',
+      'Who had drinks in the study?',
+    ]);
+
+    target('billingsgate');
+    assertResponse('tell me about the tantalus', "The Colonel's tantalus, sir.", true);
+
+    target('sarah');
+    assertResponse('tell me about the port glass', 'Sebastian liked a glass of port', true);
+
+    target('arthur');
+    assertResponse('tell me about the decanters', 'Port in the billiard room, same as everyone.', true);
+  });
+
+  it('Who played billiards after dinner?', () => {
+    all('billiard room response', [
+      'wine glasses',
+      'wine',
+      'Who left the wine glasses on the bookcase?',
+      'billiards',
+      'Who played billiards after dinner?',
+    ]);
+
+    target('billingsgate');
+    assertResponse('Who played billiards after dinner?', 'I served port to the gentlemen in the billiard room', true);
+
+    target('sarah');
+    assertResponse('Who played billiards after dinner?', 'The gentlemen went off to billiards over their port', true);
+
+    target('arthur');
+    assertResponse('Who played billiards after dinner?', 'We had a frame or two after dinner', true);
+
+    target('redvers');
+    assertResponse('Who played billiards after dinner?', 'A game and some port, as I told you.', true);
+  });
+
+  it('Whose is the stub in the ashtray?', () => {
+    all('ashtray response', [
+      'ashtray',
+      'brass ashtray',
+      'Tell me about the ashtray',
+      'Tell me about the cigar stub in the ashtray',
+      'Tell me about the cheroot stub in the ashtray',
+      'Whose is the stub in the ashtray?',
+    ]);
+
+    target('arthur');
+    assertResponse('Whose is the stub in the ashtray?', 'The brass one in the music room?', true);
+
+    target('redvers');
+    assertResponse('Whose is the stub in the ashtray?', 'I smoke my pipe and the occasional Havana.', true);
+  });
+
   it("Can you corroborate Arthur's alibi?", () => {
     all('vouch for arthur response', [
       'confirm arthur', "Can you corroborate Arthur's alibi?", 'Was Arthur with you?', 'Can you vouch for Coniston?',
@@ -644,8 +779,11 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
   it('Were the Colonel and Sarah happy?', () => {
     all("colonel's marriage response", [
-      'were the colonel and sarah happy', 'were they a happy couple', 'how was the marriage',
-      'did sarah and the colonel get on',
+      'Were the colonel and Sarah happy?',
+      'Were they a happy couple?',
+      'How was the marriage?',
+      'Did Sarah and the colonel get on?',
+      "Who was the Colonel's friend?",
     ]);
   });
 
@@ -822,8 +960,119 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     assertResponse('When did the colonel die?', "I couldn't say, sir. Mr. Coniston woke me", true);
     target('arthur');
     assertResponse('When did the colonel die?', "Couldn't say exactly, old boy", true);
-    target('goodbody');
+    target('mildred');
     assertResponse('When did the colonel die?', "I couldn't tell you, dear. A bang woke me at 11:20", true);
+  });
+
+  it('Tell me about the master bedroom', () => {
+    all('master bedroom response', [
+      'Tell me about the master bedroom',
+      'Tell me about the sleeping draught',
+      'Tell me about the dressing table',
+      'What about the master bedroom?',
+      "What about the Colonel's bedroom?",
+    ]);
+
+    all('wildcard response', ['bed', 'Tell me about the bed', 'wardrobe']);
+
+    assertResponse('When did you go to bed?', 'unhandled question response');
+
+    target('sarah');
+    assertResponse('Tell me about the master bedroom', "I don't see what my bedroom has to do with anything", true);
+
+    target('millicent');
+    assertResponse('Tell me about the master bedroom', "I don't make a habit of going into Daddy's room.", true);
+
+    target('norah');
+    assertResponse('Tell me about the master bedroom', 'One side of the bed had been slept in, sir', true);
+  });
+
+  it('Tell me about the summer house', () => {
+    all('summer house response', [
+      'summer house',
+      'summerhouse',
+      'Tell me about the summer house',
+      'When did you visit the summer house?',
+    ]);
+
+    // Topic questions that merely mention the place keep their own answers.
+    assertResponse('Who dropped the handkerchief in the summer house?', 'handkerchief response');
+    assertResponse('Tell me about the cigarette in the summer house', 'smoking response');
+
+    // The affair remains distinct when explicitly asked about.
+    assertResponse('was sarah having a secret affair with the gamekeeper', 'affair response');
+
+    resetFlags('x_handkerchief', 'x_cigarettes');
+    assertResponse('Tell me about the summer house', 'summer house response');
+    assertResponse('ask about the affair', 'affair response given handkerchief and cigarettes');
+
+    target('billingsgate');
+    assertResponse('tell me about the summer house', 'The summer house, sir? I could not say.', true);
+
+    target('sarah');
+    assertResponse('tell me about the summer house', "I haven't been down to the summer house", true);
+
+    target('millicent');
+    assertResponse('tell me about the summer house', 'We used it for croquet, in summer.', true);
+
+    target('norah');
+    assertResponse('tell me about the summer house', "I don't go out there, sir.", true);
+
+    target('arthur');
+    assertResponse('tell me about the summer house', "Haven't set foot in it, old boy.", true);
+
+    target('redvers');
+    assertResponse('tell me about the summer house', "Never been near it.", true);
+
+    target('mildred');
+    assertResponse('tell me about the summer house', "That's out on the lawn, dear", true);
+
+    target('mellors');
+    assertResponse('tell me about the summer house', 'Nothing to do with me. I keep to my side', true);
+  });
+
+  it("Tell me about the gamekeeper's cottage", () => {
+    all('gamekeepers cottage response', [
+      'cottage', 'Tell me about your cottage', "Tell me about the gamekeeper's cottage",
+    ]);
+
+    target('mellors');
+    assertResponse('tell me about the cottage', "This is my cottage. Door's open to anyone", true);
+    assertResponse('tell me about your cottage', "This is my cottage. Door's open to anyone", true);
+    assertResponse('what about the maze', "Do I look like I'd know anything about that?");
+  });
+
+  it('What happened at dinner?', () => {
+    all('dinner response', [
+      'dinner',
+      'What happened at dinner?',
+      'Tell me about supper',
+      'Who had coffee in the lounge?',
+    ]);
+
+    target('billingsgate');
+    assertResponse('What happened at dinner?', 'I waited on the family, Sir Redvers', true);
+
+    target('sarah');
+    assertResponse('What happened at dinner', 'We all dined together. Afterwards the men took port', true);
+
+    target('millicent');
+    assertResponse('What happened at dinner', 'We all dined together. Sarah and I took coffee', true);
+
+    target('norah');
+    assertResponse('What happened at dinner', 'I helped Mrs. Goodbody with dinner, sir', true);
+
+    target('arthur');
+    assertResponse('What happened at dinner?', 'Dinner with the family, and Slingsby.', true);
+
+    target('redvers');
+    assertResponse('What happened at dinner?', 'Dinner with the family and young Coniston.', true);
+
+    target('mildred');
+    assertResponse('What happened at dinner?', 'I cooked, dear, and Norah and I washed up.', true);
+
+    target('mellors');
+    assertResponse('What happened at dinner?', "Wasn't at the house for dinner.", true);
   });
 
   const accusations = [

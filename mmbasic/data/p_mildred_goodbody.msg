@@ -224,6 +224,10 @@ Not something that concerns the kitchen."
 "That's your motor, dear, isn't it? Can't say I've been out to look at it -
 too much to see to in the kitchen this morning."
 
+(dinner/supper/coffee)
+"I cooked, dear, and Norah and I washed up. We servants had our own
+supper at half past nine."
+
 events yesterday murder last happened
 "Last night I cooked and washed up with Norah. At about 10:30 I heard a loud
 bang, it gave me quite a shock. Not long after we went to bed; me and Norah
@@ -317,7 +321,7 @@ were raised. Make of that what you will."
 "A stone, dear? So I'm told - Mr. Coniston threw it through the
 study window. I wasn't there, mind. I was asleep behind the curtain."
 
-+study (locked/sealed) door
++study -drinks (locked/sealed) door
 "I don't understand it at all, dear. Locked doors, broken windows -
 sounds like something out of a novel, not something that happens in
 a respectable house."
@@ -334,6 +338,10 @@ and don't intend to."
 clues evidence found discovered proof
 "That's your business, dear, not mine. I wouldn't know a clue if it
 sat in my soup. You get on with your job."
+
++(summer/summerhouse) -handkerchief -cigarette
+"That's out on the lawn, dear, nothing to do with my kitchen. I couldn't
+tell you who goes there."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
 !requires x_handkerchief x_cigarettes
@@ -352,7 +360,7 @@ money mining peru ruin redvers colonel
 tension in the house since Sir Redvers arrived. Mr. B. said the two
 of them were shut up in the study a good while, talking business."
 
-police investigation scotland yard inspector detective think here me
+police investigation scotland yard inspector detective think here
 "Well, someone's got to sort this out, haven't they? You ask what
 you need to, dear, I've nothing to hide. Can't say the same for
 everyone in this house, mind."
@@ -366,7 +374,7 @@ goodbye bye farewell thanks thank
 could use it."
 
 # Response when accused of the murder for a second (or subsequent) time
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_goodbody
 !provides new_accuse accuse_goodbody
 She fixes you with a look that could curdle milk.@
@@ -375,7 +383,7 @@ She fixes you with a look that could curdle milk.@
 didn't do it, and that's flat."
 
 # Response when accused of the murder
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_goodbody accuse_b4_goodbody
 Mrs. Goodbody plants her floury hands on her hips, drawing herself up
@@ -385,7 +393,7 @@ to her full and considerable height.@
 for five years and never so much as raised my voice, let alone a gun!"
 
 # Response when accused when insufficient clues have been gathered
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !provides new_accuse accuse_goodbody
 "Now that's a dreadful thing to say to a body, and no proof to back it
 up neither."

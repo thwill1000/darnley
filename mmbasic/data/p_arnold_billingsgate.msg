@@ -74,6 +74,10 @@ I repeated this to the Colonel at the time and he seemed to accept it, though
 he was not best pleased. Personally I should have thought a tramp would have
 more use for a statue he could carry off than one at the bottom of a pond."
 
+(statue/statues)
+"The Four Seasons, sir - Italian marble, standing about the ornamental
+pond. I understand one is missing, as Mr. Mellors informed me."
+
 gramophone
 "There is a gramophone in the morning room."
 
@@ -90,6 +94,14 @@ Mrs. Darnley's or Miss Millicent's, I should imagine - you might ask young Norah
 
 letter
 "I have no knowledge of it, sir - the master's correspondence was his own affair."
+
++(tantalus/decanters/brandy/port/drinks) study
+"The Colonel's tantalus, sir. I withdrew a little after nine and did not
+attend the study again, so I could not say what was taken from it."
+
++wine (glass/glasses) | billiards
+"I served port to the gentlemen in the billiard room and withdrew a
+little after nine, sir. I have not been in there since."
 
 key
 "The Colonel kept the study keys on his person, sir, and I keep mine on
@@ -237,6 +249,10 @@ trap for short journeys. Mellors would know more about its upkeep than I do."
 examine it closely - my attention has been rather taken up with other
 matters."
 
+(dinner/supper/coffee)
+"I waited on the family, Sir Redvers and Mr. Coniston, sir. I served port
+in the billiard room and withdrew a little after nine."
+
 events yesterday murder last happened
 "Last night I waited on the guests at dinner. There was the family, Sir Redvers
 and Mr. Coniston. The atmosphere at dinner, I am bound to say, was not entirely
@@ -351,7 +367,7 @@ are ever told, above stairs or below."
 afterwards to try the catch. Beyond that I couldn't tell you anything - I never
 saw where it came from, nor where it landed."
 
-+study (locked/sealed) door
++study -drinks (locked/sealed) door
 "I have turned it over in my mind and I confess I cannot account
 for it, sir. I keep my own keys on me, as I told you, and the
 Colonel's was on his person. I do not see how anyone could have got
@@ -370,6 +386,10 @@ clues evidence found discovered proof
 "I couldn't say what you have found, sir, nor would I presume to
 ask. I trust you to make sense of it better than any of us could."
 
++(summer/summerhouse) -handkerchief -cigarette
+"The summer house, sir? I could not say. It is not a part of the grounds
+I have any call to visit."
+
 affair mellors sarah (summerhouse/summer) together secret lovers
 !requires x_handkerchief x_cigarettes
 Billingsgate's composure does not slip, but there is a long pause
@@ -387,7 +407,7 @@ sir - it is not my place to listen at doors. I will say Sir Redvers
 arrived rather suddenly yesterday, without prior arrangement, which
 struck me as unusual for a gentleman of his standing."
 
-police investigation scotland yard inspector detective think here me
+police investigation scotland yard inspector detective think here
 "I have every confidence you will get to the bottom of it, sir. The
 household will give you whatever assistance it can - you have my
 word on that, at least."
@@ -402,7 +422,7 @@ goodbye bye farewell thanks thank
 further."
 
 # Response when accused of the murder for a second (or subsequent) time
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_billingsgate
 !provides new_accuse accuse_billingsgate
 The butler's composure has returned, though something guarded remains
@@ -412,7 +432,7 @@ in his manner.@
 changed in the meantime."
 
 # Response when accused of the murder
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_billingsgate accuse_b4_billingsgate
 Billingsgate draws himself up, visibly wounded, though he masters
@@ -423,7 +443,7 @@ sir. I should hope my conduct speaks for itself, whatever you may
 suspect."
 
 # Response when accused when insufficient clues have been gathered
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !provides new_accuse accuse_billingsgate
 "Begging your pardon, but that is a very grave thing to suggest without
 proper cause."

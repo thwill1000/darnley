@@ -57,6 +57,9 @@ Ask what you like, I've not been bothered by anybody."
 "Mrs. G. at the big house turned away a tramp. That'd be two days
 ago. I caught him lurking about and found the statue in the pond."
 
+(statue/statues)
+"Four of 'em round the pond, marble. I found one in it, like I said."
+
 gramophone
 "I don't know anything about any gramophone."
 
@@ -190,6 +193,9 @@ inch thick on that tarpaulin, if you care to look."
 "Saw it come up the drive this morning. Nothing to do with me - I don't go
 poking about other people's motors."
 
+(dinner/supper/coffee)
+"Wasn't at the house for dinner. I was at my cottage."
+
 events yesterday murder last happened
 "Last night I did my last rounds at 8:00. I saw nothing suspicious. I spent the
 rest of the evening at home and went to bed at 10:00. I didn't hear any strange
@@ -275,7 +281,7 @@ pleased with himself for my liking."
 +(stone/rock)
 "Don't know about any stone. I was at my cottage all night."
 
-+study (locked/sealed) door
++study -drinks (locked/sealed) door
 "Nothing to do with me. I don't go near the house of an evening
 unless I'm sent for. Whatever went on with locked doors, you'll not
 get an answer from me."
@@ -291,6 +297,12 @@ the grounds."
 clues evidence found discovered proof
 "Not my concern what you've found. I've told you what I know.
 Rest's up to you."
+
++(summer/summerhouse) -handkerchief -cigarette
+"Nothing to do with me. I keep to my side of the grounds."
+
+gamekeeper cottage | yourself cottage
+"This is my cottage. Door's open to anyone who's got a warrant."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
 !requires x_handkerchief x_cigarettes
@@ -309,7 +321,7 @@ money mining peru ruin redvers colonel
 know is Sir Redvers came up the drive in a black temper yesterday
 afternoon."
 
-police investigation scotland yard inspector detective think here me
+police investigation scotland yard inspector detective think here
 "Don't much care for coppers poking round my cottage, if that's
 what you're asking. But get on with your job. I've nothing to hide
 from you or anyone else."
@@ -322,7 +334,7 @@ goodbye bye farewell thanks thank
 "Aye. Off with you, then."
 
 # Response when accused of the murder for a second (or subsequent) time
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_mellors
 !provides new_accuse accuse_mellors
 He doesn't so much as blink.@
@@ -331,7 +343,7 @@ He doesn't so much as blink.@
 singing a different tune just to please you."
 
 # Response when accused of the murder
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_mellors accuse_b4_mellors
 Mellors doesn't flinch. He looks back at you with the same flat,
@@ -342,7 +354,7 @@ his eyes has sharpened.@
 saying so all along, and I'll keep saying it."
 
 # Response when accused when insufficient clues have been gathered
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !provides new_accuse accuse_mellors
 "You'd best have something to back that up before you go saying it
 again."
