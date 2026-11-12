@@ -8,6 +8,5 @@
 - Add option to show location illustration on each entry
 - "Fix" intrusive [MORE] prompts
 - Implement (obfuscated) walkthrough
-- Objects that currently have no associated dialogue
 - REPLAY should ignore [MORE] prompts
 - Support more than one wildcard response

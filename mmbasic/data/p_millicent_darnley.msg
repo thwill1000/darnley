@@ -58,7 +58,7 @@ the pond. Out of spite I suppose."
 gramophone
 "We have a gramophone in the morning room."
 
-piano
+piano | duets | chopin
 "Which piano? Arthur and I played duets on the music room piano for a
 while after dinner. I remember that later, Sarah said she intended
 to play the morning room piano. I woke up at about 11:20 and heard
@@ -214,6 +214,14 @@ daimler car motor saloon garage
 "Rather grim, seeing a police car parked on our own drive. I try not to look
 at it when I pass the window."
 
++(master/colonel) +bedroom | draught |dressing
+"I don't make a habit of going into Daddy's room. I couldn't tell you
+what's in it."
+
+(dinner/supper/coffee)
+"We all dined together. Sarah and I took coffee in the lounge afterwards,
+and the men joined us for half an hour."
+
 events yesterday murder last happened
 "Last night we all ate together until coffee which Sarah and I took
 together in the lounge. The men joined us later for half an hour,
@@ -321,7 +329,7 @@ proof, is it? Just a feeling."
 suppose it must still be lying in there somewhere. I haven't
 been in, and I don't mean to."
 
-+study (locked/sealed) door
++study -drinks (locked/sealed) door
 "It doesn't make sense, does it? Both doors locked, the window
 broken from outside - I heard people saying it's impossible. I
 suppose that's why they needed a proper detective."
@@ -338,6 +346,10 @@ to, if I can help it."
 clues evidence found discovered proof
 "I don't know what you've found and I'm not sure I want to. Just -
 please be certain, whatever you conclude. It matters rather a lot."
+
++(summer/summerhouse) -handkerchief -cigarette
+"We used it for croquet, in summer. I've no reason to go there in this
+weather."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
 !requires x_handkerchief x_cigarettes
@@ -361,7 +373,7 @@ money mining peru ruin redvers colonel
 "I really don't know anything about finance. That's
 not the sort of thing anyone discusses with me."
 
-police investigation scotland yard inspector detective think here me
+police investigation scotland yard inspector detective think here
 "I suppose you have to suspect all of us equally, don't you? It's a
 horrid feeling, being looked at that way in one's own home. But I
 want whoever did this caught, so ask what you must."
@@ -374,7 +386,7 @@ goodbye bye farewell thanks thank
 "Goodbye, Inspector. I do hope you find whoever did this."
 
 # Response when accused of the murder for a second (or subsequent) time
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_millicent
 !provides new_accuse accuse_millicent
 Her jaw sets and she regards you with cold, level eyes.@
@@ -383,7 +395,7 @@ Her jaw sets and she regards you with cold, level eyes.@
 now, however many times you care to repeat yourself."
 
 # Response when accused of the murder
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_millicent accuse_b4_millicent
 Millicent's composure cracks for the first time since you met her
@@ -393,7 +405,7 @@ Millicent's composure cracks for the first time since you met her
 absolutely certain, because I will not forgive this lightly."
 
 # Response when accused when insufficient clues have been gathered
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !provides new_accuse accuse_millicent
 "That is a wicked thing to say without proof. I hope you have better
 reasons than mere suspicion."
@@ -428,4 +440,4 @@ Go back over your questioning and look again.
 Have you tried asking the servants?"
 
 *
-"I'm not sure what you'd have me say to that, Inspector."
+"I don't follow you, Inspector. Was that a question?"
