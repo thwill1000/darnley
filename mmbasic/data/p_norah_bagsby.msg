@@ -52,6 +52,9 @@ poachers. I don't know anything about them, honest I don't."
 +(statue/statues) +(missing/sunken/fourth/gone)
 "I wasn't aware it was missing."
 
+(statue/statues)
+"I don't go near them, sir - they give me the shivers."
+
 gramophone
 "There is a gramophone in the morning room."
 
@@ -202,6 +205,14 @@ daimler car motor saloon garage
 "Oh, I saw it from the landing window, sir. Gave me quite a start, seeing a
 motor car sat there on our own drive first thing."
 
++(master/colonel) +bedroom | draught |dressing
+"One side of the bed had been slept in, sir, but I haven't done that room
+this morning."
+
+(dinner/supper/coffee)
+"I helped Mrs. Goodbody with dinner, sir, and served the ladies' coffee in
+the lounge. Then we washed up while Mr. B. cleaned the boots."
+
 events yesterday murder last happened
 "Last night I helped Mrs. Goodbody to prepare dinner and afterwards I served
 coffee in the lounge to Mrs. Sarah and Miss Millicent. Then I helped Mrs. G.
@@ -289,7 +300,7 @@ been. I don't mean nothing by that, mind."
 "I heard Mr. Coniston threw a stone through the window, sir. I
 didn't see it - I was asleep till all the commotion started."
 
-+study (locked/sealed) door
++study -drinks (locked/sealed) door
 "It frightens me something dreadful, sir, thinking about it. A
 locked room and nobody able to get in or out - it doesn't seem
 natural."
@@ -307,6 +318,9 @@ clues evidence found discovered proof
 "I don't know anything about that, sir. I hope you find whatever
 you need to. I just want this all to be over."
 
++(summer/summerhouse) -handkerchief -cigarette
+"I don't go out there, sir. It's not my part of the grounds."
+
 affair mellors sarah (summerhouse/summer) together secret lovers
 !requires x_handkerchief x_cigarettes
 Norah's eyes go wide and she glances toward the door.@
@@ -322,7 +336,7 @@ money mining peru ruin redvers colonel
 when he arrived. Mrs. G. said it was money troubles, but I don't
 know more than that."
 
-police investigation scotland yard inspector detective think here me
+police investigation scotland yard inspector detective think here
 "Oh, it does put the wind up me, having a proper detective in the
 house. I haven't done anything wrong, sir, honest I haven't - I just
 get nervous with all the questions."
@@ -336,7 +350,7 @@ goodbye bye farewell thanks thank
 just, well, you know."
 
 # Response when accused of the murder for a second (or subsequent) time
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_bagsby
 !provides new_accuse accuse_bagsby
 She sniffs, dabbing at her eyes with her sleeve, though there is a
@@ -346,7 +360,7 @@ flicker of something more wary beneath the tears now.@
 haven't changed my mind."
 
 # Response when accused of the murder
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_bagsby accuse_b4_bagsby
 Norah's eyes go wide and her lip trembles - she looks for all the world
@@ -356,7 +370,7 @@ as though she might burst into tears on the spot.@
 paid me! I only been here six months, sir, honest!"
 
 # Response when accused when insufficient clues have been gathered
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !provides new_accuse accuse_bagsby
 "Oh! You mustn't say that, not without you're sure - it isn't right."
 
@@ -387,4 +401,4 @@ Go back over your questioning and look again.
 "I wouldn't know about that. Nobody tells me anything."
 
 *
-"Oh - I don't rightly know what to say to that, sir."
+"Oh - is that something I ought to know, sir? I’m ever so sorry."

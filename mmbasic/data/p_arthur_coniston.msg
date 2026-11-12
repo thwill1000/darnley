@@ -54,13 +54,13 @@ banging, and thought no more of it."
 +(statue/statues) +(missing/sunken/fourth/gone)
 "I don't know what you're talking about."
 
-gramophone
+gramophone | (chopin/record/records)
 "When I went to bed at 11:00, the gramophone was playing a Chopin
 nocturne. Otherwise the morning room was empty. Later the record
 appeared to be stuck. It was still playing when I went downstairs
 shortly after 11:30."
 
-piano
+piano | duets
 "After dinner Millicent and I played duets on the piano in the music
 room. Ah - now that I remember, there is also a piano in the morning
 room, but on the couple of occasions I went into the room there was
@@ -84,6 +84,18 @@ letter
 have been to old Slingsby. I fancy he had lost a lot of money and
 needed a loan. We had spoken in the afternoon and Darnley had agreed
 that I could marry Millicent."
+
++(tantalus/decanters/brandy/port/drinks) study
+"Port in the billiard room, same as everyone. I never touched the
+Colonel's decanters, old boy."
+
++wine (glass/glasses) | billiards
+"We had a frame or two after dinner before joining the ladies. Whose glass is
+whose, I couldn't say, old boy."
+
++(ashtray/ashtrays) (cigar/cheroot)
+"The brass one in the music room? I had a cigar there after Millicent
+went up, as I said. Is it important?"
 
 key
 "Billingsgate has a set of his own, but it was no good - when I
@@ -220,6 +232,10 @@ you the last time anyone took it out."
 "Can't say I've paid it much attention, old boy. Rather glad it's there,
 though, given the circumstances."
 
+(dinner/supper/coffee)
+"Dinner with the family, and Slingsby. Afterwards a little billiards with
+the men, then coffee with the ladies."
+
 events yesterday murder last happened
 "I was down for the weekend. It was no secret that I was going to ask
 Colonel Darnley for permission to marry Millicent. I popped the question
@@ -336,7 +352,7 @@ last night. But don't quote me, old boy."
 "That's the one I used, old boy - picked it up from the terrace. Not that big,
 but it did the job. Can't think it matters where it ended up."
 
-+study (locked/sealed) door
++study -drinks (locked/sealed) door
 "Damned peculiar business. Billingsgate and I found both doors
 locked from the inside with the Colonel's own keys still in them.
 I broke the window pane myself to get us in - can't see how anyone
@@ -355,6 +371,10 @@ clues evidence found discovered proof
 "No idea what you've turned up, old boy, and I shan't pretend I'm
 not curious. I'll wait for you to tell me, rather than guess and
 make a fool of myself."
+
++(summer/summerhouse) -handkerchief -cigarette
+"Haven't set foot in it, old boy. Not much of a croquet man, and not the
+weather for it."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
 !requires x_handkerchief x_cigarettes
@@ -378,7 +398,7 @@ money mining peru ruin redvers colonel
 "Couldn't tell you. Money troubles aren't really the sort of thing
 a fellow discusses over billiards."
 
-police investigation scotland yard inspector detective think here me
+police investigation scotland yard inspector detective think here
 "Rather glad they sent someone who knows what he's doing, if I'm
 honest. This house needs answers, and quickly, before everyone's
 nerves give out entirely."
@@ -392,7 +412,7 @@ goodbye bye farewell thanks thank
 won't you?"
 
 # Response when accused of the murder for a second (or subsequent) time
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_arthur
 !provides new_accuse accuse_arthur
 Coniston spreads his hands, the picture of wounded innocence.@
@@ -401,7 +421,7 @@ Coniston spreads his hands, the picture of wounded innocence.@
 have done with it."
 
 # Response when accused of the murder
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_arthur accuse_b4_arthur
 Coniston's easy charm falters for just a moment - the faintest tightening
@@ -411,7 +431,7 @@ around the eyes - before he recovers himself entirely.@
 better be very sure of your facts before you say it again."
 
 # Response when accused when insufficient clues have been gathered
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !provides new_accuse accuse_arthur
 "Steady on! You can't go about making accusations without a shred of proof
 to back them up."

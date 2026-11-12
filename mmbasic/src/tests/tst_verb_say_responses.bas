@@ -10,6 +10,8 @@ Option Base 1
 Option Explicit On
 Option Default Integer
 
+Const ut.MAX_TESTS% = 150
+
 #Include "splib/system.inc"
 #Include "splib/array.inc"
 #Include "splib/bits.inc"
@@ -73,6 +75,7 @@ add_test("Who was the tramp?", "test_tramp")
 add_test("Could the tramp have murdered him?", "test_tramp_suspect")
 add_test("Were there poachers about?", "test_poacher")
 add_test("What happened to the missing statue?", "test_missing_statue")
+add_test("Tell me about the marble statues", "test_statues")
 add_test("Was anyone playing the gramophone?", "test_gramophone")
 add_test("Was the piano being played last night?", "test_piano")
 add_test("Who owns these lady's shoes?", "test_ladys_shoes")
@@ -110,6 +113,13 @@ add_test("Tell me about the suit found in the servants' quarters.", "test_suit")
 add_test("Why is their furniture stacked in the hall?", "test_stacked_furniture")
 add_test("Why is the kitchen passage blocked?", "test_kitchen_passage")
 add_test("Why is Sir Redvers not staying in the west guest room?", "test_west_guest_room")
+add_test("What about the Schubert sheet music on the upstairs piano?", "test_schubert")
+add_test("Who played duets on the piano?", "test_piano_duets")
+add_test("Who played Chopin on the piano?", "test_piano_chopin")
+add_test("Who played records in the morning room?", "test_records")
+add_test("Who had drinks in the study?", "test_study_drinks")
+add_test("Who played billiards after dinner?", "test_billiard_glasses")
+add_test("Whose is the stub in the ashtray?", "test_ashtray")
 add_test("Can you corroborate Arthur's alibi?", "test_confirm_arthur")
 add_test("Can you corroborate Millicent's alibi?", "test_confirm_millicent")
 add_test("Can you corroborate Sarah's alibi?", "test_confirm_sarah")
@@ -138,6 +148,10 @@ add_test("Did you argue with the colonel? (after the newspaper is found)", "test
 add_test("What do you think of the police investigation?", "test_investigation")
 add_test("How did the Colonel die?", "test_cause_of_death")
 add_test("When did he die?", "test_time_of_death")
+add_test("Tell me about the master bedroom", "test_master_bedroom")
+add_test("Tell me about the summer house", "test_summer_house")
+add_test("Tell me about the gamekeeper's cottage", "test_gamekeepers_cottage")
+add_test("What happened at dinner?", "test_dinner")
 add_test("I accuse you! (but don't have all the clues)", "test_premature_accusation")
 add_test("I accuse you! (the first time)", "test_first_accusation")
 add_test("I accuse you! (subsequent times)", "test_subsequent_accusation")
@@ -408,6 +422,25 @@ Sub test_missing_statue()
   assert_response("what happened to the missing statue", "missing statue response")
   assert_response("tell me about the statue that's gone", "missing statue response")
   assert_response("where's the fourth statue", "missing statue response")
+End Sub
+
+Sub test_statues()
+  assert_response("statues", "statues response")
+  assert_response("statue", "statues response")
+  assert_response("Tell me about the marble statues", "statues response")
+  assert_response("Who made the statues round the pond?", "statues response")
+
+  objects$(9) = "P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|billingsgate butler|LOC001_BATHROOM|2|100"
+  assert_response("tell me about the statues", "The Four Seasons, sir - Italian marble", 1)
+
+  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  assert_response("tell me about the statues", "Italian marble - the Four Seasons", 1)
+
+  objects$(9) = "P_RONALD_MELLORS|Ronald Mellors|ronald mellors gamekeeper|LOC001_BATHROOM|2|100"
+  assert_response("tell me about the statues", "Four of 'em round the pond", 1)
+
+  objects$(9) = "P_NORAH_BAGSBY|Norah Bagsby|bagsby maid|LOC001_BATHROOM|2|100"
+  assert_response("tell me about the statues", "I don't go near them, sir", 1)
 End Sub
 
 Sub test_gramophone()
@@ -767,6 +800,111 @@ Sub test_west_guest_room()
   assert_response("Why is Sir Redvers not staying in the west guest room?", "west guest room response")
 End Sub
 
+Sub test_schubert()
+  assert_response("schubert", "schubert response")
+  assert_response("What about the Schubert sheet music on the upstairs piano?", "schubert response")
+  assert_response("What is the schubert on the piano?", "schubert response")
+
+  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  assert_response("What about the Schubert sheet music on the upstairs piano?", "Schubert? I played Chopin, Inspector", 1)
+End Sub
+
+Sub test_piano_duets()
+  assert_response("duets", "wildcard response")
+  assert_response("Who played duets on the piano?", "piano response")
+
+  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  assert_response("duets", "I'm not sure what you'd have me say to that", 1)
+
+  objects$(9) = "P_MILLICENT_DARNLEY|Millicent Darnley|millicent|LOC001_BATHROOM|2|100"
+  assert_response("duets", "Which piano?", 1)
+
+  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  assert_response("duets", "After dinner Millicent and I played duets on the piano", 1)
+End Sub
+
+Sub test_piano_chopin()
+  assert_response("Chopin", "wildcard response")
+  assert_response("Who played Chopin on the piano?", "piano response")
+
+  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  assert_response("Chopin", "If you mean the morning room piano", 1)
+
+  objects$(9) = "P_MILLICENT_DARNLEY|Millicent Darnley|millicent|LOC001_BATHROOM|2|100"
+  assert_response("Chopin", "Which piano?", 1)
+
+  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  assert_response("Chopin", "When I went to bed", 1)
+End Sub
+
+Sub test_records()
+  assert_response("record", "wildcard response")
+  assert_response("records", "wildcard response")
+  assert_response("Who played records in the morning room?", "unhandled question response")
+
+  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  assert_response("records", "The gramophone?", 1)
+
+  objects$(9) = "P_MILLICENT_DARNLEY|Millicent Darnley|millicent|LOC001_BATHROOM|2|100"
+  assert_response("records", "I don't follow you, Inspector. Was that a question?", 1)
+
+  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  assert_response("records", "When I went to bed at 11:00", 1)
+End Sub
+
+Sub test_study_drinks()
+  assert_response("tantalus", "study drinks response")
+  assert_response("Tell me about the decanter", "study drinks response")
+  assert_response("What about the decanters?", "study drinks response")
+  assert_response("Whose is this port glass?", "study drinks response")
+  assert_response("Who drank the brandy?", "study drinks response")
+  assert_response("Who had drinks in the study?", "study drinks response")
+
+  objects$(9) = "P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|billingsgate butler|LOC001_BATHROOM|2|100"
+  assert_response("tell me about the tantalus", "The Colonel's tantalus, sir.", 1)
+
+  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  assert_response("tell me about the port glass", "Sebastian liked a glass of port", 1)
+
+  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  assert_response("tell me about the decanters", "Port in the billiard room, same as everyone.", 1)
+End Sub
+
+Sub test_billiard_glasses()
+  assert_response("wine glasses", "billiard room response")
+  assert_response("wine", "billiard room response")
+  assert_response("Who left the wine glasses on the bookcase?", "billiard room response")
+  assert_response("billiards", "billiard room response")
+  assert_response("Who played billiards after dinner?", "billiard room response")
+
+  objects$(9) = "P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|billingsgate butler|LOC001_BATHROOM|2|100"
+  assert_response("Who played billiards after dinner?", "I served port to the gentlemen in the billiard room", 1)
+
+  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  assert_response("Who played billiards after dinner?", "The gentlemen went off to billiards over their port", 1)
+
+  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  assert_response("Who played billiards after dinner?", "We had a frame or two after dinner", 1)
+
+  objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
+  assert_response("Who played billiards after dinner?", "A game and some port, as I told you.", 1)
+End Sub
+
+Sub test_ashtray()
+  assert_response("ashtray", "ashtray response")
+  assert_response("brass ashtray", "ashtray response")
+  assert_response("Tell me about the ashtray", "ashtray response")
+  assert_response("Tell me about the cigar stub in the ashtray", "ashtray response")
+  assert_response("Tell me about the cheroot stub in the ashtray", "ashtray response")
+  assert_response("Whose is the stub in the ashtray?", "ashtray response")
+
+  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  assert_response("Whose is the stub in the ashtray?", "The brass one in the music room?", 1)
+
+  objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
+  assert_response("Whose is the stub in the ashtray?", "I smoke my pipe and the occasional Havana.", 1)
+End Sub
+
 Sub test_confirm_arthur()
   assert_response("confirm arthur", "vouch for arthur response")
   assert_response("Can you corroborate Arthur's alibi?", "vouch for arthur response")
@@ -867,10 +1005,11 @@ Sub test_who_did_it()
 End Sub
 
 Sub test_marriage()
-  assert_response("were the colonel and sarah happy", "colonel's marriage response")
-  assert_response("were they a happy couple", "colonel's marriage response")
-  assert_response("how was the marriage", "colonel's marriage response")
-  assert_response("did sarah and the colonel get on", "colonel's marriage response")
+  assert_response("Were the colonel and sarah happy?", "colonel's marriage response")
+  assert_response("Were they a happy couple?", "colonel's marriage response")
+  assert_response("How was the marriage?", "colonel's marriage response")
+  assert_response("Did sarah and the colonel get on?", "colonel's marriage response")
+  assert_response("Who was the Colonel's friend?", "colonel's marriage response")
 End Sub
 
 Sub test_remarriage()
@@ -1060,6 +1199,112 @@ Sub test_time_of_death()
 
   objects$(9) = "P_MILDRED_GOODBODY|Mildred Goodbody|goodbody cook|LOC001_BATHROOM|2|100"
   assert_response("When did the colonel die?", "I couldn't tell you, dear. A bang woke me at 11:20", 1)
+End Sub
+
+Sub test_master_bedroom()
+  assert_response("Tell me about the master bedroom", "master bedroom response")
+  assert_response("Tell me about the sleeping draught", "master bedroom response")
+  assert_response("Tell me about the dressing table", "master bedroom response")
+  assert_response("What about the master bedroom?", "master bedroom response")
+  assert_response("What about the Colonel's bedroom?", "master bedroom response")
+  assert_response("bed", "wildcard response")
+  assert_response("Tell me about the bed", "wildcard response")
+  assert_response("wardrobe", "wildcard response")
+  assert_response("When did you go to bed?", "unhandled question response")
+
+  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  assert_response("Tell me about the master bedroom", "I don't see what my bedroom has to do with anything", 1)
+
+  objects$(9) = "P_MILLICENT_DARNLEY|Millicent Darnley|millicent|LOC001_BATHROOM|2|100"
+  assert_response("Tell me about the master bedroom", "I don't make a habit of going into Daddy's room.", 1)
+
+  objects$(9) = "P_NORAH_BAGSBY|Norah Bagsby|bagsby maid|LOC001_BATHROOM|2|100"
+  assert_response("Tell me about the master bedroom", "One side of the bed had been slept in, sir", 1)
+End Sub
+
+Sub test_summer_house()
+  assert_response("summer house", "summer house response")
+  assert_response("summerhouse", "summer house response")
+  assert_response("Tell me about the summer house", "summer house response")
+  assert_response("When did you visit the summer house?", "summer house response")
+
+  ' Topic questions that merely mention the place keep their own answers
+  assert_response("Who dropped the handkerchief in the summer house?", "handkerchief response")
+  assert_response("Tell me about the cigarette in the summer house", "smoking response")
+
+  ' The affair is still the affair, with the explicit affair words
+  assert_response("was sarah having a secret affair with the gamekeeper", "affair response")
+
+  reset_flags("x_handkerchief", "x_cigarettes")
+  assert_response("Tell me about the summer house", "summer house response")
+  assert_response("ask about the affair", "affair response given handkerchief and cigarettes")
+
+  ' Suspect specific answeers
+  objects$(9) = "P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|billingsgate butler|LOC001_BATHROOM|2|100"
+  assert_response("tell me about the summer house", "The summer house, sir? I could not say.", 1)
+
+  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  assert_response("tell me about the summer house", "I haven't been down to the summer house", 1)
+
+  objects$(9) = "P_MILLICENT_DARNLEY|Millicent Darnley|millicent|LOC001_BATHROOM|2|100"
+  assert_response("tell me about the summer house", "We used it for croquet, in summer.", 1)
+
+  objects$(9) = "P_NORAH_BAGSBY|Norah Bagsby|bagsby maid|LOC001_BATHROOM|2|100"
+  assert_response("tell me about the summer house", "I don't go out there, sir.", 1)
+
+  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  assert_response("tell me about the summer house", "Haven't set foot in it, old boy.", 1)
+
+  objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
+  assert_response("tell me about the summer house", "Never been near it.", 1)
+
+  objects$(9) = "P_MILDRED_GOODBODY|Mildred Goodbody|mildred goodbody cook|LOC001_BATHROOM|2|100"
+  assert_response("tell me about the summer house", "That's out on the lawn, dear", 1)
+
+  objects$(9) = "P_RONALD_MELLORS|Ronald Mellors|ronald mellors gamekeeper|LOC001_BATHROOM|2|100"
+  assert_response("tell me about the summer house", "Nothing to do with me. I keep to my side", 1)
+End Sub
+
+Sub test_gamekeepers_cottage()
+  assert_response("cottage", "gamekeepers cottage response")
+  assert_response("Tell me about your cottage", "gamekeepers cottage response")
+  assert_response("Tell me about the gamekeeper's cottage", "gamekeepers cottage response")
+
+  objects$(9) = "P_RONALD_MELLORS|Ronald Mellors|ronald mellors gamekeeper|LOC001_BATHROOM|2|100"
+  assert_response("tell me about the cottage", "This is my cottage. Door's open to anyone", 1)
+  assert_response("tell me about your cottage", "This is my cottage. Door's open to anyone", 1)
+  assert_response("what about the maze", "Do I look like I'd know anything about that?")
+End Sub
+
+Sub test_dinner()
+  assert_response("dinner", "dinner response")
+  assert_response("What happened at dinner?", "dinner response")
+  assert_response("Tell me about supper", "dinner response")
+  assert_response("Who had coffee in the lounge?", "dinner response")
+
+  objects$(9) = "P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|billingsgate butler|LOC001_BATHROOM|2|100"
+  assert_response("What happened at dinner?", "I waited on the family, Sir Redvers", 1)
+
+  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  assert_response("What happened at dinner", "We all dined together. Afterwards the men took port", 1)
+
+  objects$(9) = "P_MILLICENT_DARNLEY|Millicent Darnley|millicent|LOC001_BATHROOM|2|100"
+  assert_response("What happened at dinner", "We all dined together. Sarah and I took coffee", 1)
+
+  objects$(9) = "P_NORAH_BAGSBY|Norah Bagsby|bagsby maid|LOC001_BATHROOM|2|100"
+  assert_response("What happened at dinner", "I helped Mrs. Goodbody with dinner, sir", 1)
+
+  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  assert_response("What happened at dinner?", "Dinner with the family, and Slingsby.", 1)
+
+  objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
+  assert_response("What happened at dinner?", "Dinner with the family and young Coniston.", 1)
+
+  objects$(9) = "P_MILDRED_GOODBODY|Mildred Goodbody|mildred goodbody cook|LOC001_BATHROOM|2|100"
+  assert_response("What happened at dinner?", "I cooked, dear, and Norah and I washed up.", 1)
+
+  objects$(9) = "P_RONALD_MELLORS|Ronald Mellors|ronald mellors gamekeeper|LOC001_BATHROOM|2|100"
+  assert_response("What happened at dinner?", "Wasn't at the house for dinner.", 1)
 End Sub
 
 Sub test_premature_accusation()

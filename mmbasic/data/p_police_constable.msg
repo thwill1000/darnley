@@ -113,7 +113,7 @@ account, I believe."
 "In the study, sir, same as when it was found. Nobody's to go in or move
 anything until you say so."
 
-police investigation scotland yard inspector detective think here me
+police investigation scotland yard inspector detective think here
 "Glad to have you here, sir. I'll keep the drive clear and pass
 along anyone who needs to come through."
 

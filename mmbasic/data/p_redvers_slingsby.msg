@@ -88,6 +88,14 @@ letter
 "The letter certainly wasn't addressed to me. Darnley would have
 called me by name, not 'Dear Sir' - after all we were friends."
 
++wine (glass/glasses) | billiards
+"A game and some port, as I told you. Tidying up after is the servants'
+business."
+
++(ashtray/ashtrays) (cigar/cheroot)
+"I smoke my pipe and the occasional Havana. I've said so. Don't ask me
+who else uses the ashtrays."
+
 key
 "Never saw a key. I left by the hall door at half past ten and
 slammed it behind me - I didn't lock it, and I'd no cause to."
@@ -236,6 +244,10 @@ cause to examine it, old man."
 "Damned conspicuous thing, sitting there on the drive. Still, better you came
 than nobody at all, I suppose."
 
+(dinner/supper/coffee)
+"Dinner with the family and young Coniston. Afterwards port and a game of
+billiards, then the ladies in the lounge for half an hour."
+
 events yesterday murder last happened
 "Last night I had dinner with the family and young Coniston. Afterwards
 - at about 9:00 - we gentlemen had a game and some port in the
@@ -334,7 +346,7 @@ of his, watchful sort of fellow. But that's guesswork, mind."
 "Heard the young pup used a stone on the window. Sensible enough.
 Not my concern where it ended up."
 
-+study (locked/sealed) door
++study -drinks (locked/sealed) door
 "I left by the hall door at 10:30 and heard it slam behind me -
 I certainly didn't lock it. If it was locked afterwards, someone
 did that after I'd gone, and I couldn't tell you who or how."
@@ -352,6 +364,9 @@ clues evidence found discovered proof
 "Haven't the faintest what you've dug up, and I don't much care to
 speculate. Just make sure whatever you've got actually holds water
 before you go accusing anyone."
+
++(summer/summerhouse) -handkerchief -cigarette
+"Never been near it. Damned cold place to sit in this weather."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
 !requires x_handkerchief x_cigarettes
@@ -380,7 +395,7 @@ money mining peru ruin redvers colonel
 "My business affairs are my own concern, and none of yours unless
 you can show otherwise."
 
-police investigation scotland yard inspector detective think here me
+police investigation scotland yard inspector detective think here
 "About time too. Damned unpleasant business, having one's private
 affairs picked over, but I'd rather have it done properly than not
 at all. Get on with it, man."
@@ -393,7 +408,7 @@ goodbye bye farewell thanks thank
 "Yes, yes. Get on with it, then."
 
 # Response when accused of the murder for a second (or subsequent) time
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues accuse_b4_redvers
 !provides new_accuse accuse_redvers
 He glares at you with undisguised fury, though there is something else
@@ -403,7 +418,7 @@ beneath it now - a flicker of unease.@
 my patience further."
 
 # Response when accused of the murder
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !requires all_clues
 !provides new_accuse accuse_redvers accuse_b4_redvers
 Slingsby's face darkens to an alarming shade of puce, his moustache
@@ -413,7 +428,7 @@ fairly bristling with outrage.@
 alive and well, and I'll thank you to remember it!"
 
 # Response when accused when insufficient clues have been gathered
--who (accuse/jaccuse) you (murder/murderer) | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
 !provides new_accuse accuse_redvers
 "Confound it, man, you can't fling accusations about like that! Get your
 facts straight first."
