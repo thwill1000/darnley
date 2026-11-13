@@ -164,12 +164,30 @@ add_test("Something nonsensical falls back to the non-question wildcard", "test_
 run_tests()
 End
 
+Sub target_suspect(name$)
+  Local s$
+  Select Case name$
+    Case "template": s$ = "P_TEMPLATE_SUSPECT|Template Suspect|template suspect"
+    Case "arthur": s$ = "P_ARTHUR_CONISTON|Arthur Coniston|arthur"
+    Case "bagsby": s$ = "P_NORAH_BAGSBY|Norah Bagsby|bagsby maid"
+    Case "billingsgate": s$ = "P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|billingsgate butler"
+    Case "chester": s$ = "P_CHESTER|Chester|cat ginger chester"
+    Case "constable": s$ = "P_POLICE_CONSTABLE|Police Constable|officer police policeman"
+    Case "goodbody": s$ = "P_MILDRED_GOODBODY|Mildred Goodbody|goodbody cook"
+    Case "mellors": s$ = "P_RONALD_MELLORS|Ronald Mellors|mellors gamekeeper"
+    Case "millicent": s$ = "P_MILLICENT_DARNLEY|Millicent Darnley|millicent"
+    Case "redvers": s$ = "P_REDVERS_SLINGSBY|Redvers Slingsby|redvers"
+    Case "sarah": s$ = "P_SARAH_DARNLEY|Sarah Darnley|sarah"
+  End Select
+
+  ' Replace object 9, the pond, with our template suspect.
+  objects$(9) = s$ + "|LOC001_BATHROOM|2|100"
+End Sub
+
 Sub setup_test()
   r = 1
   state.reset()
-
-  ' Replace object 9, the pond, with our template suspect.
-  objects$(9) = "P_TEMPLATE_SUSPECT|Template Suspect|template suspect|LOC001_BATHROOM|2|100"
+  target_suspect("template")
 End Sub
 
 Sub reset_flags(flag1$, flag2$, flag3$, flag4$)
@@ -221,7 +239,7 @@ Sub test_who_are_you()
 
   ' A real suspect gives their own self-introduction rather than the
   ' generic question fallback.
-  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  target_suspect("arthur")
   assert_response("who are you", "Arthur Coniston, old boy", 1)
   assert_response("what's your name", "Arthur Coniston, old boy", 1)
 End Sub
@@ -234,7 +252,7 @@ Sub test_who_am_i()
   assert_response("what is my name", "who am i response")
   assert_response("do you know my name", "who am i response")
 
-  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  target_suspect("arthur")
   assert_response("who am I", "The chap they sent to sort this out", 1)
   assert_response("what's my name", "The chap they sent to sort this out", 1)
 End Sub
@@ -262,12 +280,12 @@ Sub test_why_here()
   assert_response("what brings you here", "why here response")
 
   ' Ask Arthur directly - his own file gives his actual reason (the proposal)
-  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  target_suspect("arthur")
   assert_response("why are you here", "I was down for the weekend to ask the old boy", 1)
 
   ' Ask Redvers directly - he stonewalls, whether or not the newspaper
   ' clue has been found, since that's a separate gated topic
-  objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
+  target_suspect("redvers")
   assert_response("why are you here", "Business. Damned inconvenient business", 1)
 
   reset_flags("x_newspaper")
@@ -284,7 +302,7 @@ Sub test_alibi()
   assert_response("Where were you at the time of the murder?", "alibi response")
   assert_response("What did you do yesterday evening?", "alibi response")
 
-  objects$(9) = "P_MILDRED_GOODBODY|Mildred Goodbody|mildred goodbody cook|LOC001_BATHROOM|2|100"
+  target_suspect("goodbody")
   assert_response("Mildred, where were you at the time of the murder?", "We was all three together", 1)
 End Sub
 
@@ -410,10 +428,10 @@ Sub test_poacher()
   assert_response("Were there poachers about?", "poachers response")
  
   ' Ask Mellors and Millicent directly
-  objects$(9) = "P_RONALD_MELLORS|Ronald Mellors|ronald mellors gamekeeper|LOC001_BATHROOM|2|100"
+  target_suspect("mellors")
   assert_response("Mellors, were there poachers about?", "Not this weather.", 1)
  
-  objects$(9) = "P_MILLICENT_DARNLEY|Millicent Darnley|millicent|LOC001_BATHROOM|2|100"
+  target_suspect("millicent")
   assert_response("Millicent, did you hear poachers?", "I assumed the first bang was a poacher", 1)
 End Sub
 
@@ -430,16 +448,16 @@ Sub test_statues()
   assert_response("Tell me about the marble statues", "statues response")
   assert_response("Who made the statues round the pond?", "statues response")
 
-  objects$(9) = "P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|billingsgate butler|LOC001_BATHROOM|2|100"
+  target_suspect("billingsgate")
   assert_response("tell me about the statues", "The Four Seasons, sir - Italian marble", 1)
 
-  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  target_suspect("sarah")
   assert_response("tell me about the statues", "Italian marble - the Four Seasons", 1)
 
-  objects$(9) = "P_RONALD_MELLORS|Ronald Mellors|ronald mellors gamekeeper|LOC001_BATHROOM|2|100"
+  target_suspect("mellors")
   assert_response("tell me about the statues", "Four of 'em round the pond", 1)
 
-  objects$(9) = "P_NORAH_BAGSBY|Norah Bagsby|bagsby maid|LOC001_BATHROOM|2|100"
+  target_suspect("bagsby")
   assert_response("tell me about the statues", "I don't go near them, sir", 1)
 End Sub
 
@@ -480,13 +498,13 @@ Sub test_newspaper_blocked()
   ' knowledge of the mining-shares collapse must fall back to their
   ' evasive, unconditional entry rather than leaking the collapse/motive
   ' detail early.
-  objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
+  target_suspect("redvers")
   assert_response("did you read the newspaper", "Can't say I've had much leisure for reading", 1)
 
-  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  target_suspect("arthur")
   assert_response("did you read the newspaper", "Can't say I get much further than the sporting pages", 1)
 
-  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  target_suspect("sarah")
   assert_response("did you read the newspaper", "I really couldn't say - Sebastian read the paper over breakfast, not I.", 1)
 End Sub
 
@@ -500,13 +518,13 @@ Sub test_newspaper_unlocked()
 
   ' Once the "x_newspaper" flag is set the same keywords against the same three
   ' suspects should give the more revealing entry.
-  objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
+  target_suspect("redvers")
   assert_response("did you read the newspaper", "[[reset:He stiffens slightly", 1)
 
-  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  target_suspect("arthur")
   assert_response("did you read the newspaper", "I heard that old Slingsby had plunged into mining shares", 1)
 
-  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  target_suspect("sarah")
   assert_response("did you read the newspaper", "[[reset:She hesitates, choosing her words", 1)
 End Sub
 
@@ -526,10 +544,10 @@ Sub test_keys()
   ' The locked-study topic must still win when asking how it was locked
   assert_response("how was the study locked", "locked study response")
 
-  objects$(9) = "P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|billingsgate butler|LOC001_BATHROOM|2|100"
+  target_suspect("billingsgate")
   assert_response("tell me about the keys", "The Colonel kept the study keys on his person, sir", 1)
 
-  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  target_suspect("arthur")
   assert_response("tell me about the keys", "Billingsgate has a set of his own", 1)
 End Sub
 
@@ -552,12 +570,12 @@ Sub test_opinion_colonel()
   assert_response("What did you make of Sebastian Darnley", "colonel darnley opinion response")
 
   ' Ask Millicent about her father & mother.
-  objects$(9) = "P_MILLICENT_DARNLEY|Millicent Darnley|millicent|LOC001_BATHROOM|2|100"
+  target_suspect("millicent")
   assert_response("What did you think of your father?", "Daddy was a tyrant", 1)
   assert_response("What did you think of your mother?", "We got on well enough", 1)
 
   ' Ask Sarah about her husband & daughter.
-  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  target_suspect("sarah")
   assert_response("What did you think of your husband?", "He was somewhat strict", 1)
   assert_response("What did you think of your daughter?", "Her father spoiled her", 1)
 End Sub
@@ -605,7 +623,7 @@ Sub test_opinion_redvers()
 
   ' Ask Millicent about Redvers.
   ' - the presence of "you" in the input will cause "millicent" to be added to the subject words
-  objects$(9) = "P_MILLICENT_DARNLEY|Millicent Darnley|millicent|LOC001_BATHROOM|2|100"
+  target_suspect("millicent")
   assert_response("Millicent, what do you think about sir redvers?", "I didn't know him before last night.")
 End Sub
 
@@ -660,7 +678,7 @@ Sub test_opinion_constable()
   assert_response("How do you get on with the constable?", "police constable response")
 
   ' Ask the Police Constable about himself directly
-  objects$(9) = "P_POLICE_CONSTABLE|Police Constable|police constable policeman bobby|LOC001_BATHROOM|2|100"
+  target_suspect("constable")
   assert_response("What do you make of yourself, constable?", "Me, sir? Not much to tell", 1)
   assert_response("How long have you been on duty here?", "Me, sir? Not much to tell", 1)
   assert_response("Were you posted here at the gate?", "Me, sir? Not much to tell", 1)
@@ -683,7 +701,7 @@ Sub test_police_car()
 
   ' Ask the Police Constable directly - his own file confirms it's the
   ' detective's car, not a station vehicle, and that he arrived by bicycle
-  objects$(9) = "P_POLICE_CONSTABLE|Police Constable|police constable policeman bobby|LOC001_BATHROOM|2|100"
+  target_suspect("constable")
   assert_response("Is this your police car?", "That's yours, sir", 1)
 End Sub
 
@@ -805,7 +823,7 @@ Sub test_schubert()
   assert_response("What about the Schubert sheet music on the upstairs piano?", "schubert response")
   assert_response("What is the schubert on the piano?", "schubert response")
 
-  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  target_suspect("sarah")
   assert_response("What about the Schubert sheet music on the upstairs piano?", "Schubert? I played Chopin, Inspector", 1)
 End Sub
 
@@ -813,13 +831,13 @@ Sub test_piano_duets()
   assert_response("duets", "wildcard response")
   assert_response("Who played duets on the piano?", "piano response")
 
-  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  target_suspect("sarah")
   assert_response("duets", "I'm not sure what you'd have me say to that", 1)
 
-  objects$(9) = "P_MILLICENT_DARNLEY|Millicent Darnley|millicent|LOC001_BATHROOM|2|100"
+  target_suspect("millicent")
   assert_response("duets", "Which piano?", 1)
 
-  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  target_suspect("arthur")
   assert_response("duets", "After dinner Millicent and I played duets on the piano", 1)
 End Sub
 
@@ -827,13 +845,13 @@ Sub test_piano_chopin()
   assert_response("Chopin", "wildcard response")
   assert_response("Who played Chopin on the piano?", "piano response")
 
-  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  target_suspect("sarah")
   assert_response("Chopin", "If you mean the morning room piano", 1)
 
-  objects$(9) = "P_MILLICENT_DARNLEY|Millicent Darnley|millicent|LOC001_BATHROOM|2|100"
+  target_suspect("millicent")
   assert_response("Chopin", "Which piano?", 1)
 
-  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  target_suspect("arthur")
   assert_response("Chopin", "When I went to bed", 1)
 End Sub
 
@@ -842,13 +860,13 @@ Sub test_records()
   assert_response("records", "wildcard response")
   assert_response("Who played records in the morning room?", "unhandled question response")
 
-  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  target_suspect("sarah")
   assert_response("records", "The gramophone?", 1)
 
-  objects$(9) = "P_MILLICENT_DARNLEY|Millicent Darnley|millicent|LOC001_BATHROOM|2|100"
+  target_suspect("millicent")
   assert_response("records", "I don't follow you, Inspector. Was that a question?", 1)
 
-  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  target_suspect("arthur")
   assert_response("records", "When I went to bed at 11:00", 1)
 End Sub
 
@@ -860,13 +878,13 @@ Sub test_study_drinks()
   assert_response("Who drank the brandy?", "study drinks response")
   assert_response("Who had drinks in the study?", "study drinks response")
 
-  objects$(9) = "P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|billingsgate butler|LOC001_BATHROOM|2|100"
+  target_suspect("billingsgate")
   assert_response("tell me about the tantalus", "The Colonel's tantalus, sir.", 1)
 
-  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  target_suspect("sarah")
   assert_response("tell me about the port glass", "Sebastian liked a glass of port", 1)
 
-  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  target_suspect("arthur")
   assert_response("tell me about the decanters", "Port in the billiard room, same as everyone.", 1)
 End Sub
 
@@ -877,16 +895,16 @@ Sub test_billiard_glasses()
   assert_response("billiards", "billiard room response")
   assert_response("Who played billiards after dinner?", "billiard room response")
 
-  objects$(9) = "P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|billingsgate butler|LOC001_BATHROOM|2|100"
+  target_suspect("billingsgate")
   assert_response("Who played billiards after dinner?", "I served port to the gentlemen in the billiard room", 1)
 
-  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  target_suspect("sarah")
   assert_response("Who played billiards after dinner?", "The gentlemen went off to billiards over their port", 1)
 
-  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  target_suspect("arthur")
   assert_response("Who played billiards after dinner?", "We had a frame or two after dinner", 1)
 
-  objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
+  target_suspect("redvers")
   assert_response("Who played billiards after dinner?", "A game and some port, as I told you.", 1)
 End Sub
 
@@ -898,10 +916,10 @@ Sub test_ashtray()
   assert_response("Tell me about the cheroot stub in the ashtray", "ashtray response")
   assert_response("Whose is the stub in the ashtray?", "ashtray response")
 
-  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  target_suspect("arthur")
   assert_response("Whose is the stub in the ashtray?", "The brass one in the music room?", 1)
 
-  objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
+  target_suspect("redvers")
   assert_response("Whose is the stub in the ashtray?", "I smoke my pipe and the occasional Havana.", 1)
 End Sub
 
@@ -926,11 +944,11 @@ Sub test_confirm_sarah()
   assert_response("Can you vouch for Sarah?", "vouch for sarah response")
 
   ' With no flags set, Mellors' corroboration of Sarah falls to the unconditional entry
-  objects$(9) = "P_RONALD_MELLORS|Ronald Mellors|ronald_mellors gamekeeper|LOC001_BATHROOM|2|100"
+  target_suspect("mellors")
   assert_response("confirm sarah", "Don't know anything about Mrs. Darnley's evening.", 1)
 
   ' Once both gating flags are set, the more specific (still evasive) entry wins
-  objects$(9) = "P_RONALD_MELLORS|Ronald Mellors|ronald_mellors gamekeeper|LOC001_BATHROOM|2|100"
+  target_suspect("mellors")
   reset_flags("x_handkerchief", "x_cigarettes")
   assert_response("confirm sarah", "[[reset:Something flickers behind his flat stare.]]", 1)
 End Sub
@@ -988,7 +1006,7 @@ Sub test_dismissal()
   assert_response("Did the colonel give Mellors notice", "mellors' dismissal response")
 
   ' Ask Mellors about dismissal
-  objects$(9) = "P_RONALD_MELLORS|Ronald Mellors|ronald mellors gamekeeper|LOC001_BATHROOM|2|100"
+  target_suspect("mellors")
   assert_response("Mellors, did the Colonel threaten your position?", "Who told you that? ...", 1)
 End Sub
 
@@ -1043,10 +1061,10 @@ Sub test_broken_window()
 
   ' Billingsgate and Arthur were present at the break-in and give
   ' first-person accounts.
-  objects$(9) = "P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|billingsgate butler|LOC001_BATHROOM|2|100"
+  target_suspect("billingsgate")
   assert_response("tell me about the broken window", "I broke it myself, sir", 1)
 
-  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  target_suspect("arthur")
   assert_response("tell me about the broken window", "That was me, old boy", 1)
 End Sub
 
@@ -1110,7 +1128,7 @@ Sub test_money_unlocked()
   assert_response("what about slingsby' debts", "finance response given newspaper and redvers")
 
   ' Ask Redvers directly without referencing him by name in the subject.
-  objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
+  target_suspect("redvers")
   assert_response("Redvers, did you have money troubles?", "[[reset:He goes rather grey about the gills.", 1)
 End Sub
 
@@ -1140,7 +1158,7 @@ Sub test_argument_blocked()
   assert_response("did you quarrel with the colonel", "argument with colonel response")
 
   ' Ask Redvers directly without the newspaper flag - he stonewalls
-  objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
+  target_suspect("redvers")
   assert_response("did you argue with the colonel", "Argue? Good God, no. We talked business,", 1)
   assert_response("did you have an argument with the colonel", "Argue? Good God, no. We talked business,", 1)
 End Sub
@@ -1154,7 +1172,7 @@ Sub test_argument_unlocked()
   assert_response("was there a row with the colonel", "argument with colonel given newspaper response")
   assert_response("did you quarrel with the colonel", "argument with colonel given newspaper response")
 
-  objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
+  target_suspect("redvers")
   assert_response("did you argue with the colonel", "[[reset:He exhales slowly, some of the bluster gone out of him.", 1)
   assert_response("did you have an argument with the colonel", "[[reset:He exhales slowly, some of the bluster gone out of him.", 1)
 End Sub
@@ -1174,10 +1192,10 @@ Sub test_cause_of_death()
   assert_response("Tell me about the bullet wound?", "cause of death response")
   assert_response("How was he killed?", "cause of death response")
 
-  objects$(9) = "P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|billingsgate butler|LOC001_BATHROOM|2|100"
+  target_suspect("billingsgate")
   assert_response("How did the colonel die?", "He was shot, sir", 1)
 
-  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  target_suspect("arthur")
   assert_response("How did the colonel die?", "Shot, old boy.", 1)
 End Sub
 
@@ -1191,13 +1209,13 @@ Sub test_time_of_death()
   assert_response("bullet", "cause of death response")
   assert_response("wound", "cause of death response")
 
-  objects$(9) = "P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|billingsgate butler|LOC001_BATHROOM|2|100"
+  target_suspect("billingsgate")
   assert_response("When did the colonel die?", "I couldn't say, sir. Mr. Coniston woke me", 1)
 
-  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  target_suspect("arthur")
   assert_response("When did the colonel die?", "Couldn't say exactly, old boy", 1)
 
-  objects$(9) = "P_MILDRED_GOODBODY|Mildred Goodbody|goodbody cook|LOC001_BATHROOM|2|100"
+  target_suspect("goodbody")
   assert_response("When did the colonel die?", "I couldn't tell you, dear. A bang woke me at 11:20", 1)
 End Sub
 
@@ -1212,13 +1230,13 @@ Sub test_master_bedroom()
   assert_response("wardrobe", "wildcard response")
   assert_response("When did you go to bed?", "unhandled question response")
 
-  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  target_suspect("sarah")
   assert_response("Tell me about the master bedroom", "I don't see what my bedroom has to do with anything", 1)
 
-  objects$(9) = "P_MILLICENT_DARNLEY|Millicent Darnley|millicent|LOC001_BATHROOM|2|100"
+  target_suspect("millicent")
   assert_response("Tell me about the master bedroom", "I don't make a habit of going into Daddy's room.", 1)
 
-  objects$(9) = "P_NORAH_BAGSBY|Norah Bagsby|bagsby maid|LOC001_BATHROOM|2|100"
+  target_suspect("bagsby")
   assert_response("Tell me about the master bedroom", "One side of the bed had been slept in, sir", 1)
 End Sub
 
@@ -1240,28 +1258,28 @@ Sub test_summer_house()
   assert_response("ask about the affair", "affair response given handkerchief and cigarettes")
 
   ' Suspect specific answeers
-  objects$(9) = "P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|billingsgate butler|LOC001_BATHROOM|2|100"
+  target_suspect("billingsgate")
   assert_response("tell me about the summer house", "The summer house, sir? I could not say.", 1)
 
-  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  target_suspect("sarah")
   assert_response("tell me about the summer house", "I haven't been down to the summer house", 1)
 
-  objects$(9) = "P_MILLICENT_DARNLEY|Millicent Darnley|millicent|LOC001_BATHROOM|2|100"
+  target_suspect("millicent")
   assert_response("tell me about the summer house", "We used it for croquet, in summer.", 1)
 
-  objects$(9) = "P_NORAH_BAGSBY|Norah Bagsby|bagsby maid|LOC001_BATHROOM|2|100"
+  target_suspect("bagsby")
   assert_response("tell me about the summer house", "I don't go out there, sir.", 1)
 
-  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  target_suspect("arthur")
   assert_response("tell me about the summer house", "Haven't set foot in it, old boy.", 1)
 
-  objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
+  target_suspect("redvers")
   assert_response("tell me about the summer house", "Never been near it.", 1)
 
-  objects$(9) = "P_MILDRED_GOODBODY|Mildred Goodbody|mildred goodbody cook|LOC001_BATHROOM|2|100"
+  target_suspect("goodbody")
   assert_response("tell me about the summer house", "That's out on the lawn, dear", 1)
 
-  objects$(9) = "P_RONALD_MELLORS|Ronald Mellors|ronald mellors gamekeeper|LOC001_BATHROOM|2|100"
+  target_suspect("mellors")
   assert_response("tell me about the summer house", "Nothing to do with me. I keep to my side", 1)
 End Sub
 
@@ -1270,7 +1288,7 @@ Sub test_gamekeepers_cottage()
   assert_response("Tell me about your cottage", "gamekeepers cottage response")
   assert_response("Tell me about the gamekeeper's cottage", "gamekeepers cottage response")
 
-  objects$(9) = "P_RONALD_MELLORS|Ronald Mellors|ronald mellors gamekeeper|LOC001_BATHROOM|2|100"
+  target_suspect("mellors")
   assert_response("tell me about the cottage", "This is my cottage. Door's open to anyone", 1)
   assert_response("tell me about your cottage", "This is my cottage. Door's open to anyone", 1)
   assert_response("what about the maze", "Do I look like I'd know anything about that?")
@@ -1282,28 +1300,28 @@ Sub test_dinner()
   assert_response("Tell me about supper", "dinner response")
   assert_response("Who had coffee in the lounge?", "dinner response")
 
-  objects$(9) = "P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|billingsgate butler|LOC001_BATHROOM|2|100"
+  target_suspect("billingsgate")
   assert_response("What happened at dinner?", "I waited on the family, Sir Redvers", 1)
 
-  objects$(9) = "P_SARAH_DARNLEY|Sarah Darnley|sarah|LOC001_BATHROOM|2|100"
+  target_suspect("sarah")
   assert_response("What happened at dinner", "We all dined together. Afterwards the men took port", 1)
 
-  objects$(9) = "P_MILLICENT_DARNLEY|Millicent Darnley|millicent|LOC001_BATHROOM|2|100"
+  target_suspect("millicent")
   assert_response("What happened at dinner", "We all dined together. Sarah and I took coffee", 1)
 
-  objects$(9) = "P_NORAH_BAGSBY|Norah Bagsby|bagsby maid|LOC001_BATHROOM|2|100"
+  target_suspect("bagsby")
   assert_response("What happened at dinner", "I helped Mrs. Goodbody with dinner, sir", 1)
 
-  objects$(9) = "P_ARTHUR_CONISTON|Arthur Coniston|arthur|LOC001_BATHROOM|2|100"
+  target_suspect("arthur")
   assert_response("What happened at dinner?", "Dinner with the family, and Slingsby.", 1)
 
-  objects$(9) = "P_REDVERS_SLINGSBY|Sir Redvers Slingsby|redvers slingsby|LOC001_BATHROOM|2|100"
+  target_suspect("redvers")
   assert_response("What happened at dinner?", "Dinner with the family and young Coniston.", 1)
 
-  objects$(9) = "P_MILDRED_GOODBODY|Mildred Goodbody|mildred goodbody cook|LOC001_BATHROOM|2|100"
+  target_suspect("goodbody")
   assert_response("What happened at dinner?", "I cooked, dear, and Norah and I washed up.", 1)
 
-  objects$(9) = "P_RONALD_MELLORS|Ronald Mellors|ronald mellors gamekeeper|LOC001_BATHROOM|2|100"
+  target_suspect("mellors")
   assert_response("What happened at dinner?", "Wasn't at the house for dinner.", 1)
 End Sub
 
