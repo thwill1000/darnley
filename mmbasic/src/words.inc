@@ -69,7 +69,8 @@ End Function
 ' Splits a command string into individual words at space boundaries.
 '
 ' Multiple consecutive spaces are treated as a single delimiter.
-' Apostrophes are stripped silently (e.g. "can't" becomes "cant").
+' Apostrophes and hyphens are stripped silently (e.g. "can't" becomes
+' "cant" and "well-known" becomes "wellknown").
 ' A double-quote or comma character is always split into its own
 ' single-character word, even when not surrounded by spaces
 ' (e.g. "hello becomes two words: " and "hello"; "foo,bar" becomes
@@ -111,8 +112,8 @@ Function split_words%(cmd$, words$())
           Inc i%
         EndIf
 
-      Case 34, 44, 45, 63
-        ' Treat double quote ("), comma (,), hyphen (-), or question mark (?) as separate words
+      Case 34, 44, 63
+        ' Treat double quote ("), comma (,), or question mark (?) as separate words
         If wLen% > 0 Then
           words$(i%) = w$
           w$ = ""
@@ -123,8 +124,8 @@ Function split_words%(cmd$, words$())
         words$(i%) = Chr$(c%)
         Inc i%
 
-      Case 39, 33, 40, 41, 46 ' Apostrophe ('), ! or full-stop (.)
-        ' Silently skip apostrophes, exclamation marks, parentheses, and full-stops
+      Case 39, 33, 40, 41, 45, 46 ' Apostrophe ('), ! hyphen (-) or full-stop (.)
+        ' Silently skip apostrophes, exclamation marks, parentheses, hyphens, and full-stops
 
       Case Else ' Normal character
         If i% > maxIdx% Then split_words% = 1: Exit Function

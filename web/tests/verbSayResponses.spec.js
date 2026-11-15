@@ -31,14 +31,15 @@ const ROOM = 'LOC001_BATHROOM';
 const SUSPECTS = {
   template: { id: 'P_TEMPLATE_SUSPECT', name: 'Template Suspect', pattern: 'template suspect' },
   arthur: { id: 'P_ARTHUR_CONISTON', name: 'Arthur Coniston', pattern: 'arthur' },
+  bagsby: { id: 'P_NORAH_BAGSBY', name: 'Norah Bagsby', pattern: 'bagsby maid' },
+  billingsgate: { id: 'P_ARNOLD_BILLINGSGATE', name: 'Arnold Billingsgate', pattern: 'billingsgate butler' },
+  chester: { id: 'P_CHESTER_CAT', name: 'Chester', pattern: 'cat ginger chester' },
+  constable: { id: 'P_POLICE_CONSTABLE', name: 'Police constable', pattern: 'officer police policeman' },
+  goodbody: { id: 'P_MILDRED_GOODBODY', name: 'Mildred Goodbody', pattern: 'goodbody cook' },
+  mellors: { id: 'P_RONALD_MELLORS', name: 'Ronald Mellors', pattern: 'mellors gamekeeper' },
+  millicent: { id: 'P_MILLICENT_DARNLEY', name: 'Millicent Darnley', pattern: 'millicent' },
   redvers: { id: 'P_REDVERS_SLINGSBY', name: 'Sir Redvers Slingsby', pattern: 'redvers' },
   sarah: { id: 'P_SARAH_DARNLEY', name: 'Sarah Darnley', pattern: 'sarah' },
-  millicent: { id: 'P_MILLICENT_DARNLEY', name: 'Millicent Darnley', pattern: 'millicent' },
-  billingsgate: { id: 'P_ARNOLD_BILLINGSGATE', name: 'Arnold Billingsgate', pattern: 'billingsgate butler' },
-  mildred: { id: 'P_MILDRED_GOODBODY', name: 'Mildred Goodbody', pattern: 'goodbody cook' },
-  norah: { id: 'P_NORAH_BAGSBY', name: 'Norah Bagsby', pattern: 'bagsby maid' },
-  mellors: { id: 'P_RONALD_MELLORS', name: 'Ronald Mellors', pattern: 'mellors gamekeeper' },
-  constable: { id: 'P_POLICE_CONSTABLE', name: 'Police constable', pattern: 'officer police policeman' },
 };
 
 let synonyms;
@@ -164,7 +165,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       "What did you do yesterday evening?",
     ]);
 
-    target('mildred');
+    target('goodbody');
     assertResponse('Mildred, where were you at the time of the murder?', 'We was all three together', true);
   });
 
@@ -301,7 +302,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     target('mellors');
     assertResponse('tell me about the statues', "Four of 'em round the pond", true);
 
-    target('norah');
+    target('bagsby');
     assertResponse('tell me about the statues', "I don't go near them, sir", true);
   });
 
@@ -499,7 +500,10 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
   it('What do you know about the hobnailed bootprints?', () => {
     all('hobnailed bootprints response', [
-      'ask about hobnailed bootprints', 'what about the hobnailed marks', 'tell me about the hobnailed boot tracks',
+      'Ask about hobnailed bootprints',
+      'What about the hobnailed marks?',
+      'Tell me about the hobnailed boot tracks',
+      'Tell me about the hob-nailed boot-prints',
     ]);
   });
 
@@ -523,11 +527,22 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
   it('Tell me about the footprints.', () => {
     all('footprints response', [
-      'Tell me about the footprints', 'Tell me about the foot prints', 'Tell me about the footprints in the snow',
-      'Tell me about the foot prints in the snow', 'Tell me about the prints',
-      'Tell me about the prints in the snow', 'Tell me about the bootprints', 'What about the bootprints?',
-      'What about the boot tracks?', 'Tell me about the shoeprints', 'Tell me about the shoe prints',
-      'What about the shoeprints?', 'What about the shoe tracks?',
+      'Tell me about the footprints',
+      'Tell me about the foot prints',
+      'Tell me about the foot-prints',
+      'Tell me about the footprints in the snow',
+      'Tell me about the foot prints in the snow',
+      'Tell me about the prints',
+      'Tell me about the prints in the snow',
+      'Tell me about the bootprints',
+      'What about the bootprints?',
+      'What about the boot-prints?',
+      'What about the boot tracks?',
+      'Tell me about the shoeprints',
+      'Tell me about the shoe prints',
+      'What about the shoeprints?',
+      'What about the shoe-prints?',
+      'What about the shoe tracks?',
     ]);
   });
 
@@ -561,8 +576,12 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
   it("Tell me about the suit found in the servants' quarters.", () => {
     all('suit response', [
-      'suit', "ask about the suit in the servants' quarters",
-      "what about the suit I found in the servants' quarters", "tell me about the suit found in the servants' quarters",
+      'suit',
+      'country-suit',
+      'countrysuit',
+      "Ask about the suit in the servants' quarters",
+      "What about the suit I found in the servants' quarters",
+      "Tell me about the suit found in the servants' quarters",
     ]);
   });
 
@@ -960,7 +979,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     assertResponse('When did the colonel die?', "I couldn't say, sir. Mr. Coniston woke me", true);
     target('arthur');
     assertResponse('When did the colonel die?', "Couldn't say exactly, old boy", true);
-    target('mildred');
+    target('goodbody');
     assertResponse('When did the colonel die?', "I couldn't tell you, dear. A bang woke me at 11:20", true);
   });
 
@@ -983,7 +1002,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     target('millicent');
     assertResponse('Tell me about the master bedroom', "I don't make a habit of going into Daddy's room.", true);
 
-    target('norah');
+    target('bagsby');
     assertResponse('Tell me about the master bedroom', 'One side of the bed had been slept in, sir', true);
   });
 
@@ -1015,7 +1034,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     target('millicent');
     assertResponse('tell me about the summer house', 'We used it for croquet, in summer.', true);
 
-    target('norah');
+    target('bagsby');
     assertResponse('tell me about the summer house', "I don't go out there, sir.", true);
 
     target('arthur');
@@ -1024,7 +1043,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     target('redvers');
     assertResponse('tell me about the summer house', "Never been near it.", true);
 
-    target('mildred');
+    target('goodbody');
     assertResponse('tell me about the summer house', "That's out on the lawn, dear", true);
 
     target('mellors');
@@ -1059,7 +1078,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     target('millicent');
     assertResponse('What happened at dinner', 'We all dined together. Sarah and I took coffee', true);
 
-    target('norah');
+    target('bagsby');
     assertResponse('What happened at dinner', 'I helped Mrs. Goodbody with dinner, sir', true);
 
     target('arthur');
@@ -1068,7 +1087,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     target('redvers');
     assertResponse('What happened at dinner?', 'Dinner with the family and young Coniston.', true);
 
-    target('mildred');
+    target('goodbody');
     assertResponse('What happened at dinner?', 'I cooked, dear, and Norah and I washed up.', true);
 
     target('mellors');
@@ -1122,6 +1141,10 @@ describe('verbSay() against the real template/suspect .msg files', () => {
   });
 
   it('Something nonsensical falls back to the non-question wildcard', () => {
-    assertResponse('xyzzy plugh', 'wildcard response');
+    all('wildcard response', [
+      'xyzzy plugh',
+      'doormat',
+      'door-mat',
+    ]);
   });
 });

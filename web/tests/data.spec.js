@@ -165,8 +165,8 @@ describe('parseObjects()', () => {
 });
 
 describe('parseSynonyms()', () => {
-  it('parses exactly 54 synonym entries', () => {
-    expect(parseSynonyms(adventText)).toHaveLength(54);
+  it('parses exactly 49 synonym entries', () => {
+    expect(parseSynonyms(adventText)).toHaveLength(49);
   });
 
   it('parses the first synonym entry, mapping aliases back to "argue"', () => {
@@ -177,11 +177,6 @@ describe('parseSynonyms()', () => {
     });
   });
 
-  it('parses a two-field synonym entry', () => {
-    const synonyms = parseSynonyms(adventText);
-    const doormat = synonyms.find((s) => s.canonical === 'doormat');
-    expect(doormat).toEqual({ canonical: 'doormat', aliases: ['door-mat'] });
-  });
 });
 
 describe('parseQuestions()', () => {
