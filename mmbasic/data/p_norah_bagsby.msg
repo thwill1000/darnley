@@ -401,4 +401,4 @@ Go back over your questioning and look again.
 "I wouldn't know about that. Nobody tells me anything."
 
 *
-"Oh - is that something I ought to know, sir? I’m ever so sorry."
+"Oh - is that something I ought to know, sir? I'm ever so sorry."
