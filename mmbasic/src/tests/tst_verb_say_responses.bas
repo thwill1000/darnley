@@ -171,7 +171,7 @@ Sub target_suspect(name$)
     Case "arthur": s$ = "P_ARTHUR_CONISTON|Arthur Coniston|arthur"
     Case "bagsby": s$ = "P_NORAH_BAGSBY|Norah Bagsby|bagsby maid"
     Case "billingsgate": s$ = "P_ARNOLD_BILLINGSGATE|Arnold Billingsgate|billingsgate butler"
-    Case "chester": s$ = "P_CHESTER|Chester|cat ginger chester"
+    Case "chester": s$ = "P_CHESTER_CAT|Chester|cat ginger chester"
     Case "constable": s$ = "P_POLICE_CONSTABLE|Police Constable|officer police policeman"
     Case "goodbody": s$ = "P_MILDRED_GOODBODY|Mildred Goodbody|goodbody cook"
     Case "mellors": s$ = "P_RONALD_MELLORS|Ronald Mellors|mellors gamekeeper"
@@ -721,9 +721,10 @@ Sub test_flatfooted()
 End Sub
 
 Sub test_hobnailed()
-  assert_response("ask about hobnailed bootprints", "hobnailed bootprints response")
-  assert_response("what about the hobnailed marks", "hobnailed bootprints response")
-  assert_response("tell me about the hobnailed boot tracks", "hobnailed bootprints response")
+  assert_response("Ask about hobnailed bootprints", "hobnailed bootprints response")
+  assert_response("What about the hobnailed marks", "hobnailed bootprints response")
+  assert_response("Tell me about the hobnailed boot tracks", "hobnailed bootprints response")
+  assert_response("Tell me about the hob-nailed boot-prints", "hobnailed bootprints response")
 End Sub
 
 Sub test_slipper_prints()
@@ -747,16 +748,18 @@ End Sub
 Sub test_footprints()
   assert_response("Tell me about the footprints", "footprints response")
   assert_response("Tell me about the foot prints", "footprints response")
+  assert_response("Tell me about the foot-prints", "footprints response")
   assert_response("Tell me about the footprints in the snow", "footprints response")
   assert_response("Tell me about the foot prints in the snow", "footprints response")
   assert_response("Tell me about the prints", "footprints response")
   assert_response("Tell me about the prints in the snow", "footprints response")
   assert_response("Tell me about the bootprints", "footprints response")
   assert_response("What about the bootprints?", "footprints response")
+  assert_response("What about the boot-prints?", "footprints response")
   assert_response("What about the boot tracks?", "footprints response")
   assert_response("Tell me about the shoeprints", "footprints response")
   assert_response("Tell me about the shoe prints", "footprints response")
-  assert_response("What about the shoeprints?", "footprints response")
+  assert_response("What about the shoe-prints?", "footprints response")
   assert_response("What about the shoe tracks?", "footprints response")
 End Sub
 
@@ -795,9 +798,11 @@ End Sub
 
 Sub test_suit()
   assert_response("suit", "suit response")
-  assert_response("ask about the suit in the servants' quarters", "suit response")
-  assert_response("what about the suit I found in the servants' quarters", "suit response")
-  assert_response("tell me about the suit found in the servants' quarters", "suit response")
+  assert_response("country-suit", "suit response")
+  assert_response("countrysuit", "suit response")
+  assert_response("Ask about the suit in the servants' quarters", "suit response")
+  assert_response("What about the suit I found in the servants' quarters", "suit response")
+  assert_response("Tell me about the suit found in the servants' quarters", "suit response")
 End Sub
 
 Sub test_stacked_furniture()
@@ -1437,4 +1442,6 @@ End Sub
 ' No keyword line matches - falls through to "*"
 Sub test_wildcard_fallback()
   assert_response("xyzzy plugh", "wildcard response")
+  assert_response("doormat", "wildcard response")
+  assert_response("door-mat", "wildcard response")
 End Sub

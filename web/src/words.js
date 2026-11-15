@@ -12,8 +12,8 @@
  *   - A double-quote ("), comma (,) or question mark (?) is always split
  *     into its own single-character token, even with no surrounding space
  *     (e.g. `"hello` -> ['"', 'hello']; `foo,bar` -> ['foo', ',', 'bar']).
- *   - Apostrophes ('), exclamation marks (!) and full stops (.) are
- *     stripped silently (not treated as delimiters, not kept).
+ *   - Apostrophes ('), exclamation marks (!), full stops (.) and hyphens
+ *     (-) are stripped silently (not treated as delimiters, not kept).
  *   - All returned tokens are lower-cased.
  *
  * Unlike the MMBasic original, which has fixed-size arrays and therefore
@@ -37,13 +37,13 @@ export function splitWords(cmd) {
         words.push(current);
         current = '';
       }
-    } else if (ch === '"' || ch === ',' || ch === "-" || ch === '?') {
+    } else if (ch === '"' || ch === ',' || ch === '?') {
       if (current.length > 0) {
         words.push(current);
         current = '';
       }
       words.push(ch);
-    } else if (ch === "'" || ch === '!' || ch === '.' || ch === '(' || ch === ')') {
+    } else if (ch === "'" || ch === '!' || ch === '.' || ch === '(' || ch === ')' || ch === '-') {
       // Stripped - silently skip.
     } else {
       current += ch;
