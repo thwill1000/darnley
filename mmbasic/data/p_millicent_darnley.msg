@@ -109,7 +109,7 @@ whatever anyone supposes, and I mean to see whoever did this
 brought to justice - however long it takes."
 
 +arthur (get/think) with
-"He’s a darling! We get on wonderfully, and Daddy gave his consent only yesterday - I’m still
+"He's a darling! We get on wonderfully, and Daddy gave his consent only yesterday - I'm still
 getting used to being the happiest girl in the house."
 
 +redvers (get/think) with
