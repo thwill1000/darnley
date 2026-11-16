@@ -98,7 +98,7 @@ I shouldn't be at all surprised if someone had crossed him."
 Sarah would leave him for a younger man."
 
 +sarah (get/think) with
-"We got on well enough though it is difficult to have a step-mother
+"We got on well enough though it is difficult to have a stepmother
 who is almost the same age. I thought she would leave Daddy some day
 as soon as she found a lover. But, of course, she would need Daddy's
 money."
@@ -125,7 +125,7 @@ getting used to being the happiest girl in the house."
 "A clumsy girl."
 
 +(mellors/gamekeeper) (get/think) with
-"Furtive. I don't like the way he looks at my step-mother. I advised
+"Furtive. I don't like the way he looks at my stepmother. I advised
 Daddy to get rid of him."
 
 +(cat/chester/ginger) (get/think) with

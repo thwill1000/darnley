@@ -61,7 +61,7 @@ poacher
 why I was so sure."
 
 +(statue/statues) +(missing/sunken/fourth/gone)
-"I believe a rather nasty tramp, who called two days ago threw it
+"I believe a rather nasty tramp, who called two days ago, threw it
 into the pond."
 
 (statue/statues)
@@ -249,7 +249,7 @@ sits idle out there."
 "It seems dreadfully out of place doesn't it. I suppose it had to come,
 but I wish it hadn't."
 
-+(master/colonel) +bedroom | draught |dressing
++(master/colonel) +bedroom | draught | dressing
 "I don't see what my bedroom has to do with anything, Inspector."
 
 (dinner/supper/coffee)
@@ -266,7 +266,7 @@ and Sir Redvers had business to talk about so they went into the
 study. I heard them quarrelling but couldn't tell what about.
 Next there was a loud noise which I took to be Sir Redvers leaving
 the study by the door to the hall and banging the door. I stayed
-in the lounge for ten minutes and then went upstairs where I ran
+in the lounge for a few minutes and then went upstairs where I ran
 into Millicent on the landing. She said that she had left Arthur
 in the music room and was going to bed.@
 @
@@ -284,16 +284,15 @@ from hers. And the rest you know."
 I should think - which I took for Sir Redvers leaving the study none
 too gently. Then later, around 11:30, I heard something else while I
 was in the morning room - more like a shot, if I'm honest, though at
-the time I told myself it was poachers. I don't know why you keep
-asking me to separate the two. Isn't it obvious enough?"
+the time I told myself it was poachers. The two were quite distinct, Inspector."
 
 -you +(when/time) +(die/murder)
 "I couldn't tell you, Inspector. I heard a noise like a shot at about
 11:30 and thought it was poachers. I only learned the truth afterwards."
 
 +(confirm/corroborate/vouch/alibi/with) +arthur you
-"I really couldn't say what Arthur got up to. I had gone upstairs
-long before either of the noises you keep asking me about."
+"I really couldn't say what Arthur got up to. I went upstairs soon
+after the first bang."
 
 +(confirm/corroborate/vouch/alibi/with) +millicent you
 "I saw Millicent only briefly, on the landing, before I went to the

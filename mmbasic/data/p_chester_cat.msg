@@ -157,9 +157,8 @@ indifference and returns to washing a paw.@
 "Mrp."
 
 +suit servant
-He has, at some point, clearly slept on someone's good tweeds - there
-is a dusting of ginger fur that suggests as much, though not here in
-the stables.@
+He shows no interest whatsoever in suits, being some distance from the
+servants' quarters where one hangs.@
 @
 "Mrow?"
 

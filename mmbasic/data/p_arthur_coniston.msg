@@ -95,7 +95,7 @@ whose, I couldn't say, old boy."
 
 +(ashtray/ashtrays) (cigar/cheroot)
 "The brass one in the music room? I had a cigar there after Millicent
-went up, as I said. Is it important?"
+went up. Is it important?"
 
 key
 "Billingsgate has a set of his own, but it was no good - when I
@@ -134,8 +134,7 @@ Millicent's affection and, eventually, her father's blessing too."
 
 +redvers (get/think) with
 "I scarcely know him but he seemed very angry with Darnley about
-something. I got the feeling he had money troubles. A dangerous
-fellow I should think."
+something. A dangerous fellow I should think."
 
 +(billingsgate/butler) (get/think) with
 "I barely know the chap."
@@ -205,7 +204,7 @@ matter?"
 without warning and there wasn't a bed to be had except with the
 servants - I'd already bagged the guest room, and the other one's
 knee-deep in dust sheets for redecorating, you see. Beastly luck
-for the poor chap, showing up a day late for the good rooms."
+for the poor chap, turning up after I'd bagged the only decent room."
 
 stacked furniture
 "Haven't the foggiest, old boy. Some household business, I
@@ -274,7 +273,7 @@ actually. Worked up my nerve all afternoon before I finally asked him
 - and he said yes, would you believe it."
 
 +(bang/bangs/shot/shots) (time/what/when) (hear/heard)
-"Funny you should press on that. There was a bang at about 10:30, while
+"Let me think. There was a bang at about 10:30, while
 Millicent and I were in the music room - door slamming, I assumed - and then
 another, later, around 11:30, when I was lying awake in my room. Can't say I
 thought much of it at the time. Two bangs, one house full of nerves - hardly
@@ -286,7 +285,7 @@ I thought - and Billingsgate and I found him not long afterwards."
 
 +(confirm/corroborate/vouch/alibi/with) +arthur you
 "Myself? Ha - I don't suppose I'm much of a witness to my own doings,
-old boy. You'll have to take my word for it, same as I gave it."
+old boy. You'll have to take my word for it."
 
 +(confirm/corroborate/vouch/alibi/with) +millicent you
 "Absolutely - we were together in the music room from 10:00 until 10:30,
@@ -395,7 +394,7 @@ keen to keep it quiet, if I'm honest, which I suppose is
 understandable."
 
 money mining peru ruin redvers colonel
-"Couldn't tell you. Money troubles aren't really the sort of thing
+"Couldn't tell you. Money matters aren't really the sort of thing
 a fellow discusses over billiards."
 
 police investigation scotland yard inspector detective think here

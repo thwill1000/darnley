@@ -58,7 +58,7 @@ Ask what you like, I've not been bothered by anybody."
 ago. I caught him lurking about and found the statue in the pond."
 
 (statue/statues)
-"Four of 'em round the pond, marble. I found one in it, like I said."
+"Four of 'em round the pond, marble. I found one in it."
 
 gramophone
 "I don't know anything about any gramophone."
@@ -160,8 +160,7 @@ bookshelf books
 whose books they are or what's in 'em."
 
 +(correspondence/photographs/letters) servant
-"Nothing to do with me. Don't go near the house past the kitchen,
-same as I told you before."
+"Nothing to do with me. Don't go near the house past the kitchen."
 
 +(cheroot/cigar) +pond
 "Don't know and don't much care."
@@ -211,8 +210,7 @@ the lot."
 "No idea. I was in bed by 10:00 and slept through whatever it was."
 
 +(confirm/corroborate/vouch/alibi/with) +arthur you
-"Don't know the man's business. I was in my cottage, same as I told
-you."
+"Don't know the man's business. I was in my cottage."
 
 +(confirm/corroborate/vouch/alibi/with) +millicent you
 "Nothing to do with me. I was at home all evening."
@@ -221,8 +219,7 @@ you."
 !requires x_handkerchief x_cigarettes
 Something flickers behind his flat stare.@
 @
-"Can't help you there. I was on my own all evening, same as I told
-you."
+"Can't help you there. I was on my own all evening."
 
 +(confirm/corroborate/vouch/alibi/with) +sarah you
 "Don't know anything about Mrs. Darnley's evening. Not my place to
@@ -245,10 +242,9 @@ curse if you believe me or not. If you look for my tracks to the big
 house, you won't find them."
 
 -thanks alone (confirm/confirmed) corroborate witness anyone time
-"No, and I've told you that plain enough. Nobody comes calling on
-me of an evening and I don't invite company. If you're waiting for
-someone to vouch for me, you'll be waiting a good while - that's
-how I live, not how I killed anybody."
+"Nobody comes calling on me of an evening and I don't invite company.
+If you're waiting for someone to vouch for me, you'll be waiting a good while
+- that's how I live, not how I killed anybody."
 
 +(motive/reason/would) why murder
 "Not my place to guess. The Colonel wasn't an easy man to work for,
@@ -274,9 +270,9 @@ wife. I keep to my own affairs."
 the young gentleman well enough to say more than that."
 
 +who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
-"Not my business to guess. But if you're asking, I'd look closer to
-home than the grounds - that fine young gentleman's a sight too
-pleased with himself for my liking."
+"Not my business to guess. But if you're asking, there's a man up at
+that house who sees everything and says nothing - nosy old devil that
+he is."
 
 +(stone/rock)
 "Don't know about any stone. I was at my cottage all night."
@@ -291,8 +287,7 @@ get an answer from me."
 do with me - I was in my cottage the whole time."
 
 +(body/colonel) where
-"In the house somewhere, I'd expect. Nothing to do with me - I keep to
-the grounds."
+"In the study, so I was told. Nothing to do with me - I keep to the grounds."
 
 clues evidence found discovered proof
 "Not my concern what you've found. I've told you what I know.

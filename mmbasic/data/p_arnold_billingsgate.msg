@@ -15,12 +15,8 @@ when he woke me up to help the Colonel."
 
 boots
 "The boots belong to Sir Redvers. They are - shall we say - on the
-large side? He gave them to me yesterday afternoon and I cleaned
-them after dinner. They were in the kitchen until I cleaned them. I
-suppose they might have been taken afterwards. I don't think anyone
-could have slipped past us servants to get to the kitchen through my
-pantry. What puzzles me is: if a boot thief came in from the
-outside door, what on earth was he wearing on his feet?"
+large side. He gave them to me yesterday afternoon and I cleaned them
+in the kitchen after dinner, and left them there."
 
 knife
 "I don't know anything about the knife, sir - that's not a kitchen matter I'd
@@ -69,10 +65,9 @@ poacher
 department, not mine."
 
 +(statue/statues) +(missing/sunken/fourth/gone)
-"Mr. Mellors told me that a tramp pitched it into the pond two days ago.
-I repeated this to the Colonel at the time and he seemed to accept it, though
-he was not best pleased. Personally I should have thought a tramp would have
-more use for a statue he could carry off than one at the bottom of a pond."
+"Mr. Mellors told me that a tramp pitched it into the pond two days
+ago. I repeated this to the Colonel at the time and he seemed to
+accept it."
 
 (statue/statues)
 "The Four Seasons, sir - Italian marble, standing about the ornamental
@@ -117,7 +112,7 @@ handkerchief
 +colonel +argue
 "It is not my place to comment on the family's private business, sir.
 I will say the atmosphere at dinner was not entirely comfortable, and
-I withdrew before the gentlemen retired to the billiard room."
+I withdrew once the port had been served in the billiard room."
 
 +(die/bullet/bullets/wound/cause) | +how +murder
 "He was shot, sir - a single bullet through the chest. He lay on the
@@ -164,8 +159,8 @@ house."
 arrived, and troubled none of us in the house."
 
 +(flatfooted/flat/odd) (bootprints/footprints/prints)
-"I've studied all the people here and none of them are flat-footed.
-It's a mystery to me why the bootprints should be flat-footed."
+"I couldn't say why they should be flat-footed, sir. I have not made
+a study of the prints."
 
 +hobnailed +(bootprints/prints) boots
 "I don't know whose these are."
@@ -333,14 +328,14 @@ loved, if I am honest, but I know of no one with cause enough to
 do... this."
 
 (inheritance/inherit) will estate money (left/leave)
-"There is a will, sir, drawn up through the family's solicitors in the usual
-way, and since you press me I don't suppose there's any great harm in telling
-you its shape. Mrs. Darnley is left the use of the house and an income for her
-lifetime. The estate itself - the house and the bulk of the capital - passes to
-Miss Millicent, though she does not come into it outright until Mrs. Darnley's
-death or remarriage, whichever comes first. Those are the terms as I understand
-them, sir. I couldn't tell you more than that, and I'd ask you not to press the
-family on the particulars."
+"There is a will, sir, drawn up through the family's solicitors in the
+usual way. Since you ask, I don't suppose there is any great harm in
+telling you its shape. Mrs. Darnley has the use of the house and an
+income for as long as she remains a widow. On her death or remarriage
+the estate - the house and the bulk of the capital - passes to Miss
+Millicent outright. That is as much as I understand of it, sir, and I
+would ask you not to trouble the family with questions about the
+particulars."
 
 +mellors dismissal warning letter job position colonel
 "The Colonel did mention, sir, that he had cause to write to Mellors
@@ -403,9 +398,11 @@ affair mellors sarah (summerhouse/summer) together secret lovers
 
 money mining peru ruin redvers colonel
 "I could not say what passed between the Colonel and Sir Redvers,
-sir - it is not my place to listen at doors. I will say Sir Redvers
-arrived rather suddenly yesterday, without prior arrangement, which
-struck me as unusual for a gentleman of his standing."
+sir. I understand from the family that they were closeted in the
+study together for some while after 10:00, but it is not my place to
+listen at doors. I will say Sir Redvers arrived rather suddenly
+yesterday, without prior arrangement, which struck me as unusual for
+a gentleman of his standing."
 
 police investigation scotland yard inspector detective think here
 "I have every confidence you will get to the bottom of it, sir. The

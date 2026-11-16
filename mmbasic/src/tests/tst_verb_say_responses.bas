@@ -910,7 +910,7 @@ Sub test_billiard_glasses()
   assert_response("Who played billiards after dinner?", "We had a frame or two after dinner", 1)
 
   target_suspect("redvers")
-  assert_response("Who played billiards after dinner?", "A game and some port, as I told you.", 1)
+  assert_response("Who played billiards after dinner?", "A game and some port.", 1)
 End Sub
 
 Sub test_ashtray()
@@ -1242,7 +1242,7 @@ Sub test_master_bedroom()
   assert_response("Tell me about the master bedroom", "I don't make a habit of going into Daddy's room.", 1)
 
   target_suspect("bagsby")
-  assert_response("Tell me about the master bedroom", "One side of the bed had been slept in, sir", 1)
+  assert_response("Tell me about the master bedroom", "Only one side of the bed had been slept in", 1)
 End Sub
 
 Sub test_summer_house()

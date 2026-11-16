@@ -695,7 +695,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     assertResponse('Who played billiards after dinner?', 'We had a frame or two after dinner', true);
 
     target('redvers');
-    assertResponse('Who played billiards after dinner?', 'A game and some port, as I told you.', true);
+    assertResponse('Who played billiards after dinner?', 'A game and some port.', true);
   });
 
   it('Whose is the stub in the ashtray?', () => {
@@ -1003,7 +1003,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     assertResponse('Tell me about the master bedroom', "I don't make a habit of going into Daddy's room.", true);
 
     target('bagsby');
-    assertResponse('Tell me about the master bedroom', 'One side of the bed had been slept in, sir', true);
+    assertResponse('Tell me about the master bedroom', 'Only one side of the bed had been slept in', true);
   });
 
   it('Tell me about the summer house', () => {
