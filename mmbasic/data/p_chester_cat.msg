@@ -85,6 +85,11 @@ violence.@
 @
 "Hetchoo!"
 
+perfume
+The cat sniffs the air, wrinkles his nose and sneezes.@
+@
+"Hetchoo!"
+
 +(die/bullet/bullets/wound/cause) | +how +murder
 The cat wrinkles his nose at the word and carries on washing.@
 @

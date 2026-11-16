@@ -107,6 +107,14 @@ old boy."
 handkerchief
 "I don't know whose handkerchief it is."
 
+perfume
+!requires x_handkerchief x_perfume
+"Same scent, you say? I can't say I noticed either, old boy. Never been near
+enough to a lady's dressing table to know one bottle from another."
+
+perfume
+"Scent, old boy? Millicent's department, not mine."
+
 +colonel +argue
 "Good lord, no - quite the opposite, old boy. He gave his blessing
 for Millicent and me that very afternoon. Can't think why I'd have

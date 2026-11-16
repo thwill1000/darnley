@@ -117,8 +117,8 @@ describe('parseAdditionalExits()', () => {
 });
 
 describe('parseObjects()', () => {
-  it('parses exactly 70 objects (including the 11 people)', () => {
-    expect(parseObjects(adventText)).toHaveLength(70);
+  it('parses exactly 71 objects (including the 11 people)', () => {
+    expect(parseObjects(adventText)).toHaveLength(71);
   });
 
   it('parses the first object, a person', () => {
@@ -165,8 +165,8 @@ describe('parseObjects()', () => {
 });
 
 describe('parseSynonyms()', () => {
-  it('parses exactly 49 synonym entries', () => {
-    expect(parseSynonyms(adventText)).toHaveLength(49);
+  it('parses exactly 50 synonym entries', () => {
+    expect(parseSynonyms(adventText)).toHaveLength(50);
   });
 
   it('parses the first synonym entry, mapping aliases back to "argue"', () => {
@@ -220,12 +220,12 @@ describe('parseClues()', () => {
 });
 
 describe('parseMessages()', () => {
-  it('parses 129 unique tags, 130 entries total (a few tags have more than one entry)', () => {
+  it('parses 130 unique tags, 133 entries total (a few tags have more than one entry)', () => {
     const messages = parseMessages(messagesText);
-    expect(messages.size).toBe(129);
+    expect(messages.size).toBe(130);
     let totalEntries = 0;
     for (const entries of messages.values()) totalEntries += entries.length;
-    expect(totalEntries).toBe(130);
+    expect(totalEntries).toBe(133);
   });
 
   it('parses INTRO as a single entry with no directives', () => {

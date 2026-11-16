@@ -104,7 +104,18 @@ key
 "key response"
 
 handkerchief
+!requires x_handkerchief x_perfume
+"handkerchief response given handkerchief and perfume"
+
+handkerchief
 "handkerchief response"
+
+perfume
+!requires x_handkerchief x_perfume
+"perfume response given handkerchief and perfume"
+
+perfume
+"perfume response"
 
 +colonel +argue
 !requires x_newspaper

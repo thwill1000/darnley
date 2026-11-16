@@ -84,6 +84,8 @@ add_test("Did you read the newspaper? (after the newspaper is found)", "test_new
 add_test("What do you know about the letter on the Colonel's desk?", "test_letter")
 add_test("Who had the keys to the study?", "test_keys")
 add_test("Who dropped this handkerchief?", "test_handkerchief")
+add_test("Tell me about the perfume.", "test_perfume")
+add_test("Tell me about the perfume. (once the perfume and handkerchief are found)", "test_perfume_both")
 add_test("What did you think of Colonel Darnley?", "test_opinion_colonel")
 add_test("What do you think of Sarah Darnley?", "test_opinion_sarah")
 add_test("What do you think of Millicent Darnley?", "test_opinion_millicent")
@@ -561,6 +563,102 @@ Sub test_handkerchief()
   assert_response("who dropped these handkerchiefs", "handkerchief response")
   assert_response("who dropped these hankerchiefs", "handkerchief response")
   assert_response("who dropped these hankys", "handkerchief response")
+
+  ' Both objects examined: the template gives its cross-referencing answer,
+  ' but either flag on its own is not enough.
+  reset_flags("x_handkerchief")
+  assert_response("whose handkerchief is this", "handkerchief response")
+  reset_flags("x_perfume")
+  assert_response("whose handkerchief is this", "handkerchief response")
+  reset_flags("x_handkerchief", "x_perfume")
+  assert_response("whose handkerchief is this", "handkerchief response given handkerchief and perfume")
+
+  ' Sarah is certain until both objects have been found, then she hedges.
+  reset_flags("")
+  target_suspect("sarah")
+  assert_response("whose handkerchief is this", "You found it in the summer house?", 1)
+  reset_flags("x_handkerchief")
+  assert_response("whose handkerchief is this", "You found it in the summer house?", 1)
+  reset_flags("x_perfume")
+  assert_response("whose handkerchief is this", "You found it in the summer house?", 1)
+  reset_flags("x_handkerchief", "x_perfume")
+  assert_response("whose handkerchief is this", "[[reset:She does not answer at once", 1)
+End Sub
+
+Sub test_perfume()
+  assert_response("perfume", "perfume response")
+  assert_response("scent", "perfume response")
+  assert_response("Tell me about the perfume", "perfume response")
+  assert_response("Whose scent is this?", "perfume response")
+  assert_response("What about the perfume bottle on the dressing table?", "perfume response")
+
+  ' Either flag on its own is not enough to unlock the gated entry.
+  reset_flags("x_handkerchief")
+  assert_response("Tell me about the perfume", "perfume response")
+  reset_flags("x_perfume")
+  assert_response("Tell me about the perfume", "perfume response")
+
+  reset_flags("")
+  target_suspect("sarah")
+  assert_response("tell me about the perfume", "That is mine, Inspector.", 1)
+
+  target_suspect("millicent")
+  assert_response("tell me about the perfume", "I don't go into that room", 1)
+
+  target_suspect("bagsby")
+  assert_response("tell me about the perfume", "I dust that table, sir", 1)
+
+  target_suspect("goodbody")
+  assert_response("tell me about the perfume", "Upstairs business, dear.", 1)
+
+  target_suspect("billingsgate")
+  assert_response("tell me about the perfume", "The ladies' toilet articles", 1)
+
+  target_suspect("arthur")
+  assert_response("tell me about the perfume", "Scent, old boy?", 1)
+
+  target_suspect("redvers")
+  assert_response("tell me about the perfume", "Scent? I've no use for it", 1)
+
+  target_suspect("mellors")
+  assert_response("tell me about the perfume", "Do I look like I'd know anything about scent?", 1)
+
+  target_suspect("chester")
+  assert_response("tell me about the perfume", "[[reset:The cat sniffs the air", 1)
+
+  target_suspect("constable")
+  assert_response("tell me about the perfume", "Not much I can say to that", 1)
+End Sub
+
+Sub test_perfume_both()
+  reset_flags("x_handkerchief", "x_perfume")
+  assert_response("perfume", "perfume response given handkerchief and perfume")
+  assert_response("scent", "perfume response given handkerchief and perfume")
+  assert_response("Whose scent is this?", "perfume response given handkerchief and perfume")
+
+  target_suspect("sarah")
+  assert_response("tell me about the perfume", "It is my scent, yes.", 1)
+
+  target_suspect("millicent")
+  assert_response("tell me about the perfume", "I couldn't swear that a handkerchief smelt", 1)
+
+  target_suspect("bagsby")
+  assert_response("tell me about the perfume", "It's Mrs. Sarah's, sir", 1)
+
+  target_suspect("goodbody")
+  assert_response("tell me about the perfume", "Scent, dear?", 1)
+
+  target_suspect("billingsgate")
+  assert_response("tell me about the perfume", "It is not my place to comment on the ladies' toilet articles", 1)
+
+  target_suspect("arthur")
+  assert_response("tell me about the perfume", "Same scent, you say?", 1)
+
+  target_suspect("redvers")
+  assert_response("tell me about the perfume", "Same scent? Damned if I could tell you.", 1)
+
+  target_suspect("mellors")
+  assert_response("tell me about the perfume", "Don't know anything about scent", 1)
 End Sub
 
 Sub test_opinion_colonel()

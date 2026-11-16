@@ -123,6 +123,7 @@ OBJ262_FOOTPRINTS_SH|Footprints|footprints bootprints shoeprints prints|LOC019_S
 OBJ263_STONE|Small stone|stone rock|LOC007_COLONELS_STUDY|1|1
 OBJ264_FOOTPRINTS_OH|Footprints|footprints bootprints shoeprints prints|LOC004_OUTHOUSES|0|100
 OBJ265_FOOTPRINTS_MZ|Footprints|footprints bootprints shoeprints prints|LOC011_MAZE|0|100
+OBJ266_PERFUME|Perfume|perfume scent bottle|LOC027_MASTER_BEDROOM|1|1
 
 !synonyms
 argue|argued|argument|arguing|row|quarrel|quarrelled|quarrelling
@@ -155,6 +156,7 @@ money|finance|finances|financial|business|shares|debt|debts
 murder|murdered|kill|killed
 murderer|killer
 newspaper|paper
+perfume|perfumes|scent|scents
 photographs|photos
 poacher|poachers|poaching|poached
 policeman|constable|bobby|pegg

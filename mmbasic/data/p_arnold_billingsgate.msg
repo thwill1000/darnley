@@ -109,6 +109,14 @@ been of no use."
 handkerchief
 "I don't know anything about it."
 
+perfume
+!requires x_handkerchief x_perfume
+"It is not my place to comment on the ladies' toilet articles, sir, nor can I
+say what a handkerchief smells of."
+
+perfume
+"The ladies' toilet articles are not a matter for me, sir."
+
 +colonel +argue
 "It is not my place to comment on the family's private business, sir.
 I will say the atmosphere at dinner was not entirely comfortable, and
