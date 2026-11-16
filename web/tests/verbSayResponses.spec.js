@@ -986,7 +986,6 @@ describe('verbSay() against the real template/suspect .msg files', () => {
   it('Tell me about the master bedroom', () => {
     all('master bedroom response', [
       'Tell me about the master bedroom',
-      'Tell me about the sleeping draught',
       'Tell me about the dressing table',
       'What about the master bedroom?',
       "What about the Colonel's bedroom?",
@@ -1145,6 +1144,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       'xyzzy plugh',
       'doormat',
       'door-mat',
+      'Tell me about the sleeping draught',
     ]);
   });
 });

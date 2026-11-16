@@ -214,7 +214,7 @@ daimler car motor saloon garage
 "Rather grim, seeing a police car parked on our own drive. I try not to look
 at it when I pass the window."
 
-+(master/colonel) +bedroom | draught |dressing
++(master/colonel) +bedroom | dressing
 "I don't make a habit of going into Daddy's room. I couldn't tell you
 what's in it."
 

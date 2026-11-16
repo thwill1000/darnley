@@ -203,7 +203,7 @@ daimler car motor saloon garage
 +police +(car/saloon)
 "police car response"
 
-+(master/colonel) +bedroom | draught | dressing
++(master/colonel) +bedroom | dressing
 "master bedroom response"
 
 (dinner/supper/coffee)
