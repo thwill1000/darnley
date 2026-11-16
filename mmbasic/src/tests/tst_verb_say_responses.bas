@@ -1226,7 +1226,6 @@ End Sub
 
 Sub test_master_bedroom()
   assert_response("Tell me about the master bedroom", "master bedroom response")
-  assert_response("Tell me about the sleeping draught", "master bedroom response")
   assert_response("Tell me about the dressing table", "master bedroom response")
   assert_response("What about the master bedroom?", "master bedroom response")
   assert_response("What about the Colonel's bedroom?", "master bedroom response")
@@ -1444,4 +1443,5 @@ Sub test_wildcard_fallback()
   assert_response("xyzzy plugh", "wildcard response")
   assert_response("doormat", "wildcard response")
   assert_response("door-mat", "wildcard response")
+  assert_response("Tell me about the sleeping draught", "wildcard response")
 End Sub

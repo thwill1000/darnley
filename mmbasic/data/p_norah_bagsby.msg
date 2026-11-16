@@ -205,7 +205,7 @@ daimler car motor saloon garage
 "Oh, I saw it from the landing window, sir. Gave me quite a start, seeing a
 motor car sat there on our own drive first thing."
 
-+(master/colonel) +bedroom | draught | dressing
++(master/colonel) +bedroom | dressing
 "Only one side of the bed had been slept in, sir, when I looked in earlier.
 I haven't done the room yet this morning."
 

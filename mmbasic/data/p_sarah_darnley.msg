@@ -249,7 +249,7 @@ sits idle out there."
 "It seems dreadfully out of place doesn't it. I suppose it had to come,
 but I wish it hadn't."
 
-+(master/colonel) +bedroom | draught | dressing
++(master/colonel) +bedroom | dressing
 "I don't see what my bedroom has to do with anything, Inspector."
 
 (dinner/supper/coffee)
