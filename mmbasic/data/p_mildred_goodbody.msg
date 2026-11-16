@@ -119,8 +119,7 @@ go in to see."
 money, but the Colonel obviously didn't."
 
 +redvers (get/think) with
-"I believe he was very cross with the Colonel about some business
-dealings."
+"I believe he was very cross with the Colonel about something."
 
 +(billingsgate/butler) (get/think) with
 "A gentleman. Very loyal to Colonel Darnley."
@@ -229,10 +228,10 @@ too much to see to in the kitchen this morning."
 supper at half past nine."
 
 events yesterday murder last happened
-"Last night I cooked and washed up with Norah. At about 10:30 I heard a loud
-bang, it gave me quite a shock. Not long after we went to bed; me and Norah
-behind the curtain and Mr. B. on the other side. We had to muck in with Mr. B.
-because Sir Redvers had turned up unexpectedly and taken our room.@
+"Last night I cooked and washed up with Norah. At about 10:30 I heard a
+loud bang, which gave me quite a shock. Not long after we went to bed; me and
+Norah behind the curtain and Mr. B. on the other side. We had to muck in with
+Mr. B. because Sir Redvers had turned up unexpectedly and taken our room.@
 @
 I was woken up by a shot at 11:20 (according to my clock); the others
 were still asleep. I didn't bother 'cos I thought it was poachers. A few
@@ -268,9 +267,8 @@ up so sudden - me and Norah and Mr. B. were all down in his pantry
 that night, nowhere near him."
 
 +(confirm/corroborate/vouch/alibi/with) +(servant/bagsby/billingsgate/goodbody/butler/cook/maid) you
-"We was all three together, dear, same as I said - me, Norah and
-Mr. B. in his pantry from 9:30. Course, we was asleep by half
-ten, so I couldn't swear to any of us after that."
+"We was all three together, dear - me, Norah and Mr. B. in his pantry from 9:30.
+Course, we was asleep by 10:30, so I couldn't swear to any of us after that."
 
 +(confirm/corroborate/vouch/alibi/with) +(mellors/gamekeeper) you
 "Nothing to do with me, dear. Mr. Mellors keeps to his cottage of an
@@ -314,8 +312,8 @@ came straight down to the kitchen to tell me, bless her."
 
 +who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
 "I try not to speculate, it's not my place. Though I'll say Sir
-Redvers had an almighty row with the Colonel that evening - words
-were raised. Make of that what you will."
+Redvers turned up out of the blue yesterday in a black temper, and
+the house hasn't felt right since. Make of that what you will."
 
 +(stone/rock)
 "A stone, dear? So I'm told - Mr. Coniston threw it through the
@@ -356,9 +354,9 @@ affair mellors sarah (summerhouse/summer) together secret lovers
 care to guess at."
 
 money mining peru ruin redvers colonel
-"I don't know the ins and outs of it, dear, but there was a queer
-tension in the house since Sir Redvers arrived. Mr. B. said the two
-of them were shut up in the study a good while, talking business."
+"I don't know the ins and outs of it, dear, but there was a queer tension in the
+house since Sir Redvers arrived. Mr. B. had it from the family that the two of
+them were shut up in the study a good while, talking business."
 
 police investigation scotland yard inspector detective think here
 "Well, someone's got to sort this out, haven't they? You ask what

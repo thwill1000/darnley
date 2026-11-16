@@ -85,16 +85,15 @@ and everything since. Ask one of the ladies, more their line than
 mine."
 
 letter
-"The letter certainly wasn't addressed to me. Darnley would have
-called me by name, not 'Dear Sir' - after all we were friends."
+"I know nothing of any letter. If Darnley had anything to say to me
+he said it to my face - we were friends twenty years."
 
 +wine (glass/glasses) | billiards
-"A game and some port, as I told you. Tidying up after is the servants'
-business."
+"A game and some port. Tidying up after is the servants' business."
 
 +(ashtray/ashtrays) (cigar/cheroot)
-"I smoke my pipe and the occasional Havana. I've said so. Don't ask me
-who else uses the ashtrays."
+"I smoke my pipe and the occasional Havana. Don't ask me who else uses
+the ashtrays."
 
 key
 "Never saw a key. I left by the hall door at half past ten and
@@ -195,9 +194,8 @@ everything else in this wretched weather. Can't say it interests me
 in the slightest."
 
 pipe
-"Yes, that's mine. I told you - pipe and the occasional Havana, that's
-my habit. Nothing sinister in a man smoking his own pipe in his own
-room."
+"Yes, that's mine. Pipe and the occasional Havana, that's my habit.
+Nothing sinister in a man smoking his own pipe in his own room."
 
 bookshelf books
 "Whose books? I couldn't tell you, and I can't say I've had occasion to browse
@@ -291,7 +289,7 @@ movements."
 
 +(confirm/corroborate/vouch/alibi/with) +redvers you
 "Vouch for myself? Damned if I know how you expect that to work, man.
-You've already had my account - take it or leave it."
+You have my word - take it or leave it."
 
 +(confirm/corroborate/vouch/alibi/with) +(servant/bagsby/billingsgate/goodbody/butler/cook/maid) you
 "Can't help you there. I've no notion what the staff get up to of an

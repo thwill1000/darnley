@@ -87,14 +87,15 @@ LOC005_ORNAMENTAL_POND
 At the western end of a [[green:Paved terrace]] stands an ornamental
 [[green:pond]], its surface frozen and hard. Four stone pedestals around it once
 held [[green:marble statues]] - the Four Seasons - but one is missing.
-[[green:Footprints]] in the snow circle the pond's edge.
+[[green:Footprints]] in the snow lead from the terrace to the pond's edge and
+back.
 
 LOC006_TERRACE
 A paved terrace extends from the house westward toward an
 [[green:Ornamental pond]]. The snow shows a profusion of [[green:footprints]] -
 many feet have crossed here. To the north, beyond a shut door in a high stone
 wall, lies the [[green:Orchard]], east a [[green:french window]] into the
-[[green:Colonel's Study]], and south the [[green:Tennis court]].
+[[green:Colonel's study]], and south the [[green:Tennis court]].
 
 LOC007_COLONELS_STUDY
 The body of [[green:Colonel Darnley]] lies upon a Turkish carpet, a
@@ -361,7 +362,7 @@ and mind it.
 
 OBJ201_POND
 !provides x_pond
-Near the empty pedestal the ice is thinner as if it has frozen again after
+Near the empty pedestal the ice is thinner as if it had frozen again after
 having been broken. A stout [[green:broken branch]] lies discarded on the ice
 nearby. Beneath the ice you can see the [[green:sunken statue]] and a
 [[green:revolver]].
@@ -385,8 +386,8 @@ cemented to their plinths. Some strength would be required to move
 one.
 
 OBJ205_FOOTPRINTS_POND
-Only one set of footprints can be made out in the snow. They are of flat-footed
-bootprints coming to and from the terrace.
+Only one set of footprints can be made out in the snow: flat-footed bootprints
+coming to and from the terrace.
 
 OBJ206_SLIPPERS
 The slippers are slightly damp and stained with mud. The mud appears fresh and
@@ -408,7 +409,7 @@ bears the initials "R.M." burnt into it.
 
 OBJ209_BOOTS
 !provides x_boots new_clue
-All these boots are polished clean except for a large mud stained pair.
+All these boots are polished clean except for a large mud-stained pair.
 
 OBJ212_FOOTPRINTS_KG
 Flat-footed bootprints and slipper prints can be seen going to and from the
@@ -423,10 +424,10 @@ a spoon beside it.
 
 OBJ214_WARDROBE
 !provides x_wardrobe
-As well as clothes the wardrobe contains a selection of men's and women's [[green:shoes]].
-The wardrobe is impressive - made of polished mahogany with ornate brass handles.
-Inside hang numerous dresses, petticoats, and undergarments in organised rows.
-The men's clothing includes smoking jackets, dinner suits, and country wear.
+The wardrobe is impressive - made of polished mahogany with ornate brass
+handles. Inside hang numerous dresses, petticoats, and undergarments in
+organised rows, alongside the men's smoking jackets, dinner suits, and country
+wear. Beneath them stands a selection of men's and women's [[green:shoes]].
 
 OBJ215_CIGARS
 The humidor is mahogany with a glass front, bearing the inscription
@@ -439,8 +440,7 @@ OBJ216_DRESSING_TABLE
 The dressing table is of polished walnut with a triple mirror and a glass top
 beneath which family photographs have been arranged. The surface holds the usual
 feminine effects - powder, scent bottles, a hairbrush and comb in silver plate -
-all neatly ordered. One scent bottle has been knocked on its side and not
-righted, which seems at odds with the general tidiness of the room.
+all neatly ordered.
 
 OBJ217_SHOES
 !requires x_wardrobe
@@ -483,8 +483,7 @@ OBJ224_BOOKSHELF
 A modest shelf of books: volumes on household management, domestic accounts, and
 the improving literature favoured by the respectable working man. A Bible, much
 used. A copy of Smiles's Self-Help with a name written inside the front cover in
-careful copperplate - Arnold Billingsgate, 1889. The books tell you rather more
-about their owner than he may be willing to tell you himself.
+careful copperplate - Arnold Billingsgate, 1889.
 
 OBJ225_FRENCH_WINDOW_TERRACE
 One pane has a jagged hole broken through it. There is no glass on the terrace
@@ -497,22 +496,20 @@ A mess of footprints including flat-footed bootprints, slipper prints and some
 men's shoeprints.
 
 P_THE_BODY
-The body is dressed in a smoking jacket open at the chest. There is a
-bloody bullet wound in the front of his dress-shirt. The bullet has not
-passed through the body. Evidently the Colonel had got out of his
-chair on hearing or seeing his murderer. The impact of the bullet had
-caused him to spin and fall and the furniture had got in the way,
-further deflecting the body. It is no longer possible to tell the
-direction of the shot.
+The body lies sprawled on its back, limbs fallen at an awkward angle,
+dressed in a smoking jacket open at the chest. There is a bloody
+bullet wound in the front of the dress-shirt and no exit wound.
+Nothing in the position of the body or the furniture shows which way
+the shot came from.
 
 OBJ228_PORT_GLASS
 The port glass is one of a set engraved with the words 'Floreat
 Darnley'. A crust of dried liquid is at the bottom and lip marks on the
-rim though no trace of lipstick.
+rim. There is no lipstick.
 
 OBJ229_TANTALUS
 The tantalus is made of cherrywood. It holds an empty decanter
-with a silver label marked 'Brandy' and a half full decanter marked
+with a silver label marked 'Brandy' and a half-full decanter marked
 'Port'. The wooden lid that normally holds them in place stands open.
 
 OBJ230_LETTER
@@ -529,10 +526,11 @@ but only one remains. The missing revolver has left a clear outline in the felt
 backing, showing exactly where it once rested.
 
 OBJ232_FRENCH_WINDOW_STUDY
-The french window has a jagged hole where one pane has been broken. The glass
-lies sprinkled across the carpet and the sill. The hole is roughly hand-sized,
-and a hand could reach through it to the catch on the inside of the frame. The
-frame is solid mahogany and bears no marks of forcing beyond the broken pane.
+The french window has a jagged hole where one pane has been broken.
+The glass lies sprinkled across the carpet and the sill. The hole is
+roughly hand-sized, and the catch is on the inside of the frame. The
+frame is solid mahogany and bears no marks of forcing beyond the
+broken pane.
 
 OBJ233_SHATTERED_GLASS
 !provides x_shattered_glass
@@ -574,12 +572,8 @@ The third is part-filled with dark red wine. They are fine crystal, part of a
 set, with delicate stems.
 
 OBJ241_ASHTRAY
-An ashtray rests atop the billiard room bookcase and contains the remains of
-three cigars - one Havana and two cheroots. The ash is dark and densely packed,
-suggesting these cigars were smoked in succession without pause, and were clenched
-hard rather than smoked in a relaxed manner. The Havana is of the finest quality,
-yet it has been stubbed out half-smoked. One of the cheroots is charred and blackened
-as if it burned intensely before being discarded.
+An ashtray rests atop the billiard room bookcase and contains the
+remains of three cigars - one Havana and two cheroots.
 
 OBJ243_FOOTPRINTS_DRIVE
 Flat-footed bootprints go east and west along the gravel path in front of the
@@ -600,10 +594,9 @@ dust. The tobacco inside is coarse and poor quality.
 
 OBJ246_HANDKERCHIEF
 !provides x_handkerchief new_clue
-A lady's handkerchief of plain linen with delicate lace edging and a faint
-perfume - the scent is floral, sweet, and distinctly expensive. The handkerchief
-is slightly damp and bears traces of dirt on one corner. The perfume is
-distinctive - not common, and quite costly.
+A lady's handkerchief of plain linen with delicate lace edging. It is slightly
+damp and bears traces of dirt on one corner. It carries a faint perfume
+- floral, sweet, and distinctly expensive, not a common scent.
 
 OBJ247_FOOTPRINTS_WL
 Hobnailed bootprints can be seen in the snow going to and from the drive and the
@@ -618,7 +611,7 @@ Deep and purposeful, hobnailed bootprints can be seen in the snow going to and
 from the stables and the cottage.
 
 OBJ250_CIGARETTE_ENDS_GC
-These cigarette ends come from a cheap, mass produced brand. There are
+These cigarette ends come from a cheap, mass-produced brand. There are
 perhaps twenty of them heaped in a saucer on the table, with a few more
 dropped on the hearth. The tobacco is coarse and cheap. Ronald Mellors
 apparently smokes incessantly, and his choice of cigarette reflects his
@@ -648,10 +641,9 @@ cigarette. It was wedged in a crevice of the statue as if placed there
 deliberately or dropped in haste.
 
 OBJ254_MUSIC_ROOM_ASHTRAY
-A brass ashtray of considerable quality sits on the piano. It contains a single
-cigar stub - a cheroot by the appearance - partially smoked and carefully stubbed
-out. The cheroot bears the tooth marks of someone who smoked it clenched between their
-teeth.
+A brass ashtray of considerable quality sits on the piano. It contains
+a single cigar stub - a cheroot by the appearance - partially smoked
+and stubbed out.
 
 OBJ255_ROOK
 A rook picks at something in the snow, unconcerned by your approach. It
@@ -661,13 +653,10 @@ back to see it has already dropped down again to resume its picking,
 as if you had never been there at all.
 
 OBJ256_SHOTGUNS
-Two shotguns are mounted on the wall above the hearth - plain,
-serviceable working guns rather than anything a gentleman would take
-out for sport, kept clean and ready for the vermin and pest control
-that are part of a gamekeeper's daily work. Both barrels are spotless
-and smell faintly of gun oil rather than powder - if they have been
-fired recently, they have since been thoroughly cleaned. A box of
-cartridges sits nearby on a shelf, a handful missing.
+Two plain, serviceable shotguns are mounted on the wall above the
+hearth. The barrels are spotless and smell faintly of gun oil rather
+than powder. A box of cartridges sits nearby on a shelf, a handful
+missing.
 
 OBJ257_STACKED_FURNITURE
 A stack of furniture and effects from the west guest room, temporarily
@@ -677,10 +666,9 @@ the kitchen.
 
 OBJ258_BRANCH
 !requires x_pond
-A fallen branch, about the length of a walking stick and no thicker than a
-wrist - light enough to wield with one hand. One end is scuffed and split,
-and the wood there is dark with damp, stiff with a rime of fresh frost as
-though it had been soaked and left to freeze where it lay.
+A fallen branch, about the length of a walking stick and no thicker
+than a wrist. One end is scuffed and split, and the wood there is dark
+with damp and stiff with a rime of fresh frost.
 
 OBJ259_HORSE
 Colonel Darnley's bay hunter stands in its loose box, breath steaming in the

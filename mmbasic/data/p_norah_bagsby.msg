@@ -205,9 +205,9 @@ daimler car motor saloon garage
 "Oh, I saw it from the landing window, sir. Gave me quite a start, seeing a
 motor car sat there on our own drive first thing."
 
-+(master/colonel) +bedroom | draught |dressing
-"One side of the bed had been slept in, sir, but I haven't done that room
-this morning."
++(master/colonel) +bedroom | draught | dressing
+"Only one side of the bed had been slept in, sir, when I looked in earlier.
+I haven't done the room yet this morning."
 
 (dinner/supper/coffee)
 "I helped Mrs. Goodbody with dinner, sir, and served the ladies' coffee in
@@ -226,7 +226,7 @@ Last thing was I woke when Mr. Coniston woke Mr. B., but I stayed
 where I was."
 
 +(bang/bangs/shot/shots) (time/what/when) (hear/heard)
-"Just before we went to bed there was a bang, like I said - about
+"Just before we went to bed there was a bang - about
 10:30, I think. Mrs. G. said it was a door. I didn't hear anything
 after that, sir, I was asleep."
 
@@ -333,7 +333,7 @@ affair mellors sarah (summerhouse/summer) together secret lovers
 
 money mining peru ruin redvers colonel
 "I don't know much, sir, only that Sir Redvers seemed ever so cross
-when he arrived. Mrs. G. said it was money troubles, but I don't
+when he arrived. Mrs. G. said it was something to do with business, but I don't
 know more than that."
 
 police investigation scotland yard inspector detective think here
