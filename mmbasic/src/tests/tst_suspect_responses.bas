@@ -70,6 +70,9 @@ add_test("Sarah Darnley's .msg file matches template entry order", "test_msg_ord
 add_test("Chester Cat's .msg file matches template entry order", "test_msg_order_chester")
 add_test("Police Constable's .msg file matches template entry order", "test_msg_order_police")
 add_test("Every .msg file has balanced double-quotes in each entry", "test_msg_balanced_quotes")
+add_test("Perfume description cross-references the handkerchief only once that is found", "test_perfume_desc_gating")
+add_test("Handkerchief description cross-references the perfume only once that is found", "test_hanky_desc_gating")
+add_test("Examining the perfume provides x_perfume", "test_perfume_provides_flag")
 
 run_tests()
 End
@@ -165,4 +168,53 @@ Sub test_msg_balanced_quotes()
   assert_balanced_quotes("p_sarah_darnley.msg")
   assert_balanced_quotes("p_chester_cat.msg")
   assert_balanced_quotes("p_police_constable.msg")
+End Sub
+
+Sub test_perfume_desc_gating()
+  state.reset()
+  state.set_flag("x_dressing_table") ' Needed to find the perfume at all.
+  assert_string_equals("x_dressing_table", selected_requires$("OBJ266_PERFUME"))
+
+  state.set_flag("x_perfume") ' Its own flag must not unlock the cross-reference.
+  assert_string_equals("x_dressing_table", selected_requires$("OBJ266_PERFUME"))
+
+  state.set_flag("x_handkerchief")
+  assert_string_equals("x_handkerchief", selected_requires$("OBJ266_PERFUME"))
+End Sub
+
+' Returns the first "!requires" token of the messages.dat entry that
+' find_message%() selects for tag$ ("" if the selected entry has none).
+Function selected_requires$(tag$)
+  Local requires$(MAX_WORDS) Length MAX_WORD_LENGTH
+  Local provides$(MAX_WORDS) Length MAX_WORD_LENGTH
+  Local first_line$
+  If find_message%(tag$, requires$(), provides$(), first_line$) <> 0 Then
+    Error "message not found: " + tag$
+  EndIf
+  Close #1
+  selected_requires$ = requires$(1)
+End Function
+
+Sub test_hanky_desc_gating()
+  state.reset()
+  assert_string_equals("", selected_requires$("OBJ246_HANDKERCHIEF"))
+
+  state.set_flag("x_handkerchief") ' Its own flag must not unlock the cross-reference.
+  assert_string_equals("", selected_requires$("OBJ246_HANDKERCHIEF"))
+
+  state.set_flag("x_perfume")
+  assert_string_equals("x_perfume", selected_requires$("OBJ246_HANDKERCHIEF"))
+End Sub
+
+Sub test_perfume_provides_flag()
+  Local requires$(MAX_WORDS) Length MAX_WORD_LENGTH
+  Local provides$(MAX_WORDS) Length MAX_WORD_LENGTH
+  Local first_line$
+  state.reset()
+  state.set_flag("x_dressing_table") ' Needed to find the perfume at all.
+  assert_int_equals(0, state.has_flag%("x_perfume"))
+  assert_int_equals(0, find_message%("OBJ266_PERFUME", requires$(), provides$(), first_line$))
+  Close #1
+  state.add_flags(provides$())
+  assert_int_equals(1, state.has_flag%("x_perfume"))
 End Sub

@@ -82,6 +82,13 @@ house."
 handkerchief
 "Do I look like I use lady's hankies?"
 
+perfume
+!requires x_handkerchief x_perfume
+"Don't know anything about scent, on a hanky or a bottle."
+
+perfume
+"Do I look like I'd know anything about scent?"
+
 +colonel +argue
 "Wasn't at the house of an evening, was I. Whatever went on between
 him and his guests is nothing to do with me."

@@ -102,6 +102,13 @@ slammed it behind me - I didn't lock it, and I'd no cause to."
 handkerchief
 "Not mine, obviously. I don't go about with lace and scent, man."
 
+perfume
+!requires x_handkerchief x_perfume
+"Same scent? Damned if I could tell you. Lace and scent aren't my line."
+
+perfume
+"Scent? I've no use for it, and no notion who wears what in this house."
+
 +colonel +argue
 !requires x_newspaper
 He exhales slowly, some of the bluster gone out of him.@

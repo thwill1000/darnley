@@ -118,7 +118,25 @@ know. I understand Billingsgate has a set too, though I've never seen
 them."
 
 handkerchief
+!requires x_handkerchief x_perfume
+She does not answer at once, and when she does her voice is very even.@
+@
+"I said it was not mine, and I find I cannot be quite so certain now. I
+have a great many handkerchiefs, Inspector, and I am careless with them -
+anyone might have picked one up from my room. That is all I can tell you."
+
+handkerchief
 "You found it in the summer house? I'm absolutely sure it isn't mine."
+
+perfume
+!requires x_handkerchief x_perfume
+"It is my scent, yes. I can't imagine what you hope to prove with it, Inspector
+- scent clings to a good many things. Anyone who has been in my room might carry
+it out again."
+
+perfume
+"That is mine, Inspector. I can't think why you would ask about a bottle of
+scent."
 
 +colonel +argue
 "I heard raised voices from the study, Sebastian and Sir Redvers, but

@@ -82,6 +82,16 @@ handkerchief
 "Both the ladies have this sort of hanky. Sometimes Mrs. G. is given
 the older ones."
 
+perfume
+!requires x_handkerchief x_perfume
+"It's Mrs. Sarah's, sir - it stands on her side of the dressing table, and I
+dust round it every morning. I couldn't say about the handkerchief, honest I
+couldn't."
+
+perfume
+"I dust that table, sir, but I never touch the bottles. That one's Mrs. Sarah's,
+I think."
+
 +colonel +argue
 "I never heard anything like that, sir. I don't go where the gentlemen
 are of an evening, that's not my part of the house."

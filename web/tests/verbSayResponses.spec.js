@@ -384,6 +384,79 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       'who dropped this handkerchief', 'who dropped this hankerchief', 'who dropped this hanky',
       'who dropped these handkerchiefs', 'who dropped these hankerchiefs', 'who dropped these hankys',
     ]);
+
+    // Both objects examined: the template cross-references, but one flag alone is not enough.
+    resetFlags('x_handkerchief');
+    assertResponse('whose handkerchief is this', 'handkerchief response');
+    resetFlags('x_perfume');
+    assertResponse('whose handkerchief is this', 'handkerchief response');
+    resetFlags('x_handkerchief', 'x_perfume');
+    assertResponse('whose handkerchief is this', 'handkerchief response given handkerchief and perfume');
+
+    // Sarah is certain until both objects have been found, then she hedges.
+    const sure = 'You found it in the summer house?';
+    target('sarah');
+    resetFlags();
+    assertResponse('whose handkerchief is this', sure, true);
+    resetFlags('x_handkerchief');
+    assertResponse('whose handkerchief is this', sure, true);
+    resetFlags('x_perfume');
+    assertResponse('whose handkerchief is this', sure, true);
+    resetFlags('x_handkerchief', 'x_perfume');
+    assertResponse('whose handkerchief is this', 'She does not answer at once', true);
+  });
+
+  it('Tell me about the perfume.', () => {
+    all('perfume response', [
+      'perfume', 'scent', 'Tell me about the perfume', 'Whose scent is this?',
+      'What about the perfume bottle on the dressing table?',
+    ]);
+
+    // Either flag on its own is not enough to unlock the gated entry.
+    resetFlags('x_handkerchief');
+    assertResponse('Tell me about the perfume', 'perfume response');
+    resetFlags('x_perfume');
+    assertResponse('Tell me about the perfume', 'perfume response');
+
+    resetFlags();
+    const plain = [
+      ['sarah', 'That is mine, Inspector.'],
+      ['millicent', "I don't go into that room"],
+      ['bagsby', 'I dust that table, sir'],
+      ['goodbody', 'Upstairs business, dear.'],
+      ['billingsgate', "The ladies' toilet articles"],
+      ['arthur', 'Scent, old boy?'],
+      ['redvers', "Scent? I've no use for it"],
+      ['mellors', "Do I look like I'd know anything about scent?"],
+      ['chester', 'The cat sniffs the air'],
+      ['constable', 'Not much I can say to that'],
+    ];
+    for (const [key, expected] of plain) {
+      target(key);
+      assertResponse('tell me about the perfume', expected, true);
+    }
+  });
+
+  it('Tell me about the perfume. (once the perfume and handkerchief are found)', () => {
+    resetFlags('x_handkerchief', 'x_perfume');
+    all('perfume response given handkerchief and perfume', [
+      'perfume', 'scent', 'Whose scent is this?',
+    ]);
+
+    const gated = [
+      ['sarah', 'It is my scent, yes.'],
+      ['millicent', "I couldn't swear that a handkerchief smelt"],
+      ['bagsby', "It's Mrs. Sarah's, sir"],
+      ['goodbody', 'Scent, dear?'],
+      ['billingsgate', "It is not my place to comment on the ladies' toilet articles"],
+      ['arthur', 'Same scent, you say?'],
+      ['redvers', 'Same scent? Damned if I could tell you.'],
+      ['mellors', "Don't know anything about scent"],
+    ];
+    for (const [key, expected] of gated) {
+      target(key);
+      assertResponse('tell me about the perfume', expected, true);
+    }
   });
 
   it('What did you think of Colonel Darnley?', () => {

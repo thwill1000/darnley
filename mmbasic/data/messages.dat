@@ -435,10 +435,11 @@ but evidently the Colonel's longstanding and unashamed preference. A military
 man's smoke: practical, strong, and unpretentious.
 
 OBJ216_DRESSING_TABLE
+!provides x_dressing_table
 The dressing table is of polished walnut with a triple mirror and a glass top
 beneath which family photographs have been arranged. The surface holds the usual
-feminine effects - powder, scent bottles, a hairbrush and comb in silver plate -
-all neatly ordered.
+feminine effects - powder, [[green:perfume]] bottles, a hairbrush and comb in
+silver plate - all neatly ordered.
 
 OBJ217_SHOES
 !requires x_wardrobe
@@ -591,6 +592,14 @@ dozen of them scattered about the summer house floor, some trodden into the
 dust. The tobacco inside is coarse and poor quality.
 
 OBJ246_HANDKERCHIEF
+!requires x_perfume
+!provides x_handkerchief new_clue
+A lady's handkerchief of plain linen with delicate lace edging. It is slightly
+damp and bears traces of dirt on one corner. It carries a faint perfume
+- floral, sweet, and distinctly expensive, not a common scent. It is the same
+scent as the perfume found in the master bedroom.
+
+OBJ246_HANDKERCHIEF
 !provides x_handkerchief new_clue
 A lady's handkerchief of plain linen with delicate lace edging. It is slightly
 damp and bears traces of dirt on one corner. It carries a faint perfume
@@ -708,6 +717,19 @@ The hedges have scuffed most of the snow on the paths into a trampled slush.
 Only along the sheltered foot of the hedge can a single trail be followed:
 flat-footed bootprints and slipper prints, both traveling back and forth
 between the outhouses and the avenue of statues.
+
+OBJ266_PERFUME
+!requires x_handkerchief x_dressing_table
+!provides x_perfume
+A cut-glass bottle of scent stands among the toilet things, its silver-topped
+stopper in place. The scent is floral, sweet and distinctly expensive - the same
+as that on the handkerchief found in the summer house.
+
+OBJ266_PERFUME
+!requires x_dressing_table
+!provides x_perfume
+A cut-glass bottle of scent stands among the toilet things, its silver-topped
+stopper in place. The scent is floral, sweet and distinctly expensive.
 
 WHAT_REALLY_HAPPENED
 [[green:What really happened at Darnley Park?]]@

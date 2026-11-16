@@ -96,6 +96,14 @@ handkerchief
 "Mrs. Sarah and Miss Millicent both have handkerchiefs like this one.
 I can't say whose it is."
 
+perfume
+!requires x_handkerchief x_perfume
+"Scent, dear? I smell of onions and gravy by evening. If you want to know about
+bottles on dressing tables, ask Norah - she does the bedrooms."
+
+perfume
+"Upstairs business, dear. Ask Norah, she does the bedrooms."
+
 +colonel +argue
 "Not that I saw, dear, I keep to my kitchen. But there's been a queer
 atmosphere in this house since Sir Redvers arrived, if you want my
