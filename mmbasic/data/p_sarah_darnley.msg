@@ -147,6 +147,10 @@ at the time - gentlemen do quarrel over their business."
 "I'm told he was shot, Inspector. I haven't seen him, and I don't think
 I could."
 
++last +(see/speak) +(colonel/darnley/him) -(night/evening/yesterday/sarah/millicent)
+"I last saw Sebastian when he went into the study with Sir Redvers, a little
+after 10:00. I heard them quarrelling afterwards, but I never saw him again."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "He was somewhat strict and suspicious by nature, but we were happy
 enough."

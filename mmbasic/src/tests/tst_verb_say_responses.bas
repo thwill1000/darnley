@@ -154,6 +154,7 @@ add_test("Tell me about the master bedroom", "test_master_bedroom")
 add_test("Tell me about the summer house", "test_summer_house")
 add_test("Tell me about the gamekeeper's cottage", "test_gamekeepers_cottage")
 add_test("What happened at dinner?", "test_dinner")
+add_test("When did you last see/speak with the Colonel?", "test_last_see_colonel")
 add_test("I accuse you! (but don't have all the clues)", "test_premature_accusation")
 add_test("I accuse you! (the first time)", "test_first_accusation")
 add_test("I accuse you! (subsequent times)", "test_subsequent_accusation")
@@ -278,8 +279,7 @@ Sub test_events()
   assert_response("describe what happened yesterday", "events response")
   assert_response("walk me through the events of that night", "events response")
   assert_response("run me through the events of the murder", "events response")
-  assert_response("When was the last time you spoke to the deceased?", "events response")
-  assert_response("When did you last see the Colonel?", "events response")
+  assert_response("Did you see anything last night?", "events response")
 End Sub
 
 Sub test_why_here()
@@ -1469,6 +1469,18 @@ Sub test_dinner()
 
   target_suspect("mellors")
   assert_response("What happened at dinner?", "Wasn't at the house for dinner.", 1)
+End Sub
+
+Sub test_last_see_colonel()
+  assert_response("When was the last time you spoke to the deceased?", "last saw colonel response")
+  assert_response("When did you last see the Colonel?", "last saw colonel response")
+  assert_response("When did you last speak with him?", "last saw colonel response")
+
+  target_suspect("sarah")
+  assert_response("When did you last see your husband?", "I last saw Sebastian when he went into the study", 1)
+
+  target_suspect("redvers")
+  assert_response("When did you last see Darnley?", "10:30, when I left the study.", 1)
 End Sub
 
 Sub test_premature_accusation()

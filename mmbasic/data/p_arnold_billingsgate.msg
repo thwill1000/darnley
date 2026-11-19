@@ -126,6 +126,11 @@ I withdrew once the port had been served in the billiard room."
 "He was shot, sir - a single bullet through the chest. He lay on the
 rug, and I could not tell you from where the shot was fired."
 
++last +(see/speak) +(colonel/darnley/him) -(night/evening/yesterday/sarah/millicent)
+"After dinner, sir, when I served port in the billiard room and withdrew, a
+little after 9:00. The next I saw of him was when Mr. Coniston and I found him
+in the study."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "The master was a very honest, decent gentleman, and extremely good to his family."
 

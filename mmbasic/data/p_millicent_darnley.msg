@@ -107,6 +107,10 @@ I shouldn't be at all surprised if someone had crossed him."
 +(die/bullet/bullets/wound/cause) | +how +murder
 "Shot, I'm told - in the chest. I haven't seen him and I don't mean to."
 
++last +(see/speak) +(colonel/darnley/him) -(night/evening/yesterday/sarah/millicent)
+"In the lounge, when the men joined us after billiards. Then Arthur and I went to
+the music room, and I never saw Daddy again."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "Daddy was a tyrant but always kind to me. He was always fearful that
 Sarah would leave him for a younger man."

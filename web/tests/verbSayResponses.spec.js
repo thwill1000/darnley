@@ -145,10 +145,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       'describe what happened yesterday',
       'walk me through the events of that night',
       'run me through the events of the murder',
-      'run me through the events of the murder',
-      'run me through the events of the murder',
-      'When was the last time you spoke to the deceased?',
-      'When did you last see the Colonel?',
+      'Did you see anything last night?',
     ]);
   });
 
@@ -1248,6 +1245,19 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
     target('mellors');
     assertResponse('What happened at dinner?', "Wasn't at the house for dinner.", true);
+  });
+
+  it('When did you last see/speak with the Colonel?', () => {
+    all('last saw colonel response', [
+      'When was the last time you spoke to the deceased?',
+      'When did you last see the Colonel?',
+    ]);
+
+    target('sarah');
+    assertResponse('When did you last see your husband?', 'I last saw Sebastian when he went into the study', true);
+
+    target('redvers');
+    assertResponse('When did you last see Darnley?', '10:30, when I left the study.', true);
   });
 
   const accusations = [

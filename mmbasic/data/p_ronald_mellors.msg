@@ -96,6 +96,9 @@ him and his guests is nothing to do with me."
 +(die/bullet/bullets/wound/cause) | +how +murder
 "Shot. That's what I was told. I wasn't there."
 
++last +(see/speak) +(colonel/darnley/him) -(night/evening/yesterday/sarah/millicent)
+"Not yesterday evening, that's certain - I was at my cottage from 8:00."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "Strict but fair. I've said all I'm goin' to say about him."
 
