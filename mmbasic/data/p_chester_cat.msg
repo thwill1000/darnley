@@ -95,6 +95,12 @@ The cat wrinkles his nose at the word and carries on washing.@
 @
 "Mrp."
 
++last +(see/speak) +(colonel/darnley/him) -(night/evening/yesterday/sarah/millicent)
+The cat looks toward the house for a long moment, then returns to washing a
+paw.@
+@
+"Mrow."
+
 +colonel -(millicent/sarah/who) (get/think) with
 The cat's ears go back at the mention of his late master, and for a
 moment he seems almost solemn. Almost.@

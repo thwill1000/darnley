@@ -124,6 +124,11 @@ picked a fight with the man on the happiest day of my life."
 "Shot, old boy. Billingsgate and I found him on the rug with a bullet
 wound in the front of his shirt. Beyond that I'm no doctor."
 
++last +(see/speak) +(colonel/darnley/him) -(night/evening/yesterday/sarah/millicent)
+"When Slingsby asked him into the study at 10:00. Millicent and I went off to
+the music room, and I didn't see him again until Billingsgate and I found him
+on the rug."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "A decent old buffer. When I asked his permission to marry Millicent
 he agreed straight away. I was surprised, I admit it!"

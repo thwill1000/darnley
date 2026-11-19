@@ -113,6 +113,10 @@ honest opinion."
 "Shot, dear - Mr. B. told us after. Through the chest, he said. I didn't
 go in to see."
 
++last +(see/speak) +(colonel/darnley/him) -(night/evening/yesterday/sarah/millicent)
+"I couldn't tell you, dear. I keep to my kitchen, and I'd not had cause to see
+the master since before dinner was served."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "A hard man both in his business dealings and with his family."
 

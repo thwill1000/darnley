@@ -99,6 +99,10 @@ are of an evening, that's not my part of the house."
 +(die/bullet/bullets/wound/cause) | +how +murder
 "He was shot, sir. Mr. B. told us. I didn't see, honest."
 
++last +(see/speak) +(colonel/darnley/him) -(night/evening/yesterday/sarah/millicent)
+"Around dinner, sir. I never saw him after that, honest - I was helping Mrs. G.
+wash up."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "Very strict. I didn't like him."
 

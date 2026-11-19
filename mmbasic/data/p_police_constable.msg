@@ -20,6 +20,9 @@ poacher
 "Shot through the chest, sir, so I was told when the call came in. I've
 not been in to see."
 
++last +(see/speak) +(colonel/darnley/him) -(night/evening/yesterday/sarah/millicent)
+"Never met the gentleman, sir. I only came on duty this morning."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "Never met the gentleman myself, sir. I've only been posted here since the
 alarm was raised this morning."

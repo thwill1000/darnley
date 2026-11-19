@@ -127,6 +127,10 @@ was."
 "Shot, so I hear. Through the chest. I wasn't there and I haven't been
 in to look."
 
++last +(see/speak) +(colonel/darnley/him) -(night/evening/yesterday/sarah/millicent)
+"10:30, when I left the study. Alive and well, I'll swear to it - that's the
+last I saw of him."
+
 +colonel -(millicent/sarah/who) (get/think) with
 "A hard man but very fair. Twenty years I've known him, and I've never had cause
 to complain of him."

@@ -127,6 +127,9 @@ perfume
 +(die/bullet/bullets/wound/cause) | +how +murder
 "cause of death response"
 
++last +(see/speak) +(colonel/darnley/him) -(night/evening/yesterday/sarah/millicent)
+"last saw colonel response"
+
 +colonel -(millicent/sarah/who) (get/think) with
 "colonel darnley opinion response"
 
