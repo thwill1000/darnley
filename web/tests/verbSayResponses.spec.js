@@ -1255,6 +1255,16 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     );
   });
 
+  it('Did you slam the door?', () => {
+    all('door slam response', [
+      'Did you slam the door?',
+      'Did you slam the door at 10:30?',
+      'Did you hear a door slam?']);
+
+    target('redvers');
+    assertResponse('Did you slam the door at 10:30?', 'The one at 10:30?', true);
+  });
+
   const accusations = [
     'accuse',
     'guilty',

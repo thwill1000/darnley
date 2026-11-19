@@ -299,6 +299,10 @@ more of it. I heard nothing further myself; I was woken directly by
 Mr. Coniston at 11:30 with word of the locked study. If there was a
 second sound before then, I'm afraid I slept through it."
 
++door +(slam/slammed/slamming/slams)
+"I took the bang at about 10:30 for a door slamming, sir, given the tempers
+that evening. I did not see which door."
+
 -you +(when/time) +(die/murder)
 "I couldn't say, sir. Mr. Coniston woke me at 11:30 and we found the
 Colonel then. I heard a bang at about 10:30, but I took it for a door."

@@ -95,6 +95,9 @@ time."
 "Wasn't here last night, sir, so I couldn't say. You'd want someone
 who was in the house."
 
++door +(slam/slammed/slamming/slams)
+"I wasn't here last night, sir, so I couldn't say what doors were slamming."
+
 -you +(when/time) +(die/murder)
 "Couldn't say, sir. I only came on duty this morning."
 

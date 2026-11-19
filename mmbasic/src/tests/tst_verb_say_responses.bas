@@ -156,6 +156,7 @@ add_test("Tell me about the gamekeeper's cottage", "test_gamekeepers_cottage")
 add_test("What happened at dinner?", "test_dinner")
 add_test("When did you last see/speak with the Colonel?", "test_last_see_colonel")
 add_test("What size shoes do you wear?", "test_shoes_wear")
+add_test("Did you slam the door?", "test_door_slam")
 add_test("I accuse you! (but don't have all the clues)", "test_premature_accusation")
 add_test("I accuse you! (the first time)", "test_first_accusation")
 add_test("I accuse you! (subsequent times)", "test_subsequent_accusation")
@@ -1493,6 +1494,15 @@ Sub test_shoes_wear()
 
   target_suspect("billingsgate")
   assert_response("What size shoes do you wear?", "Nines, sir, in plain black shoes kept polished as the position requires.", 1)
+End Sub
+
+Sub test_door_slam()
+  assert_response("Did you slam the door?", "door slam response")
+  assert_response("Did you slam the door at 10:30?", "door slam response")
+  assert_response("Did you hear a door slam?", "door slam response")
+
+  target_suspect("redvers")
+  assert_response("Did you slam the door at 10:30?", "The one at 10:30?", 1)
 End Sub
 
 Sub test_premature_accusation()

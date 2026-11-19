@@ -295,6 +295,10 @@ another, later, around 11:30, when I was lying awake in my room. Can't say I
 thought much of it at the time. Two bangs, one house full of nerves - hardly
 conclusive, is it?"
 
++door +(slam/slammed/slamming/slams)
+"I took the first bang, at about 10:30, for a door slamming, old boy.
+I was in the music room with Millicent at the time."
+
 -you +(when/time) +(die/murder)
 "Couldn't say exactly, old boy. I heard a noise at about 11:30 - a door,
 I thought - and Billingsgate and I found him not long afterwards."

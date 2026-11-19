@@ -287,6 +287,10 @@ what caused it - I left Darnley's study at 10:30 and the door slammed behind me.
 Heavy door, stiff spring. If someone heard a second noise later, it's news to
 me. I was asleep by 11:00."
 
++door +(slam/slammed/slamming/slams)
+"The one at 10:30? That was the study door slamming behind me when I left.
+Heavy door, stiff spring."
+
 -you +(when/time) +(die/murder)
 "No idea. I left Darnley alive at 10:30 and was asleep by 11:00.
 Billingsgate woke me at midnight with the news."

@@ -219,6 +219,9 @@ and in bed by 10:00. Whatever bangs or shots you're on about,
 they didn't reach me out there - or if they did, I slept through
 the lot."
 
++door +(slam/slammed/slamming/slams)
+"Slamming doors is house business. I heard nothing at my cottage."
+
 -you +(when/time) +(die/murder)
 "No idea. I was in bed by 10:00 and slept through whatever it was."
 
