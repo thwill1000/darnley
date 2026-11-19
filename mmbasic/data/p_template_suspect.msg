@@ -361,6 +361,9 @@ accuse_fail
 !requires accuse_fail
 "failed accusation response"
 
+explain mean meant repeat clarify elaborate
+"clarification response"
+
 (who/whose/whom/why/what/where/when/how/which/?)
 "unhandled question response"
 

@@ -504,6 +504,10 @@ think you know it too."@
 @
 Go back over your questioning and look again.
 
+explain mean meant repeat clarify elaborate
+"I'm afraid I can't be any clearer, Inspector.
+I answered as well as I was able."
+
 (who/whose/whom/why/what/where/when/how/which/?)
 "I'm afraid I really couldn't say. This has all been such a terrible shock."
 

@@ -417,6 +417,9 @@ what you just said. I can't rightly explain why, but it doesn't."@
 @
 Go back over your questioning and look again.
 
+explain mean meant repeat clarify elaborate
+"I'm ever so sorry, sir, I don't know how else to say it."
+
 (who/whose/whom/why/what/where/when/how/which/?)
 "I wouldn't know about that. Nobody tells me anything."
 

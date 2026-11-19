@@ -440,6 +440,9 @@ another think."@
 @
 Go back over your questioning and look again.
 
+explain mean meant repeat clarify elaborate
+"I said what I said, dear. Ask me something I can answer."
+
 (who/whose/whom/why/what/where/when/how/which/?)
 "I'm afraid you're asking the wrong person, dear."
 
