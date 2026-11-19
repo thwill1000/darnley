@@ -69,6 +69,9 @@ piano
 +womens shoes
 "Do I look like I wear lady's shoes?"
 
++(shoes/boots) +(wear/wearing/wore/size/your)
+"Nines. Hobnailed boots, same as every keeper hereabouts."
+
 +newspaper read
 "I only ever read the racing pages."
 

@@ -80,6 +80,9 @@ morning room."
 +womens shoes
 "I'm not sure. They may be Mrs. Sarah's or Miss Millicent's."
 
++(shoes/boots) +(wear/wearing/wore/size/your)
+"Sixes, dear - sensible ones, I'm on my feet all day."
+
 +newspaper read
 "I don't have time to read the paper."
 

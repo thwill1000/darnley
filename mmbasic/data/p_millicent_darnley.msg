@@ -68,6 +68,9 @@ repeated the same piece again and again."
 +womens shoes
 "They aren't my shoes."
 
++(shoes/boots) +(wear/wearing/wore/size/your)
+"Fours, Inspector. They're quite ordinary shoes - I can't think why you ask."
+
 +newspaper read
 "I don't often read the newspaper."
 

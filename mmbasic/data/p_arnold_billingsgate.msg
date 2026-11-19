@@ -14,9 +14,9 @@ slippers
 when he woke me up to help the Colonel."
 
 boots
-"The boots belong to Sir Redvers. They are - shall we say - on the
-large side. He gave them to me yesterday afternoon and I cleaned them
-in the kitchen after dinner, and left them there."
+"The boots belong to Sir Redvers. They are - shall we say - on the large side,
+size twelves. He gave them to me yesterday afternoon and I cleaned them in the
+kitchen after dinner, and left them there."
 
 knife
 "I don't know anything about the knife, sir - that's not a kitchen matter I'd
@@ -83,6 +83,9 @@ morning room."
 +womens shoes
 "I really couldn't say, sir. A lady's shoe is not something I make a study of.
 Mrs. Darnley's or Miss Millicent's, I should imagine - you might ask young Norah."
+
++(shoes/boots) +(wear/wearing/wore/size/your)
+"Nines, sir, in plain black shoes kept polished as the position requires."
 
 +newspaper read
 "I'm afraid I don't recognise it."

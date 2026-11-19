@@ -16,7 +16,7 @@ away on business at a moment's notice - boots'll do for getting about
 a house, however draughty."
 
 boots
-"Those are certainly my boots. I last wore them yesterday afternoon
+"Those are my boots, size twelves. I last wore them yesterday afternoon
 and put them out for Billingsgate to clean. I certainly didn't wear
 them after dinner and can't explain who may have. I suppose that, if
 the staff were asleep, someone could have sneaked into the kitchen
@@ -71,6 +71,10 @@ morning room."
 +womens shoes
 "Don't ask me, old man. I couldn't tell one woman's shoe from another
 if my life depended on it."
+
++(shoes/boots) +(wear/wearing/wore/size/your)
+"Twelves, man. Country boots, mostly. What the devil has my footwear to do with
+it?"
 
 +newspaper read
 !requires x_newspaper
