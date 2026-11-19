@@ -155,10 +155,11 @@ add_test("Tell me about the summer house", "test_summer_house")
 add_test("Tell me about the gamekeeper's cottage", "test_gamekeepers_cottage")
 add_test("What happened at dinner?", "test_dinner")
 add_test("When did you last see/speak with the Colonel?", "test_last_see_colonel")
+add_test("What size shoes do you wear?", "test_shoes_wear")
 add_test("I accuse you! (but don't have all the clues)", "test_premature_accusation")
 add_test("I accuse you! (the first time)", "test_first_accusation")
 add_test("I accuse you! (subsequent times)", "test_subsequent_accusation")
-add_test("Goodbye.", "test_goodbye")
+add_test("Goodbye", "test_goodbye")
 add_test("INTERNAL: Test successful accusation response", "test_accuse_success")
 add_test("INTERNAL: Test failed accusation response", "test_accuse_fail")
 add_test("Unhandled question falls back to the question wildcard", "test_question_fallback")
@@ -740,6 +741,7 @@ Sub test_opinion_redvers()
   assert_response("what's redvers slingsby like", "redvers response")
   assert_response("your impression of redvers slingsby", "redvers response")
   assert_response("how do you get on with redvers slingsby", "redvers response")
+  assert_response("Where did Redvers sleep?", "redvers response")
 
   ' Ask Millicent about Redvers.
   ' - the presence of "you" in the input will cause "millicent" to be added to the subject words
@@ -1479,6 +1481,20 @@ Sub test_last_see_colonel()
   assert_response("When did you last see Darnley?", "10:30, when I left the study.", 1)
 End Sub
 
+Sub test_shoes_wear()
+  assert_response("Do you always wear those shoes?", "shoes wear response")
+  assert_response("What size shoes do you wear?", "shoes wear response")
+  assert_response("What sized shoes do you wear?", "shoes wear response")
+  assert_response("Tell me about your shoes", "shoes wear response")
+  assert_response("What boots do you wear?", "shoes wear response")
+
+  target_suspect("arthur")
+  assert_response("Do you always wear those shoes?", "Eights, old boy - black patent. A fellow dresses for dinner.", 1)
+
+  target_suspect("billingsgate")
+  assert_response("What size shoes do you wear?", "Nines, sir, in plain black shoes kept polished as the position requires.", 1)
+End Sub
+
 Sub test_premature_accusation()
   assert_response("accuse", "premature accusation response")
   assert_response("guilty", "premature accusation response")
@@ -1613,6 +1629,7 @@ Sub test_question_fallback()
   assert_response("when", "unhandled question response")
   assert_response("how", "unhandled question response")
   assert_response("which", "unhandled question response")
+  assert_response("Whose shoes are these?", "unhandled question response")
 End Sub
 
 ' No keyword line matches - falls through to "*"

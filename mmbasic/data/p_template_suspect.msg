@@ -81,6 +81,9 @@ piano
 +womens shoes
 "ladys shoes response"
 
++(shoes/boots) +(wear/wearing/wore/size/your)
+"shoes wear response"
+
 +newspaper read
 !requires x_newspaper
 "newspaper response given newspaper found"

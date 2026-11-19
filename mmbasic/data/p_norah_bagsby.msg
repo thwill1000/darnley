@@ -65,6 +65,9 @@ morning room."
 +womens shoes
 "These are Mrs. Sarah's shoes. I don't know when they were last worn."
 
++(shoes/boots) +(wear/wearing/wore/size/your)
+"Threes, sir. Just my work shoes. I've always had small feet."
+
 +newspaper read
 "I don't get much time for reading, sir, what with my duties. I
 might glance at it after I've done the grates."

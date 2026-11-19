@@ -1231,6 +1231,30 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     assertResponse('When did you last see Darnley?', '10:30, when I left the study.', true);
   });
 
+  it("'shoes' with wear or size selects the footwear entry", () => {
+    all('shoes wear response', [
+      'Do you always wear those shoes?',
+      'What size shoes do you wear?',
+      'What sized shoes do you wear?',
+      'Tell me about your shoes',
+      'What boots do you wear?',
+    ]);
+
+    target('arthur');
+    assertResponse(
+      'Do you always wear those shoes?',
+      'Eights, old boy - black patent. A fellow dresses for dinner.',
+      true,
+    );
+
+    target('billingsgate');
+    assertResponse(
+      'What size shoes do you wear?',
+      'Nines, sir, in plain black shoes kept polished as the position requires.',
+      true
+    );
+  });
+
   const accusations = [
     'accuse',
     'guilty',
@@ -1301,7 +1325,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     );
   });
 
-  it('Goodbye.', () => {
+  it('Goodbye', () => {
     all('goodbye response', ['goodbye', 'bye', 'well, goodbye then', 'thanks for your time', 'thank you very much']);
   });
 
@@ -1320,7 +1344,19 @@ describe('verbSay() against the real template/suspect .msg files', () => {
   });
 
   it('Unhandled question falls back to the question wildcard', () => {
-    all('unhandled question response', ['?', 'who', 'whose', 'whom', 'why', 'what', 'where', 'when', 'how', 'which']);
+    all('unhandled question response', [
+      '?',
+      'who',
+      'whose',
+      'whom',
+      'why',
+      'what',
+      'where',
+      'when',
+      'how',
+      'which',
+      'Whose shoes are these?',
+    ]);
   });
 
   it('Something nonsensical falls back to the non-question wildcard', () => {

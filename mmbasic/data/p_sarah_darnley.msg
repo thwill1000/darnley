@@ -87,6 +87,9 @@ and no-one else came into the room."
 have no idea why they should be damp - possibly I had them on
 earlier yesterday."
 
++(shoes/boots) +(wear/wearing/wore/size/your)
+"Fives, Inspector, and I wear what a lady wears. I can't think why my shoes should interest you."
+
 +newspaper read
 !requires x_newspaper
 She hesitates, choosing her words carefully.@

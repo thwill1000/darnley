@@ -69,6 +69,9 @@ no-one there, just a gramophone playing."
 +womens shoes
 "I don't know whose shoes these are."
 
++(shoes/boots) +(wear/wearing/wore/size/your)
+"Eights, old boy - black patent. A fellow dresses for dinner."
+
 +newspaper read
 !requires x_newspaper
 "I heard that old Slingsby had plunged into mining shares and needed
