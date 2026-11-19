@@ -235,6 +235,9 @@ events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/
 +(bang/bangs/shot/shots) (time/what/when) (hear/heard)
 "bang/shot timeline response"
 
++door +(slam/slammed/slamming/slams)
+"door slam response"
+
 -you +(when/time) +(die/murder)
 "time of death response"
 

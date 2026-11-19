@@ -311,6 +311,10 @@ too gently. Then later, around 11:30, I heard something else while I
 was in the morning room - more like a shot, if I'm honest, though at
 the time I told myself it was poachers. The two were quite distinct, Inspector."
 
++door +(slam/slammed/slamming/slams)
+"Do you mean the noise at about 10:30? I took it for Sir Redvers leaving
+the study and banging the door behind him. I didn't see it done."
+
 -you +(when/time) +(die/murder)
 "I couldn't tell you, Inspector. I heard a noise like a shot at about
 11:30 and thought it was poachers. I only learned the truth afterwards."

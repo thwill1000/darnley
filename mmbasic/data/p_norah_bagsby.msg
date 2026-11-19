@@ -247,6 +247,9 @@ where I was."
 10:30, I think. Mrs. G. said it was a door. I didn't hear anything
 after that, sir, I was asleep."
 
++door +(slam/slammed/slamming/slams)
+"Mrs. G. said it was a door, sir, though I thought it was a shot. I didn't see."
+
 -you +(when/time) +(die/murder)
 "I couldn't say, sir. There was a bang before we went to bed, and I woke
 when Mr. Coniston came for Mr. B. I don't know the hour."

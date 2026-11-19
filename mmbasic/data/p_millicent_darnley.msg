@@ -276,6 +276,10 @@ heard Sarah still at the piano, and a few minutes after that there was another
 bang. I really can't say what either one was, only that there were the two of
 them, the best part of an hour apart."
 
++door +(slam/slammed/slamming/slams)
+"I took the bang at 10:30 for a poacher, and the later one for a door slamming.
+I couldn't tell you which door."
+
 -you +(when/time) +(die/murder)
 "I really couldn't say. I woke at about 11:20 and heard Sarah playing the piano,
 and shortly afterwards there was a bang, but I took it for a door."

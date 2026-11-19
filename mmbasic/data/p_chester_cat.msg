@@ -204,6 +204,11 @@ other sign of comprehension.@
 @
 "Mrp?"
 
++door +(slam/slammed/slamming/slams)
+The cat's ears flick at the word, but only because a door might open for him.@
+@
+"Mrp."
+
 -you +(when/time) +(die/murder)
 The cat's ears flick at the question, and he glances towards the empty
 stable door as if expecting dinner.@

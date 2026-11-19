@@ -260,6 +260,10 @@ remember looking straight at it. Didn't think much of either at the
 time, what with the hour and the season - you do get all sorts of
 bangs and pops on a cold night like that."
 
++door +(slam/slammed/slamming/slams)
+"I heard a bang at about 10:30 that gave me quite a turn, dear.
+I couldn't tell you whether it was a door."
+
 -you +(when/time) +(die/murder)
 "I couldn't tell you, dear. A bang woke me at 11:20 by my clock and I
 thought it was poachers. Mr. Coniston turned up a few minutes later."
