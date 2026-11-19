@@ -474,6 +474,9 @@ happened. Try again, and try harder."@
 @
 Go back over your questioning and look again.
 
+explain mean meant repeat clarify elaborate
+"I said what I meant, man. Don't make me say it twice."
+
 (who/whose/whom/why/what/where/when/how/which/?)
 "No idea whatsoever. Can we stick to the point?"
 

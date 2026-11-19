@@ -130,6 +130,9 @@ my feet, if I'm honest."
 +(goodbye/bye/farewell/thanks/thank) very
 "Very good, sir. I'll stay at my post."
 
+explain mean meant repeat clarify elaborate
+"I've told you all I know, sir."
+
 (who/whose/whom/why/what/where/when/how/which/?)
 "Can't help you there, sir - I'm only posted at the gate."
 

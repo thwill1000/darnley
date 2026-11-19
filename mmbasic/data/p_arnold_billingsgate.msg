@@ -491,6 +491,9 @@ not wish to see you act on it as it stands."@
 @
 Go back over your questioning and look again.
 
+explain mean meant repeat clarify elaborate
+"I regret that I cannot put it more plainly, sir."
+
 (who/whose/whom/why/what/where/when/how/which/?)
 "I don't believe that falls within my knowledge, I'm afraid."
 

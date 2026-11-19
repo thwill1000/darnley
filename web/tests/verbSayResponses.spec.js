@@ -1265,6 +1265,17 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     assertResponse('Did you slam the door at 10:30?', 'The one at 10:30?', true);
   });
 
+  it("What do you mean?", () => {
+    all('clarification response', [
+      'Explain what you mean',
+      'What do you mean?',
+      'Can you repeat that?',
+    ]);
+
+    target('sarah');
+    assertResponse('Explain what you mean', "I'm afraid I can't be any clearer", true);
+  });
+
   const accusations = [
     'accuse',
     'guilty',

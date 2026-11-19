@@ -489,6 +489,9 @@ them up."@
 @
 Go back over your questioning and look again.
 
+explain mean meant repeat clarify elaborate
+"Sorry, old boy - can't put it any plainer than that."
+
 (who/whose/whom/why/what/where/when/how/which/?)
 "Can't say I know anything about that. Sorry, old boy."
 

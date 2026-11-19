@@ -460,6 +460,9 @@ this one does not."@
 @
 Go back over your questioning and look again.
 
+explain mean meant repeat clarify elaborate
+"I'm sorry, Inspector - I've said all I know on that."
+
 (who/whose/whom/why/what/where/when/how/which/?)
 "I'm afraid that is rather outside my knowledge.
 Have you tried asking the servants?"

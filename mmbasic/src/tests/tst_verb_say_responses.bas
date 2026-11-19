@@ -163,6 +163,7 @@ add_test("I accuse you! (subsequent times)", "test_subsequent_accusation")
 add_test("Goodbye", "test_goodbye")
 add_test("INTERNAL: Test successful accusation response", "test_accuse_success")
 add_test("INTERNAL: Test failed accusation response", "test_accuse_fail")
+add_test("What do you mean?", "test_clarification")
 add_test("Unhandled question falls back to the question wildcard", "test_question_fallback")
 add_test("Something nonsensical falls back to the non-question wildcard", "test_wildcard_fallback")
 
@@ -1626,6 +1627,15 @@ Sub test_accuse_fail()
   ' But with flag set writes the response
   state.set_flag("accuse_fail")
   assert_response("accuse_fail", "failed accusation response")
+End Sub
+
+Sub test_clarification()
+  assert_response("Explain what you mean", "clarification response")
+  assert_response("What do you mean?", "clarification response")
+  assert_response("Can you repeat that?", "clarification response")
+
+  target_suspect("sarah")
+  assert_response("Explain what you mean", "I'm afraid I can't be any clearer", 1)
 End Sub
 
 Sub test_question_fallback()

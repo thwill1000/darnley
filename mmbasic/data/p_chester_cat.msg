@@ -261,6 +261,11 @@ creature who has never answered to anyone in his life.@
 @
 "MRAOW!"
 
+explain mean meant repeat clarify elaborate
+The cat declines to elaborate.@
+@
+"..."
+
 (who/whose/whom/why/what/where/when/how/which/?)
 The cat regards the question with total indifference.@
 @

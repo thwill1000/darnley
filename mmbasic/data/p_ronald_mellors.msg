@@ -394,6 +394,9 @@ what you said don't sit right. Go and look again."@
 @
 Go back over your questioning and look again.
 
+explain mean meant repeat clarify elaborate
+"Said all I'm going to."
+
 (who/whose/whom/why/what/where/when/how/which/?)
 "Do I look like I'd know anything about that?"
 
