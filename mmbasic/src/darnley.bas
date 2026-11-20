@@ -5,9 +5,6 @@ Option Base 1
 Option Default Integer
 Option Explicit On
 
-If Mm.Device$ = "MMB4L" Then Option Simulate PicoMiteVGA
-' If Mm.Device$ = "MMB4L" Then Option Simulate PicoCalc
-
 #Include "splib/system.inc"
 #Include "splib/file.inc"
 #Include "splib/string.inc"
@@ -20,6 +17,10 @@ If Mm.Device$ = "MMB4L" Then Option Simulate PicoMiteVGA
 #Include "microserif6x8.inc"
 #Include "darnley_xtra.inc"
 
+If Mm.Device$ = "MMB4L" And get_option$("nogfx") = "0" And get_option$("script") = "" Then
+  Option Simulate PicoMiteVGA
+EndIf
+
 Const VERSION = 9302 ' 0.9.2
 Const NUM_ACCUSE_REPLIES = count_data%("accuse_reply_data")
 
@@ -31,15 +32,7 @@ Dim cmd$
 Dim result%
 Dim r_old%
 
-Option Console Both
-On Error Skip ' Ignore failure to set Mode on PicoCalc
-Mode Choice(InStr(Mm.Device$, "PicoMite"), 2, 7)
-Font 7
-
-init_advent(adv.game_root$ + "data/advent.dat")
-read_questions(adv.game_root$ + "data/advent.dat")
-read_clues(adv.game_root$ + "data/advent.dat")
-read_accuse_replies()
+init()
 
 game_start:
 
@@ -84,6 +77,26 @@ Do
 Loop
 
 End
+
+Sub init()
+  Local nogfx% = get_option$("nogfx") = "1"
+  Const nocolour% = get_option$("nocolour") = "1"
+  Const script$ = get_option$("script")
+  If script$ <> "" Then nogfx% = 1
+  Const data_file$ = adv.game_root$ + "data/advent.dat"
+
+  If script$ = "" Then
+    Option Console Both
+    On Error Skip ' Ignore failure to set Mode on PicoCalc
+    Mode Choice(InStr(Mm.Device$, "PicoMite"), 2, 7)
+    Font 7
+  EndIf
+
+  init_advent(data_file$, nogfx%, nocolour%, script$)
+  read_questions(data_file$)
+  read_clues(data_file$)
+  read_accuse_replies()
+End Sub
 
 ' Read the questions data
 Sub read_questions(f$)

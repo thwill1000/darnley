@@ -85,20 +85,16 @@ End Function
 '                 On error the array may be partially populated.
 ' Splits a command string into individual words at space boundaries.
 Function split_words%(cmd$, words$())
-  Local i%, p%, c%, w$, wLen%
-
-  ' Clear output array
   clear_words(words$())
 
   cmd$ = LCase$(cmd$)
   Const cmdLen% = Len(cmd$)
-  If cmdLen% = 0 Then split_words% = 0: Exit Function
+  If cmdLen% = 0 Then Exit Function
 
   Const cmdAddr% = Peek(VarAddr cmd$) + 1
   Const maxIdx% = Bound(words$(), 1)
-  i% = Bound(words$(), 0)
-  w$ = ""
-  wLen% = 0
+  Local i% = Bound(words$(), 0)
+  Local c%, p%, w$, wLen%
 
   For p% = 0 To cmdLen% - 1
     c% = Peek(Byte cmdAddr% + p%)
@@ -143,6 +139,48 @@ Function split_words%(cmd$, words$())
   EndIf
 
   split_words% = 0
+End Function
+
+Function split_words_simple%(cmd$, words$())
+  clear_words(words$())
+
+  cmd$ = LCase$(cmd$)
+  Const cmdLen% = Len(cmd$)
+  If cmdLen% = 0 Then Exit Function
+
+  Const cmdAddr% = Peek(VarAddr cmd$) + 1
+  Const maxIdx% = Bound(words$(), 1)
+  Local i% = Bound(words$(), 0)
+  Local c%, p%, w$, wLen%
+
+  For p% = 0 To cmdLen% - 1
+    c% = Peek(Byte cmdAddr% + p%)
+
+    Select Case c%
+      Case 32 ' Space
+        If wLen% > 0 Then
+          words$(i%) = w$
+          w$ = ""
+          wLen% = 0
+          Inc i%
+        EndIf
+
+      Case Else ' Any other character
+        If i% > maxIdx% Then split_words_simple% = sys.err%(1, "Too many words"): Exit Function
+        If wLen% = MAX_WORD_LENGTH Then split_words_simple% = sys.err$(2, "Word too long"): Exit Function
+
+        Cat w$, Chr$(c%)
+        Inc wLen%
+    End Select
+  Next
+
+  ' Commit trailing word buffer
+  If wLen% > 0 Then
+    If i% > maxIdx% Then split_words_simple% = 1: Exit Function
+    words$(i%) = w$
+  EndIf
+
+  split_words_simple% = 0
 End Function
 
 ' Finds the index of the first occurrence of needle$ in haystack$(),
