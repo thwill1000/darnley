@@ -1,0 +1,82 @@
+Here are all the questions a real player asked of the game suspects. It is not necessary that the player receives exact answers (there is only so much that can be done with pattern matching and a fixed set of responses) but the ideal is that they will at least receive an answer that is "adjacent" to the question asked. What gaps do we need to address to achieve this? If it helps you can write a JavaScript program that asks these questions against the real data and I will execute it and provide you with the responses received.
+
+"What happened?
+"Who's boots are these?
+"Do you always wear those shoes?
+"Who played billiards last night?
+"Who had wine?
+"Do you drink wine?
+"Did you hear the gunshot?
+"Did you hear the gun shot?
+"Where were you at 10:30?
+"Who smoked cigarettes in the summer house?
+"When was the last time you spoke to the deceased?
+"Where were you when you heard the gunshot?
+"Who's boots are they?
+"Who smokes in the summerhouse?
+"How often do you go to the summer house?
+"Where are your cigarettes?
+"Do you smoke them in the summerhouse?
+"Are you having an affair with Mrs Darnley?
+"Explain what you mean
+"Who dropped the handkerchief in the summer house?
+"How well do you know Ronald?
+"Is he your lover?
+"Have you lost a handkerchief?
+"What size shoes do you wear?
+"Did you shoot your husband?
+"Who likes Chopin?
+"Do you go to the summerhouse often?
+"What size shoes do you wear?
+"Who owns a pipe?
+"Where did Redvers sleep?
+"Where is your mother?
+"Who was Sarah with in the morning room?
+"Do you smoke cigarettes?
+"Did you go to the summerhouse?
+"Does Sarah have a lover?
+"Was Mr Darnley a jealous man?
+"Did you hear a bang?
+"Were you in the music room last night?
+"Who broke the glass in the door?
+"Did Arthur ask you to open the study door?
+"What time did Arthur go to the study?
+"Did you smoke outside last night?
+"How well do you know Ronald?
+"Does he smoke?
+"Who owns the muddy boots?
+"What size are the muddy boots?
+"How well do you know Arthur?
+"Did Mr Darnley like Arthur?
+"Who is Millicent's mother?
+"Do you smoke?
+"Where were you at 11:30 last night?
+"Did you sleep well?
+"Did Arthur ask you to marry him?
+"Was Arthur happy?
+"What time did Arthur tell you your father said yes?
+"Does Arthur shoot guns?
+"Do you want to marry Arthur?
+"Can you shoot a gun?
+"Have you ever shot a gun?
+"What time did you ask Mr Darnley for Millicent's hand in marriage?
+"Was your marriage discussed at dinner last night?
+"How long did you play the piano last night?
+"Have you ever shot a gun?
+"Did Mr Darnley mention Millicent's marriage to Arthur?
+"Do you like Arthur?
+"How was dinner?
+"Where's your handkerchief?
+"Do you own a handkerchief?
+"How was dinner last night?
+"Do you shoot?
+"How much did you lose?
+"Did you slam the door at 10:30?
+"Did Mr Darnley agree to the loan?
+"How much money did you ask for?
+"What was the conversation in the billiard room?
+"Was Arthur happy last night?
+"Who do you think shot Mr Darnley?
+"Who owns the knife?
+"Who owns the boots?
+"What was for dinner last night?

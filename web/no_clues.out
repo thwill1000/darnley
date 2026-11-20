@@ -1,0 +1,328 @@
+
+"What happened?
+  [events yesterday murder last happened]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "Last night we all had dinner together. Afterwards the men played billiards while Millicen
+
+"Who's boots are these?
+  [boots]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "Certainly not. I have never worn a man's boot in my life, Inspector."
+
+"Do you always wear those shoes?
+  [QUESTION-WILDCARD]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I'm afraid I really couldn't say. This has all been such a terrible shock."
+
+"Who played billiards last night?
+  [+wine (glass/glasses)]  sarah, arthur, redvers, arnold
+      e.g. "The gentlemen went off to billiards over their port while Millicent and I had coffee in t
+  [events yesterday murder last happened]  millicent, mildred, norah, ronald
+      e.g. "Last night we all ate together until coffee which Sarah and I took together in the lounge
+
+"Who had wine?
+  [+wine (glass/glasses)]  sarah, arthur, redvers, arnold
+      e.g. "The gentlemen went off to billiards over their port while Millicent and I had coffee in t
+  [QUESTION-WILDCARD]  millicent, mildred, norah, ronald
+      e.g. "I'm afraid that is rather outside my knowledge. Have you tried asking the servants?"
+
+"Do you drink wine?
+  [+wine (glass/glasses)]  sarah, arthur, redvers, arnold
+      e.g. "The gentlemen went off to billiards over their port while Millicent and I had coffee in t
+  [QUESTION-WILDCARD]  millicent, mildred, norah, ronald
+      e.g. "I'm afraid that is rather outside my knowledge. Have you tried asking the servants?"
+
+"Did you hear the gunshot?
+  [+(bang/bangs/shot/shots) (time/what/when) (hear/heard)]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "There was a loud noise while I was still downstairs - about 10:30, I should think - which
+
+"Did you hear the gun shot?
+  [+(bang/bangs/shot/shots) (time/what/when) (hear/heard)]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "There was a loud noise while I was still downstairs - about 10:30, I should think - which
+
+"Where were you at 10:30?
+  [QUESTION-WILDCARD]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I'm afraid I really couldn't say. This has all been such a terrible shock."
+
+"Who smoked cigarettes in the summer house?
+  [cigarette cigar cheroot smoking smoked smokes]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I can't imagine why you are asking me this question. Arthur Coniston smokes cigarettes."
+
+"When was the last time you spoke to the deceased?
+  [+colonel -(millicent/sarah/who) (get/think) with]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "He was somewhat strict and suspicious by nature, but we were happy enough."
+
+"Where were you when you heard the gunshot?
+  [+(bang/bangs/shot/shots) (time/what/when) (hear/heard)]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "There was a loud noise while I was still downstairs - about 10:30, I should think - which
+
+"Who's boots are they?
+  [boots]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "Certainly not. I have never worn a man's boot in my life, Inspector."
+
+"Who smokes in the summerhouse?
+  [cigarette cigar cheroot smoking smoked smokes]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I can't imagine why you are asking me this question. Arthur Coniston smokes cigarettes."
+
+"How often do you go to the summer house?
+  [+(summer/summerhouse) -handkerchief -cigarette]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I haven't been down to the summer house since last summer, I should think."
+
+"Where are your cigarettes?
+  [cigarette cigar cheroot smoking smoked smokes]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I can't imagine why you are asking me this question. Arthur Coniston smokes cigarettes."
+
+"Do you smoke them in the summerhouse?
+  [cigarette cigar cheroot smoking smoked smokes]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I can't imagine why you are asking me this question. Arthur Coniston smokes cigarettes."
+
+"Are you having an affair with Mrs Darnley?
+  [affair mellors sarah (summerhouse/summer) together secret lovers]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I'm sorry - I don't understand the question. Mellors is our gamekeeper. I don't see what 
+
+"Explain what you mean
+  [QUESTION-WILDCARD]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I'm afraid I really couldn't say. This has all been such a terrible shock."
+
+"Who dropped the handkerchief in the summer house?
+  [handkerchief]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "You found it in the summer house? I'm absolutely sure it isn't mine."
+
+"How well do you know Ronald?
+  [+(mellors/gamekeeper) (get/think) with]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "A very loyal gamekeeper."
+
+"Is he your lover?
+  [affair mellors sarah (summerhouse/summer) together secret lovers]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I'm sorry - I don't understand the question. Mellors is our gamekeeper. I don't see what 
+
+"Have you lost a handkerchief?
+  [handkerchief]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "You found it in the summer house? I'm absolutely sure it isn't mine."
+
+"What size shoes do you wear?
+  [QUESTION-WILDCARD]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I'm afraid I really couldn't say. This has all been such a terrible shock."
+
+"Did you shoot your husband?
+  [+colonel -(millicent/sarah/who) (get/think) with]  sarah
+      e.g. "He was somewhat strict and suspicious by nature, but we were happy enough."
+  [-again marriage colonel sarah wife husband happy get]  millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "Daddy was thirty years older than Sarah and never quite trusted that she'd stay. I don't 
+
+"Who likes Chopin?
+  [piano]  sarah, millicent
+      e.g. "If you mean the morning room piano, I was playing Chopin nocturnes on it from about 10:40
+  [gramophone]  arthur
+      e.g. "When I went to bed at 11:00, the gramophone was playing a Chopin nocturne. Otherwise the 
+  [QUESTION-WILDCARD]  redvers, arnold, mildred, norah, ronald
+      e.g. "No idea whatsoever. Can we stick to the point?"
+
+"Do you go to the summerhouse often?
+  [+(summer/summerhouse) -handkerchief -cigarette]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I haven't been down to the summer house since last summer, I should think."
+
+"Who owns a pipe?
+  [pipe]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I don't smoke a pipe myself, obviously. I couldn't tell you whose it is - I imagine it be
+
+"Where did Redvers sleep?
+  [+redvers (get/think) with]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I felt he had some sort of grudge against Sebastian."
+
+"Where is your mother?
+  [QUESTION-WILDCARD]  sarah, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I'm afraid I really couldn't say. This has all been such a terrible shock."
+  [+sarah (get/think) with]  millicent
+      e.g. "We got on well enough though it is difficult to have a stepmother who is almost the same 
+
+"Who was Sarah with in the morning room?
+  [+sarah (get/think) with]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I know what's said of me - too young for my husband, too fond of admiration. I loved Seba
+
+"Do you smoke cigarettes?
+  [cigarette cigar cheroot smoking smoked smokes]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I can't imagine why you are asking me this question. Arthur Coniston smokes cigarettes."
+
+"Did you go to the summerhouse?
+  [+(summer/summerhouse) -handkerchief -cigarette]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I haven't been down to the summer house since last summer, I should think."
+
+"Does Sarah have a lover?
+  [affair mellors sarah (summerhouse/summer) together secret lovers]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I'm sorry - I don't understand the question. Mellors is our gamekeeper. I don't see what 
+
+"Was Mr Darnley a jealous man?
+  [QUESTION-WILDCARD]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I'm afraid I really couldn't say. This has all been such a terrible shock."
+
+"Did you hear a bang?
+  [+(bang/bangs/shot/shots) (time/what/when) (hear/heard)]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "There was a loud noise while I was still downstairs - about 10:30, I should think - which
+
+"Were you in the music room last night?
+  [events yesterday murder last happened]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "Last night we all had dinner together. Afterwards the men played billiards while Millicen
+
+"Who broke the glass in the door?
+  [+(window/glass/pane) +(french/broken/smashed/shattered)]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I'm told Arthur broke a pane to get in, since the doors wouldn't open. I wasn't there mys
+
+"Did Arthur ask you to open the study door?
+  [+study -drinks (locked/sealed) door]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I still can't make sense of it. Both doors locked with his own keys, and that broken wind
+
+"What time did Arthur go to the study?
+  [+arthur (get/think) with]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "A charmer. I was suspicious of his motives for marrying Millicent, but Arthur said that w
+
+"Did you smoke outside last night?
+  [cigarette cigar cheroot smoking smoked smokes]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I can't imagine why you are asking me this question. Arthur Coniston smokes cigarettes."
+
+"Does he smoke?
+  [cigarette cigar cheroot smoking smoked smokes]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I can't imagine why you are asking me this question. Arthur Coniston smokes cigarettes."
+
+"Who owns the muddy boots?
+  [boots]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "Certainly not. I have never worn a man's boot in my life, Inspector."
+
+"What size are the muddy boots?
+  [boots]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "Certainly not. I have never worn a man's boot in my life, Inspector."
+
+"How well do you know Arthur?
+  [+arthur (get/think) with]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "A charmer. I was suspicious of his motives for marrying Millicent, but Arthur said that w
+
+"Did Mr Darnley like Arthur?
+  [+arthur (get/think) with]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "A charmer. I was suspicious of his motives for marrying Millicent, but Arthur said that w
+
+"Who is Millicent's mother?
+  [+millicent (get/think) with]  sarah, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "Her father spoiled her so she got used to having her own way. Sebastian probably agreed t
+  [+sarah (get/think) with]  millicent
+      e.g. "We got on well enough though it is difficult to have a stepmother who is almost the same 
+
+"Do you smoke?
+  [cigarette cigar cheroot smoking smoked smokes]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I can't imagine why you are asking me this question. Arthur Coniston smokes cigarettes."
+
+"Where were you at 11:30 last night?
+  [events yesterday murder last happened]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "Last night we all had dinner together. Afterwards the men played billiards while Millicen
+
+"Did you sleep well?
+  [QUESTION-WILDCARD]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I'm afraid I really couldn't say. This has all been such a terrible shock."
+
+"Did Arthur ask you to marry him?
+  [+(engagement/marriage/propose) millicent arthur when]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "Sebastian only agreed to it yesterday afternoon. Millicent was positively glowing when sh
+
+"Was Arthur happy?
+  [+arthur (get/think) with]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "A charmer. I was suspicious of his motives for marrying Millicent, but Arthur said that w
+
+"What time did Arthur tell you your father said yes?
+  [+arthur (get/think) with]  sarah, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "A charmer. I was suspicious of his motives for marrying Millicent, but Arthur said that w
+  [+colonel -(millicent/sarah/who) (get/think) with]  millicent
+      e.g. "Daddy was a tyrant but always kind to me. He was always fearful that Sarah would leave hi
+
+"Does Arthur shoot guns?
+  [(revolver/gun)]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "Sebastian kept a pair of revolvers in the study, along with a rifle or two - sporting gun
+
+"Do you want to marry Arthur?
+  [+(engagement/marriage/propose) millicent arthur when]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "Sebastian only agreed to it yesterday afternoon. Millicent was positively glowing when sh
+
+"Can you shoot a gun?
+  [(revolver/gun)]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "Sebastian kept a pair of revolvers in the study, along with a rifle or two - sporting gun
+
+"Have you ever shot a gun?
+  [(revolver/gun)]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "Sebastian kept a pair of revolvers in the study, along with a rifle or two - sporting gun
+
+"What time did you ask Mr Darnley for Millicent's hand in marriage?
+  [+(engagement/marriage/propose) millicent arthur when]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "Sebastian only agreed to it yesterday afternoon. Millicent was positively glowing when sh
+
+"Was your marriage discussed at dinner last night?
+  [(dinner/supper/coffee)]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "We all dined together. Afterwards the men took port and billiards while Millicent and I h
+
+"How long did you play the piano last night?
+  [piano]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "If you mean the morning room piano, I was playing Chopin nocturnes on it from about 10:40
+
+"Did Mr Darnley mention Millicent's marriage to Arthur?
+  [+(engagement/marriage/propose) millicent arthur when]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "Sebastian only agreed to it yesterday afternoon. Millicent was positively glowing when sh
+
+"Do you like Arthur?
+  [+arthur (get/think) with]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "A charmer. I was suspicious of his motives for marrying Millicent, but Arthur said that w
+
+"How was dinner?
+  [(dinner/supper/coffee)]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "We all dined together. Afterwards the men took port and billiards while Millicent and I h
+
+"Where's your handkerchief?
+  [handkerchief]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "You found it in the summer house? I'm absolutely sure it isn't mine."
+
+"Do you own a handkerchief?
+  [handkerchief]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "You found it in the summer house? I'm absolutely sure it isn't mine."
+
+"How was dinner last night?
+  [(dinner/supper/coffee)]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "We all dined together. Afterwards the men took port and billiards while Millicent and I h
+
+"Do you shoot?
+  [QUESTION-WILDCARD]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I'm afraid I really couldn't say. This has all been such a terrible shock."
+
+"How much did you lose?
+  [QUESTION-WILDCARD]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I'm afraid I really couldn't say. This has all been such a terrible shock."
+
+"Did you slam the door at 10:30?
+  [QUESTION-WILDCARD]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I'm afraid I really couldn't say. This has all been such a terrible shock."
+
+"Did Mr Darnley agree to the loan?
+  [QUESTION-WILDCARD]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I'm afraid I really couldn't say. This has all been such a terrible shock."
+
+"How much money did you ask for?
+  [(inheritance/inherit) will estate money (left/leave)]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "I really don't think this is the moment, Inspector. Sebastian never discussed his affairs
+
+"What was the conversation in the billiard room?
+  [+wine (glass/glasses)]  sarah, arthur, redvers, arnold
+      e.g. "The gentlemen went off to billiards over their port while Millicent and I had coffee in t
+  [QUESTION-WILDCARD]  millicent, mildred, norah, ronald
+      e.g. "I'm afraid that is rather outside my knowledge. Have you tried asking the servants?"
+
+"Was Arthur happy last night?
+  [+arthur (get/think) with]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "A charmer. I was suspicious of his motives for marrying Millicent, but Arthur said that w
+
+"Who do you think shot Mr Darnley?
+  [+(bang/bangs/shot/shots) (time/what/when) (hear/heard)]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "There was a loud noise while I was still downstairs - about 10:30, I should think - which
+
+"Who owns the knife?
+  [knife]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "A knife? I'm afraid I wouldn't know anything about it. I don't concern myself with kitche
+
+"Who owns the boots?
+  [boots]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "Certainly not. I have never worn a man's boot in my life, Inspector."
+
+"What was for dinner last night?
+  [(dinner/supper/coffee)]  sarah, millicent, arthur, redvers, arnold, mildred, norah, ronald
+      e.g. "We all dined together. Afterwards the men took port and billiards while Millicent and I h
