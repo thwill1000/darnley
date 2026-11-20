@@ -2,7 +2,7 @@ hello hi greetings | -room morning | afternoon | evening
 "Oh - good morning, sir. Sorry, I'm all of a fluster still, what
 with everything that's happened."
 
-+who +are +you | +name +yourself | +(call/called) +you
++who +are +you | +name +(your/yourself) | +(call/called) +you
 "Norah Bagsby, sir. I'm the housemaid."
 
 +who +am +i | +my +name
@@ -36,7 +36,7 @@ revolver
 "One gone missing from the study, sir? I wouldn't know, I don't go in
 there."
 
-(revolver/gun)
+(revolver/gun) | shoot shooting
 "There's guns in the master's study cabinet, sir - revolvers and rifles. I
 believe Mr. Mellors keeps shotguns too, down at his cottage. I don't go
 near any of them, honest I don't."
@@ -223,7 +223,7 @@ I haven't done the room yet this morning."
 "I helped Mrs. Goodbody with dinner, sir, and served the ladies' coffee in
 the lounge. Then we washed up while Mr. B. cleaned the boots."
 
-events yesterday murder last happened
+events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/talk/talked)
 "Last night I helped Mrs. Goodbody to prepare dinner and afterwards I served
 coffee in the lounge to Mrs. Sarah and Miss Millicent. Then I helped Mrs. G.
 to wash up whilst Mr. Billingsgate cleaned the boots. Just before we went to
@@ -271,7 +271,7 @@ after we all dropped off, though."
 "I don't know anything about Mr. Mellors of an evening, sir. He
 doesn't come up to the house after dark unless he's sent for."
 
--thanks alibi | -thanks +time murder | +yesterday you evening
+-thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +(sleep/slept/asleep) +you
 "I'm not good where times are concerned. I s'pose I was with Mr. B.
 and Mrs. G. in Mr. B.'s room."
 
@@ -292,7 +292,7 @@ business, not mine."
 with him, about poaching or some such. I don't know any more than
 that, honest I don't."
 
--again marriage colonel sarah wife husband happy get with
+-again marriage colonel sarah wife husband happy get | jealous jealousy
 "I don't like to gossip about my betters, sir. Mrs. Sarah always
 seemed a bit lonely to me, if you want my honest opinion."
 
@@ -301,7 +301,7 @@ seemed a bit lonely to me, if you want my honest opinion."
 yesterday. First happy thing to happen in this house in a while, I
 should think."
 
-+who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
++who +(accuse/murder/murderer/suspect) him | +who +did +(it/this) | +who +shot
 "Oh, I couldn't say, sir, it frightens me even to think it. Miss
 Millicent seemed ever so calm about it all, calmer than I'd have
 been. I don't mean nothing by that, mind."
@@ -341,7 +341,7 @@ that, honest I don't."
 affair mellors sarah (summerhouse/summer) together secret lovers
 "I don't know anything about that, sir, honest."
 
-money mining peru ruin redvers colonel
++(money/mining/business/much) ask troubles redvers colonel
 "I don't know much, sir, only that Sir Redvers seemed ever so cross
 when he arrived. Mrs. G. said it was something to do with business, but I don't
 know more than that."
@@ -355,12 +355,12 @@ weather cold snow
 "Ever so cold, sir. My hands are chapped something dreadful from all
 the extra fires we've had to lay."
 
-goodbye bye farewell thanks thank
++(goodbye/bye/farewell/thanks/thank) very
 "Goodbye, sir. I hope you don't need me again - not because I mind,
 just, well, you know."
 
 # Response when accused of the murder for a second (or subsequent) time
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !requires all_clues accuse_b4_bagsby
 !provides new_accuse accuse_bagsby
 She sniffs, dabbing at her eyes with her sleeve, though there is a
@@ -370,7 +370,7 @@ flicker of something more wary beneath the tears now.@
 haven't changed my mind."
 
 # Response when accused of the murder
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !requires all_clues
 !provides new_accuse accuse_bagsby accuse_b4_bagsby
 Norah's eyes go wide and her lip trembles - she looks for all the world
@@ -380,7 +380,7 @@ as though she might burst into tears on the spot.@
 paid me! I only been here six months, sir, honest!"
 
 # Response when accused when insufficient clues have been gathered
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !provides new_accuse accuse_bagsby
 "Oh! You mustn't say that, not without you're sure - it isn't right."
 

@@ -17,7 +17,7 @@
 hello hi greetings | -room morning | afternoon | evening
 "greeting response"
 
-+who +are +you | +name +yourself | +(call/called) +you
++who +are +you | +name +(your/yourself) | +(call/called) +you
 "who are you response"
 
 +who +am +i | +my +name
@@ -47,7 +47,7 @@ revolver
 !requires x_gunrack
 "revolver response given gun rack"
 
-(revolver/gun)
+(revolver/gun) | shoot shooting
 "guns in the house response"
 
 tramp
@@ -220,7 +220,7 @@ daimler car motor saloon garage
 (dinner/supper/coffee)
 "dinner response"
 
-events yesterday murder last happened
+events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/talk/talked)
 "events response"
 
 +why +(here/visiting/visit) | +here what brings
@@ -254,7 +254,7 @@ events yesterday murder last happened
 +(confirm/corroborate/vouch/alibi/with) +(mellors/gamekeeper) you
 "vouch for mellors response"
 
--thanks alibi | -thanks +time murder | +yesterday you evening
+-thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +(sleep/slept/asleep) +you
 "alibi response"
 
 -thanks alone (confirm/confirmed) corroborate witness anyone time
@@ -269,7 +269,7 @@ events yesterday murder last happened
 +mellors dismissal warning letter job position colonel
 "mellors' dismissal response"
 
--again marriage colonel sarah wife husband happy get with
+-again marriage colonel sarah wife husband happy get | jealous jealousy
 "colonel's marriage response"
 
 +(remarriage/remarry/remarrying/marriage) again
@@ -278,7 +278,7 @@ events yesterday murder last happened
 +(engagement/marriage/propose) millicent arthur when
 "millicent's engagement response"
 
-+who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
++who +(accuse/murder/murderer/suspect) him | +who +did +(it/this) | +who +shot
 "who did it response"
 
 +(stone/rock)
@@ -309,11 +309,11 @@ affair mellors sarah (summerhouse/summer) together secret lovers
 affair mellors sarah (summerhouse/summer) together secret lovers
 "affair response"
 
-+redvers money mining peru ruin
++redvers +(money/mining/business/much) ask troubles colonel
 !requires x_newspaper
 "finance response given newspaper and redvers"
 
-money mining peru ruin redvers colonel
++(money/mining/business/much) ask troubles redvers colonel
 "finance response"
 
 police investigation scotland yard inspector detective think here
@@ -322,23 +322,23 @@ police investigation scotland yard inspector detective think here
 weather cold snow
 "weather response"
 
-goodbye bye farewell thanks thank
++(goodbye/bye/farewell/thanks/thank) very
 "goodbye response"
 
 # Response when accused of the murder for a second (or subsequent) time
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !requires all_clues accuse_b4_tag
 !provides new_accuse accuse_tag
 "subsequent accusation response"
 
 # Response when accused of the murder
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !requires all_clues
 !provides new_accuse accuse_tag accuse_b4_tag
 "first accusation response"
 
 # Response when accused when insufficient clues have been gathered
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !provides new_accuse accuse_tag
 "premature accusation response"
 

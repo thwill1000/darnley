@@ -2,7 +2,7 @@ hello hi greetings | -room morning | afternoon | evening
 "Good morning, dear. Can't say it's been much of one, what with
 everything, but sit yourself down if you need anything."
 
-+who +are +you | +name +yourself | +(call/called) +you
++who +are +you | +name +(your/yourself) | +(call/called) +you
 "Mrs. Goodbody, dear - the cook, five years now."
 
 +who +am +i | +my +name
@@ -43,7 +43,7 @@ revolver
 "One missing from the study, dear? News to me. I don't go poking about in
 there."
 
-(revolver/gun)
+(revolver/gun) | shoot shooting
 "Guns, dear? There's the master's cabinet in the study, and Mr. Mellors
 keeps his shotguns down at the cottage for the vermin. Nothing in my
 kitchen, I can promise you that."
@@ -235,7 +235,7 @@ too much to see to in the kitchen this morning."
 "I cooked, dear, and Norah and I washed up. We servants had our own
 supper at half past nine."
 
-events yesterday murder last happened
+events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/talk/talked)
 "Last night I cooked and washed up with Norah. At about 10:30 I heard a
 loud bang, which gave me quite a shock. Not long after we went to bed; me and
 Norah behind the curtain and Mr. B. on the other side. We had to muck in with
@@ -282,7 +282,7 @@ Course, we was asleep by 10:30, so I couldn't swear to any of us after that."
 "Nothing to do with me, dear. Mr. Mellors keeps to his cottage of an
 evening, same as always. I couldn't vouch for him one way or another."
 
--thanks alibi | -thanks +time murder | +yesterday you evening
+-thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +(sleep/slept/asleep) +you
 "We was all three together, me, Norah and Mr. B. in Mr. B.'s pantry
 at 10:30 and 11:30. Of course we was asleep at 11:30 so I suppose
 any of us could have slipped out without the others noticing."
@@ -309,7 +309,7 @@ second warning where he'd already given a first, if you follow me.
 Mr. Mellors wouldn't have taken kindly to losing his cottage along
 with his position."
 
--again marriage colonel sarah wife husband happy get with
+-again marriage colonel sarah wife husband happy get | jealous jealousy
 "Not for me to say, dear, but I don't think either of them was
 what you'd call content. Still, that's their business and none of
 mine."
@@ -318,7 +318,7 @@ mine."
 "Oh, Miss Millicent was thrilled when it was agreed yesterday. She
 came straight down to the kitchen to tell me, bless her."
 
-+who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
++who +(accuse/murder/murderer/suspect) him | +who +did +(it/this) | +who +shot
 "I try not to speculate, it's not my place. Though I'll say Sir
 Redvers turned up out of the blue yesterday in a black temper, and
 the house hasn't felt right since. Make of that what you will."
@@ -361,7 +361,7 @@ affair mellors sarah (summerhouse/summer) together secret lovers
 "Now that's not a question I've an answer to, dear, nor one I'd
 care to guess at."
 
-money mining peru ruin redvers colonel
++(money/mining/business/much) ask troubles redvers colonel
 "I don't know the ins and outs of it, dear, but there was a queer tension in the
 house since Sir Redvers arrived. Mr. B. had it from the family that the two of
 them were shut up in the study a good while, talking business."
@@ -375,12 +375,12 @@ weather cold snow
 "Cold enough to freeze the milk, dear. Still, keeps the larder fresh
 at least. Silver linings, as they say."
 
-goodbye bye farewell thanks thank
++(goodbye/bye/farewell/thanks/thank) very
 "Off you go then, dear. Mind you eat something - you look like you
 could use it."
 
 # Response when accused of the murder for a second (or subsequent) time
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !requires all_clues accuse_b4_goodbody
 !provides new_accuse accuse_goodbody
 She fixes you with a look that could curdle milk.@
@@ -389,7 +389,7 @@ She fixes you with a look that could curdle milk.@
 didn't do it, and that's flat."
 
 # Response when accused of the murder
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !requires all_clues
 !provides new_accuse accuse_goodbody accuse_b4_goodbody
 Mrs. Goodbody plants her floury hands on her hips, drawing herself up
@@ -399,7 +399,7 @@ to her full and considerable height.@
 for five years and never so much as raised my voice, let alone a gun!"
 
 # Response when accused when insufficient clues have been gathered
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !provides new_accuse accuse_goodbody
 "Now that's a dreadful thing to say to a body, and no proof to back it
 up neither."

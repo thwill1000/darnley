@@ -2,7 +2,7 @@ hello hi greetings | -room morning | afternoon | evening
 "Ah, hello there. Ghastly business, all this - still, glad to have
 someone competent looking into it."
 
-+who +are +you | +name +yourself | +(call/called) +you
++who +are +you | +name +(your/yourself) | +(call/called) +you
 "Arthur Coniston, old boy - Millicent's intended. Down for the
 weekend."
 
@@ -38,7 +38,7 @@ revolver
 !requires x_gunrack
 "A revolver missing from the rack? First I've heard of it."
 
-(revolver/gun)
+(revolver/gun) | shoot shooting
 "Darnley has a gun cabinet in his study, revolvers and rifles and whatnot.
 I imagine the gamekeeper keeps a shotgun or two down at his cottage.
 Can't say I own a gun myself, old boy - never saw the appeal."
@@ -243,7 +243,7 @@ though, given the circumstances."
 "Dinner with the family, and Slingsby. Afterwards a little billiards with
 the men, then coffee with the ladies."
 
-events yesterday murder last happened
+events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/talk/talked)
 "I was down for the weekend. It was no secret that I was going to ask
 Colonel Darnley for permission to marry Millicent. I popped the question
 to the old boy in the afternoon and he agreed. Last night we all had
@@ -315,7 +315,7 @@ notice - servants keep rather different hours to the rest of us."
 "Never even laid eyes on the fellow, far as I recall. Couldn't tell
 you a thing about his evening."
 
--thanks alibi | -thanks +time murder | +yesterday you evening
+-thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +(sleep/slept/asleep) +you
 "Millicent and I were together in the music room at 10:30. I don't
 know how anyone can be expected to have an alibi for 11:30.
 Certainly a single gentleman could never admit to one, if you follow
@@ -341,7 +341,7 @@ you the first thing about his will, and frankly I'd rather not guess."
 gamekeeper to me at all, warning letter or otherwise. Can't say I'm
 surprised, mind - fellow's got a face like a wet Sunday."
 
--again marriage colonel sarah wife husband happy get with
+-again marriage colonel sarah wife husband happy get | jealous jealousy
 "Not really my place to say. Darnley seemed fond enough of her, in
 his gruff way, but a young wife and an old husband - well, you can
 imagine the gossip."
@@ -350,7 +350,7 @@ imagine the gossip."
 "Happiest news of my life, old boy! The Colonel gave his blessing
 yesterday afternoon. I still can't quite believe my luck."
 
-+who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
++who +(accuse/murder/murderer/suspect) him | +who +did +(it/this) | +who +shot
 "Good Lord, I haven't the faintest. Between you and me I'd watch
 Slingsby - man had the look of someone with troubles on his mind
 last night. But don't quote me, old boy."
@@ -394,14 +394,14 @@ lately. Best not read too much into that, though."
 affair mellors sarah (summerhouse/summer) together secret lovers
 "Can't say that's ever occurred to me, old boy. Should it have?"
 
-+redvers money mining peru ruin
++redvers +(money/mining/business/much) ask troubles colonel
 !requires x_newspaper
 "Ah - so you've found that, have you. Darnley did mention old
 Slingsby had come a cropper over some mining shares. Seemed rather
 keen to keep it quiet, if I'm honest, which I suppose is
 understandable."
 
-money mining peru ruin redvers colonel
++(money/mining/business/much) ask troubles redvers colonel
 "Couldn't tell you. Money matters aren't really the sort of thing
 a fellow discusses over billiards."
 
@@ -414,12 +414,12 @@ weather cold snow
 "Beastly cold, isn't it. Not that anyone's thinking much about the
 weather today, present company excepted."
 
-goodbye bye farewell thanks thank
++(goodbye/bye/farewell/thanks/thank) very
 "Righto. Do let me know if there's anything else I can help with,
 won't you?"
 
 # Response when accused of the murder for a second (or subsequent) time
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !requires all_clues accuse_b4_arthur
 !provides new_accuse accuse_arthur
 Coniston spreads his hands, the picture of wounded innocence.@
@@ -428,7 +428,7 @@ Coniston spreads his hands, the picture of wounded innocence.@
 have done with it."
 
 # Response when accused of the murder
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !requires all_clues
 !provides new_accuse accuse_arthur accuse_b4_arthur
 Coniston's easy charm falters for just a moment - the faintest tightening
@@ -438,7 +438,7 @@ around the eyes - before he recovers himself entirely.@
 better be very sure of your facts before you say it again."
 
 # Response when accused when insufficient clues have been gathered
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !provides new_accuse accuse_arthur
 "Steady on! You can't go about making accusations without a shred of proof
 to back them up."

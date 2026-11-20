@@ -1,7 +1,7 @@
 hello hi greetings | -room morning | afternoon | evening
 "Morning. Get on with your questions, then, if you've got some."
 
-+who +are +you | +name +yourself | +(call/called) +you
++who +are +you | +name +(your/yourself) | +(call/called) +you
 "Mellors. Gamekeeper."
 
 +who +am +i | +my +name
@@ -35,7 +35,7 @@ revolver
 "One missing from the house? Nothing to do with me - I keep my own guns
 down here."
 
-(revolver/gun)
+(revolver/gun) | shoot shooting
 "I keep a pair of shotguns for the vermin, same as any gamekeeper would.
 I believe there's revolvers and rifles up at the house too, in the Colonel's
 study, but that's nothing to do with me."
@@ -202,7 +202,7 @@ poking about other people's motors."
 (dinner/supper/coffee)
 "Wasn't at the house for dinner. I was at my cottage."
 
-events yesterday murder last happened
+events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/talk/talked)
 "Last night I did my last rounds at 8:00. I saw nothing suspicious. I spent the
 rest of the evening at home and went to bed at 10:00. I didn't hear any strange
 noises. It wasn't the weather for poachers."
@@ -243,7 +243,7 @@ cottage."
 "Nobody vouches for me of an evening, and I don't ask them to. I was
 alone, same as always."
 
--thanks alibi | -thanks +time murder | +yesterday you evening
+-thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +(sleep/slept/asleep) +you
 "I was in my cottage alone all evening and I don't give a tinker's
 curse if you believe me or not. If you look for my tracks to the big
 house, you won't find them."
@@ -262,13 +262,13 @@ speculate further."
 "Not my business what he's left or to who. I keep the game, not the
 accounts."
 
-+mellors dismissal warning letter job position colonel | +yourself dismissal warning letter job position colonel
++mellors dismissal warning letter job position colonel | +(your/yourself) +(dismissal/warning/letter/job/position) colonel
 "Who told you that? ... Aye, there was a letter. Doesn't mean I did anything
 about it besides read it and put it in the fire, same as I'd do with any
 other man's threats. Seven years' good work doesn't end because
 of one bad word from a man who'd had too much port."
 
--again marriage colonel sarah wife husband happy get with
+-again marriage colonel sarah wife husband happy get | jealous jealousy
 "None of my business what goes on in the big house between man and
 wife. I keep to my own affairs."
 
@@ -276,7 +276,7 @@ wife. I keep to my own affairs."
 "Didn't hear about it till it was all round the house. Don't know
 the young gentleman well enough to say more than that."
 
-+who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
++who +(accuse/murder/murderer/suspect) him | +who +did +(it/this) | +who +shot
 "Not my business to guess. But if you're asking, there's a man up at
 that house who sees everything and says nothing - nosy old devil that
 he is."
@@ -318,7 +318,7 @@ affair mellors sarah (summerhouse/summer) together secret lovers
 "Don't know what you mean. I keep to my own business, and I'd
 thank you to do the same."
 
-money mining peru ruin redvers colonel
++(money/mining/business/much) ask troubles redvers colonel
 "Don't know nothing about money and shares. Not my world. All I
 know is Sir Redvers came up the drive in a black temper yesterday
 afternoon."
@@ -332,11 +332,11 @@ weather cold snow
 "Cold. Bad for the game, snow like this - drives 'em to ground.
 Nothing else to say about it."
 
-goodbye bye farewell thanks thank
++(goodbye/bye/farewell/thanks/thank) very
 "Aye. Off with you, then."
 
 # Response when accused of the murder for a second (or subsequent) time
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !requires all_clues accuse_b4_mellors
 !provides new_accuse accuse_mellors
 He doesn't so much as blink.@
@@ -345,7 +345,7 @@ He doesn't so much as blink.@
 singing a different tune just to please you."
 
 # Response when accused of the murder
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !requires all_clues
 !provides new_accuse accuse_mellors accuse_b4_mellors
 Mellors doesn't flinch. He looks back at you with the same flat,
@@ -356,7 +356,7 @@ his eyes has sharpened.@
 saying so all along, and I'll keep saying it."
 
 # Response when accused when insufficient clues have been gathered
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !provides new_accuse accuse_mellors
 "You'd best have something to back that up before you go saying it
 again."

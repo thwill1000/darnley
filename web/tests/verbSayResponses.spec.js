@@ -140,8 +140,15 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
   it('What happened last night?', () => {
     all('events response', [
-      'tell me about last night', 'what happened last night', 'describe what happened yesterday',
-      'walk me through the events of that night', 'run me through the events of the murder',
+      'tell me about last night',
+      'what happened last night',
+      'describe what happened yesterday',
+      'walk me through the events of that night',
+      'run me through the events of the murder',
+      'run me through the events of the murder',
+      'run me through the events of the murder',
+      'When was the last time you spoke to the deceased?',
+      'When did you last see the Colonel?',
     ]);
   });
 
@@ -159,14 +166,23 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
   it('What were you doing at the time of the murder?', () => {
     all('alibi response', [
-      'alibi', "What's your alibi?", 'Give me your alibi', 'Do you have an alibi?',
-      'What alibi can you give me?', 'What were you doing at the time of the murder?',
+      'alibi',
+      "What's your alibi?",
+      'Give me your alibi',
+      'Do you have an alibi?',
+      'What alibi can you give me?',
+      'What were you doing at the time of the murder?',
       'Where were you at the time of the murder?',
-      "What did you do yesterday evening?",
+      'What did you do yesterday evening?',
+      'Where were you at 10:30?',
+      'Did you sleep well?',
     ]);
 
+    target('billingsgate');
+    assertResponse('Where were you at 10:30?', 'I was with Mrs. Goodbody and young Norah in my pantry', true);
+
     target('goodbody');
-    assertResponse('Mildred, where were you at the time of the murder?', 'We was all three together', true);
+    assertResponse('Where were you at the time of the murder?', 'We was all three together', true);
   });
 
   it('Can anyone confirm your alibi?', () => {
@@ -205,9 +221,15 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
   it('What guns are there in the house?', () => {
     all('guns in the house response', [
-      'revolver', 'pistol', 'Tell me about the revolver', 'Whose revolver is this?',
-      'Do you recognise this revolver?', 'What guns are there in the house?',
-      'Does anyone own a shotgun?', 'Are there any rifles here?',
+      'revolver',
+      'pistol',
+      'Tell me about the revolver',
+      'Whose revolver is this?',
+      'Do you recognise this revolver?',
+      'What guns are there in the house?',
+      'Does anyone own a shotgun?',
+      'Are there any rifles here?',
+      'Do you shoot?',
     ]);
   });
 
@@ -761,6 +783,9 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     target('billingsgate');
     assertResponse('Who played billiards after dinner?', 'I served port to the gentlemen in the billiard room', true);
 
+    target('millicent');
+    assertResponse('Who played billiards after dinner?', 'The gentlemen went off to billiards after dinner', true);
+
     target('sarah');
     assertResponse('Who played billiards after dinner?', 'The gentlemen went off to billiards over their port', true);
 
@@ -863,9 +888,16 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
   it('Who do you think is the murderer?', () => {
     all('who did it response', [
-      'who do you think did it?', 'who is the murderer?', 'who is the killer?', 'who would you accuse?',
-      'who do you think murdered colonel darnley?', 'who killed him', 'who do you suspect',
-      'any idea who did this', 'who would want to kill him',
+      'Who do you think did it?',
+      'Who is the murderer?',
+      'Who is the killer?',
+      'Who would you accuse?',
+      'Who do you think murdered colonel darnley?',
+      'Who killed him',
+      'Who do you suspect',
+      'Any idea who did this',
+      'Who would want to kill him',
+      'Who do you think shot Mr Darnley?',
     ]);
   });
 
@@ -876,6 +908,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       'How was the marriage?',
       'Did Sarah and the colonel get on?',
       "Who was the Colonel's friend?",
+      'Was Mr Darnley a jealous man',
     ]);
   });
 
@@ -952,12 +985,15 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
   it("Tell me about the Colonel's finances", () => {
     all('finance response', [
-      "tell me about the colonel's finances",
-      "tell me about redvers' debts",
-      "tell me about redvers' money troubles",
-      "tell me about redvers's money troubles",
-      "what about slingsby's debts",
-      "did redvers lose money",
+      "Tell me about the colonel's finances",
+      "Tell me about redvers' debts",
+      "Tell me about redvers' money troubles",
+      "Tell me about redvers's money troubles",
+      "What about slingsby's debts",
+      "Did redvers lose money",
+      'Did Mr Darnley agree to the loan?',
+      'How much did you lose?',
+      'How much money did you ask for?',
     ]);
   });
 
@@ -979,14 +1015,32 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     // Ask Redvers directly without referencing him by name in the subject.
     target('redvers');
     assertResponse('Redvers, did you have money troubles?', 'He goes rather grey about the gills.', true);
+    assertResponse('How much did you lose?', 'He goes rather grey about the gills.', true);
+
+    // 'Redvers' finance reveal is not triggered by 'lost' alone"
+    target('redvers');
+    resetFlags('x_newspaper');
+    assertResponse('Have you lost a handkerchief?', 'Not mine, obviously.', true);
+    assertResponse('Have you lost a cat?', 'The cat?', true);
   });
 
   it('What do you know about the bangs last night?', () => {
     all('bang/shot timeline response', [
-      'bang', 'shot', 'What about the bang?', 'What about the shot?', 'What time was the bang?',
-      'What time was the shot?', 'What time did you hear the bang?', 'What time did you hear the shot?',
-      'When did you hear the bang?', 'When did you hear the shot?', 'Tell me about the bang?',
-      'Tell me about the shot?', 'Did you hear a bang?', 'What time exactly did you hear the shot?',
+      'bang',
+      'shot',
+      'What about the bang?',
+      'What about the shot?',
+      'What time was the bang?',
+      'What time was the shot?',
+      'What time did you hear the bang?',
+      'What time did you hear the shot?',
+      'When did you hear the bang?',
+      'When did you hear the shot?',
+      'Tell me about the bang?',
+      'Tell me about the shot?',
+      'Did you hear a bang?',
+      'What time exactly did you hear the shot?',
+      'Who heard the gunshot?',
     ]);
   });
 
@@ -1046,6 +1100,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       'When was he killed?',
       'When was the murder?',
       'When was he found dead?',
+      'What time did he die last night?'
     ]);
 
     target('billingsgate');
@@ -1167,13 +1222,29 @@ describe('verbSay() against the real template/suspect .msg files', () => {
   });
 
   const accusations = [
-    'accuse', 'guilty', 'I accuse you!', 'You did it', 'You are the murderer', 'You are the killer',
-    'You killed the colonel', 'You murdered the colonel', "J'accuse!", 'I accuse you of murder',
-    'I accuse you, confess!', 'You are guilty!',
+    'accuse',
+    'guilty',
+    'I accuse you!',
+    'You did it',
+    'You are the murderer',
+    'You are the killer',
+    'You killed the colonel',
+    'You murdered the colonel',
+    "J'accuse!",
+    'I accuse you of murder',
+    'I accuse you, confess!',
+    'You are guilty!',
+    'Did you shoot him?',
   ];
 
   it("I accuse you! (but don't have all the clues)", () => {
     all('premature accusation response', accusations);
+
+    target("sarah");
+    assertResponse('Did you shoot your husband?', "You mustn't say such things without evidence", true);
+
+    target("millicent");
+    assertResponse("Did you shoot your father?", 'That is a wicked thing to say without proof', true);
   });
 
   it('I accuse you! (the first time)', () => {
@@ -1181,6 +1252,20 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       resetFlags('all_clues');
       assertResponse(cmd, 'first accusation response');
     }
+
+    target("sarah");
+    assertResponse(
+      'Did you shoot your husband?',
+      "Sarah's hand goes to her throat",
+      true,
+    );
+
+    target("millicent");
+    assertResponse(
+      "Did you shoot your father?",
+      "Millicent's composure cracks for the first time",
+      true,
+    );
   });
 
   it('I accuse you! (subsequent times)', () => {
@@ -1188,6 +1273,22 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       resetFlags('all_clues', 'accuse_b4_tag');
       assertResponse(cmd, 'subsequent accusation response');
     }
+
+    target("sarah");
+    resetFlags('all_clues', 'accuse_b4_sarah');
+    assertResponse(
+      'Did you shoot your husband?',
+      'She looks at you steadily now, some of the shock worn off',
+      true,
+    );
+
+    target("millicent");
+    resetFlags('all_clues', 'accuse_b4_millicent');
+    assertResponse(
+      "Did you shoot your father?",
+      'Her jaw sets and she regards you with cold, level eyes.',
+      true,
+    );
   });
 
   it('Goodbye.', () => {
@@ -1220,4 +1321,48 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       'Tell me about the sleeping draught',
     ]);
   });
+
+  it('Redvers\' gated finance reveal is not triggered by a bare "you"', () => {
+    target('redvers');
+    resetFlags('x_newspaper');
+    assertResponse('Do you like soup?', "No idea whatsoever. Can we stick to the point?");
+  });
+
+  it("'with' alone does not select the marriage entry over the affair entry", () => {
+    assertResponse('Are you having an affair with Mrs Darnley?', 'affair response');
+  });
+
+  it("'your' no longer selects the 'yourself' self-description entry", () => {
+    target('sarah');
+    assertResponse('Where is your mother?', "I'm afraid I really couldn't say.", true);
+  });
+
+  it("'smoke' selects the smoking entry like 'smokes' and 'smoking'", () => {
+    all('smoking response', ['Do you smoke?', 'Does he smoke?']);
+  });
+
+  it("'gunshot' is treated as a shot, selecting the bang timeline", () => {
+    all('bang/shot timeline response', [
+      'Did you hear the gunshot?',
+      'Where were you when you heard the gunshot?',
+    ]);
+  });
+
+  it("'lover' selects the affair entry, and beats the opinion entry", () => {
+    all('affair response', ['Is he your lover?', 'Does Sarah have a lover?']);
+  });
+
+  it("'billiard room' selects the billiards entry as 'billiards' does", () => {
+    assertResponse('What was the conversation in the billiard room?', 'billiard room response');
+  });
+
+  it("'broke' is treated as 'broken' for the window entry", () => {
+    assertResponse('Who broke the glass in the door?', 'broken window response');
+  });
+
+  it("'deceased' and 'victim' are treated as the colonel", () => {
+    assertResponse('Where is the deceased?', 'body location response');
+    assertResponse('What was the victim like?', 'colonel darnley opinion response');
+  });
+
 });

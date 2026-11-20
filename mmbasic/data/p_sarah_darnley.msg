@@ -2,7 +2,7 @@ hello hi greetings | -room morning | afternoon | evening
 "Good morning, Inspector. Forgive me if I don't manage much of a
 smile today."
 
-+who +are +you | +name +yourself | +(call/called) +you
++who +are +you | +name +(your/yourself) | +(call/called) +you
 "I am Sarah Darnley, Inspector - Sebastian's wife. I should have
 thought you'd been told that."
 
@@ -41,7 +41,7 @@ revolver
 missing when Billingsgate mentioned it. I don't know when it went, or who
 might have taken it."
 
-(revolver/gun)
+(revolver/gun) | shoot shooting
 "Sebastian kept a pair of revolvers in the study, along with a rifle or two -
 sporting guns, mostly for show, I always thought. He never went shooting
 himself, not since his army days."
@@ -274,7 +274,7 @@ but I wish it hadn't."
 "We all dined together. Afterwards the men took port and billiards while
 Millicent and I had coffee in the lounge."
 
-events yesterday murder last happened
+events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/talk/talked)
 "Last night we all had dinner together. Afterwards the men played billiards
 while Millicent and I had coffee in the lounge.@
 @
@@ -332,7 +332,7 @@ wasn't paying attention to the servants that evening."
 "I don't see why you should ask me about Mellors' evening, Inspector.
 I'm sure I couldn't tell you."
 
--thanks alibi | -thanks +time murder | +yesterday you evening
+-thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +(sleep/slept/asleep) +you
 "At 10:30 I was reading and drinking coffee in the lounge - on my
 own, I'm afraid. At 11:30 I was playing the piano in the morning
 room - also alone, alas! I don't suppose it looks too good?"
@@ -358,7 +358,7 @@ you the terms of it."
 of the estate with me, and Mellors has always struck me as
 perfectly loyal - I can't think what would have prompted it."
 
--again marriage colonel sarah wife husband happy get with
+-again marriage colonel sarah wife husband happy get | jealous jealousy
 "We married two years ago - I'm more than thirty years his junior, not much
 older than Millicent, and people will talk regardless of what's true. We were
 happy enough, in our own way. He was strict, and older than me. I loved him,
@@ -376,7 +376,7 @@ not while my husband isn't yet in the ground."
 positively glowing when she told me. I'm glad she'll have that
 happiness, whatever else has happened."
 
-+who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
++who +(accuse/murder/murderer/suspect) him | +who +did +(it/this) | +who +shot
 "I can't bear to think it was any of them, truly. If you insist I
 name someone - Sir Redvers seemed dreadfully agitated all evening. I
 don't like to say more than that."
@@ -419,13 +419,13 @@ affair mellors sarah (summerhouse/summer) together secret lovers
 "I'm sorry - I don't understand the question. Mellors is our
 gamekeeper. I don't see what he has to do with anything."
 
-+redvers money mining peru ruin
++redvers +(money/mining/business/much) ask troubles colonel
 !requires x_newspaper
 "Sebastian did mention Sir Redvers needed to talk business
 urgently. I assumed it was the usual sort of thing - I didn't
 realise it was quite so serious until now."
 
-money mining peru ruin redvers colonel
++(money/mining/business/much) ask troubles redvers colonel
 "I really couldn't say. Sebastian didn't discuss financial business with me."
 
 police investigation scotland yard inspector detective think here
@@ -437,12 +437,12 @@ weather cold snow
 "Dreadfully cold. Though I confess the weather is the last thing on
 my mind just now, Inspector."
 
-goodbye bye farewell thanks thank
++(goodbye/bye/farewell/thanks/thank) very
 "Goodbye, Inspector. Thank you for your discretion in all of
 this."
 
 # Response when accused of the murder for a second (or subsequent) time
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !requires all_clues accuse_b4_sarah
 !provides new_accuse accuse_sarah
 She looks at you steadily now, some of the shock worn off, replaced by
@@ -452,7 +452,7 @@ something harder to read.@
 you are quite wrong."
 
 # Response when accused of the murder
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !requires all_clues
 !provides new_accuse accuse_sarah accuse_b4_sarah
 Sarah's hand goes to her throat, the colour draining from her face.@
@@ -461,7 +461,7 @@ Sarah's hand goes to her throat, the colour draining from her face.@
 thing."
 
 # Response when accused when insufficient clues have been gathered
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !provides new_accuse accuse_sarah
 "You mustn't say such things without evidence - it isn't fair, not to
 anyone."

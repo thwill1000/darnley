@@ -2,7 +2,7 @@ hello hi greetings | -room morning | afternoon | evening
 "Morning, sir. Constable on duty at the gate - nothing gets past me,
 for what that's worth."
 
-+who +are +you | +name +yourself | +(call/called) +you
++who +are +you | +name +(your/yourself) | +(call/called) +you
 "Constable Pegg, sir, on gate duty, up from the village station this morning."
 
 +who +am +i | +my +name
@@ -61,7 +61,7 @@ had cause to speak to him."
 "Seen him about the stables, sir. Big ginger fellow. No trouble to
 anyone that I've noticed."
 
-+(officer/policeman/police) (get/think) with | yourself | order | posted | duty
++(officer/policeman/police) (get/think) with | yourself | order | orders | posted | duty
 "Me, sir? Not much to tell - come up from the station this morning when the
 call came in, and I've been minding the gate since. I'll do my duty here as
 long as you need me to."
@@ -83,7 +83,7 @@ hasn't stirred an inch."
 "That's yours, sir, isn't it? I came up from the village on my bicycle -
 left it propped up behind the wall, sir."
 
-events yesterday murder last happened
+events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/talk/talked)
 "Can't help you there, sir. I only came on duty this morning when the
 call came in - whatever happened last night, it happened before my
 time."
@@ -99,7 +99,7 @@ who was in the house."
 "Not my place to guess at that sort of thing, sir. I just mind the
 gate."
 
-+who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
++who +(accuse/murder/murderer/suspect) him | +who +did +(it/this) | +who +shot
 "That's your department, sir, not mine. I wouldn't like to hazard a
 guess."
 
@@ -121,7 +121,7 @@ weather cold snow
 "Bitter, sir. Been standing here since first light and I can't feel
 my feet, if I'm honest."
 
-goodbye bye farewell thanks thank
++(goodbye/bye/farewell/thanks/thank) very
 "Very good, sir. I'll stay at my post."
 
 (who/whose/whom/why/what/where/when/how/which/?)

@@ -2,7 +2,7 @@ hello hi greetings | -room morning | afternoon | evening
 "Hello, Inspector. I suppose there's nothing 'good' about this
 morning, but you're welcome all the same."
 
-+who +are +you | +name +yourself | +(call/called) +you
++who +are +you | +name +(your/yourself) | +(call/called) +you
 "Millicent Darnley. Daddy's daughter - and Arthur's fiancee, as of
 yesterday."
 
@@ -37,7 +37,7 @@ revolver
 "One of Daddy's revolvers is missing from the study cabinet? I hadn't noticed,
 though I don't make a habit of looking in there."
 
-(revolver/gun)
+(revolver/gun) | shoot shooting
 "Daddy has a gun cabinet in the study - revolvers and rifles, that sort
 of thing. And Mellors keeps a pair of shotguns down at his cottage, for the
 vermin. I don't know that anyone else in the house keeps a gun."
@@ -74,6 +74,11 @@ repeated the same piece again and again."
 letter
 "A letter? I don't know anything about it. Daddy didn't discuss his
 correspondence with me - I only know he'd agreed I might marry Arthur."
+
++wine (glass/glasses) | billiards
+"The gentlemen went off to billiards after dinner while Sarah and I
+had coffee in the lounge. I never went into the billiard room, so I
+couldn't tell you whose wine glasses those are."
 
 key
 "Daddy kept his study keys on him always - he was fussy about it. I
@@ -231,7 +236,7 @@ what's in it."
 "We all dined together. Sarah and I took coffee in the lounge afterwards,
 and the men joined us for half an hour."
 
-events yesterday murder last happened
+events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/talk/talked)
 "Last night we all ate together until coffee which Sarah and I took
 together in the lounge. The men joined us later for half an hour,
 then Arthur and I went into the music room where we talked for a
@@ -293,7 +298,7 @@ something I'd notice."
 "I shouldn't think anyone in the house could vouch for Mellors. He
 keeps to himself down at the cottage."
 
--thanks alibi | -thanks +time murder | +yesterday you evening
+-thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +(sleep/slept/asleep) +you
 "I was with Arthur in the music room at 10:30 and, naturally, I was
 alone in bed at 11:30."
 
@@ -318,7 +323,7 @@ now."
 about a letter. If Daddy did write to him, he never mentioned it to
 me. But I shouldn't be surprised."
 
--again marriage colonel sarah wife husband happy get with
+-again marriage colonel sarah wife husband happy get | jealous jealousy
 "Daddy was thirty years older than Sarah and never quite trusted
 that she'd stay. I don't think either of them was truly happy,
 if I'm honest. But that's marriage for you, isn't it?"
@@ -328,7 +333,7 @@ if I'm honest. But that's marriage for you, isn't it?"
 yesterday - I still can hardly believe it. I'd waited so long for
 him to say yes."
 
-+who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
++who +(accuse/murder/murderer/suspect) him | +who +did +(it/this) | +who +shot
 "I try not to think about it - it makes me feel rather sick. If I'm
 honest, Mellors has always given me an uneasy feeling. But that isn't
 proof, is it? Just a feeling."
@@ -372,13 +377,13 @@ affair mellors sarah (summerhouse/summer) together secret lovers
 "Goodness, what a thing to ask. I don't know anything about that,
 and I'm not sure I want to."
 
-+redvers money mining peru ruin
++redvers +(money/mining/business/much) ask troubles colonel
 !requires x_newspaper
 "Oh - is that what it was about? Daddy did mention something about
 Sir Redvers wanting money. I didn't think much of it at the time -
 gentlemen are always fussing over investments."
 
-money mining peru ruin redvers colonel
++(money/mining/business/much) ask troubles redvers colonel
 "I really don't know anything about finance. That's
 not the sort of thing anyone discusses with me."
 
@@ -391,11 +396,11 @@ weather cold snow
 "Isn't it awful? Though I suppose all this snow means every
 footstep shows. Small mercies, given everything else."
 
-goodbye bye farewell thanks thank
++(goodbye/bye/farewell/thanks/thank) very
 "Goodbye, Inspector. I do hope you find whoever did this."
 
 # Response when accused of the murder for a second (or subsequent) time
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !requires all_clues accuse_b4_millicent
 !provides new_accuse accuse_millicent
 Her jaw sets and she regards you with cold, level eyes.@
@@ -404,7 +409,7 @@ Her jaw sets and she regards you with cold, level eyes.@
 now, however many times you care to repeat yourself."
 
 # Response when accused of the murder
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !requires all_clues
 !provides new_accuse accuse_millicent accuse_b4_millicent
 Millicent's composure cracks for the first time since you met her
@@ -414,7 +419,7 @@ Millicent's composure cracks for the first time since you met her
 absolutely certain, because I will not forgive this lightly."
 
 # Response when accused when insufficient clues have been gathered
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !provides new_accuse accuse_millicent
 "That is a wicked thing to say without proof. I hope you have better
 reasons than mere suspicion."

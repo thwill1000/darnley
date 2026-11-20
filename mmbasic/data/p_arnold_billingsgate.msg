@@ -2,7 +2,7 @@ hello hi greetings | -room morning | afternoon | evening
 "Good day to you, sir. I only wish it were under happier
 circumstances."
 
-+who +are +you | +name +yourself | +(call/called) +you
++who +are +you | +name +(your/yourself) | +(call/called) +you
 "Billingsgate, sir. I am - was - the Colonel's butler."
 
 +who +am +i | +my +name
@@ -40,7 +40,7 @@ revolver
 "I had noticed one of the pair was missing from the rack, sir, though I
 couldn't say when it went, or by whose hand."
 
-(revolver/gun)
+(revolver/gun) | shoot shooting
 "The master kept a cabinet of sporting guns in the study, sir - revolvers
 and rifles both. Mr. Mellors keeps a pair of shotguns down at the cottage
 for his work. I'm not aware of any others in the house."
@@ -256,7 +256,7 @@ matters."
 "I waited on the family, Sir Redvers and Mr. Coniston, sir. I served port
 in the billiard room and withdrew a little after nine."
 
-events yesterday murder last happened
+events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/talk/talked)
 "Last night I waited on the guests at dinner. There was the family, Sir Redvers
 and Mr. Coniston. The atmosphere at dinner, I am bound to say, was not entirely
 comfortable. Afterwards I served port to the gentlemen in the billiard room and
@@ -321,7 +321,7 @@ retired, though - I was asleep myself until Mr. Coniston woke me."
 "I have no knowledge of Mr. Mellors' movements last night, sir. He
 does not come up to the house after dark unless sent for."
 
--thanks alibi | -thanks +time murder | +yesterday you evening
+-thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +(sleep/slept/asleep) +you
 "I was with Mrs. Goodbody and young Norah in my pantry at both 10:30
 and 11:30."
 
@@ -351,7 +351,7 @@ about his conduct - I believe it concerned some poaching he suspected
 close to home, if you take my meaning. I couldn't say whether the
 letter was ever delivered, only that the master intended it."
 
--again marriage colonel sarah wife husband happy get with
+-again marriage colonel sarah wife husband happy get | jealous jealousy
 "It is not my place to comment on the master's marriage, sir. I
 will say the Colonel was a generous husband, whatever else might be
 said of him."
@@ -360,7 +360,7 @@ said of him."
 "The Colonel gave his consent only yesterday afternoon, as I
 understand it. Miss Millicent seemed very happy about it indeed."
 
-+who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
++who +(accuse/murder/murderer/suspect) him | +who +did +(it/this) | +who +shot
 "That is not a question I am equipped to answer, sir. I will say
 only that a house such as this holds more secrets than its servants
 are ever told, above stairs or below."
@@ -404,7 +404,7 @@ family, sir. I have nothing further to say on the matter."
 affair mellors sarah (summerhouse/summer) together secret lovers
 "That is not a subject on which I would presume to comment, sir."
 
-money mining peru ruin redvers colonel
++(money/mining/business/much) ask troubles redvers colonel
 "I could not say what passed between the Colonel and Sir Redvers,
 sir. I understand from the family that they were closeted in the
 study together for some while after 10:00, but it is not my place to
@@ -422,12 +422,12 @@ weather cold snow
 outdoor staff, though I dare say it has been of some use to you in
 tracking footprints."
 
-goodbye bye farewell thanks thank
++(goodbye/bye/farewell/thanks/thank) very
 "Very good, sir. I shall be about the house if you need anything
 further."
 
 # Response when accused of the murder for a second (or subsequent) time
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !requires all_clues accuse_b4_billingsgate
 !provides new_accuse accuse_billingsgate
 The butler's composure has returned, though something guarded remains
@@ -437,7 +437,7 @@ in his manner.@
 changed in the meantime."
 
 # Response when accused of the murder
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !requires all_clues
 !provides new_accuse accuse_billingsgate accuse_b4_billingsgate
 Billingsgate draws himself up, visibly wounded, though he masters
@@ -448,7 +448,7 @@ sir. I should hope my conduct speaks for itself, whatever you may
 suspect."
 
 # Response when accused when insufficient clues have been gathered
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !provides new_accuse accuse_billingsgate
 "Begging your pardon, but that is a very grave thing to suggest without
 proper cause."
