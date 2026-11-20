@@ -26,9 +26,11 @@ Dim con.fd_out   ' file descriptor to echo input to
 Dim con.more = 1 ' show the [MORE] prompt if more than a page of output
                  ' (approx con.HEIGHT lines) is written without a prompt
 Dim con.history%(255)   ' history buffer for user input.
+Dim con.no_colour%      ' 1 = colour text disabled.
 Dim con.spin_enabled    ' is the progress spinner enabled ?
 Dim con.spin_shown      ' is the progress spinner currently displayed ?
 Dim con.disable_flush%  ' set 1 to temporarily disable flushing the console write buffer, buf$.
+Dim con.batch% = 0      ' 1 = non-interactive batch replay
 Dim con.fg$ = "reset"   ' current foreground colour
 Dim con.prompt_colour$ = "reset"  ' prompt colour
 Dim con.markup_colour$  ' colour of a span left open across con.print() calls,
@@ -41,12 +43,13 @@ Dim con.markup_pending_empty% ' 1 if a span is open and nothing has been emitted
                                ' without also emitting a spurious empty callback for
                                ' a span that already emitted real content earlier.
 
-Sub con.init(width%, height%, spin_enabled%)
+Sub con.init(width%, height%, no_colour%, spin_enabled%)
   con.WIDTH = width%
   con.HEIGHT = height%
+  con.no_colour% = no_colour%
   con.spin_enabled = spin_enabled%
 
-  If Mm.Info(Device X) = "MMB4L" Then
+  If Mm.Info(Device X) = "MMB4L" And Not con.batch% Then
     ' A 'feature' of the current version of MMB4L (v0.8) is that by default
     ' it hides the console cursor except when waiting at the BASIC prompt.
     Console HideCursor False
@@ -54,7 +57,7 @@ Sub con.init(width%, height%, spin_enabled%)
 End Sub
 
 Sub con.clear(no_cls%)
-  If Not no_cls% Then Cls
+  If Not (no_cls% Or con.batch%) Then Cls
   con.buf$ = ""
   con.buf_runs$ = ""
   con.fg$ = "reset"
@@ -73,11 +76,8 @@ Function con.in$(p$, echo)
   ' Reset line counter to prevent unwanted [MORE] prompt.
   con.lines = 0
 
-  Const old_fg$ = con.fg$
-  con.foreground(con.prompt_colour$)
-  con.print(p$)
-  con.flush()
-
+  ' If replaying, read the next command BEFORE printing the prompt so that in
+  ' batch mode we can end without leaving a dangling prompt.
   If con.fd_in Then
     Do While s$ = "" And Not Eof(con.fd_in)
       Line Input #con.fd_in, s$
@@ -85,10 +85,22 @@ Function con.in$(p$, echo)
       If InStr(s$, "#") = 1 Or InStr(LCase$(s$), "*record") = 1 Then s$ = ""
       If s$ <> "" Then con.history_put(con.history%(), s$)
     Loop
-    If Eof(con.fd_in) And s$ = "" Then s$ = "*replay off"
-  Else
-    s$ = con.readln$("", 255, con.history%())
+    If s$ = "" Then
+      If con.batch% Then
+        con.flush()
+        con.close_all()
+        End
+      EndIf
+      s$ = "*replay off"
+    EndIf
   EndIf
+
+  Const old_fg$ = con.fg$
+  con.foreground(con.prompt_colour$)
+  con.print(p$)
+  con.flush()
+
+  If Not con.fd_in Then s$ = con.readln$("", 255, con.history%())
 
   ' If we read from a file then echo what we read.
   If con.fd_in Then con.println(s$)
@@ -415,6 +427,7 @@ Sub con.show_more_prompt(extra%)
 End Sub
 
 Function con.wait_for_key$(duration%)
+  If con.fd_in% <> 0 Then Exit Function
   Do While Inkey$ <> "" : Pause 1 : Loop
   Local end_wait% = Timer + duration%
   If duration% = 0 Then end_wait% = &h7FFFFFFFFFFFFFFF
@@ -534,6 +547,12 @@ Sub con.foreground(fg$, no_flush%)
     Case "speech"
       fg$ = "cyan"
   End Select
+
+  If con.no_colour% Then
+    ' Plain text, no colour codes.
+    con.fg$ = fg$
+    Exit Sub
+  End If
 
   Const type% = con.get_type%()
 
@@ -854,6 +873,7 @@ End Sub
 Sub con.show_cursor(show%)
   If con.get_type%() And con.SCREEN% Then
     Local x% = Mm.Info(HPos), y% = Mm.Info(VPos) + Mm.Info(FontHeight) - 1
+    On Error Skip ' Easiest way to deal with no-graphics option
     Line x%, y%, x% + Mm.Info(FontWidth), y%, 1, Choice(show%, Mm.Info(FColour), Mm.Info(BColour))
   EndIf
 End Sub
@@ -873,6 +893,7 @@ End Sub
 
 ' Sets the font and updates the console width and height.
 Sub con.set_font(size%)
+  If con.batch% Then Exit Sub
   If size% = Mm.Info(Font) Then Exit Sub
   con.endl()
   Font size%

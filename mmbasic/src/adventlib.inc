@@ -11,13 +11,13 @@ If sys.err$ <> "" Then Error sys.err$
 
 If Mm.Info$(Device X) = "MMB4L" And Mm.Info(Version) < 80000000 Then Option Resolution Pixel
 
-Const HAS_GFX = 1 ' Set to 0 to disable Graphics
 Const INVENTORY = -1
 Const HIDDEN_ROOM = -2
 Const LIMBO = -3
 Const MAX_TAKEABLE_WEIGHT = 99
 Const WILDCARD_MATCH = 100
 
+Dim advent.has_gfx%
 Dim DEBUG = 0
 Dim words$(MAX_WORDS) Length MAX_WORD_LENGTH
 Dim noun$, verb$
@@ -30,20 +30,33 @@ Function SUCCEEDED(i%) As Integer
   SUCCEEDED = Not i%
 End Function
 
-Sub init_advent(f$)
-  init_console()
+Sub init_advent(f$, no_gfx%, no_colour%, script$)
+  advent.has_gfx% = Not no_gfx%
+
+  If script$ <> "" Then
+    If Not file.exists%(script$, "file") Then Error "Script file not found: " + f$
+    con.batch% = 1
+    con.more = 0
+    con.open_in(script.FD_IN%, script$)
+  EndIf
+
+  init_console(no_colour%)
   advdata.init(f$)
   state.reset()
-  If Val(Mm.CmdLine$) <> 0 Then r = Val(Mm.CmdLine$)
 End Sub
 
 ' Initialises and clears console/terminal
-Sub init_console()
-  Const w% = Mm.HRes \ Mm.Info(FontWidth)
-  Const h% = Mm.VRes \ Mm.Info(FontHeight)
-  con.init(w%, h%, 0)
+Sub init_console(no_colour%)
+  Local w%, h%
+  If con.batch% Then
+    w% = 80 : h% = 50 ' No screen to measure.
+  Else
+    w% = Mm.HRes \ Mm.Info(FontWidth)
+    h% = Mm.VRes \ Mm.Info(FontHeight)
+  EndIf
+  con.init(w%, h%, no_colour%, 0)
   con.prompt_colour$ = "yellow"
-  If Mm.Info(Device X) = "MMB4L" Then
+  If Mm.Info(Device X) = "MMB4L" And Not con.batch% Then
     On Error Skip
     Console Resize con.WIDTH, con.HEIGHT
   EndIf
@@ -63,7 +76,7 @@ Function count_data%(label$)
 End Function
 
 Sub show_splash()
-  If Not HAS_GFX Then Exit Sub
+  If Not advent.has_gfx% Then Exit Sub
   con.clear()
   Local y% = Int((Mm.VRes - 240) / 2)
   Const mode% = Choice(InStr(Mm.Device$, "PicoMiteVGA"), 4, -1)
@@ -80,7 +93,7 @@ Sub show_splash()
 End Sub
 
 Sub show_end_screen()
-  If Not HAS_GFX Then Exit Sub
+  If Not advent.has_gfx% Then Exit Sub
   con.clear()
   Local y% = Int((Mm.VRes - 240) / 2)
   Const mode% = Choice(InStr(Mm.Device$, "PicoMiteVGA"), 4, -1)
@@ -114,7 +127,7 @@ End Sub
 Sub describe_loc()
   If DEBUG Then con.print("(" + Str$(r) + ") ")
 
-  Const show_gfx% = HAS_GFX And (Mid$(visited$, r, 1) = "0")
+  Const show_gfx% = advent.has_gfx% And (Mid$(visited$, r, 1) = "0")
 
   If show_gfx% Then con.clear()
 
