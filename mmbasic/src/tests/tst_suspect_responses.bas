@@ -56,7 +56,7 @@ advdata.init()
 Const DATA_DIR$ = adv.game_root$ + "data/"
 
 ' Template is read once, at file scope, rather than per-test.
-Dim t_keys$(msgorder.MAX_ENTRIES%) Length 128, t_n%
+Dim t_keys$(msgorder.MAX_ENTRIES%) Length 192, t_n%
 msgorder.read_entries(DATA_DIR$ + "p_template_suspect.msg", t_keys$(), t_n%)
 
 add_test("Arnold Billingsgate's .msg file matches template entry order", "test_msg_order_billingsgate")
@@ -84,7 +84,7 @@ End Sub
 ' Reads filename$ from the real asset directory and asserts its entry
 ' order is a valid subsequence of the (already-loaded) template's order.
 Sub assert_msg_order(filename$)
-  Local f_keys$(msgorder.MAX_ENTRIES%) Length 128, f_n%, err$
+  Local f_keys$(msgorder.MAX_ENTRIES%) Length 192, f_n%, err$
   msgorder.read_entries(DATA_DIR$ + filename$, f_keys$(), f_n%)
 
   Local ok% = msgorder.validate%(t_keys$(), t_n%, f_keys$(), f_n%, filename$, err$)

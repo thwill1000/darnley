@@ -203,7 +203,7 @@ End Sub
 
 ' Runs "say <cmd$>" against the template suspect and asserts the printed
 ' response body matches expected$ exactly.
-Sub assert_response(cmd$, expected$, partial%)
+Sub assert_response(cmd$, expected$, partial%, narration%)
   con_output$ = ""
 
   Local result% = parse_common("say " + cmd$)
@@ -213,8 +213,12 @@ Sub assert_response(cmd$, expected$, partial%)
   assert_int_equals(1, result%)
 
   If partial% Then
-    ' Narration-first expectations start "[[reset:"; speech-first ones are quoted.
-    Const wanted$ = Choice(Left$(expected$, 1) = "[", str.replace$(Mid$(expected$, 9), "]]", ""), "[[speech:" + Chr$(34) + expected$)
+    If narration% Then
+      Const wanted$ = expected$
+    Else
+      ' Speech-first expectations start "[[speech:".
+      Const wanted$ = Choice(Left$(expected$, 1) = "[", str.replace$(Mid$(expected$, 9), "]]", ""), "[[speech:" + Chr$(34) + expected$)
+    EndIf
     assert_string_equals(wanted$, Left$(con_output$, Len(wanted$)))
   Else
     Const wanted$ = "[[speech:" + str.quote$(expected$) + "]]" + sys.CRLF$
@@ -274,6 +278,8 @@ Sub test_events()
   assert_response("describe what happened yesterday", "events response")
   assert_response("walk me through the events of that night", "events response")
   assert_response("run me through the events of the murder", "events response")
+  assert_response("When was the last time you spoke to the deceased?", "events response")
+  assert_response("When did you last see the Colonel?", "events response")
 End Sub
 
 Sub test_why_here()
@@ -303,9 +309,14 @@ Sub test_alibi()
   assert_response("What were you doing at the time of the murder?", "alibi response")
   assert_response("Where were you at the time of the murder?", "alibi response")
   assert_response("What did you do yesterday evening?", "alibi response")
+  assert_response("Where were you at 10:30?", "alibi response")
+  assert_response("Did you sleep well?", "alibi response")
+
+  target_suspect("billingsgate")
+  assert_response("Where were you at 10:30?", "I was with Mrs. Goodbody and young Norah in my pantry", 1)
 
   target_suspect("goodbody")
-  assert_response("Mildred, where were you at the time of the murder?", "We was all three together", 1)
+  assert_response("Where were you at the time of the murder?", "We was all three together", 1)
 End Sub
 
 Sub test_alibi_confirm()
@@ -348,6 +359,8 @@ Sub test_smoking()
   assert_response("Who smokes a cigar?", "smoking response")
   assert_response("Who smokes cheroots?", "smoking response")
   assert_response("Who in the family smoked?", "smoking response")
+  assert_response("Do you smoke?", "smoking response")
+  assert_response("Does he smoke?", "smoking response")
 End Sub
 
 Sub test_revolver()
@@ -359,6 +372,7 @@ Sub test_revolver()
   assert_response("What guns are there in the house?", "guns in the house response")
   assert_response("Does anyone own a shotgun?", "guns in the house response")
   assert_response("Are there any rifles here?", "guns in the house response")
+  assert_response("Do you shoot?", "guns in the house response")
 End Sub
 
 ' Once the pond revolver has been found (x_revolver), asking specifically
@@ -666,6 +680,7 @@ Sub test_opinion_colonel()
   assert_response("What was the Colonel like", "colonel darnley opinion response")
   assert_response("Tell me about Colonel Darnley", "colonel darnley opinion response")
   assert_response("What did you make of Sebastian Darnley", "colonel darnley opinion response")
+  assert_response("What was the victim like?", "colonel darnley opinion response")
 
   ' Ask Millicent about her father & mother.
   target_suspect("millicent")
@@ -997,9 +1012,13 @@ Sub test_billiard_glasses()
   assert_response("Who left the wine glasses on the bookcase?", "billiard room response")
   assert_response("billiards", "billiard room response")
   assert_response("Who played billiards after dinner?", "billiard room response")
+  assert_response("What was the conversation in the billiard room?", "billiard room response")
 
   target_suspect("billingsgate")
   assert_response("Who played billiards after dinner?", "I served port to the gentlemen in the billiard room", 1)
+
+  target_suspect("millicent")
+  assert_response("Who played billiards after dinner?", "The gentlemen went off to billiards after dinner", 1)
 
   target_suspect("sarah")
   assert_response("Who played billiards after dinner?", "The gentlemen went off to billiards over their port", 1)
@@ -1123,6 +1142,7 @@ Sub test_who_did_it()
   assert_response("who do you suspect", "who did it response")
   assert_response("any idea who did this", "who did it response")
   assert_response("who would want to kill him", "who did it response")
+  assert_response("Who do you think shot Mr Darnley?", "who did it response")
 End Sub
 
 Sub test_marriage()
@@ -1131,6 +1151,7 @@ Sub test_marriage()
   assert_response("How was the marriage?", "colonel's marriage response")
   assert_response("Did sarah and the colonel get on?", "colonel's marriage response")
   assert_response("Who was the Colonel's friend?", "colonel's marriage response")
+  assert_response("Was Mr Darnley a jealous man?", "colonel's marriage response")
 End Sub
 
 Sub test_remarriage()
@@ -1161,6 +1182,7 @@ Sub test_broken_window()
   assert_response("how was the french window broken", "broken window response")
   assert_response("what about the shattered pane", "broken window response")
   assert_response("tell me about the broken glass", "broken window response")
+  assert_response("Who broke the glass in the door?", "broken window response")
 
   ' Billingsgate and Arthur were present at the break-in and give
   ' first-person accounts.
@@ -1183,6 +1205,7 @@ Sub test_body()
   assert_response("Where's the body?", "body location response")
   assert_response("Where did you find the body?", "body location response")
   assert_response("Where was the colonel found?", "body location response")
+  assert_response("Where is the deceased?", "body location response")
 End Sub
 
 Sub test_evidence()
@@ -1198,6 +1221,9 @@ Sub test_affair_blocked()
   assert_response("ask about the affair", "affair response")
   assert_response("was there something going on between sarah and mellors", "affair response")
   assert_response("was sarah having a secret affair with the gamekeeper", "affair response")
+  assert_response("Are you having an affair with Mrs Darnley?", "affair response")
+  assert_response("Is he your lover?", "affair response")
+  assert_response("Does Sarah have a lover?", "affair response")
 End Sub
 
 ' Once both gating flags are set, the more specific entry wins (it
@@ -1208,6 +1234,9 @@ Sub test_affair_unlocked()
   assert_response("ask about the affair", "affair response given handkerchief and cigarettes")
   assert_response("was there something going on between sarah and mellors", "affair response given handkerchief and cigarettes")
   assert_response("was sarah having a secret affair with the gamekeeper", "affair response given handkerchief and cigarettes")
+  assert_response("Are you having an affair with Mrs Darnley?", "affair response given handkerchief and cigarettes")
+  assert_response("Is he your lover?", "affair response given handkerchief and cigarettes")
+  assert_response("Does Sarah have a lover?", "affair response given handkerchief and cigarettes")
 End Sub
 
 ' With no "x_newspaper" flag set, falls to the unconditional finance entry
@@ -1218,6 +1247,9 @@ Sub test_money_blocked()
   assert_response("tell me about redvers's money troubles", "finance response")
   assert_response("what about slingsby's debts", "finance response")
   assert_response("did redvers lose money", "finance response")
+  assert_response("Did Mr Darnley agree to the loan?", "finance response")
+  assert_response("How much did you lose?", "finance response")
+  assert_response("How much money did you ask for?", "finance response")
 End Sub
 
 ' Once "x_newspaper" is set, the gated entry wins
@@ -1230,9 +1262,17 @@ Sub test_money_unlocked()
   assert_response("tell me about redvers's money troubles", "finance response given newspaper and redvers")
   assert_response("what about slingsby' debts", "finance response given newspaper and redvers")
 
+  ' Without "redvers" being mentioned, the response should still be the generic finance response
+  assert_response("tell me about the colonel's finances", "finance response")
+
   ' Ask Redvers directly without referencing him by name in the subject.
   target_suspect("redvers")
   assert_response("Redvers, did you have money troubles?", "[[reset:He goes rather grey about the gills.", 1)
+  assert_response("How much did you lose?", "[[reset:He goes rather grey about the gills.", 1)
+
+  ' Redvers' finance reveal is not triggered by 'lost' alone.
+  assert_response("Have you lost a handkerchief?", "Not mine, obviously.", 1)
+  assert_response("Have you lost a cat?", "The cat?", 1)
 End Sub
 
 Sub test_bang()
@@ -1249,7 +1289,10 @@ Sub test_bang()
   assert_response("Tell me about the bang?", "bang/shot timeline response")
   assert_response("Tell me about the shot?", "bang/shot timeline response")
   assert_response("Did you hear a bang?", "bang/shot timeline response")
+  assert_response("Did you hear the gunshot?", "bang/shot timeline response")
   assert_response("What time exactly did you hear the shot?", "bang/shot timeline response")
+  assert_response("Who heard the gunshot?", "bang/shot timeline response")
+  assert_response("Where were you when you heard the gunshot?", "bang/shot timeline response")
 End Sub
 
 ' With no "x_newspaper" flag set, Redvers falls to the unconditional,
@@ -1311,6 +1354,7 @@ Sub test_time_of_death()
   assert_response("When was he found dead?", "time of death response")
   assert_response("bullet", "cause of death response")
   assert_response("wound", "cause of death response")
+  assert_response("What time did he die last night?", "time of death response")
 
   target_suspect("billingsgate")
   assert_response("When did the colonel die?", "I couldn't say, sir. Mr. Coniston woke me", 1)
@@ -1440,6 +1484,13 @@ Sub test_premature_accusation()
   assert_response("I accuse you of murder", "premature accusation response")
   assert_response("I accuse you, confess!", "premature accusation response")
   assert_response("You are guilty!", "premature accusation response")
+  assert_response("Did you shoot him?", "premature accusation response")
+
+  target_suspect("sarah")
+  assert_response("Did you shoot your husband?", "You mustn't say such things without evidence", 1)
+
+  target_suspect("millicent")
+  assert_response("Did you shoot your father?", "That is a wicked thing to say without proof", 1)
 End Sub
 
 Sub test_first_accusation()
@@ -1478,6 +1529,17 @@ Sub test_first_accusation()
 
   reset_flags("all_clues")
   assert_response("You are guilty!", "first accusation response")
+
+  reset_flags("all_clues")
+  assert_response("Did you shoot him?", "first accusation response")
+
+  target_suspect("sarah")
+  reset_flags("all_clues")
+  assert_response("Did you shoot your husband?", "Sarah's hand goes to her throat", 1, 1)
+
+  target_suspect("millicent")
+  reset_flags("all_clues")
+  assert_response("Did you shoot your father?", "Millicent's composure cracks for the first time", 1, 1)
 End Sub
 
 Sub test_subsequent_accusation()
@@ -1495,6 +1557,15 @@ Sub test_subsequent_accusation()
   assert_response("I accuse you of murder", "subsequent accusation response")
   assert_response("I accuse you, confess!", "subsequent accusation response")
   assert_response("You are guilty!", "subsequent accusation response")
+  assert_response("Did you shoot him?", "subsequent accusation response")
+
+  target_suspect("sarah")
+  reset_flags("all_clues", "accuse_b4_sarah")
+  assert_response("Did you shoot your husband?", "She looks at you steadily now, some of the shock worn off", 1, 1)
+
+  target_suspect("millicent")
+  reset_flags("all_clues", "accuse_b4_millicent")
+  assert_response("Did you shoot your father?", "Her jaw sets and she regards you with cold, level eyes.", 1, 1)
 End Sub
 
 Sub test_goodbye()
@@ -1534,6 +1605,13 @@ Sub test_question_fallback()
   assert_response("when", "unhandled question response")
   assert_response("how", "unhandled question response")
   assert_response("which", "unhandled question response")
+
+  target_suspect("sarah")
+  assert_response("Where is your mother?", "I'm afraid I really couldn't say.", 1)
+
+  reset_flags("x_newspaper")
+  target_suspect("redvers")
+  assert_response("Do you like soup?", "No idea whatsoever. Can we stick to the point?")
 End Sub
 
 ' No keyword line matches - falls through to "*"

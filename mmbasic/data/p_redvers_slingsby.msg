@@ -2,7 +2,7 @@ hello hi greetings | -room morning | afternoon | evening
 "Morning. Damned unpleasant way to start a day, having policemen
 tramping about the place, but I suppose it can't be helped."
 
-+who +are +you | +name +yourself | +(call/called) +you
++who +are +you | +name +(your/yourself) | +(call/called) +you
 "Slingsby. Sir Redvers Slingsby. Friend of Darnley's twenty years -
 you'll have my name already, I'd wager."
 
@@ -44,7 +44,7 @@ revolver
 "One gone from his rack? Didn't notice, and I wouldn't have - not my
 business what a man keeps in his own study."
 
-(revolver/gun)
+(revolver/gun) | shoot shooting
 "Darnley kept a small arsenal in that study cabinet of his - revolvers,
 rifles, the usual thing for a man of his sort. I keep my own guns at home,
 nothing here belongs to me."
@@ -253,7 +253,7 @@ than nobody at all, I suppose."
 "Dinner with the family and young Coniston. Afterwards port and a game of
 billiards, then the ladies in the lounge for half an hour."
 
-events yesterday murder last happened
+events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/talk/talked)
 "Last night I had dinner with the family and young Coniston. Afterwards
 - at about 9:00 - we gentlemen had a game and some port in the
 billiard room, then we joined the ladies in the lounge for half
@@ -306,7 +306,7 @@ evening, nor any particular wish to."
 "Never laid eyes on the fellow last night. Don't even know where his
 cottage is, come to that."
 
--thanks alibi | -thanks +time murder | +yesterday you evening
+-thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +(sleep/slept/asleep) +you
 "I left Darnley alive at 10:30 and it's damn nonsense to suggest I
 shot him with all the house awake and then waited to see what would
 happen. At 11:30 I was asleep like a good Christian, and the Devil
@@ -333,7 +333,7 @@ discuss than the conduct of his gamekeeper. Can't say the fellow
 struck me as the sort to take a dismissal quietly, if that's what
 you're driving at."
 
--again marriage colonel sarah wife husband happy get with
+-again marriage colonel sarah wife husband happy get | jealous jealousy
 "I told Darnley he was a damned fool to marry a woman half his age,
 and I'll say it again now he's gone. She never suited him."
 
@@ -342,7 +342,7 @@ and I'll say it again now he's gone. She never suited him."
 it yesterday. Can't say I know the fellow well enough to judge the
 match."
 
-+who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
++who +(accuse/murder/murderer/suspect) him | +who +did +(it/this) | +who +shot
 "Damned if I know. If you want my honest opinion, servants notice a
 great deal more than they let on - I shouldn't rule out that butler
 of his, watchful sort of fellow. But that's guesswork, mind."
@@ -385,7 +385,7 @@ right quite so literally, though."
 affair mellors sarah (summerhouse/summer) together secret lovers
 "Can't say I've given it any thought. Why, should I have?"
 
-+redvers money mining peru ruin | +you money mining peru ruin
++redvers +(money/mining/business/much) ask troubles colonel | +you +(money/mining/business/much) ask troubles colonel
 !requires x_newspaper
 He goes rather grey about the gills.@
 @
@@ -396,7 +396,7 @@ him for a loan to cover it. We argued about it, I'll not deny that
 - but I left him alive and breathing, and that's the truth whatever
 you make of it."
 
-money mining peru ruin redvers colonel
++(money/mining/business/much) ask troubles redvers colonel
 "My business affairs are my own concern, and none of yours unless
 you can show otherwise."
 
@@ -409,11 +409,11 @@ weather cold snow
 "Damnable. Roads were a nightmare getting here yesterday, and it's
 only got worse since. Not that it's foremost in my mind at present."
 
-goodbye bye farewell thanks thank
++(goodbye/bye/farewell/thanks/thank) very
 "Yes, yes. Get on with it, then."
 
 # Response when accused of the murder for a second (or subsequent) time
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !requires all_clues accuse_b4_redvers
 !provides new_accuse accuse_redvers
 He glares at you with undisguised fury, though there is something else
@@ -423,7 +423,7 @@ beneath it now - a flicker of unease.@
 my patience further."
 
 # Response when accused of the murder
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !requires all_clues
 !provides new_accuse accuse_redvers accuse_b4_redvers
 Slingsby's face darkens to an alarming shade of puce, his moustache
@@ -433,7 +433,7 @@ fairly bristling with outrage.@
 alive and well, and I'll thank you to remember it!"
 
 # Response when accused when insufficient clues have been gathered
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 !provides new_accuse accuse_redvers
 "Confound it, man, you can't fling accusations about like that! Get your
 facts straight first."

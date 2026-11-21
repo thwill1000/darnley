@@ -3,7 +3,7 @@ The cat opens one eye, assesses you as unimportant, and closes it again.@
 @
 "Mrow."
 
-+who +are +you | +name +yourself | +(call/called) +you
++who +are +you | +name +(your/yourself) | +(call/called) +you
 The cat regards the question with flat indifference and begins to
 wash a paw.@
 @
@@ -39,7 +39,7 @@ somewhere and turns pointedly away.@
 @
 "Hssst."
 
-(revolver/gun)
+(revolver/gun) | shoot shooting
 He shows no interest, guns not being a stable-cat's concern.@
 @
 "Mrrp."
@@ -185,7 +185,7 @@ distance, then decides it isn't worth further investigation.@
 @
 "Mrp."
 
-events yesterday murder last happened
+events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/talk/talked)
 The cat stares at you with enormous, unblinking green eyes, offering
 absolutely nothing by way of testimony. He was, after all, asleep in
 the stables the whole night, as usual.@
@@ -204,7 +204,7 @@ stable door as if expecting dinner.@
 @
 "Mrp."
 
--thanks alibi | -thanks +time murder | +yesterday you evening
+-thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +(sleep/slept/asleep) +you
 The cat blinks at you slowly, which you choose to interpret as either
 total innocence or total guilt. It is impossible to tell.@
 @
@@ -215,7 +215,7 @@ He begins washing a paw with total, infuriating unconcern.@
 @
 "Mrrp."
 
-+who +(accuse/murder/murderer/suspect) him | +who +did +(it/this)
++who +(accuse/murder/murderer/suspect) him | +who +did +(it/this) | +who +shot
 The cat fixes you with a long, unreadable stare, as if he knows
 perfectly well and simply isn't telling.@
 @
@@ -239,12 +239,12 @@ tail curled neatly around his paws.@
 @
 "Mm."
 
-goodbye bye farewell thanks thank
++(goodbye/bye/farewell/thanks/thank) very
 The cat has already lost interest and is washing his tail.@
 @
 "..."
 
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
 The cat regards your accusation with the withering scorn of a
 creature who has never answered to anyone in his life.@
 @
