@@ -373,7 +373,7 @@ clues evidence found discovered proof
 please be certain, whatever you conclude. It matters rather a lot."
 
 +(summer/summerhouse) -handkerchief -cigarette
-"We used it for croquet, in summer. I've no reason to go there in this
+"We use it for croquet, in summer. I've no reason to go there in this
 weather."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
