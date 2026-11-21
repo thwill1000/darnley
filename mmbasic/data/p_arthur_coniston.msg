@@ -69,7 +69,11 @@ no-one there, just a gramophone playing."
 +womens shoes
 "I don't know whose shoes these are."
 
-+(shoes/boots) +(wear/wearing/wore/size/your)
++boots +(size/sized) -(you/your/wear/wearing/wore)
+"Haven't the foggiest, old boy. Large, I suppose
+- boots aren't really my department."
+
++(shoes/boots) +(you/your) (wear/wearing/wore/size)
 "Eights, old boy - black patent. A fellow dresses for dinner."
 
 +newspaper read
@@ -252,10 +256,11 @@ you the last time anyone took it out."
 though, given the circumstances."
 
 (dinner/supper/coffee)
-"Dinner with the family, and Slingsby. Afterwards a little billiards with
-the men, then coffee with the ladies."
+"Dinner with the family, and Slingsby. Pheasant, and a rather good apple
+charlotte. Afterwards a little billiards with the men, then coffee with
+the ladies."
 
-events yesterday murder last happened
+-dinner events yesterday murder last happened happened
 "I was down for the weekend. It was no secret that I was going to ask
 Colonel Darnley for permission to marry Millicent. I popped the question
 to the old boy in the afternoon and he agreed. Last night we all had

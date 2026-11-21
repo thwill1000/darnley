@@ -13,11 +13,10 @@ slippers
 "I don't know whose slippers these are."
 
 boots
-"I remember Billingsgate cleaning boots after dinner but I can't
-swear that Sir Redvers' boots were among them. Anyone could have
-taken the boots from the kitchen if they came in from the outside
-door. All the outside doors are left open since we live in the
-country."
+"They're not mine or Norah's, dear - far too big. Mr. B. cleaned a
+pile of boots in the kitchen after dinner, Sir Redvers' among them
+I believe, but I couldn't swear which pair is which. Mind you, the
+outside doors are left open all hours - we live in the country."
 
 knife
 "That's Mr. Mellors' knife, for the game - he brought it round with a
@@ -80,7 +79,11 @@ morning room."
 +womens shoes
 "I'm not sure. They may be Mrs. Sarah's or Miss Millicent's."
 
-+(shoes/boots) +(wear/wearing/wore/size/your)
++boots +(size/sized) -(you/your/wear/wearing/wore)
+"Big ones, dear, I couldn't give you a number.
+They're the pair Mr. B. cleaned after dinner."
+
++(shoes/boots) +(you/your) (wear/wearing/wore/size)
 "Sixes, dear - sensible ones, I'm on my feet all day."
 
 +newspaper read
@@ -243,10 +246,12 @@ Not something that concerns the kitchen."
 too much to see to in the kitchen this morning."
 
 (dinner/supper/coffee)
-"I cooked, dear, and Norah and I washed up. We servants had our own
-supper at half past nine."
+"I cooked, dear, and Norah and I washed up. It was clear soup, roast
+pheasant and an apple charlotte to follow, and I had to stretch it
+for Sir Redvers turning up without warning. We servants had our own
+supper at 9:30."
 
-events yesterday murder last happened
+-dinner events yesterday murder last happened happened
 "Last night I cooked and washed up with Norah. At about 10:30 I heard a
 loud bang, which gave me quite a shock. Not long after we went to bed; me and
 Norah behind the curtain and Mr. B. on the other side. We had to muck in with

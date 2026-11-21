@@ -68,7 +68,10 @@ repeated the same piece again and again."
 +womens shoes
 "They aren't my shoes."
 
-+(shoes/boots) +(wear/wearing/wore/size/your)
++boots +(size/sized) -(you/your/wear/wearing/wore)
+"I couldn't say. I'm not in the habit of measuring men's boots."
+
++(shoes/boots) +(you/your) (wear/wearing/wore/size)
 "Fours, Inspector. They're quite ordinary shoes - I can't think why you ask."
 
 +newspaper read
@@ -245,9 +248,10 @@ what's in it."
 
 (dinner/supper/coffee)
 "We all dined together. Sarah and I took coffee in the lounge afterwards,
-and the men joined us for half an hour."
+and the men joined us for half an hour. Pheasant, I think, and an apple
+charlotte - Mrs. Goodbody's, so it was very good."
 
-events yesterday murder last happened
+-dinner events yesterday murder last happened happened
 "Last night we all ate together until coffee which Sarah and I took
 together in the lounge. The men joined us later for half an hour,
 then Arthur and I went into the music room where we talked for a
@@ -377,7 +381,7 @@ clues evidence found discovered proof
 please be certain, whatever you conclude. It matters rather a lot."
 
 +(summer/summerhouse) -handkerchief -cigarette
-"We used it for croquet, in summer. I've no reason to go there in this
+"We use it for croquet, in summer. I've no reason to go there in this
 weather."
 
 affair mellors sarah (summerhouse/summer) together secret lovers

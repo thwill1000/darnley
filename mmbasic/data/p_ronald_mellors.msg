@@ -69,7 +69,11 @@ piano
 +womens shoes
 "Do I look like I wear lady's shoes?"
 
-+(shoes/boots) +(wear/wearing/wore/size/your)
++boots +(size/sized) -(you/your/wear/wearing/wore)
+"Nothing to do with me. I take nines,
+and I wouldn't be seen in somebody else's boots."
+
++(shoes/boots) +(you/your) (wear/wearing/wore/size)
 "Nines. Hobnailed boots, same as every keeper hereabouts."
 
 +newspaper read
@@ -211,7 +215,7 @@ poking about other people's motors."
 (dinner/supper/coffee)
 "Wasn't at the house for dinner. I was at my cottage."
 
-events yesterday murder last happened
+-dinner events yesterday murder last happened happened
 "Last night I did my last rounds at 8:00. I saw nothing suspicious. I spent the
 rest of the evening at home and went to bed at 10:00. I didn't hear any strange
 noises. It wasn't the weather for poachers."
@@ -313,7 +317,8 @@ clues evidence found discovered proof
 Rest's up to you."
 
 +(summer/summerhouse) -handkerchief -cigarette
-"Nothing to do with me. I keep to my side of the grounds."
+"No reason for me to go in there. Croquet and tea's not my line - I've
+got the grounds to see to."
 
 gamekeeper cottage | yourself cottage
 "This is my cottage. Door's open to anyone who's got a warrant."

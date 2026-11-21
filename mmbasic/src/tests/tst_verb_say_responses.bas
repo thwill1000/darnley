@@ -65,6 +65,7 @@ add_test("What were you doing at the time of the murder?", "test_alibi")
 add_test("Can anyone confirm your alibi?", "test_alibi_confirm")
 add_test("Tell me about these slippers.", "test_slippers")
 add_test("Whose boots are these?", "test_boots")
+add_test("What size are the muddy boots?", "test_boots_size")
 add_test("Whose knife is this?", "test_knife")
 add_test("Who smokes cigarettes?", "test_smoking")
 add_test("What guns are there in the house?", "test_revolver")
@@ -284,6 +285,7 @@ Sub test_events()
   assert_response("walk me through the events of that night", "events response")
   assert_response("run me through the events of the murder", "events response")
   assert_response("Did you see anything last night?", "events response")
+  assert_response("Redvers what happened", "events response")
 End Sub
 
 Sub test_why_here()
@@ -343,6 +345,11 @@ Sub test_boots()
   assert_response("who do these boots belong to", "boots response")
   assert_response("tell me about the muddy boots", "boots response")
   assert_response("whose boots are these", "boots response")
+  assert_response("Who owns the muddy boots?", "boots response")
+End Sub
+
+Sub test_boots_size()
+    assert_response("What size are the muddy boots?", "boots size response")
 End Sub
 
 Sub test_knife()
@@ -1124,6 +1131,7 @@ Sub test_confirm_sarah()
   assert_response("Can you corroborate Sarah's alibi?", "vouch for sarah response")
   assert_response("Was Sarah with you?", "vouch for sarah response")
   assert_response("Can you vouch for Sarah?", "vouch for sarah response")
+  assert_response("Who was Sarah with in the Morning Room?", "vouch for sarah response")
 
   ' With no flags set, Mellors' corroboration of Sarah falls to the unconditional entry
   target_suspect("mellors")
@@ -1468,13 +1476,13 @@ Sub test_summer_house()
   assert_response("tell me about the summer house", "The summer house, sir? I could not say.", 1)
 
   target_suspect("sarah")
-  assert_response("tell me about the summer house", "I haven't been down to the summer house", 1)
+  assert_response("tell me about the summer house", "I haven't been down there since the summer", 1)
 
   target_suspect("millicent")
-  assert_response("tell me about the summer house", "We used it for croquet, in summer.", 1)
+  assert_response("tell me about the summer house", "We use it for croquet, in summer.", 1)
 
   target_suspect("bagsby")
-  assert_response("tell me about the summer house", "I don't go out there, sir.", 1)
+  assert_response("tell me about the summer house", "Oh, the summer house, sir?", 1)
 
   target_suspect("arthur")
   assert_response("tell me about the summer house", "Haven't set foot in it, old boy.", 1)
@@ -1486,7 +1494,7 @@ Sub test_summer_house()
   assert_response("tell me about the summer house", "That's out on the lawn, dear", 1)
 
   target_suspect("mellors")
-  assert_response("tell me about the summer house", "Nothing to do with me. I keep to my side", 1)
+  assert_response("tell me about the summer house", "No reason for me to go in there.", 1)
 End Sub
 
 Sub test_gamekeepers_cottage()
@@ -1505,6 +1513,7 @@ Sub test_dinner()
   assert_response("What happened at dinner?", "dinner response")
   assert_response("Tell me about supper", "dinner response")
   assert_response("Who had coffee in the lounge?", "dinner response")
+  assert_response("What was for dinner last night?", "dinner response")
 
   target_suspect("billingsgate")
   assert_response("What happened at dinner?", "I waited on the family, Sir Redvers", 1)
@@ -1526,6 +1535,7 @@ Sub test_dinner()
 
   target_suspect("goodbody")
   assert_response("What happened at dinner?", "I cooked, dear, and Norah and I washed up.", 1)
+  assert_response("What was for dinner last night?", "I cooked, dear, and Norah and I washed up.", 1)
 
   target_suspect("mellors")
   assert_response("What happened at dinner?", "Wasn't at the house for dinner.", 1)

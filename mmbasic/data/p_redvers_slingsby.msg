@@ -72,7 +72,10 @@ morning room."
 "Don't ask me, old man. I couldn't tell one woman's shoe from another
 if my life depended on it."
 
-+(shoes/boots) +(wear/wearing/wore/size/your)
++boots +(size/sized) -(you/your/wear/wearing/wore)
+"Twelves, man. They're mine - what the devil is it to you?"
+
++(shoes/boots) +(you/your) (wear/wearing/wore/size)
 "Twelves, man. Country boots, mostly. What the devil has my footwear to do with
 it?"
 
@@ -262,10 +265,11 @@ cause to examine it, old man."
 than nobody at all, I suppose."
 
 (dinner/supper/coffee)
-"Dinner with the family and young Coniston. Afterwards port and a game of
-billiards, then the ladies in the lounge for half an hour."
+"Dinner with the family and young Coniston. Pheasant, a trifle dry.
+Afterwards port and a game of billiards, then the ladies in the lounge
+for half an hour."
 
-events yesterday murder last happened
+-dinner events yesterday murder last happened happened
 "Last night I had dinner with the family and young Coniston. Afterwards
 - at about 9:00 - we gentlemen had a game and some port in the
 billiard room, then we joined the ladies in the lounge for half

@@ -87,7 +87,11 @@ and no-one else came into the room."
 have no idea why they should be damp - possibly I had them on
 earlier yesterday."
 
-+(shoes/boots) +(wear/wearing/wore/size/your)
++boots +(size/sized) -(you/your/wear/wearing/wore)
+"I couldn't tell you, Inspector.
+I don't concern myself with the size of men's boots."
+
++(shoes/boots) +(you/your) (wear/wearing/wore/size)
 "Fives, Inspector, and I wear what a lady wears. I can't think why my shoes should interest you."
 
 +newspaper read
@@ -284,9 +288,10 @@ but I wish it hadn't."
 
 (dinner/supper/coffee)
 "We all dined together. Afterwards the men took port and billiards while
-Millicent and I had coffee in the lounge."
+Millicent and I had coffee in the lounge. It was pheasant, as I
+recall - I hardly touched it."
 
-events yesterday murder last happened
+-dinner events yesterday murder last happened happened
 "Last night we all had dinner together. Afterwards the men played billiards
 while Millicent and I had coffee in the lounge.@
 @
@@ -420,8 +425,7 @@ clues evidence found discovered proof
 almost afraid to ask. Just be sure, whatever you decide."
 
 +(summer/summerhouse) -handkerchief -cigarette
-"I haven't been down to the summer house since last summer, I should
-think."
+"I haven't been down there since the summer, I should think."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
 !requires x_handkerchief x_cigarettes

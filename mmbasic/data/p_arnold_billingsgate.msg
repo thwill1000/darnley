@@ -84,7 +84,10 @@ morning room."
 "I really couldn't say, sir. A lady's shoe is not something I make a study of.
 Mrs. Darnley's or Miss Millicent's, I should imagine - you might ask young Norah."
 
-+(shoes/boots) +(wear/wearing/wore/size/your)
++boots +(size/sized) -(you/your/wear/wearing/wore)
+"Twelves, sir. They are Sir Redvers' - I cleaned them myself after dinner."
+
++(shoes/boots) +(you/your) (wear/wearing/wore/size)
 "Nines, sir, in plain black shoes kept polished as the position requires."
 
 +newspaper read
@@ -265,10 +268,11 @@ examine it closely - my attention has been rather taken up with other
 matters."
 
 (dinner/supper/coffee)
-"I waited on the family, Sir Redvers and Mr. Coniston, sir. I served port
-in the billiard room and withdrew a little after nine."
+"I waited on the family, Sir Redvers and Mr. Coniston, sir - soup,
+roast pheasant and an apple charlotte. I served port in the billiard
+room and withdrew a little after 9:00."
 
-events yesterday murder last happened
+-dinner events yesterday murder last happened happened
 "Last night I waited on the guests at dinner. There was the family, Sir Redvers
 and Mr. Coniston. The atmosphere at dinner, I am bound to say, was not entirely
 comfortable. Afterwards I served port to the gentlemen in the billiard room and

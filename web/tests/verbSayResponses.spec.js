@@ -146,6 +146,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       'walk me through the events of that night',
       'run me through the events of the murder',
       'Did you see anything last night?',
+      'Redvers what happened',
     ]);
   });
 
@@ -198,7 +199,17 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
   it('Whose boots are these?', () => {
     all('boots response', [
-      'ask about the boots', 'who do these boots belong to', 'tell me about the muddy boots', 'whose boots are these',
+      'ask about the boots',
+      'who do these boots belong to',
+      'tell me about the muddy boots',
+      'whose boots are these',
+      'Who owns the muddy boots?',
+    ]);
+  });
+
+  it('Whose boots are these?', () => {
+    all('boots size response', [
+      'What size are the muddy boots?',
     ]);
   });
 
@@ -856,7 +867,11 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
   it("Can you corroborate Sarah's alibi?", () => {
     all('vouch for sarah response', [
-      'confirm sarah', "Can you corroborate Sarah's alibi?", 'Was Sarah with you?', 'Can you vouch for Sarah?',
+      'confirm sarah',
+      "Can you corroborate Sarah's alibi?",
+      'Was Sarah with you?',
+      'Can you vouch for Sarah?',
+      'Who was Sarah with in the Morning Room?',
     ]);
 
     // With no flags set, Mellors' corroboration of Sarah falls to the unconditional entry.
@@ -1200,13 +1215,13 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     assertResponse('tell me about the summer house', 'The summer house, sir? I could not say.', true);
 
     target('sarah');
-    assertResponse('tell me about the summer house', "I haven't been down to the summer house", true);
+    assertResponse('tell me about the summer house', "I haven't been down there since the summer", true);
 
     target('millicent');
-    assertResponse('tell me about the summer house', 'We used it for croquet, in summer.', true);
+    assertResponse('tell me about the summer house', 'We use it for croquet, in summer.', true);
 
     target('bagsby');
-    assertResponse('tell me about the summer house', "I don't go out there, sir.", true);
+    assertResponse('tell me about the summer house', "Oh, the summer house, sir?", true);
 
     target('arthur');
     assertResponse('tell me about the summer house', "Haven't set foot in it, old boy.", true);
@@ -1218,7 +1233,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     assertResponse('tell me about the summer house', "That's out on the lawn, dear", true);
 
     target('mellors');
-    assertResponse('tell me about the summer house', 'Nothing to do with me. I keep to my side', true);
+    assertResponse('tell me about the summer house', 'No reason for me to go in there.', true);
   });
 
   it("Tell me about the gamekeeper's cottage", () => {
@@ -1238,6 +1253,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       'What happened at dinner?',
       'Tell me about supper',
       'Who had coffee in the lounge?',
+      'What was for dinner last night?',
     ]);
 
     target('billingsgate');

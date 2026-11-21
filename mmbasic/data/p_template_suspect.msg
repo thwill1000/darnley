@@ -81,7 +81,10 @@ piano
 +womens shoes
 "ladys shoes response"
 
-+(shoes/boots) +(wear/wearing/wore/size/your)
++boots +(size/sized) -(you/your/wear/wearing/wore)
+"boots size response"
+
++(shoes/boots) +(you/your) (wear/wearing/wore/size)
 "shoes wear response"
 
 +newspaper read
@@ -229,7 +232,8 @@ daimler car motor saloon garage
 (dinner/supper/coffee)
 "dinner response"
 
-events yesterday murder last happened
+# "happened" deliberately scores 2
+-dinner events yesterday murder last happened happened
 "events response"
 
 +why +(here/visiting/visit) | +here what brings

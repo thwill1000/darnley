@@ -65,7 +65,10 @@ morning room."
 +womens shoes
 "These are Mrs. Sarah's shoes. I don't know when they were last worn."
 
-+(shoes/boots) +(wear/wearing/wore/size/your)
++boots +(size/sized) -(you/your/wear/wearing/wore)
+"Ever so big, sir, but I couldn't say what size. I don't look at men's boots."
+
++(shoes/boots) +(you/your) (wear/wearing/wore/size)
 "Threes, sir. Just my work shoes. I've always had small feet."
 
 +newspaper read
@@ -231,10 +234,11 @@ motor car sat there on our own drive first thing."
 I haven't done the room yet this morning."
 
 (dinner/supper/coffee)
-"I helped Mrs. Goodbody with dinner, sir, and served the ladies' coffee in
+"I helped Mrs. Goodbody with dinner, sir - there was pheasant, and an
+apple charlotte after - and served the ladies' coffee in
 the lounge. Then we washed up while Mr. B. cleaned the boots."
 
-events yesterday murder last happened
+-dinner events yesterday murder last happened happened
 "Last night I helped Mrs. Goodbody to prepare dinner and afterwards I served
 coffee in the lounge to Mrs. Sarah and Miss Millicent. Then I helped Mrs. G.
 to wash up whilst Mr. Billingsgate cleaned the boots. Just before we went to
@@ -343,7 +347,8 @@ clues evidence found discovered proof
 you need to. I just want this all to be over."
 
 +(summer/summerhouse) -handkerchief -cigarette
-"I don't go out there, sir. It's not my part of the grounds."
+"Oh, the summer house, sir? That's for the family and their guests - the
+posh folks. It's not a place for the likes of me."
 
 affair mellors sarah (summerhouse/summer) together secret lovers
 !requires x_handkerchief x_cigarettes
