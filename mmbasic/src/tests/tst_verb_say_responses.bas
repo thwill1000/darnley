@@ -95,6 +95,7 @@ add_test("What do you think of Arnold Billingsgate?", "test_opinion_billingsgate
 add_test("What do you think of Mildred Goodbody?", "test_opinion_goodbody")
 add_test("What do you think of Norah Bagsby?", "test_opinion_bagsby")
 add_test("What do you think of Ronald Mellors?", "test_opinion_mellors")
+add_test("What did the Colonel think of Arthur?", "test_colonel_opinion_arthur")
 add_test("Tell me about the ginger cat.", "test_opinion_ginger_cat")
 add_test("What do you think of the Police Constable?", "test_opinion_constable")
 add_test("What do you know about the horse?", "test_horse")
@@ -711,6 +712,10 @@ Sub test_opinion_sarah()
   assert_response("your impression of sarah", "sarah response")
   assert_response("how do you get on with sarah", "sarah response")
   assert_response("What do you think of Sarah Darnley?", "sarah response")
+  assert_response("What does Sarah Darnley think of Arthur?", "sarah response")
+
+  target_suspect("sarah")
+  assert_response("What did the Colonel think of you?", "He was somewhat strict", 1)
 End Sub
 
 Sub test_opinion_millicent()
@@ -727,7 +732,7 @@ Sub test_opinion_millicent()
 End Sub
 
 Sub test_opinion_arthur()
-  assert_response("what do you think of arthur coniston", "arthur response")
+  assert_response("What do you think of Arthur Coniston?", "arthur response")
   assert_response("what do you make of arthur coniston", "arthur response")
   assert_response("tell me about arthur coniston", "arthur response")
   assert_response("what's arthur coniston like", "arthur response")
@@ -784,6 +789,51 @@ Sub test_opinion_mellors()
   assert_response("what's ronald mellors like", "mellors response")
   assert_response("your impression of ronald mellors", "mellors response")
   assert_response("how do you get on with ronald mellors", "mellors response")
+End Sub
+
+Sub test_colonel_opinion_arthur()
+  assert_response("What did the Colonel think of Arthur?", "colonel opinion of arthur response")
+  assert_response("Did Mr Darnley like Arthur?", "colonel opinion of arthur response")
+  assert_response("What was the Colonel's opinion of Arthur Coniston?", "colonel opinion of arthur response")
+  assert_response("Did Sebastian approve of Arthur?", "colonel opinion of arthur response")
+  assert_response("What was Darnley's impression of Arthur?", "colonel opinion of arthur response")
+  assert_response("Did the deceased trust Arthur?", "colonel opinion of arthur response")
+  assert_response("Did the Colonel approve of Arthur marrying Millicent?", "colonel opinion of arthur response")
+  assert_response("Did the Colonel and Arthur get along?", "colonel opinion of arthur response")
+  assert_response("Were the Colonel and Arthur friends?", "colonel opinion of arthur response")
+  assert_response("Were the Colonel and Arthur friendly?", "colonel opinion of arthur response")
+
+  target_suspect("sarah")
+  assert_response("What did your husband think of Arthur?", "I couldn't tell you what Sebastian thought of him", 1)
+
+  target_suspect("millicent")
+  assert_response("What did your father think of Arthur?", "Daddy gave his consent yesterday", 1)
+
+  ' Arthur answers about himself, including the "you" form.
+  target_suspect("arthur")
+  assert_response("What did the Colonel think of Arthur?", "Decent old buffer.", 1)
+  assert_response("What did the Colonel think of you?", "Decent old buffer.", 1)
+
+  target_suspect("redvers")
+  assert_response("What did the Colonel think of Arthur?", "No idea. Darnley never mentioned the fellow", 1)
+
+  target_suspect("billingsgate")
+  assert_response("What did the Colonel think of Arthur?", "It is not my place to say what the master thought", 1)
+
+  target_suspect("goodbody")
+  assert_response("What did the Colonel think of Arthur?", "He can't have thought badly of him, dear", 1)
+
+  target_suspect("bagsby")
+  assert_response("What did the Colonel think of Arthur?", "He must've liked him, sir", 1)
+
+  target_suspect("mellors")
+  assert_response("What did the Colonel think of Arthur?", "Never saw the two of them together.", 1)
+
+  target_suspect("constable")
+  assert_response("What did the Colonel think of Arthur?", "Never met the Colonel, sir", 1)
+
+  target_suspect("chester")
+  assert_response("What did the Colonel think of Arthur?", "[[reset:The cat's ears flick at the question", 1)
 End Sub
 
 Sub test_opinion_ginger_cat()

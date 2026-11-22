@@ -101,67 +101,72 @@ paw.@
 @
 "Mrow."
 
-+colonel -who (get/think) with
++colonel +arthur +opinion
+The cat's ears flick at the question, but he shows no other sign of interest.@
+@
+"Mrp."
+
++colonel -who opinion
 The cat's ears go back at the mention of his late master, and for a
 moment he seems almost solemn. Almost.@
 @
 "Mrow..."
 
-+sarah -affair (get/think) with
++sarah -affair opinion
 He offers a single unbothered blink at the name and nothing further.@
 @
 "Mew."
 
-+millicent (get/think) with
++millicent opinion
 The cat tolerates the name being spoken in his presence, barely.@
 @
 "Prrt."
 
-+arthur (get/think) with
++arthur opinion
 He hisses, quite suddenly, at nothing in particular, then resumes
 grooming as though nothing happened.@
 @
 "HSSST. ...mrrp."
 
-+redvers (get/think) with
++redvers opinion
 The cat gives a long, unblinking stare of pure feline contempt in
 the general direction of the house.@
 @
 "Mrrrow."
 
-+(billingsgate/butler) (get/think) with
++(billingsgate/butler) opinion
 He perks up hopefully - Billingsgate is known to bring scraps down
 to the stables from time to time.@
 @
 "Meow. Meow. MEOW."
 
-+(goodbody/cook) (get/think) with
++(goodbody/cook) opinion
 The cat's whole demeanour brightens at once, and he begins to purr
 before you've finished the sentence.@
 @
 "PURRRRR."
 
-+(bagsby/maid) (get/think) with
++(bagsby/maid) opinion
 He allows the name to pass without particular comment, though his
 tail twitches once, fondly.@
 @
 "Mrrrp."
 
-+(mellors/gamekeeper) (get/think) with
++(mellors/gamekeeper) opinion
 The cat sits up properly at this - Mellors feeds the stable cats and
 is, as far as the cat is concerned, the only person in the household
 who matters.@
 @
 "Mrrow!"
 
-+(cat/chester/ginger) (get/think) with | yourself
++(cat/chester/ginger) opinion | yourself
 He simply stares back at you, entirely unbothered by the question,
 and begins washing a paw as if to demonstrate that self-reflection is
 beneath him.@
 @
 "Mrow."
 
-+(officer/policeman/police) (get/think) with
++(officer/policeman/police) opinion
 The cat regards the mention of a uniformed stranger with complete
 indifference and returns to washing a paw.@
 @
@@ -238,7 +243,7 @@ distance from where it happened.@
 @
 "Mrow?"
 
-police investigation scotland yard inspector detective think here
+-constable +(police/scotland/yard/inspector/detective) investigation opinion here
 He sniffs your trouser leg, decides you'll do, and headbutts your
 shin companionably.@
 @

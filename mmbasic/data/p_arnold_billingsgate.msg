@@ -134,43 +134,47 @@ rug, and I could not tell you from where the shot was fired."
 little after 9:00. The next I saw of him was when Mr. Coniston and I found him
 in the study."
 
-+colonel -who (get/think) with
++colonel +arthur +opinion
+"It is not my place to say what the master thought, sir. I understand he gave
+his consent to Miss Darnley's marriage yesterday afternoon."
+
++colonel -who opinion
 "The master was a very honest, decent gentleman, and extremely good to his family."
 
-+sarah -affair (get/think) with
++sarah -affair opinion
 "I don't believe it is proper to speak of the family."
 
-+millicent (get/think) with
++millicent opinion
 "I don't believe it is proper to speak of the family."
 
-+arthur (get/think) with
++arthur opinion
 "I scarcely know the gentleman."
 
-+redvers (get/think) with
++redvers opinion
 "I've met the gentleman once or twice. A very hot-tempered man. He arrived
 by cab from the station yesterday afternoon, quite unannounced."
 
-+(billingsgate/butler) (get/think) with | yourself
++(billingsgate/butler) opinion | yourself
 "I have been butler here since I was a young footman, more years
 ago than I care to count. I hope I have always given satisfaction.
 It is my place to see the household run smoothly and to be of
 service to the family, in their hour of need as in any other."
 
-+(goodbody/cook) (get/think) with
++(goodbody/cook) opinion
 "A fine woman. Honest as the day is long."
 
-+(bagsby/maid) (get/think) with
++(bagsby/maid) opinion
 "A decent-enough girl. A little lazy."
 
-+(mellors/gamekeeper) (get/think) with
++(mellors/gamekeeper) opinion
 "He's the gamekeeper. He seems honest enough."
 
-+(cat/chester/ginger) (get/think) with
++(cat/chester/ginger) opinion
 "That would be Chester, sir - the Colonel's cat. He keeps mostly to the
 stables and is, if I may say so, better behaved than most of the
 house."
 
-+(officer/policeman/police) (get/think) with
++(officer/policeman/police) opinion
 "A most correct young man, sir. He has kept good order at the gate since he
 arrived, and troubled none of us in the house."
 
@@ -424,7 +428,7 @@ listen at doors. I will say Sir Redvers arrived rather suddenly
 yesterday, without prior arrangement, which struck me as unusual for
 a gentleman of his standing."
 
-police investigation scotland yard inspector detective think here
+-constable +(police/scotland/yard/inspector/detective) investigation opinion here
 "I have every confidence you will get to the bottom of it, sir. The
 household will give you whatever assistance it can - you have my
 word on that, at least."

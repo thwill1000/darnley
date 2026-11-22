@@ -102,41 +102,44 @@ him and his guests is nothing to do with me."
 +last +(see/speak) +(colonel/him) -(night/evening/yesterday)
 "Not yesterday evening, that's certain - I was at my cottage from 8:00."
 
-+colonel -who (get/think) with
++colonel +arthur +opinion
+"Never saw the two of them together. Not my business."
+
++colonel -who opinion
 "Strict but fair. I've said all I'm goin' to say about him."
 
-+sarah -affair (get/think) with
++sarah -affair opinion
 "Mrs. Darnley is a fine woman. That's all I'm saying."
 
-+millicent (get/think) with
++millicent opinion
 "Miss Darnley never had much to do with me. Suited us both."
 
-+arthur (get/think) with
++arthur opinion
 "I didn't like the look of him. Too smooth by half."
 
-+redvers (get/think) with
++redvers opinion
 "Bad-tempered old so-and-so. Turned up yesterday afternoon like he owned
 the place."
 
-+(billingsgate/butler) (get/think) with
++(billingsgate/butler) opinion
 "Nosy old devil. Always watching."
 
-+(goodbody/cook) (get/think) with
++(goodbody/cook) opinion
 "Mrs. G. minds her own business. I'll say that for her."
 
-+(bagsby/maid) (get/think) with
++(bagsby/maid) opinion
 "Silly girl. Always giggling."
 
-+(mellors/gamekeeper) (get/think) with | yourself
++(mellors/gamekeeper) opinion | yourself
 "What about me? I keep the game and see to the traps and the guns.
 Seven years I've worked for the Colonel and done it well. I don't
 see as I owe anyone an account of myself."
 
-+(cat/chester/ginger) (get/think) with
++(cat/chester/ginger) opinion
 "Chester. Good ratter, keeps the stables clear of vermin. I feed him
 same as the horses - he earns his keep, unlike some."
 
-+(officer/policeman/police) (get/think) with
++(officer/policeman/police) opinion
 "Seen him stood at the gate. Doesn't concern me - I keep to the grounds,
 he keeps to the drive."
 
@@ -332,7 +335,7 @@ thank you to do the same."
 know is Sir Redvers came up the drive in a black temper yesterday
 afternoon."
 
-police investigation scotland yard inspector detective think here
+-constable +(police/scotland/yard/inspector/detective) investigation opinion here
 "Don't much care for coppers poking round my cottage, if that's
 what you're asking. But get on with your job. I've nothing to hide
 from you or anyone else."

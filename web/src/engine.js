@@ -551,6 +551,7 @@ export function verbSay(objects, msgFiles, messages, words, synonymEntries, curr
     { canonical: 'millicent', aliases: ['miss darnley', 'millicent darnley'] },
     { canonical: 'sarah', aliases: ['mrs darnley', 'sarah darnley'] },
     { canonical: 'colonel', aliases: ['mr darnley', 'colonel darnley', 'darnley'] },
+    { canonical: 'opinion', aliases: ['get on with', 'get along'] },
   ]);
 
   const entries = msgFiles.get(targetObj.id);

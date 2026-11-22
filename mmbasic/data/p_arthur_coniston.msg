@@ -132,44 +132,48 @@ wound in the front of his shirt. Beyond that I'm no doctor."
 the music room, and I didn't see him again until Billingsgate and I found him
 on the rug."
 
-+colonel -who (get/think) with
++colonel +arthur +opinion | +colonel +you +opinion
+"Decent old buffer. Gave his blessing straight away when I asked
+- I admit I was surprised."
+
++colonel -who opinion
 "A decent old buffer. When I asked his permission to marry Millicent
 he agreed straight away. I was surprised, I admit it!"
 
-+sarah -affair (get/think) with
++sarah -affair opinion
 "Very lively. I couldn't see old Darnley hanging on to her."
 
-+millicent (get/think) with
++millicent opinion
 "Be a gentleman, old fellow! Don't ask me to criticise my future
 wife."
 
-+arthur (get/think) with | yourself
++arthur opinion | yourself
 "Ha! What can I tell you about myself that you haven't already
 gathered? An ordinary sort of fellow, lucky enough to win
 Millicent's affection and, eventually, her father's blessing too."
 
-+redvers (get/think) with
++redvers opinion
 "I scarcely know him but he seemed very angry with Darnley about
 something. A dangerous fellow I should think."
 
-+(billingsgate/butler) (get/think) with
++(billingsgate/butler) opinion
 "I barely know the chap."
 
-+(goodbody/cook) (get/think) with
++(goodbody/cook) opinion
 "Don't know the woman - never had cause to."
 
-+(bagsby/maid) (get/think) with
++(bagsby/maid) opinion
 "Don't know the girl at all."
 
-+(mellors/gamekeeper) (get/think) with
++(mellors/gamekeeper) opinion
 "Don't know the chap - never crossed paths."
 
-+(cat/chester/ginger) (get/think) with
++(cat/chester/ginger) opinion
 "Ah, Chester - the old boy's cat. Lives down at the stables, I
 believe. Can't say I've had much to do with him myself - not much of
 a cat man."
 
-+(officer/policeman/police) (get/think) with
++(officer/policeman/police) opinion
 "Decent enough chap, I should think, old boy - can't say I've exchanged more
 than a nod with him on my way past the gate."
 
@@ -417,7 +421,7 @@ understandable."
 "Couldn't tell you. Money matters aren't really the sort of thing
 a fellow discusses over billiards."
 
-police investigation scotland yard inspector detective think here
+-constable +(police/scotland/yard/inspector/detective) investigation opinion here
 "Rather glad they sent someone who knows what he's doing, if I'm
 honest. This house needs answers, and quickly, before everyone's
 nerves give out entirely."

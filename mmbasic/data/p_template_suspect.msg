@@ -133,37 +133,40 @@ perfume
 +last +(see/speak) +(colonel/him) -(night/evening/yesterday)
 "last saw colonel response"
 
-+colonel -who (get/think) with
++colonel +arthur +opinion
+"colonel opinion of arthur response"
+
++colonel -who opinion
 "colonel darnley opinion response"
 
-+sarah -affair (get/think) with
++sarah -affair opinion
 "sarah response"
 
-+millicent (get/think) with
++millicent opinion
 "millicent response"
 
-+arthur (get/think) with
++arthur opinion
 "arthur response"
 
-+redvers (get/think) with
++redvers opinion
 "redvers response"
 
-+(billingsgate/butler) (get/think) with
++(billingsgate/butler) opinion
 "arnold response"
 
-+(goodbody/cook) (get/think) with
++(goodbody/cook) opinion
 "mildred response"
 
-+(bagsby/maid) (get/think) with
++(bagsby/maid) opinion
 "norah response"
 
-+(mellors/gamekeeper) (get/think) with
++(mellors/gamekeeper) opinion
 "mellors response"
 
-+(cat/chester/ginger) (get/think) with
++(cat/chester/ginger) opinion
 "chester cat response"
 
-+(officer/policeman/police) (get/think) with
++(officer/policeman/police) opinion
 "police constable response"
 
 +(flatfooted/flat/odd) (bootprints/footprints/prints)
@@ -325,7 +328,7 @@ affair mellors sarah (summerhouse/summer) together secret lovers
 +(money/mining/business/much) ask troubles redvers colonel
 "finance response"
 
-police investigation scotland yard inspector detective think here
+-constable +(police/scotland/yard/inspector/detective) investigation opinion here
 "investigation response"
 
 weather cold snow

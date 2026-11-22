@@ -23,48 +23,51 @@ not been in to see."
 +last +(see/speak) +(colonel/him) -(night/evening/yesterday)
 "Never met the gentleman, sir. I only came on duty this morning."
 
-+colonel -who (get/think) with
++colonel +arthur +opinion
+"Never met the Colonel, sir, so I couldn't say."
+
++colonel -who opinion
 "Never met the gentleman myself, sir. I've only been posted here since the
 alarm was raised this morning."
 
-+sarah -affair (get/think) with
++sarah -affair opinion
 "I couldn't say, sir. I don't know the family, only faces I've seen
 crossing the drive since I was posted here."
 
-+millicent (get/think) with
++millicent opinion
 "I couldn't say, sir. I don't know the family, only faces I've seen
 crossing the drive since I was posted here."
 
-+arthur (get/think) with
++arthur opinion
 "Young gentleman in the tweed overcoat? He's been in and out past me
 a time or two this morning, sir, nothing more I can tell you."
 
-+redvers (get/think) with
++redvers opinion
 "A tall gentleman, very put out about something, sir. Arrived by cab from
 the station yesterday afternoon, so I'm told. That's as much as I can tell
 you."
 
-+(billingsgate/butler) (get/think) with
++(billingsgate/butler) opinion
 "The butler, sir? Answered the door to the station when we were sent
 for. Seemed a steady sort."
 
-+(goodbody/cook) (get/think) with
++(goodbody/cook) opinion
 "Couldn't rightly say, sir - though there was a woman from the kitchen
 brought me out a cup of tea earlier. Very welcome it was too. Didn't
 catch her name."
 
-+(bagsby/maid) (get/think) with
++(bagsby/maid) opinion
 "Couldn't say, sir. Not been introduced to the staff."
 
-+(mellors/gamekeeper) (get/think) with
++(mellors/gamekeeper) opinion
 "The gamekeeper keeps to the grounds, sir, so far as I've seen. Not
 had cause to speak to him."
 
-+(cat/chester/ginger) (get/think) with
++(cat/chester/ginger) opinion
 "Seen him about the stables, sir. Big ginger fellow. No trouble to
 anyone that I've noticed."
 
-+(officer/policeman/police) (get/think) with | yourself | order | orders | posted | duty
++(officer/policeman/police) opinion | yourself | order | orders | posted | duty
 "Me, sir? Not much to tell - come up from the station this morning when the
 call came in, and I've been minding the gate since. I'll do my duty here as
 long as you need me to."
@@ -119,7 +122,7 @@ account, I believe."
 "In the study, sir, same as when it was found. Nobody's to go in or move
 anything until you say so."
 
-police investigation scotland yard inspector detective think here
+-constable +(police/scotland/yard/inspector/detective) investigation opinion here
 "Glad to have you here, sir. I'll keep the drive clear and pass
 along anyone who needs to come through."
 

@@ -120,43 +120,47 @@ go in to see."
 "I couldn't tell you, dear. I keep to my kitchen, and I'd not had cause to see
 the master since before dinner was served."
 
-+colonel -who (get/think) with
++colonel +arthur +opinion
+"He can't have thought badly of him, dear, or he'd not have said yes.
+Miss Millicent came straight down to tell me."
+
++colonel -who opinion
 "A hard man both in his business dealings and with his family."
 
-+sarah -affair (get/think) with
++sarah -affair opinion
 "Far too young to have married the Colonel and not very happy."
 
-+millicent (get/think) with
++millicent opinion
 "Not a young woman I should want to cross."
 
-+arthur (get/think) with
++arthur opinion
 "What a charmer! I always thought he was after Miss Millicent's
 money, but the Colonel obviously didn't."
 
-+redvers (get/think) with
++redvers opinion
 "I believe he was very cross with the Colonel about something."
 
-+(billingsgate/butler) (get/think) with
++(billingsgate/butler) opinion
 "A gentleman. Very loyal to Colonel Darnley."
 
-+(goodbody/cook) (get/think) with | yourself
++(goodbody/cook) opinion | yourself
 "Me? I've been cook here five years and I keep a good table, if I
 say so myself. I speak my mind plain, which some don't care for,
 but I've nothing to hide and no reason to mince my words now."
 
-+(bagsby/maid) (get/think) with
++(bagsby/maid) opinion
 "A good girl but lazy."
 
-+(mellors/gamekeeper) (get/think) with
++(mellors/gamekeeper) opinion
 "Not a nice man. Not to be trusted. Colonel Darnley talked of giving
 him his notice; he'd already given him a warning letter."
 
-+(cat/chester/ginger) (get/think) with
++(cat/chester/ginger) opinion
 "Chester, you mean? Cheeky old thing - always down at my kitchen door
 the moment he smells anything worth having. I've a soft spot for him,
 truth be told."
 
-+(officer/policeman/police) (get/think) with
++(officer/policeman/police) opinion
 "Nice enough young man, dear. I took him out a cup of tea earlier - standing
 out there in this cold, someone had to."
 
@@ -377,7 +381,7 @@ care to guess at."
 house since Sir Redvers arrived. Mr. B. had it from the family that the two of
 them were shut up in the study a good while, talking business."
 
-police investigation scotland yard inspector detective think here
+-constable +(police/scotland/yard/inspector/detective) investigation opinion here
 "Well, someone's got to sort this out, haven't they? You ask what
 you need to, dear, I've nothing to hide. Can't say the same for
 everyone in this house, mind."

@@ -106,41 +106,45 @@ are of an evening, that's not my part of the house."
 "Around dinner, sir. I never saw him after that, honest - I was helping Mrs. G.
 wash up."
 
-+colonel -who (get/think) with
++colonel +arthur +opinion
+"He must've liked him, sir, to say yes. Miss Millicent was over the moon,
+Mrs. G. said."
+
++colonel -who opinion
 "Very strict. I didn't like him."
 
-+sarah -affair (get/think) with
++sarah -affair opinion
 "If you ask me she didn't like the Colonel. He was too old for her."
 
-+millicent (get/think) with
++millicent opinion
 "A determined young woman. It's lucky for the Colonel that he agreed
 to let Miss Millicent marry Mr. Coniston."
 
-+arthur (get/think) with
++arthur opinion
 "A very nice gentleman. I'm surprised the Colonel liked him."
 
-+redvers (get/think) with
++redvers opinion
 "I didn't know the gentleman."
 
-+(billingsgate/butler) (get/think) with
++(billingsgate/butler) opinion
 "An old fuddy-duddy."
 
-+(goodbody/cook) (get/think) with
++(goodbody/cook) opinion
 "Very kind to me."
 
-+(bagsby/maid) (get/think) with | yourself
++(bagsby/maid) opinion | yourself
 "I'm only the maid, sir. I've been here six months. I try to do my
 work proper, though I know Mrs. G. thinks I'm lazy sometimes. I
 don't know what more you'd want me to say about myself."
 
-+(mellors/gamekeeper) (get/think) with
++(mellors/gamekeeper) opinion
 "A rough man. A womaniser by all accounts."
 
-+(cat/chester/ginger) (get/think) with
++(cat/chester/ginger) opinion
 "Oh, that's Chester, sir. He's ever so sweet, though he does shed
 something dreadful on my apron when he jumps up."
 
-+(officer/policeman/police) (get/think) with
++(officer/policeman/police) opinion
 "He gave me quite a fright when I saw him from the landing window, sir. I
 expect he's only doing his job, same as anyone."
 
@@ -356,7 +360,7 @@ affair mellors sarah (summerhouse/summer) together secret lovers
 when he arrived. Mrs. G. said it was something to do with business, but I don't
 know more than that."
 
-police investigation scotland yard inspector detective think here
+-constable +(police/scotland/yard/inspector/detective) investigation opinion here
 "Oh, it does put the wind up me, having a proper detective in the
 house. I haven't done anything wrong, sir, honest I haven't - I just
 get nervous with all the questions."

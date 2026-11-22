@@ -154,48 +154,53 @@ I could."
 "I last saw Sebastian when he went into the study with Sir Redvers, a little
 after 10:00. I heard them quarrelling afterwards, but I never saw him again."
 
-+colonel -who (get/think) with
++colonel +arthur +opinion
+"I couldn't tell you what Sebastian thought of him, Inspector. I'm told he gave
+his consent only yesterday afternoon. Arthur said so, and Millicent was glowing.
+Sebastian never said a word of it to me."
+
++colonel -who opinion
 "He was somewhat strict and suspicious by nature, but we were happy
 enough."
 
-+sarah -affair (get/think) with | yourself -affair
++sarah -affair opinion | yourself -affair
 "I know what's said of me - too young for my husband, too fond of
 admiration. I loved Sebastian in my own way, whatever anyone
 thinks. I don't expect you to understand a marriage from outside
 looking in."
 
-+millicent (get/think) with
++millicent opinion
 "Her father spoiled her so she got used to having her own way.
 Sebastian probably agreed to Arthur Coniston's proposal for fear of
 what Millicent would do if he refused. I can't see him crossing
 Millicent on a matter like that."
 
-+arthur (get/think) with
++arthur opinion
 "A charmer. I was suspicious of his motives for marrying Millicent, but
 Arthur said that when he asked Sebastian my husband agreed, so I am
 probably mistaken."
 
-+redvers (get/think) with
++redvers opinion
 "I felt he had some sort of grudge against Sebastian."
 
-+(billingsgate/butler) (get/think) with
++(billingsgate/butler) opinion
 "Very honest and loyal."
 
-+(goodbody/cook) (get/think) with
++(goodbody/cook) opinion
 "A gossip."
 
-+(bagsby/maid) (get/think) with
++(bagsby/maid) opinion
 "Lazy."
 
-+(mellors/gamekeeper) (get/think) with
++(mellors/gamekeeper) opinion
 "A very loyal gamekeeper."
 
-+(cat/chester/ginger) (get/think) with
++(cat/chester/ginger) opinion
 "Chester? He was Sebastian's cat, really - a great ginger creature.
 I'm afraid I've never had much to do with him. He lives down at the
 stables, as I understand it."
 
-+(officer/policeman/police) (get/think) with
++(officer/policeman/police) opinion
 "I haven't really spoken to him. He seems very young to be standing guard
 over something so dreadful."
 
@@ -439,7 +444,7 @@ realise it was quite so serious until now."
 +(money/mining/business/much) ask troubles redvers colonel
 "I really couldn't say. Sebastian didn't discuss financial business with me."
 
-police investigation scotland yard inspector detective think here
+-constable +(police/scotland/yard/inspector/detective) investigation opinion here
 "I want to know who did this as much as anyone, Inspector - more,
 perhaps. Ask whatever you must. I only hope it's over soon, for all
 our sakes."

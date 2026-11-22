@@ -20,6 +20,7 @@ Sub apply_extra_replacements(target$, words$())
     s$ = words.replace$(s$, "+daughter+", "+millicent+")
   EndIf
 
+  ' TODO: these replacements should occur after the main synonyms
   s$ = words.replace$(s$, "+mr+darnley+", "+colonel+")
   s$ = words.replace$(s$, "+mrs+darnley+", "+sarah+")
   s$ = words.replace$(s$, "+miss+darnley+", "+millicent+")
@@ -27,6 +28,9 @@ Sub apply_extra_replacements(target$, words$())
   s$ = words.replace$(s$, "+sarah+darnley+", "+sarah+")
   s$ = words.replace$(s$, "+millicent+darnley+", "+millicent+")
   s$ = words.replace$(s$, "+darnley+", "+colonel+")
+  s$ = words.replace$(s$, "+darnleys+", "+colonel+")
+  s$ = words.replace$(s$, "+get+on+with+", "+opinion+")
+  s$ = words.replace$(s$, "+get+along+", "+opinion+")
 
   Local result% = words.split%(s$, "+", words$())
 End Sub

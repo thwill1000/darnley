@@ -114,47 +114,51 @@ I shouldn't be at all surprised if someone had crossed him."
 "In the lounge, when the men joined us after billiards. Then Arthur and I went to
 the music room, and I never saw Daddy again."
 
-+colonel -who (get/think) with
++colonel +arthur +opinion
+"Daddy gave his consent yesterday, which I'd waited so long for. He never told
+me what he thought of Arthur, only that I might marry him."
+
++colonel -who opinion
 "Daddy was a tyrant but always kind to me. He was always fearful that
 Sarah would leave him for a younger man."
 
-+sarah -affair (get/think) with
++sarah -affair opinion
 "We got on well enough though it is difficult to have a stepmother
 who is almost the same age. I thought she would leave Daddy some day
 as soon as she found a lover. But, of course, she would need Daddy's
 money."
 
-+millicent (get/think) with | yourself
++millicent opinion | yourself
 "I don't know what there is to say about me. I loved my father,
 whatever anyone supposes, and I mean to see whoever did this
 brought to justice - however long it takes."
 
-+arthur (get/think) with
++arthur opinion
 "He's a darling! We get on wonderfully, and Daddy gave his consent only yesterday - I'm still
 getting used to being the happiest girl in the house."
 
-+redvers (get/think) with
++redvers opinion
 "I didn't know him before last night."
 
-+(billingsgate/butler) (get/think) with
++(billingsgate/butler) opinion
 "A decent old fellow."
 
-+(goodbody/cook) (get/think) with
++(goodbody/cook) opinion
 "An old dear."
 
-+(bagsby/maid) (get/think) with
++(bagsby/maid) opinion
 "A clumsy girl."
 
-+(mellors/gamekeeper) (get/think) with
++(mellors/gamekeeper) opinion
 "Furtive. I don't like the way he looks at my stepmother. I advised
 Daddy to get rid of him."
 
-+(cat/chester/ginger) (get/think) with
++(cat/chester/ginger) opinion
 "Oh, Chester! Daddy's cat - he dotes on him, or did. He's usually
 down at the stables bothering Mellors. I've always found him rather
 standoffish, myself."
 
-+(officer/policeman/police) (get/think) with
++(officer/policeman/police) opinion
 "I've only seen him through the window, stood out there in the cold. Rather
 a thankless job, I should think, on a morning like this."
 
@@ -398,7 +402,7 @@ gentlemen are always fussing over investments."
 "I really don't know anything about finance. That's
 not the sort of thing anyone discusses with me."
 
-police investigation scotland yard inspector detective think here
+-constable +(police/scotland/yard/inspector/detective) investigation opinion here
 "I suppose you have to suspect all of us equally, don't you? It's a
 horrid feeling, being looked at that way in one's own home. But I
 want whoever did this caught, so ask what you must."

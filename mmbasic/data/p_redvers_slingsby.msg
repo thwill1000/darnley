@@ -135,47 +135,51 @@ in to look."
 "10:30, when I left the study. Alive and well, I'll swear to it - that's the
 last I saw of him."
 
-+colonel -who (get/think) with
++colonel +arthur +opinion
+"No idea. Darnley never mentioned the fellow to me, and I met him for the first
+time last night."
+
++colonel -who opinion
 "A hard man but very fair. Twenty years I've known him, and I've never had cause
 to complain of him."
 
-+sarah -affair (get/think) with
++sarah -affair opinion
 "Darnley should never have married her. I told him so at the time but he wouldn't
 hear of it. She's half his age and twice as clever. A man in Darnley's position
 needs a wife who knows her place, not one who is always looking for something
 better. I shouldn't wonder if she had her eye on someone else entirely."
 
-+millicent (get/think) with
++millicent opinion
 "A charming young lady. Spoiled by her father. Personally I
 shouldn't like to get on her wrong side."
 
-+arthur (get/think) with
++arthur opinion
 "Last night was the first time I met him but he seemed a decent
 fellow."
 
-+redvers (get/think) with | yourself
++redvers opinion | yourself
 "Myself? An old friend of Darnley's, twenty years now - that's the whole of it.
 A plain-spoken man, and I don't intend to start mincing words on your account
 now."
 
-+(billingsgate/butler) (get/think) with
++(billingsgate/butler) opinion
 "I barely know the man."
 
-+(goodbody/cook) (get/think) with
++(goodbody/cook) opinion
 "Don't know the woman, and no reason I should."
 
-+(bagsby/maid) (get/think) with
++(bagsby/maid) opinion
 "Don't know the girl. Below stairs isn't my concern."
 
-+(mellors/gamekeeper) (get/think) with
++(mellors/gamekeeper) opinion
 "Don't know the man. Gamekeepers keep to themselves, as they should."
 
-+(cat/chester/ginger) (get/think) with
++(cat/chester/ginger) opinion
 "The cat? Chester, I believe they call him. Never had much use for
 the creatures myself, but Darnley was rather fond of him, as I
 recall."
 
-+(officer/policeman/police) (get/think) with
++(officer/policeman/police) opinion
 "Seems steady enough for a village bobby. Can't say I've had cause to
 exchange more than two words with the fellow."
 
@@ -412,7 +416,7 @@ you make of it."
 "My business affairs are my own concern, and none of yours unless
 you can show otherwise."
 
-police investigation scotland yard inspector detective think here
+-constable +(police/scotland/yard/inspector/detective) investigation opinion here
 "About time too. Damned unpleasant business, having one's private
 affairs picked over, but I'd rather have it done properly than not
 at all. Get on with it, man."
