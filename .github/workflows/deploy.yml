@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
 
 # Grant permissions required for GitHub Pages deployment
 permissions:
