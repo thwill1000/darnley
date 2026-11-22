@@ -58,6 +58,7 @@ add_test("verb_examine() fails when object exists but is elsewhere", "test_ex_gv
 add_test("verb_examine() fails when objects present but no object or exit matches", "test_ex_gvn_no_matches")
 add_test("verb_examine() fails when no objects present and no exit matches", "test_ex_gvn_no_objects")
 add_test("verb_examine() suggests GO when words match an exit instead", "test_ex_gvn_suggests_go")
+add_test("verb_examine() suggests GO for a blocked exit", "test_ex_blocked_exit_go")
 add_test("verb_examine() does not suggest GO when an object match exists elsewhere", "test_ex_no_go_when_obj_elsewhere")
 add_test("verb_examine() always returns 1 (handled)", "test_ex_always_returns_handled")
 add_test("verb_examine() fails when a mandatory '+' word is missing from the command", "test_ex_gvn_plus_missing")
@@ -147,6 +148,19 @@ Sub test_ex_gvn_suggests_go()
 
   assert_int_equals(1, ret%)
   assert_string_equals("[[red:Try `GO TWO`.]]" + sys.CRLF$, con_output$)
+End Sub
+
+' A blocked exit still matches as an exit, so suggest GO without printing
+' the blocked message.
+Sub test_ex_blocked_exit_go()
+  r = 3 ' LOC003 has a blocked additional exit named "inside"
+  Local result% = parse_common("examine inside")
+  assert_int_equals(0, result%)
+
+  Local ret% = verb_examine()
+
+  assert_int_equals(1, ret%)
+  assert_string_equals("[[red:Try `GO INSIDE`.]]" + sys.CRLF$, con_output$)
 End Sub
 
 ' An object DOES match (elsewhere) - the GO suggestion should not kick in,

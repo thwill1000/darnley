@@ -534,10 +534,11 @@ End Function
 ' given words, using the same word-matching approach as verb_go().
 '
 ' @param words$()  Array of words to match against exit location names.
+' @param suppress_blocked%  If nonzero, do not print a blocked-exit message.
 ' @return          Index into rooms$() of the best matching exit,
 '                  -1 if none,
 '                  -2 if exists but "blocked"
-Function find_exit%(words$())
+Function find_exit%(words$(), suppress_blocked%)
   Local exits$(8) Length 127
 
   Const match_in$ = make_match_input$(words$(), 2)
@@ -561,7 +562,7 @@ Function find_exit%(words$())
 
   Const blocked$ = Field$(exits$(best_exit%), 3, "|")
   If blocked$ <> "" Then
-    print_message_or_fail(blocked$)
+    If Not suppress_blocked% Then print_message_or_fail(blocked$)
     find_exit% = -2
     Exit Function
   EndIf
@@ -622,8 +623,8 @@ Function verb_examine()
   EndIf
 
   ' If we match an exit rather than an object then suggest the GO command.
-  Const exit_loc% = find_exit%(words$())
-  If exit_loc% > -1 Then
+  Const exit_loc% = find_exit%(words$(), 1)
+  If exit_loc% <> -1 Then
     con.print_fail("Try `GO " + UCase$(cat_words$(words$(), 2)) + "`.")
     Exit Function
   EndIf
