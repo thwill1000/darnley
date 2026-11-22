@@ -102,14 +102,14 @@ are of an evening, that's not my part of the house."
 +(die/bullet/bullets/wound/cause) | +how +murder
 "He was shot, sir. Mr. B. told us. I didn't see, honest."
 
-+last +(see/speak) +(colonel/darnley/him) -(night/evening/yesterday/sarah/millicent)
++last +(see/speak) +(colonel/him) -(night/evening/yesterday)
 "Around dinner, sir. I never saw him after that, honest - I was helping Mrs. G.
 wash up."
 
-+colonel -(millicent/sarah/who) (get/think) with
++colonel -who (get/think) with
 "Very strict. I didn't like him."
 
-+sarah (get/think) with
++sarah -affair (get/think) with
 "If you ask me she didn't like the Colonel. He was too old for her."
 
 +millicent (get/think) with
@@ -230,7 +230,7 @@ I haven't done the room yet this morning."
 "I helped Mrs. Goodbody with dinner, sir, and served the ladies' coffee in
 the lounge. Then we washed up while Mr. B. cleaned the boots."
 
-events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/talk/talked)
+events yesterday murder last happened
 "Last night I helped Mrs. Goodbody to prepare dinner and afterwards I served
 coffee in the lounge to Mrs. Sarah and Miss Millicent. Then I helped Mrs. G.
 to wash up whilst Mr. Billingsgate cleaned the boots. Just before we went to
@@ -263,7 +263,7 @@ house."
 "I didn't see Miss Millicent again after I served coffee, sir. I
 wouldn't know where she was after that."
 
-+(confirm/corroborate/vouch/alibi/with) +sarah you
++(confirm/corroborate/vouch/alibi/with) +sarah -affair you
 "I never saw Mrs. Sarah again either, sir, not till everyone come
 running. I couldn't say what she was doing."
 
@@ -302,7 +302,7 @@ business, not mine."
 with him, about poaching or some such. I don't know any more than
 that, honest I don't."
 
--again marriage colonel sarah wife husband happy get | jealous jealousy
+-again marriage colonel sarah wife husband happy get jealous
 "I don't like to gossip about my betters, sir. Mrs. Sarah always
 seemed a bit lonely to me, if you want my honest opinion."
 
@@ -370,7 +370,7 @@ the extra fires we've had to lay."
 just, well, you know."
 
 # Response when accused of the murder for a second (or subsequent) time
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !requires all_clues accuse_b4_bagsby
 !provides new_accuse accuse_bagsby
 She sniffs, dabbing at her eyes with her sleeve, though there is a
@@ -380,7 +380,7 @@ flicker of something more wary beneath the tears now.@
 haven't changed my mind."
 
 # Response when accused of the murder
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !requires all_clues
 !provides new_accuse accuse_bagsby accuse_b4_bagsby
 Norah's eyes go wide and her lip trembles - she looks for all the world
@@ -390,7 +390,7 @@ as though she might burst into tears on the spot.@
 paid me! I only been here six months, sir, honest!"
 
 # Response when accused when insufficient clues have been gathered
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !provides new_accuse accuse_bagsby
 "Oh! You mustn't say that, not without you're sure - it isn't right."
 

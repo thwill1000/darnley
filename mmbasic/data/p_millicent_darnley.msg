@@ -110,15 +110,15 @@ I shouldn't be at all surprised if someone had crossed him."
 +(die/bullet/bullets/wound/cause) | +how +murder
 "Shot, I'm told - in the chest. I haven't seen him and I don't mean to."
 
-+last +(see/speak) +(colonel/darnley/him) -(night/evening/yesterday/sarah/millicent)
++last +(see/speak) +(colonel/him) -(night/evening/yesterday)
 "In the lounge, when the men joined us after billiards. Then Arthur and I went to
 the music room, and I never saw Daddy again."
 
-+colonel -(millicent/sarah/who) (get/think) with
++colonel -who (get/think) with
 "Daddy was a tyrant but always kind to me. He was always fearful that
 Sarah would leave him for a younger man."
 
-+sarah (get/think) with
++sarah -affair (get/think) with
 "We got on well enough though it is difficult to have a stepmother
 who is almost the same age. I thought she would leave Daddy some day
 as soon as she found a lover. But, of course, she would need Daddy's
@@ -243,7 +243,7 @@ what's in it."
 "We all dined together. Sarah and I took coffee in the lounge afterwards,
 and the men joined us for half an hour."
 
-events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/talk/talked)
+events yesterday murder last happened
 "Last night we all ate together until coffee which Sarah and I took
 together in the lounge. The men joined us later for half an hour,
 then Arthur and I went into the music room where we talked for a
@@ -293,7 +293,7 @@ got up to on his own."
 "I'm not sure how I'm meant to vouch for myself, Inspector - I was
 alone in my room the whole time."
 
-+(confirm/corroborate/vouch/alibi/with) +sarah you
++(confirm/corroborate/vouch/alibi/with) +sarah -affair you
 "I fell asleep listening to her playing, so I really couldn't swear to
 when she stopped, or started again for that matter."
 
@@ -334,7 +334,7 @@ now."
 about a letter. If Daddy did write to him, he never mentioned it to
 me. But I shouldn't be surprised."
 
--again marriage colonel sarah wife husband happy get | jealous jealousy
+-again marriage colonel sarah wife husband happy get jealous
 "Daddy was thirty years older than Sarah and never quite trusted
 that she'd stay. I don't think either of them was truly happy,
 if I'm honest. But that's marriage for you, isn't it?"
@@ -411,7 +411,7 @@ footstep shows. Small mercies, given everything else."
 "Goodbye, Inspector. I do hope you find whoever did this."
 
 # Response when accused of the murder for a second (or subsequent) time
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !requires all_clues accuse_b4_millicent
 !provides new_accuse accuse_millicent
 Her jaw sets and she regards you with cold, level eyes.@
@@ -420,7 +420,7 @@ Her jaw sets and she regards you with cold, level eyes.@
 now, however many times you care to repeat yourself."
 
 # Response when accused of the murder
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !requires all_clues
 !provides new_accuse accuse_millicent accuse_b4_millicent
 Millicent's composure cracks for the first time since you met her
@@ -430,7 +430,7 @@ Millicent's composure cracks for the first time since you met her
 absolutely certain, because I will not forgive this lightly."
 
 # Response when accused when insufficient clues have been gathered
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !provides new_accuse accuse_millicent
 "That is a wicked thing to say without proof. I hope you have better
 reasons than mere suspicion."

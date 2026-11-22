@@ -116,14 +116,14 @@ honest opinion."
 "Shot, dear - Mr. B. told us after. Through the chest, he said. I didn't
 go in to see."
 
-+last +(see/speak) +(colonel/darnley/him) -(night/evening/yesterday/sarah/millicent)
++last +(see/speak) +(colonel/him) -(night/evening/yesterday)
 "I couldn't tell you, dear. I keep to my kitchen, and I'd not had cause to see
 the master since before dinner was served."
 
-+colonel -(millicent/sarah/who) (get/think) with
++colonel -who (get/think) with
 "A hard man both in his business dealings and with his family."
 
-+sarah (get/think) with
++sarah -affair (get/think) with
 "Far too young to have married the Colonel and not very happy."
 
 +millicent (get/think) with
@@ -242,7 +242,7 @@ too much to see to in the kitchen this morning."
 "I cooked, dear, and Norah and I washed up. We servants had our own
 supper at half past nine."
 
-events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/talk/talked)
+events yesterday murder last happened
 "Last night I cooked and washed up with Norah. At about 10:30 I heard a
 loud bang, which gave me quite a shock. Not long after we went to bed; me and
 Norah behind the curtain and Mr. B. on the other side. We had to muck in with
@@ -276,7 +276,7 @@ of Mr. Coniston again till all the commotion started."
 "No, dear, I didn't see Miss Millicent again after dinner. Not my
 place to go looking for her, neither."
 
-+(confirm/corroborate/vouch/alibi/with) +sarah you
++(confirm/corroborate/vouch/alibi/with) +sarah -affair you
 "Couldn't tell you, dear. I never saw Mrs. Sarah again after we'd
 served coffee, not till everyone was up and about."
 
@@ -320,7 +320,7 @@ second warning where he'd already given a first, if you follow me.
 Mr. Mellors wouldn't have taken kindly to losing his cottage along
 with his position."
 
--again marriage colonel sarah wife husband happy get | jealous jealousy
+-again marriage colonel sarah wife husband happy get jealous
 "Not for me to say, dear, but I don't think either of them was
 what you'd call content. Still, that's their business and none of
 mine."
@@ -391,7 +391,7 @@ at least. Silver linings, as they say."
 could use it."
 
 # Response when accused of the murder for a second (or subsequent) time
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !requires all_clues accuse_b4_goodbody
 !provides new_accuse accuse_goodbody
 She fixes you with a look that could curdle milk.@
@@ -400,7 +400,7 @@ She fixes you with a look that could curdle milk.@
 didn't do it, and that's flat."
 
 # Response when accused of the murder
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !requires all_clues
 !provides new_accuse accuse_goodbody accuse_b4_goodbody
 Mrs. Goodbody plants her floury hands on her hips, drawing herself up
@@ -410,7 +410,7 @@ to her full and considerable height.@
 for five years and never so much as raised my voice, let alone a gun!"
 
 # Response when accused when insufficient clues have been gathered
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !provides new_accuse accuse_goodbody
 "Now that's a dreadful thing to say to a body, and no proof to back it
 up neither."

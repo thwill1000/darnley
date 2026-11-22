@@ -129,15 +129,15 @@ I withdrew once the port had been served in the billiard room."
 "He was shot, sir - a single bullet through the chest. He lay on the
 rug, and I could not tell you from where the shot was fired."
 
-+last +(see/speak) +(colonel/darnley/him) -(night/evening/yesterday/sarah/millicent)
++last +(see/speak) +(colonel/him) -(night/evening/yesterday)
 "After dinner, sir, when I served port in the billiard room and withdrew, a
 little after 9:00. The next I saw of him was when Mr. Coniston and I found him
 in the study."
 
-+colonel -(millicent/sarah/who) (get/think) with
++colonel -who (get/think) with
 "The master was a very honest, decent gentleman, and extremely good to his family."
 
-+sarah (get/think) with
++sarah -affair (get/think) with
 "I don't believe it is proper to speak of the family."
 
 +millicent (get/think) with
@@ -264,7 +264,7 @@ matters."
 "I waited on the family, Sir Redvers and Mr. Coniston, sir. I served port
 in the billiard room and withdrew a little after nine."
 
-events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/talk/talked)
+events yesterday murder last happened
 "Last night I waited on the guests at dinner. There was the family, Sir Redvers
 and Mr. Coniston. The atmosphere at dinner, I am bound to say, was not entirely
 comfortable. Afterwards I served port to the gentlemen in the billiard room and
@@ -315,7 +315,7 @@ I cannot vouch for his whereabouts in between."
 "I saw nothing of Miss Millicent after I withdrew from the drawing
 room, sir. I regret I cannot assist you there."
 
-+(confirm/corroborate/vouch/alibi/with) +sarah you
++(confirm/corroborate/vouch/alibi/with) +sarah -affair you
 "I saw nothing of Mrs. Darnley after dinner, sir. I could not say
 where she passed the evening."
 
@@ -363,7 +363,7 @@ about his conduct - I believe it concerned some poaching he suspected
 close to home, if you take my meaning. I couldn't say whether the
 letter was ever delivered, only that the master intended it."
 
--again marriage colonel sarah wife husband happy get | jealous jealousy
+-again marriage colonel sarah wife husband happy get jealous
 "It is not my place to comment on the master's marriage, sir. I
 will say the Colonel was a generous husband, whatever else might be
 said of him."
@@ -439,7 +439,7 @@ tracking footprints."
 further."
 
 # Response when accused of the murder for a second (or subsequent) time
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !requires all_clues accuse_b4_billingsgate
 !provides new_accuse accuse_billingsgate
 The butler's composure has returned, though something guarded remains
@@ -449,7 +449,7 @@ in his manner.@
 changed in the meantime."
 
 # Response when accused of the murder
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !requires all_clues
 !provides new_accuse accuse_billingsgate accuse_b4_billingsgate
 Billingsgate draws himself up, visibly wounded, though he masters
@@ -460,7 +460,7 @@ sir. I should hope my conduct speaks for itself, whatever you may
 suspect."
 
 # Response when accused when insufficient clues have been gathered
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !provides new_accuse accuse_billingsgate
 "Begging your pardon, but that is a very grave thing to suggest without
 proper cause."

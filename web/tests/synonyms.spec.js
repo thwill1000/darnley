@@ -18,6 +18,20 @@ describe('applySynonyms()', () => {
     expect(applySynonyms(['milicent'], SYNONYMS)).toEqual(['millicent']);
   });
 
+  it('replaces a sequence matching a multi-word alias with one canonical word', () => {
+    const synonyms = [{ canonical: 'millicent', aliases: ['miss darnley'] }];
+    expect(applySynonyms(['ask', 'miss', 'darnley', 'please'], synonyms)).toEqual([
+      'ask', 'millicent', 'please',
+    ]);
+  });
+
+  it('does not replace a partial multi-word alias match', () => {
+    const synonyms = [{ canonical: 'millicent', aliases: ['miss darnley'] }];
+    expect(applySynonyms(['miss', 'darnleyson'], synonyms)).toEqual([
+      'miss', 'darnleyson',
+    ]);
+  });
+
   it('leaves a word already in canonical form unchanged', () => {
     expect(applySynonyms(['millicent'], SYNONYMS)).toEqual(['millicent']);
   });
@@ -56,6 +70,10 @@ describe('applySynonyms()', () => {
 
   it('is a no-op when synonymEntries is empty', () => {
     expect(applySynonyms(['milicent', 'gramaphone'], [])).toEqual(['milicent', 'gramaphone']);
+  });
+
+  it('returns an empty array when there are no words to resolve', () => {
+    expect(applySynonyms([], SYNONYMS)).toEqual([]);
   });
 
   it('stops processing at the first empty word element', () => {

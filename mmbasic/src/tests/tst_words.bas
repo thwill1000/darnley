@@ -5,6 +5,8 @@ Option Base 1
 Option Explicit On
 Option Default Integer
 
+Const ut.MAX_TESTS% = 150
+
 #Include "splib/system.inc"
 #Include "splib/array.inc"
 #Include "splib/list.inc"
@@ -86,6 +88,43 @@ add_test("replace_words() is a no-op when synonyms$() is empty", "test_rw_gvn_em
 add_test("replace_words() stops processing on an empty word element", "test_rw_gvn_empty_word")
 add_test("replace_words() preserves word order and array positions", "test_rw_gvn_preserves_order")
 add_test("replace_words() handles a single-element words$() array", "test_rw_gvn_single_word")
+
+add_test("words.join$() with a single word returns it unchanged", "test_wj_single")
+add_test("words.join$() joins multiple words with the delimiter", "test_wj_multiple")
+add_test("words.join$() stops at the first empty element", "test_wj_stops_at_empty")
+add_test("words.join$() on an empty array returns an empty string", "test_wj_empty_array")
+add_test("words.join$() raises and error for a multi-character delimiter", "test_wj_multi_char_delim")
+add_test("words.join$() raises an error for an empty delimiter", "test_wj_empty_delim")
+add_test("words.join$() raises an error if the result exceeds 255 characters", "test_wj_too_long")
+add_test("words.join$() with wrap% adds the delimiter around a single word", "test_wj_wrap_single")
+add_test("words.join$() with wrap% adds the delimiter around multiple words", "test_wj_wrap_multiple")
+add_test("words.join$() with wrap% on an empty array returns two delimiters", "test_wj_wrap_empty_array")
+add_test("words.join$() raises an error if wrap% pushes the result over 255 characters", "test_wj_wrap_too_long")
+
+add_test("words.replace$() replaces a single occurrence", "test_wr_single")
+add_test("words.replace$() replaces every occurrence", "test_wr_multiple")
+add_test("words.replace$() returns the string unchanged when there is no match", "test_wr_no_match")
+add_test("words.replace$() matching is case-sensitive", "test_wr_case_sensitive")
+add_test("words.replace$() matches substrings, not just whole words", "test_wr_substring")
+add_test("words.replace$() does not re-scan replacement text", "test_wr_no_rescan")
+add_test("words.replace$() with an empty to$ deletes occurrences", "test_wr_delete")
+add_test("words.replace$() on an empty string returns an empty string", "test_wr_empty_s")
+add_test("words.replace$() raises an error for an empty from$", "test_wr_empty_from")
+add_test("words.replace$() raises an error if the result exceeds 255 characters", "test_wr_too_long")
+
+add_test("words.split%() with no delimiter present returns one word", "test_ws_one_token")
+add_test("words.split%() splits on the delimiter", "test_ws_multiple")
+add_test("words.split%() skips empty tokens", "test_ws_skips_empty")
+add_test("words.split%() on an empty string returns an empty array", "test_ws_empty_string")
+add_test("words.split%() clears the array on entry", "test_ws_clears_array")
+add_test("words.split%() performs no case conversion", "test_ws_no_processing")
+add_test("words.split%() preserves leading and trailing spaces in tokens", "test_ws_keeps_spaces")
+add_test("words.split%() treats a token of only spaces as non-empty", "test_ws_space_only_token")
+add_test("words.split%() returns 1 when there are too many words", "test_ws_too_many_words")
+add_test("words.split%() returns 2 when a word is too long", "test_ws_word_too_long")
+add_test("words.split%() raises an error for an empty delimiter", "test_ws_empty_delim")
+add_test("words.split%() raises an error for a multi-character delimiter", "test_ws_long_delim")
+add_test("words.split%() accepts a space delimiter, skipping empty tokens", "test_ws_space_delim")
 
 run_tests()
 End
@@ -662,4 +701,241 @@ Sub test_rw_gvn_single_word()
   Local replacements$(2) = ("|apple|banana|pear|", "|car|banana|train|")
   replace_words(words$(), replacements$())
   assert_string_equals("apple", words$(1))
+End Sub
+
+' words.join$() ---------------------------------------------------------
+
+Sub test_wj_single()
+  Local w$(4) Length MAX_WORD_LENGTH = ("foo", "", "", "")
+  assert_string_equals("foo", words.join$(w$(), ","))
+End Sub
+
+Sub test_wj_multiple()
+  Local w$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "")
+  assert_string_equals("one,two,three", words.join$(w$(), ","))
+End Sub
+
+Sub test_wj_stops_at_empty()
+  Local w$(4) Length MAX_WORD_LENGTH = ("one", "", "three", "four")
+  assert_string_equals("one", words.join$(w$(), ","))
+End Sub
+
+Sub test_wj_empty_array()
+  Local w$(4) Length MAX_WORD_LENGTH
+  assert_string_equals("", words.join$(w$(), ","))
+End Sub
+
+Sub test_wj_multi_char_delim()
+  Local w$(4) Length MAX_WORD_LENGTH = ("one", "two", "", "")
+  Local s$
+  On Error Ignore
+  s$ = words.join$(w$(), "***")
+  assert_raw_error("delimit$ must be a single character")
+  On Error Abort
+End Sub
+
+Sub test_wj_empty_delim()
+  Local w$(4) Length MAX_WORD_LENGTH = ("one", "two", "", "")
+  Local s$
+  On Error Ignore
+  s$ = words.join$(w$(), "")
+  assert_raw_error("delimit$ must be a single character")
+  On Error Abort
+End Sub
+
+Sub test_wj_too_long()
+  Local w$(4) Length 255
+  Local s$
+  w$(1) = String$(100, "a")
+  w$(2) = String$(100, "b")
+  w$(3) = String$(100, "c")
+  On Error Ignore
+  s$ = words.join$(w$(), ",")
+  assert_raw_error("String too long")
+  On Error Abort
+End Sub
+
+Sub test_wj_wrap_single()
+  Local w$(4) Length MAX_WORD_LENGTH = ("foo", "", "", "")
+  assert_string_equals("|foo|", words.join$(w$(), "|", 1))
+End Sub
+
+Sub test_wj_wrap_multiple()
+  Local w$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "")
+  assert_string_equals("|one|two|three|", words.join$(w$(), "|", 1))
+End Sub
+
+Sub test_wj_wrap_empty_array()
+  Local w$(4) Length MAX_WORD_LENGTH
+  assert_string_equals("||", words.join$(w$(), "|", 1))
+End Sub
+
+Sub test_wj_wrap_multi_char()
+  Local w$(4) Length MAX_WORD_LENGTH = ("one", "two", "", "")
+  assert_string_equals(", one, two, ", words.join$(w$(), ", ", 1))
+End Sub
+
+' 254 characters fits unwrapped, but wrapping with "," makes it 256.
+Sub test_wj_wrap_too_long()
+  Local w$(2) Length 255
+  Local s$
+  w$(1) = String$(254, "a")
+  assert_int_equals(254, Len(words.join$(w$(), ",", 0)))
+  On Error Ignore
+  s$ = words.join$(w$(), ",", 1)
+  assert_raw_error("String too long")
+  On Error Abort
+End Sub
+
+' words.replace$() ------------------------------------------------------
+
+Sub test_wr_single()
+  assert_string_equals("the dog sat", words.replace$("the cat sat", "cat", "dog"))
+End Sub
+
+Sub test_wr_multiple()
+  assert_string_equals("b b b", words.replace$("a a a", "a", "b"))
+End Sub
+
+Sub test_wr_no_match()
+  assert_string_equals("the cat sat", words.replace$("the cat sat", "dog", "x"))
+End Sub
+
+Sub test_wr_case_sensitive()
+  assert_string_equals("the Cat sat", words.replace$("the Cat sat", "cat", "dog"))
+End Sub
+
+Sub test_wr_substring()
+  assert_string_equals("condog", words.replace$("concat", "cat", "dog"))
+End Sub
+
+' The replacement "aa" contains the search text but must not be rescanned.
+Sub test_wr_no_rescan()
+  assert_string_equals("aaaa", words.replace$("aa", "a", "aa"))
+End Sub
+
+Sub test_wr_delete()
+  assert_string_equals("the  sat", words.replace$("the cat sat", "cat", ""))
+End Sub
+
+Sub test_wr_empty_s()
+  assert_string_equals("", words.replace$("", "a", "b"))
+End Sub
+
+Sub test_wr_empty_from()
+  Local s$
+  On Error Ignore
+  s$ = words.replace$("foo", "", "x")
+  assert_raw_error("from$ must not be empty")
+  On Error Abort
+End Sub
+
+Sub test_wr_too_long()
+  Local s$
+  On Error Ignore
+  s$ = words.replace$(String$(200, "a"), "a", "bb")
+  assert_raw_error("String too long")
+  On Error Abort
+End Sub
+
+' words.split%() --------------------------------------------------------
+
+Sub test_ws_one_token()
+  Local w$(4) Length MAX_WORD_LENGTH
+  assert_int_equals(0, words.split%("foo", ",", w$()))
+  assert_string_equals("foo", w$(1))
+  assert_string_equals("", w$(2))
+End Sub
+
+Sub test_ws_multiple()
+  Local w$(4) Length MAX_WORD_LENGTH
+  assert_int_equals(0, words.split%("one,two,three", ",", w$()))
+  assert_string_equals("one", w$(1))
+  assert_string_equals("two", w$(2))
+  assert_string_equals("three", w$(3))
+  assert_string_equals("", w$(4))
+End Sub
+
+Sub test_ws_skips_empty()
+  Local w$(4) Length MAX_WORD_LENGTH
+  assert_int_equals(0, words.split%(",one,,two,", ",", w$()))
+  assert_string_equals("one", w$(1))
+  assert_string_equals("two", w$(2))
+  assert_string_equals("", w$(3))
+End Sub
+
+Sub test_ws_empty_string()
+  Local w$(4) Length MAX_WORD_LENGTH
+  assert_int_equals(0, words.split%("", ",", w$()))
+  assert_string_equals("", w$(1))
+End Sub
+
+Sub test_ws_clears_array()
+  Local w$(4) Length MAX_WORD_LENGTH = ("old1", "old2", "old3", "old4")
+  assert_int_equals(0, words.split%("new", ",", w$()))
+  assert_string_equals("new", w$(1))
+  assert_string_equals("", w$(2))
+  assert_string_equals("", w$(3))
+  assert_string_equals("", w$(4))
+End Sub
+
+Sub test_ws_no_processing()
+  Local w$(4) Length MAX_WORD_LENGTH
+  assert_int_equals(0, words.split%("Can't,FOO", ",", w$()))
+  assert_string_equals("Can't", w$(1))
+  assert_string_equals("FOO", w$(2))
+End Sub
+
+Sub test_ws_keeps_spaces()
+  Local w$(4) Length MAX_WORD_LENGTH
+  assert_int_equals(0, words.split%(" a , b ", ",", w$()))
+  assert_string_equals(" a ", w$(1))
+  assert_string_equals(" b ", w$(2))
+  assert_string_equals("", w$(3))
+End Sub
+
+Sub test_ws_space_only_token()
+  Local w$(4) Length MAX_WORD_LENGTH
+  assert_int_equals(0, words.split%("a, ,b", ",", w$()))
+  assert_string_equals("a", w$(1))
+  assert_string_equals(" ", w$(2))
+  assert_string_equals("b", w$(3))
+  assert_string_equals("", w$(4))
+End Sub
+
+Sub test_ws_too_many_words()
+  Local w$(2) Length MAX_WORD_LENGTH
+  assert_int_equals(1, words.split%("a,b,c", ",", w$()))
+End Sub
+
+Sub test_ws_word_too_long()
+  Local w$(4) Length MAX_WORD_LENGTH
+  assert_int_equals(2, words.split%(String$(MAX_WORD_LENGTH + 1, "x"), ",", w$()))
+End Sub
+
+Sub test_ws_empty_delim()
+  Local w$(4) Length MAX_WORD_LENGTH
+  Local rc%
+  On Error Ignore
+  rc% = words.split%("a,b", "", w$())
+  assert_raw_error("delimit$ must be a single character")
+  On Error Abort
+End Sub
+
+Sub test_ws_long_delim()
+  Local w$(4) Length MAX_WORD_LENGTH
+  Local rc%
+  On Error Ignore
+  rc% = words.split%("a,b", ", ", w$())
+  assert_raw_error("delimit$ must be a single character")
+  On Error Abort
+End Sub
+
+Sub test_ws_space_delim()
+  Local w$(4) Length MAX_WORD_LENGTH
+  assert_int_equals(0, words.split%("  one   two three ", " ", w$()))
+  assert_string_equals("one", w$(1))
+  assert_string_equals("two", w$(2))
+  assert_string_equals("three", w$(3))
+  assert_string_equals("", w$(4))
 End Sub

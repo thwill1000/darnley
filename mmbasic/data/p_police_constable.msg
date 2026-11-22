@@ -20,14 +20,14 @@ poacher
 "Shot through the chest, sir, so I was told when the call came in. I've
 not been in to see."
 
-+last +(see/speak) +(colonel/darnley/him) -(night/evening/yesterday/sarah/millicent)
++last +(see/speak) +(colonel/him) -(night/evening/yesterday)
 "Never met the gentleman, sir. I only came on duty this morning."
 
-+colonel -(millicent/sarah/who) (get/think) with
++colonel -who (get/think) with
 "Never met the gentleman myself, sir. I've only been posted here since the
 alarm was raised this morning."
 
-+sarah (get/think) with
++sarah -affair (get/think) with
 "I couldn't say, sir. I don't know the family, only faces I've seen
 crossing the drive since I was posted here."
 
@@ -86,7 +86,7 @@ hasn't stirred an inch."
 "That's yours, sir, isn't it? I came up from the village on my bicycle -
 left it propped up behind the wall, sir."
 
-events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/talk/talked)
+events yesterday murder last happened
 "Can't help you there, sir. I only came on duty this morning when the
 call came in - whatever happened last night, it happened before my
 time."

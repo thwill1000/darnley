@@ -99,13 +99,13 @@ him and his guests is nothing to do with me."
 +(die/bullet/bullets/wound/cause) | +how +murder
 "Shot. That's what I was told. I wasn't there."
 
-+last +(see/speak) +(colonel/darnley/him) -(night/evening/yesterday/sarah/millicent)
++last +(see/speak) +(colonel/him) -(night/evening/yesterday)
 "Not yesterday evening, that's certain - I was at my cottage from 8:00."
 
-+colonel -(millicent/sarah/who) (get/think) with
++colonel -who (get/think) with
 "Strict but fair. I've said all I'm goin' to say about him."
 
-+sarah (get/think) with
++sarah -affair (get/think) with
 "Mrs. Darnley is a fine woman. That's all I'm saying."
 
 +millicent (get/think) with
@@ -208,7 +208,7 @@ poking about other people's motors."
 (dinner/supper/coffee)
 "Wasn't at the house for dinner. I was at my cottage."
 
-events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/talk/talked)
+events yesterday murder last happened
 "Last night I did my last rounds at 8:00. I saw nothing suspicious. I spent the
 rest of the evening at home and went to bed at 10:00. I didn't hear any strange
 noises. It wasn't the weather for poachers."
@@ -231,13 +231,13 @@ the lot."
 +(confirm/corroborate/vouch/alibi/with) +millicent you
 "Nothing to do with me. I was at home all evening."
 
-+(confirm/corroborate/vouch/alibi/with) +sarah you
++(confirm/corroborate/vouch/alibi/with) +sarah -affair you
 !requires x_handkerchief x_cigarettes
 Something flickers behind his flat stare.@
 @
 "Can't help you there. I was on my own all evening."
 
-+(confirm/corroborate/vouch/alibi/with) +sarah you
++(confirm/corroborate/vouch/alibi/with) +sarah -affair you
 "Don't know anything about Mrs. Darnley's evening. Not my place to
 say."
 
@@ -277,7 +277,7 @@ about it besides read it and put it in the fire, same as I'd do with any
 other man's threats. Seven years' good work doesn't end because
 of one bad word from a man who'd had too much port."
 
--again marriage colonel sarah wife husband happy get | jealous jealousy
+-again marriage colonel sarah wife husband happy get jealous
 "None of my business what goes on in the big house between man and
 wife. I keep to my own affairs."
 
@@ -345,7 +345,7 @@ Nothing else to say about it."
 "Aye. Off with you, then."
 
 # Response when accused of the murder for a second (or subsequent) time
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !requires all_clues accuse_b4_mellors
 !provides new_accuse accuse_mellors
 He doesn't so much as blink.@
@@ -354,7 +354,7 @@ He doesn't so much as blink.@
 singing a different tune just to please you."
 
 # Response when accused of the murder
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !requires all_clues
 !provides new_accuse accuse_mellors accuse_b4_mellors
 Mellors doesn't flinch. He looks back at you with the same flat,
@@ -365,7 +365,7 @@ his eyes has sharpened.@
 saying so all along, and I'll keep saying it."
 
 # Response when accused when insufficient clues have been gathered
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !provides new_accuse accuse_mellors
 "You'd best have something to back that up before you go saying it
 again."

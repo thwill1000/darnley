@@ -95,19 +95,19 @@ The cat wrinkles his nose at the word and carries on washing.@
 @
 "Mrp."
 
-+last +(see/speak) +(colonel/darnley/him) -(night/evening/yesterday/sarah/millicent)
++last +(see/speak) +(colonel/him) -(night/evening/yesterday)
 The cat looks toward the house for a long moment, then returns to washing a
 paw.@
 @
 "Mrow."
 
-+colonel -(millicent/sarah/who) (get/think) with
++colonel -who (get/think) with
 The cat's ears go back at the mention of his late master, and for a
 moment he seems almost solemn. Almost.@
 @
 "Mrow..."
 
-+sarah (get/think) with
++sarah -affair (get/think) with
 He offers a single unbothered blink at the name and nothing further.@
 @
 "Mew."
@@ -191,7 +191,7 @@ distance, then decides it isn't worth further investigation.@
 @
 "Mrp."
 
-events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/talk/talked)
+events yesterday murder last happened
 The cat stares at you with enormous, unblinking green eyes, offering
 absolutely nothing by way of testimony. He was, after all, asleep in
 the stables the whole night, as usual.@
@@ -255,7 +255,7 @@ The cat has already lost interest and is washing his tail.@
 @
 "..."
 
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 The cat regards your accusation with the withering scorn of a
 creature who has never answered to anyone in his life.@
 @

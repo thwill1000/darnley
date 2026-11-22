@@ -489,6 +489,10 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
   it('What did you think of Colonel Darnley?', () => {
     all('colonel darnley opinion response', [
+      'colonel',
+      'sebastian',
+      'Mr. Darnley',
+      'darnley',
       'What did you think of Colonel Darnley?',
       'What was the Colonel like',
       'Tell me about Colonel Darnley',
@@ -509,17 +513,31 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
   it('What do you think of Sarah Darnley?', () => {
     all('sarah response', [
-      'sarah', 'sarah darnley', 'what do you think of sarah', 'what do you make of sarah', 'tell me about sarah',
-      "what's sarah like", 'your impression of sarah', 'how do you get on with sarah',
+      'sarah',
+      'sarah darnley',
+      'Mrs. Darnley',
+      'what do you think of sarah',
+      'what do you make of sarah',
+      'tell me about sarah',
+      "what's sarah like",
+      'your impression of sarah',
+      'how do you get on with sarah',
       'What do you think of Sarah Darnley?',
     ]);
   });
 
   it('What do you think of Millicent Darnley?', () => {
     all('millicent response', [
-      'millicent', 'millicent darnley', 'what do you think of millicent', 'what do you make of millicent',
-      'tell me about millicent', "what's millicent like", 'your impression of millicent',
-      'how do you get on with millicent', 'What do you think of Millicent Darnley?',
+      'millicent',
+      'millicent darnley',
+      'Miss Darnley',
+      'what do you think of millicent',
+      'what do you make of millicent',
+      'tell me about millicent',
+      "what's millicent like",
+      'your impression of millicent',
+      'how do you get on with millicent',
+      'What do you think of Millicent Darnley?',
     ]);
   });
 

@@ -150,15 +150,15 @@ at the time - gentlemen do quarrel over their business."
 "I'm told he was shot, Inspector. I haven't seen him, and I don't think
 I could."
 
-+last +(see/speak) +(colonel/darnley/him) -(night/evening/yesterday/sarah/millicent)
++last +(see/speak) +(colonel/him) -(night/evening/yesterday)
 "I last saw Sebastian when he went into the study with Sir Redvers, a little
 after 10:00. I heard them quarrelling afterwards, but I never saw him again."
 
-+colonel -(millicent/sarah/who) (get/think) with
++colonel -who (get/think) with
 "He was somewhat strict and suspicious by nature, but we were happy
 enough."
 
-+sarah (get/think) with | yourself
++sarah -affair (get/think) with | yourself -affair
 "I know what's said of me - too young for my husband, too fond of
 admiration. I loved Sebastian in my own way, whatever anyone
 thinks. I don't expect you to understand a marriage from outside
@@ -281,7 +281,7 @@ but I wish it hadn't."
 "We all dined together. Afterwards the men took port and billiards while
 Millicent and I had coffee in the lounge."
 
-events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/talk/talked)
+events yesterday murder last happened
 "Last night we all had dinner together. Afterwards the men played billiards
 while Millicent and I had coffee in the lounge.@
 @
@@ -327,7 +327,7 @@ after the first bang."
 "I saw Millicent only briefly, on the landing, before I went to the
 morning room. After that I couldn't tell you."
 
-+(confirm/corroborate/vouch/alibi/with) +sarah you
++(confirm/corroborate/vouch/alibi/with) +sarah -affair you
 "Vouch for myself? I was quite alone the whole evening, Inspector, so
 I'm afraid there's no-one but me to ask."
 
@@ -369,7 +369,7 @@ you the terms of it."
 of the estate with me, and Mellors has always struck me as
 perfectly loyal - I can't think what would have prompted it."
 
--again marriage colonel sarah wife husband happy get | jealous jealousy
+-again marriage colonel sarah wife husband happy get jealous
 "We married two years ago - I'm more than thirty years his junior, not much
 older than Millicent, and people will talk regardless of what's true. We were
 happy enough, in our own way. He was strict, and older than me. I loved him,
@@ -453,7 +453,7 @@ my mind just now, Inspector."
 this."
 
 # Response when accused of the murder for a second (or subsequent) time
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !requires all_clues accuse_b4_sarah
 !provides new_accuse accuse_sarah
 She looks at you steadily now, some of the shock worn off, replaced by
@@ -463,7 +463,7 @@ something harder to read.@
 you are quite wrong."
 
 # Response when accused of the murder
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !requires all_clues
 !provides new_accuse accuse_sarah accuse_b4_sarah
 Sarah's hand goes to her throat, the colour draining from her face.@
@@ -472,7 +472,7 @@ Sarah's hand goes to her throat, the colour draining from her face.@
 thing."
 
 # Response when accused when insufficient clues have been gathered
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !provides new_accuse accuse_sarah
 "You mustn't say such things without evidence - it isn't fair, not to
 anyone."

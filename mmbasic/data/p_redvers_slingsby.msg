@@ -131,15 +131,15 @@ was."
 "Shot, so I hear. Through the chest. I wasn't there and I haven't been
 in to look."
 
-+last +(see/speak) +(colonel/darnley/him) -(night/evening/yesterday/sarah/millicent)
++last +(see/speak) +(colonel/him) -(night/evening/yesterday)
 "10:30, when I left the study. Alive and well, I'll swear to it - that's the
 last I saw of him."
 
-+colonel -(millicent/sarah/who) (get/think) with
++colonel -who (get/think) with
 "A hard man but very fair. Twenty years I've known him, and I've never had cause
 to complain of him."
 
-+sarah (get/think) with
++sarah -affair (get/think) with
 "Darnley should never have married her. I told him so at the time but he wouldn't
 hear of it. She's half his age and twice as clever. A man in Darnley's position
 needs a wife who knows her place, not one who is always looking for something
@@ -261,7 +261,7 @@ than nobody at all, I suppose."
 "Dinner with the family and young Coniston. Afterwards port and a game of
 billiards, then the ladies in the lounge for half an hour."
 
-events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/talk/talked)
+events yesterday murder last happened
 "Last night I had dinner with the family and young Coniston. Afterwards
 - at about 9:00 - we gentlemen had a game and some port in the
 billiard room, then we joined the ladies in the lounge for half
@@ -303,7 +303,7 @@ no notice of the young pup's comings and goings."
 "No idea whatsoever. I don't keep track of the young lady's
 movements."
 
-+(confirm/corroborate/vouch/alibi/with) +sarah you
++(confirm/corroborate/vouch/alibi/with) +sarah -affair you
 "Haven't the foggiest. I was asleep myself by 11:00, or near enough."
 
 +(confirm/corroborate/vouch/alibi/with) +redvers you
@@ -345,7 +345,7 @@ discuss than the conduct of his gamekeeper. Can't say the fellow
 struck me as the sort to take a dismissal quietly, if that's what
 you're driving at."
 
--again marriage colonel sarah wife husband happy get | jealous jealousy
+-again marriage colonel sarah wife husband happy get jealous
 "I told Darnley he was a damned fool to marry a woman half his age,
 and I'll say it again now he's gone. She never suited him."
 
@@ -425,7 +425,7 @@ only got worse since. Not that it's foremost in my mind at present."
 "Yes, yes. Get on with it, then."
 
 # Response when accused of the murder for a second (or subsequent) time
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !requires all_clues accuse_b4_redvers
 !provides new_accuse accuse_redvers
 He glares at you with undisguised fury, though there is something else
@@ -435,7 +435,7 @@ beneath it now - a flicker of unease.@
 my patience further."
 
 # Response when accused of the murder
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !requires all_clues
 !provides new_accuse accuse_redvers accuse_b4_redvers
 Slingsby's face darkens to an alarming shade of puce, his moustache
@@ -445,7 +445,7 @@ fairly bristling with outrage.@
 alive and well, and I'll thank you to remember it!"
 
 # Response when accused when insufficient clues have been gathered
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !provides new_accuse accuse_redvers
 "Confound it, man, you can't fling accusations about like that! Get your
 facts straight first."

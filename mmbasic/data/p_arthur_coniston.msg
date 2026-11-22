@@ -127,16 +127,16 @@ picked a fight with the man on the happiest day of my life."
 "Shot, old boy. Billingsgate and I found him on the rug with a bullet
 wound in the front of his shirt. Beyond that I'm no doctor."
 
-+last +(see/speak) +(colonel/darnley/him) -(night/evening/yesterday/sarah/millicent)
++last +(see/speak) +(colonel/him) -(night/evening/yesterday)
 "When Slingsby asked him into the study at 10:00. Millicent and I went off to
 the music room, and I didn't see him again until Billingsgate and I found him
 on the rug."
 
-+colonel -(millicent/sarah/who) (get/think) with
++colonel -who (get/think) with
 "A decent old buffer. When I asked his permission to marry Millicent
 he agreed straight away. I was surprised, I admit it!"
 
-+sarah (get/think) with
++sarah -affair (get/think) with
 "Very lively. I couldn't see old Darnley hanging on to her."
 
 +millicent (get/think) with
@@ -251,7 +251,7 @@ though, given the circumstances."
 "Dinner with the family, and Slingsby. Afterwards a little billiards with
 the men, then coffee with the ladies."
 
-events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/talk/talked)
+events yesterday murder last happened
 "I was down for the weekend. It was no secret that I was going to ask
 Colonel Darnley for permission to marry Millicent. I popped the question
 to the old boy in the afternoon and he agreed. Last night we all had
@@ -311,7 +311,7 @@ old boy. You'll have to take my word for it."
 "Absolutely - we were together in the music room from 10:00 until 10:30,
 playing duets. I'd stake my life on that much."
 
-+(confirm/corroborate/vouch/alibi/with) +sarah you
++(confirm/corroborate/vouch/alibi/with) +sarah -affair you
 "Couldn't tell you, I'm afraid. I only passed through the morning room
 on my way up and didn't linger to watch her play."
 
@@ -353,7 +353,7 @@ you the first thing about his will, and frankly I'd rather not guess."
 gamekeeper to me at all, warning letter or otherwise. Can't say I'm
 surprised, mind - fellow's got a face like a wet Sunday."
 
--again marriage colonel sarah wife husband happy get | jealous jealousy
+-again marriage colonel sarah wife husband happy get jealous
 "Not really my place to say. Darnley seemed fond enough of her, in
 his gruff way, but a young wife and an old husband - well, you can
 imagine the gossip."
@@ -431,7 +431,7 @@ weather today, present company excepted."
 won't you?"
 
 # Response when accused of the murder for a second (or subsequent) time
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !requires all_clues accuse_b4_arthur
 !provides new_accuse accuse_arthur
 Coniston spreads his hands, the picture of wounded innocence.@
@@ -440,7 +440,7 @@ Coniston spreads his hands, the picture of wounded innocence.@
 have done with it."
 
 # Response when accused of the murder
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !requires all_clues
 !provides new_accuse accuse_arthur accuse_b4_arthur
 Coniston's easy charm falters for just a moment - the faintest tightening
@@ -450,7 +450,7 @@ around the eyes - before he recovers himself entirely.@
 better be very sure of your facts before you say it again."
 
 # Response when accused when insufficient clues have been gathered
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !provides new_accuse accuse_arthur
 "Steady on! You can't go about making accusations without a shred of proof
 to back them up."

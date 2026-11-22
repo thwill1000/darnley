@@ -69,10 +69,9 @@ export function removePadding(words) {
 }
 
 /**
- * Resolves each word in words against a list of synonym entries, replacing
- * any word that matches one of an entry's aliases (or its own canonical
- * form) with that entry's canonical form. Mirrors apply_synonyms() in
- * mmbasic/src/adventlib.inc.
+ * Resolves aliases against the delimited word sequence, replacing an alias
+ * (which may contain multiple space-separated words) with its canonical
+ * form. Mirrors apply_synonyms() in mmbasic/src/adventlib.inc.
  *
  * Matching is case-sensitive, matching the MMBasic original (which
  * compares words$() - already lower-cased by split_words%() - directly
@@ -93,19 +92,22 @@ export function removePadding(words) {
  * @returns {string[]} A new array; words is not mutated.
  */
 export function applySynonyms(words, synonymEntries) {
-  const result = [];
-  for (const word of words) {
-    if (word === '') break;
-    let replaced = word;
-    for (const entry of synonymEntries) {
-      if (word === entry.canonical || entry.aliases.includes(word)) {
-        replaced = entry.canonical;
-        break;
-      }
+  const end = words.indexOf('');
+  const meaningfulWords = words.slice(0, end === -1 ? words.length : end);
+  if (meaningfulWords.length === 0) return [];
+
+  let delimitedWords = `+${meaningfulWords.join('+')}+`;
+  for (const entry of synonymEntries) {
+    for (const alias of entry.aliases) {
+      const aliasWords = alias.trim().split(/\s+/);
+      if (aliasWords[0] === '') continue;
+      delimitedWords = delimitedWords.replaceAll(
+        `+${aliasWords.join('+')}+`,
+        `+${entry.canonical}+`,
+      );
     }
-    result.push(replaced);
   }
-  return result;
+  return delimitedWords.split('+').slice(1, -1);
 }
 
 /**

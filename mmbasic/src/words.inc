@@ -141,48 +141,6 @@ Function split_words%(cmd$, words$())
   split_words% = 0
 End Function
 
-Function split_words_simple%(cmd$, words$())
-  clear_words(words$())
-
-  cmd$ = LCase$(cmd$)
-  Const cmdLen% = Len(cmd$)
-  If cmdLen% = 0 Then Exit Function
-
-  Const cmdAddr% = Peek(VarAddr cmd$) + 1
-  Const maxIdx% = Bound(words$(), 1)
-  Local i% = Bound(words$(), 0)
-  Local c%, p%, w$, wLen%
-
-  For p% = 0 To cmdLen% - 1
-    c% = Peek(Byte cmdAddr% + p%)
-
-    Select Case c%
-      Case 32 ' Space
-        If wLen% > 0 Then
-          words$(i%) = w$
-          w$ = ""
-          wLen% = 0
-          Inc i%
-        EndIf
-
-      Case Else ' Any other character
-        If i% > maxIdx% Then split_words_simple% = sys.err%(1, "Too many words"): Exit Function
-        If wLen% = MAX_WORD_LENGTH Then split_words_simple% = sys.err$(2, "Word too long"): Exit Function
-
-        Cat w$, Chr$(c%)
-        Inc wLen%
-    End Select
-  Next
-
-  ' Commit trailing word buffer
-  If wLen% > 0 Then
-    If i% > maxIdx% Then split_words_simple% = 1: Exit Function
-    words$(i%) = w$
-  EndIf
-
-  split_words_simple% = 0
-End Function
-
 ' Finds the index of the first occurrence of needle$ in haystack$(),
 ' matching case-sensitively. Scanning stops at the first empty element of
 ' haystack$() (i.e. haystack$() need not be fully populated).
@@ -285,3 +243,98 @@ Sub replace_words(words$(), replacements$())
     Next
   Next
 End Sub
+
+' Joins the words in an array into a single string, separated by a delimiter.
+' Stops at the first empty element.
+'
+' @param  words$()   The array of words to join.
+' @param  delimit$   The string to place between words, must not be empty.
+' @param  wrap%      If non-zero then delimit$ is also added to the beginning
+'                    and end of the result, e.g. "|one|two|". This applies
+'                    even if words$() contains no words, in which case the
+'                    result is two delimiters.
+' @return            The joined string, or "" if words$() has no words and
+'                    wrap% is 0.
+' @errors            If delimit$ is empty or the result would be longer than
+'                    255 characters.
+Function words.join$(words$(), delimit$, wrap%)
+  If Len(delimit$) <> 1 Then Error "delimit$ must be a single character"
+  Local i%, r$, sep$
+  If wrap% Then r$ = delimit$
+  For i% = Bound(words$(), 0) To Bound(words$(), 1)
+    If words$(i%) = "" Then Exit For
+    If Len(r$) + Len(sep$) + Len(words$(i%)) > 255 Then Error "String too long"
+    Cat r$, sep$ + words$(i%)
+    sep$ = delimit$
+  Next
+  If wrap% Then
+    If Len(r$) + Len(delimit$) > 255 Then Error "String too long"
+    Cat r$, delimit$
+  EndIf
+  words.join$ = r$
+End Function
+
+' Replaces every occurrence of a substring within a string.
+'
+' Matching is plain-text and case-sensitive. Occurrences are replaced left to
+' right and do not overlap; replacement text is not itself re-scanned.
+'
+' @param  s$     The string to search.
+' @param  from$  The substring to replace, must not be empty.
+' @param  rep$   The replacement, may be empty to delete occurrences.
+' @return        A copy of s$ with all occurrences of from$ replaced by rep$.
+' @errors        If from$ is empty or the result would be longer than
+'                255 characters.
+Function words.replace$(s$, from$, rep$)
+  If from$ = "" Then Error "from$ must not be empty"
+  Local p%, r$, st% = 1
+  Do
+    p% = InStr(st%, s$, from$)
+    If p% = 0 Then Exit Do
+    If Len(r$) + (p% - st%) + Len(rep$) > 255 Then Error "String too long"
+    Cat r$, Mid$(s$, st%, p% - st%) + rep$
+    st% = p% + Len(from$)
+  Loop
+  If Len(r$) + Len(s$) - st% + 1 > 255 Then Error "String too long"
+  Cat r$, Mid$(s$, st%)
+  words.replace$ = r$
+End Function
+
+' Splits a string into words at a single-character delimiter.
+'
+' Empty tokens (e.g. from consecutive, leading or trailing delimiters) are
+' skipped. No other processing is performed: case, apostrophes and any leading
+' or trailing spaces within a token are left as they are. Consequently when
+' the delimiter is a space, runs of spaces behave as a single delimiter, but
+' when it is some other character a token consisting only of spaces is NOT
+' considered empty.
+'
+' @param  s$         The string to split.
+' @param  delimit$   The delimiter, a single character (which may be a space).
+' @param  words$()   Output array, cleared on entry.
+' @return            0 on success,
+'                    1 if the word count exceeds the array bounds, or
+'                    2 if any single word exceeds MAX_WORD_LENGTH.
+'                    On error the array may be partially populated.
+' @errors            If delimit$ is not a single character.
+Function words.split%(s$, delimit$, words$())
+  If Len(delimit$) <> 1 Then Error "delimit$ must be a single character"
+
+  clear_words(words$())
+
+  Local i% = Bound(words$(), 0), p% = 1, q%, tok$
+  Do While p% <= Len(s$)
+    q% = InStr(p%, s$, delimit$)
+    If q% = 0 Then q% = Len(s$) + 1
+    tok$ = ""
+    If q% > p% Then tok$ = Mid$(s$, p%, q% - p%)
+    p% = q% + 1
+
+    If tok$ <> "" Then
+      If i% > Bound(words$(), 1) Then words.split% = 1 : Exit Function
+      If Len(tok$) > MAX_WORD_LENGTH Then words.split% = 2 : Exit Function
+      words$(i%) = tok$
+      Inc i%
+    EndIf
+  Loop
+End Function

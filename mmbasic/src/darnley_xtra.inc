@@ -10,13 +10,25 @@ If sys.err$ <> "" Then Error sys.err$
 
 ' Apply extra suspect/target specific word replacements
 Sub apply_extra_replacements(target$, words$())
+  Local s$ = words.join$(words$(), "+", 1)
+
   If target$ = "P_MILLICENT_DARNLEY" Then
-    Local replacements$(2) = ("|colonel|father|", "|sarah|mother|")
-    replace_words(words$(), replacements$())
+    s$ = words.replace$(s$, "+father+", "+colonel+")
+    s$ = words.replace$(s$, "+mother+", "+sarah+")
   ElseIf target$ = "P_SARAH_DARNLEY" Then
-    Local replacements$(2) = ("|colonel|husband|", "|millicent|daughter|")
-    replace_words(words$(), replacements$())
+    s$ = words.replace$(s$, "+husband+", "+colonel+")
+    s$ = words.replace$(s$, "+daughter+", "+millicent+")
   EndIf
+
+  s$ = words.replace$(s$, "+mr+darnley+", "+colonel+")
+  s$ = words.replace$(s$, "+mrs+darnley+", "+sarah+")
+  s$ = words.replace$(s$, "+miss+darnley+", "+millicent+")
+  s$ = words.replace$(s$, "+colonel+darnley+", "+colonel+")
+  s$ = words.replace$(s$, "+sarah+darnley+", "+sarah+")
+  s$ = words.replace$(s$, "+millicent+darnley+", "+millicent+")
+  s$ = words.replace$(s$, "+darnley+", "+colonel+")
+
+  Local result% = words.split%(s$, "+", words$())
 End Sub
 
 ' Does an answer satisfy an accusation question's pattern?
@@ -40,8 +52,8 @@ Function get_option$(name$, cmdline$)
   If cmdline$ = "" Then cmdline$ = Mm.CmdLine$
 
   Local words$(MAX_WORDS) Length MAX_WORD_LENGTH
-  Const result% = split_words_simple%(cmdline$, words$())
-  If result% <> 0 Then Error "split_words_simple%() failed: " + result%
+  Const result% = words.split%(cmdline$, " ", words$())
+  If result% <> 0 Then Error "words.split%() failed: " + result%
 
   Select Case LCase$(name$)
     Case "nocolour"

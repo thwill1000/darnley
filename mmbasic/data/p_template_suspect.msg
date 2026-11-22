@@ -130,13 +130,13 @@ perfume
 +(die/bullet/bullets/wound/cause) | +how +murder
 "cause of death response"
 
-+last +(see/speak) +(colonel/darnley/him) -(night/evening/yesterday/sarah/millicent)
++last +(see/speak) +(colonel/him) -(night/evening/yesterday)
 "last saw colonel response"
 
-+colonel -(millicent/sarah/who) (get/think) with
++colonel -who (get/think) with
 "colonel darnley opinion response"
 
-+sarah (get/think) with
++sarah -affair (get/think) with
 "sarah response"
 
 +millicent (get/think) with
@@ -226,7 +226,7 @@ daimler car motor saloon garage
 (dinner/supper/coffee)
 "dinner response"
 
-events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/talk/talked)
+events yesterday murder last happened
 "events response"
 
 +why +(here/visiting/visit) | +here what brings
@@ -247,11 +247,11 @@ events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/
 +(confirm/corroborate/vouch/alibi/with) +millicent you
 "vouch for millicent response"
 
-+(confirm/corroborate/vouch/alibi/with) +sarah you
++(confirm/corroborate/vouch/alibi/with) +sarah -affair you
 !requires x_handkerchief x_cigarettes
 "vouch for sarah given hanky + cigs response"
 
-+(confirm/corroborate/vouch/alibi/with) +sarah you
++(confirm/corroborate/vouch/alibi/with) +sarah -affair you
 "vouch for sarah response"
 
 +(confirm/corroborate/vouch/alibi/with) +redvers you
@@ -278,7 +278,7 @@ events yesterday murder last happened | +last +(saw/see/seen/spoke/speak/spoken/
 +mellors dismissal warning letter job position colonel
 "mellors' dismissal response"
 
--again marriage colonel sarah wife husband happy get | jealous jealousy
+-again marriage colonel sarah wife husband happy get jealous
 "colonel's marriage response"
 
 +(remarriage/remarry/remarrying/marriage) again
@@ -335,19 +335,19 @@ weather cold snow
 "goodbye response"
 
 # Response when accused of the murder for a second (or subsequent) time
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !requires all_clues accuse_b4_tag
 !provides new_accuse accuse_tag
 "subsequent accusation response"
 
 # Response when accused of the murder
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !requires all_clues
 !provides new_accuse accuse_tag accuse_b4_tag
 "first accusation response"
 
 # Response when accused when insufficient clues have been gathered
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/darnley) -(sarah/millicent)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
 !provides new_accuse accuse_tag
 "premature accusation response"
 
