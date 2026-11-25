@@ -653,15 +653,19 @@ Function verb_examine()
   con.println(".")
 End Function
 
-' TODO: comment this
-Function make_match_input$(w$(), first%, last%)
-  Local i%, s$ = "|"
-  words.replace_multiple(w$(), adv.replacements$())
-  For i% = Choice(first%, first%, Bound(w$(), 0)) To Choice(last%, last%, Bound(w$(), 1))
-    If w$(i%) = "" Then Exit For
-    Cat s$, w$(i%) + "|"
-  Next
-  make_match_input$ = LCase$(s$)
+' Builds a lower-case, pipe-delimited match string from words$(), applying
+' replacements in place first. The result is wrapped in "|" characters;
+' if the selected range contains no words, the result is just "|".
+'
+' @param  words$()  The words to normalize and join; modified in place.
+' @param  first%    First index to include; 0 defaults to the array's lower bound.
+' @param  last%     Last index to include; 0 defaults to the array's upper bound.
+' @return           A lower-case, pipe-delimited match string.
+Function make_match_input$(words$(), first%, last%)
+  words.replace_multiple(words$(), adv.replacements$())
+  Local s$ = words.join$(words$(), "|", "|", first%, last%)
+  If s$ = "||" Then s$ = "|" ' May not be necessary
+  make_match_input$ = LCase$(s$) ' LCase$() may not be necessary
 End Function
 
 ' Matches user-input (in lower-case and delimited by | rather than space)
