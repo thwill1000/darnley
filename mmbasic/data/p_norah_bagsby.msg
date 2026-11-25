@@ -310,11 +310,11 @@ business, not mine."
 with him, about poaching or some such. I don't know any more than
 that, honest I don't."
 
--again marriage colonel sarah wife husband happy get jealous
+-again marriage (colonel/husband) (sarah/wife) happy get jealous
 "I don't like to gossip about my betters, sir. Mrs. Sarah always
 seemed a bit lonely to me, if you want my honest opinion."
 
-+(engagement/marriage/propose) millicent arthur when
++(engagement/marriage) millicent arthur when
 "Miss Millicent was over the moon, sir, when the Colonel said yes
 yesterday. First happy thing to happen in this house in a while, I
 should think."

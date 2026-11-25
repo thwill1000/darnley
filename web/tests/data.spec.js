@@ -165,8 +165,8 @@ describe('parseObjects()', () => {
 });
 
 describe('parseSynonyms()', () => {
-  it('parses 59 distinct synonym entries from the game data', () => {
-    expect(parseSynonyms(adventText)).toHaveLength(59);
+  it('parses 63 distinct synonym entries from the game data', () => {
+    expect(parseSynonyms(adventText)).toHaveLength(63);
   });
 
   it('combines aliases when a canonical appears on multiple lines', () => {

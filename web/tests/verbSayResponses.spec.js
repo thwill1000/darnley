@@ -511,15 +511,11 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       'What was the victim like?',
     ]);
 
-    // Millicent's "father"/"mother" and Sarah's "husband"/"daughter" are
-    // rewritten by the suspect-specific replacements (darnley_xtra.inc).
     target('millicent');
     assertResponse('What did you think of your father?', 'Daddy was a tyrant', true);
-    assertResponse('What did you think of your mother?', 'We got on well enough', true);
 
     target('sarah');
     assertResponse('What did you think of your husband?', 'He was somewhat strict', true);
-    assertResponse('What did you think of your daughter?', 'Her father spoiled her', true);
   });
 
   it('What do you think of Sarah Darnley?', () => {
@@ -535,6 +531,9 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       'how do you get on with sarah',
       'What do you think of Sarah Darnley?',
     ]);
+
+    target("millicent")
+    assertResponse("What do you think of your mother?", "We got on well enough", true);
   });
 
   it('What do you think of Millicent Darnley?', () => {
@@ -550,6 +549,9 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       'how do you get on with millicent',
       'What do you think of Millicent Darnley?',
     ]);
+
+    target("sarah");
+    assertResponse("What do you think of your daughter?", "Her father spoiled her", true);
   });
 
   const opinionCases = [
@@ -860,9 +862,14 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
   it("Can you corroborate Millicent's alibi?", () => {
     all('vouch for millicent response', [
-      'confirm millicent', "Can you corroborate Millicent's alibi?", 'Was Millicent with you?',
+      'confirm millicent',
+      "Can you corroborate Millicent's alibi?",
+      'Was Millicent with you?',
       'Can you vouch for Millicent?',
     ]);
+
+    target("sarah");
+    assertResponse("Can you vouch for your daughter?", "I saw Millicent only briefly", true);
   });
 
   it("Can you corroborate Sarah's alibi?", () => {
@@ -873,6 +880,9 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       'Can you vouch for Sarah?',
       'Who was Sarah with in the Morning Room?',
     ]);
+
+    target("millicent");
+    assertResponse("Can you vouch for your mother?", "I fell asleep listening to her playing", true);
 
     // With no flags set, Mellors' corroboration of Sarah falls to the unconditional entry.
     target('mellors');
@@ -920,13 +930,24 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
   it('Was Mellors about to be dismissed?', () => {
     all("mellors' dismissal response", [
-      'Was Mellors about to be dismissed?', 'Tell me about Mellors warning letter', 'Was Mellors given notice',
-      'Was Mellors going to be fired', 'Was Mellors going to be sacked', 'Was Mellors job in danger',
-      'Was Mellors position at risk', 'Did the colonel give Mellors notice',
+      'Was Mellors about to be dismissed?',
+      'Tell me about Mellors warning letter',
+      'Was Mellors given notice',
+      'Was Mellors going to be fired',
+      'Was Mellors going to be sacked',
+      'Was Mellors job in danger',
+      'Was Mellors position at risk',
+      'Did the colonel give Mellors notice?',
     ]);
 
     target('mellors');
     assertResponse('Mellors, did the Colonel threaten your position?', 'Who told you that? ...', true);
+
+    target("sarah");
+    assertResponse("Did your husband give Mellors notice?", "I heard nothing of any letter.", true);
+
+    target("millicent");
+    assertResponse("Did your father give Mellors notice?", "I only know I told Daddy to get rid of him", true);
   });
 
   it('Who do you think is the murderer?', () => {
@@ -953,6 +974,13 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       "Who was the Colonel's friend?",
       'Was Mr Darnley a jealous man',
     ]);
+
+    target("sarah");
+    assertResponse("Was your husband a jealous man?", "We married two years ago", true);
+
+    target("millicent")
+    assertResponse("Was your father a jealous man?", "Daddy was thirty years older than Sarah", true);
+    assertResponse("Dod your mother and father get on?", "Daddy was thirty years older than Sarah", true);
   });
 
   it('Have you considered remarrying?', () => {
@@ -963,9 +991,14 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
   it('When did Arthur and Millicent get engaged?', () => {
     all("millicent's engagement response", [
-      'tell me about the engagement', "tell me about millicent's engagement", 'when did they get engaged',
+      'tell me about the engagement',
+      "tell me about millicent's engagement",
+      'when did they get engaged',
       'how did arthur propose to millicent',
     ]);
+
+    target("sarah");
+    assertResponse("Tell me about your daughter's engagement", "Sebastian only agreed to it yesterday afternoon", true);
   });
 
   it('How was the study locked?', () => {
@@ -1015,6 +1048,12 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       'Where was the colonel found?',
       'Where is the deceased?',
     ]);
+
+    target("sarah");
+    assertResponse("Where is your husband?", "In his study, I'm told", true);
+
+    target("millicent");
+    assertResponse("Where is your father?", "In the study, on that dreadful rug.", true);
   });
 
   it('Was there something going on between Sarah and Mellors?', () => {
@@ -1026,6 +1065,9 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       'Does Sarah have a lover?',
       'Are you having an affair with Mrs Darnley?',
     ]);
+
+    target("millicent");
+    assertResponse("Does your mother have a lover?", "Goodness, what a thing to ask.", true);
   });
 
   it('Was there something going on between Sarah and Mellors? (once handkerchief and cigarettes are found)', () => {
@@ -1038,6 +1080,9 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       'Is he your lover?',
       'Does Sarah have a lover?',
     ]);
+
+    target("millicent");
+    assertResponse("Does your mother have a lover?", "She goes quite still", true);
   });
 
   it("Tell me about the Colonel's finances", () => {
@@ -1052,6 +1097,12 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       'How much did you lose?',
       'How much money did you ask for?',
     ]);
+
+    target("sarah");
+    assertResponse("Tell me about your husbands finances", "I really couldn't say.", true);
+
+    target("millicent");
+    assertResponse("Tell me about your fathers finances", "I really don't know anything about finance.", true);
   });
 
   it("Tell me about the Colonel's finances (after the newspaper is found)", () => {
@@ -1105,13 +1156,21 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
   it('Did you argue with the colonel? (before the newspaper is found)', () => {
     all('argument with colonel response', [
-      'did you argue with the colonel', 'did you have an argument with the colonel',
-      'was there a row with the colonel', 'did you quarrel with the colonel',
+      'did you argue with the colonel',
+      'did you have an argument with the colonel',
+      'was there a row with the colonel',
+      'did you quarrel with the colonel',
     ]);
 
+    target("sarah");
+    assertResponse("did you argue with your husband", "I heard raised voices from the study", true);
+
+    target("millicent");
+    assertResponse("did you argue with your father", "Not that I heard", true);
+
     target('redvers');
-    assertResponse('did you argue with the colonel', "Argue? Good God, no. We talked business,", true);
-    assertResponse('did you have an argument with the colonel', "Argue? Good God, no. We talked business,", true);
+    assertResponse('did you argue with the colonel', "Argue? Good God, no.", true);
+    assertResponse('did you have an argument with the colonel', "Argue? Good God, no.", true);
   });
 
   it('Did you argue with the colonel? (after the newspaper is found)', () => {
@@ -1184,9 +1243,11 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
     target('sarah');
     assertResponse('Tell me about the master bedroom', "I don't see what my bedroom has to do with anything", true);
+    assertResponse("What about your husband's bedroom?", "I don't see what my bedroom has to do with anything", true);
 
     target('millicent');
     assertResponse('Tell me about the master bedroom', "I don't make a habit of going into Daddy's room.", true);
+    assertResponse("Tell me about your father's bedroom", "I don't make a habit of going into Daddy's room.", true);
 
     target('bagsby');
     assertResponse('Tell me about the master bedroom', 'Only one side of the bed had been slept in', true);

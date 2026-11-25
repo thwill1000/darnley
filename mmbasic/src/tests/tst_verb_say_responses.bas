@@ -697,15 +697,11 @@ Sub test_opinion_colonel()
   assert_response("What did you make of Sebastian Darnley", "colonel darnley opinion response")
   assert_response("What was the victim like?", "colonel darnley opinion response")
 
-  ' Ask Millicent about her father & mother.
   target_suspect("millicent")
   assert_response("What did you think of your father?", "Daddy was a tyrant", 1)
-  assert_response("What did you think of your mother?", "We got on well enough", 1)
 
-  ' Ask Sarah about her husband & daughter.
   target_suspect("sarah")
   assert_response("What did you think of your husband?", "He was somewhat strict", 1)
-  assert_response("What did you think of your daughter?", "Her father spoiled her", 1)
 End Sub
 
 Sub test_opinion_sarah()
@@ -723,6 +719,9 @@ Sub test_opinion_sarah()
 
   target_suspect("sarah")
   assert_response("What did the Colonel think of you?", "He was somewhat strict", 1)
+
+  target_suspect("millicent")
+  assert_response("What do you think of your mother?", "We got on well enough", 1)
 End Sub
 
 Sub test_opinion_millicent()
@@ -736,6 +735,9 @@ Sub test_opinion_millicent()
   assert_response("your impression of millicent", "millicent response")
   assert_response("how do you get on with millicent", "millicent response")
   assert_response("What do you think of Millicent Darnley?", "millicent response")
+
+  target_suspect("sarah")
+  assert_response("What do you think of your daughter?", "Her father spoiled her", 1)
 End Sub
 
 Sub test_opinion_arthur()
@@ -1124,6 +1126,9 @@ Sub test_confirm_millicent()
   assert_response("Can you corroborate Millicent's alibi?", "vouch for millicent response")
   assert_response("Was Millicent with you?", "vouch for millicent response")
   assert_response("Can you vouch for Millicent?", "vouch for millicent response")
+
+  target_suspect("sarah")
+  assert_response("Can you vouch for your daughter?", "I saw Millicent only briefly", 1)
 End Sub
 
 Sub test_confirm_sarah()
@@ -1132,6 +1137,9 @@ Sub test_confirm_sarah()
   assert_response("Was Sarah with you?", "vouch for sarah response")
   assert_response("Can you vouch for Sarah?", "vouch for sarah response")
   assert_response("Who was Sarah with in the Morning Room?", "vouch for sarah response")
+
+  target_suspect("millicent")
+  assert_response("Can you vouch for your mother?", "I fell asleep listening to her playing", 1)
 
   ' With no flags set, Mellors' corroboration of Sarah falls to the unconditional entry
   target_suspect("mellors")
@@ -1193,11 +1201,16 @@ Sub test_dismissal()
   assert_response("Was Mellors going to be sacked", "mellors' dismissal response")
   assert_response("Was Mellors job in danger", "mellors' dismissal response")
   assert_response("Was Mellors position at risk", "mellors' dismissal response")
-  assert_response("Did the colonel give Mellors notice", "mellors' dismissal response")
+  assert_response("Did the colonel give Mellors notice?", "mellors' dismissal response")
 
-  ' Ask Mellors about dismissal
   target_suspect("mellors")
   assert_response("Mellors, did the Colonel threaten your position?", "Who told you that? ...", 1)
+
+  target_suspect("sarah")
+  assert_response("Did your husband give Mellors notice?", "I heard nothing of any letter.", 1)
+
+  target_suspect("millicent")
+  assert_response("Did your father give Mellors notice?", "I only know I told Daddy to get rid of him", 1)
 End Sub
 
 Sub test_who_did_it()
@@ -1220,6 +1233,15 @@ Sub test_marriage()
   assert_response("Did sarah and the colonel get on?", "colonel's marriage response")
   assert_response("Who was the Colonel's friend?", "colonel's marriage response")
   assert_response("Was Mr Darnley a jealous man?", "colonel's marriage response")
+
+  ' "husband" matches for Sarah
+  target_suspect("sarah")
+  assert_response("Was your husband a jealous man?", "We married two years ago", 1)
+
+  ' "father" and "mother" matches for Millicent
+  target_suspect("millicent")
+  assert_response("Was your father a jealous man?", "Daddy was thirty years older than Sarah", 1)
+  assert_response("Dod your mother and father get on?", "Daddy was thirty years older than Sarah", 1)
 End Sub
 
 Sub test_remarriage()
@@ -1235,6 +1257,9 @@ Sub test_engagement()
   assert_response("tell me about millicent's engagement", "millicent's engagement response")
   assert_response("when did they get engaged", "millicent's engagement response")
   assert_response("how did arthur propose to millicent", "millicent's engagement response")
+
+  target_suspect("sarah")
+  assert_response("Tell me about your daughter's engagement", "Sebastian only agreed to it yesterday afternoon", 1)
 End Sub
 
 Sub test_locked_study()
@@ -1274,6 +1299,14 @@ Sub test_body()
   assert_response("Where did you find the body?", "body location response")
   assert_response("Where was the colonel found?", "body location response")
   assert_response("Where is the deceased?", "body location response")
+
+  ' "husband" matches for Sarah
+  target_suspect("sarah")
+  assert_response("Where is your husband?", "In his study, I'm told", 1)
+
+  ' "father" matches for Millicent
+  target_suspect("millicent")
+  assert_response("Where is your father?", "In the study, on that dreadful rug.", 1)
 End Sub
 
 Sub test_evidence()
@@ -1292,6 +1325,9 @@ Sub test_affair_blocked()
   assert_response("Are you having an affair with Mrs Darnley?", "affair response")
   assert_response("Is he your lover?", "affair response")
   assert_response("Does Sarah have a lover?", "affair response")
+
+  target_suspect("millicent")
+  assert_response("Does your mother have a lover?", "Goodness, what a thing to ask.", 1)
 End Sub
 
 ' Once both gating flags are set, the more specific entry wins (it
@@ -1305,6 +1341,9 @@ Sub test_affair_unlocked()
   assert_response("Are you having an affair with Mrs Darnley?", "affair response given handkerchief and cigarettes")
   assert_response("Is he your lover?", "affair response given handkerchief and cigarettes")
   assert_response("Does Sarah have a lover?", "affair response given handkerchief and cigarettes")
+
+  target_suspect("millicent")
+  assert_response("Does your mother have a lover?", "She goes quite still", 1, 1)
 End Sub
 
 ' With no "x_newspaper" flag set, falls to the unconditional finance entry
@@ -1318,6 +1357,14 @@ Sub test_money_blocked()
   assert_response("Did Mr Darnley agree to the loan?", "finance response")
   assert_response("How much did you lose?", "finance response")
   assert_response("How much money did you ask for?", "finance response")
+
+  ' "husband" matches for Sarah
+  target_suspect("sarah")
+  assert_response("Tell me about your husbands finances", "I really couldn't say.", 1)
+
+  ' "father" matches for Millicent
+  target_suspect("millicent")
+  assert_response("Tell me about your fathers finances", "I really don't know anything about finance.", 1)
 End Sub
 
 ' Once "x_newspaper" is set, the gated entry wins
@@ -1371,10 +1418,18 @@ Sub test_argument_blocked()
   assert_response("was there a row with the colonel", "argument with colonel response")
   assert_response("did you quarrel with the colonel", "argument with colonel response")
 
+  ' "husband" matches for Sarah
+  target_suspect("sarah")
+  assert_response("did you argue with your husband", "I heard raised voices from the study", 1)
+
+  ' "father" matches for Millicent
+  target_suspect("millicent")
+  assert_response("did you argue with your father", "Not that I heard", 1)
+
   ' Ask Redvers directly without the newspaper flag - he stonewalls
   target_suspect("redvers")
-  assert_response("did you argue with the colonel", "Argue? Good God, no. We talked business,", 1)
-  assert_response("did you have an argument with the colonel", "Argue? Good God, no. We talked business,", 1)
+  assert_response("did you argue with the colonel", "Argue? Good God, no.", 1)
+  assert_response("did you have an argument with the colonel", "Argue? Good God, no.", 1)
 End Sub
 
 ' Once "x_newspaper" is set, Redvers' gated entry wins and he admits the
@@ -1446,9 +1501,11 @@ Sub test_master_bedroom()
 
   target_suspect("sarah")
   assert_response("Tell me about the master bedroom", "I don't see what my bedroom has to do with anything", 1)
+  assert_response("What about your husband's bedroom?", "I don't see what my bedroom has to do with anything", 1)
 
   target_suspect("millicent")
   assert_response("Tell me about the master bedroom", "I don't make a habit of going into Daddy's room.", 1)
+  assert_response("Tell me about your father's bedroom", "I don't make a habit of going into Daddy's room.", 1)
 
   target_suspect("bagsby")
   assert_response("Tell me about the master bedroom", "Only one side of the bed had been slept in", 1)

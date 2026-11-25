@@ -105,7 +105,7 @@ perfume
 "I don't go into that room, so I couldn't tell you which bottle is whose. Sarah
 wears scent, though - one generally knows when she has come into a room."
 
-+colonel +argue
++(colonel/father) +argue
 "Not that I heard, but I was in the music room with Arthur most of
 the evening. Daddy could be sharp with people when he chose to be -
 I shouldn't be at all surprised if someone had crossed him."
@@ -113,19 +113,19 @@ I shouldn't be at all surprised if someone had crossed him."
 +(die/bullet/bullets/wound/cause) | +how +murder
 "Shot, I'm told - in the chest. I haven't seen him and I don't mean to."
 
-+last +(see/speak) +(colonel/him) -(night/evening/yesterday)
++last +(see/speak) +(colonel/father/him) -(night/evening/yesterday)
 "In the lounge, when the men joined us after billiards. Then Arthur and I went to
 the music room, and I never saw Daddy again."
 
-+colonel +arthur +opinion
++(colonel/father) +arthur +opinion
 "Daddy gave his consent yesterday, which I'd waited so long for. He never told
 me what he thought of Arthur, only that I might marry him."
 
-+colonel -who opinion
++(colonel/father) -who opinion
 "Daddy was a tyrant but always kind to me. He was always fearful that
 Sarah would leave him for a younger man."
 
-+sarah -affair opinion
++(sarah/mother) -affair opinion
 "We got on well enough though it is difficult to have a stepmother
 who is almost the same age. I thought she would leave Daddy some day
 as soon as she found a lover. But, of course, she would need Daddy's
@@ -242,7 +242,7 @@ daimler car motor saloon garage
 "Rather grim, seeing a police car parked on our own drive. I try not to look
 at it when I pass the window."
 
-+(master/colonel) +bedroom | dressing
++(master/colonel/father) +bedroom | dressing
 "I don't make a habit of going into Daddy's room. I couldn't tell you
 what's in it."
 
@@ -301,7 +301,7 @@ got up to on his own."
 "I'm not sure how I'm meant to vouch for myself, Inspector - I was
 alone in my room the whole time."
 
-+(confirm/corroborate/vouch/alibi/with) +sarah -affair you
++(confirm/corroborate/vouch/alibi/with) +(sarah/mother) -affair you
 "I fell asleep listening to her playing, so I really couldn't swear to
 when she stopped, or started again for that matter."
 
@@ -337,17 +337,17 @@ about money."
 troubled myself with the particulars and I don't much want to start
 now."
 
-+mellors dismissal warning letter job position colonel
++mellors dismissal warning letter job position (colonel/father)
 "I only know I told Daddy to get rid of him - I don't know anything
 about a letter. If Daddy did write to him, he never mentioned it to
 me. But I shouldn't be surprised."
 
--again marriage colonel sarah wife husband happy get jealous
+-again marriage (colonel/husband/father) (sarah/mother/wife) happy get jealous
 "Daddy was thirty years older than Sarah and never quite trusted
 that she'd stay. I don't think either of them was truly happy,
 if I'm honest. But that's marriage for you, isn't it?"
 
-+(engagement/marriage/propose) millicent arthur when
++(engagement/marriage) millicent arthur when
 "I'm the last person to ask objectively! Daddy agreed only
 yesterday - I still can hardly believe it. I'd waited so long for
 him to say yes."
@@ -372,7 +372,7 @@ suppose that's why they needed a proper detective."
 resourceful of him, though I don't suppose it was easy, breaking in to
 find - well. I wasn't there to see it."
 
-+(body/colonel) where
++(body/colonel/father) where
 "In the study, on that dreadful rug. I haven't seen it - I don't want
 to, if I can help it."
 
@@ -384,7 +384,7 @@ please be certain, whatever you conclude. It matters rather a lot."
 "We use it for croquet, in summer. I've no reason to go there in this
 weather."
 
-affair mellors sarah (summerhouse/summer) together secret lovers
+affair mellors (sarah/mother) (summerhouse/summer) together secret lovers
 !requires x_handkerchief x_cigarettes
 She goes quite still, and for a moment says nothing at all.@
 @
@@ -392,17 +392,17 @@ She goes quite still, and for a moment says nothing at all.@
 room, I heard her playing all evening. I really don't think you
 should say things like that."
 
-affair mellors sarah (summerhouse/summer) together secret lovers
+affair mellors (sarah/mother) (summerhouse/summer) together secret lovers
 "Goodness, what a thing to ask. I don't know anything about that,
 and I'm not sure I want to."
 
-+redvers +(money/mining/business/much) ask troubles colonel
++redvers +(money/mining/business/much) ask troubles (colonel/father)
 !requires x_newspaper
 "Oh - is that what it was about? Daddy did mention something about
 Sir Redvers wanting money. I didn't think much of it at the time -
 gentlemen are always fussing over investments."
 
-+(money/mining/business/much) ask troubles redvers colonel
++(money/mining/business/much) ask troubles redvers (colonel/father)
 "I really don't know anything about finance. That's
 not the sort of thing anyone discusses with me."
 
@@ -419,7 +419,7 @@ footstep shows. Small mercies, given everything else."
 "Goodbye, Inspector. I do hope you find whoever did this."
 
 # Response when accused of the murder for a second (or subsequent) time
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/father)
 !requires all_clues accuse_b4_millicent
 !provides new_accuse accuse_millicent
 Her jaw sets and she regards you with cold, level eyes.@
@@ -428,7 +428,7 @@ Her jaw sets and she regards you with cold, level eyes.@
 now, however many times you care to repeat yourself."
 
 # Response when accused of the murder
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/father)
 !requires all_clues
 !provides new_accuse accuse_millicent accuse_b4_millicent
 Millicent's composure cracks for the first time since you met her
@@ -438,7 +438,7 @@ Millicent's composure cracks for the first time since you met her
 absolutely certain, because I will not forgive this lightly."
 
 # Response when accused when insufficient clues have been gathered
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/father)
 !provides new_accuse accuse_millicent
 "That is a wicked thing to say without proof. I hope you have better
 reasons than mere suspicion."

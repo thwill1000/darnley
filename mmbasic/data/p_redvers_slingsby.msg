@@ -353,11 +353,11 @@ discuss than the conduct of his gamekeeper. Can't say the fellow
 struck me as the sort to take a dismissal quietly, if that's what
 you're driving at."
 
--again marriage colonel sarah wife husband happy get jealous
+-again marriage (colonel/husband) (sarah/wife) happy get jealous
 "I told Darnley he was a damned fool to marry a woman half his age,
 and I'll say it again now he's gone. She never suited him."
 
-+(engagement/marriage/propose) millicent arthur when
++(engagement/marriage) millicent arthur when
 "News to me until last night. I gather the Colonel only agreed to
 it yesterday. Can't say I know the fellow well enough to judge the
 match."

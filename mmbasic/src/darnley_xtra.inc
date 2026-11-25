@@ -12,14 +12,6 @@ If sys.err$ <> "" Then Error sys.err$
 Sub apply_extra_replacements(target$, words$())
   Local s$ = words.join$(words$(), "+", 1)
 
-  If target$ = "P_MILLICENT_DARNLEY" Then
-    s$ = words.replace$(s$, "+father+", "+colonel+")
-    s$ = words.replace$(s$, "+mother+", "+sarah+")
-  ElseIf target$ = "P_SARAH_DARNLEY" Then
-    s$ = words.replace$(s$, "+husband+", "+colonel+")
-    s$ = words.replace$(s$, "+daughter+", "+millicent+")
-  EndIf
-
   ' TODO: these replacements should occur after the main synonyms
   s$ = words.replace$(s$, "+mr+darnley+", "+colonel+")
   s$ = words.replace$(s$, "+mrs+darnley+", "+sarah+")

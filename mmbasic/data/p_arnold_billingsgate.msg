@@ -371,12 +371,12 @@ about his conduct - I believe it concerned some poaching he suspected
 close to home, if you take my meaning. I couldn't say whether the
 letter was ever delivered, only that the master intended it."
 
--again marriage colonel sarah wife husband happy get jealous
+-again marriage (colonel/husband) (sarah/wife) happy get jealous
 "It is not my place to comment on the master's marriage, sir. I
 will say the Colonel was a generous husband, whatever else might be
 said of him."
 
-+(engagement/marriage/propose) millicent arthur when
++(engagement/marriage) millicent arthur when
 "The Colonel gave his consent only yesterday afternoon, as I
 understand it. Miss Millicent seemed very happy about it indeed."
 

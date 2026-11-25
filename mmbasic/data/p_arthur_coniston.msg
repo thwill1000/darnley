@@ -362,12 +362,12 @@ you the first thing about his will, and frankly I'd rather not guess."
 gamekeeper to me at all, warning letter or otherwise. Can't say I'm
 surprised, mind - fellow's got a face like a wet Sunday."
 
--again marriage colonel sarah wife husband happy get jealous
+-again marriage (colonel/husband) (sarah/wife) happy get jealous
 "Not really my place to say. Darnley seemed fond enough of her, in
 his gruff way, but a young wife and an old husband - well, you can
 imagine the gossip."
 
-+(engagement/marriage/propose) millicent arthur when
++(engagement/marriage) millicent arthur when
 "Happiest news of my life, old boy! The Colonel gave his blessing
 yesterday afternoon. I still can't quite believe my luck."
 

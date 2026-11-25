@@ -12,23 +12,56 @@
 ' reordered relative to one another. The final entry in every file
 ' (including the template) must be the wildcard "*".
 '
-' A keyword line may list several "|"-separated alternative phrasings.
-' The template lists only the MANDATORY alternatives for a given entry -
-' a suspect file's version of that entry is always free to add further
-' "|" alternatives of its own without being treated as reordered or
-' unknown; comparison checks that the template's alternatives are a
-' SUBSET of the suspect's, not that the two are identical (see
-' msgorder.entry_matches%()). This is what allows, for example, a
-' suspect's own "opinion of them" entry to add "| yourself" as an extra
-' alternative in their own file (e.g. "arthur coniston | yourself"),
-' where the template only requires the plain "arthur coniston" form; and
-' likewise for Sir Redvers' own extra "| ... +you" alternative on the
-' finance entry, letting the topic be raised with him directly.
+' A suspect file's version of an entry is always free to WIDEN the
+' template's version in two ways, without being treated as reordered or
+' unknown (see msgorder.entry_matches%()):
+'
+'   1. By adding further "|" alternatives. A keyword line may list several
+'      "|"-separated alternative phrasings. The template lists only the
+'      MANDATORY alternatives; comparison checks that each of the
+'      template's alternatives is COVERED by at least one of the suspect's
+'      alternatives, not that the two lists are identical. For example a
+'      suspect's own "opinion of them" entry may add "| yourself" as an
+'      extra alternative (e.g. "arthur coniston | yourself"), where the
+'      template only requires the plain "arthur coniston" form; likewise
+'      Sir Redvers' own extra "| ... +you" alternative on the finance
+'      entry.
+'
+'   2. By adding further members to a matching word or group within an
+'      alternative. Within an alternative a plain word is treated as a
+'      group with one member, so the template's "+colonel" may become
+'      "+(colonel/husband)" in Sarah's file, and the template's
+'      "+(ccc/ddd)" may become "+(ccc/ddd/lll)". For example, given the
+'      template alternative:
+'
+'        +aaa -bbb +(ccc/ddd) -(eee/fff) ggg (hhh/iii)
+'
+'      a suspect file may declare:
+'
+'        +(aaa/jjj) -(bbb/kkk) +(ccc/ddd/lll) -(eee/fff/mmm) (ggg/nnn) (hhh/iii/ooo)
+'
+'      This lets a suspect recognise additional vocabulary for just their
+'      own responses without resorting to suspect-specific synonyms.
+'
+' An alternative in the suspect file COVERS an alternative in the template
+' when:
+'
+'   - both have the same number of space-separated tokens, in the same
+'     order;
+'   - corresponding tokens carry the same prefix: "+" (mandatory), "-"
+'     (forbidden) or none; and
+'   - the members of each template token are a SUBSET of the members of
+'     the corresponding suspect token.
+'
+' Widening is therefore one-way: a suspect may never REMOVE members from
+' a template group (the suspect's "+a" does not cover the template's
+' "+(a/b)"), change a token's prefix, or add or remove whole tokens.
 '
 ' The three "+accuse" entries' "!requires" tokens are parameterised by the
 ' suspect's tag (one token is "accuse_b4_<tag>") - a VALUE substitution
-' rather than an extra alternative - and are normalized to a common
-' placeholder for comparison (see msgorder.normalize_token$()).
+' rather than an extra alternative or group member - and are normalized to
+' a common placeholder for comparison (see msgorder.normalize_token$()).
+' The "!requires" tokens of an entry must otherwise match exactly.
 
 On Error Skip 1 : Dim sys.VERSION = -1
 If sys.VERSION = -1 Then Error "'system.inc' not included"
@@ -132,32 +165,77 @@ Sub msgorder.split_key(key$, alt_part$, req_part$)
   EndIf
 End Sub
 
+' Returns the "/"-separated members of a token body: "(a/b)" => "a/b",
+' a plain word "a" => "a".
+Function msgorder.group_members$(s$)
+  If Left$(s$, 1) = "(" And Right$(s$, 1) = ")" Then
+    msgorder.group_members$ = Mid$(s$, 2, Len(s$) - 2)
+  Else
+    msgorder.group_members$ = s$
+  EndIf
+End Function
+
+' Does file token f$ cover template token t$? Prefix ("+", "-" or none)
+' must be identical; t$'s members must be a subset of f$'s members.
+Function msgorder.token_covers%(t$, f$)
+  Local tp$ = Left$(t$, 1), fp$ = Left$(f$, 1), tb$ = t$, fb$ = f$
+  If tp$ = "+" Or tp$ = "-" Then tb$ = Mid$(t$, 2) Else tp$ = ""
+  If fp$ = "+" Or fp$ = "-" Then fb$ = Mid$(f$, 2) Else fp$ = ""
+  If tp$ <> fp$ Then Exit Function
+
+  Const f_padded$ = "/" + msgorder.group_members$(fb$) + "/"
+  Const t_members$ = msgorder.group_members$(tb$)
+  Local idx% = 1, m$
+  Do
+    m$ = Field$(t_members$, idx%, "/")
+    If m$ = "" Then Exit Do
+    If InStr(f_padded$, "/" + m$ + "/") = 0 Then Exit Function
+    Inc idx%
+  Loop
+  msgorder.token_covers% = 1
+End Function
+
+' Does file sub-pattern f$ cover template sub-pattern t$ (same token count,
+' each file token covering the template token in the same position)?
+Function msgorder.pattern_covers%(t$, f$)
+  Local idx% = 1, tt$, ft$
+  Do
+    tt$ = Field$(t$, idx%, " ")
+    ft$ = Field$(f$, idx%, " ")
+    If tt$ = "" And ft$ = "" Then Exit Do
+    If tt$ = "" Or ft$ = "" Then Exit Function ' different token counts
+    If Not msgorder.token_covers%(tt$, ft$) Then Exit Function
+    Inc idx%
+  Loop
+  msgorder.pattern_covers% = 1
+End Function
+
 ' Does a template entry match a candidate suspect-file entry?
-'
-' The "!requires" token-suffix must match exactly. The template's
-' alternative-set only needs to be a SUBSET of the suspect's - the
-' suspect may always add extra "|" alternatives beyond the template's
-' own; the template lists only the mandatory ones (see msgorder.inc's
-' file-level comment).
-'
-' @param  t_key$  The template entry's identity key.
-' @param  f_key$  The candidate suspect-file entry's identity key.
-' @return         1 if the entries match, otherwise 0.
+' The "!requires" suffix must match exactly. Every "|" alternative in the
+' template must be covered by at least one alternative in the file
+' (see msgorder.pattern_covers%()).
 Function msgorder.entry_matches%(t_key$, f_key$)
   Local t_alt$, t_req$, f_alt$, f_req$
   msgorder.split_key(t_key$, t_alt$, t_req$)
   msgorder.split_key(f_key$, f_alt$, f_req$)
   If t_req$ <> f_req$ Then Exit Function
 
-  Const f_padded$ = "~" + f_alt$ + "~"
-  Local idx% = 1, tok$
+  Local i%, j%, t$, f$, found%
+  i% = 1
   Do
-    tok$ = Field$(t_alt$, idx%, "~")
-    If tok$ = "" Then Exit Do
-    If InStr(f_padded$, "~" + tok$ + "~") = 0 Then Exit Function
-    Inc idx%
+    t$ = Field$(t_alt$, i%, "~")
+    If t$ = "" Then Exit Do
+    found% = 0
+    j% = 1
+    Do
+      f$ = Field$(f_alt$, j%, "~")
+      If f$ = "" Then Exit Do
+      If msgorder.pattern_covers%(t$, f$) Then found% = 1 : Exit Do
+      Inc j%
+    Loop
+    If Not found% Then Exit Function
+    Inc i%
   Loop
-
   msgorder.entry_matches% = 1
 End Function
 

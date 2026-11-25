@@ -285,13 +285,13 @@ daimler car motor saloon garage
 +mellors dismissal warning letter job position colonel
 "mellors' dismissal response"
 
--again marriage colonel sarah wife husband happy get jealous
+-again marriage (colonel/husband) (sarah/wife) happy get jealous
 "colonel's marriage response"
 
 +(remarriage/remarry/remarrying/marriage) again
 "sarah's remarriage response"
 
-+(engagement/marriage/propose) millicent arthur when
++(engagement/marriage) millicent arthur when
 "millicent's engagement response"
 
 +who +(accuse/murder/murderer/suspect) him | +who +did +(it/this) | +who +shot

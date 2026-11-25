@@ -16,17 +16,6 @@ import { renderBody } from './data.js';
 import { findMatches } from './match.js';
 import { applySynonyms, makeMatchInput } from './words.js';
 
-const EXTRA_REPLACEMENTS = {
-  P_MILLICENT_DARNLEY: [
-    { canonical: 'colonel', aliases: ['father'] },
-    { canonical: 'sarah', aliases: ['mother'] },
-  ],
-  P_SARAH_DARNLEY: [
-    { canonical: 'colonel', aliases: ['husband'] },
-    { canonical: 'millicent', aliases: ['daughter'] },
-  ],
-};
-
 /**
  * Finds the best matching exit from currentLocation for the given words.
  *
@@ -543,7 +532,7 @@ export function verbSay(objects, msgFiles, messages, words, synonymEntries, curr
     if (words[i] === '') break;
     subjectWords.push(words[i]);
   }
-  let subject = applySynonyms(subjectWords, EXTRA_REPLACEMENTS[targetObj.id] ?? []);
+  let subject = applySynonyms(subjectWords, []);
 
   // Hack, canonicalise family names, should probablt be applied after general
   // synonym replacement that occurs in makeMatchInput().

@@ -145,7 +145,7 @@ perfume
 "That is mine, Inspector. I can't think why you would ask about a bottle of
 scent."
 
-+colonel +argue
++(colonel/husband) +argue
 "I heard raised voices from the study, Sebastian and Sir Redvers, but
 I couldn't tell you what it was about. I didn't think anything of it
 at the time - gentlemen do quarrel over their business."
@@ -154,16 +154,16 @@ at the time - gentlemen do quarrel over their business."
 "I'm told he was shot, Inspector. I haven't seen him, and I don't think
 I could."
 
-+last +(see/speak) +(colonel/him) -(night/evening/yesterday)
++last +(see/speak) +(colonel/husband/him) -(night/evening/yesterday)
 "I last saw Sebastian when he went into the study with Sir Redvers, a little
 after 10:00. I heard them quarrelling afterwards, but I never saw him again."
 
-+colonel +arthur +opinion
++(colonel/husband) +arthur +opinion
 "I couldn't tell you what Sebastian thought of him, Inspector. I'm told he gave
 his consent only yesterday afternoon. Arthur said so, and Millicent was glowing.
 Sebastian never said a word of it to me."
 
-+colonel -who opinion
++(colonel/husband) -who opinion
 "He was somewhat strict and suspicious by nature, but we were happy
 enough."
 
@@ -173,7 +173,7 @@ admiration. I loved Sebastian in my own way, whatever anyone
 thinks. I don't expect you to understand a marriage from outside
 looking in."
 
-+millicent opinion
++(millicent/daughter) opinion
 "Her father spoiled her so she got used to having her own way.
 Sebastian probably agreed to Arthur Coniston's proposal for fear of
 what Millicent would do if he refused. I can't see him crossing
@@ -283,7 +283,7 @@ sits idle out there."
 "It seems dreadfully out of place doesn't it. I suppose it had to come,
 but I wish it hadn't."
 
-+(master/colonel) +bedroom | dressing
++(master/colonel/husband) +bedroom | dressing
 "I don't see what my bedroom has to do with anything, Inspector."
 
 (dinner/supper/coffee)
@@ -333,7 +333,7 @@ the study and banging the door behind him. I didn't see it done."
 "I really couldn't say what Arthur got up to. I went upstairs soon
 after the first bang."
 
-+(confirm/corroborate/vouch/alibi/with) +millicent you
++(confirm/corroborate/vouch/alibi/with) +(millicent/daughter) you
 "I saw Millicent only briefly, on the landing, before I went to the
 morning room. After that I couldn't tell you."
 
@@ -374,12 +374,12 @@ discussed his affairs with me in any detail - I assume I'm provided
 for, as any husband would provide for his wife, but I couldn't tell
 you the terms of it."
 
-+mellors dismissal warning letter job position colonel
++mellors dismissal warning letter job position (colonel/husband)
 "I heard nothing of any letter. Sebastian didn't discuss the running
 of the estate with me, and Mellors has always struck me as
 perfectly loyal - I can't think what would have prompted it."
 
--again marriage colonel sarah wife husband happy get jealous
+-again marriage (colonel/husband) (sarah/wife) happy get jealous
 "We married two years ago - I'm more than thirty years his junior, not much
 older than Millicent, and people will talk regardless of what's true. We were
 happy enough, in our own way. He was strict, and older than me. I loved him,
@@ -392,7 +392,7 @@ Her expression cools noticeably.@
 haven't the smallest intention of discussing my future, Inspector -
 not while my husband isn't yet in the ground."
 
-+(engagement/marriage/propose) millicent arthur when
++(engagement/marriage) (millicent/daughter) arthur when
 "Sebastian only agreed to it yesterday afternoon. Millicent was
 positively glowing when she told me. I'm glad she'll have that
 happiness, whatever else has happened."
@@ -416,7 +416,7 @@ have got to him. And yet someone did."
 I wasn't there myself, of course - I only heard of it afterwards, same
 as everyone else."
 
-+(body/colonel) where
++(body/colonel/husband) where
 "In his study, I'm told - I haven't gone in there myself, and I don't
 think I could bear to."
 
@@ -439,13 +439,13 @@ affair mellors sarah (summerhouse/summer) together secret lovers
 "I'm sorry - I don't understand the question. Mellors is our
 gamekeeper. I don't see what he has to do with anything."
 
-+redvers +(money/mining/business/much) ask troubles colonel
++redvers +(money/mining/business/much) ask troubles (colonel/husband)
 !requires x_newspaper
 "Sebastian did mention Sir Redvers needed to talk business
 urgently. I assumed it was the usual sort of thing - I didn't
 realise it was quite so serious until now."
 
-+(money/mining/business/much) ask troubles redvers colonel
++(money/mining/business/much) ask troubles redvers (colonel/husband)
 "I really couldn't say. Sebastian didn't discuss financial business with me."
 
 -constable +(police/scotland/yard/inspector/detective) investigation opinion here
@@ -462,7 +462,7 @@ my mind just now, Inspector."
 this."
 
 # Response when accused of the murder for a second (or subsequent) time
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/husband)
 !requires all_clues accuse_b4_sarah
 !provides new_accuse accuse_sarah
 She looks at you steadily now, some of the shock worn off, replaced by
@@ -472,7 +472,7 @@ something harder to read.@
 you are quite wrong."
 
 # Response when accused of the murder
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/husband)
 !requires all_clues
 !provides new_accuse accuse_sarah accuse_b4_sarah
 Sarah's hand goes to her throat, the colour draining from her face.@
@@ -481,7 +481,7 @@ Sarah's hand goes to her throat, the colour draining from her face.@
 thing."
 
 # Response when accused when insufficient clues have been gathered
--who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel)
+-who +(accuse/jaccuse/murder/murderer) you | -who +you +(did/are) +(it/guilty) | guilty | -who +you +shoot +(him/colonel/husband)
 !provides new_accuse accuse_sarah
 "You mustn't say such things without evidence - it isn't fair, not to
 anyone."

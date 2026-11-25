@@ -329,12 +329,12 @@ second warning where he'd already given a first, if you follow me.
 Mr. Mellors wouldn't have taken kindly to losing his cottage along
 with his position."
 
--again marriage colonel sarah wife husband happy get jealous
+-again marriage (colonel/husband) (sarah/wife) happy get jealous
 "Not for me to say, dear, but I don't think either of them was
 what you'd call content. Still, that's their business and none of
 mine."
 
-+(engagement/marriage/propose) millicent arthur when
++(engagement/marriage) millicent arthur when
 "Oh, Miss Millicent was thrilled when it was agreed yesterday. She
 came straight down to the kitchen to tell me, bless her."
 

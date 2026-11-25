@@ -71,6 +71,13 @@ add_test("entry_matches%() rejects a candidate missing the template's mandatory 
 add_test("entry_matches%() rejects a mismatched requires suffix even with matching alternatives", "test_em_gvn_requires_mismatch")
 add_test("entry_matches%() accepts an extra alternative alongside a matching requires suffix", "test_em_gvn_req_match_extra_alt")
 add_test("entry_matches%() treats the wildcard '*' as requiring an exact match", "test_em_gvn_wildcard_exact")
+add_test("entry_matches%() accepts a plain word widened to a group", "test_em_word_to_group")
+add_test("entry_matches%() accepts a group widened with extra members", "test_em_group_widened")
+add_test("entry_matches%() accepts widening of +, - and plain tokens together", "test_em_all_token_kinds")
+add_test("entry_matches%() rejects a group narrowed below the template", "test_em_group_narrowed")
+add_test("entry_matches%() rejects a changed prefix", "test_em_prefix_changed")
+add_test("entry_matches%() rejects an added or removed token", "test_em_token_count")
+add_test("entry_matches%() widening and an extra '|' alternative combine", "test_em_widen_plus_alt")
 add_test("read_entries() reads all keys from the template, skipping comments", "test_re_gvn_template")
 add_test("read_entries() records the wildcard as a literal key", "test_re_gvn_wildcard")
 add_test("read_entries() on an empty file returns zero entries", "test_re_gvn_empty")
@@ -192,6 +199,41 @@ End Sub
 ' alternative" reduces to requiring an exact match
 Sub test_em_gvn_wildcard_exact()
   assert_int_equals(1, msgorder.entry_matches%("*", "*"))
+End Sub
+
+Sub test_em_word_to_group()
+  assert_int_equals(1, msgorder.entry_matches%("+colonel", "+(colonel/husband)"))
+  assert_int_equals(1, msgorder.entry_matches%("+colonel +argue@x", "+(colonel/husband) +argue@x"))
+End Sub
+
+Sub test_em_group_widened()
+  assert_int_equals(1, msgorder.entry_matches%("+(a/b)", "+(a/b/c)"))
+  assert_int_equals(1, msgorder.entry_matches%("+(a/b)", "+(b/a)")) ' member order irrelevant
+End Sub
+
+Sub test_em_all_token_kinds()
+  Const t$ = "+aaa -bbb +(ccc/ddd) -(eee/fff) ggg (hhh/iii)"
+  Const f$ = "+(aaa/jjj) -(bbb/kkk) +(ccc/ddd/lll) -(eee/fff/mmm) (ggg/nnn) (hhh/iii/ooo)"
+  assert_int_equals(1, msgorder.entry_matches%(t$, f$))
+End Sub
+
+Sub test_em_group_narrowed()
+  assert_int_equals(0, msgorder.entry_matches%("+(a/b)", "+a"))
+  assert_int_equals(0, msgorder.entry_matches%("+(a/b)", "+(a/c)"))
+End Sub
+
+Sub test_em_prefix_changed()
+  assert_int_equals(0, msgorder.entry_matches%("+aaa", "(aaa/bbb)"))
+  assert_int_equals(0, msgorder.entry_matches%("-aaa", "+(aaa/bbb)"))
+End Sub
+
+Sub test_em_token_count()
+  assert_int_equals(0, msgorder.entry_matches%("+aaa", "+aaa bbb"))
+  assert_int_equals(0, msgorder.entry_matches%("+aaa bbb", "+aaa"))
+End Sub
+
+Sub test_em_widen_plus_alt()
+  assert_int_equals(1, msgorder.entry_matches%("+sarah -affair opinion", "+(sarah/yourself) -affair opinion~yourself -affair"))
 End Sub
 
 ' read_entries() -------------------------------------------------------------

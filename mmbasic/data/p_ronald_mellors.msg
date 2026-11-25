@@ -284,11 +284,11 @@ about it besides read it and put it in the fire, same as I'd do with any
 other man's threats. Seven years' good work doesn't end because
 of one bad word from a man who'd had too much port."
 
--again marriage colonel sarah wife husband happy get jealous
+-again marriage (colonel/husband) (sarah/wife) happy get jealous
 "None of my business what goes on in the big house between man and
 wife. I keep to my own affairs."
 
-+(engagement/marriage/propose) millicent arthur when
++(engagement/marriage) millicent arthur when
 "Didn't hear about it till it was all round the house. Don't know
 the young gentleman well enough to say more than that."
 

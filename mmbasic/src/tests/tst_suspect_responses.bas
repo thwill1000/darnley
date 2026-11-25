@@ -69,6 +69,7 @@ add_test("Ronald Mellors's .msg file matches template entry order", "test_msg_or
 add_test("Sarah Darnley's .msg file matches template entry order", "test_msg_order_sarah")
 add_test("Chester Cat's .msg file matches template entry order", "test_msg_order_chester")
 add_test("Police Constable's .msg file matches template entry order", "test_msg_order_police")
+add_test("Every .msg file contains only plain ASCII", "test_msg_plain_ascii")
 add_test("Every .msg file has balanced double-quotes in each entry", "test_msg_balanced_quotes")
 add_test("Perfume description cross-references the handkerchief only once that is found", "test_perfume_desc_gating")
 add_test("Handkerchief description cross-references the perfume only once that is found", "test_hanky_desc_gating")
@@ -131,6 +132,39 @@ End Sub
 
 Sub test_msg_order_police()
   assert_msg_order("p_police_constable.msg")
+End Sub
+
+Sub test_msg_plain_ascii()
+  assert_plain_ascii("p_arnold_billingsgate.msg")
+  assert_plain_ascii("p_arthur_coniston.msg")
+  assert_plain_ascii("p_mildred_goodbody.msg")
+  assert_plain_ascii("p_millicent_darnley.msg")
+  assert_plain_ascii("p_norah_bagsby.msg")
+  assert_plain_ascii("p_redvers_slingsby.msg")
+  assert_plain_ascii("p_ronald_mellors.msg")
+  assert_plain_ascii("p_sarah_darnley.msg")
+  assert_plain_ascii("p_chester_cat.msg")
+  assert_plain_ascii("p_police_constable.msg")
+  assert_plain_ascii("p_template_suspect.msg")
+End Sub
+
+' Asserts that every line of filename$ contains only printable ASCII
+' (and tab), so that no curly quotes, en/em-dashes, accented letters etc.
+' have crept in; MMBasic and the target consoles cannot display them. On
+' failure the first offending line number is reported.
+Sub assert_plain_ascii(filename$)
+  Local s$, n%, bad$
+  Open DATA_DIR$ + filename$ For Input As #1
+  Do While Not Eof(#1)
+    Line Input #1, s$
+    Inc n%
+    If Not str.is_plain_ascii%(s$) Then
+      bad$ = filename$ + ": non-ASCII character on line " + Str$(n%)
+      Exit Do
+    EndIf
+  Loop
+  Close #1
+  assert_string_equals("", bad$)
 End Sub
 
 ' Asserts that every entry in filename$ contains an even number of

@@ -25,19 +25,14 @@ Const MILLICENT = "P_MILLICENT_DARNLEY"
 Const SARAH = "P_SARAH_DARNLEY"
 
 add_test("test_get_option")
-add_test("apply_extra_replacements() maps 'father' to 'colonel' for Millicent", "test_aer_millicent_father")
-add_test("apply_extra_replacements() maps 'mother' to 'sarah' for Millicent", "test_aer_millicent_mother")
-add_test("apply_extra_replacements() maps 'husband' to 'colonel' for Sarah", "test_aer_sarah_husband")
-add_test("apply_extra_replacements() maps 'daughter' to 'millicent' for Sarah", "test_aer_sarah_daughter")
 add_test("apply_extra_replacements() does not apply Sarah's replacements for Millicent", "test_aer_millicent_not_sarahs")
 add_test("apply_extra_replacements() does not apply Millicent's replacements for Sarah", "test_aer_sarah_not_millicents")
 add_test("apply_extra_replacements() leaves words unchanged for any other target", "test_aer_other_target_unchanged")
 add_test("apply_extra_replacements() leaves unrelated words unchanged", "test_aer_unrelated_words")
 add_test("apply_extra_replacements() leaves a word already in canonical form unchanged", "test_aer_canonical_kept")
-add_test("apply_extra_replacements() preserves word order when only some words match", "test_aer_preserves_order")
 add_test("apply_extra_replacements() stops processing at the first empty word", "test_aer_stops_at_empty")
-add_test("apply_extra_replacements() does not replace familty relationships for an empty target", "test_aer_empty_target")
-add_test("apply_extra_replacements() canonicalises familiy names", "test_aer_family_names")
+add_test("apply_extra_replacements() does not replace family relationships for an empty target", "test_aer_empty_target")
+add_test("apply_extra_replacements() canonicalises family names", "test_aer_family_names")
 
 run_tests()
 
@@ -66,26 +61,6 @@ Function call_aer$(cmd$, suspect$)
   apply_extra_replacements(suspect$, words$())
   call_aer$ = words.join$(words$(), " ")
 End Function
-
-' Millicent's father is the Colone
-Sub test_aer_millicent_father()
-  assert_string_equals("colonel", call_aer$("father", MILLICENT))
-End Sub
-
-' Millicent's "mother" is Sarah (her stepmother)
-Sub test_aer_millicent_mother()
-  assert_string_equals("sarah", call_aer$("mother", MILLICENT))
-End Sub
-
-' Sarah's husband is the Colonel
-Sub test_aer_sarah_husband()
-  assert_string_equals("colonel", call_aer$("husband", SARAH))
-End Sub
-
-' Sarah's daughter is Millicent
-Sub test_aer_sarah_daughter()
-  assert_string_equals("millicent", call_aer$("daughter", SARAH))
-End Sub
 
 ' Sarah's relationship words ("husband", "daughter") mean nothing to Millicent
 Sub test_aer_millicent_not_sarahs()
@@ -118,20 +93,16 @@ Sub test_aer_canonical_kept()
   assert_string_equals(expected$, call_aer$(original$, MILLICENT))
 End Sub
 
-' Only matching words change, and array positions are preserved
-Sub test_aer_preserves_order()
-  Const original$ = "what did your father think"
-  Const expected$ = "what did your colonel think"
-  assert_string_equals(expected$, call_aer$(original$, MILLICENT))
-End Sub
-
 ' An empty element ends the words, subsequent elements will have been cleared
 Sub test_aer_stops_at_empty()
-  Local w$(4) Length MAX_WORD_LENGTH = ("father", "", "mother", "")
+  Local w$(6) Length MAX_WORD_LENGTH = ("mr", "darnley", "", "mrs", "darnley", "")
   apply_extra_replacements("P_MILLICENT_DARNLEY", w$())
   assert_string_equals("colonel", w$(1))
   assert_string_equals("", w$(2))
   assert_string_equals("", w$(3))
+  assert_string_equals("", w$(4))
+  assert_string_equals("", w$(5))
+  assert_string_equals("", w$(6))
 End Sub
 
 ' No target means no relationship replacements
