@@ -17,19 +17,6 @@ Const ut.MAX_TESTS% = 150
 
 #Include "../words.inc"
 
-add_test("test_cat_words_gvn_empty")
-add_test("test_cat_words_gvn_one")
-add_test("test_cat_words_gvn_multiple")
-add_test("test_cat_words_gvn_full")
-add_test("test_cat_words_gvn_si_default")
-add_test("test_cat_words_gvn_ei_default")
-add_test("test_cat_words_gvn_si")
-add_test("test_cat_words_gvn_ei")
-add_test("test_cat_words_gvn_si_and_ei")
-add_test("test_cat_words_gvn_si_eq_ei")
-add_test("test_cat_words_gvn_si_gt_ei")
-add_test("test_cat_words_stops_at_empty")
-add_test("test_cat_words_gvn_si_at_empty")
 add_test("test_count_words")
 add_test("test_count_words_gvn_full")
 add_test("test_count_words_gvn_gap")
@@ -96,10 +83,20 @@ add_test("words.join$() on an empty array returns an empty string", "test_wj_emp
 add_test("words.join$() raises and error for a multi-character delimiter", "test_wj_multi_char_delim")
 add_test("words.join$() raises an error for an empty delimiter", "test_wj_empty_delim")
 add_test("words.join$() raises an error if the result exceeds 255 characters", "test_wj_too_long")
-add_test("words.join$() with wrap% adds the delimiter around a single word", "test_wj_wrap_single")
-add_test("words.join$() with wrap% adds the delimiter around multiple words", "test_wj_wrap_multiple")
-add_test("words.join$() with wrap% on an empty array returns two delimiters", "test_wj_wrap_empty_array")
-add_test("words.join$() raises an error if wrap% pushes the result over 255 characters", "test_wj_wrap_too_long")
+add_test("words.join$() with wrap$ adds the wrap character around a single word", "test_wj_wrap_single")
+add_test("words.join$() with wrap$ adds the wrap character around multiple words", "test_wj_wrap_multiple")
+add_test("words.join$() with wrap$ on an empty array returns two wrap characters", "test_wj_wrap_empty_array")
+add_test("words.join$() allows wrap$ to differ from the delimiter", "test_wj_wrap_distinct")
+add_test("words.join$() raises an error for a multi-character wrap$", "test_wj_wrap_multi_char")
+add_test("words.join$() raises an error if wrap$ pushes the result over 255 characters", "test_wj_wrap_too_long")
+add_test("words.join$() with default indices joins the full array", "test_wj_default_indices")
+add_test("words.join$() supports an explicit end index", "test_wj_end_index")
+add_test("words.join$() supports an explicit start index", "test_wj_start_index")
+add_test("words.join$() supports explicit start and end indices", "test_wj_start_and_end_indices")
+add_test("words.join$() with equal indices joins one word", "test_wj_equal_indices")
+add_test("words.join$() with start after end returns empty", "test_wj_start_after_end")
+add_test("words.join$() with an empty element in range stops joining", "test_wj_stops_at_empty_in_range")
+add_test("words.join$() with start at an empty element returns empty", "test_wj_start_at_empty")
 
 add_test("words.replace$() replaces a single occurrence", "test_wr_single")
 add_test("words.replace$() replaces every occurrence", "test_wr_multiple")
@@ -128,84 +125,6 @@ add_test("words.split%() accepts a space delimiter, skipping empty tokens", "tes
 
 run_tests()
 End
-
-' Empty array returns empty string
-Sub test_cat_words_gvn_empty()
-  Local words$(4) Length MAX_WORD_LENGTH
-  assert_string_equals("", cat_words$(words$(), 0, 0))
-End Sub
-
-' Single word returns that word
-Sub test_cat_words_gvn_one()
-  Local words$(4) Length MAX_WORD_LENGTH = ("foo", "", "", "")
-  assert_string_equals("foo", cat_words$(words$(), 0, 0))
-End Sub
-
-' Multiple words joined with spaces
-Sub test_cat_words_gvn_multiple()
-  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "")
-  assert_string_equals("one two three", cat_words$(words$(), 0, 0))
-End Sub
-
-' Full array with no empty elements
-Sub test_cat_words_gvn_full()
-  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
-  assert_string_equals("one two three four", cat_words$(words$(), 0, 0))
-End Sub
-
-' si%=0 defaults to starting at index 1
-Sub test_cat_words_gvn_si_default()
-  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "")
-  assert_string_equals("one two three", cat_words$(words$(), 0, 4))
-End Sub
-
-' ei%=0 defaults to MAX_WORDS
-Sub test_cat_words_gvn_ei_default()
-  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "")
-  assert_string_equals("one two three", cat_words$(words$(), 1, 0))
-End Sub
-
-' si% starts concatenation from a later index
-Sub test_cat_words_gvn_si()
-  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "")
-  assert_string_equals("two three", cat_words$(words$(), 2, 0))
-End Sub
-
-' ei% stops concatenation before end of words
-Sub test_cat_words_gvn_ei()
-  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
-  assert_string_equals("one two", cat_words$(words$(), 1, 2))
-End Sub
-
-' si% and ei% together select a middle slice
-Sub test_cat_words_gvn_si_and_ei()
-  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
-  assert_string_equals("two three", cat_words$(words$(), 2, 3))
-End Sub
-
-' si% equal to ei% returns a single word
-Sub test_cat_words_gvn_si_eq_ei()
-  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
-  assert_string_equals("two", cat_words$(words$(), 2, 2))
-End Sub
-
-' si% beyond ei% returns empty string
-Sub test_cat_words_gvn_si_gt_ei()
-  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
-  assert_string_equals("", cat_words$(words$(), 3, 2))
-End Sub
-
-' Empty element within range stops concatenation early
-Sub test_cat_words_stops_at_empty()
-  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "", "four")
-  assert_string_equals("one two", cat_words$(words$(), 0, 0))
-End Sub
-
-' si% pointing at an empty element returns empty string
-Sub test_cat_words_gvn_si_at_empty()
-  Local words$(4) Length MAX_WORD_LENGTH = ("one", "", "three", "four")
-  assert_string_equals("", cat_words$(words$(), 2, 0))
-End Sub
 
 Sub test_count_words()
   Local words$(4) Length MAX_WORD_LENGTH
@@ -730,7 +649,7 @@ Sub test_wj_multi_char_delim()
   Local s$
   On Error Ignore
   s$ = words.join$(w$(), "***")
-  assert_raw_error("delimit$ must be a single character")
+  assert_raw_error("delim$ must be a single character")
   On Error Abort
 End Sub
 
@@ -739,7 +658,7 @@ Sub test_wj_empty_delim()
   Local s$
   On Error Ignore
   s$ = words.join$(w$(), "")
-  assert_raw_error("delimit$ must be a single character")
+  assert_raw_error("delim$ must be a single character")
   On Error Abort
 End Sub
 
@@ -757,22 +676,31 @@ End Sub
 
 Sub test_wj_wrap_single()
   Local w$(4) Length MAX_WORD_LENGTH = ("foo", "", "", "")
-  assert_string_equals("|foo|", words.join$(w$(), "|", 1))
+  assert_string_equals("|foo|", words.join$(w$(), "|", "|"))
 End Sub
 
 Sub test_wj_wrap_multiple()
   Local w$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "")
-  assert_string_equals("|one|two|three|", words.join$(w$(), "|", 1))
+  assert_string_equals("|one|two|three|", words.join$(w$(), "|", "|"))
 End Sub
 
 Sub test_wj_wrap_empty_array()
   Local w$(4) Length MAX_WORD_LENGTH
-  assert_string_equals("||", words.join$(w$(), "|", 1))
+  assert_string_equals("||", words.join$(w$(), "|", "|"))
+End Sub
+
+Sub test_wj_wrap_distinct()
+  Local w$(4) Length MAX_WORD_LENGTH = ("one", "two", "", "")
+  assert_string_equals("|one,two|", words.join$(w$(), ",", "|"))
 End Sub
 
 Sub test_wj_wrap_multi_char()
   Local w$(4) Length MAX_WORD_LENGTH = ("one", "two", "", "")
-  assert_string_equals(", one, two, ", words.join$(w$(), ", ", 1))
+  Local s$
+  On Error Ignore
+  s$ = words.join$(w$(), ",", "||")
+  assert_raw_error("wrap$ must be empty or a single character")
+  On Error Abort
 End Sub
 
 ' 254 characters fits unwrapped, but wrapping with "," makes it 256.
@@ -780,11 +708,64 @@ Sub test_wj_wrap_too_long()
   Local w$(2) Length 255
   Local s$
   w$(1) = String$(254, "a")
-  assert_int_equals(254, Len(words.join$(w$(), ",", 0)))
+  assert_int_equals(254, Len(words.join$(w$(), ",", "")))
   On Error Ignore
-  s$ = words.join$(w$(), ",", 1)
+  s$ = words.join$(w$(), ",", ",")
   assert_raw_error("String too long")
   On Error Abort
+End Sub
+
+' The index range defaults to the whole array when both indices are zero.
+Sub test_wj_default_indices()
+  Local words$(4) Length MAX_WORD_LENGTH
+  assert_string_equals("", words.join$(words$(), " "))
+
+  words$(1) = "one"
+  words$(2) = "two"
+  words$(3) = "three"
+  assert_string_equals("one two three", words.join$(words$(), " "))
+End Sub
+
+' An explicit end index selects a prefix of the array.
+Sub test_wj_end_index()
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
+  assert_string_equals("one two", words.join$(words$(), " ", "", 0, 2))
+End Sub
+
+' An explicit start index selects a suffix up to the first empty element.
+Sub test_wj_start_index()
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "")
+  assert_string_equals("two three", words.join$(words$(), " ", "", 2))
+End Sub
+
+' Explicit start and end indices select a middle slice.
+Sub test_wj_start_and_end_indices()
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
+  assert_string_equals("two three", words.join$(words$(), " ", "", 2, 3))
+End Sub
+
+' Equal start and end indices select one word.
+Sub test_wj_equal_indices()
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
+  assert_string_equals("two", words.join$(words$(), " ", "", 2, 2))
+End Sub
+
+' Start after end returns an empty string.
+Sub test_wj_start_after_end()
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
+  assert_string_equals("", words.join$(words$(), " ", "", 3, 2))
+End Sub
+
+' An empty element within range stops joining early.
+Sub test_wj_stops_at_empty_in_range()
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "", "four")
+  assert_string_equals("one two", words.join$(words$(), " "))
+End Sub
+
+' A start index pointing at an empty element returns an empty string.
+Sub test_wj_start_at_empty()
+  Local words$(4) Length MAX_WORD_LENGTH = ("one", "", "three", "four")
+  assert_string_equals("", words.join$(words$(), " ", "", 2))
 End Sub
 
 ' words.replace$() ------------------------------------------------------
@@ -918,7 +899,7 @@ Sub test_ws_empty_delim()
   Local rc%
   On Error Ignore
   rc% = words.split%("a,b", "", w$())
-  assert_raw_error("delimit$ must be a single character")
+  assert_raw_error("delim$ must be a single character")
   On Error Abort
 End Sub
 
@@ -927,7 +908,7 @@ Sub test_ws_long_delim()
   Local rc%
   On Error Ignore
   rc% = words.split%("a,b", ", ", w$())
-  assert_raw_error("delimit$ must be a single character")
+  assert_raw_error("delim$ must be a single character")
   On Error Abort
 End Sub
 

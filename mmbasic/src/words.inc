@@ -17,17 +17,6 @@ Sub clear_words(words$())
   Next
 End Sub
 
-Function cat_words$(words$(), si%, ei%)
-  Local first% = 1, i%
-  If Not si% Then si% = Bound(words$(), 0)
-  If Not ei% Then ei% = Bound(words$(), 1)
-  For i% = si% To ei%
-    If words$(i%) = "" Then Exit For
-    If first% Then first% = 0 Else Cat cat_words$, " "
-    Cat cat_words$, words$(i%)
-  Next
-End Function
-
 ' Counts the number of words in an array, stopping at the first empty element.
 '
 ' @param words$()  The array of words to count.
@@ -232,7 +221,7 @@ End Sub
 ' @param  words$()         The array of words to modify in place.
 ' @param  replacements$()  Array of "|canonical|alias1|alias2|...|" entries.
 Sub words.replace_multiple(words$(), replacements$())
-  Local i%, j%, needle$, rep$, s$ = words.join$(words$(), " ", 1)
+  Local i%, j%, needle$, rep$, s$ = words.join$(words$(), " ", " ")
 
   For i% = Bound(replacements$(), 0) To Bound(replacements$(), 1)
     For j% = 3 To 20
@@ -250,28 +239,33 @@ End Sub
 ' Stops at the first empty element.
 '
 ' @param  words$()   The array of words to join.
-' @param  delimit$   The string to place between words, must not be empty.
-' @param  wrap%      If non-zero then delimit$ is also added to the beginning
+' @param  delim$     The character to place between words, must not be empty.
+' @param  wrap$      If non-empty, this character is added to the beginning
 '                    and end of the result, e.g. "|one|two|". This applies
 '                    even if words$() contains no words, in which case the
-'                    result is two delimiters.
+'                    result is two wrap characters.
+' @param  si%        First array index to join; 0 defaults to the lower bound.
+' @param  ei%        Last array index to join; 0 defaults to the upper bound.
 ' @return            The joined string, or "" if words$() has no words and
-'                    wrap% is 0.
-' @errors            If delimit$ is empty or the result would be longer than
+'                    wrap$ is empty.
+' @errors            If delim$ is empty or the result would be longer than
 '                    255 characters.
-Function words.join$(words$(), delimit$, wrap%)
-  If Len(delimit$) <> 1 Then Error "delimit$ must be a single character"
+Function words.join$(words$(), delim$, wrap$, si%, ei%)
+  If Len(delim$) <> 1 Then Error "delim$ must be a single character"
+  If Len(wrap$) > 1 Then Error "wrap$ must be empty or a single character"
   Local i%, r$, sep$
-  If wrap% Then r$ = delimit$
-  For i% = Bound(words$(), 0) To Bound(words$(), 1)
+  If Not si% Then si% = Bound(words$(), 0)
+  If Not ei% Then ei% = Bound(words$(), 1)
+  If wrap$ <> "" Then r$ = wrap$
+  For i% = si% To ei%
     If words$(i%) = "" Then Exit For
     If Len(r$) + Len(sep$) + Len(words$(i%)) > 255 Then Error "String too long"
     Cat r$, sep$ + words$(i%)
-    sep$ = delimit$
+    sep$ = delim$
   Next
-  If wrap% Then
-    If Len(r$) + Len(delimit$) > 255 Then Error "String too long"
-    Cat r$, delimit$
+  If wrap$ <> "" Then
+    If Len(r$) + Len(wrap$) > 255 Then Error "String too long"
+    Cat r$, wrap$
   EndIf
   words.join$ = r$
 End Function
@@ -312,21 +306,21 @@ End Function
 ' considered empty.
 '
 ' @param  s$         The string to split.
-' @param  delimit$   The delimiter, a single character (which may be a space).
+' @param  delim$     The delimiter, a single character (which may be a space).
 ' @param  words$()   Output array, cleared on entry.
 ' @return            0 on success,
 '                    1 if the word count exceeds the array bounds, or
 '                    2 if any single word exceeds MAX_WORD_LENGTH.
 '                    On error the array may be partially populated.
-' @errors            If delimit$ is not a single character.
-Function words.split%(s$, delimit$, words$())
-  If Len(delimit$) <> 1 Then Error "delimit$ must be a single character"
+' @errors            If delim$ is not a single character.
+Function words.split%(s$, delim$, words$())
+  If Len(delim$) <> 1 Then Error "delim$ must be a single character"
 
   clear_words(words$())
 
   Local i% = Bound(words$(), 0), p% = 1, q%, tok$
   Do While p% <= Len(s$)
-    q% = InStr(p%, s$, delimit$)
+    q% = InStr(p%, s$, delim$)
     If q% = 0 Then q% = Len(s$) + 1
     tok$ = ""
     If q% > p% Then tok$ = Mid$(s$, p%, q% - p%)

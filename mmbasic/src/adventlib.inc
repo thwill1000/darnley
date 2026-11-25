@@ -622,7 +622,7 @@ Function verb_examine()
   ' If we match an exit rather than an object then suggest the GO command.
   Const exit_loc% = find_exit%(words$(), 1)
   If exit_loc% <> -1 Then
-    con.print_fail("Try `GO " + UCase$(cat_words$(words$(), 2)) + "`.")
+    con.print_fail("Try `GO " + UCase$(words.join$(words$(), " ", "", 2)) + "`.")
     Exit Function
   EndIf
 
@@ -830,7 +830,7 @@ Function verb_take()
   ' If Not o% Then
   '   Local msg$ = "I do not understand the word"
   '   If count_words%(words$()) > 2 Then Cat msg$, "s"
-  '   Cat msg$, " " + Chr$(39) + cat_words$(words$(), 2) + Chr$(39) + "."
+  '   Cat msg$, " " + Chr$(39) + words.join$(words$(), " ", "", 2) + Chr$(39) + "."
   '   con.print_fail(msg$)
   '   Exit Function
   ' EndIf
