@@ -532,20 +532,9 @@ export function verbSay(objects, msgFiles, messages, words, synonymEntries, curr
     if (words[i] === '') break;
     subjectWords.push(words[i]);
   }
-  let subject = applySynonyms(subjectWords, []);
-
-  // Hack, canonicalise family names, should probablt be applied after general
-  // synonym replacement that occurs in makeMatchInput().
-  subject = applySynonyms(subject, [
-    { canonical: 'millicent', aliases: ['miss darnley', 'millicent darnley'] },
-    { canonical: 'sarah', aliases: ['mrs darnley', 'sarah darnley'] },
-    { canonical: 'colonel', aliases: ['mr darnley', 'colonel darnley', 'darnley'] },
-    { canonical: 'opinion', aliases: ['get on with', 'get along'] },
-  ]);
-
   const entries = msgFiles.get(targetObj.id);
   const response = entries
-    ? findResponse(entries, subject, synonymEntries, flags)
+    ? findResponse(entries, subjectWords, synonymEntries, flags)
     : findMessageEntry(messages, `${targetObj.id}_SAY_RESPONSE`, flags);
 
   if (!response) {

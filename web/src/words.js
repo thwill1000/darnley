@@ -96,18 +96,16 @@ export function applySynonyms(words, synonymEntries) {
   const meaningfulWords = words.slice(0, end === -1 ? words.length : end);
   if (meaningfulWords.length === 0) return [];
 
-  let delimitedWords = `+${meaningfulWords.join('+')}+`;
+  let delimitedWords = ` ${meaningfulWords.join(' ')} `;
   for (const entry of synonymEntries) {
     for (const alias of entry.aliases) {
-      const aliasWords = alias.trim().split(/\s+/);
-      if (aliasWords[0] === '') continue;
       delimitedWords = delimitedWords.replaceAll(
-        `+${aliasWords.join('+')}+`,
-        `+${entry.canonical}+`,
+        ` ${alias} `,
+        ` ${entry.canonical} `,
       );
     }
   }
-  return delimitedWords.split('+').slice(1, -1);
+  return delimitedWords.split(' ').slice(1, -1);
 }
 
 /**

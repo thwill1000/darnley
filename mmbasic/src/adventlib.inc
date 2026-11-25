@@ -349,9 +349,6 @@ Function verb_say()
     Inc j%
   Next
 
-  ' Apply any target specific word replacements to the topic
-  apply_extra_replacements(target$, topic_words$())
-
   Const match_line% = find_response%(filename$, topic_words$())
   print_response(filename$, match_line%)
 End Function
@@ -659,7 +656,7 @@ End Function
 ' TODO: comment this
 Function make_match_input$(w$(), first%, last%)
   Local i%, s$ = "|"
-  replace_words(w$(), adv.synonyms$())
+  words.replace_multiple(w$(), adv.synonyms$())
   For i% = Choice(first%, first%, Bound(w$(), 0)) To Choice(last%, last%, Bound(w$(), 1))
     If w$(i%) = "" Then Exit For
     Cat s$, w$(i%) + "|"

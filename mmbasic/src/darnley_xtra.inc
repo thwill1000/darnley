@@ -8,25 +8,6 @@ sys.provides("darnley_xtra")
 If sys.err$ <> "" Then Error sys.err$
 '!endif
 
-' Apply extra suspect/target specific word replacements
-Sub apply_extra_replacements(target$, words$())
-  Local s$ = words.join$(words$(), "+", 1)
-
-  ' TODO: these replacements should occur after the main synonyms
-  s$ = words.replace$(s$, "+mr+darnley+", "+colonel+")
-  s$ = words.replace$(s$, "+mrs+darnley+", "+sarah+")
-  s$ = words.replace$(s$, "+miss+darnley+", "+millicent+")
-  s$ = words.replace$(s$, "+colonel+darnley+", "+colonel+")
-  s$ = words.replace$(s$, "+sarah+darnley+", "+sarah+")
-  s$ = words.replace$(s$, "+millicent+darnley+", "+millicent+")
-  s$ = words.replace$(s$, "+darnley+", "+colonel+")
-  s$ = words.replace$(s$, "+darnleys+", "+colonel+")
-  s$ = words.replace$(s$, "+get+on+with+", "+opinion+")
-  s$ = words.replace$(s$, "+get+along+", "+opinion+")
-
-  Local result% = words.split%(s$, "+", words$())
-End Sub
-
 ' Does an answer satisfy an accusation question's pattern?
 '
 ' @param[in,out]  words$()  Answer, already split by split_words%().

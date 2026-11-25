@@ -165,19 +165,20 @@ describe('parseObjects()', () => {
 });
 
 describe('parseSynonyms()', () => {
-  it('parses 63 distinct synonym entries from the game data', () => {
-    expect(parseSynonyms(adventText)).toHaveLength(63);
+  it('parses all 69 synonym lines from the game data', () => {
+    expect(parseSynonyms(adventText)).toHaveLength(69);
   });
 
-  it('combines aliases when a canonical appears on multiple lines', () => {
+  it('preserves file order and keeps repeated canonicals as separate entries', () => {
     const text = `!synonyms
 argue|argued|argument
 see|saw
 argue|row|quarrel
 !questions`;
     expect(parseSynonyms(text)).toEqual([
-      { canonical: 'argue', aliases: ['argued', 'argument', 'row', 'quarrel'] },
+      { canonical: 'argue', aliases: ['argued', 'argument'] },
       { canonical: 'see', aliases: ['saw'] },
+      { canonical: 'argue', aliases: ['row', 'quarrel'] },
     ]);
   });
 

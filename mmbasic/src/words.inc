@@ -231,17 +231,19 @@ End Sub
 '
 ' @param  words$()         The array of words to modify in place.
 ' @param  replacements$()  Array of "|canonical|alias1|alias2|...|" entries.
-Sub replace_words(words$(), replacements$())
-  Local i%, j%
-  For i% = Bound(words$(), 0) To Bound(words$(), 1)
-    If words$(i%) = "" Then Exit For
-    For j% = Bound(replacements$(), 0) To Bound(replacements$(), 1)
-      If InStr(replacements$(j%), "|" + words$(i%) + "|") Then
-        words$(i%) = Field$(replacements$(j%), 2, "|")
-        Exit For
-      EndIf
+Sub words.replace_multiple(words$(), replacements$())
+  Local i%, j%, needle$, rep$, s$ = words.join$(words$(), " ", 1)
+
+  For i% = Bound(replacements$(), 0) To Bound(replacements$(), 1)
+    For j% = 3 To 20
+      needle$ = Field$(replacements$(i%), j%, "|")
+      If needle$ = "" Then Exit For
+      If Not InStr(s$, needle$) Then Continue For
+      s$ = words.replace$(s$, " " + needle$ + " ", " " + Field$(replacements$(i%), 2, "|") + " ")
     Next
   Next
+
+  Const result% = words.split%(s$, " ", words$())
 End Sub
 
 ' Joins the words in an array into a single string, separated by a delimiter.

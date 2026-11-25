@@ -129,8 +129,8 @@ export function parseObjects(text) {
  * Parses the "!synonyms" section of advent.dat.
  *
  * Each line is a "|"-separated list of words that should all be treated as
- * equivalent to its first word (the canonical form). Lines with the same
- * canonical are combined into one entry, appending their aliases in order.
+ * equivalent to its first word (the canonical form). Each line is returned
+ * as a separate entry in file order.
  * See apply_synonyms() in mmbasic/src/adventlib.inc, which resolves aliases
  * back to their canonical form.
  *
@@ -138,22 +138,10 @@ export function parseObjects(text) {
  * @returns {{canonical: string, aliases: string[]}[]}
  */
 export function parseSynonyms(text) {
-  const synonyms = [];
-  const byCanonical = new Map();
-
-  for (const line of extractSection(text, '!synonyms')) {
+  return extractSection(text, '!synonyms').map((line) => {
     const [canonical, ...aliases] = line.split('|');
-    const existing = byCanonical.get(canonical);
-    if (existing) {
-      existing.aliases.push(...aliases);
-    } else {
-      const entry = { canonical, aliases };
-      byCanonical.set(canonical, entry);
-      synonyms.push(entry);
-    }
-  }
-
-  return synonyms;
+    return { canonical, aliases };
+  });
 }
 
 /**
