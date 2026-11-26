@@ -7,7 +7,7 @@ import {
   parseLocations,
   parseAdditionalExits,
   parseObjects,
-  parseSynonyms,
+  parseReplacements,
   parseQuestions,
   parseClues,
   parseMessages,
@@ -164,27 +164,27 @@ describe('parseObjects()', () => {
   });
 });
 
-describe('parseSynonyms()', () => {
-  it('parses all 69 synonym lines from the game data', () => {
-    expect(parseSynonyms(adventText)).toHaveLength(69);
+describe('parseReplacements()', () => {
+  it('parses all 69 replacement lines from the game data', () => {
+    expect(parseReplacements(adventText)).toHaveLength(69);
   });
 
   it('preserves file order and keeps repeated canonicals as separate entries', () => {
-    const text = `!synonyms
+    const text = `!replacements
 argue|argued|argument
 see|saw
 argue|row|quarrel
 !questions`;
-    expect(parseSynonyms(text)).toEqual([
+    expect(parseReplacements(text)).toEqual([
       { canonical: 'argue', aliases: ['argued', 'argument'] },
       { canonical: 'see', aliases: ['saw'] },
       { canonical: 'argue', aliases: ['row', 'quarrel'] },
     ]);
   });
 
-  it('parses the first synonym entry, mapping aliases back to "argue"', () => {
-    const synonyms = parseSynonyms(adventText);
-    expect(synonyms[0]).toEqual({
+  it('parses the first replacement entry, mapping aliases back to "argue"', () => {
+    const replacements = parseReplacements(adventText);
+    expect(replacements[0]).toEqual({
       canonical: 'argue',
       aliases: ['argued', 'argument', 'arguing', 'row', 'quarrel', 'quarrelled', 'quarrelling'],
     });

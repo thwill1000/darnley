@@ -13,7 +13,7 @@ import {
   parseLocations,
   parseAdditionalExits,
   parseObjects,
-  parseSynonyms,
+  parseReplacements,
   parseClues,
   parseQuestions,
   parseMessages,
@@ -50,7 +50,7 @@ const AUTOSAVE_KEY = 'darnley_autosave'; // separate from the darnley_save_N slo
  * the engine functions expect.
  *
  * @returns {Promise<{locations: object[], additionalExits: object[], objects: object[],
- *   synonyms: object[], clues: string[], questions: object[], messages: Map, msgFiles: Map}>}
+ *   replacements: object[], clues: string[], questions: object[], messages: Map, msgFiles: Map}>}
  */
 export async function loadGameData() {
   const adventText = await fetchText(DATA_DIR + 'advent.dat');
@@ -59,7 +59,7 @@ export async function loadGameData() {
   const locations = parseLocations(adventText);
   const additionalExits = parseAdditionalExits(adventText);
   const objects = parseObjects(adventText);
-  const synonyms = parseSynonyms(adventText);
+  const replacements = parseReplacements(adventText);
   const clues = parseClues(adventText);
   const questions = parseQuestions(adventText);
   const messages = parseMessages(messagesText);
@@ -77,7 +77,16 @@ export async function loadGameData() {
     }
   }
 
-  return { locations, additionalExits, objects, synonyms, clues, questions, messages, msgFiles };
+  return {
+    locations,
+    additionalExits,
+    objects,
+    replacements,
+    clues,
+    questions,
+    messages,
+    msgFiles,
+  };
 }
 
 async function fetchText(path) {

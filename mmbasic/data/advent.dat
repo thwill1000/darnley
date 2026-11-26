@@ -125,7 +125,7 @@ OBJ264_FOOTPRINTS_OH|Footprints|footprints bootprints shoeprints prints|LOC004_O
 OBJ265_FOOTPRINTS_MZ|Footprints|footprints bootprints shoeprints prints|LOC011_MAZE|0|100
 OBJ266_PERFUME|Perfume|perfume scent bottle|LOC027_MASTER_BEDROOM|1|1
 
-!synonyms
+!replacements
 argue|argued|argument|arguing|row|quarrel|quarrelled|quarrelling
 arthur|coniston|arthurs|conistons
 bagsby|bagsbys|norah|norahs

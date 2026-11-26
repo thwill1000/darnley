@@ -149,8 +149,8 @@ add_test("test_pmf_gvn_all_blocked")
 add_test("make_match_input$() with default bounds builds pipe-delimited string from full array", "test_mmi_gvn_default_bounds")
 add_test("make_match_input$() stops at the first empty element", "test_mmi_gvn_stops_at_empty")
 add_test("make_match_input$() lower-cases all words", "test_mmi_gvn_lowercase")
-add_test("make_match_input$() applies synonyms before building the string", "test_mmi_gvn_applies_synonyms")
-add_test("make_match_input$() mutates w$() in place via synonym substitution", "test_mmi_gvn_mutates_array")
+add_test("make_match_input$() applies replacements before building the string", "test_mmi_gvn_applies_repl")
+add_test("make_match_input$() mutates w$() in place via replacements substitution", "test_mmi_gvn_mutates_array")
 add_test("make_match_input$() restricts output to a given first%/last% range", "test_mmi_gvn_first_last")
 add_test("make_match_input$() with only first% given defaults last% to the array's upper bound", "test_mmi_gvn_first_only")
 add_test("make_match_input$() with only last% given defaults first% to the array's lower bound", "test_mmi_gvn_last_only")
@@ -1051,14 +1051,14 @@ Sub test_mmi_gvn_lowercase()
   assert_string_equals("|cat|dog|", make_match_input$(w$(), 0, 0))
 End Sub
 
-' Synonyms (from the loaded advent.dat synonym table) are applied before
+' Replacements (from the loaded advent.dat replacement table) are applied before
 ' the match string is built
-Sub test_mmi_gvn_applies_synonyms()
+Sub test_mmi_gvn_applies_repl()
   Local w$(4) Length MAX_WORD_LENGTH = ("milicent", "gramaphone", "", "")
   assert_string_equals("|millicent|gramophone|", make_match_input$(w$(), 0, 0))
 End Sub
 
-' apply_synonyms() mutates w$() directly, so the caller's array is left
+' apply_replacements() mutates w$() directly, so the caller's array is left
 ' holding the canonical form after the call, not just the returned string
 Sub test_mmi_gvn_mutates_array()
   Local w$(4) Length MAX_WORD_LENGTH = ("milicent", "", "", "")
@@ -1090,7 +1090,7 @@ Sub test_mmi_gvn_empty_array()
   assert_string_equals("|", make_match_input$(w$(), 0, 0))
 End Sub
 
-' A single-element array, including its synonym substitution
+' A single-element array, including its replacements substitution
 Sub test_mmi_gvn_single_word()
   Local w$(2) Length MAX_WORD_LENGTH = ("gramaphon", "")
   assert_string_equals("|gramophone|", make_match_input$(w$(), 0, 0))

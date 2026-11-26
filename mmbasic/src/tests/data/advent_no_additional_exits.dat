@@ -17,7 +17,7 @@ P_OTHER_SUSPECT|Other Suspect|other suspect|LOC002|2|100
 P_NO_WILDCARD|No Wildcard|no wildcard|LOC001|2|100
 P_TEMPLATE_SUSPECT|Template Suspect|template suspect|LOC004|2|100
 
-!synonyms
+!replacements
 millicent|milicent
 gramophone|gramaphone|gramaphon|
 sarah|sara

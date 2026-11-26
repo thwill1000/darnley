@@ -2,13 +2,13 @@ import { describe, it, expect, beforeAll } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { parseQuestions, parseSynonyms } from '../src/data.js';
+import { parseQuestions, parseReplacements } from '../src/data.js';
 import { splitWords, makeMatchInput } from '../src/words.js';
 import { answerMatches, SUSPECT_TAGS } from '../src/accuse.js';
 
 // Ports mmbasic/src/tests/tst_accusation.bas. Unlike accuse.spec.js
 // (synthetic questions, exercising the handleNewAccusation() flow) this runs
-// answerMatches() against the REAL '!questions' and '!synonyms' sections of
+// answerMatches() against the REAL '!questions' and '!replacements' sections of
 // web/data/advent.dat, to verify that natural-language answers to each
 // accusation question are accepted or rejected as a player would expect.
 
@@ -16,17 +16,17 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ADVENT_DAT_PATH = join(__dirname, '..', 'data', 'advent.dat');
 
 let questions;
-let synonyms;
+let replacements;
 
 beforeAll(() => {
   const text = readFileSync(ADVENT_DAT_PATH, 'utf8');
   questions = parseQuestions(text);
-  synonyms = parseSynonyms(text);
+  replacements = parseReplacements(text);
 });
 
 /** Is `answer` accepted for question number `q` (1-based)? */
 function ok(q, answer, accused = 'sarah') {
-  return answerMatches(splitWords(answer), accused, questions[q - 1].pattern, synonyms);
+  return answerMatches(splitWords(answer), accused, questions[q - 1].pattern, replacements);
 }
 
 function right(q, answers, accused) {
@@ -50,7 +50,7 @@ describe('answerMatches() against the real accusation questions', () => {
     wrong(1, ['sarah', 'arthur']);
   });
 
-  it("Q2 who dropped the handkerchief: Sarah, including the 'sara' synonym", () => {
+  it("Q2 who dropped the handkerchief: Sarah, including the 'sara' replacement", () => {
     right(2, ['sarah', 'Mrs Sarah Darnley', 'sara']);
     wrong(2, ['millicent', 'the maid']);
   });
@@ -141,10 +141,10 @@ describe('answerMatches() against the real accusation questions', () => {
   });
 });
 
-describe('question-word synonyms', () => {
+describe('question-word replacements', () => {
   // "who's" becomes "whos" once the apostrophe is stripped; it must map back
   // to the word the unhandled-question wildcard in the .msg files matches on.
-  const mapped = (input) => makeMatchInput(splitWords(input), synonyms);
+  const mapped = (input) => makeMatchInput(splitWords(input), replacements);
 
   it('"where\'s" maps to "where" (control: already works)', () => {
     expect(mapped("where's")).toBe('|where|');

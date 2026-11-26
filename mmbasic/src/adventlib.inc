@@ -656,7 +656,7 @@ End Function
 ' TODO: comment this
 Function make_match_input$(w$(), first%, last%)
   Local i%, s$ = "|"
-  words.replace_multiple(w$(), adv.synonyms$())
+  words.replace_multiple(w$(), adv.replacements$())
   For i% = Choice(first%, first%, Bound(w$(), 0)) To Choice(last%, last%, Bound(w$(), 1))
     If w$(i%) = "" Then Exit For
     Cat s$, w$(i%) + "|"

@@ -41,7 +41,8 @@
 '        +(aaa/jjj) -(bbb/kkk) +(ccc/ddd/lll) -(eee/fff/mmm) (ggg/nnn) (hhh/iii/ooo)
 '
 '      This lets a suspect recognise additional vocabulary for just their
-'      own responses without resorting to suspect-specific synonyms.
+'      own responses without resorting to suspect-specific replacement
+'      substitution.
 '
 ' An alternative in the suspect file COVERS an alternative in the template
 ' when:

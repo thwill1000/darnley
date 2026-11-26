@@ -61,7 +61,7 @@ describe('VERB_HANDLERS.cheat', () => {
       objects: [{ id: 'P_X', name: 'X', pattern: 'xavier', location: 'LOC002', isPerson: true }],
       msgFiles: new Map([['P_X', [{ pattern: '*', requires: [], provides: [], body: ['"hi"'] }]]]),
       messages: new Map(),
-      synonyms: [],
+      replacements: [],
     };
     const state = createState(1);
     state.room = 'LOC001';
@@ -132,7 +132,7 @@ describe('dumpText() / VERB_HANDLERS.dump', () => {
 
 describe('VERB_HANDLERS.examine', () => {
   it('applies the matched entry\'s !provides tokens to state.flags', () => {
-    const gameData = { objects: OBJECTS, messages: MESSAGES, synonyms: [], locations: LOCATIONS, additionalExits: [] };
+    const gameData = { objects: OBJECTS, messages: MESSAGES, replacements: [], locations: LOCATIONS, additionalExits: [] };
     const state = createState(1);
     state.room = 'LOC001';
 
@@ -143,7 +143,7 @@ describe('VERB_HANDLERS.examine', () => {
   });
 
   it('clears the current room\'s visited flag on bare EXAMINE (no noun)', () => {
-    const gameData = { objects: OBJECTS, messages: MESSAGES, synonyms: [], locations: LOCATIONS, additionalExits: [] };
+    const gameData = { objects: OBJECTS, messages: MESSAGES, replacements: [], locations: LOCATIONS, additionalExits: [] };
     const state = createState(1);
     state.room = 'LOC001';
     state.visited.add('LOC001');
@@ -211,7 +211,7 @@ describe('linkCommand()', () => {
       { id: 'OBJ1', pattern: 'french window', location: 'LOC_A' },
       { id: 'OBJ2', pattern: 'handkerchief', location: 'LOC_B' },
     ],
-    synonyms: [],
+    replacements: [],
   };
   const here = () => { const s = createState(1); s.room = 'LOC_A'; return s; };
 
@@ -235,7 +235,7 @@ describe('isSpeakable() / talkInput() / linkOptions()', () => {
       { id: 'P_REDVERS', pattern: 'redvers', location: 'LOC_A', isPerson: true },
       { id: 'OBJ_DOOR', pattern: 'green door', location: 'LOC_A', isPerson: false },
     ],
-    synonyms: [],
+    replacements: [],
   };
   const here = () => { const s = createState(1); s.room = 'LOC_A'; return s; };
 

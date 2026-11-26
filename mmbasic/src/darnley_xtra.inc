@@ -11,7 +11,7 @@ If sys.err$ <> "" Then Error sys.err$
 ' Does an answer satisfy an accusation question's pattern?
 '
 ' @param[in,out]  words$()  Answer, already split by split_words%().
-'                           Modified in place ("you" and synonym replacement).
+'                           Modified in place ("you" and replacements$).
 ' @param  accused$          Tag of the accused, e.g. "arthur".
 ' @param  pattern$          Everything after the first "|" of a !questions line.
 ' @return                   Number of matched words, 0 = incorrect.

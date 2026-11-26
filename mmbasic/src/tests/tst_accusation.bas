@@ -76,7 +76,7 @@ add_test("Q11 who the letter was for: Arthur, by name, alias or 'you'", "test_q1
 add_test("Q11 'you' is only correct when the accused is Arthur", "test_q11_you_per_suspect")
 add_test("Q12 who had the financial motive: Redvers, by either name", "test_q12_redvers")
 add_test("Q13 the motive: needs both Millicent and marriage/engagement", "test_q13_millicent_marriage")
-add_test("Synonyms map whos/whats/hows (and wheres) to who/what/how/where", "test_question_synonyms")
+add_test("Replacements map whos/whats/hows (and wheres) to who/what/how/where", "test_question_repl")
 add_test("An empty answer is wrong for every question", "test_empty_answer_wrong")
 
 run_tests()
@@ -252,7 +252,7 @@ End Sub
 
 ' split_words%() strips the apostrophe from "who's" etc., leaving "whos",
 ' which must be mapped back to the word the question wildcard matches on.
-Sub test_question_synonyms()
+Sub test_question_repl()
   Local w$(MAX_WORDS) Length MAX_WORD_LENGTH
   Local rc%
 

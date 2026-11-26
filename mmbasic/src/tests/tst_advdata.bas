@@ -59,12 +59,12 @@ End
 
 ' Re-initialises the game data from a fixture in the tests data directory.
 Sub init_exits_fixture(f$)
-  Erase rooms$(), additional_exits$(), objects$(), adv.synonyms$()
+  Erase rooms$(), additional_exits$(), objects$(), adv.replacements$()
   advdata.init(DATA_DIR$ + f$)
 End Sub
 
 Sub test_init_no_add_exits_section()
-  Erase rooms$(), additional_exits$(), objects$(), adv.synonyms$()
+  Erase rooms$(), additional_exits$(), objects$(), adv.replacements$()
   advdata.init(DATA_DIR$ + "advent_no_additional_exits.dat")
   ' No error raised is the assertion; additional_exits$() should be a
   ' harmless empty (2-element, all "") array.

@@ -27,7 +27,7 @@ Sub advdata.init(f$)
   read_rooms(f_$)
   read_additional_exits(f_$)
   read_objects(f_$)
-  read_synonyms(f_$)
+  read_replacements(f_$)
 End Sub
 
 ' Read the room data
@@ -247,16 +247,16 @@ Function message_exists%(tag$)
   Close #1
 End Function
 
-' Read the synonyms data
-Sub read_synonyms(f$)
-  Const num_synonyms% = count_advent_section%(f$, "!synonyms")
-  Dim adv.synonyms$(Max(num_synonyms%, 2)) Length 127
-  If read_advent_section%(f$, "!synonyms", adv.synonyms$()) <> num_synonyms% Then Error "Synonym data mismatch"
+' Read the replacements data
+Sub read_replacements(f$)
+  Const num_replacements% = count_advent_section%(f$, "!replacements")
+  Dim adv.replacements$(Max(num_replacements%, 2)) Length 127
+  If read_advent_section%(f$, "!replacements", adv.replacements$()) <> num_replacements% Then Error "Replacements data mismatch"
 
-  ' Process to add a pipe to the front and end of each synonyms list
+  ' Process to add a pipe to the front and end of each replacements list
   Local i%
-  For i% = Bound(adv.synonyms$(), 0) To Bound(adv.synonyms$(), 1)
-    adv.synonyms$(i%) = "|" + adv.synonyms$(i%) + "|"
+  For i% = Bound(adv.replacements$(), 0) To Bound(adv.replacements$(), 1)
+    adv.replacements$(i%) = "|" + adv.replacements$(i%) + "|"
   Next
 End Sub
 

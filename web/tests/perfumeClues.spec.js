@@ -2,7 +2,7 @@ import { describe, it, expect, beforeAll } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { parseClues, parseMessages, parseObjects, parseSynonyms } from '../src/data.js';
+import { parseClues, parseMessages, parseObjects, parseReplacements } from '../src/data.js';
 import { findMessageEntry, findObj } from '../src/engine.js';
 
 const DATA_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', 'data');
@@ -10,14 +10,14 @@ const BEDROOM = 'LOC027_MASTER_BEDROOM';
 
 let messages;
 let objects;
-let synonyms;
+let replacements;
 let clues;
 
 beforeAll(() => {
   const advent = readFileSync(join(DATA_DIR, 'advent.dat'), 'utf8');
   messages = parseMessages(readFileSync(join(DATA_DIR, 'messages.dat'), 'utf8'));
   objects = parseObjects(advent);
-  synonyms = parseSynonyms(advent);
+  replacements = parseReplacements(advent);
   clues = parseClues(advent);
 });
 
@@ -35,9 +35,9 @@ describe('perfume object', () => {
     expect(perfume.isPerson).toBe(false);
   });
 
-  it('is found by "perfume" and by its "scent" synonym', () => {
-    expect(findObj(objects, ['perfume'], synonyms, BEDROOM).id).toBe('OBJ266_PERFUME');
-    expect(findObj(objects, ['scent'], synonyms, BEDROOM).id).toBe('OBJ266_PERFUME');
+  it('is found by "perfume" and by its "scent" replacement', () => {
+    expect(findObj(objects, ['perfume'], replacements, BEDROOM).id).toBe('OBJ266_PERFUME');
+    expect(findObj(objects, ['scent'], replacements, BEDROOM).id).toBe('OBJ266_PERFUME');
   });
 
   it('is not one of the clues', () => {

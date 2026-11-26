@@ -43,20 +43,20 @@ export function pickReplyIndex(last, rng = Math.random) {
 /**
  * Scores one answer against a question pattern, mirroring the body of the
  * question loop in handle_new_accusation(): "you" becomes the accused's tag,
- * synonyms are applied, then findMatches() decides (any match = correct).
+ * replacements are applied, then findMatches() decides (any match = correct).
  * Note padding words are NOT removed here, as in the original.
  *
  * @returns {boolean}
  */
-export function answerMatches(words, accused, pattern, synonyms) {
+export function answerMatches(words, accused, pattern, replacements) {
   const replaced = words.map((w) => (w === 'you' ? accused : w));
-  return findMatches(pattern, makeMatchInput(replaced, synonyms)) > 0;
+  return findMatches(pattern, makeMatchInput(replaced, replacements)) > 0;
 }
 
 /**
  * Handles the "new_accuse" flag.
  *
- * @param {object} gameData  Needs clues, questions, messages, synonyms
+ * @param {object} gameData  Needs clues, questions, messages, replacements
  *                           (plus whatever VERB_HANDLERS.say needs).
  * @param {ReturnType<typeof import('./state.js').createState>} state
  * @param {import('./ui.js').UI} ui
@@ -64,7 +64,7 @@ export function answerMatches(words, accused, pattern, synonyms) {
  * @returns {Promise<{quit?: boolean, redescribe?: boolean}>}
  */
 export async function handleNewAccusation(gameData, state, ui, rng = Math.random) {
-  const { clues, questions, messages, synonyms } = gameData;
+  const { clues, questions, messages, replacements } = gameData;
   clearFlag(state, 'new_accuse');
 
   // Determine the accused.
@@ -122,7 +122,7 @@ export async function handleNewAccusation(gameData, state, ui, rng = Math.random
       break;
     }
 
-    if (answerMatches(words, accused, questions[q].pattern, synonyms)) correct++;
+    if (answerMatches(words, accused, questions[q].pattern, replacements)) correct++;
 
     if (q !== numQuestions - 1) {
       lastReply = pickReplyIndex(lastReply, rng);

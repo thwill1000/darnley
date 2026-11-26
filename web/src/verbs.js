@@ -38,10 +38,10 @@ export function linkCommand(gameData, state, text) {
   const words = removePadding(splitWords(text));
   const current = locationById(gameData.locations, state.room);
 
-  const obj = findObj(gameData.objects, words, gameData.synonyms, state.room);
+  const obj = findObj(gameData.objects, words, gameData.replacements, state.room);
   if (obj && obj.location === state.room) return 'examine ' + text;
 
-  const exit = findExit(current, gameData.locations, gameData.additionalExits, ['go', ...words], gameData.synonyms);
+  const exit = findExit(current, gameData.locations, gameData.additionalExits, ['go', ...words], gameData.replacements);
   if (exit !== null) return 'go ' + text;
 
   return 'examine ' + text;
@@ -126,7 +126,7 @@ export const VERB_HANDLERS = {
 
   go(gameData, state, words) {
     const current = locationById(gameData.locations, state.room);
-    const result = verbGo(current, gameData.locations, gameData.additionalExits, words, gameData.synonyms);
+    const result = verbGo(current, gameData.locations, gameData.additionalExits, words, gameData.replacements);
     if (result.success) {
       state.room = result.room;
       return { redescribe: true };
@@ -143,7 +143,7 @@ export const VERB_HANDLERS = {
       gameData.objects,
       gameData.messages,
       words,
-      gameData.synonyms,
+      gameData.replacements,
       current,
       gameData.locations,
       gameData.additionalExits,
@@ -211,7 +211,7 @@ export const VERB_HANDLERS = {
       gameData.msgFiles,
       gameData.messages,
       words,
-      gameData.synonyms,
+      gameData.replacements,
       state.room,
       state.flags,
       state.cheat,
@@ -225,7 +225,7 @@ export const VERB_HANDLERS = {
 };
 
 export function isSpeakable(gameData, state, text) {
-  const obj = findObj(gameData.objects, removePadding(splitWords(text)), gameData.synonyms, state.room);
+  const obj = findObj(gameData.objects, removePadding(splitWords(text)), gameData.replacements, state.room);
   return !!obj && obj.isPerson && obj.location === state.room;
 }
 

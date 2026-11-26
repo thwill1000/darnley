@@ -126,19 +126,17 @@ export function parseObjects(text) {
 }
 
 /**
- * Parses the "!synonyms" section of advent.dat.
+ * Parses the "!replacements" section of advent.dat.
  *
- * Each line is a "|"-separated list of words that should all be treated as
- * equivalent to its first word (the canonical form). Each line is returned
- * as a separate entry in file order.
- * See apply_synonyms() in mmbasic/src/adventlib.inc, which resolves aliases
- * back to their canonical form.
+ * Each line is a "|"-separated list of words or phrases that should all be
+ * treated as equivalent to its first word or phrase (the canonical form).
+ * Each line is returned as a separate entry in file order.
  *
  * @param {string} text Full contents of advent.dat.
  * @returns {{canonical: string, aliases: string[]}[]}
  */
-export function parseSynonyms(text) {
-  return extractSection(text, '!synonyms').map((line) => {
+export function parseReplacements(text) {
+  return extractSection(text, '!replacements').map((line) => {
     const [canonical, ...aliases] = line.split('|');
     return { canonical, aliases };
   });

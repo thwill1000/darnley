@@ -1,6 +1,6 @@
 // web/ask-questions.mjs
 import { readFileSync } from 'node:fs';
-import { parseObjects, parseSynonyms, parseMessages, parseMsgFile, parseClues, renderBody } from './src/data.js';
+import { parseObjects, parseReplacements, parseMessages, parseMsgFile, parseClues, renderBody } from './src/data.js';
 import { parseCommand } from './src/words.js';
 import { verbSay } from './src/engine.js';
 
@@ -10,7 +10,7 @@ const read = (f) => readFileSync(new URL('./data/' + f, import.meta.url), 'utf8'
 
 const advent = read('advent.dat');
 const objects = parseObjects(advent);
-const synonyms = parseSynonyms(advent);
+const replacements = parseReplacements(advent);
 const clues = parseClues(advent);
 const messages = parseMessages(read('messages.dat'));
 
@@ -43,7 +43,7 @@ for (const q of questions) {
   for (const id of SUSPECTS) {
     const person = { ...objects.find((o) => o.id === id), location: ROOM };
     const flags = new Set(withClues ? [...clues, 'x_perfume', 'x_dressing_table', 'x_suit'] : []);
-    const r = verbSay([person], msgFiles, messages, parsed.words, synonyms, ROOM, flags);
+    const r = verbSay([person], msgFiles, messages, parsed.words, replacements, ROOM, flags);
     const key = label(r.entry);
     if (!groups.has(key)) groups.set(key, { who: [], text: renderBody(r.entry.body) });
     groups.get(key).who.push(short(id));

@@ -71,13 +71,13 @@ export function removePadding(words) {
 /**
  * Resolves aliases against the delimited word sequence, replacing an alias
  * (which may contain multiple space-separated words) with its canonical
- * form. Mirrors apply_synonyms() in mmbasic/src/adventlib.inc.
+ * form.
  *
  * Matching is case-sensitive, matching the MMBasic original (which
  * compares words$() - already lower-cased by split_words%() - directly
- * against the synonym data, itself stored lower-case, with no further
+ * against the replacements data, itself stored lower-case, with no further
  * case-folding). If a word matches more than one entry, the FIRST
- * matching entry wins (lowest index in synonymEntries), same as the
+ * matching entry wins (lowest index in replacements), same as the
  * MMBasic inner-loop-exits-early behaviour. A word matching only a
  * substring of an alias (not the whole token) must not match - callers
  * pass whole tokens, so this falls out naturally from exact comparison.
@@ -88,16 +88,16 @@ export function removePadding(words) {
  * produced by splitWords() never contain "" and so are unaffected.
  *
  * @param {string[]} words
- * @param {{canonical: string, aliases: string[]}[]} synonymEntries
+ * @param {{canonical: string, aliases: string[]}[]} replacements
  * @returns {string[]} A new array; words is not mutated.
  */
-export function applySynonyms(words, synonymEntries) {
+export function applyReplacements(words, replacements) {
   const end = words.indexOf('');
   const meaningfulWords = words.slice(0, end === -1 ? words.length : end);
   if (meaningfulWords.length === 0) return [];
 
   let delimitedWords = ` ${meaningfulWords.join(' ')} `;
-  for (const entry of synonymEntries) {
+  for (const entry of replacements) {
     for (const alias of entry.aliases) {
       delimitedWords = delimitedWords.replaceAll(
         ` ${alias} `,
@@ -110,12 +110,11 @@ export function applySynonyms(words, synonymEntries) {
 
 /**
  * Builds a pipe-delimited, lower-case match-input string from a range of
- * words, applying synonym resolution first. Mirrors make_match_input$()
- * in mmbasic/src/adventlib.inc - the string form findMatches() (added in
- * step 8) expects, e.g. "|cat|dog|bird|".
+ * words, applying replacement resolution first - the string form findMatches()
+ * expects, e.g. "|cat|dog|bird|".
  *
  * @param {string[]} words
- * @param {{canonical: string, aliases: string[]}[]} synonymEntries
+ * @param {{canonical: string, aliases: string[]}[]} replacements
  * @param {number} [startIndex]  First index (inclusive) to include;
  *                               defaults to 0 (start of the array).
  * @param {number} [endIndex]    Last index (inclusive) to include;
@@ -123,8 +122,8 @@ export function applySynonyms(words, synonymEntries) {
  *                               array).
  * @returns {string} e.g. "|cat|dog|", or "|" for an empty range.
  */
-export function makeMatchInput(words, synonymEntries, startIndex, endIndex) {
-  const resolved = applySynonyms(words, synonymEntries);
+export function makeMatchInput(words, replacements, startIndex, endIndex) {
+  const resolved = applyReplacements(words, replacements);
   const start = startIndex ?? 0;
   const end = endIndex ?? words.length - 1;
 

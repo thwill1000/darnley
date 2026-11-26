@@ -27,7 +27,7 @@ const gameData = {
   clues: CLUES,
   questions,
   messages,
-  synonyms: [],
+  replacements: [],
   objects: [
     { id: 'P_ARTHUR', name: 'Arthur', pattern: 'arthur', location: 'LOC001', isPerson: true },
     { id: 'P_MELLORS', name: 'Mellors', pattern: 'mellors', location: 'LOC001', isPerson: true },

@@ -2,14 +2,14 @@ import { describe, it, expect, beforeAll, beforeEach } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { parseSynonyms, parseMessages, parseMsgFile, renderBody } from '../src/data.js';
+import { parseReplacments, parseMessages, parseMsgFile, renderBody, parseReplacements } from '../src/data.js';
 import { parseCommand } from '../src/words.js';
 import { verbSay } from '../src/engine.js';
 
 // Ports mmbasic/src/tests/tst_verb_say_responses.bas (step 30 of
 // web/docs/2026-09-23-web-port-plan-steps.md) - the acceptance gate for
 // dialogue correctness. Unlike verbSay.spec.js (fixture-based) this runs
-// against the REAL data in web/data/: advent.dat's synonyms,
+// against the REAL data in web/data/: advent.dat's replacements,
 // p_template_suspect.msg, and the real per-suspect .msg files.
 //
 // Structure mirrors the MMBasic original: a single person (the "template
@@ -42,7 +42,7 @@ const SUSPECTS = {
   sarah: { id: 'P_SARAH_DARNLEY', name: 'Sarah Darnley', pattern: 'sarah' },
 };
 
-let synonyms;
+let replacements;
 let messages;
 let msgFiles;
 
@@ -50,7 +50,7 @@ let objects;
 let flags;
 
 beforeAll(() => {
-  synonyms = parseSynonyms(readFileSync(join(DATA_DIR, 'advent.dat'), 'utf8'));
+  replacements = parseReplacements(readFileSync(join(DATA_DIR, 'advent.dat'), 'utf8'));
   messages = parseMessages(readFileSync(join(DATA_DIR, 'messages.dat'), 'utf8'));
   msgFiles = new Map();
   for (const s of Object.values(SUSPECTS)) {
@@ -79,7 +79,7 @@ function resetFlags(...tokens) {
 function respond(cmd) {
   const parsed = parseCommand('say ' + cmd);
   expect(parsed.failed).toBe(false);
-  const result = verbSay(objects, msgFiles, messages, parsed.words, synonyms, ROOM, flags);
+  const result = verbSay(objects, msgFiles, messages, parsed.words, replacements, ROOM, flags);
   expect(result.success).toBe(true);
   return renderBody(result.entry.body);
 }
@@ -349,7 +349,7 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     all('gramophone response', [
       'ask about the gramophone', 'what about the gramophone', 'tell me about the gramophone',
       'was anyone playing the gramophone', 'Tell me about the gramophone in the morning room',
-      // Misspelling of "gramophone" as "gramaphone" (via synonyms)
+      // Misspelling of "gramophone" as "gramaphone" (via replacements)
       'tell me about the gramaphone', 'gramaphone', 'that gramaphone record',
     ]);
   });

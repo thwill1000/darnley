@@ -84,7 +84,7 @@ add_test("words.replace_multiple() replaces multiple words against different ent
 add_test("words.replace_multiple() prefers the first matching entry when several match", "test_repm_gvn_first_wins")
 add_test("words.replace_multiple() matching is case-sensitive", "test_repm_gvn_case_sensitive")
 add_test("words.replace_multiple() does not match an unbounded substring", "test_repm_gvn_no_partial")
-add_test("words.replace_multiple() is a no-op when synonyms$() is empty", "test_repm_gvn_empty_synonyms")
+add_test("words.replace_multiple() is a no-op when replacments$() is empty", "test_repm_gvn_empty_repl")
 add_test("words.replace_multiple() stops processing on an empty word element", "test_repm_gvn_empty_word")
 add_test("words.replace_multiple() preserves word order and array positions", "test_repm_gvn_preserves_order")
 add_test("words.replace_multiple() handles a single-element words$() array", "test_repm_gvn_single_word")
@@ -628,7 +628,7 @@ Sub test_repm_gvn_mixed_words()
   assert_string_equals("bar", words$(3))
 End Sub
 
-' Different words in the array can each match a different synonym entry
+' Different words in the array can each match a different replacements entry
 Sub test_repm_gvn_multi_entries()
   Local words$(4) Length MAX_WORD_LENGTH = ("pear", "train", "dog", "")
   Local replacements$(3) = ("|apple|banana|pear|", "|car|bus|train|", "|cat|dog|mouse|")
@@ -665,7 +665,7 @@ Sub test_repm_gvn_no_partial()
 End Sub
 
 ' With every replacements$() entry empty, words.replace_multiple() is a complete no-op
-Sub test_repm_gvn_empty_synonyms()
+Sub test_repm_gvn_empty_repl()
   Local words$(4) Length MAX_WORD_LENGTH = ("banana", "train", "", "")
   Local replacements$(4) = ("", "", "", "")
   words.replace_multiple(words$(), replacements$())
@@ -673,7 +673,7 @@ Sub test_repm_gvn_empty_synonyms()
   assert_string_equals("train", words$(2))
 End Sub
 
-' An empty element in words$() halt the synonym processing
+' An empty element in words$() halt the replacements processing
 Sub test_repm_gvn_empty_word()
   Local words$(4) Length MAX_WORD_LENGTH = ("banana", "", "train", "")
   Local replacements$(2) = ("|apple|banana|pear|", "|car|banana|train|")

@@ -14,7 +14,7 @@
 import { markupToHtml } from './console.js';
 import { renderBody } from './data.js';
 import { findMatches } from './match.js';
-import { applySynonyms, makeMatchInput } from './words.js';
+import { makeMatchInput } from './words.js';
 
 /**
  * Finds the best matching exit from currentLocation for the given words.
@@ -24,7 +24,7 @@ import { applySynonyms, makeMatchInput } from './words.js';
  * @param {{from: string, pattern: string, to: string}[]} additionalExits
  * @param {string[]} words           Full word array for the command,
  *                                   including the verb at index 0.
- * @param {{canonical: string, aliases: string[]}[]} synonymEntries
+ * @param {{canonical: string, aliases: string[]}[]} replacements
  * @param {number} [startIndex]      First word index to match against;
  *                                   defaults to 1 (skips the verb word,
  *                                   mirroring make_match_input$(words$(), 2)
@@ -33,9 +33,9 @@ import { applySynonyms, makeMatchInput } from './words.js';
  *                                   The best matching exit,
  *                                   or null if nothing matched.
  */
-export function findExit(currentLocation, locations, additionalExits, words, synonymEntries, startIndex = 1) {
+export function findExit(currentLocation, locations, additionalExits, words, replacements, startIndex = 1) {
   const exits = getExits(currentLocation, locations, additionalExits);
-  const matchIn = makeMatchInput(words, synonymEntries, startIndex);
+  const matchIn = makeMatchInput(words, replacements, startIndex);
 
   let best = 0;
   let result = null;
@@ -64,7 +64,7 @@ export function findExit(currentLocation, locations, additionalExits, words, syn
  *
  * @param {{id: string, pattern: string, location: string}[]} objects
  * @param {string[]} words           Full word array for the command.
- * @param {{canonical: string, aliases: string[]}[]} synonymEntries
+ * @param {{canonical: string, aliases: string[]}[]} replacements
  * @param {string} currentLocationId Id of the current room, used to
  *                                   break ties.
  * @param {number} [startIndex]      First word index to match against;
@@ -75,8 +75,8 @@ export function findExit(currentLocation, locations, additionalExits, words, syn
  *                                   The best matching object, or null if
  *                                   nothing matched.
  */
-export function findObj(objects, words, synonymEntries, currentLocationId, startIndex, endIndex) {
-  const matchIn = makeMatchInput(words, synonymEntries, startIndex, endIndex);
+export function findObj(objects, words, replacements, currentLocationId, startIndex, endIndex) {
+  const matchIn = makeMatchInput(words, replacements, startIndex, endIndex);
 
   let best = 0;
   let bestObj = null;
@@ -226,7 +226,7 @@ function findPersonInRoom(objects, locationId) {
  *
  * @param {object[]} objects
  * @param {string[]} words
- * @param {{canonical: string, aliases: string[]}[]} synonymEntries
+ * @param {{canonical: string, aliases: string[]}[]} replacements
  * @param {number} startIndex
  * @param {number} endIndex
  * @param {string} currentLocationId
@@ -234,8 +234,8 @@ function findPersonInRoom(objects, locationId) {
  *                         check is bypassed.
  * @returns {{object: object|null, failMessage?: string}}
  */
-function resolveSayTarget(objects, words, synonymEntries, startIndex, endIndex, currentLocationId, cheat) {
-  const target = findObj(objects, words, synonymEntries, currentLocationId, startIndex, endIndex);
+function resolveSayTarget(objects, words, replacements, startIndex, endIndex, currentLocationId, cheat) {
+  const target = findObj(objects, words, replacements, currentLocationId, startIndex, endIndex);
   if (!target) return { object: null };
 
   if (!cheat && target.location !== currentLocationId) {
@@ -268,12 +268,12 @@ function resolveSayTarget(objects, words, synonymEntries, startIndex, endIndex, 
  *
  * @param {{pattern: string, requires: string[], provides: string[], body: string[]}[]} entries
  * @param {string[]} subjectWords
- * @param {{canonical: string, aliases: string[]}[]} synonymEntries
+ * @param {{canonical: string, aliases: string[]}[]} replacements
  * @param {Set<string>} flags
  * @returns {{pattern: string, requires: string[], provides: string[], body: string[]}|null}
  */
-export function findResponse(entries, subjectWords, synonymEntries, flags) {
-  const matchIn = makeMatchInput(subjectWords, synonymEntries);
+export function findResponse(entries, subjectWords, replacements, flags) {
+  const matchIn = makeMatchInput(subjectWords, replacements);
   let best = 0;
   let result = null;
 
@@ -305,13 +305,13 @@ export function findResponse(entries, subjectWords, synonymEntries, flags) {
  * @param {{id: string, pattern: string, exits: string[]}[]} locations
  * @param {{from: string, pattern: string, to: string}[]} additionalExits
  * @param {string[]} words
- * @param {{canonical: string, aliases: string[]}[]} synonymEntries
+ * @param {{canonical: string, aliases: string[]}[]} replacements
  * @returns {{success: boolean, room: string, blocked?: string, html?: string}}
  *          On success, room is the id of the new location. On failure,
  *          room is unchanged (currentLocation.id) and blocked/html explains why.
  */
-export function verbGo(currentLocation, locations, additionalExits, words, synonymEntries) {
-  const exit = findExit(currentLocation, locations, additionalExits, words, synonymEntries);
+export function verbGo(currentLocation, locations, additionalExits, words, replacements) {
+  const exit = findExit(currentLocation, locations, additionalExits, words, replacements);
   if (exit !== null) {
     if (exit.blocked) {
       return {
@@ -412,7 +412,7 @@ export function getExits(location, locations, additionalExits) {
  * @param {{id: string, pattern: string, location: string}[]} objects
  * @param {Map<string, {requires: string[], provides: string[], body: string[]}[]>} messages
  * @param {string[]} words
- * @param {{canonical: string, aliases: string[]}[]} synonymEntries
+ * @param {{canonical: string, aliases: string[]}[]} replacements
  * @param {{id: string, exits: string[]}} currentLocation
  * @param {{id: string, pattern: string, exits: string[]}[]} locations
  * @param {{from: string, pattern: string, to: string}[]} additionalExits
@@ -421,14 +421,14 @@ export function getExits(location, locations, additionalExits) {
  *          |{success: true, object: object, entry: object}
  *          |{success: false, message: string}}
  */
-export function verbExamine(objects, messages, words, synonymEntries, currentLocation, locations, additionalExits, flags) {
+export function verbExamine(objects, messages, words, replacements, currentLocation, locations, additionalExits, flags) {
   // EXAMINE on its own redescribes the current location
   const noun = words[1];
   if (!noun) {
     return { redescribe: true, unmarkVisited: true };
   }
 
-  const obj = findObj(objects, words, synonymEntries, currentLocation.id);
+  const obj = findObj(objects, words, replacements, currentLocation.id);
   if (obj && obj.location === currentLocation.id) {
     const entry = findMessageEntry(messages, obj.id, flags);
     if (entry) {
@@ -437,7 +437,7 @@ export function verbExamine(objects, messages, words, synonymEntries, currentLoc
   }
 
   // If we match an exit rather than an object then suggest the GO command.
-  const exit = findExit(currentLocation, locations, additionalExits, words, synonymEntries);
+  const exit = findExit(currentLocation, locations, additionalExits, words, replacements);
   if (exit !== null) {
     const target = words.slice(1).join(' ').toUpperCase();
     return { success: false, message: `Try \`GO ${target}\`.` };
@@ -489,20 +489,20 @@ export function verbExamine(objects, messages, words, synonymEntries, currentLoc
  *                                            fallback when no .msg file
  *                                            exists for the target.
  * @param {string[]} words
- * @param {{canonical: string, aliases: string[]}[]} synonymEntries
+ * @param {{canonical: string, aliases: string[]}[]} replacements
  * @param {string} currentLocationId
  * @param {Set<string>} flags
  * @param {boolean} [cheat]
  * @returns {{success: true|false, object: object, entry: object}
  */
-export function verbSay(objects, msgFiles, messages, words, synonymEntries, currentLocationId, flags, cheat = false) {
+export function verbSay(objects, msgFiles, messages, words, replacements, currentLocationId, flags, cheat = false) {
   let targetObj = null;
   let subjectStart = 0;
 
   // Extract target of the conversation.
   const commaIndex = words.indexOf(',');
   if (commaIndex !== -1) {
-    const result = resolveSayTarget(objects, words, synonymEntries, 1, commaIndex - 1, currentLocationId, cheat);
+    const result = resolveSayTarget(objects, words, replacements, 1, commaIndex - 1, currentLocationId, cheat);
     if (result.failMessage) {
       return { success: false, entry: { body: [result.failMessage] } };
     }
@@ -534,7 +534,7 @@ export function verbSay(objects, msgFiles, messages, words, synonymEntries, curr
   }
   const entries = msgFiles.get(targetObj.id);
   const response = entries
-    ? findResponse(entries, subjectWords, synonymEntries, flags)
+    ? findResponse(entries, subjectWords, replacements, flags)
     : findMessageEntry(messages, `${targetObj.id}_SAY_RESPONSE`, flags);
 
   if (!response) {

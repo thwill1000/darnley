@@ -7,7 +7,7 @@ const ADVENT_DAT = `!locations
 LOC017_DRIVE|The Drive|drive|1|LOC017_DRIVE
 !additional_exits
 !objects
-!synonyms
+!replacements
 !questions
 !clues
 `;
