@@ -62,19 +62,6 @@ add_test("test_unique_words_gvn_dupe")
 add_test("test_unique_words_gvn_case")
 add_test("test_unique_words_gvn_mult_dupes")
 add_test("test_unique_words_gvn_adjacent")
-add_test("words.replace_multiple() leaves a word with no matching entry unchanged", "test_repm_gvn_no_match")
-add_test("words.replace_multiple() replaces an alias with its canonical form", "test_repm_gvn_alias_replaced")
-add_test("words.replace_multiple() leaves a word already in canonical form unchanged", "test_repm_gvn_canonical_stays")
-add_test("words.replace_multiple() matches a third alias token, not just the first", "test_repm_gvn_third_token")
-add_test("words.replace_multiple() only replaces the matching word among several", "test_repm_gvn_mixed_words")
-add_test("words.replace_multiple() replaces multiple words against different entries", "test_repm_gvn_multi_entries")
-add_test("words.replace_multiple() prefers the first matching entry when several match", "test_repm_gvn_first_wins")
-add_test("words.replace_multiple() matching is case-sensitive", "test_repm_gvn_case_sensitive")
-add_test("words.replace_multiple() does not match an unbounded substring", "test_repm_gvn_no_partial")
-add_test("words.replace_multiple() is a no-op when replacments$() is empty", "test_repm_gvn_empty_repl")
-add_test("words.replace_multiple() stops processing on an empty word element", "test_repm_gvn_empty_word")
-add_test("words.replace_multiple() preserves word order and array positions", "test_repm_gvn_preserves_order")
-add_test("words.replace_multiple() handles a single-element words$() array", "test_repm_gvn_single_word")
 
 add_test("words.join$() with a single word returns it unchanged", "test_wj_single")
 add_test("words.join$() joins multiple words with the delimiter", "test_wj_multiple")
@@ -112,6 +99,19 @@ add_test("words.replace_phrase$() on an empty string returns an empty string", "
 add_test("words.replace_phrase$() raises an error for an empty phrase$", "test_rp_empty_phrase")
 add_test("words.replace_phrase$() raises an error if the result exceeds 255 characters", "test_rp_too_long")
 
+add_test("words.replace_multiple() leaves a word with no matching entry unchanged", "test_repm_gvn_no_match")
+add_test("words.replace_multiple() replaces an alias with its canonical form", "test_repm_gvn_alias_replaced")
+add_test("words.replace_multiple() leaves a word already in canonical form unchanged", "test_repm_gvn_canonical_stays")
+add_test("words.replace_multiple() matches a third alias token, not just the first", "test_repm_gvn_third_token")
+add_test("words.replace_multiple() only replaces the matching word among several", "test_repm_gvn_mixed_words")
+add_test("words.replace_multiple() replaces multiple words against different entries", "test_repm_gvn_multi_entries")
+add_test("words.replace_multiple() prefers the first matching entry when several match", "test_repm_gvn_first_wins")
+add_test("words.replace_multiple() matching is case-sensitive", "test_repm_gvn_case_sensitive")
+add_test("words.replace_multiple() does not match an unbounded substring", "test_repm_gvn_no_partial")
+add_test("words.replace_multiple() is a no-op when replacments$() is empty", "test_repm_gvn_empty_repl")
+add_test("words.replace_multiple() stops processing on an empty word element", "test_repm_gvn_empty_word")
+add_test("words.replace_multiple() preserves word order and array positions", "test_repm_gvn_preserves_order")
+add_test("words.replace_multiple() handles a single-element words$() array", "test_repm_gvn_single_word")
 add_test("words.replace_multiple() replaces adjacent occurrences of an alias", "test_repm_gvn_adjacent")
 add_test("words.replace_multiple() replaces a multi-word alias", "test_repm_gvn_phrase_alias")
 add_test("words.replace_multiple() replaces a multi-word alias with a single word", "test_repm_gvn_fewer_words")
@@ -505,162 +505,6 @@ Sub test_unique_words_gvn_adjacent()
   assert_string_equals("", words$(4))
 End Sub
 
-' words.replace_multiple() --------------------------------------------------------
-
-' A word with no matching entry anywhere in replacements$() is left unchanged
-Sub test_repm_gvn_no_match()
-  Local words$(4) Length MAX_WORD_LENGTH = ("hello", "", "", "")
-  Local replacements$(2) = ("|apple|banana|pear|", "|car|bus|train|")
-  words.replace_multiple(words$(), replacements$())
-  assert_string_equals("hello", words$(1))
-End Sub
-
-' A word matching an alias token in an entry is replaced with the entry's
-' canonical (first real / second field) word
-Sub test_repm_gvn_alias_replaced()
-  Local words$(4) Length MAX_WORD_LENGTH = ("banana", "", "", "")
-  Local replacements$(2) = ("|apple|banana|pear|", "|car|bus|train|")
-  words.replace_multiple(words$(), replacements$())
-  assert_string_equals("apple", words$(1))
-End Sub
-
-' A word already equal to the canonical form still matches (it appears
-' bordered by pipes in the entry too) but ends up unchanged, since it is
-' replaced with itself
-Sub test_repm_gvn_canonical_stays()
-  Local words$(4) Length MAX_WORD_LENGTH = ("apple", "", "", "")
-  Local replacements$(2) = ("|apple|banana|pear|", "|car|bus|train|")
-  words.replace_multiple(words$(), replacements$())
-  assert_string_equals("apple", words$(1))
-End Sub
-
-' A word matching a THIRD (or later) alias token in an entry is still
-' converted to the entry's canonical (second) field, not left alone
-Sub test_repm_gvn_third_token()
-  Local words$(4) Length MAX_WORD_LENGTH = ("pear", "", "", "")
-  Local replacements$(2) = ("|apple|banana|pear|", "|car|bus|train|")
-  words.replace_multiple(words$(), replacements$())
-  assert_string_equals("apple", words$(1))
-End Sub
-
-' Only the word(s) that actually match an entry are changed; unrelated
-' words in the same array are left alone
-Sub test_repm_gvn_mixed_words()
-  Local words$(4) Length MAX_WORD_LENGTH = ("foo", "pear", "bar", "")
-  Local replacements$(2) = ("|apple|banana|pear|", "|car|bus|train|")
-  words.replace_multiple(words$(), replacements$())
-  assert_string_equals("foo", words$(1))
-  assert_string_equals("apple", words$(2))
-  assert_string_equals("bar", words$(3))
-End Sub
-
-' Different words in the array can each match a different replacements entry
-Sub test_repm_gvn_multi_entries()
-  Local words$(4) Length MAX_WORD_LENGTH = ("pear", "train", "dog", "")
-  Local replacements$(3) = ("|apple|banana|pear|", "|car|bus|train|", "|cat|dog|mouse|")
-  words.replace_multiple(words$(), replacements$())
-  assert_string_equals("apple", words$(1))
-  assert_string_equals("car", words$(2))
-  assert_string_equals("cat", words$(3))
-End Sub
-
-' If a word matches more than one entry, the FIRST matching entry (lowest
-' index in replacements$()) wins, since the inner loop exits early
-Sub test_repm_gvn_first_wins()
-  Local words$(4) Length MAX_WORD_LENGTH = ("banana", "", "", "")
-  Local replacements$(2) = ("|apple|banana|pear|", "|car|banana|train|")
-  words.replace_multiple(words$(), replacements$())
-  assert_string_equals("apple", words$(1))
-End Sub
-
-' Matching is case-sensitive - a differently-cased word is not recognised
-Sub test_repm_gvn_case_sensitive()
-  Local words$(4) Length MAX_WORD_LENGTH = ("BANANA", "", "", "")
-  Local replacements$(2) = ("|apple|banana|pear|", "|car|banana|train|")
-  words.replace_multiple(words$(), replacements$())
-  assert_string_equals("BANANA", words$(1))
-End Sub
-
-' A word that is only a substring of an replacement token (not the whole token,
-' bordered by pipes) must not match
-Sub test_repm_gvn_no_partial()
-  Local words$(4) Length MAX_WORD_LENGTH = ("ban", "", "", "")
-  Local replacements$(2) = ("|apple|banana|pear|", "|car|banana|train|")
-  words.replace_multiple(words$(), replacements$())
-  assert_string_equals("ban", words$(1))
-End Sub
-
-' With every replacements$() entry empty, words.replace_multiple() is a complete no-op
-Sub test_repm_gvn_empty_repl()
-  Local words$(4) Length MAX_WORD_LENGTH = ("banana", "train", "", "")
-  Local replacements$(4) = ("", "", "", "")
-  words.replace_multiple(words$(), replacements$())
-  assert_string_equals("banana", words$(1))
-  assert_string_equals("train", words$(2))
-End Sub
-
-' An empty element in words$() halt the replacements processing
-Sub test_repm_gvn_empty_word()
-  Local words$(4) Length MAX_WORD_LENGTH = ("banana", "", "train", "")
-  Local replacements$(2) = ("|apple|banana|pear|", "|car|banana|train|")
-  words.replace_multiple(words$(), replacements$())
-  assert_string_equals("apple", words$(1))
-  assert_string_equals("", words$(2))
-  assert_string_equals("", words$(3)) ' cleared
-End Sub
-
-' Word order and array positions are preserved - only values change in place
-Sub test_repm_gvn_preserves_order()
-  Local words$(5) Length MAX_WORD_LENGTH = ("train", "pear", "banana", "dog", "")
-  Local replacements$(3) = ("|apple|banana|pear|", "|car|bus|train|", "|cat|dog|mouse|")
-  words.replace_multiple(words$(), replacements$())
-  assert_string_equals("car", words$(1))
-  assert_string_equals("apple", words$(2))
-  assert_string_equals("apple", words$(3))
-  assert_string_equals("cat", words$(4))
-  assert_string_equals("", words$(5))
-End Sub
-
-' A words$() array with a single populated element still works correctly
-Sub test_repm_gvn_single_word()
-  Local words$(2) Length MAX_WORD_LENGTH = ("pear", "")
-  Local replacements$(2) = ("|apple|banana|pear|", "|car|banana|train|")
-  words.replace_multiple(words$(), replacements$())
-  assert_string_equals("apple", words$(1))
-End Sub
-
-' Adjacent occurrences of the same alias are all replaced
-Sub test_repm_gvn_adjacent()
-  Local words$(4) Length MAX_WORD_LENGTH = ("a", "a", "a", "")
-  Local replacements$(2) = ("|b|a|", "|c|d|")
-  words.replace_multiple(words$(), replacements$())
-  assert_string_equals("b", words$(1))
-  assert_string_equals("b", words$(2))
-  assert_string_equals("b", words$(3))
-  assert_string_equals("", words$(4))
-End Sub
-
-' An alias may be a phrase of several words
-Sub test_repm_gvn_phrase_alias()
-  Local words$(5) Length MAX_WORD_LENGTH = ("ask", "mr", "darnley", "please", "")
-  Local replacements$(2) = ("|colonel|mr darnley|", "|x|y|")
-  words.replace_multiple(words$(), replacements$())
-  assert_string_equals("ask", words$(1))
-  assert_string_equals("colonel", words$(2))
-  assert_string_equals("please", words$(3))
-  assert_string_equals("", words$(4))
-  assert_string_equals("", words$(5))
-End Sub
-
-' Replacing a phrase with one word shuffles later words down and clears the tail
-Sub test_repm_gvn_fewer_words()
-  Local words$(4) Length MAX_WORD_LENGTH = ("mr", "darnley", "", "")
-  Local replacements$(2) = ("|colonel|mr darnley|", "|x|y|")
-  words.replace_multiple(words$(), replacements$())
-  assert_string_equals("colonel", words$(1))
-  assert_string_equals("", words$(2))
-End Sub
-
 ' words.join$() ---------------------------------------------------------
 
 Sub test_wj_single()
@@ -879,6 +723,162 @@ Sub test_rp_too_long()
   r$ = words.replace_phrase$(s$, "a", "bb")
   assert_raw_error("String too long")
   On Error Abort
+End Sub
+
+' words.replace_multiple() --------------------------------------------------------
+
+' A word with no matching entry anywhere in replacements$() is left unchanged
+Sub test_repm_gvn_no_match()
+  Local words$(4) Length MAX_WORD_LENGTH = ("hello", "", "", "")
+  Local replacements$(2) = ("|apple|banana|pear|", "|car|bus|train|")
+  words.replace_multiple(words$(), replacements$())
+  assert_string_equals("hello", words$(1))
+End Sub
+
+' A word matching an alias token in an entry is replaced with the entry's
+' canonical (first real / second field) word
+Sub test_repm_gvn_alias_replaced()
+  Local words$(4) Length MAX_WORD_LENGTH = ("banana", "", "", "")
+  Local replacements$(2) = ("|apple|banana|pear|", "|car|bus|train|")
+  words.replace_multiple(words$(), replacements$())
+  assert_string_equals("apple", words$(1))
+End Sub
+
+' A word already equal to the canonical form still matches (it appears
+' bordered by pipes in the entry too) but ends up unchanged, since it is
+' replaced with itself
+Sub test_repm_gvn_canonical_stays()
+  Local words$(4) Length MAX_WORD_LENGTH = ("apple", "", "", "")
+  Local replacements$(2) = ("|apple|banana|pear|", "|car|bus|train|")
+  words.replace_multiple(words$(), replacements$())
+  assert_string_equals("apple", words$(1))
+End Sub
+
+' A word matching a THIRD (or later) alias token in an entry is still
+' converted to the entry's canonical (second) field, not left alone
+Sub test_repm_gvn_third_token()
+  Local words$(4) Length MAX_WORD_LENGTH = ("pear", "", "", "")
+  Local replacements$(2) = ("|apple|banana|pear|", "|car|bus|train|")
+  words.replace_multiple(words$(), replacements$())
+  assert_string_equals("apple", words$(1))
+End Sub
+
+' Only the word(s) that actually match an entry are changed; unrelated
+' words in the same array are left alone
+Sub test_repm_gvn_mixed_words()
+  Local words$(4) Length MAX_WORD_LENGTH = ("foo", "pear", "bar", "")
+  Local replacements$(2) = ("|apple|banana|pear|", "|car|bus|train|")
+  words.replace_multiple(words$(), replacements$())
+  assert_string_equals("foo", words$(1))
+  assert_string_equals("apple", words$(2))
+  assert_string_equals("bar", words$(3))
+End Sub
+
+' Different words in the array can each match a different replacements entry
+Sub test_repm_gvn_multi_entries()
+  Local words$(4) Length MAX_WORD_LENGTH = ("pear", "train", "dog", "")
+  Local replacements$(3) = ("|apple|banana|pear|", "|car|bus|train|", "|cat|dog|mouse|")
+  words.replace_multiple(words$(), replacements$())
+  assert_string_equals("apple", words$(1))
+  assert_string_equals("car", words$(2))
+  assert_string_equals("cat", words$(3))
+End Sub
+
+' If a word matches more than one entry, the FIRST matching entry (lowest
+' index in replacements$()) wins, since the inner loop exits early
+Sub test_repm_gvn_first_wins()
+  Local words$(4) Length MAX_WORD_LENGTH = ("banana", "", "", "")
+  Local replacements$(2) = ("|apple|banana|pear|", "|car|banana|train|")
+  words.replace_multiple(words$(), replacements$())
+  assert_string_equals("apple", words$(1))
+End Sub
+
+' Matching is case-sensitive - a differently-cased word is not recognised
+Sub test_repm_gvn_case_sensitive()
+  Local words$(4) Length MAX_WORD_LENGTH = ("BANANA", "", "", "")
+  Local replacements$(2) = ("|apple|banana|pear|", "|car|banana|train|")
+  words.replace_multiple(words$(), replacements$())
+  assert_string_equals("BANANA", words$(1))
+End Sub
+
+' A word that is only a substring of an replacement token (not the whole token,
+' bordered by pipes) must not match
+Sub test_repm_gvn_no_partial()
+  Local words$(4) Length MAX_WORD_LENGTH = ("ban", "", "", "")
+  Local replacements$(2) = ("|apple|banana|pear|", "|car|banana|train|")
+  words.replace_multiple(words$(), replacements$())
+  assert_string_equals("ban", words$(1))
+End Sub
+
+' With every replacements$() entry empty, words.replace_multiple() is a complete no-op
+Sub test_repm_gvn_empty_repl()
+  Local words$(4) Length MAX_WORD_LENGTH = ("banana", "train", "", "")
+  Local replacements$(4) = ("", "", "", "")
+  words.replace_multiple(words$(), replacements$())
+  assert_string_equals("banana", words$(1))
+  assert_string_equals("train", words$(2))
+End Sub
+
+' An empty element in words$() halt the replacements processing
+Sub test_repm_gvn_empty_word()
+  Local words$(4) Length MAX_WORD_LENGTH = ("banana", "", "train", "")
+  Local replacements$(2) = ("|apple|banana|pear|", "|car|banana|train|")
+  words.replace_multiple(words$(), replacements$())
+  assert_string_equals("apple", words$(1))
+  assert_string_equals("", words$(2))
+  assert_string_equals("", words$(3)) ' cleared
+End Sub
+
+' Word order and array positions are preserved - only values change in place
+Sub test_repm_gvn_preserves_order()
+  Local words$(5) Length MAX_WORD_LENGTH = ("train", "pear", "banana", "dog", "")
+  Local replacements$(3) = ("|apple|banana|pear|", "|car|bus|train|", "|cat|dog|mouse|")
+  words.replace_multiple(words$(), replacements$())
+  assert_string_equals("car", words$(1))
+  assert_string_equals("apple", words$(2))
+  assert_string_equals("apple", words$(3))
+  assert_string_equals("cat", words$(4))
+  assert_string_equals("", words$(5))
+End Sub
+
+' A words$() array with a single populated element still works correctly
+Sub test_repm_gvn_single_word()
+  Local words$(2) Length MAX_WORD_LENGTH = ("pear", "")
+  Local replacements$(2) = ("|apple|banana|pear|", "|car|banana|train|")
+  words.replace_multiple(words$(), replacements$())
+  assert_string_equals("apple", words$(1))
+End Sub
+
+' Adjacent occurrences of the same alias are all replaced
+Sub test_repm_gvn_adjacent()
+  Local words$(4) Length MAX_WORD_LENGTH = ("a", "a", "a", "")
+  Local replacements$(2) = ("|b|a|", "|c|d|")
+  words.replace_multiple(words$(), replacements$())
+  assert_string_equals("b", words$(1))
+  assert_string_equals("b", words$(2))
+  assert_string_equals("b", words$(3))
+  assert_string_equals("", words$(4))
+End Sub
+
+' An alias may be a phrase of several words
+Sub test_repm_gvn_phrase_alias()
+  Local words$(5) Length MAX_WORD_LENGTH = ("ask", "mr", "darnley", "please", "")
+  Local replacements$(2) = ("|colonel|mr darnley|", "|x|y|")
+  words.replace_multiple(words$(), replacements$())
+  assert_string_equals("ask", words$(1))
+  assert_string_equals("colonel", words$(2))
+  assert_string_equals("please", words$(3))
+  assert_string_equals("", words$(4))
+  assert_string_equals("", words$(5))
+End Sub
+
+' Replacing a phrase with one word shuffles later words down and clears the tail
+Sub test_repm_gvn_fewer_words()
+  Local words$(4) Length MAX_WORD_LENGTH = ("mr", "darnley", "", "")
+  Local replacements$(2) = ("|colonel|mr darnley|", "|x|y|")
+  words.replace_multiple(words$(), replacements$())
+  assert_string_equals("colonel", words$(1))
+  assert_string_equals("", words$(2))
 End Sub
 
 ' words.split%() --------------------------------------------------------
