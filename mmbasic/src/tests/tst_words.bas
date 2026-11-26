@@ -98,16 +98,23 @@ add_test("words.join$() with start after end returns empty", "test_wj_start_afte
 add_test("words.join$() with an empty element in range stops joining", "test_wj_stops_at_empty_in_range")
 add_test("words.join$() with start at an empty element returns empty", "test_wj_start_at_empty")
 
-add_test("words.replace$() replaces a single occurrence", "test_wr_single")
-add_test("words.replace$() replaces every occurrence", "test_wr_multiple")
-add_test("words.replace$() returns the string unchanged when there is no match", "test_wr_no_match")
-add_test("words.replace$() matching is case-sensitive", "test_wr_case_sensitive")
-add_test("words.replace$() matches substrings, not just whole words", "test_wr_substring")
-add_test("words.replace$() does not re-scan replacement text", "test_wr_no_rescan")
-add_test("words.replace$() with an empty to$ deletes occurrences", "test_wr_delete")
-add_test("words.replace$() on an empty string returns an empty string", "test_wr_empty_s")
-add_test("words.replace$() raises an error for an empty from$", "test_wr_empty_from")
-add_test("words.replace$() raises an error if the result exceeds 255 characters", "test_wr_too_long")
+add_test("words.replace_phrase$() replaces a single occurrence", "test_rp_single")
+add_test("words.replace_phrase$() replaces every occurrence", "test_rp_multiple")
+add_test("words.replace_phrase$() replaces adjacent occurrences", "test_rp_adjacent")
+add_test("words.replace_phrase$() replaces at the start and end of the string", "test_rp_start_and_end")
+add_test("words.replace_phrase$() returns the string unchanged when there is no match", "test_rp_no_match")
+add_test("words.replace_phrase$() matching is case-sensitive", "test_rp_case_sensitive")
+add_test("words.replace_phrase$() does not match part of a word", "test_rp_no_partial")
+add_test("words.replace_phrase$() matches a multi-word phrase", "test_rp_phrase")
+add_test("words.replace_phrase$() does not re-scan replacement text", "test_rp_no_rescan")
+add_test("words.replace_phrase$() with an empty rep$ deletes occurrences", "test_rp_delete")
+add_test("words.replace_phrase$() on an empty string returns an empty string", "test_rp_empty_s")
+add_test("words.replace_phrase$() raises an error for an empty phrase$", "test_rp_empty_phrase")
+add_test("words.replace_phrase$() raises an error if the result exceeds 255 characters", "test_rp_too_long")
+
+add_test("words.replace_multiple() replaces adjacent occurrences of an alias", "test_repm_gvn_adjacent")
+add_test("words.replace_multiple() replaces a multi-word alias", "test_repm_gvn_phrase_alias")
+add_test("words.replace_multiple() replaces a multi-word alias with a single word", "test_repm_gvn_fewer_words")
 
 add_test("words.split%() with no delimiter present returns one word", "test_ws_one_token")
 add_test("words.split%() splits on the delimiter", "test_ws_multiple")
@@ -622,6 +629,38 @@ Sub test_repm_gvn_single_word()
   assert_string_equals("apple", words$(1))
 End Sub
 
+' Adjacent occurrences of the same alias are all replaced
+Sub test_repm_gvn_adjacent()
+  Local words$(4) Length MAX_WORD_LENGTH = ("a", "a", "a", "")
+  Local replacements$(2) = ("|b|a|", "|c|d|")
+  words.replace_multiple(words$(), replacements$())
+  assert_string_equals("b", words$(1))
+  assert_string_equals("b", words$(2))
+  assert_string_equals("b", words$(3))
+  assert_string_equals("", words$(4))
+End Sub
+
+' An alias may be a phrase of several words
+Sub test_repm_gvn_phrase_alias()
+  Local words$(5) Length MAX_WORD_LENGTH = ("ask", "mr", "darnley", "please", "")
+  Local replacements$(2) = ("|colonel|mr darnley|", "|x|y|")
+  words.replace_multiple(words$(), replacements$())
+  assert_string_equals("ask", words$(1))
+  assert_string_equals("colonel", words$(2))
+  assert_string_equals("please", words$(3))
+  assert_string_equals("", words$(4))
+  assert_string_equals("", words$(5))
+End Sub
+
+' Replacing a phrase with one word shuffles later words down and clears the tail
+Sub test_repm_gvn_fewer_words()
+  Local words$(4) Length MAX_WORD_LENGTH = ("mr", "darnley", "", "")
+  Local replacements$(2) = ("|colonel|mr darnley|", "|x|y|")
+  words.replace_multiple(words$(), replacements$())
+  assert_string_equals("colonel", words$(1))
+  assert_string_equals("", words$(2))
+End Sub
+
 ' words.join$() ---------------------------------------------------------
 
 Sub test_wj_single()
@@ -768,53 +807,76 @@ Sub test_wj_start_at_empty()
   assert_string_equals("", words.join$(words$(), " ", "", 2))
 End Sub
 
-' words.replace$() ------------------------------------------------------
+' words.replace_phrase$() ----------------------------------------------
 
-Sub test_wr_single()
-  assert_string_equals("the dog sat", words.replace$("the cat sat", "cat", "dog"))
+Sub test_rp_single()
+  assert_string_equals(" the dog sat ", words.replace_phrase$(" the cat sat ", "cat", "dog"))
 End Sub
 
-Sub test_wr_multiple()
-  assert_string_equals("b b b", words.replace$("a a a", "a", "b"))
+Sub test_rp_multiple()
+  assert_string_equals(" x b x ", words.replace_phrase$(" a b a ", "a", "x"))
 End Sub
 
-Sub test_wr_no_match()
-  assert_string_equals("the cat sat", words.replace$("the cat sat", "dog", "x"))
+' Adjacent occurrences share a delimiting space, all must be replaced.
+Sub test_rp_adjacent()
+  assert_string_equals(" b b b ", words.replace_phrase$(" a a a ", "a", "b"))
+  assert_string_equals(" b b b b ", words.replace_phrase$(" a a a a ", "a", "b"))
 End Sub
 
-Sub test_wr_case_sensitive()
-  assert_string_equals("the Cat sat", words.replace$("the Cat sat", "cat", "dog"))
+Sub test_rp_start_and_end()
+  assert_string_equals(" dog ", words.replace_phrase$(" cat ", "cat", "dog"))
+  assert_string_equals(" dog sat dog ", words.replace_phrase$(" cat sat cat ", "cat", "dog"))
 End Sub
 
-Sub test_wr_substring()
-  assert_string_equals("condog", words.replace$("concat", "cat", "dog"))
+Sub test_rp_no_match()
+  assert_string_equals(" the cat sat ", words.replace_phrase$(" the cat sat ", "dog", "x"))
 End Sub
 
-' The replacement "aa" contains the search text but must not be rescanned.
-Sub test_wr_no_rescan()
-  assert_string_equals("aaaa", words.replace$("aa", "a", "aa"))
+Sub test_rp_case_sensitive()
+  assert_string_equals(" the Cat sat ", words.replace_phrase$(" the Cat sat ", "cat", "dog"))
 End Sub
 
-Sub test_wr_delete()
-  assert_string_equals("the  sat", words.replace$("the cat sat", "cat", ""))
+' "ban" must not match within "banana", but must still match later on.
+Sub test_rp_no_partial()
+  assert_string_equals(" banana x ", words.replace_phrase$(" banana ban ", "ban", "x"))
+  assert_string_equals(" concat ", words.replace_phrase$(" concat ", "cat", "dog"))
 End Sub
 
-Sub test_wr_empty_s()
-  assert_string_equals("", words.replace$("", "a", "b"))
+Sub test_rp_phrase()
+  assert_string_equals(" colonel said ", words.replace_phrase$(" mr darnley said ", "mr darnley", "colonel"))
+  ' Only part of the phrase present, so no match.
+  assert_string_equals(" mr smith said ", words.replace_phrase$(" mr smith said ", "mr darnley", "colonel"))
 End Sub
 
-Sub test_wr_empty_from()
+' The replacement "a a" contains the phrase but must not be rescanned.
+Sub test_rp_no_rescan()
+  assert_string_equals(" a a ", words.replace_phrase$(" a ", "a", "a a"))
+End Sub
+
+' Deleting leaves a double space, which words.split%() ignores.
+Sub test_rp_delete()
+  assert_string_equals(" the  sat ", words.replace_phrase$(" the cat sat ", "cat", ""))
+End Sub
+
+Sub test_rp_empty_s()
+  assert_string_equals("", words.replace_phrase$("", "a", "b"))
+End Sub
+
+Sub test_rp_empty_phrase()
   Local s$
   On Error Ignore
-  s$ = words.replace$("foo", "", "x")
-  assert_raw_error("from$ must not be empty")
+  s$ = words.replace_phrase$(" foo ", "", "x")
+  assert_raw_error("phrase$ must not be empty")
   On Error Abort
 End Sub
 
-Sub test_wr_too_long()
-  Local s$
+' 100 x "a" is 201 characters, but replacing each with "bb" gives 301.
+Sub test_rp_too_long()
+  Local i%, s$ = " "
+  For i% = 1 To 100 : Cat s$, "a " : Next
+  Local r$
   On Error Ignore
-  s$ = words.replace$(String$(200, "a"), "a", "bb")
+  r$ = words.replace_phrase$(s$, "a", "bb")
   assert_raw_error("String too long")
   On Error Abort
 End Sub

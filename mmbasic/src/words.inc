@@ -205,30 +205,52 @@ Sub print_words(words$())
   Print Str$(count%) + " words"
 End Sub
 
-' Replaces each word in words$() with the canonical form defined by an entry
-' in replacements$(), if it matches one of that entry's "|"-delimited tokens.
+' Replaces aliases in words$() with their canonical forms, as defined by
+' replacements$(). Aliases may be single words or multi-word phrases.
 '
-' Each element of replacements$() is a string of the form
-' "|canonical|alias1|alias2|...|". For each word in words$() (stopping at the
-' first empty element), replacements$() is scanned in order and the word is
-' replaced with the entry's canonical (second) field as soon as a
-' "|word|" match is found within that entry; if no entry matches, the word
-' is left unchanged. Matching is case-sensitive. If a word matches more
-' than one entry, the first matching entry (lowest index in replacements$())
-' wins. Word order and array positions in words$() are preserved - only
-' values are changed in place.
+' Each element of replacements$() has the form "|canonical|alias1|alias2|...|"
+' (note the leading "|", so the canonical form is field 2 and the aliases are
+' fields 3 to 20, i.e. at most 18 per entry; reading stops at the first empty
+' field). An alias may contain spaces, e.g. "|colonel|mr darnley|sebastian|".
 '
-' @param  words$()         The array of words to modify in place.
-' @param  replacements$()  Array of "|canonical|alias1|alias2|...|" entries.
+' The words in words$() are joined into a single space-delimited string and
+' each entry in replacements$() is then applied to it in order, replacing
+' every whole word/phrase occurrence of each alias with the entry's canonical
+' form. Finally the result is split back into words$(). Notes:
+'
+'   - Matching is case-sensitive and only whole words/phrases match, e.g.
+'     "ban" does not match the alias "banana". Adjacent occurrences of an
+'     alias (e.g. "a a") are all replaced.
+'   - Entries are applied sequentially and each sees the output of the
+'     previous ones, so replacements can chain: given the entries
+'     "|darnley|darnleys|" then "|colonel|darnley|", the word "darnleys"
+'     becomes "darnley" and then "colonel". Entry order is therefore
+'     significant.
+'   - Because a phrase can be replaced by a different number of words, the
+'     number of words in words$() may change; any words beyond the end of the
+'     result are cleared.
+'   - Processing of words$() stops at its first empty element, any elements
+'     after that are discarded.
+'   - The result is re-split with words.split%() and its return value is
+'     deliberately ignored, so if the result has more than Bound(words$(), 1)
+'     words or a word longer than MAX_WORD_LENGTH it is silently truncated.
+'
+' @param[in,out]  words$()         The words to modify in place.
+' @param          replacements$()  Array of "|canonical|alias1|alias2|...|"
+'                                  entries, empty entries are ignored.
+' @errors                          If the joined string would be longer than
+'                                  255 characters (see words.join$() and
+'                                  words.replace_phrase$()).
 Sub words.replace_multiple(words$(), replacements$())
   Local i%, j%, needle$, rep$, s$ = words.join$(words$(), " ", " ")
 
   For i% = Bound(replacements$(), 0) To Bound(replacements$(), 1)
+    rep$ = Field$(replacements$(i%), 2, "|")
     For j% = 3 To 20
       needle$ = Field$(replacements$(i%), j%, "|")
       If needle$ = "" Then Exit For
       If Not InStr(s$, needle$) Then Continue For
-      s$ = words.replace$(s$, " " + needle$ + " ", " " + Field$(replacements$(i%), 2, "|") + " ")
+      s$ = words.replace_phrase$(s$, needle$, rep$)
     Next
   Next
 
@@ -270,30 +292,40 @@ Function words.join$(words$(), delim$, wrap$, si%, ei%)
   words.join$ = r$
 End Function
 
-' Replaces every occurrence of a substring within a string.
+' Replaces every occurrence of a word/phrase in a space-delimited string.
 '
-' Matching is plain-text and case-sensitive. Occurrences are replaced left to
-' right and do not overlap; replacement text is not itself re-scanned.
+' The phrase only matches where it is delimited on both sides by a space, so
+' s$ should itself begin and end with a space (as produced by
+' words.join$(words$(), " ", " ")) for matches at its start and end to be
+' found. The delimiting spaces are preserved, so adjacent occurrences
+' (e.g. " a a a ") are all replaced.
 '
-' @param  s$     The string to search.
-' @param  from$  The substring to replace, must not be empty.
-' @param  rep$   The replacement, may be empty to delete occurrences.
-' @return        A copy of s$ with all occurrences of from$ replaced by rep$.
-' @errors        If from$ is empty or the result would be longer than
-'                255 characters.
-Function words.replace$(s$, from$, rep$)
-  If from$ = "" Then Error "from$ must not be empty"
+' Matching is plain-text and case-sensitive. Replacement text is not itself
+' re-scanned.
+'
+' @param  s$       The space-delimited string to search.
+' @param  phrase$  The word/phrase to replace, must not be empty.
+' @param  rep$     The replacement, may be empty to delete occurrences
+'                  (this leaves a double space).
+' @return          A copy of s$ with all occurrences of phrase$ replaced.
+' @errors          If phrase$ is empty or the result would be longer than
+'                  255 characters.
+Function words.replace_phrase$(s$, phrase$, rep$)
+  If phrase$ = "" Then Error "phrase$ must not be empty"
+  Const g$ = " " + phrase$ + " "
   Local p%, r$, st% = 1
   Do
-    p% = InStr(st%, s$, from$)
+    p% = InStr(st%, s$, g$)
     If p% = 0 Then Exit Do
-    If Len(r$) + (p% - st%) + Len(rep$) > 255 Then Error "String too long"
-    Cat r$, Mid$(s$, st%, p% - st%) + rep$
-    st% = p% + Len(from$)
+    If Len(r$) + (p% - st%) + 1 + Len(rep$) > 255 Then Error "String too long"
+    Cat r$, Mid$(s$, st%, p% - st%) + " " + rep$
+    ' Leave the trailing guard space unconsumed so it can be the leading
+    ' guard of an immediately following match.
+    st% = p% + Len(g$) - 1
   Loop
   If Len(r$) + Len(s$) - st% + 1 > 255 Then Error "String too long"
   Cat r$, Mid$(s$, st%)
-  words.replace$ = r$
+  words.replace_phrase$ = r$
 End Function
 
 ' Splits a string into words at a single-character delimiter.
