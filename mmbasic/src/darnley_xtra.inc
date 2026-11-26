@@ -34,9 +34,9 @@ Function get_option$(name$, cmdline$)
 
   Select Case LCase$(name$)
     Case "nocolour"
-      get_option$ = Str$(Not(word.find_first%(words$(), "--nocolour") = -1))
+      get_option$ = Str$(Not(words.find_first%(words$(), "--nocolour") = -1))
     Case "nogfx"
-      get_option$ = Str$(Not(word.find_first%(words$(), "--nogfx") = -1))
+      get_option$ = Str$(Not(words.find_first%(words$(), "--nogfx") = -1))
     Case "script"
       If count_words%(words$()) > 0 Then get_option$ = words$(count_words%(words$()))
       If Left$(get_option$, 2) = "--" Then get_option$ = ""

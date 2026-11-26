@@ -231,45 +231,45 @@ End Sub
 ' Needle present in haystack - returns its index
 Sub test_ffirst_gvn_match()
   Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "")
-  assert_int_equals(2, word.find_first%(words$(), "two"))
+  assert_int_equals(2, words.find_first%(words$(), "two"))
 End Sub
 
 ' Needle absent from haystack - returns -1
 Sub test_ffirst_gvn_not_found()
   Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "")
-  assert_int_equals(-1, word.find_first%(words$(), "four"))
+  assert_int_equals(-1, words.find_first%(words$(), "four"))
 End Sub
 
 ' Needle appears more than once - returns the FIRST matching index
 Sub test_ffirst_gvn_first_of_dupes()
   Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "two", "")
-  assert_int_equals(2, word.find_first%(words$(), "two"))
+  assert_int_equals(2, words.find_first%(words$(), "two"))
 End Sub
 
 ' Matching is case-SENSITIVE - differing case is not a match
 Sub test_ffirst_gvn_case_sensitive()
   Local words$(4) Length MAX_WORD_LENGTH = ("one", "TWO", "three", "")
-  assert_int_equals(-1, word.find_first%(words$(), "two"))
-  assert_int_equals(2, word.find_first%(words$(), "TWO"))
+  assert_int_equals(-1, words.find_first%(words$(), "two"))
+  assert_int_equals(2, words.find_first%(words$(), "TWO"))
 End Sub
 
 ' Scanning stops at the first empty element - a match placed after a gap
 ' is not found
 Sub test_ffirst_gvn_stops_at_empty()
   Local words$(4) Length MAX_WORD_LENGTH = ("one", "", "three", "")
-  assert_int_equals(-1, word.find_first%(words$(), "three"))
+  assert_int_equals(-1, words.find_first%(words$(), "three"))
 End Sub
 
 ' Empty haystack array - always returns -1
 Sub test_ffirst_gvn_empty_haystack()
   Local words$(4) Length MAX_WORD_LENGTH
-  assert_int_equals(-1, word.find_first%(words$(), "one"))
+  assert_int_equals(-1, words.find_first%(words$(), "one"))
 End Sub
 
 ' Needle matches the very last element of a fully-populated array
 Sub test_ffirst_gvn_last_element()
   Local words$(4) Length MAX_WORD_LENGTH = ("one", "two", "three", "four")
-  assert_int_equals(4, word.find_first%(words$(), "four"))
+  assert_int_equals(4, words.find_first%(words$(), "four"))
 End Sub
 
 Sub test_remove_word()

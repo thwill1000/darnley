@@ -309,7 +309,7 @@ Function verb_say()
   verb_say = 1
 
   ' Extract target of the conversation.
-  Local target_idx% = word.find_first%(words$(), ",") + 1
+  Local target_idx% = words.find_first%(words$(), ",") + 1
   Local obj_idx% = 0
   If target_idx% Then
     obj_idx% = resolve_say_target%(2, target_idx% - 2)

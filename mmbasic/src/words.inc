@@ -148,13 +148,13 @@ End Function
 ' @param  haystack$()  The array to search.
 ' @param  needle$      The word to search for. Must not be empty.
 ' @return              The index of the first match, or -1 if not found.
-Function word.find_first%(haystack$(), needle$)
+Function words.find_first%(haystack$(), needle$)
   Local i%
-  word.find_first% = -1
+  words.find_first% = -1
   For i% = Bound(haystack$(), 0) To Bound(haystack$(), 1)
     If haystack$(i%) = "" Then Exit For
     If haystack$(i%) = needle$ Then
-      word.find_first% = i%
+      words.find_first% = i%
       Exit For
     EndIf
   Next
@@ -174,7 +174,7 @@ Sub remove_words(words$(), remove$())
     If remove$(i%) = "" Then
       Inc i%
     Else
-      found% = word.find_first%(words$(), remove$(i%))
+      found% = words.find_first%(words$(), remove$(i%))
       If found% > -1 Then
         result% = remove_word%(words$(), found%)
       Else
