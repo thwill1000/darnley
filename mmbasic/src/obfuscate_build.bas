@@ -42,6 +42,7 @@ Option Default Integer
 #Include "splib/string.inc"
 #Include "splib/math.inc"
 #Include "console.inc"
+#Include "words.inc"
 #Include "advdata.inc"
 
 Const FIXED_SEED = 20260916

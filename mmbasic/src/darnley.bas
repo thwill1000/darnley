@@ -32,7 +32,7 @@ Dim cmd$
 Dim result%
 Dim r_old%
 
-init()
+init_darnley()
 
 game_start:
 
@@ -78,7 +78,7 @@ Loop
 
 End
 
-Sub init()
+Sub init_darnley()
   Local nogfx% = get_option$("nogfx") = "1"
   Const nocolour% = get_option$("nocolour") = "1"
   Const script$ = get_option$("script")
