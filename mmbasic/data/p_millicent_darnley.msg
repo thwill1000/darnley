@@ -255,8 +255,8 @@ what's in it."
 
 (dinner/supper/coffee)
 "We all dined together. Sarah and I took coffee in the lounge afterwards,
-and the men joined us for half an hour. Pheasant, I think, and an apple
-charlotte - Mrs. Goodbody's, so it was very good."
+and the men joined us for half an hour. Nobody mentioned the engagement -
+Arthur wanted Daddy to announce it in his own time, and now he never will."
 
 -dinner events yesterday murder last happened happened
 "Last night we all ate together until coffee which Sarah and I took
@@ -356,8 +356,9 @@ if I'm honest. But that's marriage for you, isn't it?"
 
 +(engagement/marriage) millicent arthur when
 "I'm the last person to ask objectively! Daddy agreed only
-yesterday - I still can hardly believe it. I'd waited so long for
-him to say yes."
+yesterday - I still can hardly believe it. Arthur asked me not to
+say a word to him until he'd announced it himself, so I was bursting
+with it all evening. Now he never will, and I find I can't bear that."
 
 +who +(accuse/murder/murderer/suspect) him | +who +did +(it/this) | +who +shot
 "I try not to think about it - it makes me feel rather sick. If I'm

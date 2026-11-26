@@ -296,8 +296,9 @@ but I wish it hadn't."
 
 (dinner/supper/coffee)
 "We all dined together. Afterwards the men took port and billiards while
-Millicent and I had coffee in the lounge. It was pheasant, as I
-recall - I hardly touched it."
+Millicent and I had coffee in the lounge. Nobody said anything about
+Millicent and Arthur - Arthur had asked us to leave it for Sebastian to
+announce."
 
 -dinner events yesterday murder last happened happened
 "Last night we all had dinner together. Afterwards the men played billiards
@@ -402,8 +403,10 @@ not while my husband isn't yet in the ground."
 
 +(engagement/marriage) (millicent/daughter) arthur when
 "Sebastian only agreed to it yesterday afternoon. Millicent was
-positively glowing when she told me. I'm glad she'll have that
-happiness, whatever else has happened."
+positively glowing when she told me. Arthur asked us not to raise it
+with Sebastian until he had announced it himself, so I didn't. Now,
+of course, he never will. I'm glad she'll have that happiness, whatever
+else has happened."
 
 +who +(accuse/murder/murderer/suspect) him | +who +did +(it/this) | +who +shot
 "I can't bear to think it was any of them, truly. If you insist I

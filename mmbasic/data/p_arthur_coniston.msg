@@ -376,7 +376,10 @@ imagine the gossip."
 
 +(engagement/marriage) millicent arthur when
 "Happiest news of my life, old boy! The Colonel gave his blessing
-yesterday afternoon. I still can't quite believe my luck."
+yesterday afternoon - on the understanding that he'd announce it
+himself, so I asked Millicent and Sarah to say nothing to him until he
+did. Well, he won't be announcing anything now. I still can't quite
+believe my luck, or my misfortune, I suppose."
 
 +who +(accuse/murder/murderer/suspect) him | +who +did +(it/this) | +who +shot
 "Good Lord, I haven't the faintest. Between you and me I'd watch
