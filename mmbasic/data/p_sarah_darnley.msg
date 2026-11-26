@@ -267,6 +267,14 @@ descending on us. Rather inconvenient timing, as it turns out."
 the time it would leave us short a room when Sir Redvers turned up
 without warning. Rather bad timing, as these things go."
 
++redvers +(sleep/stay/stayed/staying)
+"In the servants' quarters, I'm afraid. With Arthur in the east guest
+room and the west one stripped for redecoration, there was nowhere
+else."
+
++arthur +(sleep/stay/stayed/staying)
+"In the east guest room, I believe."
+
 +(blocked/passage) door kitchen
 "Oh, that's just where the furniture from the west guest room
 ended up - there was nowhere else to put it in a hurry. I'm told
@@ -353,7 +361,7 @@ wasn't paying attention to the servants that evening."
 "I don't see why you should ask me about Mellors' evening, Inspector.
 I'm sure I couldn't tell you."
 
--thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +(sleep/slept/asleep) +you
+-thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +sleep +you
 "At 10:30 I was reading and drinking coffee in the lounge - on my
 own, I'm afraid. At 11:30 I was playing the piano in the morning
 room - also alone, alas! I don't suppose it looks too good?"

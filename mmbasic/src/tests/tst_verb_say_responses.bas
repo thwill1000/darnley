@@ -63,6 +63,8 @@ add_test("What happened last night?", "test_events")
 add_test("Why are you here?", "test_why_here")
 add_test("What were you doing at the time of the murder?", "test_alibi")
 add_test("Can anyone confirm your alibi?", "test_alibi_confirm")
+add_test("Where did Redvers sleep?", "test_redvers_sleeping")
+add_test("Where did Arthur sleep?", "test_arthur_sleeping")
 add_test("Tell me about these slippers.", "test_slippers")
 add_test("Whose boots are these?", "test_boots")
 add_test("What size are the muddy boots?", "test_boots_size")
@@ -331,6 +333,53 @@ Sub test_alibi_confirm()
   assert_response("Can anyone corroborate that?", "alibi confirm response")
   assert_response("Is there a witness to confirm it?", "alibi confirm response")
   assert_response("Were you alone the whole time?", "alibi confirm response")
+End Sub
+
+Sub test_redvers_sleeping()
+  assert_response("Where did Redvers sleep?", "redvers sleeping response")
+  assert_response("Where is Slingsby staying?", "redvers sleeping response")
+  assert_response("Did Redvers sleep well?", "redvers sleeping response")
+
+  target_suspect("redvers")
+  assert_response("Where did Redvers sleep?", "The servants' quarters, damn it.", 1)
+  target_suspect("billingsgate")
+  assert_response("Where did Redvers sleep?", "In the servants' quarters, sir", 1)
+  target_suspect("goodbody")
+  assert_response("Where did Redvers sleep?", "In our room, dear", 1)
+  target_suspect("bagsby")
+  assert_response("Where did Redvers sleep?", "In our room, sir.", 1)
+  target_suspect("sarah")
+  assert_response("Where did Redvers sleep?", "In the servants' quarters, I'm afraid.", 1)
+  target_suspect("millicent")
+  assert_response("Where did Redvers sleep?", "The servants' quarters, I think", 1)
+  target_suspect("arthur")
+  assert_response("Where did Redvers sleep?", "The servants' quarters, poor chap.", 1)
+End Sub
+
+Sub test_arthur_sleeping()
+  assert_response("Where did Arthur sleep?", "arthur sleeping response")
+  assert_response("Where is Coniston staying?", "arthur sleeping response")
+
+  target_suspect("arthur")
+  assert_response("Where did Arthur sleep?", "The east guest room, old boy.", 1)
+  target_suspect("redvers")
+  assert_response("Where did Arthur sleep?", "The young pup has the east guest room.", 1)
+  target_suspect("billingsgate")
+  assert_response("Where did Arthur sleep?", "Mr. Coniston has the east guest room, sir.", 1)
+  target_suspect("goodbody")
+  assert_response("Where did Arthur sleep?", "In the east guest room, dear", 1)
+  target_suspect("bagsby")
+  assert_response("Where did Arthur sleep?", "In the east guest room, sir.", 1)
+  target_suspect("sarah")
+  assert_response("Where did Arthur sleep?", "In the east guest room, I believe.", 1)
+  target_suspect("millicent")
+  assert_response("Where did Arthur sleep?", "In the east guest room - the blue one.", 1)
+
+  ' Regressions: "you" still reaches the alibi entry, and "room" alone does not
+  ' trigger the sleeping answer.
+  target_suspect("template")
+  assert_response("Where did you sleep?", "alibi response")
+  assert_response("Was Arthur in the music room?", "arthur response")
 End Sub
 
 Sub test_slippers()
@@ -756,7 +805,6 @@ Sub test_opinion_redvers()
   assert_response("what's redvers slingsby like", "redvers response")
   assert_response("your impression of redvers slingsby", "redvers response")
   assert_response("how do you get on with redvers slingsby", "redvers response")
-  assert_response("Where did Redvers sleep?", "redvers response")
 
   ' Ask Millicent about Redvers.
   ' - the presence of "you" in the input will cause "millicent" to be added to the subject words

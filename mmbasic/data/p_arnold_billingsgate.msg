@@ -248,6 +248,14 @@ fit for a guest, which is why Sir Redvers ended up in the servants'
 quarters instead, and the rest of us squeezed into my pantry for
 the duration."
 
++redvers +(sleep/stay/stayed/staying)
+"In the servants' quarters, sir - the west guest room being unfit and
+the east already taken. Mrs. Goodbody and young Norah gave up their
+room and shared my pantry."
+
++arthur +(sleep/stay/stayed/staying)
+"Mr. Coniston has the east guest room, sir."
+
 +(blocked/passage) door kitchen
 "That would be the door between the hall and the kitchen passage,
 sir. It's quite blocked with furniture from the west guest room -
@@ -341,7 +349,7 @@ retired, though - I was asleep myself until Mr. Coniston woke me."
 "I have no knowledge of Mr. Mellors' movements last night, sir. He
 does not come up to the house after dark unless sent for."
 
--thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +(sleep/slept/asleep) +you
+-thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +sleep +you
 "I was with Mrs. Goodbody and young Norah in my pantry at both 10:30
 and 11:30."
 

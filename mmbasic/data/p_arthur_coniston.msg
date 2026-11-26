@@ -239,6 +239,13 @@ shouldn't wonder."
 paste at the moment. Just glad I got the room that was actually
 habitable."
 
++redvers +(sleep/stay/stayed/staying)
+"The servants' quarters, poor chap. I'd already bagged the east guest
+room and the west one's all dust sheets."
+
++arthur +(sleep/stay/stayed/staying)
+"The east guest room, old boy. You reach it through the morning room."
+
 +(blocked/passage) door kitchen
 "Is there a blocked door? Can't say I've had occasion to go
 wandering about the kitchen passages, old boy."
@@ -336,7 +343,7 @@ notice - servants keep rather different hours to the rest of us."
 "Never even laid eyes on the fellow, far as I recall. Couldn't tell
 you a thing about his evening."
 
--thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +(sleep/slept/asleep) +you
+-thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +sleep +you
 "Millicent and I were together in the music room at 10:30. I don't
 know how anyone can be expected to have an alibi for 11:30.
 Certainly a single gentleman could never admit to one, if you follow

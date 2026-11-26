@@ -226,6 +226,13 @@ redecorated. I haven't paid it much attention, I'm afraid."
 for weeks. Sarah's doing, I should think, though I couldn't tell
 you why now of all times."
 
++redvers +(sleep/stay/stayed/staying)
+"The servants' quarters, I think - I saw him go in there when I went
+up to bed."
+
++arthur +(sleep/stay/stayed/staying)
+"In the east guest room - the blue one."
+
 +(blocked/passage) door kitchen
 "I gather there's furniture piled up somewhere down that way,
 something to do with the redecorating. I don't go through the
@@ -317,7 +324,7 @@ something I'd notice."
 "I shouldn't think anyone in the house could vouch for Mellors. He
 keeps to himself down at the cottage."
 
--thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +(sleep/slept/asleep) +you
+-thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +sleep +you
 "I was with Arthur in the music room at 10:30 and, naturally, I was
 alone in bed at 11:30."
 

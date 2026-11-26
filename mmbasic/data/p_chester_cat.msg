@@ -220,7 +220,7 @@ stable door as if expecting dinner.@
 @
 "Mrp."
 
--thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +(sleep/slept/asleep) +you
+-thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +sleep +you
 The cat blinks at you slowly, which you choose to interpret as either
 total innocence or total guilt. It is impossible to tell.@
 @

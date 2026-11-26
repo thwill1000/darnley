@@ -165,8 +165,8 @@ describe('parseObjects()', () => {
 });
 
 describe('parseReplacements()', () => {
-  it('parses all 69 replacement lines from the game data', () => {
-    expect(parseReplacements(adventText)).toHaveLength(69);
+  it('parses all 70 replacement lines from the game data', () => {
+    expect(parseReplacements(adventText)).toHaveLength(70);
   });
 
   it('preserves file order and keeps repeated canonicals as separate entries', () => {

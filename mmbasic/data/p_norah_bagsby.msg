@@ -214,6 +214,13 @@ Mrs. Darnley gave the order herself, I believe."
 myself - not my part of the house to clean at present, on account
 of the work."
 
++redvers +(sleep/stay/stayed/staying)
+"In our room, sir. Mrs. G. and me had to sleep behind a curtain in
+Mr. B.'s pantry on account of it."
+
++arthur +(sleep/stay/stayed/staying)
+"In the east guest room, sir. It was the only habitable spare room."
+
 +(blocked/passage) door kitchen
 "Mrs. G. won't let anyone near that door, sir - says it's blocked
 up with furniture and not safe. I go round by the pantry same as
@@ -289,7 +296,7 @@ after we all dropped off, though."
 "I don't know anything about Mr. Mellors of an evening, sir. He
 doesn't come up to the house after dark unless he's sent for."
 
--thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +(sleep/slept/asleep) +you
+-thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +sleep +you
 "I'm not good where times are concerned. I s'pose I was with Mr. B.
 and Mrs. G. in Mr. B.'s room."
 

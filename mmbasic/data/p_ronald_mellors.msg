@@ -259,7 +259,7 @@ cottage."
 "Nobody vouches for me of an evening, and I don't ask them to. I was
 alone, same as always."
 
--thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +(sleep/slept/asleep) +you
+-thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +sleep +you
 "I was in my cottage alone all evening and I don't give a tinker's
 curse if you believe me or not. If you look for my tracks to the big
 house, you won't find them."

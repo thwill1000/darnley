@@ -214,6 +214,12 @@ stacked furniture
 +(guest/spare) west room
 "west guest room response"
 
++redvers +(sleep/stay/stayed/staying)
+"redvers sleeping response"
+
++arthur +(sleep/stay/stayed/staying)
+"arthur sleeping response"
+
 +(blocked/passage) door kitchen
 "kitchen passage response"
 
@@ -270,7 +276,7 @@ daimler car motor saloon garage
 +(confirm/corroborate/vouch/alibi/with) +(mellors/gamekeeper) you
 "vouch for mellors response"
 
--thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +(sleep/slept/asleep) +you
+-thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +sleep +you
 "alibi response"
 
 -thanks alone (confirm/confirmed) corroborate witness anyone time

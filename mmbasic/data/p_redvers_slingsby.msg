@@ -248,6 +248,15 @@ stacked furniture
 fit for a guest, anyway, which is how I ended up bunking in the
 servants' quarters."
 
++redvers +(sleep/stay/stayed/staying)
+"The servants' quarters, damn it. Turned up without warning, the other
+spare room's being redecorated and young Coniston had the east one. Not
+what I'm used to."
+
++arthur +(sleep/stay/stayed/staying)
+"The young pup has the east guest room. Got there before I did, which
+is why I ended up bunking with the servants."
+
 +(blocked/passage) door kitchen
 "Haven't the faintest idea what you're talking about. I don't
 concern myself with the service side of the house."
@@ -326,7 +335,7 @@ evening, nor any particular wish to."
 "Never laid eyes on the fellow last night. Don't even know where his
 cottage is, come to that."
 
--thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +(sleep/slept/asleep) +you
+-thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +sleep +you
 "I left Darnley alive at 10:30 and it's damn nonsense to suggest I
 shot him with all the house awake and then waited to see what would
 happen. At 11:30 I was asleep like a good Christian, and the Devil

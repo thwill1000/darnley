@@ -190,6 +190,46 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     ]);
   });
 
+  it('Where did Redvers sleep?', () => {
+    all('redvers sleeping response', [
+      'Where did Redvers sleep?', 'Where is Slingsby staying?', 'Did Redvers sleep well?',
+    ]);
+    const cases = [
+      ['redvers', "The servants' quarters, damn it."],
+      ['billingsgate', "In the servants' quarters, sir"],
+      ['goodbody', 'In our room, dear'],
+      ['bagsby', 'In our room, sir.'],
+      ['sarah', "In the servants' quarters, I'm afraid."],
+      ['millicent', "The servants' quarters, I think"],
+      ['arthur', "The servants' quarters, poor chap."],
+    ];
+    for (const [key, expected] of cases) {
+      target(key);
+      assertResponse('Where did Redvers sleep?', expected, true);
+    }
+  });
+
+  it('Where did Arthur sleep?', () => {
+    all('arthur sleeping response', ['Where did Arthur sleep?', 'Where is Coniston staying?']);
+    const cases = [
+      ['arthur', 'The east guest room, old boy.'],
+      ['redvers', 'The young pup has the east guest room.'],
+      ['billingsgate', 'Mr. Coniston has the east guest room, sir.'],
+      ['goodbody', 'In the east guest room, dear'],
+      ['bagsby', 'In the east guest room, sir.'],
+      ['sarah', 'In the east guest room, I believe.'],
+      ['millicent', 'In the east guest room - the blue one.'],
+    ];
+    for (const [key, expected] of cases) {
+      target(key);
+      assertResponse('Where did Arthur sleep?', expected, true);
+    }
+
+    target('template');
+    assertResponse('Where did you sleep?', 'alibi response');
+    assertResponse('Was Arthur in the music room?', 'arthur response');
+  });
+
   it('Tell me about these slippers.', () => {
     all('slippers response', [
       'ask about slippers', 'whose slippers are these', 'tell me about the slippers',

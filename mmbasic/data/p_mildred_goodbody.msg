@@ -227,6 +227,13 @@ what besides. Mrs. Darnley's business, not mine. All I know is the
 furniture had to come out somewhere, and somewhere turned out to be
 the hall."
 
++redvers +(sleep/stay/stayed/staying)
+"In our room, dear - the servants' quarters. Nowhere else to put him,
+so me and Norah mucked in with Mr. B. in his pantry."
+
++arthur +(sleep/stay/stayed/staying)
+"In the east guest room, dear - the blue one."
+
 +(blocked/passage) door kitchen
 "That door, dear? Stacked to the ceiling with furniture from the
 west guest room, and I'll not have anyone trying to squeeze past
@@ -302,7 +309,7 @@ Course, we was asleep by 10:30, so I couldn't swear to any of us after that."
 "Nothing to do with me, dear. Mr. Mellors keeps to his cottage of an
 evening, same as always. I couldn't vouch for him one way or another."
 
--thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +(sleep/slept/asleep) +you
+-thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +sleep +you
 "We was all three together, me, Norah and Mr. B. in Mr. B.'s pantry
 at 10:30 and 11:30. Of course we was asleep at 11:30 so I suppose
 any of us could have slipped out without the others noticing."
