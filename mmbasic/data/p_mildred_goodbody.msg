@@ -309,6 +309,10 @@ Course, we was asleep by 10:30, so I couldn't swear to any of us after that."
 "Nothing to do with me, dear. Mr. Mellors keeps to his cottage of an
 evening, same as always. I couldn't vouch for him one way or another."
 
++mother +(millicent/natural/real/birth/die) when | +wife +(first/previous) +colonel
+"Before my time, dear. A fever when Miss Millicent was little, so I'm
+told. Poor mite."
+
 -thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +sleep +you
 "We was all three together, me, Norah and Mr. B. in Mr. B.'s pantry
 at 10:30 and 11:30. Of course we was asleep at 11:30 so I suppose
@@ -372,11 +376,11 @@ clues evidence found discovered proof
 "That's your business, dear, not mine. I wouldn't know a clue if it
 sat in my soup. You get on with your job."
 
-+(summer/summerhouse) -handkerchief -cigarette
++summerhouse -handkerchief -cigarette
 "That's out on the lawn, dear, nothing to do with my kitchen. I couldn't
 tell you who goes there."
 
-affair mellors sarah (summerhouse/summer) together secret lovers
++affair +affair sarah mellors summerhouse
 !requires x_handkerchief x_cigarettes
 She goes quiet for a moment, wiping her hands slowly on her apron.@
 @
@@ -384,7 +388,7 @@ She goes quiet for a moment, wiping her hands slowly on her apron.@
 watching her these past months. Mrs. Sarah always did seem lonelier
 than a young wife ought to be. That's all I'll say on it."
 
-affair mellors sarah (summerhouse/summer) together secret lovers
++affair +affair sarah mellors summerhouse
 "Now that's not a question I've an answer to, dear, nor one I'd
 care to guess at."
 

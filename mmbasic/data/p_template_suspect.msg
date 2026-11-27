@@ -276,6 +276,9 @@ daimler car motor saloon garage
 +(confirm/corroborate/vouch/alibi/with) +(mellors/gamekeeper) you
 "vouch for mellors response"
 
++mother +(millicent/natural/real/birth/die) when | +wife +(first/previous) +colonel
+"millicent's mother response"
+
 -thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +sleep +you
 "alibi response"
 
@@ -322,17 +325,18 @@ daimler car motor saloon garage
 clues evidence found discovered proof
 "evidence response"
 
-+(summer/summerhouse) -handkerchief -cigarette
++summerhouse -handkerchief -cigarette
 "summer house response"
 
 gamekeeper cottage
 "gamekeepers cottage response"
 
-affair mellors sarah (summerhouse/summer) together secret lovers
+# Double count 'affair' for 2 points
++affair +affair sarah mellors summerhouse
 !requires x_handkerchief x_cigarettes
 "affair response given handkerchief and cigarettes"
 
-affair mellors sarah (summerhouse/summer) together secret lovers
++affair +affair sarah mellors summerhouse
 "affair response"
 
 +redvers +(money/mining/business/much) ask troubles colonel

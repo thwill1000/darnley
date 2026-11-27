@@ -336,6 +336,10 @@ evening, nor any particular wish to."
 "Never laid eyes on the fellow last night. Don't even know where his
 cottage is, come to that."
 
++mother +(millicent/natural/real/birth/die) when | +wife +(first/previous) +colonel
+"Died of a fever years ago, when the girl was a child. Darnley took it
+hard. That's all there is to it."
+
 -thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +sleep +you
 "I left Darnley alive at 10:30 and it's damn nonsense to suggest I
 shot him with all the house awake and then waited to see what would
@@ -400,10 +404,10 @@ clues evidence found discovered proof
 speculate. Just make sure whatever you've got actually holds water
 before you go accusing anyone."
 
-+(summer/summerhouse) -handkerchief -cigarette
++summerhouse -handkerchief -cigarette
 "Never been near it. Damned cold place to sit in this weather."
 
-affair mellors sarah (summerhouse/summer) together secret lovers
++affair +affair sarah mellors summerhouse
 !requires x_handkerchief x_cigarettes
 He gives a short, humourless laugh.@
 @
@@ -412,10 +416,10 @@ wife would go looking for warmth elsewhere - man was more than twice
 her age and colder than the weather. Didn't think I'd be proved
 right quite so literally, though."
 
-affair mellors sarah (summerhouse/summer) together secret lovers
++affair +affair sarah mellors summerhouse
 "Can't say I've given it any thought. Why, should I have?"
 
-+redvers +(money/mining/business/much) ask troubles colonel | +you +(money/mining/business/much) ask troubles colonel
++(redvers/you) +(money/mining/business/much) ask troubles colonel
 !requires x_newspaper
 He goes rather grey about the gills.@
 @

@@ -162,6 +162,7 @@ add_test("What happened at dinner?", "test_dinner")
 add_test("When did you last see/speak with the Colonel?", "test_last_see_colonel")
 add_test("What size shoes do you wear?", "test_shoes_wear")
 add_test("Did you slam the door?", "test_door_slam")
+add_test("Who is Millicent's mother?", "test_millicent_mother")
 add_test("I accuse you! (but don't have all the clues)", "test_premature_accusation")
 add_test("I accuse you! (the first time)", "test_first_accusation")
 add_test("I accuse you! (subsequent times)", "test_subsequent_accusation")
@@ -1693,6 +1694,16 @@ Sub test_door_slam()
 
   target_suspect("redvers")
   assert_response("Did you slam the door at 10:30?", "The one at 10:30?", 1)
+End Sub
+
+Sub test_millicent_mother()
+  assert_response("Who is Millicent's mother?", "millicent's mother response")
+  assert_response("Who was Millicent's natural mother?", "millicent's mother response")
+  assert_response("When did Millicent's mother die?", "millicent's mother response")
+  assert_response("Who was the Colonel's first wife?", "millicent's mother response")
+
+  target_suspect("millicent")
+  assert_response("Who is your mother?", "My own mother died when I was very small", 1)
 End Sub
 
 Sub test_premature_accusation()

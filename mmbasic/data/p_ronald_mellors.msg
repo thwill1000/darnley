@@ -259,6 +259,10 @@ cottage."
 "Nobody vouches for me of an evening, and I don't ask them to. I was
 alone, same as always."
 
++mother +(millicent/natural/real/birth/die) when | +wife +(first/previous) +colonel
+"Dead long since, before my time here. Fever, I heard. Nothing to do
+with me."
+
 -thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +sleep +you
 "I was in my cottage alone all evening and I don't give a tinker's
 curse if you believe me or not. If you look for my tracks to the big
@@ -316,14 +320,14 @@ clues evidence found discovered proof
 "Not my concern what you've found. I've told you what I know.
 Rest's up to you."
 
-+(summer/summerhouse) -handkerchief -cigarette
++summerhouse -handkerchief -cigarette
 "No reason for me to go in there. Croquet and tea's not my line - I've
 got the grounds to see to."
 
 gamekeeper cottage | yourself cottage
 "This is my cottage. Door's open to anyone who's got a warrant."
 
-affair mellors sarah (summerhouse/summer) together secret lovers
++affair +affair sarah mellors summerhouse
 !requires x_handkerchief x_cigarettes
 His jaw tightens and, for the first time, he looks away from you.@
 @
@@ -331,7 +335,7 @@ His jaw tightens and, for the first time, he looks away from you.@
 such things about Mrs. Darnley. She's a fine woman. That's all
 you'll get from me on the subject."
 
-affair mellors sarah (summerhouse/summer) together secret lovers
++affair +affair sarah mellors summerhouse
 "Don't know what you mean. I keep to my own business, and I'd
 thank you to do the same."
 

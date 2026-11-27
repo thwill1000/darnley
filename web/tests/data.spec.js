@@ -165,8 +165,8 @@ describe('parseObjects()', () => {
 });
 
 describe('parseReplacements()', () => {
-  it('parses all 70 replacement lines from the game data', () => {
-    expect(parseReplacements(adventText)).toHaveLength(70);
+  it('parses all 71 replacement lines from the game data', () => {
+    expect(parseReplacements(adventText)).toHaveLength(71);
   });
 
   it('preserves file order and keeps repeated canonicals as separate entries', () => {
@@ -182,9 +182,9 @@ argue|row|quarrel
     ]);
   });
 
-  it('parses the first replacement entry, mapping aliases back to "argue"', () => {
+  it('parses the 2nd replacement entry, mapping aliases back to "argue"', () => {
     const replacements = parseReplacements(adventText);
-    expect(replacements[0]).toEqual({
+    expect(replacements[1]).toEqual({
       canonical: 'argue',
       aliases: ['argued', 'argument', 'arguing', 'row', 'quarrel', 'quarrelled', 'quarrelling'],
     });

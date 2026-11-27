@@ -296,6 +296,10 @@ after we all dropped off, though."
 "I don't know anything about Mr. Mellors of an evening, sir. He
 doesn't come up to the house after dark unless he's sent for."
 
++mother +(millicent/natural/real/birth/die) when | +wife +(first/previous) +colonel
+"She died long before I came, sir. Mrs. G. says it was a fever, and
+Miss Millicent only little."
+
 -thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +sleep +you
 "I'm not good where times are concerned. I s'pose I was with Mr. B.
 and Mrs. G. in Mr. B.'s room."
@@ -353,18 +357,18 @@ clues evidence found discovered proof
 "I don't know anything about that, sir. I hope you find whatever
 you need to. I just want this all to be over."
 
-+(summer/summerhouse) -handkerchief -cigarette
++summerhouse -handkerchief -cigarette
 "Oh, the summer house, sir? That's for the family and their guests - the
 posh folks. It's not a place for the likes of me."
 
-affair mellors sarah (summerhouse/summer) together secret lovers
++affair +affair sarah mellors summerhouse
 !requires x_handkerchief x_cigarettes
 Norah's eyes go wide and she glances toward the door.@
 @
 "Oh, I - I really shouldn't say, sir. I don't know nothing about
 that, honest I don't."
 
-affair mellors sarah (summerhouse/summer) together secret lovers
++affair +affair sarah mellors summerhouse
 "I don't know anything about that, sir, honest."
 
 +(money/mining/business/much) ask troubles redvers colonel

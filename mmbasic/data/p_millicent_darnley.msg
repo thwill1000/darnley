@@ -325,6 +325,11 @@ something I'd notice."
 "I shouldn't think anyone in the house could vouch for Mellors. He
 keeps to himself down at the cottage."
 
++mother +(millicent/your/natural/real/birth/die) when | +wife +(first/previous) +colonel
+"My own mother died when I was very small - a fever, nothing more than
+that. If you mean Sarah, she's my stepmother; Daddy married her two years
+ago. I scarcely remember my mother, to be honest."
+
 -thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +sleep +you
 "I was with Arthur in the music room at 10:30 and, naturally, I was
 alone in bed at 11:30."
@@ -389,11 +394,11 @@ clues evidence found discovered proof
 "I don't know what you've found and I'm not sure I want to. Just -
 please be certain, whatever you conclude. It matters rather a lot."
 
-+(summer/summerhouse) -handkerchief -cigarette
++summerhouse -handkerchief -cigarette
 "We use it for croquet, in summer. I've no reason to go there in this
 weather."
 
-affair mellors (sarah/mother) (summerhouse/summer) together secret lovers
++affair +affair (sarah/mother) mellors summerhouse
 !requires x_handkerchief x_cigarettes
 She goes quite still, and for a moment says nothing at all.@
 @
@@ -401,7 +406,7 @@ She goes quite still, and for a moment says nothing at all.@
 room, I heard her playing all evening. I really don't think you
 should say things like that."
 
-affair mellors (sarah/mother) (summerhouse/summer) together secret lovers
++affair +affair (sarah/mother) mellors summerhouse
 "Goodness, what a thing to ask. I don't know anything about that,
 and I'm not sure I want to."
 

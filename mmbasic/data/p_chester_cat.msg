@@ -220,6 +220,11 @@ stable door as if expecting dinner.@
 @
 "Mrp."
 
++mother +(millicent/natural/real/birth/die) when | +wife +(first/previous) +colonel
+The cat knows nothing of the late Mrs. Darnley, and cares less.@
+@
+"Mrow."
+
 -thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +sleep +you
 The cat blinks at you slowly, which you choose to interpret as either
 total innocence or total guilt. It is impossible to tell.@

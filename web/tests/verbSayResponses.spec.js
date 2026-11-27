@@ -1437,10 +1437,23 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     all('door slam response', [
       'Did you slam the door?',
       'Did you slam the door at 10:30?',
-      'Did you hear a door slam?']);
+      'Did you hear a door slam?'
+    ]);
 
     target('redvers');
     assertResponse('Did you slam the door at 10:30?', 'The one at 10:30?', true);
+  });
+
+  it("Who is Millicent's mother?", () => {
+    all("millicent's mother response", [
+      "Who is Millicent's mother?",
+      "Who was Millicent's natural mother?",
+      "When did Millicent's mother die?",
+      "Who was the Colonel's first wife?",
+    ]);
+
+    target('millicent');
+    assertResponse('Who is your mother?', 'My own mother died when I was very small', true);
   });
 
   it("What do you mean?", () => {

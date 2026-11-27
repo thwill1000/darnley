@@ -104,6 +104,9 @@ who was in the house."
 -you +(when/time) +(die/murder)
 "Couldn't say, sir. I only came on duty this morning."
 
++mother +(millicent/natural/real/birth/die) when | +wife +(first/previous) +colonel
+"Couldn't say, sir. I don't know the family."
+
 +(motive/reason/would) why murder
 "Not my place to guess at that sort of thing, sir. I just mind the
 gate."

@@ -126,6 +126,7 @@ OBJ265_FOOTPRINTS_MZ|Footprints|footprints bootprints shoeprints prints|LOC011_M
 OBJ266_PERFUME|Perfume|perfume scent bottle|LOC027_MASTER_BEDROOM|1|1
 
 !replacements
+affair|lovers|lover|going on between
 argue|argued|argument|arguing|row|quarrel|quarrelled|quarrelling
 arthur|coniston|arthurs|conistons
 bagsby|bagsbys|norah|norahs
@@ -154,7 +155,6 @@ handkerchief|handkerchiefs|hankerchief|hankerchiefs|hanky|hankys
 how|hows
 husband|husbands
 key|keys
-lovers|lover
 maid|housemaid
 marriage|marry|married|marrying
 mellors|mellorss|ronald|ronalds
@@ -193,6 +193,7 @@ womens|ladys|womans
 wound|wounds|wounded
 colonel|mr darnley|colonel darnley
 sarah|mrs darnley|sarah darnley
+summerhouse|summer house
 millicent|miss darnley|millicent darnley
 colonel|darnley
 opinion|get on with|get along

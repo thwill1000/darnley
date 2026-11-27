@@ -343,6 +343,10 @@ notice - servants keep rather different hours to the rest of us."
 "Never even laid eyes on the fellow, far as I recall. Couldn't tell
 you a thing about his evening."
 
++mother +(millicent/natural/real/birth/die) when | +wife +(first/previous) +colonel
+"Died when Millicent was quite small, I gather. Sad business, but
+ancient history, old boy."
+
 -thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +sleep +you
 "Millicent and I were together in the music room at 10:30. I don't
 know how anyone can be expected to have an alibi for 11:30.
@@ -418,11 +422,11 @@ clues evidence found discovered proof
 not curious. I'll wait for you to tell me, rather than guess and
 make a fool of myself."
 
-+(summer/summerhouse) -handkerchief -cigarette
++summerhouse -handkerchief -cigarette
 "Haven't set foot in it, old boy. Not much of a croquet man, and not the
 weather for it."
 
-affair mellors sarah (summerhouse/summer) together secret lovers
++affair +affair sarah mellors summerhouse
 !requires x_handkerchief x_cigarettes
 Coniston's easy manner falters, just slightly.@
 @
@@ -430,7 +434,7 @@ Coniston's easy manner falters, just slightly.@
 you - though now you mention it, Sarah did seem rather distracted
 lately. Best not read too much into that, though."
 
-affair mellors sarah (summerhouse/summer) together secret lovers
++affair +affair sarah mellors summerhouse
 "Can't say that's ever occurred to me, old boy. Should it have?"
 
 +redvers +(money/mining/business/much) ask troubles colonel

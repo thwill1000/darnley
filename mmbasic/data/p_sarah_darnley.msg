@@ -362,6 +362,10 @@ wasn't paying attention to the servants that evening."
 "I don't see why you should ask me about Mellors' evening, Inspector.
 I'm sure I couldn't tell you."
 
++mother +(millicent/natural/real/birth/die) when | +wife +(first/previous) +colonel
+"Sebastian's first wife died of a fever when Millicent was a little
+girl, long before I knew the family. I never met her."
+
 -thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +sleep +you
 "At 10:30 I was reading and drinking coffee in the lounge - on my
 own, I'm afraid. At 11:30 I was playing the piano in the morning
@@ -435,10 +439,10 @@ clues evidence found discovered proof
 "I don't know what you've discovered, Inspector, and I find I'm
 almost afraid to ask. Just be sure, whatever you decide."
 
-+(summer/summerhouse) -handkerchief -cigarette
++summerhouse -handkerchief -cigarette
 "I haven't been down there since the summer, I should think."
 
-affair mellors sarah (summerhouse/summer) together secret lovers
++affair +affair sarah mellors summerhouse
 !requires x_handkerchief x_cigarettes
 Her face goes very pale, then very still.@
 @
@@ -446,7 +450,7 @@ Her face goes very pale, then very still.@
 quite mistaken. I was in the morning room all evening, playing the
 piano. Ask Millicent, she heard me."
 
-affair mellors sarah (summerhouse/summer) together secret lovers
++affair +affair sarah mellors summerhouse
 "I'm sorry - I don't understand the question. Mellors is our
 gamekeeper. I don't see what he has to do with anything."
 

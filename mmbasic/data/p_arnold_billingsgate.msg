@@ -350,6 +350,10 @@ retired, though - I was asleep myself until Mr. Coniston woke me."
 "I have no knowledge of Mr. Mellors' movements last night, sir. He
 does not come up to the house after dark unless sent for."
 
++mother +(millicent/natural/real/birth/die) when | +wife +(first/previous) +colonel
+"The late Mrs. Darnley passed away when Miss Millicent was a child, sir
+- a fever. It was a sad time for the house."
+
 -thanks alibi | -thanks +time murder | +yesterday you evening | +where +were +you | +sleep +you
 "I was with Mrs. Goodbody and young Norah in my pantry at both 10:30
 and 11:30."
@@ -418,11 +422,11 @@ clues evidence found discovered proof
 "I couldn't say what you have found, sir, nor would I presume to
 ask. I trust you to make sense of it better than any of us could."
 
-+(summer/summerhouse) -handkerchief -cigarette
++summerhouse -handkerchief -cigarette
 "The summer house, sir? I could not say. It is not a part of the grounds
 I have any call to visit."
 
-affair mellors sarah (summerhouse/summer) together secret lovers
++affair +affair sarah mellors summerhouse
 !requires x_handkerchief x_cigarettes
 Billingsgate's composure does not slip, but there is a long pause
 before he answers.@
@@ -430,7 +434,7 @@ before he answers.@
 "It is not my place to speculate about the private conduct of the
 family, sir. I have nothing further to say on the matter."
 
-affair mellors sarah (summerhouse/summer) together secret lovers
++affair +affair sarah mellors summerhouse
 "That is not a subject on which I would presume to comment, sir."
 
 +(money/mining/business/much) ask troubles redvers colonel
