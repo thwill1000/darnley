@@ -281,8 +281,9 @@ roast pheasant and an apple charlotte. I served port in the billiard
 room and withdrew a little after 9:00."
 
 -dinner events yesterday murder last happened happened
-"Last night I waited on the guests at dinner. There was the family, Sir Redvers
-and Mr. Coniston. The atmosphere at dinner, I am bound to say, was not entirely
+"Last night I waited on the guests at dinner. There was the family,
+Mr. Coniston, and Sir Redvers, who had arrived unannounced in the afternoon.
+The atmosphere at dinner, I am bound to say, was not entirely
 comfortable. Afterwards I served port to the gentlemen in the billiard room and
 withdrew at a little after 9:00.@
 @

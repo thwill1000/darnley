@@ -279,10 +279,11 @@ Afterwards port and a game of billiards, then the ladies in the lounge
 for half an hour."
 
 -dinner events yesterday murder last happened happened
-"Last night I had dinner with the family and young Coniston. Afterwards
-- at about 9:00 - we gentlemen had a game and some port in the
-billiard room, then we joined the ladies in the lounge for half
-an hour.@
+"I arrived yesterday afternoon, without warning, to see Darnley on
+business. He asked me to stay, so I had dinner with the family and
+young Coniston. Afterwards - at about 9:00 - we gentlemen had a game
+and some port in the billiard room, then we joined the ladies in the
+lounge for half an hour.@
 @
 Darnley and I left the others at 10:00 and chatted about our
 business for a while. The discussion was very friendly and I left

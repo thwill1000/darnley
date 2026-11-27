@@ -272,10 +272,10 @@ the ladies."
 Colonel Darnley for permission to marry Millicent. I popped the question
 to the old boy in the afternoon and he agreed. Last night we all had
 dinner together and afterwards we fellows played a little billiards
-before joining the ladies for coffee. At about 10:00 Sir Redvers broke
-up the party by asking Darnley to go into the study with him. I asked
-Millicent to come with me to the music room where we played duets for
-half an hour.@
+before joining the ladies for coffee. At about 10:00 Sir Redvers, who had turned
+up out of the blue after lunch, broke up the party by asking Darnley to go
+into the study with him. I asked Millicent to come with me to the music room
+where we played duets for half an hour.@
 @
 There was a noise. Millicent thought it was a poacher and hoped that
 Mellors would catch him. She decided to go to bed. I stayed on to smoke

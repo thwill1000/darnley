@@ -266,8 +266,9 @@ while and played duets on the piano.@
 @
 At about 10:30 I decided to go to bed. I know the time because I
 looked at my watch when there was a loud noise - probably a poacher
-somewhere. Arthur stayed in the music room and I went upstairs. I
-think I saw Sir Redvers going into the servants' quarters, but I was
+somewhere. Arthur stayed in the music room and I went upstairs. I think I saw
+Sir Redvers going into the servants' quarters - he had arrived unexpectedly
+before dinner and there was no room for him anywhere else - but I was
 distracted by Sarah who was on the landing. She said she was
 intending to play the piano in the morning room and hoped it
 wouldn't disturb me. I went to my room and stayed there. I heard
