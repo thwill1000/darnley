@@ -1041,6 +1041,20 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     assertResponse("Tell me about your daughter's engagement", "Sebastian only agreed to it yesterday afternoon", true);
   });
 
+  it('When did Arthur and Millicent get engaged? (after the letter is found)', () => {
+    resetFlags('x_letter');
+    all("millicent's engagement given letter response", [
+      'tell me about the engagement',
+      'when did they get engaged',
+    ]);
+
+    target('arthur');
+    assertResponse('tell me about the engagement', "I don't know what you're getting at, old boy", true);
+
+    target('sarah');
+    assertResponse('tell me about the engagement', 'Sebastian only agreed to it yesterday afternoon', true);
+  });
+
   it('How was the study locked?', () => {
     all('locked study response', [
       'how was the study locked', 'how was the study sealed', 'how could someone have gotten into the study',

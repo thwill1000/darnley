@@ -298,6 +298,10 @@ daimler car motor saloon garage
 "sarah's remarriage response"
 
 +(engagement/marriage) millicent arthur when
+!requires x_letter
+"millicent's engagement given letter response"
+
++(engagement/marriage) millicent arthur when
 "millicent's engagement response"
 
 +who +(accuse/murder/murderer/suspect) him | +who +did +(it/this) | +who +shot

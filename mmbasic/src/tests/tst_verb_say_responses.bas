@@ -139,6 +139,7 @@ add_test("Who do you think is the murderer?", "test_who_did_it")
 add_test("Were the Colonel and Sarah happy?", "test_marriage")
 add_test("Have you considered remarrying?", "test_remarriage")
 add_test("When did Arthur and Millicent get engaged?", "test_engagement")
+add_test("When did Arthur and Millicent get engaged? (after the letter is found)", "test_engagement_letter")
 add_test("How was the study locked?", "test_locked_study")
 add_test("What do you know about the broken french window?", "test_broken_window")
 add_test("Who threw the stone through the study window?", "test_stone")
@@ -1308,6 +1309,19 @@ Sub test_engagement()
 
   target_suspect("sarah")
   assert_response("Tell me about your daughter's engagement", "Sebastian only agreed to it yesterday afternoon", 1)
+End Sub
+
+Sub test_engagement_letter()
+  reset_flags("x_letter")
+  assert_response("tell me about the engagement", "millicent's engagement given letter response")
+  assert_response("when did they get engaged", "millicent's engagement given letter response")
+
+  ' Only Arthur gets a gated variant; others still give their ungated answer.
+  target_suspect("arthur")
+  assert_response("tell me about the engagement", "I don't know what you're getting at, old boy", 1)
+
+  target_suspect("sarah")
+  assert_response("tell me about the engagement", "Sebastian only agreed to it yesterday afternoon", 1)
 End Sub
 
 Sub test_locked_study()

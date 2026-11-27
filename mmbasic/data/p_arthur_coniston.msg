@@ -374,6 +374,14 @@ surprised, mind - fellow's got a face like a wet Sunday."
 his gruff way, but a young wife and an old husband - well, you can
 imagine the gossip."
 
++(engagement/marriage/propose) millicent arthur when
+!requires x_letter
+"I don't know what you're getting at, old boy - the Colonel gave his blessing
+yesterday afternoon, and said he'd announce it himself, which is why we said
+nothing to him. If he'd had second thoughts he'd have told me to my face, not
+put them in some half-finished letter to goodness knows whom. Slingsby, I should
+think. Well, we shall never know now."
+
 +(engagement/marriage) millicent arthur when
 "Happiest news of my life, old boy! The Colonel gave his blessing
 yesterday afternoon - on the understanding that he'd announce it
