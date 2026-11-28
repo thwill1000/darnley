@@ -329,29 +329,29 @@ that evening. I did not see which door."
 "I couldn't say, sir. Mr. Coniston woke me at 11:30 and we found the
 Colonel then. I heard a bang at about 10:30, but I took it for a door."
 
-+(confirm/corroborate/vouch/alibi/with) +arthur you
++arthur +(confirm/corroborate/vouch/alibi/with) you | +arthur +where +was
 "I did not see Mr. Coniston again until he woke me at 11:30, sir.
 I cannot vouch for his whereabouts in between."
 
-+(confirm/corroborate/vouch/alibi/with) +millicent you
++millicent +(confirm/corroborate/vouch/alibi/with) you | +millicent +where +was
 "I saw nothing of Miss Millicent after I withdrew from the drawing
 room, sir. I regret I cannot assist you there."
 
-+(confirm/corroborate/vouch/alibi/with) +sarah -affair you
++sarah -affair +(confirm/corroborate/vouch/alibi/with) you | +sarah -affair +where +was
 "I saw nothing of Mrs. Darnley after dinner, sir. I could not say
 where she passed the evening."
 
-+(confirm/corroborate/vouch/alibi/with) +redvers you
++redvers +(confirm/corroborate/vouch/alibi/with) you | +redvers +where +was
 "I couldn't vouch for him at all, sir. Sir Redvers had the servants'
 quarters to himself that night - Mrs. Goodbody, Norah and I were all
 down in my pantry, a floor below and out of earshot."
 
-+(confirm/corroborate/vouch/alibi/with) +(servant/bagsby/billingsgate/goodbody/butler/cook/maid) you
++servant +(confirm/corroborate/vouch/alibi/with) you | +servant +where +was
 "Mrs. Goodbody and young Norah were with me in my pantry from 9:30.
 I couldn't swear to their whereabouts after we all
 retired, though - I was asleep myself until Mr. Coniston woke me."
 
-+(confirm/corroborate/vouch/alibi/with) +(mellors/gamekeeper) you
++(mellors/gamekeeper) +(confirm/corroborate/vouch/alibi/with) you | +(mellors/gamekeeper) +where +was
 "I have no knowledge of Mr. Mellors' movements last night, sir. He
 does not come up to the house after dark unless sent for."
 

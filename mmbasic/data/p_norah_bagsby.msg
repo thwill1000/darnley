@@ -274,30 +274,30 @@ after that, sir, I was asleep."
 "I couldn't say, sir. There was a bang before we went to bed, and I woke
 when Mr. Coniston came for Mr. B. I don't know the hour."
 
-+(confirm/corroborate/vouch/alibi/with) +arthur you
++arthur +(confirm/corroborate/vouch/alibi/with) you | +arthur +where +was
 "I never saw Mr. Coniston again after we cleared away, sir. I couldn't
 tell you what he got up to of an evening, that's not my part of the
 house."
 
-+(confirm/corroborate/vouch/alibi/with) +millicent you
++millicent +(confirm/corroborate/vouch/alibi/with) you | +millicent +where +was
 "I didn't see Miss Millicent again after I served coffee, sir. I
 wouldn't know where she was after that."
 
-+(confirm/corroborate/vouch/alibi/with) +sarah -affair you
++sarah -affair +(confirm/corroborate/vouch/alibi/with) you | +sarah -affair +where +was
 "I never saw Mrs. Sarah again either, sir, not till everyone come
 running. I couldn't say what she was doing."
 
-+(confirm/corroborate/vouch/alibi/with) +redvers you
++redvers +(confirm/corroborate/vouch/alibi/with) you | +redvers +where +was
 "Couldn't say, sir. He had our room to himself on account of turning
 up so sudden - Mrs. G. and me and Mr. B. were all down in the
 butler's pantry that night, nowhere near him."
 
-+(confirm/corroborate/vouch/alibi/with) +(servant/bagsby/billingsgate/goodbody/butler/cook/maid) you
++servant +(confirm/corroborate/vouch/alibi/with) you | +servant +where +was
 "We was all together in Mr. B.'s pantry from 9:30, sir - me,
 Mrs. G. and Mr. B. I couldn't say for certain what anyone got up to
 after we all dropped off, though."
 
-+(confirm/corroborate/vouch/alibi/with) +(mellors/gamekeeper) you
++(mellors/gamekeeper) +(confirm/corroborate/vouch/alibi/with) you | +(mellors/gamekeeper) +where +was
 "I don't know anything about Mr. Mellors of an evening, sir. He
 doesn't come up to the house after dark unless he's sent for."
 

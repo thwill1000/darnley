@@ -318,26 +318,26 @@ Heavy door, stiff spring."
 "No idea. I left Darnley alive at 10:30 and was asleep by 11:00.
 Billingsgate woke me at midnight with the news."
 
-+(confirm/corroborate/vouch/alibi/with) +arthur you
++arthur +(confirm/corroborate/vouch/alibi/with) you | +arthur +where +was
 "Couldn't tell you. I turned in myself well before midnight and took
 no notice of the young pup's comings and goings."
 
-+(confirm/corroborate/vouch/alibi/with) +millicent you
++millicent +(confirm/corroborate/vouch/alibi/with) you | +millicent +where +was
 "No idea whatsoever. I don't keep track of the young lady's
 movements."
 
-+(confirm/corroborate/vouch/alibi/with) +sarah -affair you
++sarah -affair +(confirm/corroborate/vouch/alibi/with) you | +sarah -affair +where +was
 "Haven't the foggiest. I was asleep myself by 11:00, or near enough."
 
-+(confirm/corroborate/vouch/alibi/with) +redvers you
++redvers +(confirm/corroborate/vouch/alibi/with) you | +redvers +where +was
 "Vouch for myself? Damned if I know how you expect that to work, man.
 You have my word - take it or leave it."
 
-+(confirm/corroborate/vouch/alibi/with) +(servant/bagsby/billingsgate/goodbody/butler/cook/maid) you
++servant +(confirm/corroborate/vouch/alibi/with) you | +servant +where +was
 "Can't help you there. I've no notion what the staff get up to of an
 evening, nor any particular wish to."
 
-+(confirm/corroborate/vouch/alibi/with) +(mellors/gamekeeper) you
++(mellors/gamekeeper) +(confirm/corroborate/vouch/alibi/with) you | +(mellors/gamekeeper) +where +was
 "Never laid eyes on the fellow last night. Don't even know where his
 cottage is, come to that."
 

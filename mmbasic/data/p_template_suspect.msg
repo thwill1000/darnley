@@ -257,26 +257,26 @@ daimler car motor saloon garage
 -you +(when/time) +(die/murder)
 "time of death response"
 
-+(confirm/corroborate/vouch/alibi/with) +arthur you
++arthur +(confirm/corroborate/vouch/alibi/with) you | +arthur +where +was
 "vouch for arthur response"
 
-+(confirm/corroborate/vouch/alibi/with) +millicent you
++millicent +(confirm/corroborate/vouch/alibi/with) you | +millicent +where +was
 "vouch for millicent response"
 
-+(confirm/corroborate/vouch/alibi/with) +sarah -affair you
++sarah -affair +(confirm/corroborate/vouch/alibi/with) you | +sarah -affair +where +was
 !requires x_handkerchief x_cigarettes
 "vouch for sarah given hanky + cigs response"
 
-+(confirm/corroborate/vouch/alibi/with) +sarah -affair you
++sarah -affair +(confirm/corroborate/vouch/alibi/with) you | +sarah -affair +where +was
 "vouch for sarah response"
 
-+(confirm/corroborate/vouch/alibi/with) +redvers you
++redvers +(confirm/corroborate/vouch/alibi/with) you | +redvers +where +was
 "vouch for redvers response"
 
-+(confirm/corroborate/vouch/alibi/with) +(servant/bagsby/billingsgate/goodbody/butler/cook/maid) you
++servant +(confirm/corroborate/vouch/alibi/with) you | +servant +where +was
 "vouch for servants response"
 
-+(confirm/corroborate/vouch/alibi/with) +(mellors/gamekeeper) you
++(mellors/gamekeeper) +(confirm/corroborate/vouch/alibi/with) you | +(mellors/gamekeeper) +where +was
 "vouch for mellors response"
 
 +mother +(millicent/natural/real/birth/die) when | +wife +(first/previous) +colonel

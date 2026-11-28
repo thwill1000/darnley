@@ -305,28 +305,28 @@ I couldn't tell you which door."
 "I really couldn't say. I woke at about 11:20 and heard Sarah playing the piano,
 and shortly afterwards there was a bang, but I took it for a door."
 
-+(confirm/corroborate/vouch/alibi/with) +arthur you
++arthur +(confirm/corroborate/vouch/alibi/with) you | +arthur +where +was
 "Until 10:30, certainly - we were playing duets the whole
 time. After that I went up to bed, so I couldn't tell you what he
 got up to on his own."
 
-+(confirm/corroborate/vouch/alibi/with) +millicent you
++millicent +(confirm/corroborate/vouch/alibi/with) you | +millicent +where +was
 "I'm not sure how I'm meant to vouch for myself, Inspector - I was
 alone in my room the whole time."
 
-+(confirm/corroborate/vouch/alibi/with) +(sarah/mother) -affair you
++(sarah/mother) -affair +(confirm/corroborate/vouch/alibi/with) you | +(sarah/mother) -affair +where +was
 "I fell asleep listening to her playing, so I really couldn't swear to
 when she stopped, or started again for that matter."
 
-+(confirm/corroborate/vouch/alibi/with) +redvers you
++redvers +(confirm/corroborate/vouch/alibi/with) you | +redvers +where +was
 "I only glimpsed him going into the servants' quarters as I came up.
 After that I couldn't say."
 
-+(confirm/corroborate/vouch/alibi/with) +(servant/bagsby/billingsgate/goodbody/butler/cook/maid) you
++servant +(confirm/corroborate/vouch/alibi/with) you | +servant +where +was
 "I've no idea what the servants do of an evening. That's hardly
 something I'd notice."
 
-+(confirm/corroborate/vouch/alibi/with) +(mellors/gamekeeper) you
++(mellors/gamekeeper) +(confirm/corroborate/vouch/alibi/with) you | +(mellors/gamekeeper) +where +was
 "I shouldn't think anyone in the house could vouch for Mellors. He
 keeps to himself down at the cottage."
 

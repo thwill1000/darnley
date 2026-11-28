@@ -326,27 +326,27 @@ I was in the music room with Millicent at the time."
 "Couldn't say exactly, old boy. I heard a noise at about 11:30 - a door,
 I thought - and Billingsgate and I found him not long afterwards."
 
-+(confirm/corroborate/vouch/alibi/with) +arthur you
++arthur +(confirm/corroborate/vouch/alibi/with) you | +arthur +where +was
 "Myself? Ha - I don't suppose I'm much of a witness to my own doings,
 old boy. You'll have to take my word for it."
 
-+(confirm/corroborate/vouch/alibi/with) +millicent you
++millicent +(confirm/corroborate/vouch/alibi/with) you | +millicent +where +was
 "Absolutely - we were together in the music room from 10:00 until 10:30,
 playing duets. I'd stake my life on that much."
 
-+(confirm/corroborate/vouch/alibi/with) +sarah -affair you
++sarah -affair +(confirm/corroborate/vouch/alibi/with) you | +sarah -affair +where +was
 "Couldn't tell you, I'm afraid. I only passed through the morning room
 on my way up and didn't linger to watch her play."
 
-+(confirm/corroborate/vouch/alibi/with) +redvers you
++redvers +(confirm/corroborate/vouch/alibi/with) you | +redvers +where +was
 "Haven't the foggiest, old boy. Last I saw of him he was storming out
 of the study - after that he's a closed book to me."
 
-+(confirm/corroborate/vouch/alibi/with) +(servant/bagsby/billingsgate/goodbody/butler/cook/maid) you
++servant +(confirm/corroborate/vouch/alibi/with) you | +servant +where +was
 "No idea, old boy. Not the sort of thing I'd have any occasion to
 notice - servants keep rather different hours to the rest of us."
 
-+(confirm/corroborate/vouch/alibi/with) +(mellors/gamekeeper) you
++(mellors/gamekeeper) +(confirm/corroborate/vouch/alibi/with) you | +(mellors/gamekeeper) +where +was
 "Never even laid eyes on the fellow, far as I recall. Couldn't tell
 you a thing about his evening."
 

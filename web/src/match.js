@@ -10,6 +10,35 @@
 // prefix handling. Step 10 (this step) adds "(a/b/c)" OR-groups,
 // optionally themselves prefixed with "+"/"-", completing the matcher.
 
+import { applyReplacements } from './words.js';
+
+/**
+ * Builds a pipe-delimited, lower-case match-input string from a range of
+ * words, applying replacement resolution first - the string form findMatches()
+ * expects, e.g. "|cat|dog|bird|".
+ *
+ * @param {string[]} words
+ * @param {{canonical: string, aliases: string[]}[]} replacements
+ * @param {number} [startIndex]  First index (inclusive) to include;
+ *                               defaults to 0 (start of the array).
+ * @param {number} [endIndex]    Last index (inclusive) to include;
+ *                               defaults to words.length - 1 (end of the
+ *                               array).
+ * @returns {string} e.g. "|cat|dog|", or "|" for an empty range.
+ */
+export function makeMatchInput(words, replacements, startIndex, endIndex) {
+  const newWords = applyReplacements(words, replacements);
+  const start = startIndex ?? 0;
+  const end = endIndex ?? newWords.length - 1;
+
+  let result = '|';
+  for (let i = start; i <= end && i < newWords.length; i++) {
+    if (newWords[i] === '') break;
+    result += newWords[i].toLowerCase() + '|';
+  }
+  return result;
+}
+
 /**
  * Checks whether any "/"-separated word in group is present in matchIn.
  * Used by findMatches() to evaluate an OR-group "(word1/word2/...)".

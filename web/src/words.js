@@ -108,33 +108,6 @@ export function applyReplacements(words, replacements) {
   return delimitedWords.split(' ').slice(1, -1);
 }
 
-/**
- * Builds a pipe-delimited, lower-case match-input string from a range of
- * words, applying replacement resolution first - the string form findMatches()
- * expects, e.g. "|cat|dog|bird|".
- *
- * @param {string[]} words
- * @param {{canonical: string, aliases: string[]}[]} replacements
- * @param {number} [startIndex]  First index (inclusive) to include;
- *                               defaults to 0 (start of the array).
- * @param {number} [endIndex]    Last index (inclusive) to include;
- *                               defaults to words.length - 1 (end of the
- *                               array).
- * @returns {string} e.g. "|cat|dog|", or "|" for an empty range.
- */
-export function makeMatchInput(words, replacements, startIndex, endIndex) {
-  const resolved = applyReplacements(words, replacements);
-  const start = startIndex ?? 0;
-  const end = endIndex ?? words.length - 1;
-
-  let result = '|';
-  for (let i = start; i <= end && i < resolved.length; i++) {
-    if (resolved[i] === '') break;
-    result += resolved[i].toLowerCase() + '|';
-  }
-  return result;
-}
-
 // Mirrors MAX_WORDS/MAX_WORD_LENGTH in mmbasic/src/words.inc. MMBasic
 // enforces these via fixed-size arrays in split_words%(); JS arrays have
 // no such limit, so parseCommand() checks them explicitly to preserve the

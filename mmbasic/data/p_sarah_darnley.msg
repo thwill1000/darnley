@@ -344,27 +344,27 @@ the study and banging the door behind him. I didn't see it done."
 "I couldn't tell you, Inspector. I heard a noise like a shot at about
 11:30 and thought it was poachers. I only learned the truth afterwards."
 
-+(confirm/corroborate/vouch/alibi/with) +arthur you
++arthur +(confirm/corroborate/vouch/alibi/with) you | +arthur +where +was
 "I really couldn't say what Arthur got up to. I went upstairs soon
 after the first bang."
 
-+(confirm/corroborate/vouch/alibi/with) +(millicent/daughter) you
++(millicent/daughter) +(confirm/corroborate/vouch/alibi/with) you | +(millicent/daughter) +where +was
 "I saw Millicent only briefly, on the landing, before I went to the
 morning room. After that I couldn't tell you."
 
-+(confirm/corroborate/vouch/alibi/with) +sarah -affair you
++sarah -affair +(confirm/corroborate/vouch/alibi/with) you | +sarah -affair +where +was
 "Vouch for myself? I was quite alone the whole evening, Inspector, so
 I'm afraid there's no-one but me to ask."
 
-+(confirm/corroborate/vouch/alibi/with) +redvers you
++redvers +(confirm/corroborate/vouch/alibi/with) you | +redvers +where +was
 "I've no idea what Sir Redvers did after he left the study. I didn't
 see him again until Billingsgate woke him."
 
-+(confirm/corroborate/vouch/alibi/with) +(servant/bagsby/billingsgate/goodbody/butler/cook/maid) you
++servant +(confirm/corroborate/vouch/alibi/with) you | +servant +where +was
 "I really couldn't say. I imagine they were about their duties, but I
 wasn't paying attention to the servants that evening."
 
-+(confirm/corroborate/vouch/alibi/with) +(mellors/gamekeeper) you
++(mellors/gamekeeper) +(confirm/corroborate/vouch/alibi/with) you | +(mellors/gamekeeper) +where +was
 "I don't see why you should ask me about Mellors' evening, Inspector.
 I'm sure I couldn't tell you."
 

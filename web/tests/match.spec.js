@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { findMatches } from '../src/match.js';
+import { findMatches, makeMatchInput } from '../src/match.js';
 
 describe('findMatches() - plain words', () => {
   it('returns 0 when no needle matches', () => {
@@ -142,5 +142,13 @@ describe('findMatches() - "(a/b/c)" OR-groups', () => {
 
   it('combines correctly with a plain word in the same sub-pattern, each contributing independently', () => {
     expect(findMatches('fish (cat/dog)', '|fish|dog|')).toBe(2);
+  });
+});
+
+describe('makeMatchInput()', () => {
+  it('includes all words when a replacement expands the input', () => {
+    const replacements = [{ canonical: 'long phrase', aliases: ['short'] }];
+
+    expect(makeMatchInput(['short'], replacements)).toBe('|long|phrase|');
   });
 });

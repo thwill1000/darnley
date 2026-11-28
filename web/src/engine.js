@@ -13,8 +13,7 @@
 
 import { markupToHtml } from './console.js';
 import { renderBody } from './data.js';
-import { findMatches } from './match.js';
-import { makeMatchInput } from './words.js';
+import { findMatches, makeMatchInput } from './match.js';
 
 /**
  * Finds the best matching exit from currentLocation for the given words.

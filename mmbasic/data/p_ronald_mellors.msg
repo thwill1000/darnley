@@ -236,30 +236,30 @@ the lot."
 -you +(when/time) +(die/murder)
 "No idea. I was in bed by 10:00 and slept through whatever it was."
 
-+(confirm/corroborate/vouch/alibi/with) +arthur you
++arthur +(confirm/corroborate/vouch/alibi/with) you | +arthur +where +was
 "Don't know the man's business. I was in my cottage."
 
-+(confirm/corroborate/vouch/alibi/with) +millicent you
++millicent +(confirm/corroborate/vouch/alibi/with) you | +millicent +where +was
 "Nothing to do with me. I was at home all evening."
 
-+(confirm/corroborate/vouch/alibi/with) +sarah -affair you
++sarah -affair +(confirm/corroborate/vouch/alibi/with) you | +sarah -affair +where +was
 !requires x_handkerchief x_cigarettes
 Something flickers behind his flat stare.@
 @
 "Can't help you there. I was on my own all evening."
 
-+(confirm/corroborate/vouch/alibi/with) +sarah -affair you
++sarah -affair +(confirm/corroborate/vouch/alibi/with) you | +sarah -affair +where +was
 "Don't know anything about Mrs. Darnley's evening. Not my place to
 say."
 
-+(confirm/corroborate/vouch/alibi/with) +redvers you
++redvers +(confirm/corroborate/vouch/alibi/with) you | +redvers +where +was
 "Never met the man before yesterday. Couldn't tell you where he was."
 
-+(confirm/corroborate/vouch/alibi/with) +(servant/bagsby/billingsgate/goodbody/butler/cook/maid) you
++servant +(confirm/corroborate/vouch/alibi/with) you | +servant +where +was
 "Don't concern myself with what goes on up at the house. I was in my
 cottage."
 
-+(confirm/corroborate/vouch/alibi/with) +(mellors/gamekeeper) you
++(mellors/gamekeeper) +(confirm/corroborate/vouch/alibi/with) you | +(mellors/gamekeeper) +where +was
 "Nobody vouches for me of an evening, and I don't ask them to. I was
 alone, same as always."
 

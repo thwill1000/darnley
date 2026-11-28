@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { applyReplacements, makeMatchInput } from '../src/words.js';
+import { makeMatchInput } from '../src/match.js';
+import { applyReplacements } from '../src/words.js';
 
 // Mirrors the relevant lines of the real !replacements section in
 // mmbasic/data/advent.dat / mmbasic/src/tests/data/advent.dat.

@@ -174,6 +174,8 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       'What did you do yesterday evening?',
       'Where were you at 10:30?',
       'Did you sleep well?',
+      "Where were you last night?",
+      "Where were you yesterday evening?"
     ]);
 
     target('billingsgate');
@@ -896,7 +898,12 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
   it("Can you corroborate Arthur's alibi?", () => {
     all('vouch for arthur response', [
-      'confirm arthur', "Can you corroborate Arthur's alibi?", 'Was Arthur with you?', 'Can you vouch for Coniston?',
+      'confirm arthur',
+      "Can you corroborate Arthur's alibi?",
+      'Was Arthur with you?',
+      'Can you vouch for Coniston?',
+      'Where was Arthur yesterday evening?',
+      'Where was Arthur last night?',
     ]);
   });
 
@@ -906,6 +913,8 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       "Can you corroborate Millicent's alibi?",
       'Was Millicent with you?',
       'Can you vouch for Millicent?',
+      'Where was Millicent yesterday evening?',
+      'Where was Millicent last night?',
     ]);
 
     target("sarah");
@@ -919,6 +928,8 @@ describe('verbSay() against the real template/suspect .msg files', () => {
       'Was Sarah with you?',
       'Can you vouch for Sarah?',
       'Who was Sarah with in the Morning Room?',
+      'Where was Sarah yesterday evening?',
+      'Where was Sarah last night?',
     ]);
 
     target("millicent");
@@ -935,22 +946,36 @@ describe('verbSay() against the real template/suspect .msg files', () => {
 
   it("Can you corroborate Redvers' alibi?", () => {
     all('vouch for redvers response', [
-      'confirm redvers', "Can you corroborate Redvers' alibi?", 'Was Redvers with you?', 'Can you vouch for Slingsby?',
+      'confirm redvers',
+      "Can you corroborate Redvers' alibi?",
+      'Was Redvers with you?',
+      'Can you vouch for Slingsby?',
+      'Where was Sir Redvers yesterday evening?',
+      'Where was Slingsby last night?',
     ]);
   });
 
   it("Can you corroborate the Servants' alibi?", () => {
     all('vouch for servants response', [
-      'confirm servants', "Can you corroborate the Servants' alibi?", 'Was Billingsgate with you?',
+      'confirm servants',
+      "Can you corroborate the Servants' alibi?",
+      'Was Billingsgate with you?',
       'Can you vouch for Norah?',
+      'Where was the cook yesterday evening?',
+      'Where was the butler last night?',
     ]);
   });
 
   it("Can you corroborate Mellors' alibi?", () => {
     all('vouch for mellors response', [
-      'confirm mellors', "Can you corroborate Mellors' alibi?", 'Was Ronald with you?',
-      'Can you vouch for the Gamekeeper?', 'Can you vouch for the Game keeper?',
+      'confirm mellors',
+      "Can you corroborate Mellors' alibi?",
+      'Was Ronald with you?',
+      'Can you vouch for the Gamekeeper?',
+      'Can you vouch for the Game keeper?',
       'Can you vouch for the Game-keeper?',
+      'Where was Mellors yesterday evening?',
+      'Where was Mellors last night?',
     ]);
   });
 

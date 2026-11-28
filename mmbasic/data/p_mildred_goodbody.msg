@@ -289,28 +289,28 @@ I couldn't tell you whether it was a door."
 "I couldn't tell you, dear. A bang woke me at 11:20 by my clock and I
 thought it was poachers. Mr. Coniston turned up a few minutes later."
 
-+(confirm/corroborate/vouch/alibi/with) +arthur you
++arthur +(confirm/corroborate/vouch/alibi/with) you | +arthur +where +was
 "Couldn't say, dear. Once we'd cleared away I didn't see hide nor hair
 of Mr. Coniston again till all the commotion started."
 
-+(confirm/corroborate/vouch/alibi/with) +millicent you
++millicent +(confirm/corroborate/vouch/alibi/with) you | +millicent +where +was
 "No, dear, I didn't see Miss Millicent again after dinner. Not my
 place to go looking for her, neither."
 
-+(confirm/corroborate/vouch/alibi/with) +sarah -affair you
++sarah -affair +(confirm/corroborate/vouch/alibi/with) you | +sarah -affair +where +was
 "Couldn't tell you, dear. I never saw Mrs. Sarah again after we'd
 served coffee, not till everyone was up and about."
 
-+(confirm/corroborate/vouch/alibi/with) +redvers you
++redvers +(confirm/corroborate/vouch/alibi/with) you | +redvers +where +was
 "Couldn't say, dear. He had our room to himself on account of turning
 up so sudden - me and Norah and Mr. B. were all down in his pantry
 that night, nowhere near him."
 
-+(confirm/corroborate/vouch/alibi/with) +(servant/bagsby/billingsgate/goodbody/butler/cook/maid) you
++servant +(confirm/corroborate/vouch/alibi/with) you | +servant +where +was
 "We was all three together, dear - me, Norah and Mr. B. in his pantry from 9:30.
 Course, we was asleep by 10:30, so I couldn't swear to any of us after that."
 
-+(confirm/corroborate/vouch/alibi/with) +(mellors/gamekeeper) you
++(mellors/gamekeeper) +(confirm/corroborate/vouch/alibi/with) you | +(mellors/gamekeeper) +where +was
 "Nothing to do with me, dear. Mr. Mellors keeps to his cottage of an
 evening, same as always. I couldn't vouch for him one way or another."
 

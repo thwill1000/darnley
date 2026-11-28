@@ -6,8 +6,8 @@
 // through the accused's own .msg file via the SAY handler.
 
 import { markupToHtml } from './console.js';
-import { splitWords, makeMatchInput, MAX_WORDS, MAX_WORD_LENGTH } from './words.js';
-import { findMatches } from './match.js';
+import { splitWords, MAX_WORDS, MAX_WORD_LENGTH } from './words.js';
+import { findMatches, makeMatchInput } from './match.js';
 import { clearFlag, setFlag, hasFlag, countSetFlags } from './state.js';
 import { VERB_HANDLERS, messageHtml } from './verbs.js';
 

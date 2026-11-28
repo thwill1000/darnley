@@ -3,7 +3,8 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { parseQuestions, parseReplacements } from '../src/data.js';
-import { splitWords, makeMatchInput } from '../src/words.js';
+import { makeMatchInput } from '../src/match.js';
+import { splitWords } from '../src/words.js';
 import { answerMatches, SUSPECT_TAGS } from '../src/accuse.js';
 
 // Ports mmbasic/src/tests/tst_accusation.bas. Unlike accuse.spec.js
