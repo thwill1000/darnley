@@ -275,6 +275,11 @@ trap for short journeys. Mellors would know more about its upkeep than I do."
 examine it closely - my attention has been rather taken up with other
 matters."
 
++were +you +in -with +(room/study/lounge/hall/kitchen/pantry)
+"The dining room and the billiard room, sir, until a little after 9:00.
+Then the kitchen for my own supper and the boots, and my pantry from
+shortly after 10:30 until Mr. Coniston woke me at 11:30."
+
 (dinner/supper/coffee)
 "I waited on the family, Sir Redvers and Mr. Coniston, sir - soup,
 roast pheasant and an apple charlotte. I served port in the billiard

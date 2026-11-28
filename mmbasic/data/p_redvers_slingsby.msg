@@ -273,6 +273,11 @@ cause to examine it, old man."
 "Damned conspicuous thing, sitting there on the drive. Still, better you came
 than nobody at all, I suppose."
 
++were +you +in -with +(room/study/lounge/hall/kitchen/pantry)
+"Rooms? The billiard room for a game and some port, the lounge for half an
+hour, then Darnley's study from 10:00 to 10:30. After that the servants'
+quarters, where I went straight to bed. What the devil is this in aid of?"
+
 (dinner/supper/coffee)
 "Dinner with the family and young Coniston. Pheasant, a trifle dry.
 Afterwards port and a game of billiards, then the ladies in the lounge

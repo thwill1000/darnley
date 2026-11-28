@@ -163,6 +163,7 @@ add_test("When did you last see/speak with the Colonel?", "test_last_see_colonel
 add_test("What size shoes do you wear?", "test_shoes_wear")
 add_test("Did you slam the door?", "test_door_slam")
 add_test("Who is Millicent's mother?", "test_millicent_mother")
+add_test("Were you in the music room last night?", "test_were_you_in_room")
 add_test("I accuse you! (but don't have all the clues)", "test_premature_accusation")
 add_test("I accuse you! (the first time)", "test_first_accusation")
 add_test("I accuse you! (subsequent times)", "test_subsequent_accusation")
@@ -1704,6 +1705,42 @@ Sub test_millicent_mother()
 
   target_suspect("millicent")
   assert_response("Who is your mother?", "My own mother died when I was very small", 1)
+End Sub
+
+Sub test_were_you_in_room()
+  assert_response("Were you in the music room last night?", "were you in room response")
+  assert_response("Were you in the study?", "were you in room response")
+  assert_response("Were you in the kitchen at 11:30?", "were you in room response")
+
+  ' Neighbouring topics keep their own answers.
+  assert_response("Where were you at 10:30?", "alibi response")
+  assert_response("Were you with Millicent in the music room?", "vouch for millicent response")
+  assert_response("Did you hear a bang in the music room?", "bang/shot timeline response")
+  assert_response("Was Arthur in the music room?", "arthur response")
+
+  target_suspect("arthur")
+  assert_response("Were you in the music room last night?", "Which room, old boy?", 1)
+
+  target_suspect("millicent")
+  assert_response("Were you in the music room last night?", "Which room do you mean?", 1)
+
+  target_suspect("sarah")
+  assert_response("Were you in the music room last night?", "After dinner I was in the lounge", 1)
+
+  target_suspect("redvers")
+  assert_response("Were you in the music room last night?", "Rooms? The billiard room", 1)
+
+  target_suspect("billingsgate")
+  assert_response("Were you in the music room last night?", "The dining room and the billiard room, sir", 1)
+
+  target_suspect("goodbody")
+  assert_response("Were you in the music room last night?", "The kitchen, dear, all evening", 1)
+
+  target_suspect("bagsby")
+  assert_response("Were you in the music room last night?", "Only the kitchen, sir", 1)
+
+  target_suspect("mellors")
+  assert_response("Were you in the music room last night?", "Not the house.", 1)
 End Sub
 
 Sub test_premature_accusation()

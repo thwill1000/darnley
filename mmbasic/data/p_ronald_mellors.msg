@@ -212,6 +212,10 @@ inch thick on that tarpaulin, if you care to look."
 "Saw it come up the drive this morning. Nothing to do with me - I don't go
 poking about other people's motors."
 
++were +you +in -with +(room/study/lounge/hall/kitchen/pantry)
+"Not the house. I was in my cottage from 8:00 and in bed by 10:00. Never
+go past the kitchen door up there."
+
 (dinner/supper/coffee)
 "Wasn't at the house for dinner. I was at my cottage."
 

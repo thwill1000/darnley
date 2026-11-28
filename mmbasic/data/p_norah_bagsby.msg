@@ -240,6 +240,11 @@ motor car sat there on our own drive first thing."
 "Only one side of the bed had been slept in, sir, when I looked in earlier.
 I haven't done the room yet this morning."
 
++were +you +in -with +(room/study/lounge/hall/kitchen/pantry)
+"Only the kitchen, sir, and the lounge when I took the ladies' coffee in.
+Then Mr. B.'s pantry for bed. I don't go in the other rooms of an evening,
+honest I don't."
+
 (dinner/supper/coffee)
 "I helped Mrs. Goodbody with dinner, sir - there was pheasant, and an
 apple charlotte after - and served the ladies' coffee in

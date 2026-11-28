@@ -1467,6 +1467,44 @@ describe('verbSay() against the real template/suspect .msg files', () => {
     assertResponse('Explain what you mean', "I'm afraid I can't be any clearer", true);
   });
 
+  it('Were you in the music room last night?', () => {
+    all('were you in room response', [
+      'Were you in the music room last night?',
+      'Were you in the study?',
+      'Were you in the kitchen at 11:30?',
+    ]);
+
+    // Neighbouring topics keep their own answers.
+    assertResponse('Where were you at 10:30?', 'alibi response');
+    assertResponse('Were you with Millicent in the music room?', 'vouch for millicent response');
+    assertResponse('Did you hear a bang in the music room?', 'bang/shot timeline response');
+    assertResponse('Was Arthur in the music room?', 'arthur response');
+
+    target('arthur');
+    assertResponse('Were you in the music room last night?', 'Which room, old boy?', 1);
+
+    target('millicent');
+    assertResponse('Were you in the music room last night?', 'Which room do you mean?', 1);
+
+    target('sarah');
+    assertResponse('Were you in the music room last night?', 'After dinner I was in the lounge', 1);
+
+    target('redvers');
+    assertResponse('Were you in the music room last night?', 'Rooms? The billiard room', 1);
+
+    target('billingsgate');
+    assertResponse('Were you in the music room last night?', 'The dining room and the billiard room, sir', 1);
+
+    target('goodbody');
+    assertResponse('Were you in the music room last night?', 'The kitchen, dear, all evening', 1);
+
+    target('bagsby');
+    assertResponse('Were you in the music room last night?', 'Only the kitchen, sir', 1);
+
+    target('mellors');
+    assertResponse('Were you in the music room last night?', 'Not the house.', 1);
+  });
+
   const accusations = [
     'accuse',
     'guilty',

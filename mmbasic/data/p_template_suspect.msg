@@ -235,6 +235,9 @@ daimler car motor saloon garage
 +(master/colonel) +bedroom | dressing
 "master bedroom response"
 
++were +you +in -with +(room/study/lounge/hall/kitchen/pantry)
+"were you in room response"
+
 (dinner/supper/coffee)
 "dinner response"
 

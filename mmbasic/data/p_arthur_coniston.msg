@@ -262,6 +262,13 @@ you the last time anyone took it out."
 "Can't say I've paid it much attention, old boy. Rather glad it's there,
 though, given the circumstances."
 
++were +you +in -with +(room/study/lounge/hall/kitchen/pantry)
+"Which room, old boy? After dinner it was the billiard room for a frame or
+two, then the lounge with the ladies, then the music room with Millicent
+from about 10:00. She went up at 10:30 and I stayed on there with a cigar
+until 11:00. After that my own room, until I came down to the lounge at
+about 11:30."
+
 (dinner/supper/coffee)
 "Dinner with the family, and Slingsby. Pheasant, and a rather good apple
 charlotte. Afterwards a little billiards with the men, then coffee with

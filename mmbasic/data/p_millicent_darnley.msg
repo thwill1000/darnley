@@ -253,6 +253,11 @@ at it when I pass the window."
 "I don't make a habit of going into Daddy's room. I couldn't tell you
 what's in it."
 
++were +you +in -with +(room/study/lounge/hall/kitchen/pantry)
+"Which room do you mean? After dinner I was in the lounge with Sarah, and
+then in the music room with Arthur, playing duets, until about 10:30. After
+that I went up to my bedroom and stayed there."
+
 (dinner/supper/coffee)
 "We all dined together. Sarah and I took coffee in the lounge afterwards,
 and the men joined us for half an hour. Nobody mentioned the engagement -

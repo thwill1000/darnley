@@ -252,6 +252,11 @@ Not something that concerns the kitchen."
 "That's your motor, dear, isn't it? Can't say I've been out to look at it -
 too much to see to in the kitchen this morning."
 
++were +you +in -with +(room/study/lounge/hall/kitchen/pantry)
+"The kitchen, dear, all evening - cooking, and then washing up with Norah
+- and Mr. B.'s pantry once we went to bed. I don't set foot in the grand
+rooms."
+
 (dinner/supper/coffee)
 "I cooked, dear, and Norah and I washed up. It was clear soup, roast
 pheasant and an apple charlotte to follow, and I had to stretch it

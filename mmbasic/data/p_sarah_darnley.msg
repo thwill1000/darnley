@@ -294,6 +294,12 @@ but I wish it hadn't."
 +(master/colonel/husband) +bedroom | dressing
 "I don't see what my bedroom has to do with anything, Inspector."
 
++were +you +in -with +(room/study/lounge/hall/kitchen/pantry)
+"After dinner I was in the lounge, with Millicent and then the gentlemen.
+I stayed there a few minutes after the noise at 10:30, then went upstairs
+to the morning room, where I played the piano on my own until about
+11:30."
+
 (dinner/supper/coffee)
 "We all dined together. Afterwards the men took port and billiards while
 Millicent and I had coffee in the lounge. Nobody said anything about
